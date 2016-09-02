@@ -1,10 +1,10 @@
 class AddLiveToVerticalMarkets < ActiveRecord::Migration
-  def change
+  def up
     add_column :vertical_markets, :live, :boolean, default: true
     VerticalMarket.update_all(live: true)
   end
 
-  def remove_column
+  def down
     remove_column :vertical_markets, :live, :boolean, default: true
   end
 end
