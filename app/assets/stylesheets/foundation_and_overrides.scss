@@ -352,7 +352,7 @@ $blockquote-font-color: scale-color($body-font-color, $lightness: 35%);
 // We use this to control the maximum number of block grid elements per row
 // $block-grid-elements: 12;
 // $block-grid-default-spacing: rem-calc(20);
-// $align-block-grid-to-grid: false;
+$align-block-grid-to-grid: true;
 
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
 // $block-grid-media-queries: true;
@@ -500,7 +500,7 @@ $button-lrg: rem-calc(17);
 // $f-dropdown-margin-bottom: $f-dropdown-margin-top;
 
 // We use this to control the background color
-// $f-dropdown-bg: $white;
+$f-dropdown-bg: $gainsboro;
 
 // We use this to set the border styles for dropdowns.
 // $f-dropdown-border-style: solid;
@@ -1346,9 +1346,9 @@ $topbar-margin-bottom: 0;
 // $topbar-title-font-size: rem-calc(17);
 
 // Style the top bar dropdown elements
-$topbar-dropdown-bg: $harman-blue;
-$topbar-dropdown-link-color: $white;
-// $topbar-dropdown-link-bg: $oil;
+$topbar-dropdown-bg: $gainsboro;
+$topbar-dropdown-link-color: $black;
+$topbar-dropdown-link-bg: $gainsboro;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
 $topbar-dropdown-toggle-color: $monsoon;
@@ -1356,14 +1356,14 @@ $topbar-dropdown-toggle-color: $monsoon;
 
 // Set the link colors and styles for top-level nav
 $topbar-link-color: $monsoon;
-$topbar-link-color-hover: scale-color($topbar-link-color, $lightness: 30%);
+$topbar-link-color-hover: $black;
 $topbar-link-color-active: $harman-blue;
 $topbar-link-color-active-hover: $harman-blue;
 $topbar-link-weight: 400;
 $topbar-link-font-size: rem-calc(16);
 $topbar-link-hover-lightness: 0%; // Darken by 10%
 $topbar-link-bg: $topbar-bg;
-$topbar-link-bg-color-hover: scale-color($topbar-link-bg, $lightness: -8%);
+$topbar-link-bg-color-hover: $gainsboro;
 $topbar-link-bg-hover: $topbar-link-bg-color-hover;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
@@ -1394,8 +1394,8 @@ $topbar-menu-icon-color-toggled: $oil;
 // Transitions and breakpoint styles
 // $topbar-transition-speed: 300ms;
 // Using rem-calc for the below breakpoint causes issues with top bar
-$topbar-breakpoint: #{lower-bound($large-range)}; // Change to 9999px for always mobile layout
-$topbar-media-query: $large-up;
+//$topbar-breakpoint: #{lower-bound($large-range)}; // Change to 9999px for always mobile layout
+//$topbar-media-query: $large-up;
 
 // Divider Styles
 $topbar-divider-border-bottom: solid 1px  scale-color($topbar-bg-color, $lightness: -8%);
@@ -1430,6 +1430,48 @@ body {
       }
     }
   }
+}
+
+.mega-menu-container {
+  z-index: 9999;
+  @include grid-row($behavior: collapse);
+  .mega-menu-content {
+    @media only screen and (min-width: 1001px) {
+      @include grid-column(8);
+    }
+    @media only screen and (min-width: 640px) and (max-width: 1000px) {
+      @include grid-column(10);
+    }
+    background: $gainsboro;
+    padding: 20px 10px 10px;
+    //width: 800px;
+    //@media only screen and (min-width: 640px) and (max-width: 800px) {
+    //  width: 600px;
+    //}
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      li {
+        line-height: 1.5;
+        margin-bottom: rem-calc(6px);
+      }
+    }
+    a {
+      color: $topbar-link-color-hover;
+      &:hover {
+        color: $primary-color;
+      }
+    }
+    h5 {
+      color: $topbar-link-color-hover;
+      text-transform: uppercase;
+    }
+  }
+}
+.mega-trigger-active {
+  background: $gainsboro !important;
+  color: black !important;
 }
 input[type='checkbox'], input[type='radio'] {
   margin-right: 5px;
@@ -1490,12 +1532,13 @@ ul.dropdown {
   li {
     height: rem-calc(46);
     a {
-      color: $iron !important;
+      color: $black !important;
       text-transform: none;
       height: rem-calc(46);
       line-height: rem-calc(46) !important;
       &:hover {
-        color: $white !important;
+        color: $black !important;
+        background: $iron !important;
       }
     }
   }

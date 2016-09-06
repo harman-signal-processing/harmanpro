@@ -42,6 +42,7 @@
           </div>
           <div class="large-2 medium-3 small-6 columns text-right">
             <% if active_locales.count > 1 %>
+              <br/>
               <div class="row collapse prefix" style="border: none">
                 <div class="small-2 columns">
                   <span class="prefix"><%= fa_icon :flag %></span>
@@ -59,60 +60,84 @@
         </div>
 
         <div class="contain-to-grid sticky">
-        <nav class="top-bar" data-topbar role="navigation">
-          <ul class="title-area">
-            <li class="name"></li>
-            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-          </ul>
-          <section class="top-bar-section">
-            <ul>
-              <%= cache ["top-nav", Date.today, current_locale] do %>
-                <%= top_vertical_market_navigation(dropdowns: false) %>
-                <li class="has-dropdown">
-                <a href="#" class="disabled"><%= t('nav.resources') %></a>
-                  <ul class="dropdown">
-                    <% if current_locale.menu_items.length > 0 %>
-                      <% current_locale.menu_items.order(:position).each do |mi| %>
-                        <li><%= link_to mi.title, mi.link, target: (mi.new_tab?) ? "_blank" : "" %></li>
+          <nav class="top-bar" data-topbar role="navigation">
+            <ul class="title-area">
+              <li class="name"></li>
+              <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+            </ul>
+            <section class="top-bar-section">
+              <ul>
+                <%= cache ["top-nav", Date.today, current_locale] do %>
+                  <li class="has-dropdown show-for-medium-up">
+                    <a href="#" class="disabled" data-dropdown="megaMenu" data-options="is_hover:true;" id="megaTrigger"><%= t('nav.solutions') %></a>
+                  </li>
+                  <%= top_vertical_market_navigation(dropdowns: false, class: "show-for-small-only") %>
+                  <li class="has-dropdown">
+                    <a href="#" class="disabled"><%= t('nav.resources') %></a>
+                    <ul class="dropdown">
+                      <% if current_locale.menu_items.length > 0 %>
+                        <% current_locale.menu_items.order(:position).each do |mi| %>
+                          <li><%= link_to mi.title, mi.link, target: (mi.new_tab?) ? "_blank" : "" %></li>
+                        <% end %>
+                      <% elsif MenuItem.where(locale_id: nil).count > 0 %>
+                        <% MenuItem.where(locale_id: nil).order(:position).each do |mi| %>
+                          <li><%= link_to t(mi.title), mi.link, target: (mi.new_tab?) ? "_blank" : "" %></li>
+                        <% end %>
+                      <% else %>
+                        <li><%= link_to t('nav.media_library'), SiteSetting.value("media-library-menu-link-location") %></li>
+                        <li><%= link_to t('nav.training'), training_path %></li>
+                        <li><%= link_to t('nav.events'), events_path %></li>
+                        <li><%= link_to t('nav.consultants'), consultant_portal_path %></li>
+                        <li><%= link_to t('nav.contacts'), contacts_path %></li>
+                        <li><%= link_to t('nav.news'), news_articles_path %></li>
+                        <li><%= link_to t('nav.service'), service_path %></li>
                       <% end %>
-                    <% elsif MenuItem.where(locale_id: nil).count > 0 %>
-                      <% MenuItem.where(locale_id: nil).order(:position).each do |mi| %>
-                        <li><%= link_to t(mi.title), mi.link, target: (mi.new_tab?) ? "_blank" : "" %></li>
-                      <% end %>
-                    <% else %>
-                      <li><%= link_to t('nav.media_library'), SiteSetting.value("media-library-menu-link-location") %></li>
-                      <li><%= link_to t('nav.training'), training_path %></li>
-                      <li><%= link_to t('nav.events'), events_path %></li>
-                      <li><%= link_to t('nav.consultants'), consultant_portal_path %></li>
-                      <li><%= link_to t('nav.contacts'), contacts_path %></li>
-                      <li><%= link_to t('nav.news'), news_articles_path %></li>
-                      <li><%= link_to t('nav.service'), service_path %></li>
+                    </ul>
+                  </li>
+                  <% if SiteSetting.set_for_locale?("blog_link_name") && SiteSetting.set_for_locale?("blog_link") %>
+                    <li>
+                      <%= link_to SiteSetting.value("blog_link_name"), SiteSetting.value("blog_link"), target: "_blank" %>
+                    </li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </section>
+            <section class="top-bar-section">
+              <ul class="right">
+                <% if SiteSetting.set_for_locale?("store_link", current_locale.key) %>
+                  <li class="has-form">
+                    <%= link_to SiteSetting.value("store_link"), target: "_blank", class: "radius button" do %>
+                      <%= fa_icon "shopping-cart" %>
+                      <%= t('nav.shop') %>
                     <% end %>
-                  </ul>
-                </li>
-                <% if SiteSetting.set_for_locale?("blog_link_name") && SiteSetting.set_for_locale?("blog_link") %>
-                  <li>
-                    <%= link_to SiteSetting.value("blog_link_name"), SiteSetting.value("blog_link"), target: "_blank" %>
                   </li>
                 <% end %>
-              <% end %>
-            </ul>
-          </section>
-          <section class="top-bar-section">
-            <ul class="right">
-              <% if SiteSetting.set_for_locale?("store_link", current_locale.key) %>
-                <li class="has-form">
-                  <%= link_to SiteSetting.value("store_link"), target: "_blank", class: "radius button" do %>
-                    <%= fa_icon "shopping-cart" %>
-                    <%= t('nav.shop') %>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          </section>
-        </nav>
+              </ul>
+            </section>
+          </nav>
         </div>
 
+      </div>
+    </div>
+
+    <div id="megaMenu" class="mega-menu-container" data-dropdown-content style="display:none;">
+      <div class="mega-menu-content">
+        <div class="row">
+          <% parent_verticals.map do |vm| %>
+            <div class="medium-<%= top_menu_width_for(vm) %> columns <%= 'end' if vm == parent_verticals.last %>">
+              <h5><%= link_to vm.name, vm %></h5>
+              <ul class="medium-block-grid-<%= vm.children_or_reference_systems.in_groups_of(max_items_in_top_nav_columns).length %>">
+                <%= vm.children_or_reference_systems.in_groups_of(max_items_in_top_nav_columns) do |group| %>
+                  <li>
+                    <ul><% group.each do |item| %>
+                      <%= menu_link_for(item) if item.respond_to?(:name) %>
+                    <% end %></ul>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
 

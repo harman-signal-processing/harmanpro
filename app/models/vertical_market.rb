@@ -53,4 +53,9 @@ class VerticalMarket < ActiveRecord::Base
     !!!( reference_systems.map{ |rs| rs.system_diagram.present? }.include?(false) )
   end
 
+  # Only for top-level verticals, helps determine menu structure
+  def children_or_reference_systems
+    (self.children.where(live: true).count > 0) ? self.children.where(live: true) : self.reference_systems
+  end
+
 end

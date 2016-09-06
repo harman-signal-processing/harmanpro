@@ -17,6 +17,7 @@
 //= require foundation
 //= require tinymce-jquery
 //= require consultants
+//= require mega_menu
 //= require vertical_markets
 //= require locale
 //= require_tree ./cms
