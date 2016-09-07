@@ -1749,7 +1749,7 @@ a.retailer {
     color: $white;
     &.homepage-banner {
       font-weight: 300 !important;
-      z-index: 999;
+      z-index: 20;
       position: absolute;
       width: 100%;
       text-align: center;
