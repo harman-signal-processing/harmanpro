@@ -16,16 +16,29 @@
 <div ng-controller="HomepageBannerCtrl as banner" locale="<%= I18n.locale %>">
   <div class="bumped-up">
     <div class="banner-container text-center">
-      <div class="text-center homepage-banner">
-        <%= image_tag "HarmanSkylineImage.jpg" %>
-        <h1><%=raw format_headline SiteSetting.value("homepage-main-headline") %></h1>
-        <img src="<%= asset_path('H-Pointer.png') %>" alt="[H]" class="help-icon animated bounceIn hide-for-small-down" ns-popover
-          ng-repeat="venue in venues"
-          vid="{{ venue.id }}"
-          ng-style="{'left': venue.left, 'top': venue.top, '-moz-animation-delay': venue.id*2/5+'s', '-animation-delay': venue.id*2/5+'s', '-webkit-animation-delay': venue.id*2/5+'s'}"
-          ns-popover-modal="venue-popups"
-          ns-popover-theme="ns-popover-tooltip-theme"
-          ns-popover-template="venue_popup"/>
+      <h1 class="homepage-banner"><%=raw format_headline SiteSetting.value("homepage-main-headline") %></h1>
+      <div class="slick-show">
+        <div class="text-center homepage-banner">
+          <%= image_tag "HarmanSkylineImage.jpg" %>
+          <img src="<%= asset_path('H-Pointer.png') %>" alt="[H]" class="help-icon animated bounceIn hide-for-small-down" ns-popover
+            ng-repeat="venue in venues"
+            vid="{{ venue.id }}"
+            ng-style="{'left': venue.left, 'top': venue.top, '-moz-animation-delay': venue.id*2/5+'s', '-animation-delay': venue.id*2/5+'s', '-webkit-animation-delay': venue.id*2/5+'s'}"
+            ns-popover-modal="venue-popups"
+            ns-popover-theme="ns-popover-tooltip-theme"
+            ns-popover-template="venue_popup"/>
+        </div>
+        <% @slides.each do |slide| %>
+          <div class="slick-slide">
+            <% if slide.link_url.present? %>
+              <%= link_to slide.link_url, target: (slide.link_new_window?) ? "_blank" : "" do %>
+                <%= image_tag slide.background.url, alt: slide.name %>
+              <% end %>
+            <% else %>
+              <%= image_tag slide.background.url, alt: slide.name %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

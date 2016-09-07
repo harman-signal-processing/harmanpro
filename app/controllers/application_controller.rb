@@ -37,6 +37,7 @@ class ApplicationController < ActionController::Base
       I18n.locale = http_accept_language.compatible_language_from(AvailableLocale.live) ||
         I18n.default_locale
     end
+    @current_locale = AvailableLocale.where(key: I18n.locale).first_or_initialize
   end
 
   def all_brands

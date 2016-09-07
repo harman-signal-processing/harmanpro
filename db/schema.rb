@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160826185529) do
+ActiveRecord::Schema.define(version: 20160907154436) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -524,6 +524,29 @@ ActiveRecord::Schema.define(version: 20160826185529) do
   end
 
   add_index "site_settings", ["name"], name: "index_site_settings_on_name", unique: true, using: :btree
+
+  create_table "slides", force: :cascade do |t|
+    t.string   "name",                    limit: 255
+    t.integer  "locale_id",               limit: 4
+    t.integer  "position",                limit: 4
+    t.string   "background_file_name",    limit: 255
+    t.integer  "background_file_size",    limit: 4
+    t.string   "background_content_type", limit: 255
+    t.datetime "background_updated_at"
+    t.string   "bubble_file_name",        limit: 255
+    t.integer  "bubble_file_size",        limit: 4
+    t.string   "bubble_content_type",     limit: 255
+    t.datetime "bubble_updated_at"
+    t.string   "headline",                limit: 255
+    t.string   "description",             limit: 255
+    t.string   "link_text",               limit: 255
+    t.string   "link_url",                limit: 255
+    t.boolean  "link_new_window",                     default: false
+    t.datetime "start_on"
+    t.datetime "end_on"
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+  end
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id",        limit: 4

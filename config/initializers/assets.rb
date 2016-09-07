@@ -7,6 +7,9 @@ Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "bo
 Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "bower_components", "angular-awesome-slider", "dist", "img")
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "documents")
 
+Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
+
 Rails.application.config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff|pdf|xlsx)$)
 
 # Precompile additional assets.

@@ -1,7 +1,7 @@
 //$harman-blue: #00395a;
 $harman-blue: #006498;
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,200);
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
 @import "font-awesome";
 
 // Foundation by ZURB
@@ -92,7 +92,8 @@ $light-gray: #e6e7e8;
 $body-background-color: $white;
 $plan-background-color: $light-gray;
 $buy-background-color: #4c4d4f;
-$banner-background-color: #404042;
+//$banner-background-color: #404042;
+$banner-background-color: #FFF;
 //$footer-background-color: #002f3a;
 $footer-background-color: $jet;
 
@@ -1466,6 +1467,7 @@ body {
     h5 {
       color: $topbar-link-color-hover;
       text-transform: uppercase;
+      font-weight: 500;
     }
   }
 }
@@ -1744,6 +1746,28 @@ a.retailer {
   padding: 0;
   h1 {
     margin: 0;
+    color: $white;
+    &.homepage-banner {
+      font-weight: 300 !important;
+      z-index: 999;
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      @media only screen and (min-width: 1000px) {
+        top: 50px;
+        font-size: rem-calc(36);
+      }
+      @media only screen and (min-width: 500px) and (max-width: 999px) {
+        top: 20px;
+        font-size: rem-calc(22);
+      }
+      @media only screen and (max-width: 499px) {
+        top: 10px;
+        font-size: rem-calc(18);
+      }
+      line-height: 1.2;
+      text-shadow: 1px 2px 5px $aluminum;
+    }
   }
   &.vertical-market, &.reference-system {
     @media only screen and (min-width: 1000px) {
@@ -1765,34 +1789,12 @@ a.retailer {
   }
   .homepage-banner {
     position: relative;
-    h1 {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      @media only screen and (min-width: 1000px) {
-        top: 50px;
-        font-size: rem-calc(36);
-      }
-      @media only screen and (min-width: 500px) and (max-width: 999px) {
-        top: 20px;
-        font-size: rem-calc(22);
-      }
-      @media only screen and (max-width: 499px) {
-        top: 10px;
-        font-size: rem-calc(18);
-      }
-      line-height: 1.2;
-      text-shadow: 1px 2px 5px $aluminum;
-    }
     .help-icon {
       position: absolute;
       -moz-animation-duration: 2.4s;
       -webkit-animation-duration: 2.4s;
       -animation-duration: 2.4s;
     }
-  }
-  h1 {
-    color: $white;
   }
 }
 .slider-container {

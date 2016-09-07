@@ -2,6 +2,7 @@ class MainController < ApplicationController
 
   def index
     @vertical_markets = VerticalMarket.parent_verticals
+    @slides = @current_locale.homepage_slides
   end
 
   def sitemap

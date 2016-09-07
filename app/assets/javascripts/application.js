@@ -22,6 +22,7 @@
 //= require locale
 //= require_tree ./cms
 //= require tiny
+//= require slick.min
 // require_tree .
 
 $(function(){
@@ -33,6 +34,12 @@ $(function(){
     equalizer: {
       equalize_on_stack: true
     }
+  });
+  $('.slick-show').slick({
+    autoplay: true,
+    autoplaySpeed: 5000,
+    arrows: false,
+    dots: true
   });
   if ($('#roadblock').length > 0) {
     $('#roadblock').foundation('reveal', 'open');

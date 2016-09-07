@@ -15,6 +15,7 @@ class AvailableLocale < ActiveRecord::Base
   has_many :news_articles, foreign_key: :locale_id
   has_many :artists, foreign_key: :locale_id, dependent: :destroy
   has_many :online_retailers, foreign_key: :locale_id, dependent: :destroy
+  has_many :slides, -> { order("position ASC") }, foreign_key: :locale_id
 
   def self.default
     find_by(key: I18n.default_locale.to_s)
@@ -36,5 +37,9 @@ class AvailableLocale < ActiveRecord::Base
     @items_to_translate ||= self.class.translatables.map do |t|
       t.constantize.needing_translations(self.key)
     end.flatten
+  end
+
+  def homepage_slides
+    slides.where("start_on IS NULL OR start_on <= ?", Date.today).where("end_on IS NULL OR end_on > ?", Date.today)
   end
 end
