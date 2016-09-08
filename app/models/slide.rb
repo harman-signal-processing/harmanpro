@@ -26,8 +26,18 @@ class Slide < ActiveRecord::Base
   validates :name, presence: true
 
   acts_as_list scope: :locale
+  attr_accessor :delete_background
+  before_update :delete_background_if_needed
 
   def locale_name
     locale.name
+  end
+
+  def delete_background_if_needed
+    unless self.background.dirty?
+      if self.delete_background.present? && self.delete_background.to_s == "1"
+        self.background= nil
+      end
+    end
   end
 end

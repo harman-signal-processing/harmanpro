@@ -1,6 +1,7 @@
 <h6><%= locale.name %> site options:</h6>
 <ul>
   <li><%= link_to "Customize Navigation", [:cms, locale, :menu_items] %></li>
+  <li><%= link_to "Homepage Slides", [:cms, locale, :slides] %></li>
   <li><%= link_to "Landing Pages", [:originated, :cms, locale, :landing_pages] %></li>
   <li><%= link_to "Consultant Page", edit_consultants_cms_available_locale_path(locale) %></li>
   <li><%= link_to "Local Events", [:local, :cms, locale, :events] %></li>

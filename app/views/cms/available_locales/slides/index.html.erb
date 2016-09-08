@@ -1,0 +1,46 @@
+<div class="large-12 small-12 columns">
+  <%= render 'cms/available_locales/side_nav' %>
+
+  <div class="medium-7 small-12 columns">
+    <h3><%= @available_locale.name %> Homepage Slide</h3>
+    <%= link_to new_cms_available_locale_slide_path(@available_locale),
+      class: "tiny success button radius" do %>
+      <%= fa_icon "plus" %>
+      Create New Slide
+    <% end %>
+    <% if @slides.count > 0 %>
+      <table width="100%">
+        <tr>
+          <th>Order</th>
+          <th></th>
+          <th>Name</th>
+          <th>Date Range</th>
+        </tr>
+        <% @slides.order(:position).each do |slide| %>
+          <tr>
+            <td><%= slide.position %></td>
+            <td><%= link_to image_tag(slide.background.url(:thumb)), slide.background.url %></td>
+            <td><%= link_to slide.name, edit_cms_available_locale_slide_path(@available_locale, slide) %></td>
+            <td>
+              From: <% if slide.start_on.present? %> <%= l slide.start_on %> <% else %> <i>always</i> <% end %>,
+              Until: <% if slide.end_on.present? %> <%= l slide.end_on %> <% else %> <i>always</i> <% end %>.
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+  <div class="medium-3 small-12 columns">
+    <div class="panel">
+      <h6>What is it?</h6>
+      <p>A homepage slide appears on the homepage in
+      the main feature area. Note, the first slide is
+      always the cityscape image.</p>
+      <p>
+      <%= fa_icon "info-circle" %>
+      Unlike other content types on this site, homepage slides
+      <u>only</u> appear on the site corresponding to
+      the locale where they were created.</p>
+    </div>
+  </div>
+</div>

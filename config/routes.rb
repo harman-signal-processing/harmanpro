@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   namespace :cms do
     resources :available_locales, only: :show do
       resources :news_articles
+      resources :slides
       (AvailableLocale.translatables - ["LandingPage", "Event"]).each do |t|
         resources t.underscore.pluralize.to_sym
       end

@@ -1,0 +1,47 @@
+<%= simple_form_for [:cms, @available_locale, @slide] do |f| %>
+
+  <div class="row">
+    <div class="medium-8 columns">
+      <%= f.input :name %>
+    </div>
+    <div class="medium-4 columns">
+      <%= f.input :position, label: "Sort order (number)" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :background, label: "Banner Image" %>
+    </div>
+    <div class="medium-6 columns">
+      <% if @slide.background.present? %>
+        Currently:<br/>
+        <%= link_to(image_tag(@slide.background.url(:thumb)),
+              @slide.background.url ) %><br/>
+        <%= f.input :delete_background, as: :boolean %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :start_on, as: :string, label: "Start Date", hint: "optional", input_html: { class: "datepicker" } %>
+    </div>
+    <div class="medium-6 columns">
+      <%= f.input :end_on, as: :string, label: "End Date", hint: "optional", input_html: { class: "datepicker" } %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :link_url, hint: "Where the slide should link to." %>
+      <%= f.input :link_new_window, label: "Open in a new window." %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.submit 'Save Changes', class: 'medium button' %>
+    </div>
+  </div>
+
+<% end %>
