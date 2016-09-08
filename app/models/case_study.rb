@@ -17,6 +17,12 @@ class CaseStudy < ActiveRecord::Base
   validates :headline, presence: true, uniqueness: { scope: :vertical_market_id }
   validates :vertical_market, presence: true
 
+  def self.featured
+    active_vertical_markets = VerticalMarket.where(live: true).pluck(:id)
+    where(vertical_market_id: active_vertical_markets).
+      order("RAND()").limit(10)
+  end
+
   def slug_candidates
     [
       :headline,

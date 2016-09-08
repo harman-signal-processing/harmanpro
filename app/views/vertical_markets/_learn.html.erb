@@ -10,21 +10,7 @@
         <ul class="small-block-grid-1 large-block-grid-3 medium-block-grid-3">
           <% vertical_market.featured_case_studies.each do |case_study| %>
             <li>
-              <div class="panel dark-panel case-study" data-equalizer-watch="case_study_panels">
-                <% if case_study.banner.present? || ENV['show_placeholders'] == "true" %>
-                  <div class="text-center">
-                    <%= link_to(
-                      image_tag(case_study.banner.url(:small)),
-                      [vertical_market, case_study]
-                     ) %>
-                  </div>
-                <% end %>
-                <h6 class="subheader">
-                  <%= link_to case_study.headline, [vertical_market, case_study]  %>
-                </h6>
-                <div class="cs-descr"><%= raw case_study.description %></div>
-                <%= link_to t('more'), [vertical_market, case_study], class: "tiny radius button" %>
-              </div>
+              <%= render "shared/case_study_summary", case_study: case_study %>
             </li>
           <% end %>
         </ul>

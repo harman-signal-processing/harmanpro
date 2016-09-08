@@ -3,6 +3,7 @@ class MainController < ApplicationController
   def index
     @vertical_markets = VerticalMarket.parent_verticals
     @slides = @current_locale.homepage_slides
+    @featured_case_studies = CaseStudy.featured
   end
 
   def sitemap

@@ -6,11 +6,22 @@ RSpec.describe MainController do
 
     before do
       @vertical_market = FactoryGirl.create(:vertical_market, parent_id: nil)
+      locale = FactoryGirl.create(:available_locale, key: I18n.default_locale)
+      @slide = FactoryGirl.create(:slide, locale: locale)
+      @case_study = FactoryGirl.create(:case_study)
       get :index
     end
 
     it "assigns @vertical_markets" do
       expect(assigns(:vertical_markets)).to include(@vertical_market)
+    end
+
+    it "assigns @slides" do
+      expect(assigns(:slides)).to include(@slide)
+    end
+
+    it "assigns @featured_case_studies" do
+      expect(assigns(:featured_case_studies)).to include(@case_study)
     end
 
     it "renders index template" do

@@ -46,11 +46,27 @@
 
 <div class="container main-container">
   <p>&nbsp;</p>
+
+  <% if @featured_case_studies.length > 0 %>
+    <p>&nbsp;</p>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2 class="text-center">See HARMAN Solutions In Use</h2>
+        <div class="case_studies" data-equalizer="case_study_panels">
+          <ul class="small-block-grid-1 large-block-grid-4 medium-block-grid-2">
+            <% @featured_case_studies[0,4].each do |case_study| %>
+              <li>
+                <%= render "shared/case_study_summary", case_study: case_study %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
   <div class="row">
     <div class="small-12 columns">
-      <div class="text-center">
-        <h3><%= t( "site_name").upcase %></h3>
-      </div>
       <div class="row">
         <div class="medium-2 hide-for-small columns">&nbsp;</div>
         <% @vertical_markets.each do |vm| %>

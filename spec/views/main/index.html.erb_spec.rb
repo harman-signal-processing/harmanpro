@@ -5,8 +5,10 @@ RSpec.describe "main/index.html.erb", as: :view do
     @brands = FactoryGirl.create_list(:brand, 3)
     @vertical_markets = FactoryGirl.create_list(:vertical_market, 3, parent_id: nil)
     @slides = FactoryGirl.create_list(:slide, 2)
+    @case_studies = FactoryGirl.create_list(:case_study, 4)
     assign(:vertical_markets, @vertical_markets)
     assign(:slides, @slides)
+    assign(:featured_case_studies, @case_studies)
   end
 
   before :each do

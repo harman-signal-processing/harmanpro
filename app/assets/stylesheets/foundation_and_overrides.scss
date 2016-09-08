@@ -1,7 +1,7 @@
 //$harman-blue: #00395a;
 $harman-blue: #006498;
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,200);
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
 @import "font-awesome";
 
 // Foundation by ZURB
@@ -119,8 +119,8 @@ $body-font-weight: $font-weight-medium;
 
 // We use these to control inset shadow shiny edges and depressions.
 // $shiny-edge-size: 0 1px 0;
-// $shiny-edge-color: rgba($white, .5);
 // $shiny-edge-active-color: rgba($black, .2);
+// $shiny-edge-color: rgba($white, .5);
 
 // d. Media Query Ranges
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -172,7 +172,7 @@ $xlarge-up: "#{$screen} and (min-width:#{lower-bound($xlarge-range)})";
 // $header-font-family: $body-font-family;
 $header-font-weight: $font-weight-light;
 // $header-font-style: normal;
-$header-font-color: $harman-blue;
+$header-font-color: $jet;
 $header-line-height: 1.2;
 $header-top-margin: .3rem;
 // $header-bottom-margin: .5rem;
@@ -1579,47 +1579,33 @@ ul.dropdown {
 .space-after {
   margin-bottom: 20px;
 }
-.dark-panel {
-  padding: 10px;
-  background-color: $dark-gray;
-  color: $snow;
-  font-size: rem-calc(12);
+.case-study-panel {
+  font-size: rem-calc(13);
   line-height: 1.1;
-  .subheader {
-    color: $secondary-color !important;
-    a {
-      color: $secondary-color;
-    }
-  }
+  text-align: center;
   .space-after {
     margin-bottom: 10px;
   }
   .cs-descr {
-    height: 90px;
-    overflow: hidden;
     line-height: 1.2;
   }
   &.case-study {
-    position: relative;
-    div.text-center {
+    div.img_container {
+      margin-bottom: 8px;
       background: $black;
       overflow: hidden;
-      @media only screen and (min-width: 641px) {
-        height: 115px;
+      height: 165px;
+      img {
+        width: 100%;
       }
     }
-    img {
-      width: 100%;
-    }
-    .button {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-    }
+  }
+  h5 {
+    font-weight: 400;
   }
 }
 .case_studies {
-  margin: 20px 0px;
+  margin: 30px 0px;
 }
 a.brand-circle {
   border-radius: 50%;

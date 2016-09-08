@@ -37,5 +37,15 @@ RSpec.describe CaseStudy, :type => :model do
   it "#name should be the headline" do
     expect(@case_study.name).to eq(@case_study.headline)
   end
+
+  it ".featured should choose good case studies to feature on the homepage" do
+    inactive_vertical = FactoryGirl.create(:vertical_market, live: false)
+    inactive_study = FactoryGirl.create(:case_study, vertical_market: inactive_vertical)
+
+    featured = CaseStudy.featured
+
+    expect(featured).to include(@case_study)
+    expect(featured).not_to include(inactive_study)
+  end
 end
 
