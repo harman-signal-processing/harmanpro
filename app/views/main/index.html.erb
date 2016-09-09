@@ -51,7 +51,9 @@
     <p>&nbsp;</p>
     <div class="row">
       <div class="large-12 columns">
-        <h2 class="text-center">See HARMAN Solutions In Use</h2>
+        <h2 class="text-center">
+          <%= SiteSetting.value("homepage-case-studies-headline") %>
+        </h2>
         <div class="case_studies" data-equalizer="case_study_panels">
           <ul class="small-block-grid-1 large-block-grid-4 medium-block-grid-2">
             <% @featured_case_studies[0,4].each do |case_study| %>
@@ -82,18 +84,94 @@
     </div>
   </div>
 
+  <p>&nbsp;</p>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="site-resources-container" data-equalizer="site-resource-panels">
+        <ul class="small-block-grid-1 large-block-grid-4 medium-block-grid-2">
+          <li>
+            <div class="blue panel" data-equalizer-watch="site-resource-panels">
+              <div class="img_container">
+                <% if @news %>
+                  <%= link_to @news do %>
+                    <%= image_tag(@news.news_photo.url(:medium), alt: "News") %>
+                  <% end %>
+                <% end %>
+              </div>
+              <h6><%= t('nav.news') %>:</h6>
+              <% if @news %>
+                <h4><%= link_to @news.title.truncate(54), @news %></h4>
+              <% else %>
+                <h4><%= link_to news_articles_path do %>Click here for the latest news from HARMAN.<% end %></h4>
+              <% end %>
+            </div>
+          </li>
+          <li>
+            <div class="blue panel" data-equalizer-watch="site-resource-panels">
+              <div class="img_container">
+                <% if @event %>
+                  <%= link_to @event do %>
+                    <%= image_tag(@event.image.url(:medium), alt: "Events") %>
+                  <% end %>
+                <% end %>
+              </div>
+              <h6><%= t('nav.events') %>:</h6>
+              <% if @event %>
+                <h4><%= link_to @event do %>
+                  <%= @event.name.truncate(35) %><br/>
+                  <%= l @event.start_on, format: :short %> - <%= l @event.end_on, format: :short %>
+                <% end %>
+                </h4>
+              <% else %>
+                <h4><%= link_to events_path do %>Click here for the latest HARMAN events.<% end %></h4>
+              <% end %>
+            </div>
+          </li>
+          <li>
+            <div class="blue panel" data-equalizer-watch="site-resource-panels">
+              <div class="img_container">
+                <%= link_to media_library_path do %>
+                  <div class="media-library-banner"></div>
+                <% end %>
+              </div>
+              <h6><%= t('nav.resources') %>:</h6>
+              <h4><%= link_to t('nav.media_library'), media_library_path %></h4>
+            </div>
+          </li>
+          <li>
+            <div class="blue panel" data-equalizer-watch="site-resource-panels">
+              <div class="img_container">
+                <%= link_to service_path do %>
+                  <div class="service-banner"></div>
+                <% end %>
+              </div>
+              <h6><%= t('nav.service') %>:</h6>
+              <h4><%= link_to SiteSetting.value("service-page-harman-pro-dealer-portal-subheader"), service_path %></h4>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <% if SiteSetting.set_for_locale?("store_link", current_locale.key) %>
 <div class="row collapse">
   <div class="small-12 columns">
     <div class="ecomm-strip">
-      <div class="row">
-        <div class="large-6 large-offset-6 medium-6 medium-offset-6 small-10 small-offset-1 columns">
+      <div class="row collapse">
+        <div class="medium-6 columns">
+          <%= link_to SiteSetting.value("store_link") do %>
+            <%= image_tag "shop_banner_bg.jpg", alt: "Shop HARMAN direct" %>
+          <% end %>
+        </div>
+        <div class="medium-5 small-12 columns text-center cta">
           <h3><%= raw format_headline SiteSetting.value("homepage-ecommerce-headline") %></h3>
           <p><%= raw SiteSetting.value("homepage-ecommerce-text") %></p>
           <p><%= link_to t('home_page.shop_now'), SiteSetting.value("store_link"), target: "_blank", class: "small radius button" %></p>
         </div>
+        <div class="medium-1 hide-for-small columns">&nbsp;</div>
       </div>
     </div>
   </div>

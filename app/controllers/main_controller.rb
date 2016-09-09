@@ -4,6 +4,16 @@ class MainController < ApplicationController
     @vertical_markets = VerticalMarket.parent_verticals
     @slides = @current_locale.homepage_slides
     @featured_case_studies = CaseStudy.featured
+    @news = NewsArticle.where(locale: @current_locale).
+      where("news_photo_file_size > ?", 0).
+      where("post_on <= ?", Date.today).
+      order("post_on DESC").first
+    @event = Event.current_and_upcoming.
+      where(featured: true).
+      where("start_on < ?", 6.months.from_now).
+      where("start_on > ?", 1.day.ago).
+      order("start_on ASC").first
+    @media_library_page = LandingPage.find('media-library')
   end
 
   def sitemap
