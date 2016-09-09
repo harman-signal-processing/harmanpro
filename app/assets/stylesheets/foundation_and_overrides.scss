@@ -92,8 +92,7 @@ $light-gray: #e6e7e8;
 $body-background-color: $white;
 $plan-background-color: $light-gray;
 $buy-background-color: #4c4d4f;
-//$banner-background-color: #404042;
-$banner-background-color: #FFF;
+$banner-background-color: #404042;
 //$footer-background-color: #002f3a;
 $footer-background-color: $jet;
 
@@ -1618,7 +1617,11 @@ ul.dropdown {
   position:relative;
   &:hover {
     background-color: scale-color($black, $lightness: 20%);
-    background-position: 22% 29%;
+    background-position: 28% 31%;
+    transition-timing-function: ease;
+    -moz-animation-duration: 2.4s;
+    -webkit-animation-duration: 2.4s;
+    -animation-duration: 2.4s;
     h6 {
       display: none;
     }
@@ -1627,18 +1630,6 @@ ul.dropdown {
     }
     .overlay {
       display: block;
-      background-color: rgba(0, 0, 0, .65);
-      color: $white;
-      h4 {
-        color: $white;
-        font-weight: 300;
-      }
-      a {
-        color: scale-color($white, $lightness: -10%);
-        &:hover {
-          color: $white;
-        }
-      }
     }
 
   }
@@ -1664,7 +1655,21 @@ ul.dropdown {
      left: 0;
      height: 350px;
      width: 100%;
-     padding: 20px;
+     padding: 40px;
+      background-color: rgba(0, 0, 0, .65);
+      color: $white;
+      h4 {
+        color: $white;
+        font-weight: 300;
+        text-align: center;
+        a { color: $white; }
+      }
+      a {
+        color: scale-color($primary-color, $lightness: 70%);
+        &:hover {
+          color: $white;
+        }
+      }
   }
 }
 .site-resources-container {
@@ -1871,6 +1876,7 @@ a.retailer {
     position: relative;
     .help-icon {
       position: absolute;
+      top: -1000px;
       -moz-animation-duration: 2.4s;
       -webkit-animation-duration: 2.4s;
       -animation-duration: 2.4s;

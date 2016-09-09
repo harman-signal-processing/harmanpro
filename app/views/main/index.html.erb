@@ -15,7 +15,7 @@
 
 <div ng-controller="HomepageBannerCtrl as banner" locale="<%= I18n.locale %>">
   <div class="bumped-up">
-    <div class="banner-container text-center">
+    <div class="banner-container text-center" style="background: white">
       <h1 class="homepage-banner"><%=raw format_headline SiteSetting.value("homepage-main-headline") %></h1>
       <div class="slick-show">
         <div class="text-center homepage-banner">
@@ -79,8 +79,8 @@
               </div>
               <div class="overlay">
                 <h4><%= link_to vm do %><%= vm.name %> Solutions<% end %></h4>
-                <ul class="medium-block-grid-<%= vm.children_or_reference_systems.in_groups(2).length %>">
-                  <% vm.children_or_reference_systems.in_groups(2) do |group| %>
+                <ul class="medium-block-grid-<%= vm.children_or_reference_systems.in_groups_of(max_items_in_top_nav_columns + 2).length %>">
+                  <% vm.children_or_reference_systems.in_groups_of(max_items_in_top_nav_columns + 2) do |group| %>
                     <li>
                       <ul><% group.each do |item| %>
                         <%= menu_link_for(item) if item.respond_to?(:name) %>
