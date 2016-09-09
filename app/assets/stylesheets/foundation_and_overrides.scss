@@ -1615,18 +1615,30 @@ ul.dropdown {
   background-position: 20% 31%;
   background-repeat: no-repeat;
   background-size: 120%;
+  position:relative;
   &:hover {
-    background-color: scale-color($black, $alpha: 35%);
+    background-color: scale-color($black, $lightness: 20%);
     background-position: 22% 29%;
     h6 {
-      //display: none;
+      display: none;
     }
     h3 {
-      //display: none;
+      display: none;
     }
     .overlay {
-      //display: show;
-      background-color: scale-color($black, $alpha: 35%);
+      display: block;
+      background-color: rgba(0, 0, 0, .65);
+      color: $white;
+      h4 {
+        color: $white;
+        font-weight: 300;
+      }
+      a {
+        color: scale-color($white, $lightness: -10%);
+        &:hover {
+          color: $white;
+        }
+      }
     }
 
   }
@@ -1646,7 +1658,13 @@ ul.dropdown {
     color: $white;
   }
   .overlay {
-    display: none;
+     display: none;
+     position: absolute;
+     top: 0;
+     left: 0;
+     height: 350px;
+     width: 100%;
+     padding: 20px;
   }
 }
 .site-resources-container {

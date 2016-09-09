@@ -78,7 +78,16 @@
                 <h3><%= link_to vm do %><%= vm.name %> Solutions<% end %></h3>
               </div>
               <div class="overlay">
-                <h4><%= vm.name %> Solutions:</h4>
+                <h4><%= link_to vm do %><%= vm.name %> Solutions<% end %></h4>
+                <ul class="medium-block-grid-<%= vm.children_or_reference_systems.in_groups(2).length %>">
+                  <% vm.children_or_reference_systems.in_groups(2) do |group| %>
+                    <li>
+                      <ul><% group.each do |item| %>
+                        <%= menu_link_for(item) if item.respond_to?(:name) %>
+                      <% end %></ul>
+                    </li>
+                  <% end %>
+                </ul>
               </div>
             </div>
           </div>

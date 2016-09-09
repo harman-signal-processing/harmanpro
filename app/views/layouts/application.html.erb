@@ -127,7 +127,7 @@
             <div class="medium-<%= top_menu_width_for(vm) %> columns <%= 'end' if vm == parent_verticals.last %>">
               <h5><%= link_to vm.name, vm %></h5>
               <ul class="medium-block-grid-<%= vm.children_or_reference_systems.in_groups_of(max_items_in_top_nav_columns).length %>">
-                <%= vm.children_or_reference_systems.in_groups_of(max_items_in_top_nav_columns) do |group| %>
+                <% vm.children_or_reference_systems.in_groups_of(max_items_in_top_nav_columns) do |group| %>
                   <li>
                     <ul><% group.each do |item| %>
                       <%= menu_link_for(item) if item.respond_to?(:name) %>
