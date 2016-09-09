@@ -1,7 +1,7 @@
 //$harman-blue: #00395a;
 $harman-blue: #006498;
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,200);
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500);
 @import "font-awesome";
 
 // Foundation by ZURB
@@ -55,8 +55,8 @@ $font-family-sans-serif: 'Roboto', 'Open Sans', "Helvetica Neue", Helvetica, Ari
 
 // We use these to define default font weights
 // $font-weight-normal: normal !default;
-$font-weight-light: 300;
-$font-weight-medium: 400;
+$font-weight-light: 100;
+$font-weight-medium: 300;
 // $font-weight-bold: bold !default;
 
 // We use these as default colors throughout
@@ -1507,6 +1507,7 @@ nav.top-bar {
     small {
       padding-left: 8px;
       font-size: 12px;
+      font-weight: 300;
       a {
         color: $harman-blue;
       }
@@ -1606,6 +1607,47 @@ ul.dropdown {
 }
 .case_studies {
   margin: 30px 0px;
+}
+.vm-big-button {
+  overflow: hidden;
+  height: 350px;
+  background-color: scale-color($primary-color, $lightness: -35%);
+  background-position: 20% 31%;
+  background-repeat: no-repeat;
+  background-size: 120%;
+  &:hover {
+    background-color: scale-color($black, $alpha: 35%);
+    background-position: 22% 29%;
+    h6 {
+      //display: none;
+    }
+    h3 {
+      //display: none;
+    }
+    .overlay {
+      //display: show;
+      background-color: scale-color($black, $alpha: 35%);
+    }
+
+  }
+  color: $white;
+  text-shadow: 2px 2px 4px $oil;
+  h6 {
+    margin-top: 100px;
+    color: $white;
+    font-size: rem-calc(40px);
+    font-weight: 100;
+  }
+  h3 {
+    font-weight: 400;
+    color: $white;
+  }
+  a {
+    color: $white;
+  }
+  .overlay {
+    display: none;
+  }
 }
 .site-resources-container {
   .panel {

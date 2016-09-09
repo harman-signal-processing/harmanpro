@@ -18,6 +18,18 @@ class VerticalMarket < ActiveRecord::Base
   }, default_url: "missing/banners/:style.jpg"
 
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\Z/
+
+  has_attached_file :background,
+    styles: {
+      large: "1170x1755#",
+      medium: "800x1200#",
+      small: "250x375#",
+      thumb: "80x120#",
+      thumb_square: "64x64#"
+  }, default_url: "missing/banners/:style.jpg"
+
+  validates_attachment_content_type :background, content_type: /\Aimage\/.*\Z/
+
   validates :name, presence: true, uniqueness: true
   validates :headline, presence: true
 

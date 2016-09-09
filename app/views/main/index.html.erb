@@ -69,17 +69,20 @@
 
   <div class="row">
     <div class="small-12 columns">
-      <div class="row">
-        <div class="medium-2 hide-for-small columns">&nbsp;</div>
+      <div class="row collapse">
         <% @vertical_markets.each do |vm| %>
-          <div class="medium-4 small-12 columns">
-            <%= link_to vm do %>
-              <%= image_tag vm.banner.url(:medium_gray) %>
-              <h5><%= vm.name %> <span class="arrow">&gt;</span></h5>
-            <% end %>
+          <div class="medium-6 small-12 columns">
+            <div class="vm-big-button" data-background="<%= vm.background.url(:large) %>">
+              <div class="text-center">
+                <h6>Explore</h6>
+                <h3><%= link_to vm do %><%= vm.name %> Solutions<% end %></h3>
+              </div>
+              <div class="overlay">
+                <h4><%= vm.name %> Solutions:</h4>
+              </div>
+            </div>
           </div>
         <% end %>
-        <div class="medium-2 hide-for-small columns">&nbsp;</div>
       </div>
     </div>
   </div>

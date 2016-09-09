@@ -20,6 +20,7 @@
 //= require mega_menu
 //= require vertical_markets
 //= require locale
+//= require effects
 //= require_tree ./cms
 //= require tiny
 //= require slick.min

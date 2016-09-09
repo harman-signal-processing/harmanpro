@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160907154436) do
+ActiveRecord::Schema.define(version: 20160909165157) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -607,15 +607,19 @@ ActiveRecord::Schema.define(version: 20160907154436) do
   add_index "vertical_market_translations", ["vertical_market_id"], name: "index_vertical_market_translations_on_vertical_market_id", using: :btree
 
   create_table "vertical_markets", force: :cascade do |t|
-    t.integer  "parent_id",           limit: 4
+    t.integer  "parent_id",               limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug",                limit: 255
-    t.string   "banner_file_name",    limit: 255
-    t.string   "banner_content_type", limit: 255
-    t.integer  "banner_file_size",    limit: 4
+    t.string   "slug",                    limit: 255
+    t.string   "banner_file_name",        limit: 255
+    t.string   "banner_content_type",     limit: 255
+    t.integer  "banner_file_size",        limit: 4
     t.datetime "banner_updated_at"
-    t.boolean  "live",                            default: true
+    t.boolean  "live",                                default: true
+    t.string   "background_file_name",    limit: 255
+    t.string   "background_content_type", limit: 255
+    t.integer  "background_file_size",    limit: 4
+    t.datetime "background_updated_at"
   end
 
   add_index "vertical_markets", ["parent_id"], name: "index_vertical_markets_on_parent_id", using: :btree

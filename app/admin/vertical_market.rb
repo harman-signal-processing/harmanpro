@@ -1,7 +1,14 @@
 ActiveAdmin.register VerticalMarket do
   menu label: "Vertical Markets", priority: 1
 
-  permit_params :name, :parent_id, :headline, :description, :banner, :lead_form_content, :live
+  permit_params :name,
+    :parent_id,
+    :headline,
+    :description,
+    :banner,
+    :background,
+    :lead_form_content,
+    :live
 
   config.sort_order = "parent_id"
 
@@ -62,6 +69,7 @@ ActiveAdmin.register VerticalMarket do
       f.input :name, hint: "Maximum characters: 20", input_html: {maxlength: 20}
       f.input :headline, hint: "Maximum characters: 70", input_html: { maxlength: 70 }
       f.input :banner, hint: "Only needed for a vertical which acts as a parent for other vertical markets. Preferred size: 1170x624 px with a strongly horizontal orientation."
+      f.input :background, hint: "Used for top-level verticals on the homepage and on the category page."
       f.input :description, hint: "Maximum recommended characters: 650", input_html: { rows: 10 }
       f.input :lead_form_content, input_html: { class: "mceEditor"}
     end
