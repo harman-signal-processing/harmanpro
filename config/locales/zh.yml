@@ -23,6 +23,8 @@ zh:
   search: 搜索
   connect_with_us: 与我们建立联系
   message: 信息
+  explore: 了解这些
+  vertical_market_solutions: "%{vertical_market_name} 解决方案"
 
   date:
     formats:

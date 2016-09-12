@@ -195,8 +195,8 @@ $header-top-margin: .3rem;
 
 // These control how subheaders are styled.
 $subheader-line-height: 1.3;
-$subheader-font-color: $primary-color; //scale-color($header-font-color, $lightness: 35%);
-$subheader-font-weight: bold;
+$subheader-font-color: scale-color($header-font-color, $lightness: -20%);
+$subheader-font-weight: 500;
 // $subheader-top-margin: .2rem;
 // $subheader-bottom-margin: .5rem;
 
@@ -1551,6 +1551,43 @@ ul.dropdown {
   &.padded {
     padding: 80px 0 80px;
   }
+  &.parent-category-container {
+    position: relative;
+    background-color: scale-color($primary-color, $lightness: -65%);
+    background-attachment: fixed;
+    background-size: cover;
+    padding-top: rem-calc(120px);
+    h2.white {
+      color: scale-color($white, $lightness: -5%);
+      text-shadow: 1px 2px 4px $black;
+    }
+    .bubble {
+      border-radius: 50%;
+      opacity: 50%;
+      position: absolute;
+    }
+    #bubble-1 {
+      border: 2px solid rgba(255,255,255,0.5);
+      width: 225px;
+      height: 225px;
+      left: -40px;
+      top: 230px;
+    }
+    #bubble-2 {
+      width: 275px;
+      height: 275px;
+      background-color: rgba(255,255,255,0.75);
+      top: 450px;
+      right: 20px;
+    }
+    #bubble-3 {
+      width: 125px;
+      height: 125px;
+      border: 20px solid rgba(255,255,255,.5);
+      top: 900px;
+      right: 300px;
+    }
+  }
 }
 .plan-container {
   background: $plan-background-color;
@@ -1634,7 +1671,7 @@ ul.dropdown {
 
   }
   color: $white;
-  text-shadow: 2px 2px 4px $oil;
+  text-shadow: 2px 2px 4px $black;
   h6 {
     margin-top: 100px;
     color: $white;
@@ -1720,14 +1757,11 @@ ul.dropdown {
 }
 
 a.vertical-market-icon {
-  border-radius: 50%;
   background: $jet;
   color: white;
   display: inline-block;
-  width: rem-calc(140);
-  height: rem-calc(140);
-  text-align: center;
-  margin: rem-calc(10);
+  width: rem-calc(170);
+  height: rem-calc(170);
   position: relative;
   overflow: hidden;
   img {
@@ -1737,15 +1771,13 @@ a.vertical-market-icon {
     filter: alpha(opacity=50);
   }
   h5 {
-    margin-top: 40%;
     font-size: rem-calc(18);
     font-weight: 400;
     letter-spacing: rem-calc(0.25);
     line-height: 1.1;
     position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
+    top: 8px;
+    left: 10px;
     color: $white;
     text-shadow: 1px 1px 5px $black;
   }
@@ -1753,6 +1785,23 @@ a.vertical-market-icon {
     img {
       opacity: 0.9;
       filter: alpha(opacity=90);
+    }
+  }
+}
+
+.panel {
+  &.info-panel {
+    padding: rem-calc(40px) rem-calc(20px);
+    background-color: rgba(255,255,255,0.8);
+    .button {
+      background-color: $tuatara;
+      &:hover {
+        background-color: $jet;
+      }
+    }
+    h4 {
+      font-weight: 400;
+      font-size: rem-calc(22px);
     }
   }
 }

@@ -23,6 +23,8 @@ en:
   search: search
   connect_with_us: Connect With Us
   message: Message
+  explore: Explore
+  vertical_market_solutions: "%{vertical_market_name} Solutions"
 
   date:
     formats:

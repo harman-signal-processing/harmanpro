@@ -22,6 +22,8 @@ es:
   any: alguna
   search: buscar
   message: Mensaje
+  explore: Explorar
+  vertical_market_solutions: "Soluciones %{vertical_market_name}"
 
   nav:
     menu: Menu

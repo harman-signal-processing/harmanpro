@@ -23,6 +23,8 @@ pt-BR:
   search: Localizar
   connect_with_us: Fale Conosco
   message: Mensagem
+  explore: Explore
+  vertical_market_solutions: "%{vertical_market_name} Soluções"
 
   date:
     formats:

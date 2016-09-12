@@ -1,0 +1,7 @@
+<%= cache ["help-find-installer-content", Date.today, current_locale] do %>
+  <h4><%= SiteSetting.value("subheader-help-find-installer") %></h4>
+  <div class="space-after">
+    <%= raw textilize SiteSetting.value("help-find-installer-description") %>
+  </div>
+  <%= link_to SiteSetting.value("button-help-find-installer"), new_lead_path, class: "small radius button" %>
+<% end %>

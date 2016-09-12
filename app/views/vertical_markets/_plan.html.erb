@@ -30,25 +30,12 @@
               <% end %>
             <% end %>
 
-            <%= cache ["help-find-installer-content", Date.today, current_locale] do %>
-              <h6><strong><%= SiteSetting.value("subheader-help-find-installer") %></strong></h6>
-              <div class="space-after">
-                <%= raw textilize SiteSetting.value("help-find-installer-description") %>
-              </div>
-              <%= link_to SiteSetting.value("button-help-find-installer"), new_lead_path, class: "small radius button" %>
-            <% end %>
-
+            <%= render "find_installer" %>
           </div>
 
           <div class="large-4 columns">
             <div class="panel">
-              <%= cache ["hef-content", Date.today, current_locale] do %>
-                <h6 class="subheader"><%= SiteSetting.value("hef-sidebar-title") %></h6>
-                <div class="space-after">
-                  <%= raw textilize SiteSetting.value("hef-description") %>
-                </div>
-                <%= link_to t('learn_more'), SiteSetting.value("hef-link"), target: "_blank", class: "small radius button" %>
-              <% end %>
+              <%= render "hef" %>
             </div>
           </div>
         </div>

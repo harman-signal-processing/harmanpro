@@ -4,46 +4,55 @@
 <% end %>
 
 <% if @vertical_market.children.where(live: true).length > 0 %>
-  <div class="bumped-up space-after hide-for-small">
-    <div class="banner-container vertical-market">
-      <% if @vertical_market.banner.present? || ENV['show_placeholders'] == "true" %>
-        <%= image_tag @vertical_market.banner.url(:large) %>
-      <% end %>
-    </div>
-    <div class="row">
-      <div class="large-5 large-offset-2 medium-6 medium-offset-2 columns">
-        <div class="panel slider-container">
-          <h1><%= @vertical_market.name %></h1>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="container main-container parent-category-container" data-background="<%= @vertical_market.background.url %>">
+    <div class="bubble" id="bubble-1"></div>
+    <div class="bubble" id="bubble-2"></div>
+    <div class="bubble" id="bubble-3"></div>
 
-  <div class="container main-container">
     <div class="row">
-      <div class="large-10 medium-12 large-offset-1 columns">
-        <h3 class="text-center space-after"><%= @vertical_market.headline %></h3>
+      <div class="medium-5 medium-offset-1 columns">
+        <div class="panel">
+          <h2><%= @vertical_market.name %></h2>
+          <h5 class="subheader"><%= @vertical_market.headline %></h5>
+          <%= raw textilize @vertical_market.description %>
+        </div>
+        <p>&nbsp;</p>
       </div>
     </div>
+
     <div class="row">
-      <% if (@vertical_market.children.where(live: true).count % 5) == 0 %>
-        <div class="medium-10 medium-offset-1 small-12 columns">
-      <% else %>
-        <div class="medium-8 medium-offset-2 small-12 columns">
-      <% end %>
-        <%= raw textilize @vertical_market.description %>
-        <div class="text-center">
+      <div class="medium-10 medium-offset-1 columns">
+        <h2 class="white"><%= t("explore") %> <%= t("vertical_market_solutions", vertical_market_name: @vertical_market.name) %></h2>
+        <br/>
+        <ul class="large-block-grid-5 medium-block-grid-3 small-block-grid-2 %>">
           <% @vertical_market.children.where(live: true).each do |vm| %>
+            <li>
             <%= link_to vm, class: "vertical-market-icon" do %>
               <% if vm.banner.present? || ENV['show_placeholders'] == "true" %>
-                <%= image_tag vm.banner.url(:small) %>
+                <%= image_tag vm.banner.url(:medium) %>
               <% end %>
               <h5><%= vm.name %></h5>
             <% end %>
+            </li>
           <% end %>
+        </ul>
+        <p>&nbsp;</p>
+      </div>
+    </div>
+
+    <div class="row" data-equalizer="info-panels">
+      <div class="medium-6 medium-offset-1 small-12 columns">
+        <div class="info-panel panel text-center" data-equalizer-watch="info-panels">
+          <%= render "find_installer" %>
+        </div>
+      </div>
+      <div class="medium-4 small-12 columns end">
+        <div class="info-panel panel text-center" data-equalizer-watch="info-panels">
+          <%= render "hef" %>
         </div>
       </div>
     </div>
+
   </div>
 
 <% else %>

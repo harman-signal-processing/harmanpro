@@ -1,0 +1,7 @@
+<%= cache ["hef-content", Date.today, current_locale] do %>
+  <h4><%= SiteSetting.value("hef-sidebar-title") %></h4>
+  <div class="space-after">
+    <%= raw textilize SiteSetting.value("hef-description") %>
+  </div>
+  <%= link_to t('learn_more'), SiteSetting.value("hef-link"), target: "_blank", class: "small radius button" %>
+<% end %>
