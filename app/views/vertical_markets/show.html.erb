@@ -29,9 +29,12 @@
             <li>
             <%= link_to vm, class: "vertical-market-icon" do %>
               <% if vm.banner.present? || ENV['show_placeholders'] == "true" %>
-                <%= image_tag vm.banner.url(:medium) %>
+                <%= image_tag vm.banner.url(:small) %>
               <% end %>
-              <h5><%= vm.name %></h5>
+              <div class="overlay">
+                <h5><%= vm.name %></h5>
+                <span class="description"><%= vm.headline %></span>
+              </div>
             <% end %>
             </li>
           <% end %>

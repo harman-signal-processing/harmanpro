@@ -1761,12 +1761,14 @@ a.vertical-market-icon {
   color: white;
   display: inline-block;
   width: rem-calc(170);
-  height: rem-calc(170);
+  height: rem-calc(155);
   position: relative;
   overflow: hidden;
   img {
     max-width: none;
-    margin-left: -50px;
+    margin-left: -25%;
+    margin-top: 0;
+    height: 155px;
     opacity: 0.5;
     filter: alpha(opacity=50);
   }
@@ -1775,9 +1777,6 @@ a.vertical-market-icon {
     font-weight: 400;
     letter-spacing: rem-calc(0.25);
     line-height: 1.1;
-    position: absolute;
-    top: 8px;
-    left: 10px;
     color: $white;
     text-shadow: 1px 1px 5px $black;
   }
@@ -1785,6 +1784,30 @@ a.vertical-market-icon {
     img {
       opacity: 0.9;
       filter: alpha(opacity=90);
+    }
+    .overlay {
+      background: rgba(0, 100, 152, 0.75);
+      z-index: 8;
+      .description {
+        display: block;
+      }
+    }
+  }
+  .overlay {
+    background: none;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 170px;
+    height: 155px;
+    color: white;
+    padding: 10px;
+    font-weight: 100;
+    .description {
+      display: none;
+      font-size: rem-calc(15px);
+      line-height: 1.3;
     }
   }
 }
