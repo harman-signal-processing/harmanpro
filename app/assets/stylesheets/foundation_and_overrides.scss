@@ -61,7 +61,7 @@ $font-weight-medium: 300;
 
 // We use these as default colors throughout
 $primary-color: scale-color($harman-blue, $lightness: 25%); // #008CBA;
-$secondary-color: #f16521;
+$secondary-color: #333333;
 $alert-color: #ff1133;
 $success-color: #43AC6A;
 $warning-color: #f08a24;
@@ -2097,7 +2097,7 @@ ul.title-area {
       a {
         color: $snow;
         &:hover {
-          color: $secondary-color;
+          color: $primary-color;
         }
       }
     }

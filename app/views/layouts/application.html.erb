@@ -165,34 +165,27 @@
       <div class="small-12 columns">
         <div id="footer">
           <div class="row">
-            <div class="large-3 medium-6 hide-for-small columns">
-              <%= cache ["footer-col-1", Date.today, current_locale] do %>
-                <% VerticalMarket.parent_verticals.each do |vmp| %>
-                  <% if vmp.children.where(live: true).length > 0 %>
-                    <h6 class="subheader"><%= vmp.name %></h6>
+            <%= cache ["footer-cols-1-and-2", Date.today, current_locale] do %>
+              <% VerticalMarket.parent_verticals.each do |vm| %>
+                <div class="large-3 medium-6 hide-for-small columns">
+                  <h6 class="subheader"><%= link_to t('vertical_market_solutions', vertical_market_name: vm.name), vm %></h6>
+                  <% if vm.children.where(live: true).length > 0 %>
                     <ul>
-                      <% vmp.children.where(live: true).each do |v| %>
+                      <% vm.children.where(live: true).each do |v| %>
                         <li><%= link_to v.name, v %></li>
                       <% end %>
                     </ul>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="large-3 medium-6 hide-for-small columns">
-              <%= cache ["footer-col-2", Date.today, current_locale] do %>
-                <% VerticalMarket.parent_verticals.each do |vmp| %>
-                  <% if vmp.children.where(live: true).length <= 0 %>
-                    <h6 class="subheader"><%= vmp.name %></h6>
+                  <% elsif vm.reference_systems.length > 0 %>
                     <ul>
-                      <% vmp.reference_systems.each do |rs| %>
-                        <li><%= link_to rs.name, [vmp, rs] %></li>
+                      <% vm.reference_systems.each do |rs| %>
+                        <li><%= link_to rs.name, [vm, rs] %></li>
                       <% end %>
                     </ul>
                   <% end %>
-                <% end %>
+                </div>
               <% end %>
-            </div>
+            <% end %>
+
             <div class="large-3 medium-6 small-12 columns">
               <%= cache ["footer-col-3", Date.today, current_locale] do %>
                 <h6 class="subheader"><%= t('harman_brands') %></h6>
