@@ -108,6 +108,10 @@
                   <%= link_to @news do %>
                     <%= image_tag(@news.news_photo.url(:medium), alt: "News") %>
                   <% end %>
+                <% else %>
+                  <%= link_to news_articles_path do %>
+                    <%= image_tag('default_news_thumbnail.jpg', alt: "News") %>
+                  <% end %>
                 <% end %>
               </div>
               <h6><%= t('nav.news') %>:</h6>
@@ -124,6 +128,10 @@
                 <% if @event %>
                   <%= link_to @event do %>
                     <%= image_tag(@event.image.url(:medium), alt: "Events") %>
+                  <% end %>
+                <% else %>
+                  <%= link_to events_path do %>
+                    <%= image_tag('default_events_thumbnail.jpg', alt: "Events") %>
                   <% end %>
                 <% end %>
               </div>

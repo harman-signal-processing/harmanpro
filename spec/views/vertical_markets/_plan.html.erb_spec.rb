@@ -22,7 +22,7 @@ RSpec.describe "vertical_markets/_plan.html.erb", :type => :view do
     end
 
     it "shows HEF content" do
-      expect(rendered).to have_css("h6", text: "HEF Headline")
+      expect(rendered).to have_css("h4", text: "HEF Headline")
       expect(rendered).to have_content("HEF description")
     end
 
@@ -31,7 +31,7 @@ RSpec.describe "vertical_markets/_plan.html.erb", :type => :view do
     end
 
     it "offers help finding contractor" do
-      expect(rendered).to have_css("h6", text: "Help Me Find Installer")
+      expect(rendered).to have_css("h4", text: "Help Me Find Installer")
       expect(rendered).to have_content("Paragraph helping customer find installer.")
     end
 

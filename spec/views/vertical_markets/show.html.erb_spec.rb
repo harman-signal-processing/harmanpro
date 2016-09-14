@@ -20,8 +20,8 @@ describe "vertical_markets/show.html.erb" do
       end
     end
 
-    it "shows one banner" do
-      expect(rendered).to have_xpath("//img[@src='/assets/#{@vertical_market.banner.url(:large)}']")
+    it "has the parent container" do
+      expect(rendered).to have_css("div.parent-category-container")
     end
 
     it "does not link to applications" do

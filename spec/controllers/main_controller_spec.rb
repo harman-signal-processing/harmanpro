@@ -9,7 +9,6 @@ RSpec.describe MainController do
       locale = FactoryGirl.create(:available_locale, key: I18n.default_locale)
       @slide = FactoryGirl.create(:slide, locale: locale)
       @case_study = FactoryGirl.create(:case_study)
-      @media_library_page = FactoryGirl.create(:landing_page, title: "Media Library")
       get :index
     end
 
@@ -23,10 +22,6 @@ RSpec.describe MainController do
 
     it "assigns @featured_case_studies" do
       expect(assigns(:featured_case_studies)).to include(@case_study)
-    end
-
-    it "assigns @media_library_page" do
-      expect(assigns(:media_library_page)).to eq(@media_library_page)
     end
 
     it "renders index template" do

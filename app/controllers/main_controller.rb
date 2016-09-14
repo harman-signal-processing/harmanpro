@@ -13,7 +13,6 @@ class MainController < ApplicationController
       where("start_on < ?", 6.months.from_now).
       where("start_on > ?", 1.day.ago).
       order("start_on ASC").first
-    @media_library_page = LandingPage.find('media-library')
   end
 
   def sitemap
