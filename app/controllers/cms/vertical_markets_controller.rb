@@ -39,7 +39,7 @@ class Cms::VerticalMarketsController < CmsController
 
   def vertical_market_params
     params.require(:vertical_market).permit(
-      :name, :description, :headline, :lead_form_content
+      :name, :description, :headline, :lead_form_content, :extra_content
     )
   end
 end

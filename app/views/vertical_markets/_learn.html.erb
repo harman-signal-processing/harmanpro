@@ -21,4 +21,11 @@
   <%#= render 'resource_library_panel', vertical_market: vertical_market %>
 </div>
 
+<% if vertical_market.extra_content.present? %>
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= raw vertical_market.extra_content %>
+    </div>
+  </div>
+<% end %>
 

@@ -4,6 +4,6 @@ class AddLeadFormContentToVerticalMarkets < ActiveRecord::Migration
   end
 
   def down
-    remove_column :vertical_markets, :lead_form_content
+    remove_column :vertical_market_translations, :lead_form_content
   end
 end
