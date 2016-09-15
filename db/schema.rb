@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160826185529) do
+ActiveRecord::Schema.define(version: 20160915173721) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -578,6 +578,7 @@ ActiveRecord::Schema.define(version: 20160826185529) do
     t.text     "description",        limit: 65535
     t.string   "slug",               limit: 255
     t.text     "lead_form_content",  limit: 65535
+    t.text     "extra_content",      limit: 65535
   end
 
   add_index "vertical_market_translations", ["locale"], name: "index_vertical_market_translations_on_locale", using: :btree
