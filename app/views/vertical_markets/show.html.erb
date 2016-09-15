@@ -25,7 +25,7 @@
         <h2 class="white"><%= t("explore") %> <%= t("vertical_market_solutions", vertical_market_name: @vertical_market.name) %></h2>
         <br/>
         <ul class="large-block-grid-5 medium-block-grid-3 small-block-grid-2 %>">
-          <% @vertical_market.children.where(live: true).each do |vm| %>
+          <% @vertical_market.children_or_reference_systems.each do |vm| %>
             <li>
             <%= link_to vm, class: "vertical-market-icon" do %>
               <% if vm.banner.present? || ENV['show_placeholders'] == "true" %>

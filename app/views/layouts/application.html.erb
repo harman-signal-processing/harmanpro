@@ -169,19 +169,11 @@
               <% VerticalMarket.parent_verticals.each do |vm| %>
                 <div class="large-3 medium-6 hide-for-small columns">
                   <h6 class="subheader"><%= link_to t('vertical_market_solutions', vertical_market_name: vm.name), vm %></h6>
-                  <% if vm.children.where(live: true).length > 0 %>
-                    <ul>
-                      <% vm.children.where(live: true).each do |v| %>
-                        <li><%= link_to v.name, v %></li>
-                      <% end %>
-                    </ul>
-                  <% elsif vm.reference_systems.length > 0 %>
-                    <ul>
-                      <% vm.reference_systems.each do |rs| %>
-                        <li><%= link_to rs.name, [vm, rs] %></li>
-                      <% end %>
-                    </ul>
-                  <% end %>
+                  <ul>
+                    <% vm.children_or_reference_systems.each do |v| %>
+                      <li><%= link_to v.name, v.is_a?(ReferenceSystem) ? [vm, v] : v %></li>
+                    <% end %>
+                  </ul>
                 </div>
               <% end %>
             <% end %>
