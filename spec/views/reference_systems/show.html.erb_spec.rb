@@ -21,6 +21,7 @@ RSpec.describe "reference_systems/show.html.erb", :type => :view do
 
     assign(:reference_system, @reference_system)
     assign(:vertical_market, @vertical_market)
+    assign(:lead, Lead.new)
   end
 
   before :each do

@@ -6,8 +6,6 @@ feature "Lead generation" do
   before :all do
     @vertical_market = FactoryGirl.create(:vertical_market)
     @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market, retail: false)
-    @help_find_installer = FactoryGirl.create(:site_setting, name: "button-help-find-installer", content: "Help Me Find Installer")
-    @help_me_get_started = FactoryGirl.create(:site_setting, name: "button-help-me-get-started", content: "Help Me Get Started")
     @title = FactoryGirl.create(:site_setting, name: "thanks", content: "Thanks!")
   end
 
@@ -23,7 +21,6 @@ feature "Lead generation" do
     visit vertical_market_path(@vertical_market)
 
     expect_any_instance_of(CheetahMail::CheetahMail).to receive(:mailing_list_update).and_return(true)
-    click_on @help_find_installer.content
     complete_leadgen_form(lead)
     click_on "Submit"
 
@@ -41,7 +38,6 @@ feature "Lead generation" do
     visit vertical_market_reference_system_path(@vertical_market, @reference_system)
 
     expect_any_instance_of(CheetahMail::CheetahMail).to receive(:mailing_list_update).and_return(true)
-    click_on @help_find_installer.content
     complete_leadgen_form(lead)
     click_on "Submit"
 
@@ -58,7 +54,6 @@ feature "Lead generation" do
       visit vertical_market_reference_system_path(@vertical_market, @reference_system)
 
       expect_any_instance_of(CheetahMail::CheetahMail).to receive(:mailing_list_update).and_return(true)
-      click_on @help_me_get_started.content
       complete_leadgen_form(lead)
       click_on "Submit"
 
@@ -82,7 +77,6 @@ feature "Lead generation" do
     visit vertical_market_path(@vertical_market)
 
     expect_any_instance_of(CheetahMail::CheetahMail).not_to receive(:mailing_list_update)
-    click_on @help_find_installer.content
     complete_leadgen_form(lead)
     click_on "Submit"
 

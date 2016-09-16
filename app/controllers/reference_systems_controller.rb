@@ -5,6 +5,7 @@ class ReferenceSystemsController < ApplicationController
 
   def show
     @reference_system = ReferenceSystem.find(params[:id])
+    @lead = Lead.new(vertical_market: @reference_system.vertical_market)
     respond_with @vertical_market, @reference_system
   end
 

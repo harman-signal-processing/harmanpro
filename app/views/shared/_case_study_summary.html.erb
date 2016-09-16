@@ -1,11 +1,8 @@
-<div class="case-study-panel case-study" data-equalizer-watch="case_study_panels">
+<div class="case-study-panel case-study">
   <% if case_study.banner.present? || ENV['show_placeholders'] == "true" %>
-    <div class="img_container">
-      <%= link_to(
-        image_tag(case_study.banner.url(:medium)),
-        [case_study.vertical_market, case_study]
-      ) %>
-    </div>
+    <%= link_to([case_study.vertical_market, case_study]) do %>
+      <div class="img_container stretchy-image-container" data-background="<%= case_study.banner.url(:small) %>"></div>
+    <% end %>
   <% end %>
   <h5>
     <%= link_to case_study.headline, [case_study.vertical_market, case_study]  %>
