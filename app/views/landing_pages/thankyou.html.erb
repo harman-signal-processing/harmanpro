@@ -2,10 +2,16 @@
 <%= content_for :description do %>Thank you for contacting HARMAN Professional.<% end %>
 
 <div class="container main-container">
+      <p>&nbsp;</p>
   <h1 class="text-center"><%= SiteSetting.value("thanks") %></h1>
   <div class="row">
-    <div class="large-8 large-offset-2 columns">
+    <div class="large-8 large-offset-2 columns text-center">
       <%= SiteSetting.value("contact-thankyou-message") %>
+      <p>&nbsp;</p>
+      <%= link_to "<< back to browsing", :back %>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
     </div>
   </div>
 </div>

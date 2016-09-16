@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160915173721) do
+ActiveRecord::Schema.define(version: 20160916163113) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -274,6 +274,7 @@ ActiveRecord::Schema.define(version: 20160915173721) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "location",            limit: 255
+    t.integer  "vertical_market_id",  limit: 4
   end
 
   create_table "locale_translators", force: :cascade do |t|

@@ -14,21 +14,25 @@ RSpec.describe "vertical_markets/_buy.html.erb", :type => :view do
     current_locale.online_retailers << @retailer
     @vertical_market = FactoryGirl.create(:vertical_market)
     @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
+    @lead = Lead.new(vertical_market: @vertical_market)
   end
 
   context "non-retail" do
     before do
       @reference_system.update_column(:retail, false)
+      assign(:lead, @lead)
       render partial: "vertical_markets/buy", locals: { vertical_market: @vertical_market }
     end
 
     it "should use infographic as 'buy' section" do
+      skip "Now we embed the form"
       expect(rendered).to have_content("AV System Design")
       expect(rendered).to have_content("In 8 Easy Steps")
       expect(rendered).to have_css("img.infographic")
     end
 
     it "shows a leadgen button to help me get started" do
+      skip "Now we embed the form"
       expect(rendered).to have_link(@help_me_get_started.content, href: new_lead_path)
     end
 
@@ -43,6 +47,7 @@ RSpec.describe "vertical_markets/_buy.html.erb", :type => :view do
   context "retail" do
     before do
       @reference_system.update_column(:retail, true)
+      assign(:lead, @lead)
       render partial: "vertical_markets/buy", locals: { vertical_market: @vertical_market }
     end
 

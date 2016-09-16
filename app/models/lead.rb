@@ -1,6 +1,7 @@
 class Lead < ActiveRecord::Base
   validates :name, presence: true
   validates :email, presence: true
+  belongs_to :vertical_market # (maybe)
 
   after_create :notify_leadgen_recipients, :subscribe!
   attr_accessor :locale

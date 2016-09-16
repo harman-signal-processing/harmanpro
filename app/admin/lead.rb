@@ -8,6 +8,7 @@ ActiveAdmin.register Lead do
     column :name
     column :company
     column :email
+    column :vertical_market
     actions
   end
 
@@ -18,5 +19,6 @@ ActiveAdmin.register Lead do
   filter :location
   filter :name
   filter :email
+  filter :vertical_market
 
 end

@@ -4,13 +4,59 @@
 
   <div class="container buy-container" data-magellan-destination="buy">
     <div class="row">
-      <div class="medium-10 medium-offset-1 small-12 columns">
+      <div class="large-8 large-offset-2 medium-10 medium-offset-1 small-12 columns">
         <%= raw vertical_market.lead_form_content %>
       </div>
     </div>
   </div>
 
-<% elsif vertical_market.retail? %>
+<% else %>
+
+  <div class="container buy-container" data-magellan-destination="buy">
+    <div class="row">
+      <div class="large-8 large-offset-2 medium-10 medium-offset-1 small-12 columns">
+        <h2 class="text-center"><%= SiteSetting.value("leadgen-title") %></h2>
+        <p class="text-center">
+          <%= SiteSetting.value("leadgen-intro") %>
+        </p>
+        <div class="panel">
+          <%
+            body_label ||= Lead.human_attribute_name("project_description")
+          %>
+          <%= simple_form_for @lead do |f| %>
+            <%= f.input :vertical_market_id, as: :hidden %>
+            <div class="row">
+              <div class="medium-6 small-12 columns">
+                <%= f.input :name %>
+              </div>
+              <div class="medium-6 small-12 columns">
+                <%= f.input :company %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-6 small-12 columns">
+                <%= f.input :email %>
+              </div>
+              <div class="medium-6 small-12 columns">
+                <%= f.input :location %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-6 small-12 columns">
+                <%= f.input :phone %>
+              </div>
+            </div>
+            <%= f.input :project_description, label: body_label, input_html: { rows: 6 } %>
+            <%= f.button :submit, t('submit').titleize, class: "medium radius button" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+<% if vertical_market.retail? %>
 
   <% retailers = current_locale.online_retailers %>
   <% if SiteSetting.set_for_locale?("store_link", current_locale.key) || retailers.count > 0 %>
@@ -45,36 +91,5 @@
     </div>
 
   <% end %>
-
-<% else %>
-
-  <div class="container buy-container" data-magellan-destination="buy">
-    <div class="row">
-      <div class="large-12 columns">
-        <div class="text-center">
-          <h2><%= SiteSetting.value("installed-buy-headline") %></h2>
-          <p><%= raw textilize SiteSetting.value("installed-buy-paragraph") %></p>
-        </div>
-
-        <div class="text-center">
-          <% (1..8).each do |i| %>
-            <%= image_tag("install_buy/button-0#{i}.png",
-              class: "infographic",
-              data: {
-                hover: asset_path("install_buy/button-0#{i}_hover.png")
-              }
-             ) %>
-          <% end %>
-
-          <p>
-            <br/>
-            <%= link_to SiteSetting.value("button-help-me-get-started"), new_lead_path, class: "small radius button" %>
-          </p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
 <% end %>
 

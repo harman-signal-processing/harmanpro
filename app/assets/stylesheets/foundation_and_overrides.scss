@@ -1600,6 +1600,16 @@ ul.dropdown {
   h1,h2,h3,h4,h5,h6 {
     color: $snow;
   }
+  .panel {
+    background: $harman-blue;
+    padding: rem-calc(30px) rem-calc(30px) rem-calc(10px);
+    label {
+      color: $white;
+      abbr {
+        color: $white;
+      }
+    }
+  }
 }
 .underlined {
   padding-bottom: 8px;
