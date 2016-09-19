@@ -1,5 +1,11 @@
 class FinanceController < ApplicationController
   def index
-    render_landing_page('finance')
+    if LandingPage.exists?(slug: 'finance')
+      render_landing_page('finance')
+    elsif LandingPage.exists?(slug: 'financing')
+      render_landing_page('financing')
+    else
+      render_landing_page('harman-equipment-financing')
+    end
   end
 end
