@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'finance/index'
+
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
   # Logins for admins, etc.
@@ -90,6 +92,13 @@ Rails.application.routes.draw do
   get 'media_library' => "media_library#index"
   get 'medialibrary', to: redirect('/media_library')
   get 'media-library', to: redirect('/media_library')
+
+  # HEF
+  get 'finance' => "finance#index"
+  get 'financing', to: redirect('/finance')
+  get 'hef', to: redirect('/finance')
+  get 'equipment-financing', to: redirect('/finance')
+  get 'harman-equipment-financing', to: redirect('/finance')
 
   # Akamai sure route test
   get '/sureroute-test-object(.:format)' => 'main#sureroute', as: :sureroute_test_object
