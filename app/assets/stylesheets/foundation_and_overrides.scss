@@ -2156,3 +2156,16 @@ ul.title-area {
 ul.breadcrumbs {
   margin: rem-calc(10px) 0;
 }
+
+::-webkit-input-placeholder {
+  color: scale-color($iron, $lightness: 10%);
+}
+::-moz-placeholder {
+  color: $aluminum;
+}
+:-ms-input-placeholder {
+  color: $iron;
+}
+:moz-placeholder {
+  color: $aluminum;
+}
