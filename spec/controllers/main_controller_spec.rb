@@ -5,10 +5,11 @@ RSpec.describe MainController do
   describe "GET index" do
 
     before do
-      @vertical_market = FactoryGirl.create(:vertical_market, parent_id: nil)
+      csvm = FactoryGirl.create(:case_study_vertical_market)
+      @vertical_market = csvm.vertical_market
+      @case_study = csvm.case_study
       locale = FactoryGirl.create(:available_locale, key: I18n.default_locale)
       @slide = FactoryGirl.create(:slide, locale: locale)
-      @case_study = FactoryGirl.create(:case_study)
       get :index
     end
 

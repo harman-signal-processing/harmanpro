@@ -68,7 +68,7 @@ class MainController < ApplicationController
       end
       vertical_market.case_studies.each do |case_study|
         @pages << {
-          url: vertical_market_case_study_url(vertical_market, case_study),
+          url: case_study_url(case_study),
           updated_at: case_study.updated_at,
           changefreq: 'monthly',
           priority: 0.7

@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe "case_studies/show.html.erb", :type => :view do
 
   before :all do
-    @vertical_market = FactoryGirl.create(:vertical_market)
-    @case_study = FactoryGirl.create(:case_study, vertical_market: @vertical_market)
+    csvm = FactoryGirl.create(:case_study_vertical_market)
+    @vertical_market = csvm.vertical_market
+    @case_study = csvm.case_study
+
     assign(:case_study, @case_study)
     assign(:vertical_market, @vertical_market)
   end

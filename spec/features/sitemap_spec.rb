@@ -4,9 +4,10 @@ feature "Sitemap" do
 
   before :all do
     @brand = FactoryGirl.create(:brand)
-    @vertical_market = FactoryGirl.create(:vertical_market)
+    csvm = FactoryGirl.create(:case_study_vertical_market)
+    @vertical_market = csvm.vertical_market
+    @case_study = csvm.case_study
     @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
-    @case_study = FactoryGirl.create(:case_study, vertical_market: @vertical_market)
   end
 
   context "XML output" do
@@ -27,7 +28,7 @@ feature "Sitemap" do
     end
 
     scenario "links to case study page" do
-      expect(page).to have_selector("loc", text: vertical_market_case_study_path(@vertical_market, @case_study))
+      expect(page).to have_selector("loc", text: case_study_path(@case_study))
     end
   end
 
@@ -49,7 +50,7 @@ feature "Sitemap" do
     end
 
     scenario "links to case study page" do
-      expect(page).to have_link(@case_study.headline, href: vertical_market_case_study_path(@vertical_market, @case_study))
+      expect(page).to have_link(@case_study.headline, href: case_study_path(@case_study))
     end
   end
 

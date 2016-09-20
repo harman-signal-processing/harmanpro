@@ -21,7 +21,8 @@ RSpec.describe VerticalMarket, :type => :model do
   describe "deleting" do
     it "raises an error when related case studies exist" do
       case_study = FactoryGirl.create(:case_study)
-      vertical_market = case_study.vertical_market
+      vertical_market = FactoryGirl.create(:vertical_market)
+      vertical_market.case_studies << case_study
 
       vertical_market.destroy
 
@@ -72,7 +73,8 @@ RSpec.describe VerticalMarket, :type => :model do
     end
 
     it "#featured_case_studies is limited to 3" do
-      FactoryGirl.create_list(:case_study, 4, vertical_market: @child_vertical)
+      case_studies = FactoryGirl.create_list(:case_study, 4)
+      @child_vertical.case_studies += case_studies
       @child_vertical.reload
 
       expect(@child_vertical.featured_case_studies.length).to eq(3)

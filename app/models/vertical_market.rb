@@ -3,7 +3,8 @@ class VerticalMarket < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: :globalize
 
-  has_many :case_studies, dependent: :restrict_with_error
+  has_many :case_study_vertical_markets, dependent: :restrict_with_error, inverse_of: :vertical_market
+  has_many :case_studies, through: :case_study_vertical_markets
   has_many :reference_systems, -> { order("position ASC") }, dependent: :restrict_with_error
   has_many :leads
   acts_as_tree #order: "name"
@@ -34,8 +35,14 @@ class VerticalMarket < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :headline, presence: true
 
+  accepts_nested_attributes_for :case_study_vertical_markets, reject_if: :all_blank, allow_destroy: true
+
   def self.parent_verticals
     where(live: true).where("parent_id IS NULL or parent_id <= 0")
+  end
+
+  def self.active
+    where(live: true)
   end
 
   def slug_candidates

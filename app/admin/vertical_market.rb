@@ -9,7 +9,9 @@ ActiveAdmin.register VerticalMarket do
     :banner,
     :background,
     :lead_form_content,
-    :live
+    :live,
+    case_study_vertical_markets_attributes: [:id, :case_study_id, :_destroy]
+
 
   config.sort_order = "parent_id"
 
@@ -55,10 +57,10 @@ ActiveAdmin.register VerticalMarket do
   sidebar "Case Studies", only: [:show, :edit] do
     ul do
       unless vertical_market.children.length > 0
-        li link_to("+ New Case Study", new_admin_vertical_market_case_study_path(vertical_market))
+        li link_to("+ New Case Study", new_admin_case_study_path)
       end
       vertical_market.case_studies.each do |c|
-        li link_to(c.name, [:admin, vertical_market, c])
+        li link_to(c.name, [:admin, c])
       end
     end
   end
@@ -74,6 +76,11 @@ ActiveAdmin.register VerticalMarket do
       f.input :description, hint: "Maximum recommended characters: 650", input_html: { rows: 10 }
       f.input :extra_content, hint: "Appears after the case studies", input_html: { rows: 10, class: "mceEditor"}
       f.input :lead_form_content, input_html: { class: "mceEditor"}
+    end
+    f.has_many :case_study_vertical_markets, heading: "Case Studies", new_record: "Add a case study" do |s|
+      s.input :id, as: :hidden
+      s.input :case_study
+      s.input :_destroy, as: :boolean, label: "Delete"
     end
     f.actions
   end

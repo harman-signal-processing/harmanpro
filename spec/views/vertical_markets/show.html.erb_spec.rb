@@ -99,7 +99,8 @@ describe "vertical_markets/show.html.erb" do
 
     describe "and case studies" do
       before do
-        @case_studies = FactoryGirl.create_list(:case_study, 4, vertical_market: @vertical_market)
+        @case_studies = FactoryGirl.create_list(:case_study, 4)
+        @vertical_market.case_studies += @case_studies
         @reference_system = FactoryGirl.build_stubbed(:reference_system, vertical_market: @vertical_market)
         assign(:vertical_market, @vertical_market)
         assign(:lead, Lead.new)
@@ -110,7 +111,7 @@ describe "vertical_markets/show.html.erb" do
       it "links to case studies" do
         case_study = @vertical_market.featured_case_studies.first
 
-        expect(rendered).to have_link(case_study.headline, href: vertical_market_case_study_path(@vertical_market, case_study))
+        expect(rendered).to have_link(case_study.headline, href: case_study_path(case_study))
       end
     end
 

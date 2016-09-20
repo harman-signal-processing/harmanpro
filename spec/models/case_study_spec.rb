@@ -2,11 +2,12 @@ require 'rails_helper'
 
 RSpec.describe CaseStudy, :type => :model do
   before :all do
-    @case_study = FactoryGirl.create(:case_study)
+    case_study_vertical_market = FactoryGirl.create(:case_study_vertical_market)
+    @case_study = case_study_vertical_market.case_study
   end
 
   subject { @case_study }
-  it { should respond_to(:vertical_market) }
+  it { should respond_to(:vertical_markets) }
   it { should respond_to(:friendly_id) }
   it { should respond_to(:banner) }
   it { should respond_to(:name) } # alias for headline for backwards compat
@@ -40,7 +41,8 @@ RSpec.describe CaseStudy, :type => :model do
 
   it ".featured should choose good case studies to feature on the homepage" do
     inactive_vertical = FactoryGirl.create(:vertical_market, live: false)
-    inactive_study = FactoryGirl.create(:case_study, vertical_market: inactive_vertical)
+    inactive_study = FactoryGirl.create(:case_study)
+    inactive_vertical.case_studies << inactive_study
 
     featured = CaseStudy.featured
 

@@ -22,7 +22,7 @@
                 <li><%= link_to reference_system.name, [vertical_market, reference_system] %></li>
               <% end %>
               <% vertical_market.case_studies.each do |case_study| %>
-                <li><%= link_to case_study.headline, [vertical_market, case_study] %></li>
+                <li><%= link_to case_study.headline, case_study %></li>
               <% end %>
             </ul>
           </li>

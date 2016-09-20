@@ -8,7 +8,8 @@ feature "Basic visitor flow" do
     @parent_vertical = FactoryGirl.create(:vertical_market)
     @child_vertical = FactoryGirl.create(:vertical_market, parent_id: @parent_vertical.id)
     @reference_system = FactoryGirl.create(:reference_system, vertical_market: @child_vertical)
-    @case_study = FactoryGirl.create(:case_study, vertical_market: @child_vertical)
+    @case_study = FactoryGirl.create(:case_study)
+    @child_vertical.case_studies << @case_study
   end
 
   before :each do
@@ -49,7 +50,7 @@ feature "Basic visitor flow" do
     click_on @child_vertical.name
 
     expect(page).to have_link(@reference_system.name, href: vertical_market_reference_system_path(@child_vertical, @reference_system))
-    expect(page).to have_link(@case_study.headline, href: vertical_market_case_study_path(@child_vertical, @case_study))
+    expect(page).to have_link(@case_study.headline, href: case_study_path(@case_study))
   end
 
   # As a casual visitor

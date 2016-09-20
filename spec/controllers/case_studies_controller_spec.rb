@@ -3,17 +3,14 @@ require 'rails_helper'
 RSpec.describe CaseStudiesController, :type => :controller do
 
   before :all do
-    @vertical_market = FactoryGirl.create(:vertical_market)
-    @case_study = FactoryGirl.create(:case_study, vertical_market: @vertical_market)
+    csvm = FactoryGirl.create(:case_study_vertical_market)
+    @vertical_market = csvm.vertical_market
+    @case_study = csvm.case_study
   end
 
   describe "GET show" do
     before do
-      get :show, vertical_market_id: @vertical_market.id, id: @case_study.id
-    end
-
-    it "assigns @vertical_market" do
-      expect(assigns(:vertical_market)).to eq(@vertical_market)
+      get :show, id: @case_study.id
     end
 
     it "assigns @case_study" do

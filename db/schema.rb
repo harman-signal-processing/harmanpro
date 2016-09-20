@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916163113) do
+ActiveRecord::Schema.define(version: 20160920191645) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -138,7 +138,6 @@ ActiveRecord::Schema.define(version: 20160916163113) do
   add_index "brands", ["slug"], name: "index_brands_on_slug", using: :btree
 
   create_table "case_studies", force: :cascade do |t|
-    t.integer  "vertical_market_id",  limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug",                limit: 255
@@ -149,7 +148,6 @@ ActiveRecord::Schema.define(version: 20160916163113) do
   end
 
   add_index "case_studies", ["slug"], name: "index_case_studies_on_slug", unique: true, using: :btree
-  add_index "case_studies", ["vertical_market_id"], name: "index_case_studies_on_vertical_market_id", using: :btree
 
   create_table "case_study_translations", force: :cascade do |t|
     t.integer  "case_study_id", limit: 4,     null: false
@@ -164,6 +162,13 @@ ActiveRecord::Schema.define(version: 20160916163113) do
 
   add_index "case_study_translations", ["case_study_id"], name: "index_case_study_translations_on_case_study_id", using: :btree
   add_index "case_study_translations", ["locale"], name: "index_case_study_translations_on_locale", using: :btree
+
+  create_table "case_study_vertical_markets", force: :cascade do |t|
+    t.integer  "case_study_id",      limit: 4
+    t.integer  "vertical_market_id", limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   limit: 4,     default: 0, null: false

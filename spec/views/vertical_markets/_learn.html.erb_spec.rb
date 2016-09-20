@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe "vertical_markets/_learn.html.erb", :type => :view do
 
   before :all do
-    @vertical_market = FactoryGirl.create(:vertical_market)
+    csvm = FactoryGirl.create(:case_study_vertical_market)
+    @vertical_market = csvm.vertical_market
+    @case_study = csvm.case_study
     @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
-    @case_study = FactoryGirl.create(:case_study, vertical_market: @vertical_market)
   end
 
   before :each do
@@ -19,7 +20,7 @@ RSpec.describe "vertical_markets/_learn.html.erb", :type => :view do
 
   it "links to case studies" do
     #expect(rendered).to have_xpath("//img[@src='#{@case_study.banner.url(:small)}']")
-    expect(rendered).to have_link(@case_study.headline, href: vertical_market_case_study_path(@vertical_market, @case_study))
+    expect(rendered).to have_link(@case_study.headline, href: case_study_path(@case_study))
   end
 
 end
