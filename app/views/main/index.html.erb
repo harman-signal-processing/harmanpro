@@ -104,9 +104,9 @@
           <li>
             <div class="blue panel" data-equalizer-watch="site-resource-panels">
               <div class="img_container">
-                <% if @news %>
-                  <%= link_to @news do %>
-                    <%= image_tag(@news.news_photo.url(:medium), alt: "News") %>
+                <% if SiteSetting.set_for_locale?("blog_link_name") && SiteSetting.set_for_locale?("blog_link") %>
+                  <%= link_to SiteSetting.value("blog_link"), target: "_blank" do %>
+                    <%= image_tag('insights_thumbnail.jpg', alt: SiteSetting.value("blog_link_name")) %>
                   <% end %>
                 <% else %>
                   <%= link_to news_articles_path do %>
@@ -115,8 +115,12 @@
                 <% end %>
               </div>
               <h6><%= t('nav.news') %>:</h6>
-              <% if @news %>
-                <h4><%= link_to @news.title.truncate(54), @news %></h4>
+              <% if SiteSetting.set_for_locale?("blog_link_name") && SiteSetting.set_for_locale?("blog_link") %>
+                <h4><%= link_to SiteSetting.value("blog_link"), target: "_blank" do %>
+                  <%= t('site_name') %>
+                  <%= SiteSetting.value("blog_link_name") %>
+                  <% end %>
+                </h4>
               <% else %>
                 <h4><%= link_to news_articles_path do %>Click here for the latest news from HARMAN.<% end %></h4>
               <% end %>
@@ -149,13 +153,23 @@
           </li>
           <li>
             <div class="blue panel" data-equalizer-watch="site-resource-panels">
-              <div class="img_container">
-                <%= link_to media_library_path do %>
-                  <div class="media-library-banner"></div>
-                <% end %>
-              </div>
-              <h6><%= t('nav.resources') %>:</h6>
-              <h4><%= link_to t('nav.media_library'), media_library_path %></h4>
+              <% if I18n.locale.to_s.match(/zh/i) %>
+                <div class="img_container">
+                  <%= link_to media_library_path do %>
+                    <div class="media-library-banner"></div>
+                  <% end %>
+                </div>
+                <h6><%= t('nav.resources') %>:</h6>
+                <h4><%= link_to t('nav.media_library'), media_library_path %></h4>
+              <% else %>
+                <div class="img_container">
+                  <%= link_to 'https://www.linkedin.com/company/10201306', target: "_blank" do %>
+                    <div class="linkedin-banner"></div>
+                  <% end %>
+                </div>
+                <h6><%= t('nav.resources') %>:</h6>
+                <h4><%= link_to "#{t('site_name')} on LinkedIn", 'https://www.linkedin.com/company/10201306', target: "_blank" %></h4>
+              <% end %>
             </div>
           </li>
           <li>
