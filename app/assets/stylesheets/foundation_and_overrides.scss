@@ -1346,9 +1346,9 @@ $topbar-margin-bottom: 0;
 // $topbar-title-font-size: rem-calc(17);
 
 // Style the top bar dropdown elements
-$topbar-dropdown-bg: $gainsboro;
-$topbar-dropdown-link-color: $black;
-$topbar-dropdown-link-bg: $gainsboro;
+$topbar-dropdown-bg: $vapor;
+$topbar-dropdown-link-color: $harman-blue;
+$topbar-dropdown-link-bg: $vapor;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
 $topbar-dropdown-toggle-color: $monsoon;
@@ -1357,13 +1357,13 @@ $topbar-dropdown-toggle-color: $monsoon;
 // Set the link colors and styles for top-level nav
 $topbar-link-color: $monsoon;
 $topbar-link-color-hover: $black;
-$topbar-link-color-active: $harman-blue;
+$topbar-link-color-active: $monsoon;
 $topbar-link-color-active-hover: $harman-blue;
 $topbar-link-weight: 400;
 $topbar-link-font-size: rem-calc(16);
 $topbar-link-hover-lightness: 0%; // Darken by 10%
 $topbar-link-bg: $topbar-bg;
-$topbar-link-bg-color-hover: $gainsboro;
+$topbar-link-bg-color-hover: $topbar-bg;
 $topbar-link-bg-hover: $topbar-link-bg-color-hover;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
@@ -1442,7 +1442,7 @@ body {
     @media only screen and (min-width: 640px) and (max-width: 1000px) {
       @include grid-column(10);
     }
-    background: $gainsboro;
+    background: $vapor;
     padding: 20px 10px 10px;
     //width: 800px;
     //@media only screen and (min-width: 640px) and (max-width: 800px) {
@@ -1458,7 +1458,7 @@ body {
       }
     }
     a {
-      color: $topbar-link-color-hover;
+      color: $harman-blue;
       &:hover {
         color: $primary-color;
       }
@@ -1466,13 +1466,15 @@ body {
     h5 {
       color: $topbar-link-color-hover;
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 400;
+      line-height: 2;
+      font-size: rem-calc(20px);
     }
   }
 }
 .mega-trigger-active {
-  background: $gainsboro !important;
-  color: black !important;
+  background: $white !important;
+  color: $black !important;
 }
 input[type='checkbox'], input[type='radio'] {
   margin-right: 5px;
@@ -1532,15 +1534,15 @@ nav.top-bar {
 }
 ul.dropdown {
   li {
-    height: rem-calc(46);
+    height: rem-calc(40);
     a {
-      color: $black !important;
+      color: $harman-blue !important;
       text-transform: none;
-      height: rem-calc(46);
-      line-height: rem-calc(46) !important;
+      height: rem-calc(40);
+      line-height: rem-calc(40) !important;
       &:hover {
-        color: $black !important;
-        background: $iron !important;
+        color: $primary-color !important;
+        background: $vapor !important;
       }
     }
   }
