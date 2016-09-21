@@ -72,7 +72,7 @@
       <div class="row collapse">
         <% @vertical_markets.each do |vm| %>
           <div class="medium-6 small-12 columns">
-            <div class="vm-big-button" data-background="<%= vm.background.url(:large) %>">
+            <div class="vm-big-button" data-background="<%= vm.background.url %>">
               <div class="text-center">
                 <h6><%= t('explore') %></h6>
                 <h3><%= link_to vm do %><%= t('vertical_market_solutions', vertical_market_name: vm.name) %><% end %></h3>

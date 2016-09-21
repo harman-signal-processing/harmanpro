@@ -1534,12 +1534,14 @@ nav.top-bar {
 }
 ul.dropdown {
   li {
-    height: rem-calc(40);
+    height: rem-calc(36);
     a {
+      font-weight: 300 !important;
+      font-size: rem-calc(14px);
       color: $harman-blue !important;
       text-transform: none;
-      height: rem-calc(40);
-      line-height: rem-calc(40) !important;
+      height: rem-calc(36);
+      line-height: rem-calc(36) !important;
       &:hover {
         color: $primary-color !important;
         background: $vapor !important;
@@ -1556,6 +1558,7 @@ ul.dropdown {
   &.parent-category-container {
     position: relative;
     background-color: scale-color($primary-color, $lightness: -65%);
+    background-position: center 10%;
     background-attachment: fixed;
     background-size: cover;
     padding-top: rem-calc(120px);
@@ -1676,14 +1679,15 @@ ul.dropdown {
   overflow: hidden;
   height: 350px;
   background-color: scale-color($primary-color, $lightness: -35%);
-  background-position: 20% 31%;
+  background-position: 50% 40%;
   background-repeat: no-repeat;
-  background-size: 120%;
+  background-size: cover;
+  //background-size: 120%;
   position:relative;
   &:hover {
     background-color: scale-color($black, $lightness: 20%);
-    background-position: 28% 31%;
-    transition-timing-function: ease;
+    background-position: 49% 40%;
+    transition-timing-function: ease-in-out;
     -moz-animation-duration: 2.4s;
     -webkit-animation-duration: 2.4s;
     -animation-duration: 2.4s;

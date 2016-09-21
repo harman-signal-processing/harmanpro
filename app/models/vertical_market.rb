@@ -24,7 +24,7 @@ class VerticalMarket < ActiveRecord::Base
   has_attached_file :background,
     styles: {
       large: "1170x1755#",
-      medium: "800x1200#",
+      medium: "585x877#",
       small: "250x375#",
       thumb: "80x120#",
       thumb_square: "64x64#"
