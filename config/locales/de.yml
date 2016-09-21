@@ -1,0 +1,188 @@
+de:
+  default_meta_description: "HARMAN Professional Solutions ist der führende Hersteller von professionellen Audio-, Video-, Licht und Kontrollsystemen von %{brand_names}."
+  site_name: HARMAN Professional Solutions
+  professional_solutions: Professionelle Lösungen
+  logo_alt_text: HARMAN Professional Solutions für Audio, Video, Beleuchtung und Steuerungssysteme
+  learn_more_at: Lesen Sie mehr
+  logo: Logo
+  case_study: Fallbeispiele
+  software: Software
+  loading: Loading
+  harman_brands: HARMAN Brands
+  all_rights_reserved: Alle Rechte vorbehalten
+  privacy_policy: Datenschutzrechtlinien
+  terms_of_use: Nutzungsbedingungen
+  submit: abschicken
+  more: mehr
+  more_information: mehr Informationen
+  learn_more: Lesen Sie mehr
+  previous: vorherig
+  next: nächste
+  register: registrieren
+  any: jede
+  search: Suche
+  connect_with_us: Verbinden Sie sich mit uns
+  message: Message
+  explore: Explore
+  vertical_market_solutions: "%{vertical_market_name} Solutions"
+
+  date:
+    formats:
+      default: "%a, %d %B %Y"
+      short: "%b %d, %Y"
+      long: "%B %d, %Y"
+      month_day: "%b %d"
+      month_year: "%B %Y"
+      blog_month_day: "%B %d"
+      mmddyy: "%m/%d/%y"
+      mmddyyyy: "%m/%d/%Y"
+
+  time:
+    formats:
+      default: "%a, %d %B %Y, %I:%M %p"
+      log: "%b %d, %Y, %I:%M %p"
+
+  nav:
+    menu: Menu
+    solutions: Solutions
+    resources: Resources
+    training: Training
+    events: Events
+    media_library: Media Library
+    consultants: Consultants
+    news: News
+    contacts: Contacts
+    service: Service
+    shop: Shop
+    learn: Learn
+    plan: Plan
+    buy: Buy
+
+  home_page:
+    shop_now: Shop Now
+
+  brand_page:
+    meta_description: "Summary of products and services provided by %{brand}, a HARMAN Professional brand."
+    branding_resources: Branding Resources
+    logo_collection: logo collection
+    more_resources: More marketing resources
+
+  consultant_page:
+    title: Consultant Resources
+    meta_description: Technical resources, brand contact information and other resources for professional audio consultants.
+    technical_product_resources: Technical Product Resources
+    technical_resources: Technical Resources
+    select_a_product: select a product to retrieve resources
+    contacts: Consultant Contacts
+    browse_on_brand_site: "Browse on %{brand} website..."
+    consignment_form: Consignment Form
+
+  contacts_page:
+    title: HARMAN Professional Brand Contacts
+    meta_description: "Support and other contact links for HARMAN Professional brands: %{brand_names}."
+    click_to_contact: click to contact these brands
+    brand_support: "%{brand} Support"
+    brand_info: "%{brand} Info"
+
+  training_page:
+    title: HARMAN Professional Training
+    meta_description: Training links for HARMAN Professional audio, video, lighting and control brands.
+    brand_training: "%{brand} Training"
+
+  reference_system_page:
+    meta_description: "Sample %{vertical_market} system: %{reference_system} from HARMAN Professional's pro audio, video, lighting and control system brands."
+    vertical_market_examples: "%{vertical_market} examples"
+    explore_products: Explore these suggested product
+    product_suggestions: Product Suggestions
+
+  vertical_market_page:
+    meta_description: "Resources to learn, plan and buy your %{vertical_market} pro audio, video, lighting and control systems."
+    explore_examples: Explore these examples
+
+  service_page:
+    title: HARMAN Pro Service
+    meta_description: How to get service for your HARMAN Professional products.
+    links:
+      register_now: Register Now
+      start_your_repair: Start Your Repair
+      get_started: Get Started
+      access_now: Access Now
+      apply_now: Apply Now
+      order_now: Order Now
+    subnav:
+      services_home: Services Home
+      service_center_login: Service Center Login
+      find_service: Find a Service Center
+
+  service_center_registration:
+    title: Service Center Registration
+    meta_description: Register to become an authorized service center for HARMAN Professional brands.
+    agreement: I am willing and able to service all HARMAN Professional Brands at my location.
+    subheaders:
+      requirements: Requirements
+
+  service_login_page:
+    title: HARMAN Pro Service Centers Login
+    meta_description: "Resources for HARMAN Professional's service center partners."
+    brand_website: "%{brand} Website"
+    brand_technical_resources: "%{brand} Technical Resources"
+
+  find_service_page:
+    title: Locate a HARMAN Pro Service Center
+    meta_description: Find a local service center to repair your HARMAN Professional products.
+    select_state: "Select your state:"
+    service_type_needed: "Service type needed:"
+    no_results_found: No search results found. Please try again. Try entering just the state abbreviation without the service type.
+    contact_information: Contact Info
+    services: Services
+
+  leadgen_page:
+    meta_description: Contact form to get in touch with HARMAN Professional regarding your audio, video, lighting and control system.
+
+  case_study_page:
+    is_your_project_similar: "Are you planning a project? We Can Help!"
+    connect_with_harman: Connect With HARMAN
+
+  lead_mailer:
+    new_lead:
+      subject: New lead from pro.harman.com
+  media_library_mailer:
+    access_request:
+      subject: DAM access request
+
+  activerecord:
+    models:
+      brand: Brand
+      case_study: Case Study
+      landing_page: Landing Page
+      lead: Lead
+      product_type: Product Type
+      product: Product
+      reference_system: Reference System
+      resource: Resource
+      service_center: Service Center
+      site_setting: Site Setting
+      venue: Venue
+      vertical_market: Vertical Market
+    attributes:
+      lead:
+        name: Name
+        company: Company
+        email: Email
+        phone: Phone
+        location: Location
+        project_description: Project Description
+      service_center:
+        contact_name: Your Name
+        email: Email
+        name: Business Name
+        address: Address
+        city: City
+        state: State
+        zip: Postal Code
+        phone: Phone
+        fax: Fax
+        website: Website
+        account_number: Account Number
+
+
