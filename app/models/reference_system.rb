@@ -14,12 +14,14 @@ class ReferenceSystem < ActiveRecord::Base
       thumb: "83x52#",
       thumb_square: "64x64#"
   }, default_url: "missing/banners/:style.jpg"
+  attr_accessor :delete_banner
 
   has_attached_file :system_diagram,
     styles: {
       large: "635x419",
       thumb_square: "64x64#"
   }, default_url: "missing/system_diagrams/:style.jpg"
+  attr_accessor :delete_diagram
 
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\Z/
   validates_attachment_content_type :system_diagram, content_type: /\Aimage\/.*\Z/
@@ -28,6 +30,9 @@ class ReferenceSystem < ActiveRecord::Base
   validates :headline, presence: true
 
   acts_as_list scope: :vertical_market
+
+  before_update :delete_diagram_if_needed
+  before_update :delete_banner_if_needed
 
   # :nocov:
   def slug_candidates
@@ -46,11 +51,28 @@ class ReferenceSystem < ActiveRecord::Base
   def slider_name
     @slider_name ||= (self.venue_size_descriptor.present?) ? venue_size_descriptor : name
   end
+
   def previous
     higher_item unless first?
   end
 
   def next
     lower_item unless last?
+  end
+
+  def delete_banner_if_needed
+    unless self.banner.dirty?
+      if self.delete_banner.present? && self.delete_banner.to_s == "1"
+        self.banner = nil
+      end
+    end
+  end
+
+  def delete_diagram_if_needed
+    unless self.system_diagram.dirty?
+      if self.delete_diagram.present? && self.delete_diagram.to_s == "1"
+        self.system_diagram = nil
+      end
+    end
   end
 end
