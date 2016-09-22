@@ -10,6 +10,42 @@
     </div>
   </div>
 
+<% elsif vertical_market.retail? %>
+
+  <% retailers = current_locale.online_retailers %>
+  <% if SiteSetting.set_for_locale?("store_link", current_locale.key) || retailers.count > 0 %>
+
+    <div class="container buy-container" data-magellan-destination="buy">
+      <div class="row">
+        <div class="large-8 large-offset-2 columns text-center">
+
+          <% if SiteSetting.set_for_locale?("store_link", current_locale.key) %>
+            <h4><%= SiteSetting.value("buy_direct_from_harman_headline") %></h4>
+            <br/>
+            <%= link_to t('home_page.shop_now'), SiteSetting.value("store_link"), target: "_blank", class: "radius button" %>
+            <br/>
+          <% end %>
+
+          <% if retailers.count > 0 %>
+            <h4><%= SiteSetting.value("buy_from_online_retailer_headline") %></h4>
+            <br/>
+            <% retailers.order("RAND()").each do |online_retailer| %>
+              <%= link_to online_retailer.url, class: "retailer", target: "_blank" do %>
+                <% if online_retailer.logo.present? || ENV['show_placeholders'] == "true" %>
+                  <%= image_tag online_retailer.logo.url(:medium), alt: online_retailer.name %>
+                <% else %>
+                  <%= online_retailer.name %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
 <% else %>
 
   <div class="container buy-container" data-magellan-destination="buy">
@@ -54,42 +90,5 @@
     </div>
   </div>
 
-<% end %>
-
-<% if vertical_market.retail? %>
-
-  <% retailers = current_locale.online_retailers %>
-  <% if SiteSetting.set_for_locale?("store_link", current_locale.key) || retailers.count > 0 %>
-
-    <div class="container buy-container" data-magellan-destination="buy">
-      <div class="row">
-        <div class="large-8 large-offset-2 columns text-center">
-
-          <% if SiteSetting.set_for_locale?("store_link", current_locale.key) %>
-            <h4><%= SiteSetting.value("buy_direct_from_harman_headline") %></h4>
-            <br/>
-            <%= link_to t('home_page.shop_now'), SiteSetting.value("store_link"), target: "_blank", class: "secondary radius button" %>
-            <br/>
-          <% end %>
-
-          <% if retailers.count > 0 %>
-            <h4><%= SiteSetting.value("buy_from_online_retailer_headline") %></h4>
-            <br/>
-            <% retailers.order("RAND()").each do |online_retailer| %>
-              <%= link_to online_retailer.url, class: "retailer", target: "_blank" do %>
-                <% if online_retailer.logo.present? || ENV['show_placeholders'] == "true" %>
-                  <%= image_tag online_retailer.logo.url(:medium), alt: online_retailer.name %>
-                <% else %>
-                  <%= online_retailer.name %>
-                <% end %>
-              <% end %>
-            <% end %>
-          <% end %>
-
-        </div>
-      </div>
-    </div>
-
-  <% end %>
 <% end %>
 

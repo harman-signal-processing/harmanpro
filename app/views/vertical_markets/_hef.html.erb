@@ -3,5 +3,8 @@
   <div class="space-after">
     <%= raw textilize SiteSetting.value("hef-description") %>
   </div>
-  <%= link_to t('learn_more'), SiteSetting.value("hef-link"), target: "_blank", class: "small radius button" %>
+  <%= link_to t('learn_more'),
+    SiteSetting.value("hef-link"),
+    target: (SiteSetting.value("hef-link").to_s.match(/^http/) ? "_blank" : ""),
+    class: "small radius button" %>
 <% end %>
