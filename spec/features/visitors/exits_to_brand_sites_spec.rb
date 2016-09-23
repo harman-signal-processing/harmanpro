@@ -9,8 +9,8 @@ feature "Exits to brand sites via brand page" do
     @reference_system_product_type = rsptp.reference_system_product_type
     @product_type = @reference_system_product_type.product_type
     @reference_system = @reference_system_product_type.reference_system
-    @reference_system.update_column(:retail, true)
     @vertical_market = @reference_system.vertical_market
+    @vertical_market.update_column(:retail, true)
   end
 
   scenario "via reference system products list" do

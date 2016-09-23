@@ -57,10 +57,6 @@ class VerticalMarket < ActiveRecord::Base
     true
   end
 
-  def retail?
-    reference_systems.where(retail: true).length > 0
-  end
-
   def featured_reference_systems(limit = 6)
     reference_systems.limit(limit)
   end

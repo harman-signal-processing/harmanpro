@@ -27,10 +27,6 @@ RSpec.describe ReferenceSystem, :type => :model do
   end
 
   context "with products" do
-    before do
-      @reference_system.update_column(:retail, true)
-    end
-
     it { should respond_to(:reference_system_product_types) }
   end
 

@@ -4,8 +4,8 @@ feature "Lead generation" do
   include ActiveJob::TestHelper
 
   before :all do
-    @vertical_market = FactoryGirl.create(:vertical_market)
-    @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market, retail: false)
+    @vertical_market = FactoryGirl.create(:vertical_market, retail: false)
+    @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
     @title = FactoryGirl.create(:site_setting, name: "thanks", content: "Thanks!")
   end
 

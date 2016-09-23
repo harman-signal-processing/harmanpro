@@ -11,7 +11,7 @@ RSpec.describe "vertical_markets/_plan.html.erb", :type => :view do
     before do
       @parent_vertical_market = FactoryGirl.create(:vertical_market)
       @vertical_market.update_column(:parent_id, @parent_vertical_market.id)
-      @reference_system.update_column(:retail, false)
+      @vertical_market.update_column(:retail, false)
       FactoryGirl.create(:site_setting, name: "hef-sidebar-title", content: "HEF Headline")
       FactoryGirl.create(:site_setting, name: "hef-description", content: "HEF description")
       FactoryGirl.create(:site_setting, name: "subheader-help-find-installer", content: "Help Me Find Installer")
@@ -49,7 +49,7 @@ RSpec.describe "vertical_markets/_plan.html.erb", :type => :view do
     before do
       FactoryGirl.create(:site_setting, name: "retail-plan-section-subheader", content: "How To Buy Stuff")
       FactoryGirl.create(:site_setting, name: "retail-plan-section-paragraph", content: "Paragraph on buying stuff")
-      @reference_system.update_column(:retail, true)
+      @vertical_market.update_column(:retail, true)
 
       render partial: "vertical_markets/plan", locals: { vertical_market: @vertical_market }
     end

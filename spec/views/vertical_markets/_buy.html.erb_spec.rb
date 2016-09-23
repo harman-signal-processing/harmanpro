@@ -19,7 +19,7 @@ RSpec.describe "vertical_markets/_buy.html.erb", :type => :view do
 
   context "non-retail" do
     before do
-      @reference_system.update_column(:retail, false)
+      @vertical_market.update_column(:retail, false)
       assign(:lead, @lead)
       render partial: "vertical_markets/buy", locals: { vertical_market: @vertical_market }
     end
@@ -46,7 +46,7 @@ RSpec.describe "vertical_markets/_buy.html.erb", :type => :view do
 
   context "retail" do
     before do
-      @reference_system.update_column(:retail, true)
+      @vertical_market.update_column(:retail, true)
       assign(:lead, @lead)
       render partial: "vertical_markets/buy", locals: { vertical_market: @vertical_market }
     end

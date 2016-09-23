@@ -80,18 +80,6 @@ RSpec.describe VerticalMarket, :type => :model do
       expect(@child_vertical.featured_case_studies.length).to eq(3)
     end
 
-    describe ".retail?" do
-      it "is true if it has any reference systems which are retail" do
-        FactoryGirl.create(:reference_system, vertical_market: @child_vertical, retail: true)
-
-        expect(@child_vertical.retail?).to be(true)
-      end
-
-      it "is false if it has no reference systems which are retail" do
-        expect(@child_vertical.retail?).to be(false)
-      end
-    end
-
     describe "#all_diagrams_present?" do
       it "is true if all its reference systems have diagrams" do
         reference_system = FactoryGirl.create(:reference_system, vertical_market: @child_vertical)

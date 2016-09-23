@@ -10,6 +10,7 @@ ActiveAdmin.register VerticalMarket do
     :background,
     :lead_form_content,
     :live,
+    :retail,
     case_study_vertical_markets_attributes: [:id, :case_study_id, :_destroy]
 
 
@@ -68,6 +69,7 @@ ActiveAdmin.register VerticalMarket do
   form html: { multipart: true} do |f|
     f.inputs do
       f.input :live
+      f.input :retail, label: "Offer retailer/ecommerce links with this vertical market."
       f.input :parent
       f.input :name, hint: "Maximum characters: 20", input_html: {maxlength: 20}
       f.input :headline, hint: "Maximum characters: 70", input_html: { maxlength: 70 }

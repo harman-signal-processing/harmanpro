@@ -1,7 +1,7 @@
 ActiveAdmin.register ReferenceSystem do
 
   # :nocov:
-  permit_params :name, :position, :description, :vertical_market_id, :retail,
+  permit_params :name, :position, :description, :vertical_market_id,
     :venue_size_descriptor, :headline, :banner, :system_diagram,
     :delete_banner, :delete_diagram
 
@@ -13,7 +13,6 @@ ActiveAdmin.register ReferenceSystem do
   sortable
 
   #filter :name
-  filter :retail
 
   index do
     sortable_handle_column
@@ -45,7 +44,6 @@ ActiveAdmin.register ReferenceSystem do
       f.input :description, hint: "Maximum recommended characters: 650", input_html: { rows: 6 }
       f.input :system_diagram, hint: "Becomes the backdrop for the interactive learning diagram."
       f.input :delete_diagram, label: "Delete the existing diagram (if present).", as: :boolean
-      f.input :retail, label: "Offer ecommerce links with this system."
     end
     f.actions
   end

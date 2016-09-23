@@ -68,6 +68,10 @@ class ReferenceSystem < ActiveRecord::Base
     end
   end
 
+  def retail?
+    vertical_market.retail?
+  end
+
   def delete_diagram_if_needed
     unless self.system_diagram.dirty?
       if self.delete_diagram.present? && self.delete_diagram.to_s == "1"
