@@ -1,0 +1,186 @@
+fr:
+  default_meta_description: "HARMAN Professional Solutions est le principal fabricant de systèmes professionnels audio, vidéo, d'éclairage et de contrôle de %{brand_names}."
+  site_name: HARMAN Professional Solutions
+  professional_solutions: Solutions professionnelles
+  logo_alt_text: HARMAN Professional Solutions pour les systèmes audio, vidéo, d'éclairage et de contrôle
+  learn_more_at: En savoir plus sur
+  logo: logo
+  case_study: Études de cas
+  software: Logiciels
+  loading: Chargement
+  harman_brands: Marques HARMAN
+  all_rights_reserved: Tous droits réservés
+  privacy_policy: Charte de confidentialité
+  terms_of_use: Conditions d'utilisation
+  submit: envoyer
+  more: suite
+  more_information: plus d'informations
+  learn_more: En Savoir Plus
+  previous: précédent
+  next: suivant
+  register: s'inscrire
+  any: tout
+  search: rechercher
+  connect_with_us: Connectez-vous à nous
+  message: Message
+  explore: Explorez
+  vertical_market_solutions: "Solutions pour %{vertical_market_name}"
+
+  date: 
+    formats:
+      default: "%a, %d %B %Y"
+      short: "%b %d, %Y"
+      long: "%B %d, %Y"
+      month_day: "%b %d" 
+      month_year: "%B %Y"
+      blog_month_day: "%B %d"
+      mmddyy: "%d/%m/%y"
+      mmddyyyy: "%d/%m/%Y"
+
+  time: 
+    formats:
+      default: "%a, %d %B %Y, %I:%M %p"
+      log: "%b %d, %Y, %I:%M %p"
+
+  nav: 
+    menu: Menu
+    solutions: Solutions
+    resources: Resources
+    training: Entraînement
+    event: Événements
+    media_library: Bibliothèque de médias
+    consultants: Consultants
+    news: Actualités
+    contacts: Contacts
+    service: Service
+    shop: Boutique
+    learn: Apprendre
+    plan : Plan
+    buy: Acheter
+
+  home_page: 
+    shop_now: Achats
+
+  brand_page:
+    meta_description: "Résumé des produits et services fournis par %{brand}, une marque HARMAN Professional."
+    branding_resources: Ressources de marques
+    logo_collection: collection de logos
+    more_resources: Plus de ressources marketing
+
+  consultant_page:
+    title: Ressources pour Consultants
+    meta_description: Ressources techniques, contacts spécialisés selon la marque et autres ressources pour les consultants audio professionnels.
+    technical_product_resources: Ressources techniques pour les produits
+    technical_resources: Ressources techniques
+    select_a_product: sélectionnez un produit pour extraire des ressources
+    contacts: Contacts consultants
+    browse_on_brand_site: "Parcourir le site Web de %{brand}..."
+    consignment_form: Formulaire de consignation
+
+  contacts_page:
+    title: Contacts de la marque HARMAN Professional
+    meta_description: "Liens d'assistance et autres contacts pour les marques HARMAN Professional: %{brand_names}."
+    click_to_contact: cliquez pour contacter ces marques
+    brand_support: "Assistance pour la marque %{brand}"
+    brand_info: "Informations sur %{brand}"
+
+  training_page:
+    title: Formation aux produits HARMAN Professional
+    meta_description: Liens de formation pour les marques audio, vidéo, d'éclairage et de contrôle HARMAN Professional.
+    brand_training: "Formation %{brand}"
+
+  reference_system_page:
+    meta_description: "Exemple de système pour %{vertical_market}: %{reference_system} HARMAN Professional pour les marques de systèmes audio, vidéo, d'éclairage et de contrôle HARMAN Professional."
+    vertical_market_examples: "Exemples pour %{vertical_market}"
+    explore_products: Explorez ces suggestions de produits
+    product_suggestions: Suggestions de produits
+
+  vertical_market_page:
+    meta_description: "Ressources de formation, préparation et achat pour vos systèmes audio, vidéo, d'éclairage et de contrôle professionnels pour le marché suivant: %{vertical_market}."
+    explore_examples: Explorez ces exemples
+
+  service_page:
+    title: Réparations HARMAN Pro
+    meta_description: Comment faire réparer vos produits HARMAN Professional.
+    links:
+      register_now: S'inscrire
+      start_your_repair: Procédez aux réparations
+      get_started: Commencer
+      access_now: Accéder maintenant
+      apply_now: Poser sa candidature
+      order_now: Commander
+    subnav:
+      services_home: Page d'accueil des services
+      service_center_login: Connexion au centre de service
+      find_service: Rechercher un centre de service
+
+  service_center_registration:
+    title: Enregistrement d'un centre de service
+    meta_description: Inscrivez-vous pour devenir un centre de service agréé pour les marques HARMAN Professional.
+    agreement: J'accepte et suis en mesure de réparer toute marque HARMAN Professional Brands sur mon site.
+    subheaders:
+      requirements: Conditions requises
+
+  service_login_page:
+    title: Connexion aux centres de service HARMAN Pro Service
+    meta_description: "Ressources pour les partenaires du centre de service HARMAN Professional."
+    brand_website: "Site Web de %{brand}"
+    brand_technical_resources: "Ressources techniques pour %{brand}"
+
+  find_service_page:
+    title: Trouver un centre de service HARMAN Pro
+    meta_description: Recherchez un centre de service pour réparer vos produits HARMAN Professional.
+    select_state: "Sélectionnez votre état:"
+    service_type_needed: "Type de réparation requis:"
+    no_results_found: Aucun résultat de recherche trouvé. Veuillez réessayer. Essayez d'entrer l'abréviation d'état sans le type de service.
+    contact_information: Infos de contact
+    services: Réparations
+
+  leadgen_page:
+    meta_description: Formulaire de contact pour entrer en relation avec HARMAN Professional concernant vos systèmes audio, vidéo, d'éclairage et de contrôle.
+
+  case_study_page:
+    is_your_project_similar: "Planifiez-vous un projet? Nous pouvons vous aider!"
+    connect_with_harman: Se connecter à HARMAN
+
+  lead_mailer:
+    new_lead:
+      subject: Nouveau lead sur pro.harman.com
+  media_library_mailer:
+    access_request:
+      subject: Demande d'accès DAM
+
+  activerecord:
+    models:
+      brand: Marque
+      case_study: Étude de cas
+      landing_page: Page d'accueil
+      lead: Lead
+      product_type: Type de produit
+      product: Produit
+      reference_system: Système de référence
+      resource: Ressource
+      service_center: Centre de service
+      site_setting: Paramètres du site
+      venue: Site
+      vertical_market: Marché vertical
+    attributes:
+      lead:
+        name: Nom
+        company: Société
+        email: E-mail
+        phone: Téléphone
+        location: Site
+        project_description: Description du projet
+      service_center:
+        contact_name: Votre nom
+        email: E-mail
+        name: Raison sociale
+        address: Adresse
+        city: Ville
+        state: État/Province/Région
+        zip: Code postal
+        phone: Téléphone
+        fax: Télécopie
+        website: Site Web
+        account_number: N° de compte
