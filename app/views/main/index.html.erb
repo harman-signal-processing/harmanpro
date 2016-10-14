@@ -121,8 +121,20 @@
                   <%= SiteSetting.value("blog_link_name") %>
                   <% end %>
                 </h4>
+                <p>
+                  <%= link_to SiteSetting.value("blog_link"), target: "_blank" do %>
+                    <%= t('learn_more').upcase %>
+                    <%= fa_icon 'long-arrow-right' %>
+                  <% end %>
+                </p>
               <% else %>
                 <h4><%= link_to news_articles_path do %>Click here for the latest news from HARMAN.<% end %></h4>
+                <p>
+                  <%= link_to news_articles_path do %>
+                    <%= t('learn_more').upcase %>
+                    <%= fa_icon 'long-arrow-right' %>
+                  <% end %>
+                </p>
               <% end %>
             </div>
           </li>
@@ -146,8 +158,20 @@
                   <%= l @event.start_on, format: :short %> - <%= l @event.end_on, format: :short %>
                 <% end %>
                 </h4>
+                <p>
+                  <%= link_to @event do %>
+                    <%= t('learn_more').upcase %>
+                    <%= fa_icon 'long-arrow-right' %>
+                  <% end %>
+                </p>
               <% else %>
                 <h4><%= link_to events_path do %>Click here for the latest HARMAN events.<% end %></h4>
+                <p>
+                  <%= link_to events_path do %>
+                    <%= t('learn_more').upcase %>
+                    <%= fa_icon 'long-arrow-right' %>
+                  <% end %>
+                </p>
               <% end %>
             </div>
           </li>
@@ -161,6 +185,12 @@
                 </div>
                 <h6><%= t('nav.resources') %>:</h6>
                 <h4><%= link_to t('nav.media_library'), media_library_path %></h4>
+                <p>
+                  <%= link_to media_library_path do %>
+                    <%= t('learn_more').upcase %>
+                    <%= fa_icon 'long-arrow-right' %>
+                  <% end %>
+                </p>
               <% else %>
                 <div class="img_container">
                   <%= link_to 'https://www.linkedin.com/company/10201306', target: "_blank" do %>
@@ -169,6 +199,12 @@
                 </div>
                 <h6><%= t('nav.resources') %>:</h6>
                 <h4><%= link_to "#{t('site_name')} on LinkedIn", 'https://www.linkedin.com/company/10201306', target: "_blank" %></h4>
+                <p>
+                  <%= link_to "https://www.linkedin.com/company/10201306" do %>
+                    <%= t('learn_more').upcase %>
+                    <%= fa_icon 'long-arrow-right' %>
+                  <% end %>
+                </p>
               <% end %>
             </div>
           </li>
@@ -181,6 +217,12 @@
               </div>
               <h6><%= t('nav.service') %>:</h6>
               <h4><%= link_to SiteSetting.value("service-page-harman-pro-dealer-portal-subheader"), service_path %></h4>
+              <p>
+                <%= link_to service_path do %>
+                  <%= t('learn_more').upcase %>
+                  <%= fa_icon 'long-arrow-right' %>
+                <% end %>
+              </p>
             </div>
           </li>
         </ul>
