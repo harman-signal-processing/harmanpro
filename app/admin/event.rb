@@ -2,7 +2,17 @@ ActiveAdmin.register Event do
   menu parent: "Events & News", priority: 2
   config.sort_order = 'start_on_desc'
 
-  permit_params :name, :start_on, :end_on, :description, :featured, :active, :image, :page_content, :more_info_link, :new_window
+  permit_params :name,
+    :start_on,
+    :end_on,
+    :description,
+    :featured,
+    :active,
+    :image,
+    :page_content,
+    :more_info_link,
+    :new_window,
+    :delete_image
 
   # :nocov:
   index do
@@ -63,6 +73,7 @@ ActiveAdmin.register Event do
       f.input :end_on, as: :datepicker
       f.input :description
       f.input :image, hint: "Only for 'featured' events."
+      f.input :delete_image, as: :boolean, label: "Delete the image if present."
       f.input :more_info_link, hint: "'Featured' events will show this link on the event details page if page content is provided."
       f.input :new_window, hint: "Check if the more info link directs users away from the site."
       f.input :page_content, input_html: { class: "mceEditor"}
