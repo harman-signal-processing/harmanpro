@@ -1438,6 +1438,7 @@ p {
 .mega-menu-container {
   z-index: 9999;
   @include grid-row($behavior: collapse);
+  margin-left: ($column-gutter / 2);
   .mega-menu-content {
     @media only screen and (min-width: 1001px) {
       @include grid-column(8);
@@ -1494,14 +1495,7 @@ span.hint {
 div.hint {
   margin-top: 1px;
 }
-nav.top-bar {
-  border-top: 1px solid $smoke;
-}
-#main {
-  border-top: 3px solid $harman-blue;
-}
 .logo-container {
-  padding-bottom: 8px;
   h1.logo {
     margin-top: 13px;
     img {
@@ -1517,14 +1511,17 @@ nav.top-bar {
       }
     }
   }
+  hr {
+    margin: 10px 0 2px;
+  }
 }
+.fixed .top-bar-section,
 .top-bar-section {
-  li {
+  ul li {
     &.has-form {
       .button {
-        //padding-top: rem-calc(2);
         text-transform: lowercase;
-        font-weight: 200;
+        font-weight: 200 !important;
       }
     }
     @media only screen and (min-width: 640px) and (max-width: 800px) {
