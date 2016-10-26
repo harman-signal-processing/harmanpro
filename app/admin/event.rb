@@ -9,6 +9,7 @@ ActiveAdmin.register Event do
     :featured,
     :active,
     :image,
+    :hide_image,
     :page_content,
     :more_info_link,
     :new_window,
@@ -73,6 +74,7 @@ ActiveAdmin.register Event do
       f.input :end_on, as: :datepicker
       f.input :description
       f.input :image, hint: "Only for 'featured' events."
+      f.input :hide_image, hint: "Check this box if you want to make this a featured event, but don't want the header image to appear on the page. Instead, the thumbnail of the image is used only on the events index page."
       f.input :delete_image, as: :boolean, label: "Delete the image if present."
       f.input :more_info_link, hint: "'Featured' events will show this link on the event details page if page content is provided."
       f.input :new_window, hint: "Check if the more info link directs users away from the site."

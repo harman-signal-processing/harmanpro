@@ -1,7 +1,7 @@
 <%= content_for :title do %><%= truncate @event.name, length: 40 %><% end %>
 <%= content_for :description do %>HARMAN PRO event: <%=truncate @event.description, length: 60 %><% end %>
 
-<% if @event.image.present? || ENV['show_placeholders'] == "true" %>
+<% if (@event.image.present? && !@event.hide_image) || ENV['show_placeholders'] == "true" %>
   <div class="bumped-up space-after">
     <div class="banner-container vertical-market">
       <%= image_tag @event.image.url(:large), name: @event.name %>
