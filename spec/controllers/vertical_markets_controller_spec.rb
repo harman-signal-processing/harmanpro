@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe VerticalMarketsController do
 
   before :all do
-    @vertical_market = FactoryGirl.create(:vertical_market)
+    @vertical_market = FactoryGirl.create(:vertical_market, parent_id: 99)
     @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
   end
 

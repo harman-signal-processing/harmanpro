@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'finance/index'
-
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
   # Logins for admins, etc.
@@ -55,7 +53,7 @@ Rails.application.routes.draw do
     end
     resources :products, only: [:index, :show]
   end
-  resources :vertical_markets, path: 'applications', only: :show do
+  resources :vertical_markets, path: 'applications', only: [:index, :show] do
     resources :reference_systems, path: 'solutions', only: :show
     resources :case_studies, only: :show
   end

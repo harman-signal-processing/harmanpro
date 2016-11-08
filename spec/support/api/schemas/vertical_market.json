@@ -10,6 +10,8 @@
         "headline",
         "description",
         "banner_url",
+        "slug",
+        "parent_id",
         "reference_systems"
       ],
       "properties" : {
@@ -17,6 +19,8 @@
         "name": {"type" : "string"},
         "headline": {"type" : "string"},
         "description": {"type" : "text"},
+        "slug": {"type" : "string"},
+        "parent_id": {"type" : "integer"},
         "banner_url": {"type" : "string"},
         "reference_systems": {
           "type" : "array",
