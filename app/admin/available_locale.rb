@@ -17,7 +17,7 @@ ActiveAdmin.register AvailableLocale do
   form do |f|
     f.inputs do
       f.input :name
-      f.input :key, as: :select, collection: I18n.available_locales
+      f.input :key, as: :select, collection: I18n.available_locales.sort
       f.input :live
     end
     f.actions
