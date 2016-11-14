@@ -12,7 +12,8 @@
         "banner_url",
         "slug",
         "parent_id",
-        "reference_systems"
+        "reference_systems",
+        "background_url"
       ],
       "properties" : {
         "id": {"type" : "integer"},
@@ -22,6 +23,7 @@
         "slug": {"type" : "string"},
         "parent_id": {"type" : "integer"},
         "banner_url": {"type" : "string"},
+        "background_url": {"type" : "string"},
         "reference_systems": {
           "type" : "array",
           "items" : [
