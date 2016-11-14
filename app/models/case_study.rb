@@ -7,10 +7,10 @@ class CaseStudy < ActiveRecord::Base
   has_many :vertical_markets, through: :case_study_vertical_markets
   has_attached_file :banner,
     styles: {
-      large: "1170x624",
-      medium: "500x312",
-      small: "250x156",
-      thumb: "83x52",
+      large: "1170x400",
+      medium: "500x200",
+      small: "250x100",
+      thumb: "83x50",
       thumb_square: "64x64#"
   }, default_url: "missing/banners/:style.jpg"
 

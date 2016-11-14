@@ -10,11 +10,11 @@ class Event < ActiveRecord::Base
 
   has_attached_file :image,
     styles: {
-      large: "1170x624#",
-      medium: "500x312#",
-      medium_gray: { geometry: "500x312#", processors: [:grayscale, :thumbnail] },
-      small: "250x156#",
-      thumb: "83x52#",
+      large: "1170x400#",
+      medium: "500x200#",
+      medium_gray: { geometry: "500x200#", processors: [:grayscale, :thumbnail] },
+      small: "250x100#",
+      thumb: "83x50#",
       thumb_square: "64x64#"
   }, default_url: "missing/banners/:style.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
