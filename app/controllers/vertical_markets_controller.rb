@@ -3,7 +3,7 @@ class VerticalMarketsController < ApplicationController
   after_action :track_last_page
 
   def index
-    @vertical_markets = VerticalMarket.active.select(:id, :slug, :parent_id).all
+    @vertical_markets = VerticalMarket.active
     respond_with @vertical_markets do |format|
       format.html { redirect_to root_path and return false }
       format.json
