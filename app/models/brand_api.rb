@@ -23,7 +23,7 @@ class BrandApi
 
   # :nocov:
   def self.get_api_response(url, cache_for)
-    Rails.cache.fetch(url, expires: cache_for) do
+    Rails.cache.fetch(url, expires_in: cache_for, race_condition_ttl: 10) do
       response = get(url)
       if response.success?
         response.parsed_response
