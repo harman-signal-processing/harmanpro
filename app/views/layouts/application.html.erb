@@ -165,29 +165,38 @@
       <div class="small-12 columns">
         <div id="footer">
           <div class="row">
-            <%= cache ["footer-cols-1-and-2", Date.today, current_locale] do %>
-              <% VerticalMarket.parent_verticals.each do |vm| %>
-                <div class="large-3 medium-6 hide-for-small columns">
-                  <h6 class="subheader"><%= link_to t('vertical_market_solutions', vertical_market_name: vm.name), vm %></h6>
-                  <ul>
-                    <% vm.children_or_reference_systems.each do |v| %>
-                      <li><%= link_to v.name, v.is_a?(ReferenceSystem) ? [vm, v] : v %></li>
-                    <% end %>
-                  </ul>
-                </div>
-              <% end %>
+            <% parent_verticals.map do |vm| %>
+              <div class="large-<%= footer_menu_width_for(vm) %> medium-<%= top_menu_width_for(vm) %> columns">
+                <h6 class="subheader"><%= link_to vm.name, vm %></h6>
+                <ul class="medium-block-grid-<%= vm.children_or_reference_systems.in_groups_of(10).length %>">
+                  <% vm.children_or_reference_systems.in_groups_of(10) do |group| %>
+                    <li>
+                      <ul><% group.each do |item| %>
+                        <%= menu_link_for(item) if item.respond_to?(:name) %>
+                      <% end %></ul>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
             <% end %>
 
-            <div class="large-3 medium-6 small-12 columns">
+            <div class="large-2 medium-6 small-12 columns">
               <%= cache ["footer-col-3", Date.today, current_locale] do %>
                 <h6 class="subheader"><%= t('harman_brands') %></h6>
-                <ul>
-                  <% all_brands.each do |brand| %>
-                    <li><%= link_to brand.name, brand %></li>
+                <ul class="medium-block-grid-2 small-block-grid-2">
+                  <% all_brands.in_groups(2) do |group| %>
+                    <li>
+                      <ul><% group.each do |brand| %>
+                        <% if brand.respond_to?(:name) %>
+                          <li><%= link_to brand.name, brand %></li>
+                        <% end %>
+                      <% end %></ul>
+                    </li>
                   <% end %>
                 </ul>
               <% end %>
             </div>
+            <div class="large-1 columns hide-for-medium-down">&nbsp;</div>
             <div class="large-3 medium-6 small-12 columns">
               <%= cache ["footer-col-4", Date.today, current_locale] do %>
                 <h6 class="subheader"><%= t('connect_with_us') %></h6>

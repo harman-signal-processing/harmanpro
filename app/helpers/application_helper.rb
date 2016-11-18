@@ -51,6 +51,10 @@ module ApplicationHelper
     (vm.children_or_reference_systems.count.to_f / max_items_in_top_nav_columns.to_f).ceil * 3
   end
 
+  def footer_menu_width_for(vm)
+    vm.children_or_reference_systems.count > 10 ? 3 : 2
+  end
+
   def format_headline(content)
     content.to_s.gsub(/\r\n|\r|\n/, "<br/>")
   end
