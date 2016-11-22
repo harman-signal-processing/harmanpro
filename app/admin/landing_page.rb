@@ -68,7 +68,7 @@ ActiveAdmin.register LandingPage do
         if landing_page.original_locale && landing_page.original_locale != AvailableLocale.default
           link_to "Direct Link", landing_page_path(landing_page, locale: landing_page.original_locale.key), target: "_blank"
         else
-          this_slug = landing_page.custom_slug || landing_page.slug
+          this_slug = landing_page.custom_slug.present? ? landing_page.custom_slug : landing_page.slug
           link_to "Direct Link", landing_page_path(id: this_slug), target: "_blank"
         end
       end

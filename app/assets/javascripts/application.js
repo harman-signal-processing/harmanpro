@@ -16,6 +16,7 @@
 //= require_tree ./app
 //= require foundation
 //= require tinymce-jquery
+//= require jquery.rwdImageMaps.min
 //= require consultants
 //= require mega_menu
 //= require vertical_markets
