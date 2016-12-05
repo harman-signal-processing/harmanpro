@@ -12,11 +12,13 @@ Rails.application.configure do
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
-  config.action_controller.asset_host = 'http://localhost:3111'
+  #config.action_controller.asset_host = 'http://localhost:3111'
+  config.action_controller.asset_host = 'https://hpro-training-updates-sweetcleancode.c9users.io'
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3111 }
+  #config.action_mailer.default_url_options = { host: 'localhost', port: 3111 }
+  config.action_mailer.default_url_options = { host: 'hpro-training-updates-sweetcleancode.c9users.io' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
