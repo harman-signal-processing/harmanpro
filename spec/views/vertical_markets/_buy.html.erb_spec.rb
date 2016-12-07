@@ -59,7 +59,7 @@ RSpec.describe "vertical_markets/_buy.html.erb", :type => :view do
     it "links to online retailers" do
       expect(rendered).to have_content("Buy From A Retailer")
       expect(rendered).to have_link(@retailer.name, href: @retailer.url)
-      expect(rendered).to have_css("img[@src='#{@retailer.logo.url(:medium)}']")
+      expect(rendered).to match @retailer.logo.url(:medium)
     end
 
     it "won't have installed audio buy section" do

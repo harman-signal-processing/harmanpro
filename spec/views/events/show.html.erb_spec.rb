@@ -27,7 +27,7 @@ RSpec.describe "events/show.html.erb", as: :view do
   end
 
   it "has featured event content" do
-    expect(rendered).to have_xpath("//img[@src='#{ @current_event.image.url(:large) }']")
+    expect(rendered).to match @current_event.image.url(:large)
   end
 
   it "has page content" do

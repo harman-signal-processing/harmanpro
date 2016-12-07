@@ -30,7 +30,7 @@ RSpec.describe "events/index.html.erb", as: :view do
 
   it "has featured event content" do
     expect(rendered).to have_link @current_event.name, href: @current_event.more_info_link
-    expect(rendered).to have_xpath("//img[@src='#{ @current_event.image.url(:medium) }']")
+    expect(rendered).to match @current_event.image.url(:medium)
   end
 
   it "has a link to recent events" do

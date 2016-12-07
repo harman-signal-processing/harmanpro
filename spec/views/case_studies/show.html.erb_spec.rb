@@ -24,7 +24,7 @@ RSpec.describe "case_studies/show.html.erb", :type => :view do
   end
 
   it "displays the banner image" do
-    expect(rendered).to have_css("img[@src='#{@case_study.banner.url(:large)}']")
+    expect(rendered).to match @case_study.banner.url(:large)
   end
 
 end

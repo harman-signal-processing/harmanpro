@@ -53,7 +53,7 @@ RSpec.describe "reference_systems/show.html.erb", :type => :view do
     end
 
     it "displays the system diagram" do
-      expect(rendered).to have_xpath("//img[@src='/assets/#{@reference_system.system_diagram.url(:original)}']")
+      expect(rendered).to match @reference_system.system_diagram.url(:original)
     end
 
   end

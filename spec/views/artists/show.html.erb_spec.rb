@@ -14,6 +14,6 @@ RSpec.describe "artists/show.html.erb", type: :view do
   it "shows artist details" do
     expect(rendered).to have_content(@artist.description)
     expect(rendered).to have_content(@artist.name)
-    expect(rendered).to have_xpath("//img[@src='#{ @artist.photo.url(:large) }']")
+    expect(rendered).to match @artist.photo.url(:large)
   end
 end
