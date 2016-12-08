@@ -11,7 +11,7 @@ gem 'font-awesome-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', '~> 5.0'
 gem 'jbuilder', '~> 2.0'
 gem 'bower-rails'
 gem "active_model_serializers", "0.9.5" # 0.10+ is not backwards compatible
