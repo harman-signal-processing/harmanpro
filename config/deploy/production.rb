@@ -16,13 +16,13 @@
 # used to set extended properties on the server.
 
 server 'rackspace1', user: 'hmg', roles: %w{admin web app db}
-server '10.10.23.15', user: 'hmg', roles: %w{node2 web app}
+#server '10.10.23.15', user: 'hmg', roles: %w{node2 web app}
 
 namespace :deploy do
 
-  before :restart, :refresh_node2_uploads do
-    invoke "refresh:node2_uploads"
-  end
+#  before :restart, :refresh_node2_uploads do
+#    invoke "refresh:node2_uploads"
+#  end
 
 end
 
