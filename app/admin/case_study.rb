@@ -23,7 +23,7 @@ ActiveAdmin.register CaseStudy do
 
   form html: { multipart: true} do |f|
     f.inputs do
-      f.input :banner, hint: "Preferred size: 1170x624 px with a strongly horizontal orientation."
+      f.input :banner, hint: "Preferred size: 1170x400 px with a strongly horizontal orientation."
       f.input :headline, hint: "Maximum characters: 40", input_html: { maxlength: 40 }
       f.input :description, hint: "Maximum characters: 60", input_html: { maxlength: 60, rows: 5 }
       f.input :content, input_html: { rows: 15 }

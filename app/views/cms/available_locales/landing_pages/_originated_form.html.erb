@@ -6,7 +6,7 @@
   <%= f.input :description, as: :text, input_html: { rows: 3 } %>
   <div class="row">
     <div class="medium-6 columns">
-      <%= f.input :banner, hint: "If provided, banner appears above main content (full width). Ideal size: 1170x624 pixels." %>
+      <%= f.input :banner, hint: "If provided, banner appears above main content (full width). Ideal size: 1170x400 pixels." %>
     </div>
     <div class="medium-6 columns">
       <% if @landing_page.banner.present? %>
