@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :available_locales, only: :show do
       resources :news_articles
       resources :slides
-      (AvailableLocale.translatables - ["LandingPage", "Event"]).each do |t|
+      (AvailableLocale.translatables - ["LandingPage", "Event", "TrainingContentPage"]).each do |t|
         resources t.underscore.pluralize.to_sym
       end
       resources :landing_pages do
@@ -26,6 +26,11 @@ Rails.application.routes.draw do
           get :originated
         end
       end
+      resources :training_content_pages do
+        collection do
+          get :originated
+        end
+      end      
       resources :events do
         collection do
           get :local
@@ -81,7 +86,9 @@ Rails.application.routes.draw do
   resources :service_centers, only: [:index, :new, :create]
 
   # Training site
-  get '/training' => 'landing_pages#training'
+  get '/training' => 'training_content_pages#show'
+  get '/training/courses' => 'training_courses#index'
+  resources :training_content_pages, path: 'training', only: :show
 
   # Resource library (local resources on our site)
   get '/resource-library/:id' => 'resources#show', as: :resource_permalink

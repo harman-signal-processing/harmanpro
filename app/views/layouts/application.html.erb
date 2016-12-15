@@ -39,28 +39,28 @@
               <a href="http://www.harman.com"><%= image_tag "logo.png", alt: t('logo_alt_text'), id: "logo", class: 'no-resize' %></a>
               <small><a href="/"><%= t("professional_solutions").upcase %></a></small>
             </h1>
-          </div>
+          </div><!-- <div class="medium-6 columns">  -->
           <div class="large-2 medium-3 small-6 columns text-right">
             <% if active_locales.count > 1 %>
               <br/>
               <div class="row collapse prefix" style="border: none">
                 <div class="small-2 columns">
                   <span class="prefix"><%= fa_icon :flag %></span>
-                </div>
+                </div><!-- <div class="small-2 columns">  -->
                 <div class="small-10 columns">
                   <%= select_tag :locale,
                     options_from_collection_for_select(active_locales, "key", "name", current_locale.key),
                     id: "locale-switcher" %>
-                </div>
-              </div>
+                </div><!-- <div class="small-10 columns">  -->
+              </div><!-- <div class="row collapse prefix" style="border: none">  -->
             <% else %>
               &nbsp;
             <% end %>
-          </div>
-        </div>
+          </div><!-- <div class="large-2 medium-3 small-6 columns text-right">  -->
+        </div><!-- <div class="row">  -->
         <hr/>
-      </div>
-    </div>
+      </div><!-- <div class="small-12 columns">  -->
+    </div><!-- <div class="row logo-container">  -->
 
     <div class="contain-to-grid sticky">
       <nav class="top-bar" data-topbar role="navigation">
@@ -96,7 +96,7 @@
                     <li><%= link_to t('nav.service'), service_path %></li>
                   <% end %>
                 </ul>
-              </li>
+              </li><!-- <li class="has-dropdown"> -->
               <% if SiteSetting.set_for_locale?("blog_link_name") && SiteSetting.set_for_locale?("blog_link") %>
                 <li>
                   <%= link_to SiteSetting.value("blog_link_name"), SiteSetting.value("blog_link"), target: "_blank" %>
@@ -104,7 +104,7 @@
               <% end %>
             <% end %>
           </ul>
-        </section>
+        </section><!-- <section class="top-bar-section">  -->
         <section class="top-bar-section">
           <ul class="right">
             <% if SiteSetting.set_for_locale?("store_link", current_locale.key) %>
@@ -115,10 +115,10 @@
                 <% end %>
               </li>
             <% end %>
-          </ul>
-        </section>
-      </nav>
-    </div>
+          </ul><!-- <ul class="right">  -->
+        </section><!-- <section class="top-bar-section">  -->
+      </nav><!-- <nav class="top-bar" data-topbar role="navigation">  -->
+    </div><!-- <div class="contain-to-grid sticky">  -->
 
     <div id="megaMenu" class="mega-menu-container" data-dropdown-content style="display:none;">
       <div class="mega-menu-content">
@@ -134,12 +134,12 @@
                     <% end %></ul>
                   </li>
                 <% end %>
-              </ul>
-            </div>
+              </ul><!-- <ul class="medium-block-grid-<%= vm.children_or_reference_systems.in_groups_of(max_items_in_top_nav_columns).length %>"> -->
+            </div><!-- <div class="medium-<%= top_menu_width_for(vm) %> columns <%= 'end' if vm == parent_verticals.last %>">  -->
           <% end %>
-        </div>
-      </div>
-    </div>
+        </div><!-- <div class="row">  -->
+      </div><!-- <div class="mega-menu-content">  -->
+    </div><!-- <div id="megaMenu" class="mega-menu-container" data-dropdown-content style="display:none;">  -->
 
     <% flash.each do |name, msg| %>
       <% if msg.is_a?(String) %>
@@ -149,18 +149,23 @@
             <div data-alert class="alert-box radius <%= name.to_s == 'notice' ? 'success' : 'alert' %>">
               <%= content_tag :div, msg %>
               <a href="#" class="close">&times;</a>
-            </div>
-          </div>
-        </div>
+            </div><!-- <div data-alert class="alert-box radius <%= name.to_s == 'notice' ? 'success' : 'alert' %>">  -->
+          </div><!-- <div class="large-12 medium-12 columns">  -->
+        </div><!-- <div class="row">  -->
       <% end %>
     <% end %>
 
+    <!-- begin main row for view template content  -->
     <div class="row">
       <div class="small-12 columns">
+        <!-- begin main view template content  -->
         <%= yield %>
-      </div>
-    </div>
+        <!-- end main view template content  -->
+      </div><!-- <div class="small-12 columns">  -->
+    </div><!-- <div class="row">  -->
+    <!-- end main row for view template content  -->
 
+    <!-- begin footer row  -->
     <div class="row">
       <div class="small-12 columns">
         <div id="footer">
@@ -176,8 +181,8 @@
                       <% end %></ul>
                     </li>
                   <% end %>
-                </ul>
-              </div>
+                </ul><!-- <ul class="medium-block-grid-<%= vm.children_or_reference_systems.in_groups_of(10).length %>"> -->
+              </div><!-- <div class="large-<%= footer_menu_width_for(vm) %> medium-<%= top_menu_width_for(vm) %> columns">  -->
             <% end %>
 
             <div class="large-2 medium-6 small-12 columns">
@@ -193,9 +198,9 @@
                       <% end %></ul>
                     </li>
                   <% end %>
-                </ul>
+                </ul><!-- <ul class="medium-block-grid-2 small-block-grid-2"> -->
               <% end %>
-            </div>
+            </div><!-- <div class="large-2 medium-6 small-12 columns">  -->
             <div class="large-1 columns hide-for-medium-down">&nbsp;</div>
             <div class="large-3 medium-6 small-12 columns">
               <%= cache ["footer-col-4", Date.today, current_locale] do %>
@@ -221,8 +226,8 @@
                 <%= link_to "https://plus.google.com/+HarmanIntl/videos" do %>
                   <%= fa_icon 'google-plus 2x' %>
                 <% end %>
-              </div>
-            </div>
+              </div><!-- <div class="social-links">  -->
+            </div><!-- <div class="large-3 medium-6 small-12 columns">  -->
             <div class="small-12 columns sub-footer">
               <p>
                 &copy; <%= Date.today.year %> HARMAN International.
@@ -231,14 +236,24 @@
                 |
                 <%= link_to t('terms_of_use'), "http://www.harman.com/terms-use" %>
               </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </div><!-- <div class="small-12 columns sub-footer">  -->
+          </div><!-- <div class="row">  -->
+        </div><!-- <div id="footer">  -->
+      </div><!-- <div class="small-12 columns">  -->
+    </div><!-- <div class="row">  -->
+    <!-- end footer row  -->
 
+    <!-- begin yield :footer_code  -->
     <%= yield :footer_code %>
+    <!-- end yield :footer_code  -->
+    
+    <!-- begin javascript_include_tag "application"  -->
     <%= javascript_include_tag "application" %>
+    <!-- end javascript_include_tag "application"  -->
+    
+    <!-- begin render 'shared/marketing_tracking'  -->
     <%= render 'shared/marketing_tracking' %>
+    <!-- end render 'shared/marketing_tracking'  -->
+    
   </body>
 </html>

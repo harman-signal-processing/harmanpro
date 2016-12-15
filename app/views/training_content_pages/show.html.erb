@@ -1,0 +1,91 @@
+<%= content_for :title do %><%= @training_content_page.title %><% end %>
+<%= content_for :description do %>
+  <% if @training_content_page.description.present? %>
+    <%= @training_content_page.description %>
+  <% elsif @training_content_page.subtitle.present? %>
+    <%= @training_content_page.subtitle %>
+  <% else %>
+    <%= @training_content_page.title %>
+  <% end %>
+<% end %>
+
+<%= content_for :header_code do %>
+  <%= raw @training_content_page.header_code %>
+<% end %>
+
+<%= content_for :footer_code do %>
+  <%= raw @training_content_page.footer_code %>
+<% end %>
+
+<div class="container main-container">
+  <% if @training_content_page.banner.present? %>
+    <%= image_tag @training_content_page.banner.url %>
+  <% end %>
+
+  <% unless @training_content_page.hide_title? %>
+    <!--<div class="row">-->
+    <!--  <div class="medium-<%= @training_content_page.main_content_width %> small-12 columns">-->
+    <!--    <h1 class="space-after"><%= @training_content_page.title %></h1>-->
+    <!--  </div>-->
+    <!--</div>-->
+  <% end %>
+
+  <!-- begin main content row  -->
+  <div class="row training-top-content-row">
+      
+    <!-- begin left nav  -->
+    <div class="medium-<%= @training_content_page.side_column_width %> small-12 columns">      
+        <%= render partial: 'training_leftnav', locals: { training_content: @training_content_page } %>
+    </div>
+    
+
+
+    <!-- begin main content  -->
+    <div class="medium-<%= @training_content_page.main_content_width %> small-12 columns">
+        <h1 class="space-after"><%= @training_content_page.title %></h1>
+      <% if @training_content_page.subtitle.present? %>
+        <h4 class="subheader"><%= @training_content_page.subtitle %></h4>
+        <br/>
+      <% end %>
+      
+      <%= render_content(@training_content_page, :main_content) %>
+      
+      <%#if @training_content_page.slug === "training-home" %>
+        <%= render 'training_content_pages/training_login_signup_box_links' %>
+      <%#end%>
+      
+    </div><!-- <div class="medium-<%= @training_content_page.main_content_width %> small-12 columns">  -->
+    <!-- end main content  -->
+
+
+    <% if @training_content_page.right_content.present? %>
+      <!-- begin right content  -->
+      <div class="medium-<%= @training_content_page.side_column_width %> small-12 columns">
+        <%= render_content(@training_content_page, :right_content) %>
+      </div>  <!-- <div class="medium-<%= @training_content_page.side_column_width %> small-12 columns">  -->
+    <% end %>
+    
+   
+    
+    
+  </div><!-- <div class="row">  -->
+  <!-- end main content row  -->
+
+  <% if @training_content_page.sub_content.present? %>
+    <!-- begin sub_content  -->
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="dot-above">
+          <br/>
+          <%= render_content(@training_content_page, :sub_content) %>
+        </div>
+      </div>
+    </div>
+    <!-- end sub_content  -->
+  <% end %>
+
+
+
+
+
+</div><!-- <div class="container main-container">  -->

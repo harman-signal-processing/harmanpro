@@ -27,6 +27,24 @@ class ApplicationController < ActionController::Base
     render "landing_pages/show"
   end
 
+  def get_training_content_page(slug)
+    if TrainingContentPage.exists?(slug: slug)
+      @training_content_page = TrainingContentPage.find(slug)
+      if @training_content_page.custom_slug.present?
+        redirect_to training_content_page_url(@training_content_page.custom_slug), status: 301 and return false
+      end
+    elsif TrainingContentPage.exists?(custom_slug: slug)
+      @training_content_page = TrainingContentPage.find_by(custom_slug: slug)
+    else
+      @training_content_page = TrainingContentPage.new
+    end
+    @training_content_page.main_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
+    #@training_content_page.left_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
+    @training_content_page.right_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
+    @training_content_page.sub_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
+    #render "training_content_pages/show"
+  end  #  def render_training_content_page(slug)
+
   def set_locale
     if params[:locale].present?
       session[:locale] = params[:locale]

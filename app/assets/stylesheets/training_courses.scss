@@ -1,0 +1,42 @@
+// Place all the styles related to the TrainingCourses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#ClassroomCourseCatalogContainer {
+    margin-top: 15px;
+}
+
+.CourseCatalogContainer {
+    margin-bottom: 20px;
+    border: 0px solid red;
+}
+
+.stopTheToggleJumping {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.CourseHeader {
+    background-color: #f2f2f2;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 10px;
+    padding: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.CourseContainer {
+    margin-left: 10px;
+}
+
+.training-top-content-row
+{
+    margin-top:20px !important;
+}
+.training-leftnav
+{
+    margin-top:15px;
+}

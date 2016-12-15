@@ -1,0 +1,115 @@
+<%= content_for :title do %><%= @training_content_page.title %><% end %>
+<%= content_for :description do %>
+  <% if @training_content_page.description.present? %>
+    <%= @training_content_page.description %>
+  <% elsif @training_content_page.subtitle.present? %>
+    <%= @training_content_page.subtitle %>
+  <% else %>
+    <%= @training_content_page.title %>
+  <% end %>
+<% end %>
+
+<%= content_for :header_code do %>
+  <%= raw @training_content_page.header_code %>
+<% end %>
+
+<%= content_for :footer_code do %>
+  <%= raw @training_content_page.footer_code %>
+<% end %>
+
+<div class="container main-container">
+  <% if @training_content_page.banner.present? %>
+    <%= image_tag @training_content_page.banner.url %>
+  <% end %>
+
+  <% unless @training_content_page.hide_title? %>
+    <div class="row">
+      <div class="large-<%= 12 - @training_content_page.side_column_width %> medium-12 columns">
+        <h1 class="space-after"><%= @training_content_page.title %></h1>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- begin main content row  -->
+  <div class="row">
+      <%#debugger%>
+    <div class="medium-<%= @training_content_page.side_column_width %> small-12 columns">      
+        <%= render 'shared/training_leftnav' %>
+    </div>
+    
+
+
+    <!-- begin main content  -->
+    <div class="medium-<%= @training_content_page.main_content_width %> small-12 columns">
+      <% if @training_content_page.subtitle.present? %>
+        <h4 class="subheader"><%= @training_content_page.subtitle %></h4>
+        <br/>
+      <% end %>
+      <%= render_content(@training_content_page, :main_content) %>
+    </div><!-- <div class="medium-<%= @training_content_page.main_content_width %> small-12 columns">  -->
+
+    <% if @training_content_page.right_content.present? %>
+      <!-- begin right content  -->
+      <div class="medium-<%= @training_content_page.side_column_width %> small-12 columns">
+        <%= render_content(@training_content_page, :right_content) %>
+      </div>  <!-- <div class="medium-<%= @training_content_page.side_column_width %> small-12 columns">  -->
+    <% end %>
+  </div><!-- <div class="row">  -->
+
+  <% if @training_content_page.sub_content.present? %>
+    <!-- begin sub_content  -->
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="dot-above">
+          <br/>
+          <%= render_content(@training_content_page, :sub_content) %>
+        </div>
+      </div>
+    </div>
+    <!-- end sub_content  -->
+  <% end %>
+  
+<div class="row">
+
+  <div class="medium-9 small-12 columns">
+    <div class="container main-container padded">
+<%debugger%>
+  <div class="row">
+    <div class="large-8 large-offset-2 medium-8 medium-offset-2 columns" data-equalizer="brands">
+      <ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-1">
+        <% if SiteSetting.set?("harmanpro_university_url") %>
+          <li>
+            <%= link_to SiteSetting.value("harmanpro_university_url"), target: "_blank" do %>
+              <div class="panel text-center" data-equalizer-watch="brands">
+                <div class="brand-logo">
+                  <p><%= image_tag "HPU_square.png", alt: "HARMAN Professional University" %></p>
+                </div>
+                <p>HARMAN Professional University</p>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+        <% all_brands.each do |brand| %>
+          <% if brand.training_url.present? %>
+            <li>
+              <%= link_to brand.training_url, target: "_blank" do %>
+                <div class="panel text-center" data-equalizer-watch="brands">
+                  <div class="brand-logo">
+                    <% if brand.logo.present? || ENV['show_placeholders'] == "true" %>
+                      <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
+                    <% end %>
+                  </div>
+                  <p><%= t('training_page.brand_training', brand: brand.name) %></p>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div><!-- <div class="container main-container padded">  -->
+  </div><!-- <div class="medium-9 small-12 columns">  -->
+</div><!-- <div class="row">  -->  
+
+</div><!-- <div class="container main-container">  -->
