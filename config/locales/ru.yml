@@ -1,0 +1,186 @@
+﻿ru:
+  default_meta_description: "HARMAN Professional Solutions – крупнейший в мире поставщик профессиональных аудиовизуальных, световых решений и систем управления. В портфолио брендов входят такие бренды, как %{brand_names}."
+  site_name: HARMAN Professional Solutions
+  professional_solutions: Professional Solutions
+  logo_alt_text: HARMAN Professional Solutions – крупнейший в мире поставщик аудиовизуальных, световых решений и систем управления.
+  learn_more_at: Подробнее
+  logo: логотип
+  case_study: Проектные решения
+  software: Програмное обеспечение
+  loading: Загрузка
+  harman_brands: Бренды HARMAN
+  all_rights_reserved: Все права защищены
+  privacy_policy: Политика конфиденциальности
+  terms_of_use: Условия эксплуатации
+  submit: Отправить
+  more: Далее
+  more_information: Узнать больше
+  learn_more: Подробнее
+  previous: назад
+  next: далее
+  register: зарегистрироваться
+  any: любой
+  search: поиск
+  connect_with_us: Связаться с нами
+  message: Сообщение
+  explore: Просмотр
+  vertical_market_solutions: "%{Вертикальные рынки}: Решения"
+
+  date:
+    formats:
+      default: "%a, %d %B %Y"
+      short: "%b %d, %Y"
+      long: "%B %d, %Y"
+      month_day: "%b %d"
+      month_year: "%B %Y"
+      blog_month_day: "%B %d"
+      mmddyy: "%m/%d/%y"
+      mmddyyyy: "%m/%d/%Y"
+
+  time:
+    formats:
+      default: "%a, %d %B %Y, %I:%M %p"
+      log: "%b %d, %Y, %I:%M %p"
+
+  nav:
+    menu: Меню
+    solutions: Решения
+    resources: Материалы
+    training: Тренинг
+    events: События и мероприятия
+    media_library: Банк данных
+    consultants: Консультанты
+    news: Новости
+    contacts: Контакты
+    service: Сервис
+    shop: Магазин
+    learn: Узнать
+    plan: План
+    buy: Купить
+
+  home_page:
+    shop_now: Купить
+
+  brand_page:
+    meta_description: "Все продукты и решения под брендом %{brand}, который является частью HARMAN Professional."
+    branding_resources: Материалы бренда
+    logo_collection: коллекция логотипов
+    more_resources: Загрузить еще
+
+  consultant_page:
+    title: Консультация технического специалиста
+    meta_description: Технические ресурсы, контактная информация и другие ресурсы для профессиональной консультации по вопросам аудио.
+    technical_product_resources: Technical Product Resources
+    technical_resources: Технические ресурсы
+    select_a_product: Выберите продукт, чтобы получить дополнительную информацию
+    contacts: Контакты консультанта
+    browse_on_brand_site: "Искать на сайте %{brand}..."
+    consignment_form: Форма для заполнения накладной
+
+  contacts_page:
+    title: Контактная информация HARMAN Professional
+    meta_description: "Поддержка и другая информация по продукции HARMAN Professional брендов: %{brand_names}."
+    click_to_contact: нажмите для доступа к контактной информации по брендам
+    brand_support: "%{brand} поддержка"
+    brand_info: "%{brand} Информация"
+
+  training_page:
+    title: Тренинги HARMAN Professional 
+    meta_description: Ссылки на тренинги для всех брендов HARMAN Professional.
+    brand_training: "%{brand} Тренинг"
+
+  reference_system_page:
+    meta_description: "Sample %{вертикальные рынки} система: %{reference_system} для брендов HARMAN Professional."
+    vertical_market_examples: "%{вертикальные рынки} примеры"
+    explore_products: Продукты, которые могут вам пригодиться
+    product_suggestions: Информация по продуктам
+
+  vertical_market_page:
+    meta_description: "Аудио, видео, световые решения и системы управления для вашего проекта %{vertical_market}."
+    explore_examples: Примеры проектов
+
+  service_page:
+    title: Сервис HARMAN Professional  
+    meta_description: Сервисное обслуживание продукции HARMAN Professional.
+    links:
+      register_now: Зарегистрироваться сейчас
+      start_your_repair: Начать ремонт
+      get_started: Начать
+      access_now: Войти
+      apply_now: Подать заявку
+      order_now: Сделать заказ
+    subnav:
+      services_home: Адреса сервисных центров
+      service_center_login: Войти, как сервисный центр
+      find_service: Найти сервисный центр поблизости 
+
+  service_center_registration:
+    title: Регистрация сервисного центра
+    meta_description: Зарегистрируйтесь, чтобы стать авторизованным сервисным центром для брендов HARMAN Professional.
+    agreement: Настоящим я выражаю намерение, а также возможность осуществлять сервисный ремонт оборудования брендов HARMAN Professional.
+    subheaders:
+      requirements: Требования
+
+  service_login_page:
+    title: Войти, как сервисный центр
+    meta_description: "Материалы для партнеров сервисных центров HARMAN Professional."
+    brand_website: "сайт %{brand}"
+    brand_technical_resources: "%{brand} Техническая информация"
+
+  find_service_page:
+    title: Адреса сервисных центров
+    meta_description: Найти сервисный центр для продукции брендов HARMAN Professional поблизости. 
+    select_state: "Выберите регион:"
+    service_type_needed: "Тип ремонта:"
+    no_results_found: Сервисные центры не найдены. Попробуйте найти еще сервисы, без указания типа ремонта. 
+    contact_information: Контактная информация
+    services: Сервисные центры
+
+  leadgen_page:
+    meta_description: Связаться с HARMAN Professional.
+
+  case_study_page:
+    is_your_project_similar: "Вы планируете проект? Мы вам поможем!"
+    connect_with_harman: Связаться с HARMAN
+
+  lead_mailer:
+    new_lead:
+      subject: Новый пользователь с сайта pro.harman.com
+  media_library_mailer:
+    access_request:
+      subject: DAM запрос доступа
+
+  activerecord:
+    models:
+      brand: Бренд
+      case_study: Проектные решения
+      landing_page: Посадочная страница
+      lead: Пользователь
+      product_type: Тип продукта
+      reference_system: Ссылки
+      resource: Материалы
+      service_center: Сервисные центры
+      site_setting: Настройки сайта
+      venue: Объект
+      vertical_market: Вертикальные рынки
+    attributes:
+      lead:
+        name: Имя
+        company: Компания
+        email: Email
+        phone: Телефон
+        location: Местонахождение
+        project_description: Описание проекта
+      service_center:
+        contact_name: Ваше имя
+        email: Email
+        name: Название компании
+        address: Адрес
+        city: Город
+        state: Область
+        zip: Индекс
+        phone: Телефон
+        fax: Факс
+        website: сайт
+        account_number: Номер договора
+
