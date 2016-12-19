@@ -24,7 +24,7 @@
   connect_with_us: Связаться с нами
   message: Сообщение
   explore: Просмотр
-  vertical_market_solutions: "%{Вертикальные рынки}: Решения"
+  vertical_market_solutions: "%{vertical_market_name}: Решения"
 
   date:
     formats:
@@ -90,8 +90,8 @@
     brand_training: "%{brand} Тренинг"
 
   reference_system_page:
-    meta_description: "Sample %{вертикальные рынки} система: %{reference_system} для брендов HARMAN Professional."
-    vertical_market_examples: "%{вертикальные рынки} примеры"
+    meta_description: "Sample %{vertical_market} система: %{reference_system} для брендов HARMAN Professional."
+    vertical_market_examples: "%{vertical_market} примеры"
     explore_products: Продукты, которые могут вам пригодиться
     product_suggestions: Информация по продуктам
 
