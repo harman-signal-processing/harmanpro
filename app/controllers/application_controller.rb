@@ -38,11 +38,9 @@ class ApplicationController < ActionController::Base
     else
       @training_content_page = TrainingContentPage.new
     end
-    @training_content_page.main_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
-    #@training_content_page.left_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
-    @training_content_page.right_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
-    @training_content_page.sub_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
-    #render "training_content_pages/show"
+    @training_content_page.main_content.to_s
+    @training_content_page.right_content.to_s
+    @training_content_page.sub_content.to_s
   end  #  def render_training_content_page(slug)
 
   def set_locale
