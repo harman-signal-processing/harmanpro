@@ -2,33 +2,27 @@
 $(function ()
 {
     if (location.pathname === "/training/classroom-courses")
-    {
-        console.log("hello from inside training_courses.js");
-
+{
         setTimeout(loadCourseCatalog, 100);
-        
-    }  //  if (location.pathname === "/training/classroom-courses")
-    else
-    {
-        //console.log("i'm not on /training/classroom-courses");
-    }  //  else of if (location.pathname === "/training/classroom-courses")
-
+    }
 
 
     $(document.body).on('click', ".CourseHeader",
              function ()
-             {
+{
                  var $this = $(this),
                  $courseContainer = $this.next(".CourseContainer"),
                  $arrowImage = $this.children('img:first');
-                 
+
                  $courseContainer.is(":visible") ? $courseContainer.hide("slow") : $courseContainer.show("slow");
                  toggleArrowImage($arrowImage);
-                 
+
              }); // $(document.body).on('click', ".CourseHeader", function
 
     function loadCourseCatalog()
-    {
+{
+        $("#CourseCostList").after("<div id='ClassroomCourseCatalogContainer' class='CourseCatalogContainer'><em>One moment, loading classroom course info . . .</em></div>");
+
         $.ajax(
                 {
                     type: "GET",
@@ -38,18 +32,18 @@ $(function ()
                     dataType: "json",
 
                     success: function (dataFromServer, status, xmlhttp)
-                    {
+{
                         //var courseCategories = [];
                         var courseListClassroom = [];
 
                         $(dataFromServer.data.row).each(
                         function ()
-                        {
+{
                             var $this = $(this);
 
 
                             if ($this.attr('ows_Course_x0020_Type') == 'Instructor-Led')
-                            {
+{
                                 var course = {};
                                 course.name = $this.attr('ows_LinkTitle');
                                 course.category = $this.attr('ows_Course_x0020_Category');
@@ -82,19 +76,19 @@ $(function ()
                         //Create Classroom Course array of course objects
                         var coursesInClassroom = [];
                         coursesInClassroom = jQuery.grep(courseListClassroom, function (courseObj, index)
-                        {
+{
                             return courseObj.type == 'Instructor-Led';
                         });
 
                         //Sort the Classroom course objects
                         coursesInClassroom.sort(function (courseObj1, courseObj2)
-                        {
+{
                             return (parseFloat(courseObj1.sortOrder) < parseFloat(courseObj2.sortOrder)) ? -1 : (parseFloat(courseObj1.sortOrder) > parseFloat(courseObj2.sortOrder)) ? 1 : 0;
                         });
 
                         //Loop through the sorted Classroom course objects
                         $.each(coursesInClassroom, function (index, courseObj)
-                        {
+{
                             //console.log('obj.name : ' + courseObj.name);
 
                             var newIconLink = "";
@@ -129,6 +123,7 @@ $(function ()
                             "";
                         }); //jQuery.each(coursesInClassroom, function (index, courseObj)
 
+
                         var $ClassroomCourseCatalogContainer = $("#ClassroomCourseCatalogContainer");
                         $ClassroomCourseCatalogContainer.hide("slow").html("").finish().append(classroomCourseHtml).show("slow");
 
@@ -138,7 +133,7 @@ $(function ()
                     }, // success: function (dataFromServer, status, xmlhttp)
 
                     error: function (XMLHttpRequest, textStatus, errorThrown)
-                    {
+{
                         $("#divEvents").html("Loading events ...");
                         //setTimeout("loadTradeShowEvents()", 200);
 
@@ -157,18 +152,18 @@ $(function ()
     } // function loadCourseCatalog()
 
     function toggleArrowImage($arrowImg)
-    {
+{
         //var $arrowImg = $(this).children('img:first');
         var downArrowSrc = $arrowImg.attr('src').replace('-right.png', '-down.png');
         var rightArrowSrc = $arrowImg.attr('src').replace('-down.png', '-right.png');
 
         //if right arrow showing
         if ($arrowImg.attr('src').indexOf('-down') == -1)
-        {
+{
             $arrowImg.attr('src', downArrowSrc);
         }
         else
-        {
+{
             $arrowImg.attr('src', rightArrowSrc);
         }
     }  //  function toggleArrowImage($arrowImg)

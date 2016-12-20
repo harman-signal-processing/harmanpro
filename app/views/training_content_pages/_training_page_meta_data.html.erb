@@ -1,0 +1,10 @@
+<%= content_for :title do %><%= @training_content_page.title %><% end %>
+<%= content_for :description do %>
+  <% if @training_content_page.description.present? %>
+    <%= @training_content_page.description %>
+  <% elsif @training_content_page.subtitle.present? %>
+    <%= @training_content_page.subtitle %>
+  <% else %>
+    <%= @training_content_page.title %>
+  <% end %>
+<% end %>
