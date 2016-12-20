@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026134841) do
+ActiveRecord::Schema.define(version: 20161206172411) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -573,6 +573,41 @@ ActiveRecord::Schema.define(version: 20161026134841) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "training_content_page_translations", force: :cascade do |t|
+    t.integer  "training_content_page_id", limit: 4,     null: false
+    t.string   "locale",                   limit: 255,   null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "title",                    limit: 255
+    t.string   "subtitle",                 limit: 255
+    t.string   "description",              limit: 255
+    t.text     "main_content",             limit: 65535
+    t.text     "right_content",            limit: 65535
+    t.text     "sub_content",              limit: 65535
+    t.string   "slug",                     limit: 255
+  end
+
+  add_index "training_content_page_translations", ["locale"], name: "index_training_content_page_translations_on_locale", using: :btree
+  add_index "training_content_page_translations", ["training_content_page_id"], name: "index_d73f0ce584cd69245ae320eec6d9ea12689da0e6", using: :btree
+
+  create_table "training_content_pages", force: :cascade do |t|
+    t.string   "slug",                limit: 255
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "hide_title"
+    t.string   "banner_file_name",    limit: 255
+    t.string   "banner_content_type", limit: 255
+    t.datetime "banner_updated_at"
+    t.integer  "banner_file_size",    limit: 4
+    t.integer  "original_locale_id",  limit: 4
+    t.text     "header_code",         limit: 65535
+    t.text     "footer_code",         limit: 65535
+    t.string   "custom_slug",         limit: 255
+  end
+
+  add_index "training_content_pages", ["original_locale_id"], name: "index_training_content_pages_on_original_locale_id", using: :btree
+  add_index "training_content_pages", ["slug"], name: "index_training_content_pages_on_slug", using: :btree
 
   create_table "venue_translations", force: :cascade do |t|
     t.integer  "venue_id",    limit: 4,     null: false

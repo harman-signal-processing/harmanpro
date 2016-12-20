@@ -1,0 +1,32 @@
+<div id="ClassroomCourseCatalogContainer" class="CourseCatalogContainer">
+    <% @courses["data"]["row"].each do |course| %>
+
+    <%#debugger%>
+    <div class='stopTheToggleJumping'>
+        <div class='CourseHeader' name='<%=course["ows_LinkTitle"]%>'><img src='/images/smallArrow-right.png' /> <%=course["ows_LinkTitle"]%></div>
+        <div class='CourseContainer' style='display:none;'>
+            <div class='stopTheToggleJumping'>
+                <div class='CourseContentContainer'>
+                    <div class="CourseDesc">
+                        <%#debugger%>
+                        <%=raw course["ows_courseDescription"]%>
+                    </div><!-- <div class="CourseDesc"> -->
+                    <div class='CourseDuration'>Course Duration: <%=course["ows_courseDuration"]%></div><!-- <div class='CourseDuration'> -->
+                    <table>
+                        <tr>
+                            <td>InfoComm RUs:</td>
+                            <td width='25'></td>
+                            <td align='right'><span id='<%=course["ows_LinkTitle"]%>_infocomm'><%=course["ows_InfoCommUnits"]%></span></td>
+                        </tr>
+                        <tr>
+                            <td>CEDIA CEUs:</td>
+                            <td width='25'></td>
+                            <td align='right'><span id='<%=course["ows_LinkTitle"]%>_cedia'><%=course["ows_CEDIA_Units"]%></span></td>
+                        </tr>
+                    </table>
+                </div><!-- <div class='CourseContentContainer'> -->
+            </div><!-- <div class='stopTheToggleJumping'> -->
+        </div><!-- <div class='CourseContainer' style='display:none;'> -->
+    </div><!-- <div class='stopTheToggleJumping'> -->
+    <% end %><%#  @courses["data"]["row"].each do |course| %>
+</div><!-- <div id="ClassroomCourseCatalogContainer" class="CourseCatalogContainer"> -->

@@ -1,0 +1,37 @@
+<h4>Login/Signup</h4>
+<!-- begin training login link boxes -->
+<div class="row">
+    <div class="large-8 large-offset-2 medium-8 medium-offset-2 columns" data-equalizer="brands">
+        <ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-1">
+            <% if SiteSetting.set?("harmanpro_university_url") %>
+            <li>
+                <%= link_to SiteSetting.value("harmanpro_university_url"), target: "_blank" do %>
+                <div class="panel text-center" data-equalizer-watch="brands">
+                    <div class="brand-logo">
+                        <p><%= image_tag "HPU_square.png", alt: "HARMAN Professional University" %></p>
+                    </div>
+                    <p>HARMAN Professional University</p>
+                </div>
+                <% end %>
+            </li>
+            <% end %>
+            <% all_brands.each do |brand| %>
+            <% if brand.training_url.present? %>
+            <li>
+                <%= link_to brand.training_url, target: "_blank" do %>
+                <div class="panel text-center" data-equalizer-watch="brands">
+                    <div class="brand-logo">
+                        <% if brand.logo.present? || ENV['show_placeholders'] == "true" %>
+                        <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
+                        <% end %>
+                    </div>
+                    <p><%= t('training_page.brand_training', brand: brand.name) %></p>
+                </div>
+                <% end %>
+            </li>
+            <% end %>
+            <% end %>
+        </ul><!-- <ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-1"> -->
+    </div><!-- <div class="large-8 large-offset-2 medium-8 medium-offset-2 columns" data-equalizer="brands"> -->
+</div><!-- <div class="row"> -->
+<!-- end training login link boxes --> 

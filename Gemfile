@@ -63,6 +63,8 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-passenger'
+  gem 'byebug',      '3.4.0'
+  gem 'rails-erd'  
 end
 
 group :development, :test do
