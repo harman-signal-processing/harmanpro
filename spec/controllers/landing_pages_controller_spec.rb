@@ -39,15 +39,6 @@ RSpec.describe LandingPagesController, type: :controller do
     end
   end
 
-  describe "GET training" do
-    it "responds with training page" do
-      get :training
-
-      expect(response).to be_success
-      expect(response).to render_template("training")
-    end
-  end
-
   describe "GET privacy_policy" do
     it "responds with privacy policy page" do
       privacy_policy = FactoryGirl.create(:landing_page)
