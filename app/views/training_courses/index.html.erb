@@ -1,36 +1,40 @@
-<%#debugger%>
+<%= render 'training_content_pages/training_page_meta_data' %>
 
-<!-- begin main content row  -->
-<div class="row training-top-content-row">
+<%#
+    This template does not use the following content from @training_content_page.
+    header_code
+    footer_code
+    right_content
+    sub_content
+%>
 
-    <!-- begin left nav  -->
-    <div class="medium-3 small-12 columns">
-        <%= render partial: 'training_content_pages/training_leftnav' %>
-    </div>
+<div class="container main-container">
+    <% if @training_content_page.banner.present? %>
+    <%= image_tag @training_content_page.banner.url %>
+    <% end %>
 
-    <!-- begin main content  -->
-    <div class="medium-9 small-12 columns">
-        <!--<h1 class="space-after">Classroom Courses</h1>-->
-        <!--<p><strong>Classroom</strong> or instructor-led courses have been developed with the right balance of knowledge and practical experience in mind. In our control courses, for example, each student accesses a personal control system at their desk. Students may design, integrate, and program a control system while in class.</p>-->
-        <!--<ul>-->
-        <!--    <li>Dealer: &nbsp;&nbsp;No Charge</li>-->
-        <!--    <li>Non Dealer: &nbsp;&nbsp;$300/day</li>-->
-        <!--</ul>-->
-        
-        <h1 class="space-after"><%= @training_content_page.title %></h1>
-        <% if @training_content_page.subtitle.present? %>
-          <h4 class="subheader"><%= @training_content_page.subtitle %></h4>
-          <br/>
-        <% end %>
-        
-        <%= render_content(@training_content_page, :main_content) %>        
-        
-        
-        <%# This will render the courses directly from the server as opposed to /training/classroom-courses which will load the courses list from an ajax call%>
-        <%= render 'training_courses/courses_list' %>
-        
-        <%= render 'training_content_pages/training_login_signup_box_links' %>
-    </div><!-- <div class="medium-9 small-12 columns"> -->
+    <!-- begin main content row  -->
+    <div class="row training-top-content-row">
+        <!-- begin left nav  -->
+        <div class="medium-3 small-12 columns">
+            <%= render partial: 'training_content_pages/training_leftnav' %>
+        </div>
+        <!-- begin main content  -->
+        <div class="medium-9 small-12 columns">
+            <h1 class="space-after"><%= @training_content_page.title %></h1>
+            <% if @training_content_page.subtitle.present? %>
+            <h4 class="subheader"><%= @training_content_page.subtitle %></h4>
+            <br />
+            <% end %>
 
-</div><!-- <div class="row training-top-content-row"> -->
-<!-- end main content row -->
+            <%= render_content(@training_content_page, :main_content) %>
+
+
+            <%# This will render the courses directly from the server as opposed to /training/classroom-courses which will load the courses list from an ajax call%>
+            <%= render 'training_courses/courses_list' %>
+
+            <%= render 'training_content_pages/training_login_signup_box_links' %>
+        </div><!-- <div class="medium-9 small-12 columns"> -->
+    </div><!-- <div class="row training-top-content-row"> -->
+    <!-- end main content row -->
+</div><!-- <div class="container main-container">  -->
