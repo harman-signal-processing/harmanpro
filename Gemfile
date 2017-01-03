@@ -40,6 +40,7 @@ gem 'exception_notification'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'ruby-pardot'
 gem 'mailgun_rails' # mailer service from Rackspace
+gem 'recaptcha', require: "recaptcha/rails"
 
 gem 'globalize', '~> 5.0.0'
 gem 'friendly_id-globalize'
@@ -64,7 +65,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-passenger'
   gem 'byebug',      '3.4.0'
-  gem 'rails-erd'  
+  gem 'rails-erd'
 end
 
 group :development, :test do

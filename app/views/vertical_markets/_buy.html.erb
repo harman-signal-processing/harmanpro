@@ -83,6 +83,7 @@
               </div>
             </div>
             <%= f.input :project_description, label: body_label, input_html: { rows: 6 } %>
+            <%= recaptcha_tags %><br/>
             <%= f.button :submit, t('submit').titleize, class: "medium radius button" %>
           <% end %>
         </div>

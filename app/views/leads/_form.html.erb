@@ -8,5 +8,6 @@
   <%= f.input :phone %>
   <%= f.input :location %>
   <%= f.input :project_description, label: body_label, input_html: { rows: 10 } %>
+  <%= recaptcha_tags %><br/>
   <%= f.button :submit, t('submit').titleize, class: "medium radius button" %>
 <% end %>
