@@ -9,7 +9,7 @@ class LeadsController < ApplicationController
     @lead.source = session["last_page"]
     @lead.locale = I18n.locale
     respond_to do |f|
-      if @lead.save
+      if verify_recaptcha(model: @lead) && @lead.save
         f.html { redirect_to thankyou_path }
         f.json { head :ok }
       else
