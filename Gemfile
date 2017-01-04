@@ -60,6 +60,7 @@ group :development do
   gem 'rb-inotify', :require=>false
   gem 'sshkit'
   gem 'colorize'
+  gem 'capistrano', '3.6.1'
   gem 'capistrano3-delayed-job', '~> 1.0'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
