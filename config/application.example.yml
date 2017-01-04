@@ -30,6 +30,8 @@ MAILGUN_DOMAIN: your-mailgun-domain
 PARDOT_USER: username
 PARDOT_PASSWORD: password
 PARDOT_API_KEY: api_key
+RECAPTCHA_SITE_KEY: YOUR_GOOGLE_RECAPTCHA_SITE_KEY
+RECAPTCHA_SECRET_KEY: YOUR_GOOGLE_RECAPTCHA_SECRET_KEY
 
 production:
   harmanpro_database_password: database_password
