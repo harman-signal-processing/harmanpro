@@ -11,6 +11,7 @@ class AvailableLocale < ActiveRecord::Base
   has_many :translators, through: :locale_translators
   has_many :menu_items, foreign_key: :locale_id
   has_many :landing_pages, foreign_key: :original_locale_id
+  has_many :training_content_pages, foreign_key: :original_locale_id
   has_many :events, foreign_key: :original_locale_id
   has_many :news_articles, foreign_key: :locale_id
   has_many :artists, foreign_key: :locale_id, dependent: :destroy
@@ -26,7 +27,7 @@ class AvailableLocale < ActiveRecord::Base
   end
 
   def self.translatables
-    %w(Brand CaseStudy Event LandingPage ProductType Product ReferenceSystem SiteSetting Venue VerticalMarket)
+    %w(Brand CaseStudy Event LandingPage ProductType Product ReferenceSystem SiteSetting Venue VerticalMarket TrainingContentPage)
   end
 
   def self.live

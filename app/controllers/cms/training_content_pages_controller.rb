@@ -1,4 +1,4 @@
-class Cms::TrainingContentPagesController < ApplicationController
+class Cms::TrainingContentPagesController < CmsController
   before_action :set_locale_for_translator
 
   def index
