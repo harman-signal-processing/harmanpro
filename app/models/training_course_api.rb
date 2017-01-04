@@ -1,9 +1,9 @@
 class TrainingCourseApi
     include HTTParty
-    
+    base_uri 'trade.amx.com/webservice/proxyservice.asmx'
     format :xml
     
     def self.courses
-        get('http://trade.amx.com/webservice/proxyservice.asmx/GetTrainingCourseCatalog')
+        get('/GetTrainingCourseCatalog')
     end
 end

@@ -40,7 +40,6 @@ translates :slug, :title, :subtitle, :main_content, :left_content, :right_conten
 
   def main_content_width
     mcw = 9
-    #mcw -= side_column_width if self.left_content.present?
     mcw -= side_column_width if self.right_content.present?
     mcw
   end    

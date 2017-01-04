@@ -1,0 +1,28 @@
+<%= simple_form_for [:cms, @available_locale, @training_content_page] do |f| %>
+
+  <%= f.input :title %>
+  <%= f.input :hide_title, label: "Hide title on the page. (If checked, title will only appear in the browser's title area--not on the page itself.)" %>
+  <%= f.input :subtitle %>
+  <%= f.input :description, as: :text, input_html: { rows: 3 } %>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :banner, hint: "If provided, banner appears above main content (full width). Ideal size: 1170x400 pixels." %>
+    </div>
+    <div class="medium-6 columns">
+      <% if @training_content_page.banner.present? %>
+        Current banner:<br/>
+        <%= link_to(image_tag(@training_content_page.banner.url(:small)),
+              @training_content_page.banner.url ) %><br/>
+        <%= f.input :delete_banner, as: :boolean %>
+      <% end %>
+    </div>
+  </div>
+  <%= f.input :main_content, as: :text, input_html: { rows: 35, class: "mceEditor" } %>
+  <br/>
+  <%= f.input :right_content, as: :text, hint: "Leave blank to hide right side bar", input_html: { rows: 20, class: "mceEditor" } %>
+  <br/>
+  <%= f.input :sub_content, as: :text, hint: "Leave blank to hide content below main content", input_html: { rows: 20, class: "mceEditor" } %>
+  <br/>
+  <%= f.submit 'Save Changes', class: 'medium button' %>
+
+<% end %>

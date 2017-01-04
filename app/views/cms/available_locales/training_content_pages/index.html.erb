@@ -1,0 +1,29 @@
+<div class="large-12 small-12 columns">
+  <%= render 'cms/available_locales/side_nav' %>
+
+  <div class="medium-7 small-12 columns">
+    <h3>Choose a landing page:</h3>
+    <ul>
+      <% @training_content_pages.order(updated_at: :asc).each do |training_content_page| %>
+        <li class="<%= 'needs-translation' if training_content_page.needs_translation?(@available_locale.key) %>">
+          <%= link_to training_content_page.title, edit_cms_available_locale_training_content_page_path(@available_locale, training_content_page) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="medium-3 small-12 columns">
+    <div class="panel">
+      <h6>What is it?</h6>
+      <p>A Landing Page is a catch-all resource
+      which can be used for any purpose including
+      email capture or general announcements.
+      These pages are not automatically linked
+      anywhere within the site.</p>
+      <p>
+      <%= fa_icon "info-circle" %>
+      Pages here originated in the main site's
+      default locale. For <%= @available_locale.name %>-only pages,
+      <%= link_to "click here", [:originated, :cms, @available_locale, :training_content_pages] %>.</p>
+    </div>
+  </div>
+</div>

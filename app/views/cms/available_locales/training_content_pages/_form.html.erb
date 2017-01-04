@@ -1,0 +1,113 @@
+<%= simple_form_for [:cms, @available_locale, @training_content_page] do |f| %>
+  <%= render 'cms/available_locales/form_header', f: f %>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :title %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @training_content_page.title %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :subtitle %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @training_content_page.subtitle %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :description, as: :text, input_html: { rows: 3 } %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @training_content_page.description %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :main_content, as: :text, input_html: { rows: 35, class: "mceEditor" } %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @training_content_page.main_content %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :right_content, as: :text, input_html: { rows: 25, class: "mceEditor" } %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @training_content_page.right_content %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :sub_content, as: :text, input_html: { rows: 25, class: "mceEditor" } %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @training_content_page.sub_content %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns text-center">
+      <hr/>
+      <%= f.submit 'Save Changes', class: 'medium button' %>
+    </div>
+  </div>
+
+<% end %>

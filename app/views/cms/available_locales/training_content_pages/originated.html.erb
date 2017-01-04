@@ -1,0 +1,44 @@
+<div class="large-12 small-12 columns">
+  <%= render 'cms/available_locales/side_nav' %>
+
+  <div class="medium-7 small-12 columns">
+    <h3><%= @available_locale.name %>-only Training Content Pages</h3>
+    <%= link_to new_cms_available_locale_training_content_page_path(@available_locale),
+      class: "tiny success button radius" do %>
+      <%= fa_icon "plus" %>
+      New Training Content Page
+    <% end %>
+    <% if @training_content_pages.count > 0 %>
+      <table width="100%">
+        <tr>
+          <th>Title <i>(click to edit page)</i></th>
+          <th>Public Link <i>(click to view page)</i></th>
+        </tr>
+        <% @training_content_pages.order(:title).each do |training_content_page| %>
+          <tr>
+            <td><%= link_to training_content_page.title, edit_cms_available_locale_training_content_page_path(@available_locale, training_content_page) %></td>
+            <td><%= link_to(training_content_page_url(training_content_page, locale: training_content_page.original_locale.key),
+                            training_content_page_url(training_content_page, locale: training_content_page.original_locale.key),
+                           target: "_blank") %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+  <div class="medium-3 small-12 columns">
+    <div class="panel">
+      <h6>What is it?</h6>
+      <p>A Landing Page is a catch-all resource
+      which can be used for any purpose including
+      email capture or general announcements.
+      These pages are not automatically linked
+      anywhere within the site.</p>
+      <p>
+      <%= fa_icon "info-circle" %>
+      Pages here are created for the
+      <%= @available_locale.name %> site only. To
+      translate pages from the default site,
+      <%= link_to "click here", [:cms, @available_locale, :training_content_pages] %>.</p>
+    </div>
+  </div>
+</div>
