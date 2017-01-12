@@ -11,11 +11,14 @@ ActiveAdmin.register TrainingContentPage do
     :sub_content,
     :hide_title,
     :banner,
+    :delete_banner,
     :custom_slug,
     :header_code,
     :footer_code
 
   # :nocov:
+  
+  # This is for the page showing the list of Training Content Pages
   index do
     selectable_column
     id_column
@@ -46,6 +49,9 @@ ActiveAdmin.register TrainingContentPage do
       end
     end
     column :created_at
+    column :banner do |b|
+      b.banner_file_name.present?
+    end
     actions
   end
 
@@ -54,13 +60,14 @@ ActiveAdmin.register TrainingContentPage do
   filter :original_locale
   filter :updated_at
 
+  # This is for readonly view of the choosen Training Content Page
   show do
     attributes_table do
       row :banner do |b|
         if b.banner_file_name.present?
           image_tag b.banner.url(:small)
         end
-      end
+      end  #  row :banner do |b|
       row :title
       row :hide_title
       row :subtitle
@@ -94,8 +101,10 @@ ActiveAdmin.register TrainingContentPage do
       row :footer_code
     end
     active_admin_comments
-  end
+  end  #  show do
+  
 
+  # This is for the edit view of the choosen Training Content Page
   form html: { multipart: true} do |f|
     f.inputs do
       f.input :title
@@ -103,17 +112,16 @@ ActiveAdmin.register TrainingContentPage do
       f.input :hide_title, label: "Hide big, h1 title tag"
       f.input :subtitle
       f.input :description, hint: "appears as meta description in HTML for page"
-      f.input :banner
+      f.input :banner, :as => :file, :hint => image_tag(f.object.banner.url(:small), title:"Current banner")
+      f.input :delete_banner, label: "Delete banner", as: :boolean
       f.input :main_content, input_html: { class: "mceEditor"}
-      #f.input :left_content, hint: "(optional)", input_html: { class: "mceEditor"}
       f.input :right_content, hint: "(optional)", input_html: { class: "mceEditor"}
       f.input :sub_content, hint: "(optional)", input_html: { class: "mceEditor"}
       f.input :header_code, hint: "Javascript, etc. here will load in the page's HTML header"
       f.input :footer_code, hint: "Javascript, etc. here will load just before the page's closing body tag"
-    end
+    end  #  f.inputs do
     f.actions
-  end
+  end  #  form html: { multipart: true} do |f|
   # :nocov:
 
-
-end
+end  #  ActiveAdmin.register TrainingContentPage do
