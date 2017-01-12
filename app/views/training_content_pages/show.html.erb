@@ -23,10 +23,14 @@
 
         <!-- begin main content  -->
         <div class="medium-<%= @training_content_page.main_content_width %> small-12 columns">
-            <h1 class="space-after"><%= @training_content_page.title %></h1>
+            
+            <% unless @training_content_page.hide_title %>
+                <h1 class="space-after"><%= @training_content_page.title %></h1>
+            <% end %>
+            
             <% if @training_content_page.subtitle.present? %>
-            <h4 class="subheader"><%= @training_content_page.subtitle %></h4>
-            <br />
+                <h4 class="subheader"><%= @training_content_page.subtitle %></h4>
+                <br />
             <% end %>
 
             <%= render_content(@training_content_page, :main_content) %>

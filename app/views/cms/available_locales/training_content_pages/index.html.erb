@@ -2,7 +2,7 @@
   <%= render 'cms/available_locales/side_nav' %>
 
   <div class="medium-7 small-12 columns">
-    <h3>Choose a landing page:</h3>
+    <h3>Choose a training content page:</h3>
     <ul>
       <% @training_content_pages.order(updated_at: :asc).each do |training_content_page| %>
         <li class="<%= 'needs-translation' if training_content_page.needs_translation?(@available_locale.key) %>">
@@ -14,11 +14,8 @@
   <div class="medium-3 small-12 columns">
     <div class="panel">
       <h6>What is it?</h6>
-      <p>A Landing Page is a catch-all resource
-      which can be used for any purpose including
-      email capture or general announcements.
-      These pages are not automatically linked
-      anywhere within the site.</p>
+      <p>A Training Content Page is a resource
+      to provide content for the training section of the site.</p>
       <p>
       <%= fa_icon "info-circle" %>
       Pages here originated in the main site's

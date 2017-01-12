@@ -23,11 +23,9 @@ translates :slug, :title, :subtitle, :main_content, :left_content, :right_conten
   before_update :delete_banner_if_needed
 
   def delete_banner_if_needed
-    unless self.banner.dirty?
       if self.delete_banner.present? && self.delete_banner.to_s == "1"
         self.banner = nil
       end
-    end
   end
 
   def assign_locale
