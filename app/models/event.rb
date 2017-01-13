@@ -25,7 +25,7 @@ class Event < ActiveRecord::Base
 
   def delete_image_if_needed
     unless self.image.dirty?
-      if self.delete_image.present? || self.delete_image.to_s == "1"
+      if self.delete_image.present? && self.delete_image.to_s == "1"
         self.image = nil
       end
     end
