@@ -18,7 +18,7 @@ RSpec.describe Cms::CaseStudiesController, type: :controller do
   describe "sub-folder of available_locale" do
     describe "GET :index" do
       it "assigns locale and loads case studies" do
-        get :index, available_locale_id: @available_locale.to_param
+        get :index, params: { available_locale_id: @available_locale.to_param }
 
         expect(assigns(:available_locale)).to eq(@available_locale)
         expect(assigns(:case_studies)).to include(@case_study)
@@ -28,7 +28,7 @@ RSpec.describe Cms::CaseStudiesController, type: :controller do
 
     describe "GET :show" do
       it "shows the case study" do
-        get :show, available_locale_id: @available_locale.to_param, id: @case_study.to_param
+        get :show, params: { available_locale_id: @available_locale.to_param, id: @case_study.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
         expect(assigns(:available_locale)).to eq(@available_locale)
@@ -39,7 +39,7 @@ RSpec.describe Cms::CaseStudiesController, type: :controller do
 
     describe "GET :edit" do
       it "assigns locale and case_study and renders form" do
-        get :edit, available_locale_id: @available_locale.to_param, id: @case_study.to_param
+        get :edit, params: { available_locale_id: @available_locale.to_param, id: @case_study.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
         expect(assigns(:available_locale)).to eq(@available_locale)
@@ -50,8 +50,10 @@ RSpec.describe Cms::CaseStudiesController, type: :controller do
 
     describe "PUT :update" do
       it "updates the case_study" do
-        put :update, available_locale_id: @available_locale.to_param, id: @case_study.to_param,
+        put :update, params: {
+          available_locale_id: @available_locale.to_param, id: @case_study.to_param,
           case_study: { description: 'New description' }
+        }
 
         @case_study.reload
         expect(@case_study.description).to eq('New description')

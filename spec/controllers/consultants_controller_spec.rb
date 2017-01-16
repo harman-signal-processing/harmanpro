@@ -39,7 +39,7 @@ RSpec.describe ConsultantsController, type: :controller do
       @software = {"name":"Ethernet Device Discoverer","formatted_name":"Ethernet Device Discoverer v2.0 (Windows)","version":"2.0","platform":"Windows","id":"ethernet-device-discoverer-v2-0-windows","direct_download_url":"http://adn.harmanpro.com/softwares/wares/397_1429552081/Ethernet%20Device%20Discoverer%20v2.zip","url":"http://www.crownaudio.com/api/v2/brands/crown/softwares/ethernet-device-discoverer-v2-0-windows"}
       expect(BrandApi).to receive(:software).and_return([@software])
 
-      get :software, format: 'json'
+      get :software, params: { format: 'json' }
     end
 
     it "assigns @software" do

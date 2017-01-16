@@ -15,6 +15,7 @@ RSpec.describe MenuItem, type: :model do
 
   # This is so that caches are refreshed when menu items change
   it "updating should touch the related locale" do
+    @menu_item.locale.update_attributes(updated_at: 1.minute.ago)
     updated_at = @menu_item.locale.updated_at
 
     @menu_item.update_attributes(title: "Foooooo")

@@ -11,7 +11,7 @@ RSpec.describe ResourcesController do
   describe "GET :show" do
 
     before do
-      get :show, id: @resource.id
+      get :show, params: { id: @resource.id }
     end
 
     it "returns the resource" do

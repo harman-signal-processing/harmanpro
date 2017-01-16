@@ -11,7 +11,7 @@ RSpec.describe ProductsController do
 
     it "renders json" do
       expect(BrandApi).to receive(:products).and_return([@product].to_json)
-      get :index, brand_id: @brand.id, format: :json
+      get :index, params: { brand_id: @brand.id, format: :json }
 
       expect(response.content_type).to eq("application/json")
     end
@@ -21,7 +21,7 @@ RSpec.describe ProductsController do
 
     it "renders json" do
       expect(BrandApi).to receive(:product).and_return(@product.to_json)
-      get :show, brand_id: @brand.id, id: @product.id, format: :json
+      get :show, params: { brand_id: @brand.id, id: @product.id, format: :json }
 
       expect(response.content_type).to eq("application/json")
     end

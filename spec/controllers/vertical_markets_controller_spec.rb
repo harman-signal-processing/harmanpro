@@ -9,7 +9,7 @@ RSpec.describe VerticalMarketsController do
 
   describe "GET show.html" do
     before do
-      get :show, id: @vertical_market.to_param
+      get :show, params: { id: @vertical_market.to_param }
     end
 
     it "assigns @vertical_market" do
@@ -34,7 +34,7 @@ RSpec.describe VerticalMarketsController do
                                 product_type: product_type)
       FactoryGirl.create(:reference_system_product_type_product,
                          reference_system_product_type: rspt)
-      get :show, id: @vertical_market.id, format: :json
+      get :show, params: { id: @vertical_market.id, format: :json }
     end
 
     it "assigns @vertical_market" do

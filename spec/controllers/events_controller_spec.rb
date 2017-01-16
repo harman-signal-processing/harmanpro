@@ -28,7 +28,7 @@ RSpec.describe EventsController, type: :controller do
   describe "GET show" do
 
     it "should show the event details page" do
-      get :show, id: @past_event.to_param
+      get :show, params: { id: @past_event.to_param }
 
       expect(assigns(:event)).to eq(@past_event)
       expect(response).to render_template('show')
@@ -36,7 +36,7 @@ RSpec.describe EventsController, type: :controller do
 
 
     it "should redirect to index for hidden event" do
-      get :show, id: @hidden_event.to_param
+      get :show, params: { id: @hidden_event.to_param }
 
       expect(response).to redirect_to(events_path)
     end

@@ -9,7 +9,7 @@ RSpec.describe ReferenceSystemsController, :type => :controller do
 
   describe "GET show.html" do
     before do
-      get :show, id: @reference_system.to_param, vertical_market_id: @vertical_market.to_param
+      get :show, params: { id: @reference_system.to_param, vertical_market_id: @vertical_market.to_param }
     end
 
     it "assigns @reference_system" do
@@ -38,7 +38,7 @@ RSpec.describe ReferenceSystemsController, :type => :controller do
                                 product_type: product_type)
       FactoryGirl.create(:reference_system_product_type_product,
                          reference_system_product_type: rspt)
-      get :show, id: @reference_system.id, vertical_market_id: @vertical_market.id, format: :json
+      get :show, params: { id: @reference_system.id, vertical_market_id: @vertical_market.id, format: :json }
     end
 
     it "assigns @reference_system" do

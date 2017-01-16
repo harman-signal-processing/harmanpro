@@ -17,7 +17,7 @@ RSpec.describe Cms::MenuItemsController, type: :controller do
   describe "sub-folder of available_locale" do
     describe "GET :index" do
       it "assigns locale" do
-        get :index, available_locale_id: @available_locale.to_param
+        get :index, params: { available_locale_id: @available_locale.to_param }
 
         expect(assigns(:available_locale)).to eq(@available_locale)
         expect(response).to render_template('cms/available_locales/menu_items/index')
@@ -26,7 +26,7 @@ RSpec.describe Cms::MenuItemsController, type: :controller do
 
     describe "GET :new" do
       it "assigns locale and sets up new MenuItem" do
-        get :new, available_locale_id: @available_locale.to_param
+        get :new, params: { available_locale_id: @available_locale.to_param }
 
         expect(assigns(:available_locale)).to eq(@available_locale)
         expect(assigns(:menu_item)).to be_a(MenuItem)
@@ -36,8 +36,10 @@ RSpec.describe Cms::MenuItemsController, type: :controller do
 
     describe "POST :create" do
       it "creates the new menu item and assigns it the currently active locale" do
-        post :create, available_locale_id: @available_locale.to_param, menu_item: {
-          title: "Cosa Buena", link: "http://cosabuena.com"
+        post :create, params: {
+          available_locale_id: @available_locale.to_param, menu_item: {
+            title: "Cosa Buena", link: "http://cosabuena.com"
+          }
         }
 
         menu_item = assigns(:menu_item)
@@ -50,7 +52,7 @@ RSpec.describe Cms::MenuItemsController, type: :controller do
     describe "GET :edit" do
       before do
         @menu_item = FactoryGirl.create(:menu_item, locale: @available_locale)
-        get :edit, available_locale_id: @available_locale.id, id: @menu_item.id
+        get :edit, params: { available_locale_id: @available_locale.id, id: @menu_item.id }
       end
 
       it "renders a form to edit the menu item" do
@@ -65,8 +67,10 @@ RSpec.describe Cms::MenuItemsController, type: :controller do
       end
 
       it "updates the item" do
-        put :update, available_locale_id: @available_locale.id, id: @menu_item.id, menu_item: {
-          title: "Foo To You", link: "http://foo.to.you"
+        put :update, params: {
+          available_locale_id: @available_locale.id, id: @menu_item.id, menu_item: {
+            title: "Foo To You", link: "http://foo.to.you"
+          }
         }
 
         @menu_item.reload

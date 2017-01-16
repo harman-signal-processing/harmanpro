@@ -19,7 +19,7 @@ RSpec.describe Cms::TrainingContentPagesController, type: :controller do
   describe "sub-folder of available_locale" do
     describe "GET :index" do
       it "assigns locale and loads training content pages" do
-        get :index, available_locale_id: @available_locale.to_param
+        get :index, params: { available_locale_id: @available_locale.to_param }
 
         #expect(assigns(:available_locale)).to eq(@available_locale)
         #expect(assigns(:training_content_page)).to include(@training_content_page)
@@ -59,7 +59,7 @@ RSpec.describe Cms::TrainingContentPagesController, type: :controller do
     #    expect(response).to redirect_to cms_available_locale_training_content_pages_path(@available_locale)
     #  end
     #end  #  describe "PUT :update" do
-    
+
   end  #  describe "sub-folder of available_locale" do
-  
+
 end  #  RSpec.describe Cms::TrainingContentPagesController, type: :controller do
