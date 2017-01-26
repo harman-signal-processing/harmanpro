@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
 
-gem 'rails', '4.2.7.1'
+gem 'rails', '~> 5.0' #'4.2.7.1'
 gem 'responders', '~> 2.0'
 gem 'mysql2' #, '~> 0.3.18'
 gem 'sass-rails', '~> 5.0'
@@ -21,13 +25,14 @@ gem 'simple_form'
 gem 'RedCloth'
 gem 'tinymce-rails', git: 'https://github.com/spohlenz/tinymce-rails.git'
 gem 'foundation-rails', '~> 5.5' # After this, getting incompatible units errors
-gem 'friendly_id'
+gem 'friendly_id', '>= 5.2'
 gem 'paperclip'
 gem 'acts_as_list'
 gem 'acts_as_tree'
-gem 'acts-as-taggable-on', '~> 3.4'
+gem 'acts-as-taggable-on' #, '~> 3.4'
 gem 'devise'
-gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin', ref: 'b20fd04e992f721f49557f4dc59c7da3a732ba68'
+gem 'activeadmin', github: 'activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'activeadmin-sortable'
 gem 'pundit'
 gem 'delayed_job_active_record'
@@ -38,11 +43,10 @@ gem 'cheetah_mail', "~> 0.6.0"
 gem 'ransack' # using for service center search
 gem 'exception_notification'
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'ruby-pardot'
 gem 'mailgun_rails' # mailer service from Rackspace
 gem 'recaptcha', require: "recaptcha/rails"
 
-gem 'globalize', '~> 5.0.0'
+gem 'globalize', github: 'globalize' #'~> 5.0.0'
 gem 'friendly_id-globalize'
 gem 'http_accept_language'
 gem 'rails-i18n'
@@ -83,4 +87,8 @@ group :test do
   gem 'faker'
   gem 'selenium-webdriver'
   gem 'launchy'
+  # This brings back the 'assigns' method I used a lot in testing which DHH
+  # now discourages. But, requiring it here breaks other tests. So I do the
+  # require in spec/rails_helper.rb
+  gem 'rails-controller-testing', require: false
 end

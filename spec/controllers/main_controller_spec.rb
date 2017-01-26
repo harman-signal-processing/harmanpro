@@ -34,7 +34,7 @@ RSpec.describe MainController do
   describe "GET sitemap.xml" do
 
     before do
-      get :sitemap, format: :xml
+      get :sitemap, params: { format: :xml }
     end
 
     it "assigns @pages" do
@@ -65,7 +65,7 @@ RSpec.describe MainController do
   describe "GET sureroute-test-object (html)" do
 
     before do
-      get :sureroute, format: :html
+      get :sureroute, params: { format: :html }
     end
 
     it "renders the template" do

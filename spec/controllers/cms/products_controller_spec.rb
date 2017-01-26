@@ -18,7 +18,7 @@ RSpec.describe Cms::ProductsController, type: :controller do
   describe "sub-folder of available_locale" do
     describe "GET :index" do
       it "assigns locale and loads products" do
-        get :index, available_locale_id: @available_locale.to_param
+        get :index, params: { available_locale_id: @available_locale.to_param }
 
         expect(assigns(:available_locale)).to eq(@available_locale)
         expect(assigns(:products)).to include(@product)
@@ -28,7 +28,7 @@ RSpec.describe Cms::ProductsController, type: :controller do
 
     describe "GET :show" do
       it "shows the product" do
-        get :show, available_locale_id: @available_locale.to_param, id: @product.to_param
+        get :show, params: { available_locale_id: @available_locale.to_param, id: @product.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
         expect(assigns(:available_locale)).to eq(@available_locale)
@@ -39,7 +39,7 @@ RSpec.describe Cms::ProductsController, type: :controller do
 
     describe "GET :edit" do
       it "assigns locale and product and renders form" do
-        get :edit, available_locale_id: @available_locale.to_param, id: @product.to_param
+        get :edit, params: { available_locale_id: @available_locale.to_param, id: @product.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
         expect(assigns(:available_locale)).to eq(@available_locale)
@@ -50,8 +50,10 @@ RSpec.describe Cms::ProductsController, type: :controller do
 
     describe "PUT :update" do
       it "updates the product" do
-        put :update, available_locale_id: @available_locale.to_param, id: @product.to_param,
+        put :update, params: {
+          available_locale_id: @available_locale.to_param, id: @product.to_param,
           product: { description: 'New description' }
+        }
 
         @product.reload
         expect(@product.description).to eq('New description')

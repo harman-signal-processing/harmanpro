@@ -10,7 +10,7 @@ RSpec.describe CaseStudiesController, :type => :controller do
 
   describe "GET show" do
     before do
-      get :show, id: @case_study.id
+      get :show, params: { id: @case_study.id }
     end
 
     it "assigns @case_study" do

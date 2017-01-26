@@ -18,7 +18,7 @@ RSpec.describe Cms::EventsController, type: :controller do
   describe "sub-folder of available_locale" do
     describe "GET :index" do
       it "assigns locale and loads events" do
-        get :index, available_locale_id: @available_locale.to_param
+        get :index, params: { available_locale_id: @available_locale.to_param }
 
         expect(assigns(:available_locale)).to eq(@available_locale)
         expect(assigns(:events)).to include(@event)
@@ -28,7 +28,7 @@ RSpec.describe Cms::EventsController, type: :controller do
 
     describe "GET :show" do
       it "shows the event" do
-        get :show, available_locale_id: @available_locale.to_param, id: @event.to_param
+        get :show, params: { available_locale_id: @available_locale.to_param, id: @event.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
         expect(assigns(:available_locale)).to eq(@available_locale)
@@ -39,7 +39,7 @@ RSpec.describe Cms::EventsController, type: :controller do
 
     describe "GET :edit" do
       it "assigns locale and event and renders form" do
-        get :edit, available_locale_id: @available_locale.to_param, id: @event.to_param
+        get :edit, params: { available_locale_id: @available_locale.to_param, id: @event.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
         expect(assigns(:available_locale)).to eq(@available_locale)
@@ -50,8 +50,10 @@ RSpec.describe Cms::EventsController, type: :controller do
 
     describe "PUT :update" do
       it "updates the event" do
-        put :update, available_locale_id: @available_locale.to_param, id: @event.to_param,
+        put :update, params: {
+          available_locale_id: @available_locale.to_param, id: @event.to_param,
           event: { description: 'New description' }
+        }
 
         @event.reload
         expect(@event.description).to eq('New description')

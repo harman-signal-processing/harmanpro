@@ -27,9 +27,6 @@ staging_user_email: user@email.com
 staging_user_password: changeme
 MAILGUN_API_KEY: key-1234567
 MAILGUN_DOMAIN: your-mailgun-domain
-PARDOT_USER: username
-PARDOT_PASSWORD: password
-PARDOT_API_KEY: api_key
 RECAPTCHA_SITE_KEY: YOUR_GOOGLE_RECAPTCHA_SITE_KEY
 RECAPTCHA_SECRET_KEY: YOUR_GOOGLE_RECAPTCHA_SECRET_KEY
 

@@ -23,7 +23,7 @@ RSpec.describe ServiceCentersController, as: :controller do
       @service_group = FactoryGirl.create(:service_group)
       @service_center.service_groups << @service_group
 
-      post :index, q: { state_eq: "UT", service_groups_name_eq: @service_group.name }
+      post :index, params: { q: { state_eq: "UT", service_groups_name_eq: @service_group.name } }
     end
 
     it "builds the service centers array" do
@@ -71,7 +71,7 @@ RSpec.describe ServiceCentersController, as: :controller do
       @count = ServiceCenter.count
       @service_center = FactoryGirl.build :service_center
 
-      post :create, service_center: @service_center.attributes
+      post :create, params: { service_center: @service_center.attributes }
     end
 
     it "creates the new, inactive service center" do

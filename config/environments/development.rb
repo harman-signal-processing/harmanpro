@@ -9,22 +9,30 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
-  config.action_controller.perform_caching = false
-  #config.action_controller.asset_host = 'http://localhost:3111'
+  # Show full error reports.
+  config.consider_all_requests_local = true
+
+  # Enable/disable caching. By default caching is disabled.
+  if Rails.root.join('tmp/caching-dev.txt').exist?
+    config.action_controller.perform_caching = true
+
+    config.cache_store = :memory_store
+    config.public_file_server.headers = {
+      'Cache-Control' => 'public, max-age=172800'
+    }
+  else
+    config.action_controller.perform_caching = false
+
+    config.cache_store = :null_store
+  end
+
   config.action_controller.asset_host = ENV["C9_HOSTNAME"].blank? ? 'http://localhost:3111' : 'https://' + ENV["C9_HOSTNAME"]
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
-  #config.action_mailer.default_url_options = { host: 'localhost', port: 3111 }
   config.action_mailer.default_url_options = ENV["C9_HOSTNAME"].blank? ? { host: 'localhost', port: 3111 } : { host: ENV["C9_HOSTNAME"] }
 
-  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
-  # the I18n.default_locale when a translation cannot be found).
-  config.i18n.fallbacks = true
-# All locales are loaded by default, this restricts to only those specified
-#  config.i18n.available_locales = [:en, :es, :'es-MX']
+  config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -37,12 +45,14 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  # Adds additional error checking when serving assets at runtime.
-  # Checks for improperly declared sprockets dependencies.
-  # Raises helpful error messages.
-  config.assets.raise_runtime_errors = true
+  # Suppress logger output for asset requests.
+  config.assets.quiet = true
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Use an evented file watcher to asynchronously detect changes in source code,
+  # routes, locales, etc. This feature depends on the listen gem.
+  # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_mailer.delivery_method = :letter_opener
 end

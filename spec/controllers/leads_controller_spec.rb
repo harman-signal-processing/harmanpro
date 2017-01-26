@@ -20,7 +20,7 @@ RSpec.describe LeadsController, :type => :controller do
     before do
       skip "Mailer hangs when run with entire suite"
       @lead = FactoryGirl.build(:lead)
-      post :create, lead: @lead.attributes
+      post :create, params: { lead: @lead.attributes }
     end
 
     it "creates the new lead" do

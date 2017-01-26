@@ -19,7 +19,7 @@ RSpec.describe Cms::BrandsController do
   describe "sub-folder of available_locale" do
     describe "GET :index" do
       it "assigns locale and loads brands" do
-        get :index, available_locale_id: @available_locale.to_param
+        get :index, params: { available_locale_id: @available_locale.to_param }
 
         expect(assigns(:available_locale)).to eq(@available_locale)
         expect(assigns(:brands)).to include(@brand)
@@ -29,7 +29,7 @@ RSpec.describe Cms::BrandsController do
 
     describe "GET :show" do
       it "shows the brand" do
-        get :show, available_locale_id: @available_locale.to_param, id: @brand.to_param
+        get :show, params: { available_locale_id: @available_locale.to_param, id: @brand.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
         expect(assigns(:available_locale)).to eq(@available_locale)
@@ -40,7 +40,7 @@ RSpec.describe Cms::BrandsController do
 
     describe "GET :edit" do
       it "assigns locale and brand and renders form" do
-        get :edit, available_locale_id: @available_locale.to_param, id: @brand.to_param
+        get :edit, params: { available_locale_id: @available_locale.to_param, id: @brand.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
         expect(assigns(:available_locale)).to eq(@available_locale)
@@ -51,8 +51,10 @@ RSpec.describe Cms::BrandsController do
 
     describe "PUT :update" do
       it "updates the brand" do
-        put :update, available_locale_id: @available_locale.to_param, id: @brand.to_param,
+        put :update, params: {
+          available_locale_id: @available_locale.to_param, id: @brand.to_param,
           brand: { description: 'New description' }
+        }
 
         @brand.reload
         expect(@brand.description).to eq('New description')

@@ -19,7 +19,7 @@ RSpec.describe Cms::LandingPagesController, type: :controller do
   describe "sub-folder of available_locale" do
     describe "GET :index" do
       it "assigns locale and loads landing pages" do
-        get :index, available_locale_id: @available_locale.to_param
+        get :index, params: { available_locale_id: @available_locale.to_param }
 
         expect(assigns(:available_locale)).to eq(@available_locale)
         expect(assigns(:landing_pages)).to include(@landing_page)
@@ -29,7 +29,7 @@ RSpec.describe Cms::LandingPagesController, type: :controller do
 
     describe "GET :show" do
       it "shows the landing page" do
-        get :show, available_locale_id: @available_locale.to_param, id: @landing_page.to_param
+        get :show, params: { available_locale_id: @available_locale.to_param, id: @landing_page.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
         expect(assigns(:available_locale)).to eq(@available_locale)
@@ -40,7 +40,7 @@ RSpec.describe Cms::LandingPagesController, type: :controller do
 
     describe "GET :edit" do
       it "assigns locale and landing_page and renders form" do
-        get :edit, available_locale_id: @available_locale.to_param, id: @landing_page.to_param
+        get :edit, params: { available_locale_id: @available_locale.to_param, id: @landing_page.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
         expect(assigns(:available_locale)).to eq(@available_locale)
@@ -51,8 +51,10 @@ RSpec.describe Cms::LandingPagesController, type: :controller do
 
     describe "PUT :update" do
       it "updates the landing_page" do
-        put :update, available_locale_id: @available_locale.to_param, id: @landing_page.to_param,
+        put :update, params: {
+          available_locale_id: @available_locale.to_param, id: @landing_page.to_param,
           landing_page: { description: 'New description' }
+        }
 
         @landing_page.reload
         expect(@landing_page.description).to eq('New description')
