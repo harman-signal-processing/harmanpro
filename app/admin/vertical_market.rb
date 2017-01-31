@@ -11,6 +11,7 @@ ActiveAdmin.register VerticalMarket do
     :lead_form_content,
     :live,
     :retail,
+    :hide_buy_section,
     case_study_vertical_markets_attributes: [:id, :case_study_id, :_destroy]
 
 
@@ -69,7 +70,6 @@ ActiveAdmin.register VerticalMarket do
   form html: { multipart: true} do |f|
     f.inputs do
       f.input :live
-      f.input :retail, label: "Offer retailer/ecommerce links with this vertical market."
       f.input :parent
       f.input :name, hint: "Maximum characters: 20", input_html: {maxlength: 20}
       f.input :headline, hint: "Maximum characters: 70", input_html: { maxlength: 70 }
@@ -77,7 +77,9 @@ ActiveAdmin.register VerticalMarket do
       f.input :background, hint: "Used for top-level verticals on the homepage and on the category page."
       f.input :description, hint: "Maximum recommended characters: 650", input_html: { rows: 10 }
       f.input :extra_content, hint: "Appears after the case studies", input_html: { rows: 10, class: "mceEditor"}
-      f.input :lead_form_content, input_html: { class: "mceEditor"}
+      f.input :retail, label: "Offer retailer/ecommerce links with this vertical market."
+      f.input :lead_form_content, hint: "Replaces the retailer links if present and the default lead form.", input_html: { class: "mceEditor"}
+      f.input :hide_buy_section, label: "Hide both the retailer links and the lead capture form."
     end
     f.has_many :case_study_vertical_markets, heading: "Case Studies", new_record: "Add a case study" do |s|
       s.input :id, as: :hidden

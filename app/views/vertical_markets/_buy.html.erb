@@ -1,95 +1,96 @@
 <a name="buy"></a>
 
-<% if vertical_market.lead_form_content.present? %>
-
-  <div class="container buy-container" data-magellan-destination="buy">
-    <div class="row">
-      <div class="large-8 large-offset-2 medium-10 medium-offset-1 small-12 columns">
-        <%= raw vertical_market.lead_form_content %>
-      </div>
-    </div>
-  </div>
-
-<% elsif vertical_market.retail? %>
-
-  <% retailers = current_locale.online_retailers %>
-  <% if SiteSetting.set_for_locale?("store_link", current_locale.key) || retailers.count > 0 %>
+<% unless vertical_market.hide_buy_section? %>
+  <% if vertical_market.lead_form_content.present? %>
 
     <div class="container buy-container" data-magellan-destination="buy">
       <div class="row">
-        <div class="large-8 large-offset-2 columns text-center">
+        <div class="large-8 large-offset-2 medium-10 medium-offset-1 small-12 columns">
+          <%= raw vertical_market.lead_form_content %>
+        </div>
+      </div>
+    </div>
 
-          <% if SiteSetting.set_for_locale?("store_link", current_locale.key) %>
-            <h4><%= SiteSetting.value("buy_direct_from_harman_headline") %></h4>
-            <br/>
-            <%= link_to t('home_page.shop_now'), SiteSetting.value("store_link"), target: "_blank", class: "radius button" %>
-            <br/>
-          <% end %>
+  <% elsif vertical_market.retail? %>
 
-          <% if retailers.count > 0 %>
-            <h4><%= SiteSetting.value("buy_from_online_retailer_headline") %></h4>
-            <br/>
-            <% retailers.order("RAND()").each do |online_retailer| %>
-              <%= link_to online_retailer.url, class: "retailer", target: "_blank" do %>
-                <% if online_retailer.logo.present? || ENV['show_placeholders'] == "true" %>
-                  <%= image_tag online_retailer.logo.url(:medium), alt: online_retailer.name %>
-                <% else %>
-                  <%= online_retailer.name %>
+    <% retailers = current_locale.online_retailers %>
+    <% if SiteSetting.set_for_locale?("store_link", current_locale.key) || retailers.count > 0 %>
+
+      <div class="container buy-container" data-magellan-destination="buy">
+        <div class="row">
+          <div class="large-8 large-offset-2 columns text-center">
+
+            <% if SiteSetting.set_for_locale?("store_link", current_locale.key) %>
+              <h4><%= SiteSetting.value("buy_direct_from_harman_headline") %></h4>
+              <br/>
+              <%= link_to t('home_page.shop_now'), SiteSetting.value("store_link"), target: "_blank", class: "radius button" %>
+              <br/>
+            <% end %>
+
+            <% if retailers.count > 0 %>
+              <h4><%= SiteSetting.value("buy_from_online_retailer_headline") %></h4>
+              <br/>
+              <% retailers.order("RAND()").each do |online_retailer| %>
+                <%= link_to online_retailer.url, class: "retailer", target: "_blank" do %>
+                  <% if online_retailer.logo.present? || ENV['show_placeholders'] == "true" %>
+                    <%= image_tag online_retailer.logo.url(:medium), alt: online_retailer.name %>
+                  <% else %>
+                    <%= online_retailer.name %>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
-          <% end %>
 
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
+  <% else %>
+
+    <div class="container buy-container" data-magellan-destination="buy">
+      <div class="row">
+        <div class="large-8 large-offset-2 medium-10 medium-offset-1 small-12 columns">
+          <h2 class="text-center"><%= SiteSetting.value("leadgen-title") %></h2>
+          <p class="text-center">
+            <%= SiteSetting.value("leadgen-intro") %>
+          </p>
+          <div class="panel">
+            <%
+              body_label ||= Lead.human_attribute_name("project_description")
+            %>
+            <%= simple_form_for @lead do |f| %>
+              <%= f.input :vertical_market_id, as: :hidden %>
+              <div class="row">
+                <div class="medium-6 small-12 columns">
+                  <%= f.input :name %>
+                </div>
+                <div class="medium-6 small-12 columns">
+                  <%= f.input :company %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-6 small-12 columns">
+                  <%= f.input :email %>
+                </div>
+                <div class="medium-6 small-12 columns">
+                  <%= f.input :location %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-6 small-12 columns">
+                  <%= f.input :phone %>
+                </div>
+              </div>
+              <%= f.input :project_description, label: body_label, input_html: { rows: 6 } %>
+              <%= recaptcha_tags %><br/>
+              <%= f.button :submit, t('submit').titleize, class: "medium radius button" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
 
   <% end %>
-
-<% else %>
-
-  <div class="container buy-container" data-magellan-destination="buy">
-    <div class="row">
-      <div class="large-8 large-offset-2 medium-10 medium-offset-1 small-12 columns">
-        <h2 class="text-center"><%= SiteSetting.value("leadgen-title") %></h2>
-        <p class="text-center">
-          <%= SiteSetting.value("leadgen-intro") %>
-        </p>
-        <div class="panel">
-          <%
-            body_label ||= Lead.human_attribute_name("project_description")
-          %>
-          <%= simple_form_for @lead do |f| %>
-            <%= f.input :vertical_market_id, as: :hidden %>
-            <div class="row">
-              <div class="medium-6 small-12 columns">
-                <%= f.input :name %>
-              </div>
-              <div class="medium-6 small-12 columns">
-                <%= f.input :company %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="medium-6 small-12 columns">
-                <%= f.input :email %>
-              </div>
-              <div class="medium-6 small-12 columns">
-                <%= f.input :location %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="medium-6 small-12 columns">
-                <%= f.input :phone %>
-              </div>
-            </div>
-            <%= f.input :project_description, label: body_label, input_html: { rows: 6 } %>
-            <%= recaptcha_tags %><br/>
-            <%= f.button :submit, t('submit').titleize, class: "medium radius button" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-
 <% end %>
-
