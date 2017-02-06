@@ -1,12 +1,15 @@
 // begin training_courses.js
-$(function() {
-    if (location.pathname === "/training/classroom-courses") {
+$(function ()
+{
+    if (location.pathname === "/training/classroom-courses")
+    {
         setTimeout(loadCourseCatalog, 100);
     }
 
 
     $(document.body).on('click', ".CourseHeader",
-        function() {
+        function ()
+        {
             var $this = $(this),
                 $courseContainer = $this.next(".CourseContainer"),
                 $arrowImage = $this.children('img:first');
@@ -16,7 +19,8 @@ $(function() {
 
         }); // $(document.body).on('click', ".CourseHeader", function
 
-    function loadCourseCatalog() {
+    function loadCourseCatalog()
+    {
         $("#CourseCostList").after("<div id='ClassroomCourseCatalogContainer' class='CourseCatalogContainer'><em>One moment, loading classroom course info . . .</em></div>");
 
         $.ajax({
@@ -26,16 +30,19 @@ $(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
 
-            success: function(dataFromServer, status, xmlhttp) {
+            success: function (dataFromServer, status, xmlhttp)
+            {
                 //var courseCategories = [];
                 var courseListClassroom = [];
 
                 $(dataFromServer.data.row).each(
-                    function() {
+                    function ()
+                    {
                         var $this = $(this);
 
 
-                        if ($this.attr('ows_Course_x0020_Type') == 'Instructor-Led') {
+                        if ($this.attr('ows_Course_x0020_Type') == 'Instructor-Led')
+                        {
                             var course = {};
                             course.name = $this.attr('ows_LinkTitle');
                             course.category = $this.attr('ows_Course_x0020_Category');
@@ -67,17 +74,20 @@ $(function() {
 
                 //Create Classroom Course array of course objects
                 var coursesInClassroom = [];
-                coursesInClassroom = jQuery.grep(courseListClassroom, function(courseObj, index) {
+                coursesInClassroom = jQuery.grep(courseListClassroom, function (courseObj, index)
+                {
                     return courseObj.type == 'Instructor-Led';
                 });
 
                 //Sort the Classroom course objects
-                coursesInClassroom.sort(function(courseObj1, courseObj2) {
+                coursesInClassroom.sort(function (courseObj1, courseObj2)
+                {
                     return (parseFloat(courseObj1.sortOrder) < parseFloat(courseObj2.sortOrder)) ? -1 : (parseFloat(courseObj1.sortOrder) > parseFloat(courseObj2.sortOrder)) ? 1 : 0;
                 });
 
                 //Loop through the sorted Classroom course objects
-                $.each(coursesInClassroom, function(index, courseObj) {
+                $.each(coursesInClassroom, function (index, courseObj)
+                {
                     //console.log('obj.name : ' + courseObj.name);
 
                     var newIconLink = "";
@@ -121,7 +131,8 @@ $(function() {
                 /////////////////////////////////////////
             }, // success: function (dataFromServer, status, xmlhttp)
 
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown)
+            {
                 $("#divEvents").html("Loading events ...");
                 //setTimeout("loadTradeShowEvents()", 200);
 
@@ -139,21 +150,40 @@ $(function() {
         }); //$.ajax(
     } // function loadCourseCatalog()
 
-    function toggleArrowImage($arrowImg) {
+    function toggleArrowImage($arrowImg)
+    {
         //var $arrowImg = $(this).children('img:first');
         var downArrowSrc = $arrowImg.attr('src').replace('-right.png', '-down.png');
         var rightArrowSrc = $arrowImg.attr('src').replace('-down.png', '-right.png');
 
         //if right arrow showing
-        if ($arrowImg.attr('src').indexOf('-down') == -1) {
+        if ($arrowImg.attr('src').indexOf('-down') == -1)
+        {
             $arrowImg.attr('src', downArrowSrc);
         }
-        else {
+        else
+        {
             $arrowImg.attr('src', rightArrowSrc);
         }
     } //  function toggleArrowImage($arrowImg)
 
+    if (location.hash.length > 0)
+{
+        setTimeout(openForHash, 1000);
+    }
 
+    function openForHash()
+{
+        var $coursecontainer = $("a[name='" + location.hash + "']").closest(".CourseContainer"),
+            $coursecontainerarrow = $coursecontainer.prev().find("img:first");
+        $coursecontainer.show("slow");
+        toggleArrowImage($coursecontainerarrow);
+
+        $('html, body').animate({
+            scrollTop: $coursecontainer.parent().prev().prev().offset().top
+        }, 2000);
+
+    }  //  function openForHash()
 
 }); //  $(function()
 //  end training_courses.js
