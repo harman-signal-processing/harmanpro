@@ -16,9 +16,9 @@
 <div ng-controller="HomepageBannerCtrl as banner" locale="<%= I18n.locale %>">
   <div class="bumped-up">
     <div class="banner-container text-center" style="background: white">
-      <h1 class="homepage-banner"><%=raw format_headline SiteSetting.value("homepage-main-headline") %></h1>
       <div class="slick-show">
         <div class="text-center homepage-banner">
+          <h1 class="homepage-banner"><%=raw format_headline SiteSetting.value("homepage-main-headline") %></h1>
           <%= image_tag "HarmanSkylineImage.jpg" %>
           <img src="<%= asset_path('H-Pointer.png') %>" alt="[H]" class="help-icon animated bounceIn hide-for-small-down" ns-popover
             ng-repeat="venue in venues"
@@ -29,7 +29,10 @@
             ns-popover-template="venue_popup"/>
         </div>
         <% @slides.each do |slide| %>
-          <div class="slick-slide">
+          <div class="slick-slide homepage-banner">
+            <% if slide.headline.present? %>
+              <h1 class="homepage-banner"><%=raw format_headline slide.headline %></h1>
+            <% end %>
             <% if slide.link_url.present? %>
               <%= link_to slide.link_url, target: (slide.link_new_window?) ? "_blank" : "" do %>
                 <%= image_tag slide.background.url, alt: slide.name %>
