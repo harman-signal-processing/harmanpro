@@ -16,7 +16,7 @@ ActiveAdmin.register Slide do
     #:bubble_file_size,
     #:bubble_content_type,
     #:bubble_updated_at,
-    #:headline,
+    :headline,
     #:description,
     #:link_text,
     :link_url,
@@ -53,7 +53,7 @@ ActiveAdmin.register Slide do
       #    link_to(image_tag(slide.bubble.url(:small)), slide.bubble.url)
       #  end
       #end
-      #row :headline
+      row :headline
       #row :description
       #row :link_text
       row :link_url
@@ -72,7 +72,7 @@ ActiveAdmin.register Slide do
       f.input :end_on, as: :datepicker, hint: "optional"
       f.input :background, label: "Banner image"
       #f.input :bubble
-      #f.input :headline
+      f.input :headline
       #f.input :description
       #f.input :link_text
       f.input :link_url
