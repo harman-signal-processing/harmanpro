@@ -1,5 +1,11 @@
 require "rails_helper"
 
+class SilverPopStub
+  def add_recipient(user, db, list)
+    true
+  end
+end
+
 feature "Lead generation" do
   include ActiveJob::TestHelper
 
@@ -20,7 +26,8 @@ feature "Lead generation" do
     lead = FactoryGirl.build(:lead, name: "Vertical Market Installer Lead")
     visit vertical_market_path(@vertical_market)
 
-    expect_any_instance_of(CheetahMail::CheetahMail).to receive(:mailing_list_update).and_return(true)
+    expect_any_instance_of(Lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
+    expect_any_instance_of(SilverPopStub).to receive(:add_recipient).and_return(true)
     complete_leadgen_form(lead)
     click_on "Submit"
 
@@ -37,7 +44,8 @@ feature "Lead generation" do
     lead = FactoryGirl.build(:lead, name: "Reference System Installer Lead")
     visit vertical_market_reference_system_path(@vertical_market, @reference_system)
 
-    expect_any_instance_of(CheetahMail::CheetahMail).to receive(:mailing_list_update).and_return(true)
+    expect_any_instance_of(Lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
+    expect_any_instance_of(SilverPopStub).to receive(:add_recipient).and_return(true)
     complete_leadgen_form(lead)
     click_on "Submit"
 
@@ -53,7 +61,8 @@ feature "Lead generation" do
       lead = FactoryGirl.build(:lead, name: "Reference System Installer Lead")
       visit vertical_market_reference_system_path(@vertical_market, @reference_system)
 
-      expect_any_instance_of(CheetahMail::CheetahMail).to receive(:mailing_list_update).and_return(true)
+      expect_any_instance_of(Lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
+      expect_any_instance_of(SilverPopStub).to receive(:add_recipient).and_return(true)
       complete_leadgen_form(lead)
       click_on "Submit"
 
@@ -76,7 +85,8 @@ feature "Lead generation" do
     lead = FactoryGirl.build(:lead, name: nil, email: nil)
     visit vertical_market_path(@vertical_market)
 
-    expect_any_instance_of(CheetahMail::CheetahMail).not_to receive(:mailing_list_update)
+    expect_any_instance_of(Lead).not_to receive(:silverpop_client).and_return(SilverPopStub.new)
+    expect_any_instance_of(SilverPopStub).not_to receive(:add_recipient).and_return(true)
     complete_leadgen_form(lead)
     click_on "Submit"
 
