@@ -13,6 +13,7 @@ class Event < ActiveRecord::Base
       large: "1170x400#",
       medium: "500x200#",
       medium_gray: { geometry: "500x200#", processors: [:grayscale, :thumbnail] },
+      small_panel: "500x312#",
       small: "250x100#",
       thumb: "83x50#",
       thumb_square: "64x64#"

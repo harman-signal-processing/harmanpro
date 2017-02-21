@@ -9,6 +9,7 @@ class CaseStudy < ActiveRecord::Base
     styles: {
       large: "1170x400",
       medium: "500x200",
+      small_panel: "500x312#",
       small: "250x100",
       thumb: "83x50",
       thumb_square: "64x64#"

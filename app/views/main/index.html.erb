@@ -146,7 +146,7 @@
               <div class="img_container">
                 <% if @event %>
                   <%= link_to @event do %>
-                    <%= image_tag(@event.image.url(:medium), alt: "Events") %>
+                    <%= image_tag(@event.image.url(:small_panel), alt: "Events") %>
                   <% end %>
                 <% else %>
                   <%= link_to events_path do %>

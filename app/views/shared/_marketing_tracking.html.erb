@@ -22,47 +22,24 @@
     ga('send', 'pageview');
   </script>
 
-   <script type="text/javascript">
-    piAId = '19552';
-    piCId = '27150';
-
-    (function() {
-     function async_load(){
-     var s = document.createElement('script'); s.type = 'text/javascript';
-     s.src = ('https:' == document.location.protocol ? 'https://pi' : 'http://cdn') + '.pardot.com/pd.js';
-     var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
-     }
-     if(window.attachEvent) { window.attachEvent('onload', async_load); }
-     else { window.addEventListener('load', async_load, false); }
-     })();
-   </script>
-
-   <script type="text/javascript">
-     adroll_adv_id = "NFWXEOP4KZBAZNBC5ORRVA";
-     adroll_pix_id = "5H4ZJZ746RDQLNZ7FYAHWM";
-     /* OPTIONAL: provide email to improve user identification */
-     /* adroll_email = "username@example.com"; */
-     (function () {
-       var _onload = function(){
-         if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
-         if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
-         var scr = document.createElement("script");
-         var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
-         scr.setAttribute('async', 'true');
-         scr.type = "text/javascript";
-         scr.src = host + "/j/roundtrip.js";
-         ((document.getElementsByTagName('head') || [null])[0] ||
-           document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
-       };
-       if (window.addEventListener) {window.addEventListener('load', _onload, false);}
-       else {window.attachEvent('onload', _onload)}
-     }());
-   </script>
+  <!-- Google Code for Remarketing Tag -->
+  <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 926230195;
+    var google_custom_params = window.google_tag_params; var
+    google_remarketing_only = true;
+    /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+  <noscript>
+    <div style="display:inline;">
+      <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/926230195/?guid=ON&amp;script=0"/>
+    </div>
+  </noscript>
 
 <% else %>
 
   <!-- google tracker appears here in production -->
-  <!-- pardot tracker appears here in production -->
-  <!-- adroll code appears here in production -->
+  <!-- google remarketing code appears here in production -->
 
 <% end %>
