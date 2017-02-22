@@ -1,5 +1,7 @@
 <div class="container plan-container" data-magellan-destination="plan">
-<a name="plan"></a>
+
+  <a name="plan"></a>
+
   <div class="row">
     <div class="large-8 large-offset-2 columns">
 
@@ -15,33 +17,29 @@
               </div>
             </div>
           </div>
-        <%# end %>
+          <%# end %>
 
-      <% else %>
+        <% else %>
 
-        <div class="row">
-          <div class="large-8 columns">
-            <% if vertical_market.parent %>
-              <%= cache ["parent-vertical-content", vertical_market.parent, Date.today, current_locale] do %>
-                <h3><%= vertical_market.parent.headline %></h3>
-                <div class="description parent">
-                  <%= raw textilize vertical_market.parent.description %>
-                </div>
+          <div class="row">
+            <div class="large-8 columns">
+              <% if vertical_market.parent %>
+                <%= cache ["parent-vertical-content", vertical_market.parent, Date.today, current_locale] do %>
+                  <h3><%= vertical_market.parent.headline %></h3>
+                  <div class="description parent">
+                    <%= raw textilize vertical_market.parent.description %>
+                  </div>
+                <% end %>
               <% end %>
-            <% end %>
 
-            <%= render "vertical_markets/find_installer" %>
-          </div>
-
-          <div class="large-4 columns">
-            <div class="panel">
-              <%= render "vertical_markets/hef" %>
+              <%= render "vertical_markets/find_installer" %>
             </div>
-          </div>
-        </div>
 
-      <% end %>
+          </div>
+
+        <% end %>
 
     </div>
   </div>
+
 </div>

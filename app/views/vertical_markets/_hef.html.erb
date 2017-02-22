@@ -1,10 +1,20 @@
 <%= cache ["hef-content", Date.today, current_locale] do %>
+
   <h4><%= SiteSetting.value("hef-sidebar-title") %></h4>
-  <div class="space-after">
-    <%= raw textilize SiteSetting.value("hef-description") %>
+
+  <div class="row">
+
+    <div class="small-12 medium-9 columns">
+      <%= raw textilize SiteSetting.value("hef-description") %>
+    </div>
+
+    <div class="small-12 medium-3 text-center columns">
+      <%= link_to t('learn_more'),
+        SiteSetting.value("hef-link"),
+        target: (SiteSetting.value("hef-link").to_s.match(/^http/) ? "_blank" : ""),
+        class: "small radius button" %>
+    </div>
+
   </div>
-  <%= link_to t('learn_more'),
-    SiteSetting.value("hef-link"),
-    target: (SiteSetting.value("hef-link").to_s.match(/^http/) ? "_blank" : ""),
-    class: "small radius button" %>
+
 <% end %>
