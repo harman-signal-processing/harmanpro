@@ -1,4 +1,17 @@
+<br/>
+
+<% unless vertical_market.retail? %>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="panel">
+        <%= render "vertical_markets/hef" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <div class="row">
+
   <div class="large-12 columns">
     <h3><%= vertical_market.headline %></h3>
     <div class="description">

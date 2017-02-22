@@ -21,14 +21,6 @@ RSpec.describe "vertical_markets/_plan.html.erb", :type => :view do
       render partial: "vertical_markets/plan", locals: { vertical_market: @vertical_market }
     end
 
-    it "shows HEF content" do
-      expect(rendered).to have_css("h4", text: "HEF Headline")
-      expect(rendered).to have_content("HEF description")
-    end
-
-    it "links to learn more about HEF" do
-      expect(rendered).to have_link("Learn More", href: "www.hef.com")
-    end
 
     it "offers help finding contractor" do
       expect(rendered).to have_css("h4", text: "Help Me Find Installer")
