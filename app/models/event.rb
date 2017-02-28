@@ -1,4 +1,4 @@
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   translates :slug, :name, :description, :page_content
   extend FriendlyId
   friendly_id :slug_candidates, use: :globalize

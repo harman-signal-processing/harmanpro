@@ -1,4 +1,4 @@
-class SiteSetting < ActiveRecord::Base
+class SiteSetting < ApplicationRecord
   @@cache = {}
   validates :name, presence: true, uniqueness: true
   after_save :update_cached_value

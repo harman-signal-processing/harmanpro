@@ -1,4 +1,4 @@
-class Slide < ActiveRecord::Base
+class Slide < ApplicationRecord
 
   belongs_to :locale, class_name: "AvailableLocale", foreign_key: :locale_id
 

@@ -1,4 +1,4 @@
-class Resource < ActiveRecord::Base
+class Resource < ApplicationRecord
   acts_as_taggable
 
   has_attached_file :attachment,

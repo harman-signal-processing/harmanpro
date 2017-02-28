@@ -1,4 +1,4 @@
-class CaseStudyVerticalMarket < ActiveRecord::Base
+class CaseStudyVerticalMarket < ApplicationRecord
   belongs_to :vertical_market
   belongs_to :case_study
 

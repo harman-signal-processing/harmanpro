@@ -30,6 +30,12 @@
     </div>
   <% end %>
 
+  <% if @landing_page.features.count > 0 %>
+    <% @landing_page.features.each do |feature| %>
+      <%= render_feature feature %>
+    <% end %>
+  <% end %>
+
   <div class="row">
     <% if @landing_page.left_content.present? %>
       <div class="medium-<%= @landing_page.side_column_width %> small-12 columns">

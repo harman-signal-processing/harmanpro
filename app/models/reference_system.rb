@@ -1,4 +1,4 @@
-class ReferenceSystem < ActiveRecord::Base
+class ReferenceSystem < ApplicationRecord
   translates :slug, :name, :description, :headline, :venue_size_descriptor
   extend FriendlyId
   friendly_id :slug_candidates, use: :globalize

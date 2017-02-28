@@ -1,4 +1,4 @@
-class VerticalMarket < ActiveRecord::Base
+class VerticalMarket < ApplicationRecord
   translates :slug, :name, :headline, :description, :lead_form_content, :extra_content
   extend FriendlyId
   friendly_id :slug_candidates, use: :globalize

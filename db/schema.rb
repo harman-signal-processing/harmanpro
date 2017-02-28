@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131181643) do
+ActiveRecord::Schema.define(version: 20170228155912) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "namespace"
@@ -202,6 +202,23 @@ ActiveRecord::Schema.define(version: 20170131181643) do
     t.integer  "original_locale_id"
     t.boolean  "hide_image"
     t.index ["original_locale_id"], name: "index_events_on_original_locale_id", using: :btree
+  end
+
+  create_table "features", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "featurable_type"
+    t.integer  "featurable_id"
+    t.integer  "position"
+    t.string   "layout_style"
+    t.string   "content_position"
+    t.text     "pre_content",        limit: 65535
+    t.text     "content",            limit: 65535
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.datetime "image_updated_at"
+    t.integer  "image_file_size"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["featurable_type", "featurable_id"], name: "index_features_on_featurable_type_and_featurable_id", using: :btree
   end
 
   create_table "friendly_id_slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
