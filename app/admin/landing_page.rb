@@ -12,7 +12,19 @@ ActiveAdmin.register LandingPage do
     :banner,
     :custom_slug,
     :header_code,
-    :footer_code
+    :footer_code,
+    features_attributes: [
+      :id,
+      :featurable_id,
+      :featurable_type,
+      :position,
+      :content_position,
+      :layout_style,
+      :image,
+      :pre_content,
+      :content,
+      :_destroy
+    ]
 
   # :nocov:
   index do
@@ -98,17 +110,29 @@ ActiveAdmin.register LandingPage do
   form html: { multipart: true} do |f|
     f.inputs do
       f.input :title
-      f.input :custom_slug, label: "Custom Friendly ID", hint: "Almost always leave this blank--unless the person requesting the page is smarter than you are and he/she needs a specific URL that doesn't match the page title. Don't include the page format (html, xml, js, etc.)"
-      f.input :hide_title, label: "Hide big, h1 title tag"
+      f.input :hide_title, label: "Hide the big, h1 title tag. (If checked, then the page title is only used on the browser tab--not the page itself.)"
       f.input :subtitle
       f.input :description, hint: "appears as meta description in HTML for page"
       f.input :banner
+      f.has_many :features, heading: "Fancy Features", new_record: "Add a feature" do |s|
+        s.input :id, as: :hidden
+        s.input :position, label: "Order of appearance"
+        s.input :layout_style, as: :radio, collection: Feature.layout_options
+        s.input :content_position, as: :radio, label: "Text content position", collection: ["left", "right"]
+        s.input :image, label: "Background or side image", hint: s.object.image.present? ?
+          image_tag(s.object.image.url(:thumb)) :
+          "No image uploaded yet."
+        s.input :pre_content, label: "Content appearing before the feature", hint: "HTML permitted", input_html: { class: "mceEditor" }
+        s.input :content, hint: "HTML permitted", input_html: { class: "mceEditor" }
+        s.input :_destroy, as: :boolean, label: "Delete This Feature"
+      end
       f.input :main_content, input_html: { class: "mceEditor"}
       f.input :left_content, hint: "(optional)", input_html: { class: "mceEditor"}
       f.input :right_content, hint: "(optional)", input_html: { class: "mceEditor"}
       f.input :sub_content, hint: "(optional)", input_html: { class: "mceEditor"}
       f.input :header_code, hint: "Javascript, etc. here will load in the page's HTML header"
       f.input :footer_code, hint: "Javascript, etc. here will load just before the page's closing body tag"
+      f.input :custom_slug, label: "Custom Friendly ID", hint: "Almost always leave this blank--unless the person requesting the page is smarter than you are and he/she needs a specific URL that doesn't match the page title. Don't include the page format (html, xml, js, etc.)"
     end
     f.actions
   end

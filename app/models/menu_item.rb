@@ -1,4 +1,4 @@
-class MenuItem < ActiveRecord::Base
+class MenuItem < ApplicationRecord
   belongs_to :locale, class_name: "AvailableLocale", touch: true
 
   validates :title, presence: true

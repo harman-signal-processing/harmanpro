@@ -1,4 +1,4 @@
-class Brand < ActiveRecord::Base
+class Brand < ApplicationRecord
   extend FriendlyId
   friendly_id :name
 

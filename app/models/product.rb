@@ -1,4 +1,4 @@
-class Product < ActiveRecord::Base
+class Product < ApplicationRecord
   translates :slug, :name, :description
   extend FriendlyId
   friendly_id :name, use: :globalize

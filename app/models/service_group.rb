@@ -1,4 +1,4 @@
-class ServiceGroup < ActiveRecord::Base
+class ServiceGroup < ApplicationRecord
   belongs_to :brand
   has_many :service_center_service_groups, dependent: :destroy
   has_many :service_centers, through: :service_center_service_groups

@@ -1,6 +1,6 @@
 # The I18n gem doesn't use this to determine which locales to load.
 # This is just a way to correlate translators with their locales.
-class AvailableLocale < ActiveRecord::Base
+class AvailableLocale < ApplicationRecord
   extend FriendlyId
   friendly_id :key
 

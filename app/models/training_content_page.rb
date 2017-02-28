@@ -1,4 +1,4 @@
-class TrainingContentPage < ActiveRecord::Base
+class TrainingContentPage < ApplicationRecord
 translates :slug, :title, :subtitle, :main_content, :left_content, :right_content, :sub_content, :description
   extend FriendlyId
   friendly_id :title, use: :globalize
@@ -40,5 +40,5 @@ translates :slug, :title, :subtitle, :main_content, :left_content, :right_conten
     mcw = 9
     mcw -= side_column_width if self.right_content.present?
     mcw
-  end    
+  end
 end

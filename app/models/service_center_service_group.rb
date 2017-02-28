@@ -1,4 +1,4 @@
-class ServiceCenterServiceGroup < ActiveRecord::Base
+class ServiceCenterServiceGroup < ApplicationRecord
   belongs_to :service_center
   belongs_to :service_group
 

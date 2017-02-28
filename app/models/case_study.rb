@@ -1,4 +1,4 @@
-class CaseStudy < ActiveRecord::Base
+class CaseStudy < ApplicationRecord
   translates :slug, :headline, :description, :content
   extend FriendlyId
   friendly_id :slug_candidates, use: :globalize

@@ -1,4 +1,4 @@
-class BrandNewsArticle < ActiveRecord::Base
+class BrandNewsArticle < ApplicationRecord
   belongs_to :brand
   belongs_to :news_article
 

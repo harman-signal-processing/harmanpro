@@ -87,9 +87,12 @@ ActiveAdmin.register Brand do
       f.input :training_url, hint: "If present, appears on the training page.", placeholder: "http://brand.name.com/training"
       f.input :tech_url, hint: "Appears on the service center login page if present.", placeholder: "http://tech.brand.com"
       f.input :marketing_url, hint: "IE, marketing toolkit, marcomm bank, etc.", placeholder: "http://mark.eting.url"
-      f.input :logo
-      f.input :white_logo
-      f.input :by_harman_logo
+      f.input :logo, hint: f.object.logo.present? ?
+        image_tag(f.object.logo.url(:tiny)) : "Logo not uploaded yet"
+      f.input :white_logo, hint: f.object.white_logo.present? ?
+        image_tag(f.object.white_logo.url(:tiny)) : "White logo not uploaded yet"
+      f.input :by_harman_logo, hint: f.object.by_harman_logo.present? ?
+        image_tag(f.object.by_harman_logo.url(:tiny)) : "By Harman logo not uploaded yet"
       f.input :logo_collection, hint: "Zipped collection of all pertinent brand logo variants"
       f.input :description
       f.input :show_on_main_site

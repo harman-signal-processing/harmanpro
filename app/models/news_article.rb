@@ -1,4 +1,4 @@
-class NewsArticle < ActiveRecord::Base
+class NewsArticle < ApplicationRecord
   extend FriendlyId
   friendly_id :slug_candidates
 
