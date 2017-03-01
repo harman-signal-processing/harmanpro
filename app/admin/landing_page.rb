@@ -10,6 +10,7 @@ ActiveAdmin.register LandingPage do
     :sub_content,
     :hide_title,
     :banner,
+    :delete_banner,
     :custom_slug,
     :header_code,
     :footer_code,
@@ -113,7 +114,10 @@ ActiveAdmin.register LandingPage do
       f.input :hide_title, label: "Hide the big, h1 title tag. (If checked, then the page title is only used on the browser tab--not the page itself.)"
       f.input :subtitle
       f.input :description, hint: "appears as meta description in HTML for page"
-      f.input :banner
+      f.input :banner, hint: f.object.banner.present? ?
+        image_tag(f.object.banner.url(:thumb)) :
+        "No banner uploaded."
+      f.input :delete_banner, label: "Delete the banner (if present).", as: :boolean
       f.has_many :features, heading: "Fancy Features", new_record: "Add a feature" do |s|
         s.input :id, as: :hidden
         s.input :position, label: "Order of appearance"

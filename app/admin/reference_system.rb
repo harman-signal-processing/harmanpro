@@ -37,12 +37,16 @@ ActiveAdmin.register ReferenceSystem do
     f.inputs do
       f.input :vertical_market
       f.input :name, hint: "Maximum characters: 20", input_html: { maxlength: 20 }
-      f.input :banner, hint: "Preferred size: 1170x400 px with a strongly horizontal orientation."
+      f.input :banner, hint: f.object.banner.present? ?
+        image_tag(f.object.banner.url(:thumb)) + content_tag(:br) + "Preferred size: 1170x400 px with a strongly horizontal orientation." :
+        "Preferred size: 1170x400 px with a strongly horizontal orientation."
       f.input :delete_banner, label: "Delete the existing banner (if present).", as: :boolean
       f.input :venue_size_descriptor, hint: "Maximum characters: 16", input_html: { maxlength: 16 }
       f.input :headline, hint: "Maximum characters: 90", input_html: { maxlength: 90 }
       f.input :description, hint: "Maximum recommended characters: 650", input_html: { rows: 6 }
-      f.input :system_diagram, hint: "Becomes the backdrop for the interactive learning diagram."
+      f.input :system_diagram, hint: f.object.system_diagram.present? ?
+        image_tag(f.object.system_diagram.url(:thumb_square)) + content_tag(:br) + "Becomes the backdrop for the interactive learning diagram." :
+        "Becomes the backdrop for the interactive learning diagram."
       f.input :delete_diagram, label: "Delete the existing diagram (if present).", as: :boolean
     end
     f.actions

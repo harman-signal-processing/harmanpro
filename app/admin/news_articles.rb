@@ -30,7 +30,8 @@ ActiveAdmin.register NewsArticle do
       f.input :title
       f.input :keywords
       f.input :quote
-      f.input :news_photo
+      f.input :news_photo, hint: f.object.news_photo.present? ?
+        image_tag(f.object.news_photo.url(:thumb)) : ""
       f.input :body, input_html: { class: "mceEditor"}
       f.input :post_on, label: "Publish On", as: :datepicker
       f.input :locale

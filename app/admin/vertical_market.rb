@@ -73,8 +73,12 @@ ActiveAdmin.register VerticalMarket do
       f.input :parent
       f.input :name, hint: "Maximum characters: 20", input_html: {maxlength: 20}
       f.input :headline, hint: "Maximum characters: 70", input_html: { maxlength: 70 }
-      f.input :banner, hint: "Appears on solutions pages on brand sites. Preferred size: 1170x400 px with a strongly horizontal orientation."
-      f.input :background, hint: "Used for top-level verticals on the homepage and on the category page."
+      f.input :banner, hint: f.object.banner.present? ?
+        image_tag(f.object.banner.url(:thumb)) + content_tag(:br) + "Appears on solutions pages on brand sites. Preferred size: 1170x400 px with a strongly horizontal orientation." :
+        "Appears on solutions pages on brand sites. Preferred size: 1170x400 px with a strongly horizontal orientation."
+      f.input :background, hint: f.object.background.present? ?
+        image_tag(f.object.background.url(:thumb)) + content_tag(:br) + "Used for top-level verticals on the homepage and on the category page." :
+        "Used for top-level verticals on the homepage and on the category page."
       f.input :description, hint: "Maximum recommended characters: 650", input_html: { rows: 10 }
       f.input :extra_content, hint: "Appears after the case studies", input_html: { rows: 10, class: "mceEditor"}
       f.input :retail, label: "Offer retailer/ecommerce links with this vertical market."

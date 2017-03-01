@@ -73,7 +73,8 @@ ActiveAdmin.register Event do
       f.input :start_on, as: :datepicker
       f.input :end_on, as: :datepicker
       f.input :description
-      f.input :image, hint: "Only for 'featured' events."
+      f.input :image, hint: f.object.image.present? ?
+        image_tag(f.object.image.url(:thumb)) : "Only for 'featured' events."
       f.input :hide_image, hint: "Check this box if you want to make this a featured event, but don't want the header image to appear on the page. Instead, the thumbnail of the image is used only on the events index page."
       f.input :delete_image, as: :boolean, label: "Delete the image if present.", hint: "This will remove the previously saved image when you submit this form."
       f.input :more_info_link, hint: "'Featured' events will show this link on the event details page if page content is provided. Do not use a link back to itself here. This is meant for a link to a 3rd party page or another landing page on the site."

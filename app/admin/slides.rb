@@ -70,7 +70,8 @@ ActiveAdmin.register Slide do
       f.input :position, hint: "the sort order"
       f.input :start_on, as: :datepicker, hint: "optional"
       f.input :end_on, as: :datepicker, hint: "optional"
-      f.input :background, label: "Banner image"
+      f.input :background, label: "Banner image", hint: f.object.background.present? ?
+        image_tag(f.object.background.url(:thumb)) : ""
       #f.input :bubble
       f.input :headline
       #f.input :description
