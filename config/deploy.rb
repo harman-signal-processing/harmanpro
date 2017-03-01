@@ -1,5 +1,5 @@
-# config valid only for Capistrano 3.6.1
-lock '3.6.1'
+# config valid only for Capistrano 3.7.2
+lock '3.7.2'
 
 set :application, 'harmanpro'
 set :repo_url, 'https://github.com/harman-signal-processing/harmanpro'
