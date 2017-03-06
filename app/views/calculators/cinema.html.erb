@@ -1,0 +1,119 @@
+<h1>Cinema Calculator</h1>
+
+<div ng-controller="CinemaCalculatorCtrl">
+  <div class="row">
+    <div class="small-12 medium-8 large-6 medium-offset-2 large-offset-3 columns">
+      <div class="panel">
+        <form>
+          <div class="row">
+            <div class="small-12 medium-3 columns">
+              <label for="number_of_rows" class="inline">Screen size</label>
+            </div>
+            <div class="small-4 medium-4 columns">
+              <input type="number" id="screen_size" name="screen_size" ng-model="screen_size">
+            </div>
+            <div class="small-8 medium-5 columns">
+              <select name="unit_type" id="unit_type" ng-model="unit_type" ng-init="unit_type='feet'">
+                <option value="feet">feet</option>
+                <option value="meters">meters</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 medium-3 columns">
+              <label for="number_of_rows" class="inline">Rows</label>
+            </div>
+            <div class="small-4 medium-4 columns">
+              <input type="number" id="number_of_rows" name="number_of_rows" ng-model="number_of_rows">
+            </div>
+            <div class="small-8 medium-5 columns">
+              <select name="row_type" id="row_type" ng-model="row_type" ng-init="row_type='1'">
+                <option value="1">standard length</option>
+                <option value="2">longer</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 medium-3 columns">
+              <label for="system_type" class="inline">System type</label>
+            </div>
+            <div class="small-12 medium-9 columns">
+              <select name="system_type" id="system_type" ng-model="system_type" ng-init="system_type='2'">
+                <option value="1">economical</option>
+                <option value="2">standard</option>
+                <option value="3">premium</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <h5>Recommendations:</h5>
+      <table style="width: 100%">
+        <tr>
+          <th>Side Speakers</th>
+          <td><span ng-show="number_of_side_speakers()">{{ type_of_side_speakers() }}</span></td>
+        </tr>
+        <tr>
+          <td>number:</td>
+          <td>
+            <span ng-show="number_of_side_speakers()">{{ number_of_side_speakers() }}</span>
+            <span ng-show="number_of_side_speakers()">({{ number_of_side_speakers() / 2}} per wall)</span>
+          </td>
+        </tr>
+        <tr>
+          <th>Rear Speakers</th>
+          <td><span ng-show="number_of_side_speakers() && number_of_rear_speakers()">{{ type_of_rear_speakers() }}</span></td>
+        </tr>
+        <tr>
+          <td>number:</td>
+          <td>
+            <span ng-show="number_of_side_speakers() && number_of_rear_speakers()">{{ number_of_rear_speakers() }}</span>
+            <span ng-show="number_of_side_speakers() && number_of_rear_speakers()">({{ distance_between_rear_speakers() }})</span>
+          </td>
+        </tr>
+        <tr>
+          <th>Subs</th>
+          <td><span ng-show="number_of_subs()">{{ type_of_subs() }}</span></td>
+        </tr>
+        <tr>
+          <td>number:</td>
+          <td><span ng-show="number_of_subs()">{{ number_of_subs() }}</span></td>
+        </tr>
+        <tr>
+          <th>Screen</th>
+          <td><span ng-show="screen_type()">{{ screen_type() }}</span></td>
+        </tr>
+      </table>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <h5>Normally hidden stuff:</h5>
+      <table style="width: 100%">
+        <tr>
+          <td>units:</td><td>{{ units() }}</td>
+        </tr>
+        <tr>
+          <td>screen:</td><td>{{ screen() }}</td>
+        </tr>
+        <tr>
+          <td>type_mult:</td><td>{{ type_mult() }}</td>
+        </tr>
+        <tr>
+          <td>row_mult:</td><td>{{ row_mult() }}</td>
+        </tr>
+        <tr>
+          <td>SR:</td><td>{{ sr() }}</td>
+        </tr>
+        <tr>
+          <td>screen_const:</td><td>{{ screen_const() }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
