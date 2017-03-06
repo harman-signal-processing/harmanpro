@@ -148,23 +148,40 @@ namespace :refresh do
     set :timestamp, Time.now.to_i
 
     on roles(:db) do
+      @timestamp = fetch(:timestamp)
+
+      within shared_path do
+        @db = YAML::load(ERB.new(IO.read(File.join("config", "database.yml"))).result)
+        @env = YAML::load(ERB.new(IO.read(File.join("config", 'application.yml'))).result)['production']
+      end
+
+      @filename = "#{@db['production']['database']}_#{@timestamp}.sql"
+      folder = "db_backup"
+      execute :mkdir, "-p", folder
+
+      within folder do
+        execute :mysqldump, "--opt -u #{@db['production']['username']} --password=#{@env['harmanpro_database_password']} -h #{@db['production']['host']} --port=#{@db['production']['port']} #{@db['production']['database']} > #{@filename}"
+        @dump_path = capture(:pwd)
+      end
 
       with rails_env: :sandbox do
-        within shared_path do
-          @db = YAML::load(ERB.new(IO.read(File.join("config", "database.yml"))).result)
-        end
-
         within release_path do
           rake 'db:drop'
           rake 'db:create'
 
-          execute :mysqldump, "-u #{@db['production']['username']} --password=#{@db['production']['password']} -h #{@db['production']['host']} --port=#{@db['production']['port']} #{@db['production']['database']} | mysql -u #{@db['sandbox']['username']} --password=#{@db['sandbox']['password']} #{@db['sandbox']['database']}"
+          execute :mysql, "-u #{@db['sandbox']['username']} --password=#{@db['sandbox']['password']} -h #{@db['sandbox']['host']} --port=#{@db['sandbox']['port']} #{@db['sandbox']['database']} < #{@dump_path}/#{@filename}"
 
           rake 'db:migrate'
           #rake 'db:sandbox:create_user'
         end
+
+        within folder do
+          execute :rm, @filename
+        end
       end
+
     end
+
   end
 
   # It would be nice to rsync directly between the two servers, but the
