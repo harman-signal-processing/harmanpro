@@ -141,19 +141,7 @@
       </div><!-- <div class="mega-menu-content">  -->
     </div><!-- <div id="megaMenu" class="mega-menu-container" data-dropdown-content style="display:none;">  -->
 
-    <% flash.each do |name, msg| %>
-      <% if msg.is_a?(String) %>
-        <br/>
-        <div class="row">
-          <div class="large-12 medium-12 columns">
-            <div data-alert class="alert-box radius <%= name.to_s == 'notice' ? 'success' : 'alert' %>">
-              <%= content_tag :div, msg %>
-              <a href="#" class="close">&times;</a>
-            </div><!-- <div data-alert class="alert-box radius <%= name.to_s == 'notice' ? 'success' : 'alert' %>">  -->
-          </div><!-- <div class="large-12 medium-12 columns">  -->
-        </div><!-- <div class="row">  -->
-      <% end %>
-    <% end %>
+    <%= render 'layouts/flash_messages' %>
 
     <!-- begin main row for view template content  -->
     <div class="row">

@@ -7,7 +7,13 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  layout :select_layout
+
   private
+
+  def select_layout
+    "embedded" if params[:embed] == "true"
+  end
 
   def render_landing_page(slug)
     if LandingPage.exists?(slug: slug)
