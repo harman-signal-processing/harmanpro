@@ -1,9 +1,16 @@
-<h1>Cinema Calculator</h1>
+<%= content_for :title do %>Cinema Sculpted System Calculator<% end %>
+<%= content_for :description do %>Use our simple tool to calculate the speakers needed for your next cinema project.<% end %>
 
-<div ng-controller="CinemaCalculatorCtrl">
+<h1 class="text-center">Cinema Sculpted System Calculator</h1>
+
+<br/>
+<div ng-controller="CinemaCalculatorCtrl" ng-cloak
+  locale="<%= I18n.locale %>">
+
+  <h4 class="text-center subheader">Theater Information</h4>
   <div class="row">
     <div class="small-12 medium-8 large-6 medium-offset-2 large-offset-3 columns">
-      <div class="panel">
+      <div class="callout panel">
         <form>
           <div class="row">
             <div class="small-12 medium-3 columns">
@@ -50,70 +57,73 @@
     </div>
   </div>
 
-  <hr/>
-  <div class="row">
-    <div class="small-12 medium-6 columns">
-      <h5>Recommendations:</h5>
-      <table style="width: 100%">
-        <tr>
-          <th>Side Speakers</th>
-          <td><span ng-show="number_of_side_speakers()">{{ type_of_side_speakers() }}</span></td>
-        </tr>
-        <tr>
-          <td>quantity:</td>
-          <td>
-            <span ng-show="number_of_side_speakers()">{{ number_of_side_speakers() }}</span>
-            <span ng-show="number_of_side_speakers()">({{ number_of_side_speakers() / 2}} per wall)</span>
-          </td>
-        </tr>
-        <tr>
-          <th>Rear Speakers</th>
-          <td><span ng-show="number_of_side_speakers() && number_of_rear_speakers()">{{ type_of_rear_speakers() }}</span></td>
-        </tr>
-        <tr>
-          <td>quantity:</td>
-          <td>
-            <span ng-show="number_of_side_speakers() && number_of_rear_speakers()">{{ number_of_rear_speakers() }}</span>
-            <span ng-show="number_of_side_speakers() && number_of_rear_speakers()">({{ distance_between_rear_speakers() }})</span>
-          </td>
-        </tr>
-        <tr>
-          <th>Subs</th>
-          <td><span ng-show="number_of_subs()">{{ type_of_subs() }}</span></td>
-        </tr>
-        <tr>
-          <td>quantity:</td>
-          <td><span ng-show="number_of_subs()">{{ number_of_subs() }}</span></td>
-        </tr>
-        <tr>
-          <th>Screen</th>
-          <td><span ng-show="screen_type()">{{ screen_type() }}</span></td>
-        </tr>
-      </table>
+  <div ng-if="number_of_side_speakers()">
+    <h4 class="subheader text-center">Recommendations</h4>
+
+    <div class="row">
+      <div class="small-12 large-8 large-offset-2 columns">
+        <ul class="small-block-grid-1 medium-block-grid-2">
+          <li>
+            <div class="text-center panel radius" style="background: white; border: 1px solid #CCC">
+              <h5 class="text-center">Side Surround Speakers</h5>
+              <a ng-href="{{ type_of_side_speakers()['url'] }}" target="_blank">
+                <img ng-src="{{ type_of_side_speakers()['small_photo_url'] }}">
+              </a>
+              <a ng-href="{{ type_of_side_speakers()['url'] }}" target="_blank">
+                <h4>{{ type_of_side_speakers()['name'] }} x {{ number_of_side_speakers() }}</h4>
+              </a>
+              <small>({{ number_of_side_speakers() / 2}} per wall)</small>
+            </div>
+          </li>
+          <li ng-if="number_of_rear_speakers()">
+            <div class="text-center panel radius" style="background: white; border: 1px solid #CCC">
+              <h5>Rear Surround Speakers</h5>
+              <a ng-href="{{ type_of_rear_speakers()['url'] }}" target="_blank">
+                <img ng-src="{{ type_of_rear_speakers()['small_photo_url'] }}">
+              </a>
+              <a ng-href="{{ type_of_rear_speakers()['url'] }}" target="_blank">
+                <h4>{{ type_of_rear_speakers()['name'] }} x {{ number_of_rear_speakers() }}</h4>
+              </a>
+              <small>({{ distance_between_rear_speakers() }})</small>
+            </div>
+          </li>
+          <li ng-if="number_of_subs()">
+            <div class="text-center panel radius" style="background: white; border: 1px solid #CCC">
+              <h5>Subwoofers</h5>
+              <a ng-href="{{ type_of_subs()['url'] }}" target="_blank">
+                <img ng-src="{{ type_of_subs()['small_photo_url'] }}">
+              </a>
+              <a ng-href="{{ type_of_subs()['url'] }}" target="_blank">
+                <h4>{{ type_of_subs()['name'] }} x {{ number_of_subs() }}</h4>
+              </a>
+            </div>
+          </li>
+          <li ng-if="screen_type()">
+            <div class="text-center panel radius" style="background: white; border: 1px solid #CCC">
+              <h5>Screen Array</h5>
+              <a ng-href="{{ screen_type()['url'] }}" target="_blank">
+                <img ng-src="{{ screen_type()['small_photo_url'] }}">
+              </a>
+              <a ng-href="{{ screen_type()['url'] }}" target="_blank">
+                <h4>{{ screen_type()['name'] }} x 2</h4>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="small-12 medium-6 columns">
-      <h5>Normally hidden stuff:</h5>
-      <table style="width: 100%">
-        <tr>
-          <td>units:</td><td>{{ units() }}</td>
-        </tr>
-        <tr>
-          <td>screen:</td><td>{{ screen() }}</td>
-        </tr>
-        <tr>
-          <td>type_mult:</td><td>{{ type_mult() }}</td>
-        </tr>
-        <tr>
-          <td>row_mult:</td><td>{{ row_mult() }}</td>
-        </tr>
-        <tr>
-          <td>SR:</td><td>{{ sr() }}</td>
-        </tr>
-        <tr>
-          <td>screen_const:</td><td>{{ screen_const() }}</td>
-        </tr>
-      </table>
-    </div>
+
   </div>
+
+<!--
+<pre>
+units: {{ units() }}
+screen: {{ screen() }}
+type_mult: {{ type_mult() }}
+row_mult: {{ row_mult() }}
+SR: {{ sr() }}
+screen_const: {{ screen_const() }}
+</pre>
+-->
 
 </div>

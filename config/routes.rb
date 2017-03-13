@@ -73,6 +73,8 @@ Rails.application.routes.draw do
   resources :venues, only: :index
   resources :news_articles, path: 'news', only: [:index, :show]
   resources :artists, only: [:index, :show]
+  resources :products, only: [:index, :show]
+
 
   # Cinema Calculator
   get '/cinema/calculator' => 'calculators#cinema'
