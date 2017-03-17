@@ -63,6 +63,8 @@
                                 "name": {"type": "string"},
                                 "url": {"type": "string"},
                                 "tiny_photo_url": {"type": "string"},
+                                "small_photo_url": {"type": "string"},
+                                "medium_photo_url": {"type": "string"},
                                 "buy_now_url": {"type": "string"},
                                 "ecommerce_enabled": {"type": "boolean"}
                               }
