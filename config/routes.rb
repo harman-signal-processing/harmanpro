@@ -73,6 +73,11 @@ Rails.application.routes.draw do
   resources :venues, only: :index
   resources :news_articles, path: 'news', only: [:index, :show]
   resources :artists, only: [:index, :show]
+  resources :products, only: [:index, :show]
+
+
+  # Cinema Calculator
+  get '/cinema/calculator' => 'calculators#cinema'
 
   # Consultant Portal
   get '/consultants/software(.:format)' => 'consultants#software', defaults: { format: 'json' }
@@ -91,7 +96,6 @@ Rails.application.routes.draw do
   #get '/training' => 'training_content_pages#show'
   get '/training/courses' => 'training_courses#index'
   resources :training_content_pages, path: 'training', only: :show
-
 
   # Resource library (local resources on our site)
   get '/resource-library/:id' => 'resources#show', as: :resource_permalink

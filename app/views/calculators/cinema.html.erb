@@ -1,0 +1,129 @@
+<%= content_for :title do %>Cinema Sculpted System Calculator<% end %>
+<%= content_for :description do %>Use our simple tool to calculate the speakers needed for your next cinema project.<% end %>
+
+<h1 class="text-center">Cinema Sculpted System Calculator</h1>
+
+<br/>
+<div ng-controller="CinemaCalculatorCtrl" ng-cloak
+  locale="<%= I18n.locale %>">
+
+  <h4 class="text-center subheader">Theater Information</h4>
+  <div class="row">
+    <div class="small-12 medium-8 large-6 medium-offset-2 large-offset-3 columns">
+      <div class="callout panel">
+        <form>
+          <div class="row">
+            <div class="small-12 medium-3 columns">
+              <label for="number_of_rows" class="inline">Screen size</label>
+            </div>
+            <div class="small-4 medium-4 columns">
+              <input type="number" id="screen_size" name="screen_size" ng-model="screen_size">
+            </div>
+            <div class="small-8 medium-5 columns">
+              <select name="unit_type" id="unit_type" ng-model="unit_type" ng-init="unit_type='feet'">
+                <option value="feet">feet</option>
+                <option value="meters">meters</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 medium-3 columns">
+              <label for="number_of_rows" class="inline">Rows</label>
+            </div>
+            <div class="small-4 medium-4 columns">
+              <input type="number" id="number_of_rows" name="number_of_rows" ng-model="number_of_rows">
+            </div>
+            <div class="small-8 medium-5 columns">
+              <select name="row_type" id="row_type" ng-model="row_type" ng-init="row_type='1'">
+                <option value="1">standard length</option>
+                <option value="2">longer</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 medium-3 columns">
+              <label for="system_type" class="inline">System type</label>
+            </div>
+            <div class="small-12 medium-9 columns">
+              <select name="system_type" id="system_type" ng-model="system_type" ng-init="system_type='2'">
+                <option value="1">economical</option>
+                <option value="2">standard</option>
+                <option value="3">premium</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="number_of_side_speakers()">
+    <h4 class="subheader text-center">Recommendations</h4>
+
+    <div class="row">
+      <div class="small-12 large-8 large-offset-2 columns">
+        <ul class="small-block-grid-1 medium-block-grid-2">
+          <li>
+            <div class="text-center panel radius" style="background: white; border: 1px solid #CCC">
+              <h5 class="text-center">Side Surround Speakers</h5>
+              <a ng-href="{{ type_of_side_speakers()['url'] }}" target="_blank">
+                <img ng-src="{{ type_of_side_speakers()['small_photo_url'] }}">
+              </a>
+              <a ng-href="{{ type_of_side_speakers()['url'] }}" target="_blank">
+                <h4>{{ type_of_side_speakers()['name'] }} x {{ number_of_side_speakers() }}</h4>
+              </a>
+              <small>({{ number_of_side_speakers() / 2}} per wall)</small>
+            </div>
+          </li>
+          <li ng-if="number_of_rear_speakers()">
+            <div class="text-center panel radius" style="background: white; border: 1px solid #CCC">
+              <h5>Rear Surround Speakers</h5>
+              <a ng-href="{{ type_of_rear_speakers()['url'] }}" target="_blank">
+                <img ng-src="{{ type_of_rear_speakers()['small_photo_url'] }}">
+              </a>
+              <a ng-href="{{ type_of_rear_speakers()['url'] }}" target="_blank">
+                <h4>{{ type_of_rear_speakers()['name'] }} x {{ number_of_rear_speakers() }}</h4>
+              </a>
+              <small>({{ distance_between_rear_speakers() }})</small>
+            </div>
+          </li>
+          <li ng-if="number_of_subs()">
+            <div class="text-center panel radius" style="background: white; border: 1px solid #CCC">
+              <h5>Subwoofers</h5>
+              <a ng-href="{{ type_of_subs()['url'] }}" target="_blank">
+                <img ng-src="{{ type_of_subs()['small_photo_url'] }}">
+              </a>
+              <a ng-href="{{ type_of_subs()['url'] }}" target="_blank">
+                <h4>{{ type_of_subs()['name'] }} x {{ number_of_subs() }}</h4>
+              </a>
+            </div>
+          </li>
+          <li ng-if="screen_type()">
+            <div class="text-center panel radius" style="background: white; border: 1px solid #CCC">
+              <h5>Screen Array</h5>
+              <a ng-href="{{ screen_type()['url'] }}" target="_blank">
+                <img ng-src="{{ screen_type()['small_photo_url'] }}">
+              </a>
+              <a ng-href="{{ screen_type()['url'] }}" target="_blank">
+                <h4>{{ screen_type()['name'] }} x 2</h4>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+<!--
+<pre>
+units: {{ units() }}
+screen: {{ screen() }}
+type_mult: {{ type_mult() }}
+row_mult: {{ row_mult() }}
+SR: {{ sr() }}
+screen_const: {{ screen_const() }}
+</pre>
+-->
+
+</div>

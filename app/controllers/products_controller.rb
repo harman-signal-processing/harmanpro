@@ -1,15 +1,20 @@
 class ProductsController < ApplicationController
-  before_action :set_brand
   respond_to :json
 
   def index
+    set_brand
     @products = BrandApi.products @brand.products_api
     respond_with @products
   end
 
   def show
-    @product = BrandApi.product @brand.product_api(params[:id])
-    respond_with @product
+    if params[:brand_id]
+      set_brand
+      @product = BrandApi.product @brand.product_api(params[:id])
+      respond_with @product
+    else
+      respond_with Product.find(params[:id])
+    end
   end
 
   private
