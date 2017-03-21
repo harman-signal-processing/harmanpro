@@ -1,7 +1,7 @@
 class CalculatorsController < ApplicationController
-  respond_to :html, :json
 
   def cinema
+    response.headers["X-FRAME-OPTIONS"] = "ALLOWALL"
   end
 
 end

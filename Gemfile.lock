@@ -532,7 +532,7 @@ DEPENDENCIES
   oauth2
   paperclip
   pundit
-  rails (~> 5.0)
+  rails (~> 5.0.1)
   rails-controller-testing
   rails-erd
   rails-i18n
