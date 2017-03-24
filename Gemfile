@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '5.0.1' # 5.0.2 had problems with globalize
+gem 'rails', '~> 5.0'
 gem 'responders', '~> 2.0'
 gem 'mysql2'
 gem 'sass-rails', '~> 5.0'
@@ -48,7 +48,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'mailgun_rails' # mailer service from Rackspace
 gem 'recaptcha', require: "recaptcha/rails"
 
-gem 'globalize', github: 'globalize' #'~> 5.0.0'
+gem 'globalize', github: 'globalize', branch: '5b0ff2c92e7536f908dc82a4c2a15b04be79e821' # 3/2017 master branch had errors #'~> 5.0.0'
 gem 'friendly_id-globalize'
 gem 'http_accept_language'
 gem 'rails-i18n'
