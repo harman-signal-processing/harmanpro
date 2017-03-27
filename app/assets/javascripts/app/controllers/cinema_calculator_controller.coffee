@@ -38,11 +38,11 @@ angular.module("harmanpro")
         Math.round($scope.number_of_rows / $scope.screen() * multiplier * 10) / 10
 
       $scope.screen_const = ->
-        Math.round($scope.number_of_rows / (3 / $scope.row_type) + $scope.system_type - 5)
+        Math.round(parseInt($scope.number_of_rows) / (3 / parseInt($scope.row_type)) + parseInt($scope.system_type) - 5)
 
       $scope.number_of_side_speakers = -> switch
         when $scope.number_of_rows * $scope.row_type <= 10 then 8
-        else Math.round(($scope.number_of_rows - 1) / $scope.row_mult()) * 2
+        else Math.round((parseInt($scope.number_of_rows) - 1) / $scope.row_mult()) * 2
 
       $scope.type_of_side_speakers = ->
         side_index = switch
