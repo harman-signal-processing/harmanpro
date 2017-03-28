@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228155912) do
+ActiveRecord::Schema.define(version: 20170328191524) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "namespace"
@@ -624,6 +624,7 @@ ActiveRecord::Schema.define(version: 20170228155912) do
     t.datetime "background_updated_at"
     t.boolean  "retail",                  default: false
     t.boolean  "hide_buy_section"
+    t.boolean  "show_hef"
     t.index ["parent_id"], name: "index_vertical_markets_on_parent_id", using: :btree
   end
 

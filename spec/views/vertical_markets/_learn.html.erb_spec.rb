@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "vertical_markets/_learn.html.erb", :type => :view do
 
   before :all do
-    csvm = FactoryGirl.create(:case_study_vertical_market)
-    @vertical_market = csvm.vertical_market
+    @vertical_market = FactoryGirl.create(:vertical_market, show_hef: true)
+    csvm = FactoryGirl.create(:case_study_vertical_market, vertical_market: @vertical_market)
     @case_study = csvm.case_study
     @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
   end

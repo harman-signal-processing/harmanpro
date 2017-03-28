@@ -11,6 +11,7 @@ ActiveAdmin.register VerticalMarket do
     :lead_form_content,
     :live,
     :retail,
+    :show_hef,
     :hide_buy_section,
     case_study_vertical_markets_attributes: [:id, :case_study_id, :_destroy]
 
@@ -25,6 +26,8 @@ ActiveAdmin.register VerticalMarket do
     column "Reference Systems" do |v|
       v.reference_systems.length
     end
+    column :retail
+    column :show_hef
     column :live
     actions
   end
@@ -32,6 +35,8 @@ ActiveAdmin.register VerticalMarket do
 
   filter :parent, as: :select
   filter :live
+  filter :retail
+  filter :show_hef
   #filter :name, as: :string
   filter :updated_at
 
@@ -84,6 +89,7 @@ ActiveAdmin.register VerticalMarket do
       f.input :retail, label: "Offer retailer/ecommerce links with this vertical market."
       f.input :lead_form_content, hint: "Replaces the retailer links if present and the default lead form.", input_html: { class: "mceEditor"}
       f.input :hide_buy_section, label: "Hide both the retailer links and the lead capture form."
+      f.input :show_hef, label: "Show the Harman finance strip on this vertical market's page."
     end
     f.has_many :case_study_vertical_markets, heading: "Case Studies", new_record: "Add a case study" do |s|
       s.input :id, as: :hidden
