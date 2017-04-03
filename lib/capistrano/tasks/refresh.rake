@@ -83,7 +83,7 @@ namespace :refresh do
     #end
 
     run_locally do
-      execute :rsync, "-avz #{fetch(:upload_user)}@#{fetch(:upload_host)}:#{ shared_path.to_s.sub(/\_staging/, '') }/public/system ./public/"
+      execute :rsync, "-avz --delete-after #{fetch(:upload_user)}@#{fetch(:upload_host)}:#{ shared_path.to_s.sub(/\_staging/, '') }/public/system ./public/"
     end
   end
 
