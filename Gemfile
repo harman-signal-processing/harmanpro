@@ -27,6 +27,7 @@ gem 'tinymce-rails', git: 'https://github.com/spohlenz/tinymce-rails.git'
 gem 'foundation-rails', '~> 5.5' # After this, getting incompatible units errors
 gem 'friendly_id', '>= 5.2'
 gem 'paperclip'
+gem 'fog-rackspace'
 gem 'acts_as_list'
 gem 'acts_as_tree'
 gem 'acts-as-taggable-on' #, '~> 3.4'
