@@ -29,11 +29,12 @@ if Rails.env.test?
     path: ":rails_root/spec/test_files/:class/:attachment/:id_:timestamp/:basename.:extension"
   }
 
-end
-
-# Add this section after migrating the attachments
-__END__
 else
+
+  RESOURCES_STORAGE = {
+    url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
+    path: ":rails_root/public/system/:class/:attachment/:id_:timestamp/:basename.:extension"
+  }
 
 	Paperclip::Attachment.default_options.merge!({
     url: ':fog_public_url',
@@ -50,8 +51,4 @@ else
     fog_host: ENV['FOG_HOST_ALIAS']
 	})
 
-  RESOURCES_STORAGE = {
-    url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
-    path: ":rails_root/public/system/:class/:attachment/:id_:timestamp/:basename.:extension"
-  }
 end
