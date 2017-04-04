@@ -188,15 +188,16 @@ namespace :refresh do
   # internal server can't communicate out. Genius.
   desc "Refreshes local public/system and then pushes the same to sandbox"
   task :sandbox_uploads do
-    invoke 'refresh:development_uploads'
+    #invoke 'refresh:development_uploads'
 
     on roles(:web) do |host|
-      set :upload_host, host
-      set :upload_user, host.user
+      #set :upload_host, host
+      #set :upload_user, host.user
+      execute :rsync, "-avz /mnt/cloudfiles/hpro #{ shared_path }/public/system"
     end
 
-    run_locally do
-      execute :rsync, "-avz ./public/system #{fetch(:upload_user)}@#{fetch(:upload_host)}:#{ shared_path }/public/"
-    end
+    #run_locally do
+    #  execute :rsync, "-avz ./public/system #{fetch(:upload_user)}@#{fetch(:upload_host)}:#{ shared_path }/public/"
+    #end
   end
 end

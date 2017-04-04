@@ -16,25 +16,7 @@ Paperclip.interpolates(:timestamp) do |attachment, style|
   attachment.instance_read(:updated_at).to_i
 end
 
-if Rails.env.test?
-
-  Paperclip::Attachment.default_options.merge!({
-    storage: :filesystem,
-    url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
-    path: ":rails_root/spec/test_files/:class/:attachment/:id_:timestamp/:basename.:extension"
-  })
-
-  RESOURCES_STORAGE = {
-    url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
-    path: ":rails_root/spec/test_files/:class/:attachment/:id_:timestamp/:basename.:extension"
-  }
-
-else
-
-  RESOURCES_STORAGE = {
-    url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
-    path: ":rails_root/public/system/:class/:attachment/:id_:timestamp/:basename.:extension"
-  }
+if Rails.env.production? || !!(ENV['USE_PRODUCTION_ASSETS'].to_i > 0)
 
 	Paperclip::Attachment.default_options.merge!({
     url: ':fog_public_url',
@@ -50,5 +32,37 @@ else
     fog_public: true,
     fog_host: ENV['FOG_HOST_ALIAS']
 	})
+
+  RESOURCES_STORAGE = {
+    url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
+    path: ":rails_root/public/system/:class/:attachment/:id_:timestamp/:basename.:extension"
+  }
+
+elsif Rails.env.test?
+
+  Paperclip::Attachment.default_options.merge!({
+    storage: :filesystem,
+    url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
+    path: ":rails_root/spec/test_files/:class/:attachment/:id_:timestamp/:basename.:extension"
+  })
+
+  RESOURCES_STORAGE = {
+    url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
+    path: ":rails_root/spec/test_files/:class/:attachment/:id_:timestamp/:basename.:extension"
+  }
+
+else
+
+	Paperclip::Attachment.default_options.merge!({
+    url: '/system/:class/:attachment/:id_:timestamp/:basename_:style.:extension',
+    storage: :filesystem,
+    path: ":rails_root/public/system/:class/:attachment/:id_:timestamp/:basename_:style.:extension"
+	})
+
+  RESOURCES_STORAGE = {
+    url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
+    storage: :filesystem,
+    path: ":rails_root/public/system/:class/:attachment/:id_:timestamp/:basename.:extension"
+  }
 
 end
