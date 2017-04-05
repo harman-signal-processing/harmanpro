@@ -1,9 +1,7 @@
 class Resource < ApplicationRecord
   acts_as_taggable
 
-  has_attached_file :attachment,
-    url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
-    path: ":rails_root/public/system/:class/:attachment/:id_:timestamp/:basename.:extension"
+  has_attached_file :attachment, RESOURCES_STORAGE
   do_not_validate_attachment_file_type :attachment
 
   has_attached_file :image,

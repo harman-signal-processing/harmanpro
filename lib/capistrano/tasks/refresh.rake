@@ -75,15 +75,19 @@ namespace :refresh do
     end
   end
 
+  # This one is going to take a long time because it now requires pulling everything out of
+  # the rackspace cloudfiles, then rsyncing to the local machine.:w
   desc "Replace contents of public/system from remote server"
   task :development_uploads do
-    #on roles(:production) do |host|
-      set :upload_host, 'rackspace1'
-      set :upload_user, 'hmg'
-    #end
+    on roles(:web) do |host|
+      execute :rsync, "-avz /mnt/cloudfiles/hpro #{ shared_path.to_s.sub(/\_staging/, '') }/public/system"
+    end
+
+    set :upload_host, 'rackspace1'
+    set :upload_user, 'hmg'
 
     run_locally do
-      execute :rsync, "-avz #{fetch(:upload_user)}@#{fetch(:upload_host)}:#{ shared_path.to_s.sub(/\_staging/, '') }/public/system ./public/"
+      execute :rsync, "-avz --delete-after #{fetch(:upload_user)}@#{fetch(:upload_host)}:#{ shared_path.to_s.sub(/\_staging/, '') }/public/system ./public/"
     end
   end
 
@@ -184,19 +188,13 @@ namespace :refresh do
 
   end
 
-  # It would be nice to rsync directly between the two servers, but the
-  # internal server can't communicate out. Genius.
+  # This one depends on FUSE which mounts the rackspace cloud files locally on the server
   desc "Refreshes local public/system and then pushes the same to sandbox"
   task :sandbox_uploads do
-    invoke 'refresh:development_uploads'
 
     on roles(:web) do |host|
-      set :upload_host, host
-      set :upload_user, host.user
+      execute :rsync, "-avz /mnt/cloudfiles/hpro #{ shared_path }/public/system"
     end
 
-    run_locally do
-      execute :rsync, "-avz ./public/system #{fetch(:upload_user)}@#{fetch(:upload_host)}:#{ shared_path }/public/"
-    end
   end
 end

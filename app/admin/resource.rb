@@ -34,7 +34,7 @@ ActiveAdmin.register Resource do
         link_to resource_permalink_url(resource), resource_permalink_url(resource), target: "_blank"
       end
       row :direct_link do
-        link_to "#{root_url.to_s.sub(/\/$/, '')}#{resource.attachment.url}", resource.attachment.url, target: "_blank"
+        link_to resource.attachment.url, resource.attachment.url, target: "_blank"
       end
       row :attachment_content_type
       row :attachment_file_size do
