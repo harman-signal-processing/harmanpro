@@ -1,0 +1,77 @@
+// Place all the styles related to the TrainingCalendar controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#trainHeading {
+    margin-bottom: 20px;
+}
+
+#loadMessage {
+    text-align: center;
+    width: 100%;
+    /*display:none;*/
+}
+
+#country-choosen {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    /*display:none;*/
+}
+
+#country-list {
+    margin-bottom: 15px;
+    /*display:none;*/
+}
+
+#sortingValues {
+    float: right;
+}
+
+.linkButton {
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 6px;
+    background-color: #009ff2;
+    padding: 6px;
+    width: 90px;
+    text-align: center;
+    border: 1px solid #007fc1;
+}
+
+.linkButton a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.courserow {
+    margin-bottom: 15px;
+    background-color: #f2f2f2;
+    padding: 5px;
+}
+
+
+/*.coursedescription{display:none;}*/
+
+.course-info-attribute {
+    margin-bottom: 2px;
+}
+
+.sessionName {
+    float: left;
+    width: 40%
+}
+
+.courseName {
+    float: right;
+    width: 60%
+}
+
+.seatsAvailable {
+    color: green;
+    // font-weight: bold;
+}
+
+.noSeatsAvailable {
+    color: red;
+    // font-weight: bold;
+}

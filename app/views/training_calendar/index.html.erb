@@ -1,0 +1,52 @@
+<%= render 'training_content_pages/training_page_meta_data' %>
+
+<%#
+    This template does not use the following content from @training_content_page.
+    header_code
+    footer_code
+    right_content
+    sub_content
+%>
+
+<div class="container main-container">
+    <% if @training_content_page.banner.present? %>
+    <%= image_tag @training_content_page.banner.url %>
+    <% end %>
+
+    <!-- begin main content row  -->
+    <div class="row training-top-content-row">
+        <!-- begin left nav  -->
+        <div class="medium-3 small-12 columns">
+            <%= render partial: 'training_content_pages/training_leftnav' %>
+        </div>
+        <!-- begin main content  -->
+        <div class="medium-9 small-12 columns">
+            <h1 class="space-after"><%= @training_content_page.title %></h1>
+            <% if @training_content_page.subtitle.present? %>
+            <h4 class="subheader"><%= @training_content_page.subtitle %></h4>
+            <br />
+            <% end %>
+
+            <%#= render_content(@training_content_page, :main_content) %>
+
+            <%= render 'training_calendar/country_links_list' %>
+            
+            <div id="country-choosen">
+                Showing <span class="choosen-value">ALL <%=@calendar.length%></span>
+                <div id="sortingValues">
+                    Sort by <a href="#" class="sort-link" data-sort-direction="desc">Date</a>
+                    |
+                    <a href="#" class="sort-link" data-sort-direction="asc">Course</a>
+                    |
+                    <a href="#" class="sort-link" data-sort-direction="asc">Location</a>
+                </div><!-- <div id="sortingValues"> -->
+            </div><!-- <div id="country-choosen"> -->
+            <input type="hidden" name="h-country-choosen" id="h-country-choosen" value="All" />
+            
+            <%= render 'training_calendar/schedule_list' %>
+
+            <%= render 'training_content_pages/training_login_signup_box_links' %>
+        </div><!-- <div class="medium-9 small-12 columns"> -->
+    </div><!-- <div class="row training-top-content-row"> -->
+    <!-- end main content row -->
+</div><!-- <div class="container main-container">  -->
