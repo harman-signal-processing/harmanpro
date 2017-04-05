@@ -93,9 +93,7 @@ Rails.application.routes.draw do
   resources :service_centers, only: [:index, :new, :create]
 
   # Training site
-  get '/training' => 'landing_pages#training'
-  # Remove the line above, and uncomment the line below to launch new training content
-  #get '/training' => 'training_content_pages#show'
+  get '/training' => 'training_content_pages#show'
   get '/training/courses' => 'training_courses#index'
   get '/training/calendar' => 'training_calendar#index'
   resources :training_content_pages, path: 'training', only: :show
