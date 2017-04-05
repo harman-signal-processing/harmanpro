@@ -21,6 +21,7 @@
 //= require mega_menu
 //= require vertical_markets
 //= require training_courses
+//= require training_calendar
 //= require locale
 //= require effects
 //= require_tree ./cms

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'training_calendar/show'
+
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
   # Logins for admins, etc.
@@ -95,6 +97,7 @@ Rails.application.routes.draw do
   # Remove the line above, and uncomment the line below to launch new training content
   #get '/training' => 'training_content_pages#show'
   get '/training/courses' => 'training_courses#index'
+  get '/training/calendar' => 'training_calendar#index'
   resources :training_content_pages, path: 'training', only: :show
 
   # Resource library (local resources on our site)

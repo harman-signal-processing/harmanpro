@@ -1,0 +1,30 @@
+<div id="calendar-table">
+    <div id="loadMessage" style="display:none;">
+        <h3>Loading schedule data . . .</h3>
+    </div><!-- <div id="loadMessage" -->
+    
+    <% @calendar.each do |item| %>
+        <% 
+            remainingSeats = item["RemainingSeats"].to_i
+            remaininSeatsMessage = remainingSeats > 0 ? "Seats Available" : "No Seats Available"
+            remainingSeatsCssClass = remainingSeats > 0 ? "seatsAvailable" : "noSeatsAvailable"
+        %>
+    
+        <div class="courserow">
+            <div class="course-info-attribute sessionName">
+                <strong><%=item["SessionName"]%></strong>
+                <br />
+                <span class="<%=remainingSeatsCssClass%>"><%=remaininSeatsMessage%></span><!-- <span class="<%=remainingSeatsCssClass%>"> -->
+            </div><!-- <div class="course-info-attribute sessionName"> -->
+            
+            <div class="course-info-attribute courseName">
+                <strong><%=item["CourseName"]%></strong>
+                <br />
+                <div class="linkButton"><%=item["CourseDescription"].html_safe%></div><!-- <div class="linkButton"> -->
+                <div class="linkButton"><a href='<%=item["EnrollmentURL"]%>' target='_blank'>Start Here</a></div><!-- <div class="linkButton"> -->
+            </div><!-- <div class="course-info-attribute courseName"> -->
+            
+            <div style="clear:both;"></div>
+        </div><!-- <div class="courserow"> -->
+    <% end %> <%# @calendar.each do |item| %>
+</div><!-- <div id="calendar-table"> -->
