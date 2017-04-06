@@ -328,8 +328,8 @@ $(function ()
             return 1;
         }
 
-        // names must be equal
-        return 0;
+        // sort by date if course names are equal
+        return sortCourseStartAsc(a, b);
     }  //  function sortCourseNameAsc(a, b)
     function sortCourseNameDesc(a, b)
     {
@@ -344,8 +344,8 @@ $(function ()
             return 1;
         }
 
-        // names must be equal
-        return 0;
+        // sort by date if course names are equal
+        return sortCourseStartAsc(a, b);
     }  //  function sortCourseNameDesc(a, b)
 
     function sortVenueLocationAsc(a, b)
@@ -361,8 +361,8 @@ $(function ()
             return 1;
         }
 
-        // names must be equal
-        return 0;
+        // sort by date if locations are equal
+        return sortCourseStartAsc(a, b);
     }  //  function sortVenueLocationAsc(a, b)
     function sortVenueLocationDesc(a, b)
     {
@@ -377,17 +377,17 @@ $(function ()
             return 1;
         }
 
-        // names must be equal
-        return 0;
+        // sort by date if locations are equal
+        return sortCourseStartAsc(a, b);
     }  //  function sortVenueLocationDesc(a, b)
 
     function sortCourseStartAsc(a, b)
     {
-        return new Date(a.StartDate) - new Date(b.StartDate);
+        return Math.sign(new Date(a.StartDate) - new Date(b.StartDate));
     }  //  function sortCourseStartAsc(a, b)
     function sortCourseStartDesc(a, b)
     {
-        return new Date(b.StartDate) - new Date(a.StartDate);
+        return Math.sign(new Date(b.StartDate) - new Date(a.StartDate));
     }  //  function sortCourseStartDesc(a, b)
 
 
