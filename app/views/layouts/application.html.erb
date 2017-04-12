@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="harmanpro">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : t('default_meta_description', brand_names: all_brands.map{|b| b.name}.join(', ') ) %>">
@@ -17,6 +18,12 @@
 
     <title><%= content_for?(:title) ? yield(:title) + " | " : '' %> <%= t('site_name') %></title>
 
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/nwmatcher/1.2.5/nwmatcher.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/corysimmons-selectivizr2/1.0.9/selectivizr2.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
+    <![endif]-->
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "header" %>

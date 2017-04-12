@@ -27,6 +27,7 @@
 //= require_tree ./cms
 //= require tiny
 //= require slick.min
+//= require REM-unit-polyfill
 // require_tree .
 
 $(function(){
