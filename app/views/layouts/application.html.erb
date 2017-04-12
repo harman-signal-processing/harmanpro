@@ -27,6 +27,12 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "header" %>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.32/angular.min.js"></script>
+    <![endif]-->
+    <!--[if (gte IE 9) | (!IE)]><!-->
+      <%= javascript_include_tag "angular/angular" %>
+    <!--<![endif]-->
     <%= csrf_meta_tags %>
     <%= yield :header_code %>
   </head>

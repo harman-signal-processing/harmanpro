@@ -16,3 +16,4 @@ Rails.application.config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff|pdf|xlsx
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( header.js )
+Rails.application.config.assets.precompile += %w( angular/angular )
