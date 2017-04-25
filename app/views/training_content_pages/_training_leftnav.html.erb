@@ -1,11 +1,15 @@
 <div class="training-leftnav panel">
 <h4>Login/Signup</h4>
 <ul>
-    <li><%= link_to "Harman Pro University", SiteSetting.value("harmanpro_university_url"), target: "_blank" %></li>
+    <li><%= link_to "Harman Pro University", haveEncodedUserData ? "/training/sso" : SiteSetting.value("harmanpro_university_url"), target: "_blank" %></li>
     <% all_brands.each do |brand| %>
       <% if brand.training_url.present? %>
         <li>
-          <%= link_to t('training_page.brand_training', brand: brand.name), brand.training_url, target: "_blank" %>
+          <% if haveEncodedUserData && brand.training_url.include?("traininglogin") %>
+            <%= link_to t('training_page.brand_training', brand: brand.name), "/training/sso", target: "_blank" %>
+          <%else%>
+            <%= link_to t('training_page.brand_training', brand: brand.name), brand.training_url, target: "_blank" %>
+          <% end %>
         </li>
       <% end %>
     <% end %>
