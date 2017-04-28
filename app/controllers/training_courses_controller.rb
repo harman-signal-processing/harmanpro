@@ -15,4 +15,13 @@ class TrainingCoursesController < ApplicationController
         
     end  #  def index
     
-end
+    def sso
+        encodedUserData = session[:training_user_encoded]
+        if encodedUserData.present?
+            redirect_to "http://traininglogin.harmanpro.com//sso/step1HarmanCallAbsorb/?ud=" + encodedUserData and return false
+        else
+            redirect_to "https://training.harmanpro.com/" and return false
+        end
+    end  #  def sso
+    
+end  #  class TrainingCoursesController < ApplicationController

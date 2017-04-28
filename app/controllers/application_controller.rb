@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_action :set_locale
+  before_action :set_locale, :save_passed_in_amx_trade_site_user_in_session_cookie
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -93,5 +93,15 @@ class ApplicationController < ActionController::Base
     @lead ||= Lead.new
     render_to_string partial: "leads/form"
   end
+
+  def save_passed_in_amx_trade_site_user_in_session_cookie
+    if params[:ud].present?
+      encoded_hash = params[:ud] # This would be encoded user email and userid sent in from trade.amx.com
+      #user = ActiveSupport::JSON.decode(Base64.decode64(encoded_hash)).symbolize_keys
+      training_user = JSON.parse(Base64.decode64(encoded_hash), symbolize_names: true)
+      session[:training_user] = training_user
+      session[:training_user_encoded] = encoded_hash
+    end
+  end  #  def save_passed_in_amx_trade_site_user_in_session_cookie
 
 end
