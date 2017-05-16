@@ -22,6 +22,7 @@
 //= require vertical_markets
 //= require training_courses
 //= require training_calendar
+//= require training_maintenance_message
 //= require locale
 //= require effects
 //= require_tree ./cms
