@@ -71,7 +71,7 @@ class VerticalMarket < ApplicationRecord
 
   # Only for top-level verticals, helps determine menu structure
   def children_or_reference_systems
-    (self.children.where(live: true).count > 0) ? self.children.where(live: true).with_translations(I18n.locale).order(:name) : self.reference_systems
+    (self.children.where(live: true).count > 0) ? self.children.where(live: true).with_translations(I18n.locale).order('name') : self.reference_systems
   end
 
 end

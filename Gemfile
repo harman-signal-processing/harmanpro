@@ -9,7 +9,7 @@ gem 'responders', '~> 2.0'
 gem 'mysql2'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails' #, '~> 4.1.0'
 gem 'sprockets'
 gem 'font-awesome-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -36,7 +36,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'activeadmin-sortable'
 gem 'pundit'
-gem 'delayed_job_active_record'
+gem 'delayed_job_active_record', '>= 4.1.1'
 gem 'daemons'
 gem 'httparty'
 gem 'rails_autolink'
@@ -49,7 +49,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'mailgun_rails' # mailer service from Rackspace
 gem 'recaptcha', require: "recaptcha/rails"
 
-gem 'globalize', github: 'globalize', branch: '5b0ff2c92e7536f908dc82a4c2a15b04be79e821' # 3/2017 master branch had errors #'~> 5.0.0'
+gem 'globalize', '5.1.0.beta1' #github: 'globalize', branch: '999b5dfa656ff0f706dbcd07ce7552d5b783d5a1' # 3/2017 master branch had errors #'~> 5.0.0'
 gem 'friendly_id-globalize'
 gem 'http_accept_language'
 gem 'rails-i18n'
