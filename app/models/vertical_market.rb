@@ -37,12 +37,16 @@ class VerticalMarket < ApplicationRecord
 
   accepts_nested_attributes_for :case_study_vertical_markets, reject_if: :all_blank, allow_destroy: true
 
-  def self.parent_verticals
-    where(live: true).where("parent_id IS NULL or parent_id <= 0")
-  end
-
   def self.active
     where(live: true)
+  end
+
+  def self.parent_verticals
+    active.where("parent_id IS NULL or parent_id <= 0")
+  end
+
+  def self.active_child_verticals
+    active.where(parent_id: parent_verticals.pluck(:id)).with_translations(I18n.locale).order("name")
   end
 
   def slug_candidates

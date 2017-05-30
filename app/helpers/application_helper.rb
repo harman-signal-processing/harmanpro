@@ -8,6 +8,10 @@ module ApplicationHelper
     @parent_verticals ||= VerticalMarket.parent_verticals
   end
 
+  def active_child_verticals
+    @active_child_verticals ||= VerticalMarket.active_child_verticals
+  end
+
   def top_vertical_market_navigation(options)
     parent_verticals.map do |vm|
       menu_link_for(vm, options)

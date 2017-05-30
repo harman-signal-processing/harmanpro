@@ -47,12 +47,14 @@
     <div class="row logo-container">
       <div class="small-12 columns">
         <div class="row">
+
           <div class="medium-6 columns">
             <h1 class="logo">
               <a href="http://www.harman.com"><%= image_tag "logo.png", alt: t('logo_alt_text'), id: "logo", class: 'no-resize' %></a>
               <small><a href="/"><%= t("professional_solutions").upcase %></a></small>
             </h1>
-          </div><!-- <div class="medium-6 columns">  -->
+          </div>
+
           <div class="large-2 medium-3 small-6 columns text-right">
             <% if active_locales.count > 1 %>
               <br/>
@@ -64,16 +66,17 @@
                   <%= select_tag :locale,
                     options_from_collection_for_select(active_locales, "key", "name", current_locale.key),
                     id: "locale-switcher" %>
-                </div><!-- <div class="small-10 columns">  -->
-              </div><!-- <div class="row collapse prefix" style="border: none">  -->
+                </div>
+              </div>
             <% else %>
               &nbsp;
             <% end %>
-          </div><!-- <div class="large-2 medium-3 small-6 columns text-right">  -->
-        </div><!-- <div class="row">  -->
+          </div>
+
+        </div>
         <hr/>
-      </div><!-- <div class="small-12 columns">  -->
-    </div><!-- <div class="row logo-container">  -->
+      </div>
+    </div>
 
     <div class="contain-to-grid sticky">
       <nav class="top-bar" data-topbar role="navigation">
@@ -81,6 +84,7 @@
           <li class="name"></li>
           <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
         </ul>
+
         <section class="top-bar-section">
           <ul>
             <%= cache ["top-nav", Date.today, current_locale] do %>
@@ -109,7 +113,7 @@
                     <li><%= link_to t('nav.service'), service_path %></li>
                   <% end %>
                 </ul>
-              </li><!-- <li class="has-dropdown"> -->
+              </li>
               <% if SiteSetting.set_for_locale?("blog_link_name") && SiteSetting.set_for_locale?("blog_link") %>
                 <li>
                   <%= link_to SiteSetting.value("blog_link_name"), SiteSetting.value("blog_link"), target: "_blank" %>
@@ -117,7 +121,8 @@
               <% end %>
             <% end %>
           </ul>
-        </section><!-- <section class="top-bar-section">  -->
+        </section>
+
         <section class="top-bar-section">
           <ul class="right">
             <% if SiteSetting.set_for_locale?("store_link", current_locale.key) %>
@@ -128,63 +133,56 @@
                 <% end %>
               </li>
             <% end %>
-          </ul><!-- <ul class="right">  -->
-        </section><!-- <section class="top-bar-section">  -->
-      </nav><!-- <nav class="top-bar" data-topbar role="navigation">  -->
-    </div><!-- <div class="contain-to-grid sticky">  -->
+          </ul>
+        </section>
+
+      </nav>
+    </div>
 
     <div id="megaMenu" class="mega-menu-container" data-dropdown-content style="display:none;">
       <div class="mega-menu-content">
         <div class="row">
-          <% parent_verticals.map do |vm| %>
-            <div class="medium-<%= top_menu_width_for(vm) %> columns <%= 'end' if vm == parent_verticals.last %>">
-              <h5><%= link_to vm.name, vm %></h5>
-              <ul class="medium-block-grid-<%= vm.children_or_reference_systems.in_groups_of(max_items_in_top_nav_columns).length %>">
-                <% vm.children_or_reference_systems.in_groups_of(max_items_in_top_nav_columns) do |group| %>
+
+          <ul class="medium-block-grid-<%= active_child_verticals.in_groups_of(max_items_in_top_nav_columns).length %>">
+            <% active_child_verticals.in_groups_of(max_items_in_top_nav_columns) do |group| %>
+              <li>
+                <ul>
+                  <% group.each do |item| %>
+                    <%= menu_link_for(item) if item.respond_to?(:name) %>
+                  <% end %>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+    <%= render 'layouts/flash_messages' %>
+
+    <div class="row">
+      <div class="small-12 columns">
+        <%= yield %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 columns">
+        <div id="footer">
+          <div class="row">
+            <div class="large-6 medium-6 small-12 columns">
+              <h6 class="subheader"><%= t('nav.solutions') %></h6>
+              <ul class="medium-block-grid-<%= active_child_verticals.in_groups_of(10).length %>">
+                <% active_child_verticals.in_groups_of(10) do |group| %>
                   <li>
                     <ul><% group.each do |item| %>
                       <%= menu_link_for(item) if item.respond_to?(:name) %>
                     <% end %></ul>
                   </li>
                 <% end %>
-              </ul><!-- <ul class="medium-block-grid-<%= vm.children_or_reference_systems.in_groups_of(max_items_in_top_nav_columns).length %>"> -->
-            </div><!-- <div class="medium-<%= top_menu_width_for(vm) %> columns <%= 'end' if vm == parent_verticals.last %>">  -->
-          <% end %>
-        </div><!-- <div class="row">  -->
-      </div><!-- <div class="mega-menu-content">  -->
-    </div><!-- <div id="megaMenu" class="mega-menu-container" data-dropdown-content style="display:none;">  -->
-
-    <%= render 'layouts/flash_messages' %>
-
-    <!-- begin main row for view template content  -->
-    <div class="row">
-      <div class="small-12 columns">
-        <!-- begin main view template content  -->
-        <%= yield %>
-        <!-- end main view template content  -->
-      </div><!-- <div class="small-12 columns">  -->
-    </div><!-- <div class="row">  -->
-    <!-- end main row for view template content  -->
-
-    <!-- begin footer row  -->
-    <div class="row">
-      <div class="small-12 columns">
-        <div id="footer">
-          <div class="row">
-            <% parent_verticals.map do |vm| %>
-              <div class="large-<%= footer_menu_width_for(vm) %> medium-<%= top_menu_width_for(vm) %> columns">
-                <h6 class="subheader"><%= link_to vm.name, vm %></h6>
-                <ul class="medium-block-grid-<%= vm.children_or_reference_systems.in_groups_of(10).length %>">
-                  <% vm.children_or_reference_systems.in_groups_of(10) do |group| %>
-                    <li>
-                      <ul><% group.each do |item| %>
-                        <%= menu_link_for(item) if item.respond_to?(:name) %>
-                      <% end %></ul>
-                    </li>
-                  <% end %>
-                </ul><!-- <ul class="medium-block-grid-<%= vm.children_or_reference_systems.in_groups_of(10).length %>"> -->
-              </div><!-- <div class="large-<%= footer_menu_width_for(vm) %> medium-<%= top_menu_width_for(vm) %> columns">  -->
-            <% end %>
+              </ul>
+            </div>
 
             <div class="large-2 medium-6 small-12 columns">
               <%= cache ["footer-col-3", Date.today, current_locale] do %>
@@ -199,9 +197,10 @@
                       <% end %></ul>
                     </li>
                   <% end %>
-                </ul><!-- <ul class="medium-block-grid-2 small-block-grid-2"> -->
+                </ul>
               <% end %>
-            </div><!-- <div class="large-2 medium-6 small-12 columns">  -->
+            </div>
+
             <div class="large-1 columns hide-for-medium-down">&nbsp;</div>
             <div class="large-3 medium-6 small-12 columns">
               <%= cache ["footer-col-4", Date.today, current_locale] do %>
@@ -227,8 +226,9 @@
                 <%= link_to "https://plus.google.com/+HarmanIntl/videos" do %>
                   <%= fa_icon 'google-plus 2x' %>
                 <% end %>
-              </div><!-- <div class="social-links">  -->
-            </div><!-- <div class="large-3 medium-6 small-12 columns">  -->
+              </div>
+            </div>
+
             <div class="small-12 columns sub-footer">
               <p>
                 &copy; <%= Date.today.year %> HARMAN International.
@@ -237,12 +237,11 @@
                 |
                 <%= link_to t('terms_of_use'), "http://www.harman.com/terms-use" %>
               </p>
-            </div><!-- <div class="small-12 columns sub-footer">  -->
-          </div><!-- <div class="row">  -->
-        </div><!-- <div id="footer">  -->
-      </div><!-- <div class="small-12 columns">  -->
-    </div><!-- <div class="row">  -->
-    <!-- end footer row  -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <%= yield :footer_code %>
 
