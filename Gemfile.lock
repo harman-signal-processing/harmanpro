@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/activeadmin/activeadmin.git
-  revision: a5df0d7231022dc8a3684033f141e7fc0bd640a1
+  revision: d941aaa88c6e9011f7e9d1c7d85b2cd871160f0f
   specs:
     activeadmin (1.0.0)
       arbre (>= 1.1.1)
@@ -29,9 +29,9 @@ GIT
 
 GIT
   remote: https://github.com/spohlenz/tinymce-rails.git
-  revision: a9713323fb160003dd940816c1becf089551e44d
+  revision: 44ef633ef97c0517cc47560b13a31f85418c1153
   specs:
-    tinymce-rails (4.6.2)
+    tinymce-rails (4.6.3)
       railties (>= 3.1.1)
 
 GEM
@@ -148,10 +148,10 @@ GEM
     dalli (2.7.6)
     database_cleaner (1.6.1)
     debugger-linecache (1.2.0)
-    delayed_job (4.1.2)
-      activesupport (>= 3.0, < 5.1)
-    delayed_job_active_record (4.1.1)
-      activerecord (>= 3.0, < 5.1)
+    delayed_job (4.1.3)
+      activesupport (>= 3.0, < 5.2)
+    delayed_job_active_record (4.1.2)
+      activerecord (>= 3.0, < 5.2)
       delayed_job (>= 3.0, < 5)
     devise (4.3.0)
       bcrypt (~> 3.0)
@@ -167,7 +167,7 @@ GEM
     exception_notification (4.2.1)
       actionmailer (>= 4.0, < 6)
       activesupport (>= 4.0, < 6)
-    excon (0.55.0)
+    excon (0.56.0)
     execjs (2.7.0)
     factory_girl (4.8.0)
       activesupport (>= 3.0.0)
@@ -247,7 +247,7 @@ GEM
     http_accept_language (2.1.0)
     httparty (0.15.5)
       multi_xml (>= 0.5.2)
-    i18n (0.8.1)
+    i18n (0.8.4)
     ipaddress (0.8.3)
     jasmine-core (2.6.2)
     jasmine-rails (0.14.1)
@@ -313,7 +313,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (4.1.0)
     netrc (0.11.0)
-    nio4r (2.0.0)
+    nio4r (2.1.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     notiffany (0.1.1)
