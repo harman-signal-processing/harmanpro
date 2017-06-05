@@ -1496,14 +1496,16 @@ div.hint {
   margin-top: 1px;
 }
 .logo-container {
+  position: relative;
   h1.logo {
     margin-top: 13px;
     img {
       padding-top: 2px;
-      vertical-align: text-center;
     }
     small {
-      padding-left: 8px;
+      position: absolute;
+      top: 84px;
+      left: 225px;
       font-size: 12px;
       font-weight: 300;
       a {
