@@ -13,6 +13,13 @@ module ApplicationHelper
   end
 
   def top_vertical_market_navigation(options)
+    active_child_verticals.map do |vm|
+      menu_link_for(vm, options)
+    end.join.html_safe
+  end
+
+  # This one isn't used anymore after combining Enterprise/Entertainment
+  def parent_vertical_market_navigation(options)
     parent_verticals.map do |vm|
       menu_link_for(vm, options)
     end.join.html_safe

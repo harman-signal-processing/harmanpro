@@ -33,12 +33,12 @@ RSpec.describe "layouts/application.html.erb", as: :view do
       expect(header).to have_link "Contacts", href: contacts_path
     end
 
-    it "links to top-level vertical markets" do
-      expect(header).to have_link @vertical_market.name, href: vertical_market_path(@vertical_market)
+    it "doesn't link to top-level vertical markets (used to)" do
+      expect(header).not_to have_link @vertical_market.name, href: vertical_market_path(@vertical_market)
     end
 
-    it "doesn't link to child vertical markets" do
-      expect(header).not_to have_link @child_vertical.name
+    it "links to child vertical markets (didn't used to)" do
+      expect(header).to have_link @child_vertical.name
     end
 
     it "links to service page" do

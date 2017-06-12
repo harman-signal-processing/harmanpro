@@ -44,8 +44,8 @@
       </div>
     <% end %>
 
-    <div class="row logo-container">
-      <div class="small-12 columns">
+    <div class="row logo-container hide-for-small">
+      <div class="medium-12 columns">
         <div class="row">
 
           <div class="medium-9 small-7 columns">
@@ -59,30 +59,42 @@
             <% if active_locales.count > 1 %>
               <br/>
               <div class="row collapse prefix" style="border: none">
+
                 <div class="small-2 columns">
                   <span class="prefix"><%= fa_icon :flag %></span>
-                </div><!-- <div class="small-2 columns">  -->
+                </div>
+
                 <div class="small-10 columns">
                   <%= select_tag :locale,
                     options_from_collection_for_select(active_locales, "key", "name", current_locale.key),
                     id: "locale-switcher" %>
                 </div>
+
               </div>
+
             <% else %>
               &nbsp;
             <% end %>
+
           </div>
 
         </div>
         <hr/>
+
       </div>
     </div>
 
     <div class="contain-to-grid sticky">
       <nav class="top-bar" data-topbar role="navigation">
+
         <ul class="title-area">
-          <li class="name"></li>
-          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+          <li class="name logo-container">
+            <h1 class="logo show-for-small">
+              <a href="http://www.harman.com"><%= image_tag "logo_sm.png", alt: t('logo_alt_text') %></a>
+              <small><a href="/"><%= t("professional_solutions").upcase %></a></small>
+            </h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>&nbsp;</span></a></li>
         </ul>
 
         <section class="top-bar-section">
@@ -91,7 +103,12 @@
               <li class="has-dropdown show-for-medium-up">
                 <a href="#" class="disabled" data-dropdown="megaMenu" data-options="is_hover:true;" id="megaTrigger"><%= t('nav.solutions') %></a>
               </li>
-              <%= top_vertical_market_navigation(dropdowns: false, class: "show-for-small-only") %>
+              <li class="has-dropdown show-for-small-only">
+                <a href="#" class="disabled"><%= t('nav.solutions') %></a>
+                <ul class="dropdown">
+                  <%= top_vertical_market_navigation(dropdowns: false) %>
+                </ul>
+              </li>
               <li class="has-dropdown">
                 <a href="#" class="disabled"><%= t('nav.resources') %></a>
                 <ul class="dropdown">
@@ -117,6 +134,16 @@
               <% if SiteSetting.set_for_locale?("blog_link_name") && SiteSetting.set_for_locale?("blog_link") %>
                 <li>
                   <%= link_to SiteSetting.value("blog_link_name"), SiteSetting.value("blog_link"), target: "_blank" %>
+                </li>
+              <% end %>
+              <% if active_locales.count > 1 %>
+                <li class="has-dropdown show-for-small-only">
+                  <a href="#" class="disabled"><%= fa_icon :flag %></a>
+                  <ul class="dropdown">
+                    <% active_locales.each do |loc| %>
+                      <li><%= link_to loc.name, root_path(locale: loc.key) %></li>
+                    <% end %>
+                  </ul>
                 </li>
               <% end %>
             <% end %>

@@ -1500,23 +1500,23 @@ div.hint {
     margin-top: 13px;
     img {
       padding-top: 2px;
-      @media only screen and (max-width: 667px) {
-        // causes the logo to scale smaller
-        padding-right: 60px;
-      }
     }
     small {
-      @media only screen and (min-width: 668px) {
+      font-size: 12px;
+      font-weight: 300;
+      @media only screen and (min-width: 733px) {
         position: absolute;
         top: 84px;
         left: 225px;
       }
-      @media only screen and (max-width: 667px) {
-        padding-top: 16px;
-        display: block;
+      @media only screen and (max-width: 732px) {
+        position: absolute;
+        top: 33px;
+        left: 100px;
+        width: 300px;
+        line-height: 1;
+        font-size: 9px;
       }
-      font-size: 12px;
-      font-weight: 300;
       a {
         color: $harman-blue;
       }
@@ -1561,7 +1561,6 @@ ul.dropdown {
   }
 }
 .main-container {
-  padding-top: 20px;
   padding-bottom: 20px;
   &.padded {
     padding: 80px 0 80px;
@@ -2047,16 +2046,15 @@ a.retailer {
       font-size: rem-calc(38);
     }
   }
-  @media only screen and (min-width: 500px) and (max-width: 999px) {
+  @media only screen and (min-width: 641px) and (max-width: 999px) {
     height: 160px;
     margin-top: -160px;
     h1 {
       font-size: rem-calc(26);
     }
   }
-  @media only screen and (max-width: 499px) {
+  @media only screen and (max-width: 640px) {
     height: 140px;
-    margin-top: -140px;
     h1 {
       font-size: rem-calc(20);
     }
