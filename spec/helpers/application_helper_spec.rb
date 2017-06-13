@@ -8,26 +8,13 @@ RSpec.describe ApplicationHelper do
       @child_vertical = FactoryGirl.create(:vertical_market, parent_id: @vertical_markets.first.id)
     end
 
-    it "links to each top-level vertical market" do
+    it "no longer links to each top-level vertical market" do
       @vertical_markets.each do |vm|
         nav = helper.top_vertical_market_navigation(dropdowns: false)
-        expect(nav).to have_link(vm.name, href: vertical_market_path(vm))
+        expect(nav).not_to have_link(vm.name, href: vertical_market_path(vm))
       end
     end
 
-    context "with dropdowns: false" do
-      it "does not link to child vertical" do
-        nav = helper.top_vertical_market_navigation(dropdowns: false)
-        expect(nav).not_to have_link(@child_vertical.name, href: vertical_market_path(@child_vertical))
-      end
-    end
-
-    context "with dropdowns: true" do
-      it "links to child vertical" do
-        nav = helper.top_vertical_market_navigation(dropdowns: true)
-        expect(nav).to have_link(@child_vertical.name, href: vertical_market_path(@child_vertical))
-      end
-    end
   end
 
   describe "#current_locale" do
