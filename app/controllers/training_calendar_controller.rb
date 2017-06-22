@@ -13,7 +13,9 @@ class TrainingCalendarController < ApplicationController
   def uniqueCountryList(calendarData)
     countries = []
     calendarData.each do |item|
-      countries << item["VenueCountry"]
+      unless item["VenueCountry"].blank? 
+        countries << item["VenueCountry"] 
+      end
     end  #  calendarData.each do |item|
     countries.to_set.to_a.sort
   end  #  uniqueCountryList
