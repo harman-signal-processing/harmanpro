@@ -18,6 +18,9 @@ ActiveAdmin.register Brand do
     :show_on_services_site,
     :show_on_consultant_page,
     :api_url,
+    :tech_support_email,
+    :parts_email,
+    :repair_email,
     :contact_info_for_consultants
 
   # :nocov:
@@ -75,6 +78,9 @@ ActiveAdmin.register Brand do
       row :training_url
       row :tech_url
       row :api_url
+      row :tech_support_email
+      row :parts_email
+      row :repair_email
     end
     active_admin_comments
   end
@@ -101,6 +107,9 @@ ActiveAdmin.register Brand do
       f.input :api_url, hint: "Base URL for API queries.", placeholder: "http://brand.com/api/v2/brand"
       f.input :downloads_page_url, hint: "If API URL is blank, and this is present, the link will appear on the consultants page.", placeholder: "http://brand.name.com/downloads"
       f.input :contact_info_for_consultants
+      f.input :tech_support_email, hint: "Provide all 3 email addresses to show this brand on the service/support form."
+      f.input :parts_email, hint: "Provide all 3 email addresses to show this brand on the service/support form."
+      f.input :repair_email, hint: "Provide all 3 email addresses to show this brand on the service/support form."
     end
     f.actions
   end
