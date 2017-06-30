@@ -1,7 +1,6 @@
 <%= simple_form_for @contact_message, url: service_create_contact_message_path, html: { novalidate: true } do |f| %>
   <% if f.object.errors.any? %>
     <div class="alert alert-box">Please correct errors below before continuing.</div>
-    <div class="hint"><%= f.object.errors.inspect %></div>
   <% end %>
   <%= f.input :name %>
   <%= f.input :email %>
