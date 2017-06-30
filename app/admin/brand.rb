@@ -107,9 +107,9 @@ ActiveAdmin.register Brand do
       f.input :api_url, hint: "Base URL for API queries.", placeholder: "http://brand.com/api/v2/brand"
       f.input :downloads_page_url, hint: "If API URL is blank, and this is present, the link will appear on the consultants page.", placeholder: "http://brand.name.com/downloads"
       f.input :contact_info_for_consultants
-      f.input :tech_support_email, hint: "Provide all 3 email addresses to show this brand on the service/support form."
-      f.input :parts_email, hint: "Provide all 3 email addresses to show this brand on the service/support form."
-      f.input :repair_email, hint: "Provide all 3 email addresses to show this brand on the service/support form."
+      f.input :tech_support_email, hint: "Provide this to appear on the technical support form on the service page."
+      f.input :parts_email, hint: "Provide this to appear on the parts section of the support form on the service page."
+      f.input :repair_email, hint: "Provide this to appear on the repair section of the support form on the service page."
     end
     f.actions
   end

@@ -91,6 +91,7 @@ Rails.application.routes.draw do
   get '/service' => 'service#index', as: :service
   get '/service_centers/login' => 'service_centers#login', as: :service_center_login
   resources :service_centers, only: [:index, :new, :create]
+  post '/service' => 'service#create_contact_message', as: :service_create_contact_message
 
   # Training site
   get '/training' => 'training_content_pages#show'

@@ -2195,3 +2195,11 @@ ul.breadcrumbs {
 :moz-placeholder {
   color: $aluminum;
 }
+div.field_with_errors {
+	display: inline;
+}
+.field_with_errors label {
+  color: red;
+  font-weight: bold;
+/*  display: table;*/
+}

@@ -54,6 +54,9 @@ gem 'friendly_id-globalize'
 gem 'http_accept_language'
 gem 'rails-i18n'
 
+gem 'email_validator'
+gem 'country_select'
+
 group :development do
   gem 'letter_opener'
 #  gem 'web-console', '~> 3.0'

@@ -1,0 +1,81 @@
+<fieldset class="repair">
+  <legend>Return Authorization Request</legend>
+  <p>US Customers Only</p>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :company, label: "Company Name" %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <%= f.input :account_number,
+        label: "HARMAN Account Number",
+        hint: "If applicable" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.association :brand,
+        label: "Brand of Your Product",
+        collection: Brand.where("repair_email IS NOT NULL").order("name"),
+        required: true %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <%= f.input :product, label: "Product Model", required: true %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :product_serial_number, label: "Product Serial Number", required: true %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :warranty, as: :radio_buttons, label: "Is your product under warranty?" %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <%= f.input :purchased_on,
+        label: "Date of Purchase",
+        as: :string,
+        required: true,
+        input_html: { class: 'ui-datepicker-past-only' } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 medium-12 columns">
+      <h5><%= t('shipping_address') %></h5>
+      <%= f.input :shipping_address, required: true, label: "Address (No P.O. Boxes)" %>
+      <%= f.input :shipping_city, required: true %>
+      <div class="row">
+        <div class="large-6 columns">
+          <%= f.input :shipping_state, required: true %>
+        </div>
+        <div class="large-6 columns">
+          <%= f.input :shipping_zip, required: true %>
+        </div>
+      </div>
+    </div>
+
+    <div class="large-6 medium-12 columns">
+      <h5><%= t('billing_address') %> <i class="hint">if different</i></h5>
+      <%= f.input :billing_address %>
+      <%= f.input :billing_city %>
+      <div class="row">
+        <div class="large-6 columns">
+          <%= f.input :billing_state %>
+        </div>
+        <div class="large-6 columns">
+          <%= f.input :billing_zip %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= f.input :message,
+        label: "Detailed Problem Description",
+        required: true,
+        input_html: { style: "height: 150px" } %>
+    </div>
+  </div>
+
+</fieldset>

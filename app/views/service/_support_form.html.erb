@@ -1,0 +1,36 @@
+<%= simple_form_for @contact_message, url: service_create_contact_message_path, html: { novalidate: true } do |f| %>
+  <% if f.object.errors.any? %>
+    <div class="alert alert-box">Please correct errors below before continuing.</div>
+    <div class="hint"><%= f.object.errors.inspect %></div>
+  <% end %>
+  <%= f.input :name %>
+  <%= f.input :email %>
+  <%= f.input :message_type,
+    label: "How may we help you?",
+    as: :radio_buttons,
+    collection: ContactMessage.message_types,
+    input_html: { :"ng-model" => "message_type", class: "trigger-datepicker" }
+  %>
+
+  <div class="message_type_container" ng-switch="message_type">
+    <div ng-switch-when="tech_support">
+      <%= render 'tech_support_fields', f: f %>
+    </div>
+    <div ng-switch-when="parts_request">
+      <%= render 'parts_request_fields', f: f %>
+    </div>
+    <div ng-switch-when="repair_request">
+      <%= render 'repair_request_fields', f: f %>
+    </div>
+  </div>
+
+  <div ng-show="message_type != null">
+    <%= recaptcha_tags %>
+    <% if f.object.errors[:base] %>
+      <div class="error"><%= f.error :base %></div>
+    <% end %>
+    <br/>
+    <%= f.submit "Submit Message", class: "medium radius button" %>
+  </div>
+
+<% end %>

@@ -3,38 +3,12 @@
 
 <%= render 'shared/service_subnav' %>
 
-<div class="container main-container">
+<div ng-controller="ServiceCtrl" ng-cloak class="container main-container">
   <div class="row">
 
     <div class="large-8 medium-7 columns">
-      <div class="service-banner"> </div>
-      <br/>
-      <div class="row" data-equalizer="blurbs">
-        <div class="large-4 medium-4 small-4 columns">
-          <h5><%= SiteSetting.value('service-page-register-your-products-subheader') %></h5>
-          <div data-equalizer-watch="blurbs">
-            <p><%= SiteSetting.value('service-page-register-your-products-blurb') %></p>
-          </div>
-            <br/>
-          <%= link_to t('service_page.links.register_now'), ENV['warranty_registration_url'], target: "_blank", class: "small radius button" %>
-        </div>
-        <div class="large-4 medium-4 small-4 columns">
-          <h5><%= SiteSetting.value('service-page-warranty-repair-subheader') %></h5>
-          <div data-equalizer-watch="blurbs">
-            <p><%= SiteSetting.value('service-page-warranty-repair-blurb') %></p>
-          </div>
-            <br/>
-          <%= link_to t('service_page.links.start_your_repair'), ENV['warranty_repair_url'], target: "_blank", class: "small radius button" %>
-        </div>
-        <div class="large-4 medium-4 small-4 columns">
-          <h5><%= SiteSetting.value('service-page-out-of-warranty-subheader') %></h5>
-          <div data-equalizer-watch="blurbs">
-            <p><%= SiteSetting.value('service-page-out-of-warranty-blurb') %></p>
-          </div>
-            <br/>
-          <%= link_to t('service_page.links.get_started'), ENV['warranty_repair_url'], target: "_blank", class: "small radius button" %>
-        </div>
-      </div>
+      <h2>Contact HARMAN US Customer Service</h2>
+      <%= render 'support_form' %>
     </div>
 
     <div class="large-4 medium-5 columns">

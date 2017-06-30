@@ -12,20 +12,14 @@ feature 'Service landing page' do
   #   Given I am a visitor
   #   When I visit the home page
   #   Then I see relevant sections
-  scenario 'click through to warranty registrion page' do
-    click_on 'Register Now'
+  scenario 'click through to warranty registration page' do
+    click_on 'register-your-products'
 
     expect(current_url).to match(ENV['warranty_registration_url'])
   end
 
   scenario 'click through to begin warranty repair process' do
-    click_on 'Start Your Repair'
-
-    expect(current_url).to match(ENV['warranty_repair_url'])
-  end
-
-  scenario 'click through to begin out-of-warranty repair' do
-    click_on 'Get Started'
+    click_on 'warranty-repair'
 
     expect(current_url).to match(ENV['warranty_repair_url'])
   end

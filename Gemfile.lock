@@ -144,6 +144,14 @@ GEM
     colorize (0.8.1)
     columnize (0.9.0)
     concurrent-ruby (1.0.5)
+    countries (2.0.8)
+      i18n_data (~> 0.7.0)
+      money (~> 6.7)
+      sixarm_ruby_unaccent (~> 1.1)
+      unicode_utils (~> 1.4)
+    country_select (3.0.0)
+      countries (~> 2.0)
+      sort_alphabetical (~> 1.0)
     daemons (1.2.4)
     dalli (2.7.6)
     database_cleaner (1.6.1)
@@ -163,6 +171,8 @@ GEM
     docile (1.1.5)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
+    email_validator (1.6.0)
+      activemodel
     erubis (2.7.0)
     exception_notification (4.2.1)
       actionmailer (>= 4.0, < 6)
@@ -248,6 +258,7 @@ GEM
     httparty (0.15.5)
       multi_xml (>= 0.5.2)
     i18n (0.8.4)
+    i18n_data (0.7.0)
     ipaddress (0.8.3)
     jasmine-core (2.6.4)
     jasmine-rails (0.14.1)
@@ -304,6 +315,8 @@ GEM
     mimemagic (0.3.2)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
+    money (6.9.0)
+      i18n (>= 0.6.4, < 0.9)
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -458,7 +471,10 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.1)
+    sixarm_ruby_unaccent (1.1.2)
     slop (3.6.0)
+    sort_alphabetical (1.1.0)
+      unicode_utils (>= 1.2.2)
     spring (2.0.2)
       activesupport (>= 4.2)
     sprockets (3.7.1)
@@ -481,6 +497,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.4)
+    unicode_utils (1.4.0)
     warden (1.2.7)
       rack (>= 1.0)
     websocket-driver (0.6.5)
@@ -510,11 +527,13 @@ DEPENDENCIES
   capybara
   coffee-rails
   colorize
+  country_select
   daemons
   dalli
   database_cleaner
   delayed_job_active_record (>= 4.1.1)
   devise
+  email_validator
   exception_notification
   factory_girl_rails
   faker

@@ -1,0 +1,35 @@
+<fieldset class="tech_support">
+  <legend>Technical Support Inquiry</legend>
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.association :brand,
+        label: "Brand of Your Product",
+        collection: Brand.where("tech_support_email IS NOT NULL").order("name"),
+        required: true %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <%= f.input :product, label: "Product Model", required: true %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :product_serial_number %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <%= f.input :operating_system %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :shipping_country, label: "Country" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= f.input :message,
+        label: "Detailed problem description",
+        required: true,
+        input_html: { style: "height: 150px" } %>
+    </div>
+  </div>
+</fieldset>
