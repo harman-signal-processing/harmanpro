@@ -37,7 +37,8 @@ class ServiceController < ApplicationController
       :warranty,
       :purchased_on,
       :part_number,
-      :shipping_country
+      :shipping_country,
+      :attachment
     )
   end
 end
