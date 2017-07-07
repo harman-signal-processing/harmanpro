@@ -64,4 +64,20 @@ class ContactMessage < ApplicationRecord
     !!(self.message_type.to_s.match(/rma|repair/i))
   end
 
+  def recipient
+    @recipient ||= determine_recipient
+  end
+
+  private
+
+  def determine_recipient
+    if part_request?
+      brand.parts_email
+    elsif repair_request?
+      brand.repair_email
+    else
+      brand.tech_support_email
+    end
+  end
+
 end

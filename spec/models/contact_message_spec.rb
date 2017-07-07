@@ -10,14 +10,26 @@ RSpec.describe ContactMessage, :type => :model do
   it { should respond_to :brand }
 
   describe "tech support" do
-    it "should deliver email to brand's tech support"
+    it "should deliver email to brand's tech support" do
+      @contact_message.message_type = "tech_support"
+
+      expect(@contact_message.recipient).to eq(@brand.tech_support_email)
+    end
   end
 
   describe "parts request" do
-    it "should deliver email to brand's parts address"
+    it "should deliver email to brand's parts address" do
+      @contact_message.message_type = "parts_request"
+
+      expect(@contact_message.recipient).to eq(@brand.parts_email)
+    end
   end
 
   describe "repair request" do
-    it "should deliver email to brand's repair address"
+    it "should deliver email to brand's repair address" do
+      @contact_message.message_type = "repair_request"
+
+      expect(@contact_message.recipient).to eq(@brand.repair_email)
+    end
   end
 end

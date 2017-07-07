@@ -2,31 +2,6 @@ ActiveAdmin.register ContactMessage do
   menu label: "Support Messages", parent: "Service"
   actions :index, :show, :destroy
 
-  permit_params :name,
-    :email,
-    :subject,
-    :message,
-    :product,
-    :operating_system,
-    :message_type,
-    :company,
-    :account_number,
-    :billing_address,
-    :billing_city,
-    :billing_state,
-    :billing_zip,
-    :shipping_address,
-    :shipping_city,
-    :shipping_state,
-    :shipping_zip,
-    :product_serial_number,
-    :part_number,
-    :warranty,
-    :purchased_on,
-    :shipping_country,
-    :brand_id,
-    :attachment
-
   # :nocov:
   index do
     selectable_column

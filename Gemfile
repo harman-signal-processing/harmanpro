@@ -92,6 +92,7 @@ group :test do
   gem 'json-schema'
   gem 'faker'
   gem 'selenium-webdriver'
+  #gem 'chromedriver-helper' # nice for testing in a browser window
   gem 'launchy'
   # This brings back the 'assigns' method I used a lot in testing which DHH
   # now discourages. But, requiring it here breaks other tests. So I do the
