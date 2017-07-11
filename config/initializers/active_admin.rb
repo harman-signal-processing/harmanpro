@@ -174,8 +174,8 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
-  config.register_javascript 'tinymce-jquery'
-  config.register_javascript 'tiny'
+  #config.register_javascript 'tinymce-jquery'
+  #config.register_javascript 'tiny'
 
 
   # == CSV options

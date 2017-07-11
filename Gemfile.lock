@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/activeadmin/activeadmin.git
-  revision: c349fde213aefe978c0a99e2c7cd949516149434
+  revision: 36e65d56e9f46145e3f71671e3b3b12d57a1f3c4
   specs:
     activeadmin (1.0.0)
       arbre (>= 1.1.1)
@@ -179,7 +179,7 @@ GEM
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
-    faker (1.7.3)
+    faker (1.8.2)
       i18n (~> 0.5)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
@@ -252,7 +252,7 @@ GEM
     http_accept_language (2.1.1)
     httparty (0.15.5)
       multi_xml (>= 0.5.2)
-    i18n (0.8.4)
+    i18n (0.8.6)
     i18n_data (0.7.0)
     ipaddress (0.8.3)
     jasmine-core (2.6.4)
@@ -315,7 +315,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mysql2 (0.4.7)
+    mysql2 (0.4.8)
     nenv (0.3.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -437,7 +437,7 @@ GEM
     ruby-graphviz (1.2.3)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
-    sass (3.4.24)
+    sass (3.4.25)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
       sass (~> 3.1)
