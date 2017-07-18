@@ -10,7 +10,7 @@ class Cms::TrainingContentPagesController < CmsController
 
   def originated
     if @available_locale
-      @training_content_pages = @available_locale.training_content_pages.with_translations
+      @training_content_pages = @available_locale.training_content_pages.with_translations(@available_locale.key)
       render template: 'cms/available_locales/training_content_pages/originated' and return false
     end
   end

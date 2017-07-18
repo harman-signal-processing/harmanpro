@@ -14,7 +14,7 @@
           <th>Name <i>(click to edit event)</i></th>
           <th>Public Link <i>(click to view event)</i></th>
         </tr>
-        <% @events.order(:start_on).reverse.each do |event| %>
+        <% @events.order('start_on').reverse.each do |event| %>
           <tr>
             <td><%= link_to event.name, edit_cms_available_locale_event_path(@available_locale, event) %></td>
             <td>

@@ -14,7 +14,7 @@
           <th>Title <i>(click to edit page)</i></th>
           <th>Public Link <i>(click to view page)</i></th>
         </tr>
-        <% @landing_pages.order(:title).each do |landing_page| %>
+        <% @landing_pages.order('title').each do |landing_page| %>
           <tr>
             <td><%= link_to landing_page.title, edit_cms_available_locale_landing_page_path(@available_locale, landing_page) %></td>
             <td><%= link_to(landing_page_url(landing_page, locale: landing_page.original_locale.key),

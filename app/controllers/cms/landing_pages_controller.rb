@@ -10,7 +10,7 @@ class Cms::LandingPagesController < CmsController
 
   def originated
     if @available_locale
-      @landing_pages = @available_locale.landing_pages.with_translations
+      @landing_pages = @available_locale.landing_pages.with_translations(@available_locale.key)
       render template: 'cms/available_locales/landing_pages/originated' and return false
     end
   end

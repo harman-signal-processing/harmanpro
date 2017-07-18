@@ -113,11 +113,11 @@
                 <a href="#" class="disabled"><%= t('nav.resources') %></a>
                 <ul class="dropdown">
                   <% if current_locale.menu_items.length > 0 %>
-                    <% current_locale.menu_items.order(:position).each do |mi| %>
+                    <% current_locale.menu_items.order('position').each do |mi| %>
                       <li><%= link_to mi.title, mi.link, target: (mi.new_tab?) ? "_blank" : "" %></li>
                     <% end %>
                   <% elsif MenuItem.where(locale_id: nil).count > 0 %>
-                    <% MenuItem.where(locale_id: nil).order(:position).each do |mi| %>
+                    <% MenuItem.where(locale_id: nil).order('position').each do |mi| %>
                       <li><%= link_to t(mi.title), mi.link, target: (mi.new_tab?) ? "_blank" : "" %></li>
                     <% end %>
                   <% else %>

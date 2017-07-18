@@ -4,7 +4,7 @@
   <div class="medium-7 small-12 columns">
     <h3>Choose a venue:</h3>
     <ul>
-      <% @venues.with_translations(I18n.default_locale).order(:name).each do |venue| %>
+      <% @venues.with_translations(I18n.default_locale).order('name').each do |venue| %>
         <li class="<%= 'needs-translation' if venue.needs_translation?(@available_locale.key) %>">
           <%= link_to venue.name, edit_cms_available_locale_venue_path(@available_locale, venue) %>
         </li>

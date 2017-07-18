@@ -4,7 +4,7 @@
   <div class="medium-7 small-12 columns">
     <h3>Choose a vertical market:</h3>
     <ul>
-      <% @vertical_markets.with_translations(I18n.default_locale).order(:name).each do |vertical_market| %>
+      <% @vertical_markets.with_translations(I18n.default_locale).order('name').each do |vertical_market| %>
         <li class="<%= 'needs-translation' if vertical_market.needs_translation?(@available_locale.key) %>">
           <%= link_to vertical_market.name, edit_cms_available_locale_vertical_market_path(@available_locale, vertical_market) %>
         </li>

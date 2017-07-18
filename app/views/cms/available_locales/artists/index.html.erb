@@ -14,7 +14,7 @@
           <th>Name <i>(click to edit artist)</i></th>
           <th>Public Link <i>(click to view artist)</i></th>
         </tr>
-        <% @artists.order(:name).each do |artist| %>
+        <% @artists.order('name').each do |artist| %>
           <tr>
             <td><%= link_to artist.name, edit_cms_available_locale_artist_path(@available_locale, artist) %></td>
             <td>

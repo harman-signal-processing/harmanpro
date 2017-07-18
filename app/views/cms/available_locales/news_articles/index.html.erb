@@ -14,7 +14,7 @@
           <th>Title <i>(click to edit article)</i></th>
           <th>Public Link <i>(click to view article)</i></th>
         </tr>
-        <% @news_articles.order(:post_on).reverse.each do |news_article| %>
+        <% @news_articles.order('post_on').reverse.each do |news_article| %>
           <tr>
             <td><%= link_to news_article.title, edit_cms_available_locale_news_article_path(@available_locale, news_article) %></td>
             <td>

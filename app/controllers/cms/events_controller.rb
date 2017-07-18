@@ -10,7 +10,7 @@ class Cms::EventsController < CmsController
 
   def local
     if @available_locale
-      @events = @available_locale.events.with_translations
+      @events = @available_locale.events.with_translations(@available_locale.key)
       render template: 'cms/available_locales/events/local' and return false
     end
   end
