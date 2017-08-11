@@ -1,0 +1,13 @@
+<h5>These are the resources for the '<%= @emea_page.title %>' page:</h5>
+<p>Note: I don't expect anyone will actually use this page.</p>
+
+<p><%= link_to 'new resource',
+  new_emea_admin_emea_page_emea_page_resource_path(@emea_page),
+  class: "small success radius button" %></p>
+
+<ul>
+  <% @emea_page_resources.each do |emea_page_resource| %>
+    <li><%= link_to emea_page_resource.attachment_file_name,
+      edit_emea_admin_emea_page_emea_page_resource_path(@emea_page, emea_page_resource) %></li>
+  <% end %>
+</ul>

@@ -1,0 +1,35 @@
+<% if @page.features.count > 0 %>
+  <div class="slick-show">
+    <% @page.features.each do |feature| %>
+      <div class="slick-slide">
+        <% if feature.link.present? %>
+          <%= link_to feature.link, target: (feature.new_window?) ? "_blank" : "" do %>
+            <%= image_tag feature.attachment.url, alt: feature.name %>
+          <% end %>
+        <% else %>
+          <%= image_tag feature.attachment.url, alt: feature.name %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @page.pinch_content? %>
+  <div class="row">
+    <div class="medium-8 medium-offset-2 columns">
+      <%= raw @page.content %>
+    </div>
+  </div>
+<% else %>
+  <%= raw @page.content %>
+<% end %>
+
+<% if @page.highlight_color.present? %>
+  <%= content_for :header_code do %>
+    <style type="text/css" media="all">
+      h1,h2,h3,h4,h5,h6 {
+        color: <%= @page.highlight_color %>;
+      }
+    </style>
+  <% end %>
+<% end %>

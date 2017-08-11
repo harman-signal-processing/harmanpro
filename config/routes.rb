@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
   # Logins for admins, etc.
-  devise_for :admin_users, skip: [:registrations]
+  devise_for :admin_users
   as :admin_user do
     get 'admin_users/edit' => 'admin_users/registrations#edit', as: :edit_admin_user_registration
     patch 'admin_users' => 'admin_users/registrations#update', as: :admin_user_registration
@@ -77,6 +77,19 @@ Rails.application.routes.draw do
   resources :artists, only: [:index, :show]
   resources :products, only: [:index, :show]
 
+  # EMEA portal
+  get '/lp/emeaportal' => redirect('/emea')
+  get '/emea' => 'emea_pages#index', as: :emea_root
+
+  namespace :emea do
+    get 'admin' => 'admin#index'
+    namespace :admin do
+      resources :emea_pages, path: "pages" do
+        resources :emea_page_resources, path: "resources"
+      end
+    end
+  end
+  resources :emea_pages, path: 'emea', only: [:index, :show]
 
   # Cinema Calculator
   get '/cinema/calculator' => 'calculators#cinema'

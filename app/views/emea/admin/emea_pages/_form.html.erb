@@ -1,0 +1,32 @@
+<%= simple_form_for [:emea, :admin, @emea_page] do |f| %>
+  <%= f.input :title %>
+  <div class="row">
+    <div class="medium-4 columns">
+      <%= f.input :position,
+        label: "Position for Top Navigation",
+        hint: "Set to 0 to hide this page from the top nav." %>
+    </div>
+    <div class="medium-5 columns">
+      <%= f.input :publish_on,
+        label: "Publish date",
+        hint: f.object.publish_on.present? ? "(YYYY-MM-DD)" : "",
+        as: :string,
+        input_html: { class: "datepicker" } %>
+    </div>
+    <div class="medium-3 columns">
+      <%= f.input :highlight_color,
+        label: "Headline color",
+        input_html: { class: 'colorpicker' } %>
+    </div>
+  </div>
+
+  <%= f.input :content,
+    label: false,
+    as: :text,
+    input_html: { rows: 15, class: "mceEditor" } %>
+
+  <br/>
+  <%= f.input :pinch_content,
+    label: "Pinch content area by 2 columns on L/R sides." %>
+  <%= f.button :submit %>
+<% end %>

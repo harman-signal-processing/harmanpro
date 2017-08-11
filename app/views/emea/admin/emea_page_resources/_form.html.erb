@@ -1,0 +1,41 @@
+<%= simple_form_for [:emea, :admin, @emea_page, @emea_page_resource] do |f| %>
+  <div class="row">
+    <div class="medium-8 columns">
+      <%= f.input :name, label: "Name (for admin reference)" %>
+    </div>
+    <div class="medium-4 columns">
+      <%= f.input :attachment %>
+      <% if f.object.attachment.present? %>
+        <p class="hint">
+          Currently: <%= link_to f.object.attachment_file_name, f.object.attachment.url, target: "_blank" %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+
+  <fieldset>
+    <legend>Featured Image Settings</legend>
+    <%= f.input :featured,
+      hint: "If this resource is a featured image on the top of the page as either a single banner or part of a slideshow." %>
+    <div class="row">
+      <div class="medium-8 columns">
+        <%= f.input :link,
+          placeholder: "example: https://some.other.url/",
+          hint: "Usually only used if this is a slideshow banner." %>
+      </div>
+      <div class="medium-4 columns">
+        <br/>
+        <%= f.input :new_window, label: "Open link in a new tab/window" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-3 columns">
+        <%= f.input :position,
+          label: "Order (number)",
+          hint: "Use to sort slideshow images" %>
+      </div>
+    </div>
+  </fieldset>
+
+  <%= f.button :submit %>
+<% end %>

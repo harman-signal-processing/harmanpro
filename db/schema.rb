@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703151625) do
+ActiveRecord::Schema.define(version: 20170810174949) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "namespace"
@@ -211,6 +211,35 @@ ActiveRecord::Schema.define(version: 20170703151625) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+  end
+
+  create_table "emea_page_resources", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "attachment_file_name"
+    t.integer  "attachment_file_size"
+    t.string   "attachment_content_type"
+    t.datetime "attachment_updated_at"
+    t.boolean  "featured"
+    t.integer  "position"
+    t.string   "link"
+    t.boolean  "new_window"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "emea_page_id"
+    t.index ["emea_page_id"], name: "index_emea_page_resources_on_emea_page_id", using: :btree
+  end
+
+  create_table "emea_pages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.string   "highlight_color"
+    t.date     "publish_on"
+    t.text     "content",         limit: 65535
+    t.integer  "position"
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.boolean  "pinch_content",                 default: true
+    t.index ["slug"], name: "index_emea_pages_on_slug", using: :btree
   end
 
   create_table "event_translations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

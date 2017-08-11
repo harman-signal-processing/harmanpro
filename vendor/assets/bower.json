@@ -4,7 +4,7 @@
     "angular": "latest",
     "angular-resource": "latest",
     "angular-mocks": "latest",
-    "angular-slider": "latest",
+    "angular-awesome-slider": "latest",
     "nsPopover": "latest",
     "REM-unit-polyfill": "latest"
   },

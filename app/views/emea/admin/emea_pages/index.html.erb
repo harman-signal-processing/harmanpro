@@ -1,0 +1,34 @@
+<h1>EMEA Pages</h1>
+<p><%= link_to "<< back to admin", emea_admin_path %></p>
+
+<div class="row">
+  <div class="medium-8 columns">
+    <table style="width: 100%">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Publish Date</th>
+          <th>Topnav</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @emea_pages.each do |emea_page| %>
+          <tr>
+            <td><%= link_to emea_page.title, edit_emea_admin_emea_page_path(emea_page) %></td>
+            <td><%= (emea_page.publish_on.present?) ? l(emea_page.publish_on) : "--" %></td>
+            <td><%= (emea_page.position.to_i > 0) ? "Yes" : "" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="medium-4 columns">
+    <div class="panel">
+      <%= simple_form_for [:emea, :admin, EmeaPage.new] do |f| %>
+        <%= f.input :title, label: "New Page Title" %>
+        <input type="hidden" name="next_step" id="next_step" value="edit">
+        <%= f.button :submit, class: "small success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

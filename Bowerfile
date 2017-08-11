@@ -1,6 +1,6 @@
 asset 'angular'
 asset 'angular-resource'
 asset 'angular-mocks'
-asset 'angular-slider'
+asset 'angular-awesome-slider'
 asset 'nsPopover'
 asset 'REM-unit-polyfill'
