@@ -48,6 +48,7 @@ gem 'exception_notification'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'mailgun_rails' # mailer service from Rackspace
 gem 'recaptcha', require: "recaptcha/rails"
+gem 'nokogiri' # for parsing HTML to generate subnavs on EMEA portal
 
 gem 'globalize', '5.1.0.beta1' #github: 'globalize', branch: '999b5dfa656ff0f706dbcd07ce7552d5b783d5a1' # 3/2017 master branch had errors #'~> 5.0.0'
 gem 'friendly_id-globalize'

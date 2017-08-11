@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="small-12 columns">
+    <div id="footer">
+      <div class="row">
+        <div class="large-6 medium-6 small-12 columns">
+          <h6 class="subheader"><%= t('nav.solutions') %></h6>
+          <ul class="medium-block-grid-<%= active_child_verticals.in_groups_of(10).length %>">
+            <% active_child_verticals.in_groups_of(10) do |group| %>
+              <li>
+                <ul><% group.each do |item| %>
+                  <%= menu_link_for(item) if item.respond_to?(:name) %>
+                <% end %></ul>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+
+        <div class="large-2 medium-6 small-12 columns">
+          <%= cache ["footer-col-3", Date.today, current_locale] do %>
+            <h6 class="subheader"><%= t('harman_brands') %></h6>
+            <ul class="medium-block-grid-2 small-block-grid-2">
+              <% all_brands.in_groups(2) do |group| %>
+                <li>
+                  <ul><% group.each do |brand| %>
+                    <% if brand.respond_to?(:name) %>
+                      <li><%= link_to brand.name, brand %></li>
+                    <% end %>
+                  <% end %></ul>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+
+        <div class="large-1 columns hide-for-medium-down">&nbsp;</div>
+        <div class="large-3 medium-6 small-12 columns">
+          <%= cache ["footer-col-4", Date.today, current_locale] do %>
+            <h6 class="subheader"><%= t('connect_with_us') %></h6>
+            <iframe src="/newsletter_signup.html" frameborder="0" width="99%" height="100" marginwidth="0" class="iframe-form" seamless="seamless"></iframe>
+          <% end %>
+          <div class="social-links">
+            <%= link_to "https://www.facebook.com/HarmanInt?_rdr=p" do %>
+              <%= fa_icon 'facebook 2x' %>
+            <% end %>
+            <%= link_to "https://twitter.com/Harman" do %>
+              <%= fa_icon 'twitter 2x' %>
+            <% end %>
+            <%= link_to "https://www.linkedin.com/company/harman-international" do %>
+              <%= fa_icon 'linkedin 2x' %>
+            <% end %>
+            <%= link_to "https://www.youtube.com/user/HarmanIntl" do %>
+              <%= fa_icon 'youtube 2x' %>
+            <% end %>
+            <%= link_to "https://www.pinterest.com/harmanint/" do %>
+              <%= fa_icon 'pinterest 2x' %>
+            <% end %>
+            <%= link_to "https://plus.google.com/+HarmanIntl/videos" do %>
+              <%= fa_icon 'google-plus 2x' %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="small-12 columns sub-footer">
+          <p>
+            &copy; <%= Date.today.year %> HARMAN International.
+            <%= t('all_rights_reserved') %>.
+            <%= link_to t('privacy_policy'), "http://www.harman.com/privacy-policy" %>
+            |
+            <%= link_to t('terms_of_use'), "http://www.harman.com/terms-use" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= yield :footer_code %>

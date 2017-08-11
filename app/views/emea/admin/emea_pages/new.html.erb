@@ -1,0 +1,14 @@
+<h1>New EMEA Portal Page</h1>
+<p><%= link_to "<< back to page list", emea_admin_emea_pages_path %></p>
+
+<div class="row">
+  <div class="medium-8 columns">
+    <%= simple_form_for [:emea, :admin, @emea_page] do |f| %>
+      <%= f.input :title,
+        hint: "You'll be able to add page content, upload images, etc. on the next step." %>
+      <input type="hidden" name="next_step" id="next_step" value="edit">
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
+

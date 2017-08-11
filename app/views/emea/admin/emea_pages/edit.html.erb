@@ -1,0 +1,55 @@
+<p><%= link_to "<< back to page list", emea_admin_emea_pages_path %></p>
+
+<div class="row">
+  <div class="medium-8 columns">
+    <%= render 'form' %>
+  </div>
+
+  <div class="medium-4 columns">
+    <div class="callout panel">
+      <h5>Link</h5>
+      <% if @emea_page.is_home? %>
+        <%= link_to emea_root_url, emea_root_url, target: "_blank" %>
+      <% else %>
+        <%= link_to emea_page_url(@emea_page), @emea_page, target: "_blank" %>
+      <% end %>
+    </div>
+
+    <div class="panel">
+      <h5>Feature Image(s)</h5>
+      <p>Add one or more feature images to the top of this page.
+      Adding multiple images will generate a slideshow.</p>
+
+      <%= link_to "+ new feature", new_emea_admin_emea_page_emea_page_resource_path(@emea_page, featured: true) %>
+      <ul>
+        <% @emea_page.features.each do |feature| %>
+          <li><%= link_to feature.name, edit_emea_admin_emea_page_emea_page_resource_path(@emea_page, feature) %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h5>Page Resources</h5>
+      <p>Upload images, PDFs, etc. to be used on this page:</p>
+
+      <%= link_to "+ new resource", new_emea_admin_emea_page_emea_page_resource_path(@emea_page) %>
+      <ul>
+        <% (@emea_page.resources - @emea_page.features).each do |resource| %>
+          <li>
+            <%= link_to resource.name, edit_emea_admin_emea_page_emea_page_resource_path(@emea_page, resource) %>
+            <br/><small><%= resource.attachment.url %></small>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <p class="text-right">
+      <%= link_to "delete page",
+        [:emea, :admin, @emea_page],
+        method: :delete,
+        data: { confirm: "Are you sure? This cannot be undone." },
+        class: "tiny alert radius button" %>
+    </p>
+  </div>
+</div>
+

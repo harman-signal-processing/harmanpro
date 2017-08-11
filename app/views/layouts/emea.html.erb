@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="harmanpro">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : t('default_meta_description', brand_names: all_brands.map{|b| b.name}.join(', ') ) %>">
+    <link rel="shortcut icon" type="image/x-icon" href="/harman.ico" />
+    <link rel="icon" type="image/x-icon" href="/harman.ico" />
+
+    <%# Silverpop tracking %>
+    <% if Rails.env.production? %>
+      <meta name="com.silverpop.brandeddomains" content="www.pages08.net,akg.com,amx.com,bssaudio.com,crownaudio.com,dbxpro.com,digitech.com,jblpro.com,lexiconpro.com,martin.com,pro.harman.com,soundcraft.com,studer.ch" />
+      <meta name="com.silverpop.cothost" content="pod8.ibmmarketingcloud.com" />
+      <script src="https://www.sc.pages08.net/lp/static/js/iMAWebCookie.js?4724915e-155c1210684-6681ada67421f5d3ed5e65517ed2e77a&h=www.pages08.net" type="text/javascript"></script>
+    <% end %>
+
+    <title><%= content_for?(:title) ? yield(:title) + " | " : 'EMEA Portal' %> <%= t('site_name') %></title>
+
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/nwmatcher/1.2.5/nwmatcher.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/corysimmons-selectivizr2/1.0.9/selectivizr2.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
+    <![endif]-->
+    <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag    "emea" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "header" %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.32/angular.min.js"></script>
+    <![endif]-->
+    <!--[if (gte IE 9) | (!IE)]><!-->
+      <%= javascript_include_tag "angular/angular" %>
+    <!--<![endif]-->
+    <%= csrf_meta_tags %>
+    <%= yield :header_code %>
+  </head>
+
+  <body>
+    <% unless Rails.env.production? %>
+      <div class="text-center" style="background: yellow; padding: 3px">
+        Hi. Welcome to the pro.harman.com <%= Rails.env.to_s %> environment.
+      </div>
+    <% end %>
+
+    <div class="row logo-container hide-for-small">
+      <div class="medium-12 columns">
+        <div class="row">
+
+          <div class="medium-9 small-7 columns">
+            <h1 class="logo">
+              <a href="http://www.harman.com"><%= image_tag "logo.png", alt: t('logo_alt_text'), id: "logo" %></a>
+              <small><a href="/"><%= t("professional_solutions").upcase %></a></small>
+            </h1>
+          </div>
+
+        </div>
+        <hr/>
+
+      </div>
+    </div>
+
+    <div class="contain-to-grid sticky">
+      <nav class="top-bar" data-topbar role="navigation">
+
+        <ul class="title-area">
+          <li class="name logo-container">
+            <h1 class="logo show-for-small">
+              <a href="http://www.harman.com"><%= image_tag "logo_sm.png", alt: t('logo_alt_text') %></a>
+              <small><a href="/"><%= t("professional_solutions").upcase %></a></small>
+            </h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>&nbsp;</span></a></li>
+        </ul>
+
+        <section class="top-bar-section">
+          <ul>
+            <%= cache ["emea-top-nav", Date.today, current_locale] do %>
+              <%= emea_top_nav_items %>
+            <% end %>
+          </ul>
+        </section>
+
+        <section class="top-bar-section">
+          <ul class="right">
+            <li><%= link_to "NAME" %></li>
+            <li><%= link_to "Log Out" %></li>
+          </ul>
+        </section>
+
+      </nav>
+    </div>
+
+    <%= render 'layouts/flash_messages' %>
+
+    <div class="row">
+      <div class="small-12 columns">
+        <%= yield %>
+      </div>
+    </div>
+
+    <%= render 'layouts/footer' %>
+
+    <%= javascript_include_tag "application" %>
+
+    <%= render 'shared/marketing_tracking' %>
+
+  </body>
+</html>

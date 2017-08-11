@@ -16,4 +16,9 @@ class AdminUser < ApplicationRecord
   def translatable_locales
     @translatable_locales ||= locales - [AvailableLocale.default]
   end
+
+  # For now, all admin_users are considered admins.
+  def admin?
+    true
+  end
 end

@@ -17,3 +17,5 @@ Rails.application.config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff|pdf|xlsx
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( header.js )
 Rails.application.config.assets.precompile += %w( angular/angular )
+
+Rails.application.config.assets.precompile += %w( emea.css emea.js )

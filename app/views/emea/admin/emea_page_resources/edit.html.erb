@@ -1,0 +1,10 @@
+<h3>Editing Page Resource</h3>
+<p><%= link_to "<< back", edit_emea_admin_emea_page_path(@emea_page) %></p>
+
+<%= render 'form' %>
+
+<p><%= link_to "delete page resource",
+    [:emea, :admin, @emea_page, @emea_page_resource],
+    method: :delete,
+    data: { confirm: "Are you sure?" },
+    class: "tiny radius alert button" %></p>
