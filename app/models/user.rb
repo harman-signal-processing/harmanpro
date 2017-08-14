@@ -1,4 +1,4 @@
-class AdminUser < ApplicationRecord
+class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
@@ -17,8 +17,13 @@ class AdminUser < ApplicationRecord
     @translatable_locales ||= locales - [AvailableLocale.default]
   end
 
-  # For now, all admin_users are considered admins.
-  def admin?
-    true
+  # The CMS user could be multiple roles
+  def cms_user?
+    super_admin? || admin? || translator? || service_department?
+  end
+
+  # Access to ActiveAdmin for several roles
+  def admin_access?
+    super_admin? || admin? || service_department?
   end
 end

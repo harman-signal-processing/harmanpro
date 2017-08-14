@@ -1,5 +1,5 @@
 class EmeaController < ApplicationController
-  before_action :authenticate_admin_user!
+  before_action :authenticate_user!
 
   def index
     @page = EmeaPage.home

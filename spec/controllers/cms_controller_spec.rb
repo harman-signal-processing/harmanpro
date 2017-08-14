@@ -4,8 +4,8 @@ RSpec.describe CmsController do
 
   describe "GET :index (logged in)" do
     it "responds with dashboard" do
-      @admin_user = FactoryGirl.create(:admin_user, translator: true)
-      sign_in(@admin_user, scope: :admin_user)
+      @admin_user = FactoryGirl.create(:user, translator: true)
+      sign_in(@admin_user, scope: :user)
 
       get :index
 
@@ -17,7 +17,7 @@ RSpec.describe CmsController do
     it "redirects to login" do
       get :index
 
-      expect(response).to redirect_to(new_admin_user_session_path)
+      expect(response).to redirect_to(new_user_session_path)
     end
   end
 end

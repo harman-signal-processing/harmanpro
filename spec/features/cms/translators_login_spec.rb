@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Translators login" do
 
   before :each do
-    @translator = FactoryGirl.create(:admin_user, translator: true)
+    @translator = FactoryGirl.create(:user, translator: true)
   end
 
   scenario "sees dashboard after signing in" do

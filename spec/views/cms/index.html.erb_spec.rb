@@ -3,13 +3,13 @@ require "rails_helper"
 RSpec.describe "cms/index.html.erb" do
 
   before :all do
-    @translator = FactoryGirl.create(:admin_user, translator: true)
+    @translator = FactoryGirl.create(:user, translator: true)
     @locale = FactoryGirl.create(:available_locale)
     @translator.locales << @locale
   end
 
   before :each do
-    allow(view).to receive(:current_admin_user).and_return(@translator)
+    allow(view).to receive(:current_user).and_return(@translator)
     render
   end
 

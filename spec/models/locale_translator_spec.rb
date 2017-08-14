@@ -10,8 +10,8 @@ RSpec.describe LocaleTranslator, type: :model do
   it { should respond_to :translator}
   it { should respond_to :locale }
 
-  it "translator is an AdminUser" do
-    expect(@lt.translator).to be_an(AdminUser)
+  it "translator is an User" do
+    expect(@lt.translator).to be_an(User)
   end
 
   it "locale is an AvailableLocale" do

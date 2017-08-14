@@ -71,13 +71,19 @@ class ApplicationController < ActionController::Base
     session["last_page"] = request.path
   end
 
+  def authenticate_admin_user!
+    redirect_to new_user_session_path unless authenticate_user!
+    raise Pundit::NotAuthorizedError unless current_user.admin_access?
+  end
+
+  def authenticate_cms_user!
+    redirect_to new_user_session_path unless authenticate_user!
+    raise Pundit::NotAuthorizedError unless current_user.cms_user?
+  end
+
   def user_not_authorized
     flash[:alert] = "Access denied."
     redirect_to (request.referrer || root_path)
-  end
-
-  def pundit_user
-    current_admin_user
   end
 
   # For dynamically inserting contact forms into landing pages with:

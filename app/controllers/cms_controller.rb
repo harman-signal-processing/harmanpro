@@ -1,5 +1,5 @@
 class CmsController < ApplicationController
-  before_action :authenticate_admin_user!
+  before_action :authenticate_cms_user!
   layout 'cms'
 
   def index

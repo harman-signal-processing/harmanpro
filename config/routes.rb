@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
   # Logins for admins, etc.
-  devise_for :admin_users
-  as :admin_user do
-    get 'admin_users/edit' => 'admin_users/registrations#edit', as: :edit_admin_user_registration
-    patch 'admin_users' => 'admin_users/registrations#update', as: :admin_user_registration
+  devise_for :users
+  as :user do
+    get 'users/edit' => 'users/registrations#edit', as: :edit_user_registration
+    patch 'users' => 'users/registrations#update', as: :user_registration
   end
 
   # Old CMS using ActiveAdmin, still accessible at /admin
