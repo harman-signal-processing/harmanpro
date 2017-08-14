@@ -36,7 +36,8 @@ feature "Basic visitor flow" do
   # I want to click on a vertical market
   # So I can navigate to its solutions
   scenario "Visit a parent vertical market page" do
-    click_on @parent_vertical.name
+    #click_on @parent_vertical.name # 8/2017 no longer featured on homepage
+    visit vertical_market_path(@parent_vertical)
 
     expect(page).to have_link(@child_vertical.name, href: vertical_market_path(@child_vertical))
   end
@@ -45,7 +46,8 @@ feature "Basic visitor flow" do
   # I want to click through to a child vertical market page
   # So I can find out about the system solutions
   scenario "Visit a child vertical market page" do
-    click_on @parent_vertical.name
+    #click_on @parent_vertical.name # 8/2017 no longer featured on homepage
+    visit vertical_market_path(@parent_vertical)
 
     click_on @child_vertical.name
 

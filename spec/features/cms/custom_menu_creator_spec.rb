@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Translators and admins can customize menus for their locale" do
 
   before :all do
-    @translator = FactoryGirl.create(:admin_user, translator: true)
+    @translator = FactoryGirl.create(:user, translator: true)
     @locale = FactoryGirl.create(:available_locale, key: 'es')
     @menu_item = FactoryGirl.create(:menu_item, locale: @locale)
     FactoryGirl.create(:site_setting, name: "blog_link_name")

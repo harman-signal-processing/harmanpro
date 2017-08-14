@@ -1,10 +1,10 @@
-ActiveAdmin.register AdminUser do
+ActiveAdmin.register User do
   menu parent: "Settings", priority: 2
   permit_params :email, :password, :password_confirmation,
-    :service_department, :super_admin, :translator,
+    :service_department, :super_admin, :translator, :admin,
     locale_translators_attributes: [:id, :available_locale_id, :_destroy]
 
-  #menu if: proc { current_admin_user.can?(:manage, AdminUser) }
+  #menu if: proc { current_user.can?(:manage, AdminUser) }
 
   # :nocov:
   index do
@@ -20,9 +20,9 @@ ActiveAdmin.register AdminUser do
 
   controller do
     def update
-      if params[:admin_user][:password].blank?
-        params[:admin_user].delete("password")
-        params[:admin_user].delete("password_confirmation")
+      if params[:user][:password].blank?
+        params[:user].delete("password")
+        params[:user].delete("password_confirmation")
       end
       super
     end
@@ -35,15 +35,16 @@ ActiveAdmin.register AdminUser do
 
   # :nocov:
   form do |f|
-    f.inputs "Admin Details" do
+    f.inputs "Details" do
       f.input :email
       f.input :password
       f.input :password_confirmation
     end
     f.inputs "Roles" do
+      f.input :admin, hint: "For access to this admin tool."
       f.input :service_department
-      f.input :super_admin
       f.input :translator
+      f.input :super_admin
     end
     f.has_many :locale_translators, heading: "Authorized Locales", new_record: "Add an authorized locale" do |s|
       s.input :id, as: :hidden

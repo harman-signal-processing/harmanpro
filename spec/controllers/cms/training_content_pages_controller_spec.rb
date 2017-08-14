@@ -4,7 +4,7 @@ RSpec.describe Cms::TrainingContentPagesController, type: :controller do
   before :all do
     FactoryGirl.create(:available_locale, key: I18n.default_locale.to_s)
     @available_locale = FactoryGirl.create(:available_locale, key: 'es')
-    @admin_user = FactoryGirl.create(:admin_user, translator: true)
+    @admin_user = FactoryGirl.create(:user, translator: true)
     @training_content_page = FactoryGirl.create(:training_content_page)
   end
 
@@ -13,7 +13,7 @@ RSpec.describe Cms::TrainingContentPagesController, type: :controller do
   end
 
   before :each do
-    sign_in(@admin_user, scope: :admin_user)
+    sign_in(@admin_user, scope: :user)
   end
 
   describe "sub-folder of available_locale" do

@@ -1,12 +1,12 @@
 require "rails_helper"
 
-RSpec.describe AdminUser do
+RSpec.describe User do
 
   before :all do
-    @user = FactoryGirl.create(:admin_user)
+    @user = FactoryGirl.create(:user)
   end
 
-  subject { @admin_user }
+  subject { @user }
 
   it "can have several locales for which she translates" do
     locale = FactoryGirl.create(:available_locale)

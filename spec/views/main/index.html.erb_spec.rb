@@ -18,10 +18,11 @@ RSpec.describe "main/index.html.erb", as: :view do
     render
   end
 
-  it "links to all top-level vertical markets" do
-    @vertical_markets.each do |vm|
-      expect(rendered).to have_link(vm.name, href: vertical_market_path(vm))
-    end
-  end
+  # Nope, it doesn't do this anymore
+  #it "links to all top-level vertical markets" do
+  #  @vertical_markets.each do |vm|
+  #    expect(rendered).to have_link(vm.name, href: vertical_market_path(vm))
+  #  end
+  #end
 
 end

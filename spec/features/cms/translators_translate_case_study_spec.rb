@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Translators translate a case study" do
 
   before :all do
-    @translator = FactoryGirl.create(:admin_user, translator: true)
+    @translator = FactoryGirl.create(:user, translator: true)
     @locale = FactoryGirl.create(:available_locale, key: 'es')
     @translator.locales << @locale
   end

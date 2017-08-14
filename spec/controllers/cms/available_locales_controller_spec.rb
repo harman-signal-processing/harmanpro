@@ -4,11 +4,11 @@ RSpec.describe Cms::AvailableLocalesController do
 
   before :all do
     @available_locale = FactoryGirl.create(:available_locale, key: 'es')
-    @admin_user = FactoryGirl.create(:admin_user, translator: true)
+    @admin_user = FactoryGirl.create(:user, translator: true)
   end
 
   before :each do
-    sign_in(@admin_user, scope: :admin_user)
+    sign_in(@admin_user, scope: :user)
   end
 
   after :all do

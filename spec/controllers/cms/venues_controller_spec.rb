@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Cms::VenuesController, type: :controller do
   before :all do
     @available_locale = FactoryGirl.create(:available_locale, key: 'es')
-    @admin_user = FactoryGirl.create(:admin_user, translator: true)
+    @admin_user = FactoryGirl.create(:user, translator: true)
     @venue = FactoryGirl.create(:venue)
   end
 
@@ -12,7 +12,7 @@ RSpec.describe Cms::VenuesController, type: :controller do
   end
 
   before :each do
-    sign_in(@admin_user, scope: :admin_user)
+    sign_in(@admin_user, scope: :user)
   end
 
   describe "sub-folder of available_locale" do
