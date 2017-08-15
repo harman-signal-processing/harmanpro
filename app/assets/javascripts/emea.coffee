@@ -2,8 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery ($) ->
+ jQuery ($) ->
 
-  $('input.colorpicker').spectrum
-    preferredFormat: "hex"
-    showInput: true
+  if typeof $('input.colorpicker').spectrum isnt 'undefined'
+   $('input.colorpicker').spectrum
+     preferredFormat: "hex"
+     showInput: true
