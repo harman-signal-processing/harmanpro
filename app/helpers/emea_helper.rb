@@ -29,8 +29,18 @@ module EmeaHelper
   end
 
   def link_to_emea_anchor(page, anchor)
-    a = anchor.attributes["id"].value
-    content_tag :li, link_to(a.titleize, emea_page_path(page, anchor: a))
+    begin
+      a = nil
+      if anchor.attributes["id"]
+        a = anchor.attributes["id"].value
+      elsif anchor.attributes["name"]
+        a = anchor.attributes["name"].value
+      end
+      unless a.blank? || a.match(/top/i)
+        content_tag :li, link_to(a.titleize, emea_page_path(page, anchor: a))
+      end
+    rescue
+    end
   end
 
   def link_to_emea_page(page)
