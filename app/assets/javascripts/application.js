@@ -28,7 +28,6 @@
 //= require effects
 //= require_tree ./cms
 //= require tiny
-//= require emea
 //= require slick.min
 //= require REM-unit-polyfill
 // require_tree .

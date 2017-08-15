@@ -18,12 +18,6 @@ feature 'Service landing page' do
     expect(current_url).to match(ENV['warranty_registration_url'])
   end
 
-  scenario 'click through to begin warranty repair process' do
-    click_on 'warranty-repair'
-
-    expect(current_url).to match(ENV['warranty_repair_url'])
-  end
-
   scenario 'click through to dealer portal' do
     click_on 'Order Now'
 
