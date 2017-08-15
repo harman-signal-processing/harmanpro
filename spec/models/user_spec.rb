@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe User do
 
   before :all do
-    @user = FactoryGirl.create(:user)
+    @user = FactoryGirl.create(:user, translator: true)
   end
 
   subject { @user }
@@ -21,4 +21,5 @@ RSpec.describe User do
 
     expect(@user.translatable_locales).not_to include(locale)
   end
+
 end

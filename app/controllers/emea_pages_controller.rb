@@ -1,5 +1,4 @@
-class EmeaPagesController < ApplicationController
-  layout 'emea'
+class EmeaPagesController < EmeaController
 
   def index
     @page = EmeaPage.home

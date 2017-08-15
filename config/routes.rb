@@ -6,10 +6,6 @@ Rails.application.routes.draw do
 
   # Logins for admins, etc.
   devise_for :users
-  as :user do
-    get 'users/edit' => 'users/registrations#edit', as: :edit_user_registration
-    patch 'users' => 'users/registrations#update', as: :user_registration
-  end
 
   # Old CMS using ActiveAdmin, still accessible at /admin
   ActiveAdmin.routes(self)

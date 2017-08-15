@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814155426) do
+ActiveRecord::Schema.define(version: 20170814204948) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "namespace"
@@ -638,9 +638,11 @@ ActiveRecord::Schema.define(version: 20170814155426) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "service_department",     default: false
-    t.boolean  "super_admin",            default: true
+    t.boolean  "super_admin",            default: false
     t.boolean  "translator"
     t.boolean  "admin",                  default: false
+    t.boolean  "emea_admin",             default: false
+    t.boolean  "emea_distributor",       default: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

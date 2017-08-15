@@ -1423,6 +1423,7 @@ body {
     h1,h2,h3,h4,h5,h6 { color: $iron; }
     label,p { color: $silver; }
     .logo { padding: 30px; }
+    .hint, abbr { color: $silver; }
     .sub-footer {
       a {
         color: $white-smoke;

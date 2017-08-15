@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :set_locale, :save_passed_in_amx_trade_site_user_in_session_cookie
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -84,6 +85,10 @@ class ApplicationController < ActionController::Base
   def user_not_authorized
     flash[:alert] = "Access denied."
     redirect_to (request.referrer || root_path)
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:invitation_code])
   end
 
   # For dynamically inserting contact forms into landing pages with:

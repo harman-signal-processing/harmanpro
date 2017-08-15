@@ -2,6 +2,18 @@ require 'rails_helper'
 
 RSpec.describe SiteSetting, :type => :model do
 
+  before :all do
+    @invitation_code = FactoryGirl.create(
+      :site_setting,
+      name: "emea_distributor_invitation_code",
+      content: "foobar123"
+    )
+  end
+
+  after :all do
+    DatabaseCleaner.clean_with :truncation
+  end
+
   describe "default values" do
     it "should return a value, even if it does not exist" do
       expect(SiteSetting.value("goober")).to eq("Missing Site Setting: goober")
@@ -49,6 +61,22 @@ RSpec.describe SiteSetting, :type => :model do
       setting = FactoryGirl.create(:site_setting, name: "foo-bar")
 
       expect(SiteSetting.value(setting.name)).to eq(setting.content)
+    end
+
+  end
+
+  describe "user invitation codes" do
+
+    it "should allow an array of codes" do
+      codes = SiteSetting.invitation_codes
+      expect(codes).to include(@invitation_code.value)
+      expect(codes).to be_an(Array)
+    end
+
+    it "should determine the role based on the code" do
+      role = SiteSetting.role_from_invitation_code(@invitation_code.value)
+
+      expect(role).to eq("emea_distributor")
     end
 
   end

@@ -49,4 +49,29 @@ class SiteSetting < ApplicationRecord
     SiteSetting.set_value(name, value)
   end
 
+  # Array of invitation codes users can use to register for the site
+  def self.invitation_codes
+    invitation_options.map do |s|
+      s.content
+    end
+  end
+
+  # Collection of invitation codes users can use to register for the site
+  def self.invitation_options
+    where("name LIKE '%_invitation_code'").with_translations(I18n.default_locale)
+  end
+
+  # Reverse lookup to determine the role to assign a user based
+  # on their invitation code.
+  def self.role_from_invitation_code(invitation_code)
+    roles = Hash[
+      invitation_options.map do |s|
+        s.name.match(/^(.*)_invitation_code/)
+        role = $1
+        [s.value, role]
+      end
+    ]
+    roles[invitation_code]
+  end
+
 end

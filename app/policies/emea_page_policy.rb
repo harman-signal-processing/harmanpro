@@ -11,7 +11,7 @@ class EmeaPagePolicy
   end
 
   def show?
-    @emea_page.published? || admin?
+    (@emea_page.published? && @user.try(:emea_distributor?)) || admin?
   end
 
   def new?
@@ -41,7 +41,7 @@ class EmeaPagePolicy
   private
 
   def admin?
-    @user.try(:admin?)
+    @user.try(:admin?) || @user.try(:super_admin?) || @user.try(:emea_admin?)
   end
 
 end
