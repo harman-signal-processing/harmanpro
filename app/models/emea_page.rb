@@ -2,6 +2,7 @@ class EmeaPage < ApplicationRecord
   extend FriendlyId
   friendly_id :title
 
+  attr_accessor :linked_anchors
   has_many :resources, class_name: "EmeaPageResource", foreign_key: "emea_page_id", dependent: :destroy
 
   validates :title, presence: true, uniqueness: true

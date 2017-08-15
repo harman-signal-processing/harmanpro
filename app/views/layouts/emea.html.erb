@@ -36,6 +36,24 @@
       <%= javascript_include_tag "angular/angular" %>
     <!--<![endif]-->
     <%= csrf_meta_tags %>
+    <style type="text/css" media="all">
+        <% EmeaPage.for_top_nav.map do |page| %>
+          .top-bar li.<%= page.slug %> a {
+              background-color: <%= page.highlight_color %> !important;
+              color: #E1E1E1;
+            }
+          .top-bar li.<%= page.slug %> ul.dropdown li a {
+            background-color: <%= page.highlight_color %> !important;
+            opacity: 0.75;
+            color: #000000 !important;
+          }
+          .top-bar li.<%= page.slug %> ul.dropdown li a:hover {
+            background-color: <%= page.highlight_color %> !important;
+              opacity: 1;
+            color: #E2E2E2 !important;
+          }
+        <% end %>
+    </style>
     <%= yield :header_code %>
   </head>
 
@@ -77,7 +95,7 @@
     </div>
 
     <div class="contain-to-grid sticky">
-      <nav class="top-bar" data-topbar role="navigation">
+      <nav class="emea-top-bar top-bar" data-topbar role="navigation">
 
         <ul class="title-area">
           <li class="name logo-container">

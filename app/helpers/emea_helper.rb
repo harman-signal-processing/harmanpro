@@ -10,17 +10,18 @@ module EmeaHelper
     if page.has_anchors?
       emea_nav_with_dropdowns(page)
     else
-      content_tag :li, link_to_emea_page(page)
+      content_tag :li, link_to_emea_page(page), class: page.slug
     end
   end
 
   def emea_nav_with_dropdowns(page)
-    content_tag :li, class: "has-dropdown" do
+    content_tag :li, class: "has-dropdown #{page.slug}" do
       link_to_emea_page(page) + emea_dropdown_for(page)
     end
   end
 
   def emea_dropdown_for(page)
+    page.linked_anchors = []
     content_tag :ul, class: "dropdown" do
       page.anchors.map do |anchor|
         link_to_emea_anchor(page, anchor)
@@ -36,7 +37,8 @@ module EmeaHelper
       elsif anchor.attributes["name"]
         a = anchor.attributes["name"].value
       end
-      unless a.blank? || a.match(/top/i)
+      unless a.blank? || a.match(/top/i) || page.linked_anchors.include?(a)
+        page.linked_anchors << a
         content_tag :li, link_to(a.titleize, emea_page_path(page, anchor: a))
       end
     rescue
