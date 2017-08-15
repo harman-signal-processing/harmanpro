@@ -41,7 +41,7 @@ class EmeaPagePolicy
   private
 
   def admin?
-    @user.try(:admin?) || @user.try(:super_admin?) || @user.try(:emea_admin?)
+    @user.emea_admin_access?
   end
 
 end

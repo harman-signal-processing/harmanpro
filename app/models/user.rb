@@ -67,7 +67,12 @@ class User < ApplicationRecord
 
   # EMEA access
   def emea_access?
-    emea_distributor? || emea_admin? || admin?
+    emea_distributor? || emea_admin_access?
+  end
+
+  # EMEA admin access
+  def emea_admin_access?
+    emea_admin? || admin?
   end
 
   def roles

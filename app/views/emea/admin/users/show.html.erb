@@ -1,0 +1,31 @@
+<%= content_for :title do %>EMEA User<% end %>
+
+<h3>User Details</h3>
+<p><%= link_to "<< back to users", emea_admin_users_path %></p>
+
+<p>
+  Email: <%= mail_to @user.email, @user.email %>
+</p>
+
+<p>
+  Created: <%=l @user.created_at %>
+</p>
+
+<p>
+  Login Count: <%= @user.sign_in_count %>
+</p>
+
+<p>
+  Last Login: <%=l @user.last_sign_in_at %>
+</p>
+
+<p>
+  User roles: <%= @user.roles.join(", ") %>
+</p>
+
+<p>
+  <%= link_to "Delete User", [:emea, :admin, @user],
+    method: :delete,
+    data: { confirm: "Are you really sure? This cannot be undone." },
+    class: "small radius alert button" %>
+</p>

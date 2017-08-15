@@ -83,6 +83,9 @@ Rails.application.routes.draw do
       resources :emea_pages, path: "pages" do
         resources :emea_page_resources, path: "resources"
       end
+      resources :users, only: [:index, :show, :destroy]
+      post 'update_invitation_code'
+      patch 'update_invitation_code'
     end
   end
   resources :emea_pages, path: 'emea', only: [:index, :show]

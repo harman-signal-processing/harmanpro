@@ -1,0 +1,90 @@
+<%= content_for :title do %>EMEA Users<% end %>
+
+<div class="row">
+  <div class="medium-8 columns">
+    <% if @users.count > 0 %>
+      <h1>Search Results</h1>
+      <p><%= link_to "<< back to admin", emea_admin_path %></p>
+
+      <table style="width: 100%">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Date Created</th>
+            <th>Last Login</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.order("created_at DESC").limit(10).each do |user| %>
+            <tr>
+              <td><%= link_to user.email, [:emea, :admin, user] %></td>
+              <td><%=l user.created_at %></td>
+              <td><%=l user.last_sign_in_at %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    <% else %>
+
+      <h1>Recent EMEA Registrations</h1>
+      <p><%= link_to "<< back to admin", emea_admin_path %></p>
+
+      <table style="width: 100%">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Date Created</th>
+            <th>Last Login</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @emea_distributors.order("created_at DESC").limit(10).each do |user| %>
+            <tr>
+              <td><%= link_to user.email, [:emea, :admin, user] %></td>
+              <td><%=l user.created_at %></td>
+              <td><%=l user.last_sign_in_at %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+
+  </div>
+
+  <div class="medium-4 columns">
+    <div class="callout panel">
+      <h4>Search Users</h4>
+      <%= search_form_for [:emea, :admin, @q] do |f| %>
+        <%= f.label :email_cont, "Email contains..." %>
+        <div class="row collapse">
+          <div class="small-9 columns">
+            <%= f.text_field :email_cont %>
+          </div>
+          <div class="small-3 columns">
+            <%= f.submit "Search", class: "small expand radius postfix button" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="callout panel">
+      <h4>Invitation Code</h4>
+      <p>Any new users who wish to register for the EMEA Portal can
+      self-register by using the following invitation code:</p>
+      <%= simple_form_for [:emea, :admin, @invitation_code], url: emea_admin_update_invitation_code_path do |f| %>
+        <div class="row collapse">
+          <div class="small-9 columns">
+            <%= f.input :content, label: false %>
+          </div>
+          <div class="small-3 columns">
+            <%= f.submit "Update", class: "small expand radius postfix button" %>
+          </div>
+        </div>
+      <% end %>
+      <p>Simply send the prospective user to the EMEA Portal page.
+      They'll be redirected to a login page which also has a signup link.</p>
+    </div>
+
+  </div>
+</div>
