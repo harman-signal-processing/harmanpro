@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814204948) do
+ActiveRecord::Schema.define(version: 20170815163350) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "namespace"
@@ -214,11 +214,12 @@ ActiveRecord::Schema.define(version: 20170814204948) do
     t.string   "slug"
     t.string   "highlight_color"
     t.date     "publish_on"
-    t.text     "content",         limit: 65535
+    t.text     "content",            limit: 65535
     t.integer  "position"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.boolean  "pinch_content",                 default: true
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.boolean  "pinch_content",                    default: true
+    t.text     "custom_header_code", limit: 65535
     t.index ["slug"], name: "index_emea_pages_on_slug", using: :btree
   end
 

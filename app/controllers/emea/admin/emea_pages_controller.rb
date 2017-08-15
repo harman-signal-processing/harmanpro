@@ -43,7 +43,7 @@ class Emea::Admin::EmeaPagesController < Emea::AdminController
   private
 
   def emea_page_params
-    params.require(:emea_page).permit(:title, :position, :publish_on, :highlight_color, :content, :pinch_content)
+    params.require(:emea_page).permit(:title, :position, :publish_on, :highlight_color, :content, :pinch_content, :custom_header_code)
   end
 
 end

@@ -4,4 +4,6 @@
 
 jQuery ($) ->
 
-  $('input.colorpicker').spectrum()
+  $('input.colorpicker').spectrum
+    preferredFormat: "hex"
+    showInput: true

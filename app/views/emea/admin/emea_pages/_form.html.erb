@@ -28,5 +28,10 @@
   <br/>
   <%= f.input :pinch_content,
     label: "Pinch content area by 2 columns on L/R sides." %>
+
+  <%= f.input :custom_header_code,
+    label: "Custom CSS/Javascript (advanced)",
+    hint: "Code is inserted directly in the head of the HTML, so surround CSS in <style> and javascript in <script> tags."%>
+
   <%= f.button :submit %>
 <% end %>

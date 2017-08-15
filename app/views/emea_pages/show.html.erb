@@ -1,3 +1,5 @@
+<%= content_for :title do %><%= @page.title %><% end %>
+
 <% if @page.features.count > 0 %>
   <div class="slick-show">
     <% @page.features.each do |feature| %>
@@ -24,8 +26,10 @@
   <%= raw @page.content %>
 <% end %>
 
-<% if @page.highlight_color.present? %>
-  <%= content_for :header_code do %>
+<%= content_for :header_code do %>
+  <%=raw @page.custom_header_code %>
+
+  <% if @page.highlight_color.present? %>
     <style type="text/css" media="all">
       h1,h2,h3,h4,h5,h6 {
         color: <%= @page.highlight_color %>;

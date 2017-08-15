@@ -31,16 +31,20 @@
     <div class="panel">
       <h5>Page Resources</h5>
       <p>Upload images, PDFs, etc. to be used on this page:</p>
+      <% if @emea_page.resources.count > 0 %>
+        <p class="hint">Hint: Try triple-clicking in the fields below to select the resource URL to make it easy to copy and paste.</p>
+      <% end %>
 
       <%= link_to "+ new resource", new_emea_admin_emea_page_emea_page_resource_path(@emea_page) %>
       <ul>
         <% (@emea_page.resources - @emea_page.features).each do |resource| %>
           <li>
             <%= link_to resource.name, edit_emea_admin_emea_page_emea_page_resource_path(@emea_page, resource) %>
-            <br/><small><%= resource.attachment.url %></small>
+            <input type="text" value="<%= resource.attachment.url %>">
           </li>
         <% end %>
       </ul>
+
     </div>
 
     <p class="text-right">
