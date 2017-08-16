@@ -4,8 +4,8 @@
       <div class="row">
         <div class="large-6 medium-6 small-12 columns">
           <h6 class="subheader"><%= t('nav.solutions') %></h6>
-          <ul class="medium-block-grid-<%= active_child_verticals.in_groups_of(10).length %>">
-            <% active_child_verticals.in_groups_of(10) do |group| %>
+          <ul class="medium-block-grid-<%= active_child_verticals.in_groups(3).length %>">
+            <% active_child_verticals.in_groups(3) do |group| %>
               <li>
                 <ul><% group.each do |item| %>
                   <%= menu_link_for(item) if item.respond_to?(:name) %>
