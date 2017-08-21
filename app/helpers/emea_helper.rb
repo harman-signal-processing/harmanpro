@@ -39,7 +39,7 @@ module EmeaHelper
       end
       unless a.blank? || a.match(/top/i) || page.linked_anchors.include?(a)
         page.linked_anchors << a
-        content_tag :li, link_to(a.titleize, emea_page_path(page, anchor: a))
+        content_tag :li, link_to(titleize_anchor(a), emea_page_path(page, anchor: a))
       end
     rescue
     end
@@ -47,5 +47,9 @@ module EmeaHelper
 
   def link_to_emea_page(page)
     link_to page.title, page.is_home? ? emea_root_path : page
+  end
+
+  def titleize_anchor(a)
+    a.titleize.gsub(/Av And/, "AV &")
   end
 end
