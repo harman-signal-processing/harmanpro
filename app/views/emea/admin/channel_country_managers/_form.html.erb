@@ -1,0 +1,6 @@
+<%= simple_form_for [:emea, :admin, @channel_country_manager] do |f| %>
+  <%= f.association :channel %>
+  <%= f.association :channel_country %>
+  <%= f.association :channel_manager %>
+  <%= f.button :submit %>
+<% end %>
