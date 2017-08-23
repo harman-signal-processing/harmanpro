@@ -1,0 +1,106 @@
+<h1>Channel Managers</h1>
+<div class="row">
+  <div class="medium-4 columns">
+    <h3>Channels</h3>
+    <div class="callout panel">
+      <%= simple_form_for [:emea, :admin, Channel.new], method: :get do |f| %>
+        <%= f.label :id, "Select existing channel:" %>
+        <div class="row collapse">
+          <div class="medium-9 columns">
+            <%= f.input :id,
+              label: false,
+              collection: @channels,
+              input_html: { id: "id", name: "id" }
+            %>
+          </div>
+          <div class="medium-3 columns">
+            <%= f.button :submit, "Go", class: "postfix button" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="panel">
+      <%= simple_form_for [:emea, :admin, @channel] do |f| %>
+        <%= f.label :name, "New Channel Name:" %>
+        <div class="row collapse">
+          <div class="medium-9 columns">
+            <%= f.input :name, label: false %>
+          </div>
+          <div class="medium-3 columns">
+            <%= f.button :submit, "Save", class: "postfix button" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="medium-4 columns">
+    <h3>Countries</h3>
+    <div class="callout panel">
+      <%= simple_form_for [:emea, :admin, ChannelCountry.new], method: :get do |f| %>
+        <%= f.label :id, "Select existing country:" %>
+        <div class="row collapse">
+          <div class="medium-9 columns">
+            <%= f.input :id,
+              label: false,
+              collection: @channel_countries,
+              input_html: { id: "id", name: "id" }
+            %>
+          </div>
+          <div class="medium-3 columns">
+            <%= f.button :submit, "Go", class: "postfix button" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="panel">
+      <%= simple_form_for [:emea, :admin, @channel_country] do |f| %>
+        <%= f.label :name, "New Country Name:" %>
+        <div class="row collapse">
+          <div class="medium-9 columns">
+            <%= f.input :name, label: false %>
+          </div>
+          <div class="medium-3 columns">
+            <%= f.button :submit, "Save", class: "postfix button" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="medium-4 columns">
+    <h3>Managers</h3>
+    <div class="callout panel">
+      <%= simple_form_for [:emea, :admin, ChannelManager.new], method: :get do |f| %>
+        <%= f.label :id, "Select existing manager:" %>
+        <div class="row collapse">
+          <div class="medium-9 columns">
+            <%= f.input :id,
+              label: false,
+              collection: @channel_managers,
+              input_html: { id: "id", name: "id" }
+            %>
+          </div>
+          <div class="medium-3 columns">
+            <%= f.button :submit, "Go", class: "postfix button" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="panel">
+      <%= simple_form_for [:emea, :admin, @channel_manager] do |f| %>
+        <%= f.label :name, "New Manager Name:" %>
+        <div class="row collapse">
+          <div class="medium-9 columns">
+            <%= f.input :name, label: false %>
+          </div>
+          <div class="medium-3 columns">
+            <%= f.button :submit, "Save", class: "postfix button" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+

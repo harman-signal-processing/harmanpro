@@ -1,0 +1,49 @@
+<h2><%= @channel_manager.name %></h2>
+<p><%= link_to "<< back to channel management", emea_admin_channel_country_managers_path %></p>
+
+<h5>Countries/Channels</h5>
+<div class="row">
+  <div class="medium-6 small-12 columns">
+    <ul>
+      <% @channel_manager.channel_country_managers.each do |ccm| %>
+        <li><%= link_to edit_emea_admin_channel_country_manager_path(ccm) do %>
+              <%= ccm.channel.name %> / <%= ccm.channel_country.name %>
+            <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="medium-6 small-12 columns">
+    <div class="panel">
+      <h4>New Country/Channel</h4>
+      <%= simple_form_for [:emea, :admin, @channel_country_manager] do |f| %>
+        <%= f.input :created_from, as: :hidden %>
+        <%= f.association :channel_manager %>
+        <%= f.association :channel_country %>
+        <%= f.association :channel %>
+        <%= f.button :submit, "Assign Country/Channel" %>
+      <% end %>
+      <p class="hint">If the country or channel don't appear, make sure to
+      <%= link_to "create them first", emea_admin_channel_country_managers_path %>.</p>
+    </div>
+
+    <div class="callout panel">
+      <h4>Contact Details</h4>
+      <%= simple_form_for [:emea, :admin, @channel_manager] do |f| %>
+        <%= f.input :name %>
+        <%= f.input :email %>
+        <%= f.input :telephone %>
+        <%= f.button :submit, "Save Changes" %>
+      <% end %>
+    </div>
+
+    <div class="text-right">
+      <%= link_to "Delete #{ @channel_manager.name }",
+        [:emea, :admin, @channel_manager],
+        method: :delete,
+        class: "tiny radius alert button",
+        data: { confirm: "Are you sure? This will completely remove #{ @channel_manager.name } from ALL channels." } %>
+    </div>
+  </div>
+</div>
