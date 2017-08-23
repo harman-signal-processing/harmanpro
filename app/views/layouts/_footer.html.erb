@@ -34,10 +34,7 @@
 
         <div class="large-1 columns hide-for-medium-down">&nbsp;</div>
         <div class="large-3 medium-6 small-12 columns">
-          <%= cache ["footer-col-4", Date.today, current_locale] do %>
-            <h6 class="subheader"><%= t('connect_with_us') %></h6>
-            <iframe src="/newsletter_signup.html" frameborder="0" width="99%" height="100" marginwidth="0" class="iframe-form" seamless="seamless"></iframe>
-          <% end %>
+          <%= render "layouts/newsletter_signup_form" %>
           <div class="social-links">
             <%= link_to "https://www.facebook.com/HarmanInt?_rdr=p" do %>
               <%= fa_icon 'facebook 2x' %>
