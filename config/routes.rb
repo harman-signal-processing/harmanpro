@@ -49,6 +49,23 @@ Rails.application.routes.draw do
     end
   end
 
+  # EMEA portal
+  get '/lp/emeaportal' => redirect('/emea')
+  get '/emea' => 'emea_pages#index', as: :emea_root
+
+  namespace :emea do
+    get 'admin' => 'admin#index'
+    namespace :admin do
+      resources :emea_pages, path: "pages" do
+        resources :emea_page_resources, path: "resources"
+      end
+      resources :users, only: [:index, :show, :destroy]
+      post 'update_invitation_code'
+      patch 'update_invitation_code'
+    end
+  end
+  resources :emea_pages, path: 'emea', only: [:index, :show]
+
   # Main site routes
   resources :brands, only: :show do
     member do
@@ -72,23 +89,6 @@ Rails.application.routes.draw do
   resources :news_articles, path: 'news', only: [:index, :show]
   resources :artists, only: [:index, :show]
   resources :products, only: [:index, :show]
-
-  # EMEA portal
-  get '/lp/emeaportal' => redirect('/emea')
-  get '/emea' => 'emea_pages#index', as: :emea_root
-
-  namespace :emea do
-    get 'admin' => 'admin#index'
-    namespace :admin do
-      resources :emea_pages, path: "pages" do
-        resources :emea_page_resources, path: "resources"
-      end
-      resources :users, only: [:index, :show, :destroy]
-      post 'update_invitation_code'
-      patch 'update_invitation_code'
-    end
-  end
-  resources :emea_pages, path: 'emea', only: [:index, :show]
 
   # Cinema Calculator
   get '/cinema/calculator' => 'calculators#cinema'
