@@ -46,9 +46,9 @@ class Emea::Admin::ChannelCountryManagersController < Emea::AdminController
     @channel_country_manager = ChannelCountryManager.find(params[:id])
     @channel_country_manager.destroy
     if @channel_country_manager.created_from.present?
-        redirect_to [:emea, :admin, @channel_country_manager.send(@channel_country_manager.created_from)]
+      redirect_to [:emea, :admin, @channel_country_manager.send(@channel_country_manager.created_from)]
     else
-      redirect_to emea_admin_channel_country_managers_path, notice: "Channel/Country/Manager deleted successfully."
+      redirect_to emea_admin_channel_country_managers_path, notice: "Channel/Country/Manager association deleted successfully."
     end
   end
 

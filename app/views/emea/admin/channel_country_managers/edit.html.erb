@@ -6,3 +6,10 @@
   </div>
 </div>
 
+<%= link_to "Delete",
+  [:emea, :admin, @channel_country_manager],
+  method: :delete,
+  class: "tiny alert radius button",
+  data: { confirm: "Are you sure? This will only remove the association between the channel, country and manager." }
+%>
+
