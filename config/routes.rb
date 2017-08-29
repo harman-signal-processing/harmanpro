@@ -89,7 +89,7 @@ Rails.application.routes.draw do
       get :recent
     end
   end
-  resources :landing_pages, path: 'lp', only: :show
+  get 'lp/:id(/:random)' => 'landing_pages#show', as: :landing_page
   resources :leads, path: 'plan/help', only: [:new, :create]
   resources :venues, only: :index
   resources :news_articles, path: 'news', only: [:index, :show]

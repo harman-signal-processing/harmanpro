@@ -1,6 +1,11 @@
 class LandingPagesController < ApplicationController
 
   def show
+    # Strip out random strings at the end of the URL. These started showing
+    # up for the connected-pa website.
+    if params[:random]
+      redirect_to landing_page_path(params[:id]), status: 301 and return false
+    end
     render_landing_page(params[:id])
   end
 
