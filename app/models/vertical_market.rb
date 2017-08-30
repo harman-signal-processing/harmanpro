@@ -78,4 +78,20 @@ class VerticalMarket < ApplicationRecord
     (self.children.where(live: true).count > 0) ? self.children.where(live: true).with_translations(I18n.locale).order('name') : self.reference_systems
   end
 
+  # Link name for search results
+  def link_name
+    name
+  end
+
+  # Search results content preview
+  def content_preview
+    if description.present?
+      description
+    elsif headline.present?
+      headline
+    else
+      name
+    end
+  end
+
 end

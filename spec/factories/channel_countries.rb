@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :channel_country do
-    name "MyString"
+    sequence(:name) {|n| "Channel#{n}"}
   end
 end

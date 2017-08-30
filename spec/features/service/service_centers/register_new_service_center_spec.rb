@@ -41,15 +41,17 @@ feature "Registering to become a service center" do
   end
 
   def fill_in_form(sc)
-    fill_in "Your Name", with: sc.contact_name
-    fill_in "Business Name", with: sc.name
-    fill_in "Address", with: sc.address
-    fill_in "City", with: sc.city
-    fill_in "State", with: sc.state
-    fill_in "Postal Code", with: sc.zip
-    fill_in "Phone", with: sc.phone
-    fill_in "Email", with: sc.email
-    check "I am willing and able to service all HARMAN" #...
+    within("form#new_service_center") do
+      fill_in "Your Name", with: sc.contact_name
+      fill_in "Business Name", with: sc.name
+      fill_in "Address", with: sc.address
+      fill_in "City", with: sc.city
+      fill_in "State", with: sc.state
+      fill_in "Postal Code", with: sc.zip
+      fill_in "Phone", with: sc.phone
+      fill_in "Email", with: sc.email
+      check "I am willing and able to service all HARMAN" #...
+    end
   end
 
 end

@@ -38,4 +38,14 @@ class CaseStudy < ApplicationRecord
     headline
   end
 
+  # Link name for search results
+  def link_name
+    "#{I18n.t :case_study}: " + headline
+  end
+
+  # Search results content preview
+  def content_preview
+    self.description.present? ? self.description : self.content
+  end
+
 end
