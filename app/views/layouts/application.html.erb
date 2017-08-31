@@ -68,6 +68,14 @@
                   <%= select_tag :locale,
                     options_from_collection_for_select(active_locales, "key", "name", current_locale.key),
                     id: "locale-switcher" %>
+                  <% if SiteSetting.set_for_locale?("store_link", current_locale.key) %>
+                    <div class="text-right">
+                      <%= link_to SiteSetting.value("store_link"), target: "_blank", class: "small radius button" do %>
+                        <%= fa_icon "shopping-cart" %>
+                        <%= t('nav.shop') %>
+                      <% end %>
+                    </div>
+                  <% end %>
                 </div>
 
               </div>
@@ -150,18 +158,28 @@
           </ul>
         </section>
 
-        <section class="top-bar-section">
-          <ul class="right">
-            <% if SiteSetting.set_for_locale?("store_link", current_locale.key) %>
-              <li class="has-form">
-                <%= link_to SiteSetting.value("store_link"), target: "_blank", class: "radius button" do %>
-                  <%= fa_icon "shopping-cart" %>
-                  <%= t('nav.shop') %>
+        <% if I18n.locale == I18n.default_locale %>
+          <section class="top-bar-section">
+            <ul class="right">
+              <li class="has-form show-for-large-up" id="search_form">
+                <%= form_tag search_path, method: :get, class: "custom-form", id: "search-form" do %>
+                  <div class="row collapse">
+                    <div class="medium-8 medium-offset-1 columns">
+                      <%= text_field_tag :query, @query, placeholder: t(:search) %>
+                    </div>
+                    <div class="medium-3 columns">
+                      <%= link_to search_path,
+                        onclick: "document.getElementById('search-form').submit(); return false;",
+                        class: "secondary radius button postfix" do %>
+                        <i class="fa fa-search" title="<%= t :search %>"></i>
+                      <% end %>
+                    </div>
+                  </div>
                 <% end %>
               </li>
-            <% end %>
-          </ul>
-        </section>
+            </ul>
+          </section>
+        <% end %>
 
       </nav>
     </div>

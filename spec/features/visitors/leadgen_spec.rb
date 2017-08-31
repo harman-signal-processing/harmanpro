@@ -29,7 +29,6 @@ feature "Lead generation" do
     expect_any_instance_of(Lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
     expect_any_instance_of(SilverPopStub).to receive(:add_recipient).and_return(true)
     complete_leadgen_form(lead)
-    click_on "Submit"
 
     new_lead = Lead.last
     expect(page).to have_content(@title.content)
@@ -47,7 +46,6 @@ feature "Lead generation" do
     expect_any_instance_of(Lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
     expect_any_instance_of(SilverPopStub).to receive(:add_recipient).and_return(true)
     complete_leadgen_form(lead)
-    click_on "Submit"
 
     new_lead = Lead.last
     expect(page).to have_content(@title.content)
@@ -64,7 +62,6 @@ feature "Lead generation" do
       expect_any_instance_of(Lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
       expect_any_instance_of(SilverPopStub).to receive(:add_recipient).and_return(true)
       complete_leadgen_form(lead)
-      click_on "Submit"
 
       new_lead = Lead.last
       expect(page).to have_content(@title.content)
@@ -88,19 +85,22 @@ feature "Lead generation" do
     expect_any_instance_of(Lead).not_to receive(:silverpop_client).and_return(SilverPopStub.new)
     expect_any_instance_of(SilverPopStub).not_to receive(:add_recipient).and_return(true)
     complete_leadgen_form(lead)
-    click_on "Submit"
 
     expect(page).to have_content("can't be blank")
     expect(Lead.count).to eq(lead_count)
   end
 
   def complete_leadgen_form(lead)
-    fill_in "Name", with: lead.name
-    fill_in "Company", with: lead.company
-    fill_in "Email", with: lead.email
-    fill_in "Phone", with: lead.phone
-    fill_in "Location", with: lead.location
-    fill_in "Project Description", with: lead.project_description
+    within('form#new_lead') do
+      fill_in "Name", with: lead.name
+      fill_in "Company", with: lead.company
+      fill_in "Email", with: lead.email
+      fill_in "Phone", with: lead.phone
+      fill_in "Location", with: lead.location
+      fill_in "Project Description", with: lead.project_description
+
+      click_on "Submit"
+    end
   end
 
 end

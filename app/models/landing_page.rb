@@ -51,4 +51,15 @@ class LandingPage < ApplicationRecord
     mcw -= side_column_width if self.right_content.present?
     mcw
   end
+
+  # Link name for search results
+  def link_name
+    title
+  end
+
+  # Search results content preview
+  def content_preview
+    self.description.present? ? self.description : self.main_content
+  end
+
 end

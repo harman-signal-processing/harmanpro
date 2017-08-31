@@ -145,6 +145,9 @@ Rails.application.routes.draw do
   get '/terms_of_use' => 'landing_pages#terms_of_use', as: :terms_of_use
   get '/sitemap(.:format)' => 'main#sitemap', as: :sitemap
 
+  # Search
+  get '/search' => 'search#search', as: :search
+
   # Old paperclip attachment redirects
   get 'system/:model/:attachment/:id_and_timestamp/:basename.:extension' => 'paperclips#redirects'
   get 'system/:model/:attachment/:id1/:id2/:id3/:style/:basename.:extension' => 'paperclips#redirects'
