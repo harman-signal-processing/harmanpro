@@ -23,6 +23,7 @@ require 'capistrano/rails/migrations'
 require 'capistrano/passenger'
 require 'capistrano/delayed_job'
 require "capistrano/scm/git"
+require 'thinking_sphinx/capistrano'
 install_plugin Capistrano::SCM::Git
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.

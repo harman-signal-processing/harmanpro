@@ -26,6 +26,7 @@ namespace :deploy do
 
 end
 
+before "deploy:restart", "thinking_sphinx:configure"
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a
