@@ -7,8 +7,17 @@ class SearchController < ApplicationController
     end
     query = @query.to_s.gsub(/[\/\\]/, " ")
     @results = ThinkingSphinx.search(
-      ThinkingSphinx::Query.escape(query)
+      ThinkingSphinx::Query.escape(query),
+      indices: indices
     ).page(params[:page]).per(10)
+  end
+
+  private
+
+  def indices
+    ["case_study", "vertical_market", "landing_page"].map do |elem|
+      "#{elem}_#{I18n.locale.to_s.gsub(/\-/, '_')}_core"
+    end
   end
 
 end
