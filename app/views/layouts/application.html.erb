@@ -158,7 +158,7 @@
           </ul>
         </section>
 
-        <% if I18n.locale == I18n.default_locale %>
+        <% if AvailableLocale.live.include?(I18n.locale) %>
           <section class="top-bar-section">
             <ul class="right">
               <li class="has-form show-for-large-up" id="search_form">

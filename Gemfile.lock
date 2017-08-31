@@ -494,7 +494,7 @@ GEM
     sshkit (1.14.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    thinking-sphinx (3.3.0)
+    thinking-sphinx (3.4.1)
       activerecord (>= 3.1.0)
       builder (>= 2.1.2)
       innertube (>= 1.0.2)
