@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/activeadmin/activeadmin.git
-  revision: 0df2df0bf65a6e22dcf46d01dbaa12d6e995fb89
+  revision: 3b338ae9a4ab63cf4ed79e13899933baa9763d6d
   specs:
     activeadmin (2.0.0.alpha)
       arbre (>= 1.1.1)
@@ -27,52 +27,52 @@ GIT
 
 GIT
   remote: https://github.com/spohlenz/tinymce-rails.git
-  revision: 1109c470179997ab8d397824301c881e102f86e2
+  revision: d8a859c35d6df3d4db164921d22522e89267a429
   specs:
-    tinymce-rails (4.6.5)
+    tinymce-rails (4.6.6)
       railties (>= 3.1.1)
 
 GEM
   remote: https://rubygems.org/
   specs:
     RedCloth (4.3.2)
-    actioncable (5.0.4)
-      actionpack (= 5.0.4)
-      nio4r (>= 1.2, < 3.0)
+    actioncable (5.1.3)
+      actionpack (= 5.1.3)
+      nio4r (~> 2.0)
       websocket-driver (~> 0.6.1)
-    actionmailer (5.0.4)
-      actionpack (= 5.0.4)
-      actionview (= 5.0.4)
-      activejob (= 5.0.4)
+    actionmailer (5.1.3)
+      actionpack (= 5.1.3)
+      actionview (= 5.1.3)
+      activejob (= 5.1.3)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
-    actionpack (5.0.4)
-      actionview (= 5.0.4)
-      activesupport (= 5.0.4)
+    actionpack (5.1.3)
+      actionview (= 5.1.3)
+      activesupport (= 5.1.3)
       rack (~> 2.0)
       rack-test (~> 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (5.0.4)
-      activesupport (= 5.0.4)
+    actionview (5.1.3)
+      activesupport (= 5.1.3)
       builder (~> 3.1)
-      erubis (~> 2.7.0)
+      erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
     active_model_serializers (0.9.5)
       activemodel (>= 3.2)
     activeadmin-sortable (0.0.3)
       activeadmin (>= 0.4)
-    activejob (5.0.4)
-      activesupport (= 5.0.4)
+    activejob (5.1.3)
+      activesupport (= 5.1.3)
       globalid (>= 0.3.6)
-    activemodel (5.0.4)
-      activesupport (= 5.0.4)
-    activerecord (5.0.4)
-      activemodel (= 5.0.4)
-      activesupport (= 5.0.4)
-      arel (~> 7.0)
-    activesupport (5.0.4)
+    activemodel (5.1.3)
+      activesupport (= 5.1.3)
+    activerecord (5.1.3)
+      activemodel (= 5.1.3)
+      activesupport (= 5.1.3)
+      arel (~> 8.0)
+    activesupport (5.1.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
       minitest (~> 5.1)
@@ -89,7 +89,7 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     arbre (1.1.1)
       activesupport (>= 3.0.0)
-    arel (7.1.4)
+    arel (8.0.0)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -170,7 +170,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     email_validator (1.6.0)
       activemodel
-    erubis (2.7.0)
+    erubi (1.6.1)
     exception_notification (4.2.2)
       actionmailer (>= 4.0, < 6)
       activesupport (>= 4.0, < 6)
@@ -220,9 +220,9 @@ GEM
       friendly_id (>= 5.2.0, < 6.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
-    globalize (5.1.0.beta1)
-      activemodel (>= 4.2, < 5.1)
-      activerecord (>= 4.2, < 5.1)
+    globalize (5.1.0.beta2)
+      activemodel (>= 4.2, < 5.2)
+      activerecord (>= 4.2, < 5.2)
       request_store (~> 1.0)
     guard (2.14.1)
       formatador (>= 0.2.4)
@@ -238,7 +238,7 @@ GEM
       guard (~> 2.2)
       guard-compat (~> 1.1)
     guard-compat (1.2.1)
-    guard-rails (0.8.0)
+    guard-rails (0.8.1)
       guard (~> 2.11)
       guard-compat (~> 1.0)
     guard-rspec (4.7.3)
@@ -360,17 +360,17 @@ GEM
     rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
-    rails (5.0.4)
-      actioncable (= 5.0.4)
-      actionmailer (= 5.0.4)
-      actionpack (= 5.0.4)
-      actionview (= 5.0.4)
-      activejob (= 5.0.4)
-      activemodel (= 5.0.4)
-      activerecord (= 5.0.4)
-      activesupport (= 5.0.4)
-      bundler (>= 1.3.0, < 2.0)
-      railties (= 5.0.4)
+    rails (5.1.3)
+      actioncable (= 5.1.3)
+      actionmailer (= 5.1.3)
+      actionpack (= 5.1.3)
+      actionview (= 5.1.3)
+      activejob (= 5.1.3)
+      activemodel (= 5.1.3)
+      activerecord (= 5.1.3)
+      activesupport (= 5.1.3)
+      bundler (>= 1.3.0)
+      railties (= 5.1.3)
       sprockets-rails (>= 2.0.0)
     rails-controller-testing (1.0.2)
       actionpack (~> 5.x, >= 5.0.1)
@@ -391,9 +391,9 @@ GEM
       railties (~> 5.0)
     rails_autolink (1.1.6)
       rails (> 3.1)
-    railties (5.0.4)
-      actionpack (= 5.0.4)
-      activesupport (= 5.0.4)
+    railties (5.1.3)
+      actionpack (= 5.1.3)
+      activesupport (= 5.1.3)
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
@@ -487,7 +487,7 @@ GEM
       babel-source (>= 5.8.11)
       babel-transpiler
       sprockets (>= 3.0.0)
-    sprockets-rails (3.2.0)
+    sprockets-rails (3.2.1)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
@@ -557,7 +557,7 @@ DEPENDENCIES
   foundation-rails (~> 5.5)
   friendly_id (>= 5.2)
   friendly_id-globalize
-  globalize (= 5.1.0.beta1)
+  globalize (= 5.1.0.beta2)
   guard-bundler
   guard-rails
   guard-rspec
@@ -579,7 +579,7 @@ DEPENDENCIES
   oauth2
   paperclip
   pundit
-  rails (= 5.0.4)
+  rails (= 5.1.3)
   rails-controller-testing
   rails-erd
   rails-i18n

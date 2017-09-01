@@ -1,5 +1,9 @@
 class Venue < ApplicationRecord
   translates :slug, :name, :description
+  attribute :slug
+  attribute :name
+  attribute :description
+
   extend FriendlyId
   friendly_id :name, use: :globalize
 

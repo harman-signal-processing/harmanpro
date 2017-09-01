@@ -3,6 +3,8 @@ class Brand < ApplicationRecord
   friendly_id :name
 
   translates :description, :contact_info_for_consultants
+  attribute :description
+  attribute :contact_info_for_consultants
 
   validates :name, presence: true, uniqueness: true
   validates :url, presence: true, format: { with: URI.regexp }

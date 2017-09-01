@@ -1,5 +1,12 @@
 class VerticalMarket < ApplicationRecord
   translates :slug, :name, :headline, :description, :lead_form_content, :extra_content
+  attribute :slug
+  attribute :name
+  attribute :headline
+  attribute :description
+  attribute :lead_form_content
+  attribute :extra_content
+
   extend FriendlyId
   friendly_id :slug_candidates, use: :globalize
 

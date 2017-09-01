@@ -1,5 +1,10 @@
 class CaseStudy < ApplicationRecord
   translates :slug, :headline, :description, :content
+  attribute :slug
+  attribute :headline
+  attribute :description
+  attribute :content
+
   extend FriendlyId
   friendly_id :slug_candidates, use: :globalize
 

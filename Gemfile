@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '5.0.4'
+gem 'rails', '5.1.3'
 gem 'responders', '~> 2.0'
 gem 'mysql2'
 gem 'sass-rails', '~> 5.0'
@@ -52,7 +52,7 @@ gem 'nokogiri' # for parsing HTML to generate subnavs on EMEA portal
 gem 'thinking-sphinx', '~> 3.0'
 gem 'kaminari'
 
-gem 'globalize', '5.1.0.beta1' #github: 'globalize', branch: '999b5dfa656ff0f706dbcd07ce7552d5b783d5a1' # 3/2017 master branch had errors #'~> 5.0.0'
+gem 'globalize', '5.1.0.beta2' #github: 'globalize', branch: '999b5dfa656ff0f706dbcd07ce7552d5b783d5a1' # 3/2017 master branch had errors #'~> 5.0.0'
 gem 'friendly_id-globalize'
 gem 'http_accept_language'
 gem 'rails-i18n'

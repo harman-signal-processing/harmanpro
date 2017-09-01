@@ -1,5 +1,11 @@
 class ReferenceSystem < ApplicationRecord
   translates :slug, :name, :description, :headline, :venue_size_descriptor
+  attribute :slug
+  attribute :name
+  attribute :description
+  attribute :headline
+  attribute :venue_size_descriptor
+
   extend FriendlyId
   friendly_id :slug_candidates, use: :globalize
 

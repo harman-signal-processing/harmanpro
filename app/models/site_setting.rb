@@ -4,6 +4,7 @@ class SiteSetting < ApplicationRecord
   after_save :update_cached_value
 
   translates :content
+  attribute :content
 
   def self.value(setting_name)
     @@cache["#{setting_name}.#{I18n.locale}"] ||= get_value(setting_name)

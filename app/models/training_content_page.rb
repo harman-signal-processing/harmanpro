@@ -1,5 +1,14 @@
 class TrainingContentPage < ApplicationRecord
-translates :slug, :title, :subtitle, :main_content, :left_content, :right_content, :sub_content, :description
+  translates :slug, :title, :subtitle, :main_content, :left_content, :right_content, :sub_content, :description
+  attribute :slug
+  attribute :title
+  attribute :subtitle
+  attribute :main_content
+  attribute :left_content
+  attribute :right_content
+  attribute :sub_content
+  attribute :description
+
   extend FriendlyId
   friendly_id :title, use: :globalize
 

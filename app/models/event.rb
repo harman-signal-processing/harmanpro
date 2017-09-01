@@ -1,5 +1,10 @@
 class Event < ApplicationRecord
   translates :slug, :name, :description, :page_content
+  attribute :slug
+  attribute :name
+  attribute :description
+  attribute :page_content
+
   extend FriendlyId
   friendly_id :slug_candidates, use: :globalize
 
