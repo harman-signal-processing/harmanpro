@@ -4,7 +4,7 @@ class Emea::Admin::UsersController < Emea::AdminController
   def index
     @emea_distributors = User.where(emea_distributor: true)
     @users = []
-    @q ||= @emea_distributors.search(params[:q])
+    @q ||= @emea_distributors.ransack(params[:q])
     if params[:q]
       @users = @q.result(:distinct => true)
     end
