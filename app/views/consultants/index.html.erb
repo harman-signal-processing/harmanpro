@@ -12,7 +12,32 @@
     <div class="large-10 large-offset-1 columns">
 
       <div><%=raw textilize SiteSetting.value("consultant-portal-welcome-paragraph") %></div>
-      <hr/>
+      
+      
+      <% if SiteSetting.set_for_locale?('consultant-portal-contacts') %>
+        <div class="row">
+          <div class="large-12 medium-12 columns">
+            <hr/>
+            <h3><%= t 'consultant_page.contacts' %></h3>
+            <br/>
+              <%= raw auto_link textilize SiteSetting.value("consultant-portal-contacts") %>
+          </div>
+        </div>
+      <% end %>      
+
+      <% if SiteSetting.set_for_locale?("consultant-portal-loan-program-paragraph") %>
+        <div class="row">
+          <div class="large-12 medium-12 columns">
+            <hr/>
+            <h3><%= SiteSetting.value("consultant-portal-loan-program-headline") %></h3>
+            <br/>
+            <div>
+              <%= raw auto_link textilize SiteSetting.value("consultant-portal-loan-program-paragraph") %>
+            </div>
+            <%= link_to t('consultant_page.consignment_form'), asset_path("consignment-template.xlsx"), class: "tiny radius button" %>
+          </div>
+        </div>
+      <% end %>
 
       <h3><%= t('consultant_page.technical_product_resources') %></h3>
       <div class="row">
@@ -54,30 +79,9 @@
         </div>
       </div>
 
-      <% if SiteSetting.set_for_locale?('consultant-portal-contacts') %>
-        <div class="row">
-          <div class="large-12 medium-12 columns">
-            <hr/>
-            <h3><%= t 'consultant_page.contacts' %></h3>
-            <br/>
-              <%= raw auto_link textilize SiteSetting.value("consultant-portal-contacts") %>
-          </div>
-        </div>
-      <% end %>
 
-      <% if SiteSetting.set_for_locale?("consultant-portal-loan-program-paragraph") %>
-        <div class="row">
-          <div class="large-12 medium-12 columns">
-            <hr/>
-            <h3><%= SiteSetting.value("consultant-portal-loan-program-headline") %></h3>
-            <br/>
-            <div>
-              <%= raw auto_link textilize SiteSetting.value("consultant-portal-loan-program-paragraph") %>
-            </div>
-            <%= link_to t('consultant_page.consignment_form'), asset_path("consignment-template.xlsx"), class: "tiny radius button" %>
-          </div>
-        </div>
-      <% end %>
+
+
 
     </div>
   </div>
