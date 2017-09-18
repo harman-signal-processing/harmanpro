@@ -2,7 +2,7 @@
   <div class="small-12 columns">
     <div id="footer">
       <div class="row">
-        <div class="large-6 medium-6 small-12 columns">
+        <div class="large-5 medium-5 small-12 columns">
           <h6 class="subheader"><%= t('nav.solutions') %></h6>
           <ul class="medium-block-grid-<%= active_child_verticals.in_groups(3).length %>">
             <% active_child_verticals.in_groups(3) do |group| %>
@@ -32,7 +32,15 @@
           <% end %>
         </div>
 
-        <div class="large-1 columns hide-for-medium-down">&nbsp;</div>
+        <div class="large-2 medium-2 small-12 columns">
+          <% if I18n.locale == I18n.default_locale %>
+            <h6 class="subheader"><%= t('more').titleize %> <%= t('nav.resources').titleize %></h6>
+            <ul>
+              <li><%= link_to t('nav.harman_finance'), finance_path %></li>
+            </ul>
+          <% end %>
+        </div>
+
         <div class="large-3 medium-6 small-12 columns">
           <%= render "layouts/newsletter_signup_form" %>
           <div class="social-links">
