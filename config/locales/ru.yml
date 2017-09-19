@@ -24,6 +24,7 @@
   connect_with_us: Связаться с нами
   message: Сообщение
   explore: Просмотр
+  all: все
   vertical_market_solutions: "%{vertical_market_name}: Решения"
 
   date:

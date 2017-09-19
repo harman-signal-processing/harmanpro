@@ -24,6 +24,7 @@ fr:
   connect_with_us: Connectez-vous à nous
   message: Message
   explore: Explorez
+  all: tout
   vertical_market_solutions: "Solutions pour %{vertical_market_name}"
 
   date: 

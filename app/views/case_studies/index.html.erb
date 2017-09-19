@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="medium-9 columns">
+    <h1><% if @vertical_market %><%= @vertical_market.name.titleize %><% end %> <%= t('case_study').pluralize.titleize %></h1>
+
+    <ul class="medium-block-grid-3 small-block-grid-1">
+      <% @case_studies.each do |case_study| %>
+        <li><%= link_to case_study do %>
+          <%= image_tag case_study.banner.url(:small_panel) %>
+        <% end %>
+        <h5><%= link_to case_study.headline, case_study %></h5>
+        <div><small><%=l case_study.created_at.to_date, format: :long %></small></div>
+        <%= raw case_study.description %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="medium-3 columns">
+    <div class="callout panel">
+      <h5>Case Studies by Application</h5>
+
+      <ul>
+        <% vertical_markets_with_case_studies.each do |v| %>
+          <li>
+            <% if @vertical_market && @vertical_market == v %>
+              <em style="color: #888"><%= v.name %> (<%= v.case_studies.count %>)</em>
+            <% else %>
+              <%= link_to vertical_market_case_studies_path(v) do %>
+                <%= v.name %> (<%= v.case_studies.count %>)
+              <% end %>
+            <% end %>
+          </li>
+        <% end %>
+        <% if @vertical_market %>
+          <li><%= link_to case_studies_path do %>
+            <%= t('all').titleize %> <%= t('case_study').pluralize.titleize %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+</div>

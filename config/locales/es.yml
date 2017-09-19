@@ -23,6 +23,7 @@ es:
   search: buscar
   message: Mensaje
   explore: Explorar
+  all: Todos
   vertical_market_solutions: "Soluciones %{vertical_market_name}"
 
   nav:

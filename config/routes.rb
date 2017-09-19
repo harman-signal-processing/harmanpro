@@ -81,9 +81,9 @@ Rails.application.routes.draw do
   end
   resources :vertical_markets, path: 'applications', only: [:index, :show] do
     resources :reference_systems, path: 'solutions', only: :show
-    resources :case_studies, only: :show
+    resources :case_studies, only: [:index, :show ] # "show" = old route which now forwards to the non-scoped variety
   end
-  resources :case_studies, only: :show
+  resources :case_studies, only: [:index, :show]
   resources :events, only: [:index, :show] do
     collection do
       get :recent
