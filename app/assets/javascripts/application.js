@@ -33,6 +33,7 @@
 // require_tree .
 
 $(function(){
+
   $(document).foundation({
     "magellan-expedition": {
       fixed_top: 100,
@@ -42,13 +43,20 @@ $(function(){
       equalize_on_stack: true
     }
   });
+
   $('.slick-show').slick({
     autoplay: true,
     autoplaySpeed: 5000,
     arrows: false,
     dots: true
   });
+
   if ($('#roadblock').length > 0) {
     $('#roadblock').foundation('reveal', 'open');
   }
+
+});
+
+$(document).ready(function(e) {
+  $('img[usemap]').rwdImageMaps();
 });
