@@ -35,9 +35,20 @@ class VerticalMarket < ApplicationRecord
       small: "250x375#",
       thumb: "80x120#",
       thumb_square: "64x64#"
-  }, default_url: "missing/banners/:style.jpg"
+  }, default_url: "missing/background/:style.jpg"
 
   validates_attachment_content_type :background, content_type: /\Aimage\/.*\Z/
+  
+    has_attached_file :hef_banner,
+    styles: {
+      large: "1170x1755#",
+      medium: "585x877#",
+      small: "250x375#",
+      thumb: "80x120#",
+      thumb_square: "64x64#"
+  }, default_url: "missing/hef_banner/:style.jpg"
+
+  validates_attachment_content_type :hef_banner, content_type: /\Aimage\/.*\Z/
 
   validates :name, presence: true, uniqueness: true
   validates :headline, presence: true

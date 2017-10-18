@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822141657) do
+ActiveRecord::Schema.define(version: 20171017222118) do
 
   create_table "active_admin_comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "namespace"
@@ -729,6 +729,10 @@ ActiveRecord::Schema.define(version: 20170822141657) do
     t.boolean "retail", default: false
     t.boolean "hide_buy_section"
     t.boolean "show_hef"
+    t.string "hef_banner_file_name"
+    t.string "hef_banner_content_type"
+    t.integer "hef_banner_file_size"
+    t.datetime "hef_banner_updated_at"
     t.index ["parent_id"], name: "index_vertical_markets_on_parent_id"
   end
 
