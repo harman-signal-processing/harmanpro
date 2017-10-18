@@ -8,6 +8,7 @@ ActiveAdmin.register VerticalMarket do
     :extra_content,
     :banner,
     :background,
+    :hef_banner,
     :lead_form_content,
     :live,
     :retail,
@@ -84,6 +85,9 @@ ActiveAdmin.register VerticalMarket do
       f.input :background, hint: f.object.background.present? ?
         image_tag(f.object.background.url(:thumb)) + content_tag(:br) + "Used for top-level verticals on the homepage and on the category page." :
         "Used for top-level verticals on the homepage and on the category page."
+      f.input :hef_banner, hint: f.object.hef_banner.present? ?
+        image_tag(f.object.hef_banner.url(:thumb)) + content_tag(:br) + "Appears on solutions pages as Harman Finance background. Preferred size: 1170x400 px with a strongly horizontal orientation." :
+        "Appears on solutions pages as Harman Finance background. Preferred size: 750x70 px with a strongly horizontal orientation."        
       f.input :description, hint: "Maximum recommended characters: 650", input_html: { rows: 10 }
       f.input :extra_content, hint: "Appears after the case studies", input_html: { rows: 10, class: "mceEditor"}
       f.input :retail, label: "Offer retailer/ecommerce links with this vertical market."
