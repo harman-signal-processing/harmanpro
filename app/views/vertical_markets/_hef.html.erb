@@ -1,28 +1,30 @@
-<%= cache ["hef-content", Date.today, current_locale] do %>
+<%= cache ["hef-content-vm", @vertical_market, Date.today, current_locale] do %>
 
-  <% if @vertical_market.hef_banner.url.include? "missing/hef_banner" %>
+  <% if @vertical_market.hef_banner.present? %>
 
-    <div class="panel">
-      <h4><%= SiteSetting.value("hef-sidebar-title") %></h4>
-      <div class="row">
-        <div class="small-12 medium-9 columns">
-          <%= raw textilize SiteSetting.value("hef-description") %>
-        </div>
-        <div class="small-12 medium-3 text-center columns">
-          <%= link_to t('learn_more'),
-            SiteSetting.value("hef-link"),
-            target: (SiteSetting.value("hef-link").to_s.match(/^http/) ? "_blank" : ""),
-            class: "small radius button" %>
-        </div>
-      </div>
-    </div>
-    
-  <% else %>
-  
     <%= link_to SiteSetting.value("hef-link") do %>
       <%= image_tag @vertical_market.hef_banner.url, width: 750, height: 70, alt: SiteSetting.value("hef-description"), style: 'margin-bottom: 1.42857rem;' %>
     <% end %>
-  
-  <% end %> <%# if @vertical_market.hef_banner.url.include? "missing/hef_banner" %>
 
-<% end %> <%# cache ["hef-content", Date.today, current_locale] do %>
+  <% else %>
+
+    <%= cache ["hef-content-shared", Date.today, current_locale] do %>
+      <div class="panel">
+        <h4><%= SiteSetting.value("hef-sidebar-title") %></h4>
+        <div class="row">
+          <div class="small-12 medium-9 columns">
+            <%= raw textilize SiteSetting.value("hef-description") %>
+          </div>
+          <div class="small-12 medium-3 text-center columns">
+            <%= link_to t('learn_more'),
+              SiteSetting.value("hef-link"),
+              target: (SiteSetting.value("hef-link").to_s.match(/^http/) ? "_blank" : ""),
+              class: "small radius button" %>
+          </div>
+        </div>
+      </div>
+    <% end %> <%# cache ["hef-content", Date.today, current_locale] do %>
+
+  <% end %> <%# if @vertical_market.hef_banner.present? %>
+
+<% end %> <%# cache ["hef-content-vm", @vertical_market, Date.today, current_locale] do %>
