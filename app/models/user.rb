@@ -75,6 +75,10 @@ class User < ApplicationRecord
     emea_admin? || admin?
   end
 
+  def is_employee?
+    !!(email.to_s.match(/\@harman\.com$/i))
+  end
+
   def roles
     ROLES.reject{|r| !(eval "self.#{r}")}
   end

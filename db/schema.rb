@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171017222118) do
+ActiveRecord::Schema.define(version: 20171019154314) do
 
   create_table "active_admin_comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "namespace"
@@ -251,6 +251,7 @@ ActiveRecord::Schema.define(version: 20171017222118) do
     t.datetime "updated_at", null: false
     t.boolean "pinch_content", default: true
     t.text "custom_header_code"
+    t.boolean "employee_only", default: false
     t.index ["slug"], name: "index_emea_pages_on_slug"
   end
 

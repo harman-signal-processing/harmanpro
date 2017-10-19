@@ -22,4 +22,16 @@ RSpec.describe User do
     expect(@user.translatable_locales).not_to include(locale)
   end
 
+  it ".is_employee? returns true if the email address matches harman.com" do
+    user = FactoryGirl.build(:user, email: "fred.jones@harman.com")
+
+    expect(user.is_employee?).to be(true)
+  end
+
+  it ".is_employee? returns false if the email doesn't match harman.com" do
+    user = FactoryGirl.build(:user, email: "fred.jones@not_harman.com")
+
+    expect(user.is_employee?).to be(false)
+  end
+
 end

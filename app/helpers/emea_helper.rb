@@ -1,7 +1,11 @@
 module EmeaHelper
 
-  def emea_top_nav_items
-    EmeaPage.for_top_nav.map do |page|
+  def emea_top_nav_items(current_user)
+    page_options = {}
+    if current_user.is_employee?
+      page_options = { include_employee_only_pages: true }
+    end
+    EmeaPage.for_top_nav(page_options).order("position").map do |page|
       emea_nav_for(page)
     end.join.html_safe
   end

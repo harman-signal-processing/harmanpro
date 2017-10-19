@@ -37,7 +37,7 @@
     <!--<![endif]-->
     <%= csrf_meta_tags %>
     <style type="text/css" media="all">
-        <% EmeaPage.for_top_nav.map do |page| %>
+        <% EmeaPage.for_top_nav(include_employee_only_pages: true).map do |page| %>
           .top-bar li.<%= page.slug %> a {
               background-color: <%= page.highlight_color %> !important;
               color: #FFFFFF;
@@ -107,13 +107,13 @@
           <li class="toggle-topbar menu-icon"><a href="#"><span>&nbsp;</span></a></li>
         </ul>
 
-        <section class="top-bar-section">
-          <ul>
-            <%#= cache ["emea-top-nav", Date.today, current_locale] do %>
-              <%= emea_top_nav_items %>
-            <%# end %>
-          </ul>
-        </section>
+        <% if user_signed_in? %>
+          <section class="top-bar-section">
+            <ul>
+              <%= emea_top_nav_items(current_user) %>
+            </ul>
+          </section>
+        <% end %>
 
       </nav>
     </div>

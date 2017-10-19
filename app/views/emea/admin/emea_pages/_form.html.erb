@@ -33,5 +33,8 @@
     label: "Custom CSS/Javascript (advanced)",
     hint: "Code is inserted directly in the head of the HTML, so surround CSS in <style> and javascript in <script> tags."%>
 
+  <%= f.input :employee_only,
+    label: "This page is for employees only." %>
+
   <%= f.button :submit %>
 <% end %>
