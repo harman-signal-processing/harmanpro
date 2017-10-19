@@ -9,7 +9,15 @@ class EmeaPage < ApplicationRecord
 
   after_initialize :set_defaults
 
-  def self.for_top_nav
+  def self.for_top_nav(options={})
+    items = where("position > 0").where("publish_on <= ?", Date.today)
+    unless options[:include_employee_only_pages]
+      items = items.where(employee_only: false)
+    end
+    items
+  end
+
+  def self.for_top_nav_for_employees
     where("position > 0").
       where("publish_on <= ?", Date.today).
       order(:position)

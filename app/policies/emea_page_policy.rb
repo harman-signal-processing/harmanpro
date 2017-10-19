@@ -11,7 +11,8 @@ class EmeaPagePolicy
   end
 
   def show?
-    (@emea_page.published? && @user.try(:emea_distributor?)) || admin?
+    (@emea_page.published? && (employee_access? || distributor_access?)) ||
+      admin?
   end
 
   def new?
@@ -44,4 +45,11 @@ class EmeaPagePolicy
     @user.emea_admin_access?
   end
 
+  def employee_access?
+    @emea_page.employee_only? && @user.is_employee?
+  end
+
+  def distributor_access?
+    !@emea_page.employee_only? && @user.try(:emea_distributor?)
+  end
 end
