@@ -1,4 +1,20 @@
+require 'csv'
 namespace :emea do
+
+  desc "Seed the employee contact database"
+  task :seed_employee_contacts => :environment do
+    seed_file = Rails.root.join("db", "emea_contacts.csv")
+
+    EmeaEmployeeContact.delete_all
+
+    CSV.foreach(seed_file, headers: true, header_converters: :symbol) do |row|
+      contact_hash = row.to_hash
+      EmeaEmployeeContact.create(contact_hash)
+    end
+
+    puts "EmeaEmployeeContact count: #{ EmeaEmployeeContact.count }"
+
+  end
 
   desc "Seed the channel manager database"
   task :seed_channel_management => :environment do

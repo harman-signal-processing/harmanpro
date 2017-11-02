@@ -1,0 +1,13 @@
+<%= simple_form_for [:emea, :admin, @employee_contact] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :department %>
+  <%= f.input :job_function %>
+  <%= f.input :position %>
+  <%= f.input :email %>
+  <%= f.input :telephone %>
+  <%= f.input :mobile %>
+  <%= f.input :brands %>
+  <%= f.input :country, as: :string %>
+  <%= f.button :submit, class: "small success" %>
+<% end %>
+
