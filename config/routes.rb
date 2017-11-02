@@ -56,6 +56,7 @@ Rails.application.routes.draw do
   namespace :emea do
     get 'admin' => 'admin#index'
     namespace :admin do
+      resources :emea_employee_contacts, path: "employee_contacts"
       resources :emea_pages, path: "pages" do
         resources :emea_page_resources, path: "resources"
       end
@@ -69,6 +70,10 @@ Rails.application.routes.draw do
     end
     resources :channels, :channel_countries, only: :index, defaults: { format: 'json' }
     get "channel/:channel_id/country/:channel_country_id/managers(.:format)" => 'channel_managers#search', defaults: { format: 'json' }
+
+    get "departments(.:format)" => 'employee_contacts#departments', defaults: { format: 'json' }
+    get "department/:department_id/job_functions(.:format)" => 'employee_contacts#job_functions', defaults: { format: 'json' }
+    get "department/:department_id/job_function/:job_function_id/contacts(.:format)" => 'employee_contacts#contacts', defaults: { format: 'json' }
   end
   resources :emea_pages, path: 'emea', only: [:index, :show]
 

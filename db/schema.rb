@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019154314) do
+ActiveRecord::Schema.define(version: 20171102182622) do
 
   create_table "active_admin_comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "namespace"
@@ -222,6 +222,22 @@ ActiveRecord::Schema.define(version: 20171019154314) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "emea_employee_contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "department"
+    t.string "job_function"
+    t.string "position"
+    t.string "name"
+    t.string "email"
+    t.string "telephone"
+    t.string "mobile"
+    t.string "brands"
+    t.string "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["department"], name: "index_emea_employee_contacts_on_department"
+    t.index ["job_function"], name: "index_emea_employee_contacts_on_job_function"
   end
 
   create_table "emea_page_resources", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -1,0 +1,31 @@
+<h1>Employee Contacts</h1>
+<p><%= link_to "<< back to admin", emea_admin_path %></p>
+
+<div class="row">
+  <div class="medium-8 columns">
+    <table style="width: 100%">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Function</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @employee_contacts.each do |employee_contact| %>
+          <tr>
+            <td><%= link_to employee_contact.name, edit_emea_admin_emea_employee_contact_path(employee_contact) %></td>
+            <td><%= employee_contact.department %></td>
+            <td><%= employee_contact.job_function %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="medium-4 columns">
+    <div class="panel">
+      <h5>New Contact:</h5>
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>
