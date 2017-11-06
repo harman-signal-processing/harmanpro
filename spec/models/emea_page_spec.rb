@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe EmeaPage, type: :model do
 
   before :all do
-    @page = FactoryGirl.create(:emea_page)
-    @resource = FactoryGirl.create(:emea_page_resource, emea_page: @page)
+    @page = FactoryBot.create(:emea_page)
+    @resource = FactoryBot.create(:emea_page_resource, emea_page: @page)
   end
 
   subject { @page }
@@ -24,8 +24,8 @@ RSpec.describe EmeaPage, type: :model do
     end
 
     it ".for_top_nav should return a list of topnav pages" do
-      published_page = FactoryGirl.create(:emea_page, publish_on: 1.year.ago, position: 1)
-      unpublished_page = FactoryGirl.create(:emea_page, publish_on: 1.year.from_now, position: 2)
+      published_page = FactoryBot.create(:emea_page, publish_on: 1.year.ago, position: 1)
+      unpublished_page = FactoryBot.create(:emea_page, publish_on: 1.year.from_now, position: 2)
 
       top_nav = EmeaPage.for_top_nav
 
@@ -35,7 +35,7 @@ RSpec.describe EmeaPage, type: :model do
   end
 
   it "has features" do
-    feature = FactoryGirl.create(:emea_page_resource, featured: true)
+    feature = FactoryBot.create(:emea_page_resource, featured: true)
     page = feature.emea_page
 
     expect(page.features).to include(feature)

@@ -2,9 +2,9 @@ require "rails_helper"
 
 RSpec.describe MediaLibraryMailer, type: :mailer do
   before :all do
-    FactoryGirl.create(:site_setting, name: "media-library-recipients", content: "foo@foo.com, bar@bar.com")
-    FactoryGirl.create(:site_setting, name: "media-library-sender", content: "ml@domain.com")
-    @media_library_access_request = FactoryGirl.create(:media_library_access_request)
+    FactoryBot.create(:site_setting, name: "media-library-recipients", content: "foo@foo.com, bar@bar.com")
+    FactoryBot.create(:site_setting, name: "media-library-sender", content: "ml@domain.com")
+    @media_library_access_request = FactoryBot.create(:media_library_access_request)
   end
 
   describe "access_request" do

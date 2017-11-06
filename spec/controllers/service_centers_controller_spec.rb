@@ -2,8 +2,8 @@
 
 RSpec.describe ServiceCentersController, as: :controller do
   before :all do
-    @brand = FactoryGirl.create(:brand)
-    @non_service_brand = FactoryGirl.create(:brand, show_on_services_site: false)
+    @brand = FactoryBot.create(:brand)
+    @non_service_brand = FactoryBot.create(:brand, show_on_services_site: false)
   end
 
   describe "GET :index" do
@@ -19,8 +19,8 @@ RSpec.describe ServiceCentersController, as: :controller do
 
   describe "POST :index (search)" do
     before do
-      @service_center = FactoryGirl.create(:service_center, state: "UT")
-      @service_group = FactoryGirl.create(:service_group)
+      @service_center = FactoryBot.create(:service_center, state: "UT")
+      @service_group = FactoryBot.create(:service_group)
       @service_center.service_groups << @service_group
 
       post :index, params: { q: { state_eq: "UT", service_groups_name_eq: @service_group.name } }
@@ -69,7 +69,7 @@ RSpec.describe ServiceCentersController, as: :controller do
   describe "POST :create successfully" do
     before do
       @count = ServiceCenter.count
-      @service_center = FactoryGirl.build :service_center
+      @service_center = FactoryBot.build :service_center
 
       post :create, params: { service_center: @service_center.attributes }
     end

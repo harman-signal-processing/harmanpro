@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :slide do
     name "MyString"
     association :locale, factory: :available_locale

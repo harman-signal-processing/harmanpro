@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "brands/show.html.erb", as: :view do
 
   before(:all) do
-    @brand = FactoryGirl.create(:brand,
+    @brand = FactoryBot.create(:brand,
                                 marketing_url: 'http://foo.bar',
                                 logo_collection: File.new(Rails.root.join('spec', 'fixtures', 'test.zip')),
                                 by_harman_logo: File.new(Rails.root.join('spec', 'fixtures', 'test.jpg')),

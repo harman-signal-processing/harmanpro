@@ -3,9 +3,9 @@ require 'rails_helper'
 describe "vertical_markets/show.html.erb" do
   context "parent vertical" do
     before :all do
-      @vertical_market = FactoryGirl.create(:vertical_market, parent_id: nil)
-      @child_verticals = FactoryGirl.create_list(:vertical_market, 3, parent_id: @vertical_market.id)
-      @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
+      @vertical_market = FactoryBot.create(:vertical_market, parent_id: nil)
+      @child_verticals = FactoryBot.create_list(:vertical_market, 3, parent_id: @vertical_market.id)
+      @reference_system = FactoryBot.create(:reference_system, vertical_market: @vertical_market)
       assign(:vertical_market, @vertical_market)
       assign(:lead, Lead.new)
       assign(:reference_systems, [])
@@ -32,8 +32,8 @@ describe "vertical_markets/show.html.erb" do
 
   context "general" do
     before :all do
-      @vertical_market = FactoryGirl.create(:vertical_market)
-      @reference_system = FactoryGirl.build_stubbed(:reference_system, vertical_market: @vertical_market)
+      @vertical_market = FactoryBot.create(:vertical_market)
+      @reference_system = FactoryBot.build_stubbed(:reference_system, vertical_market: @vertical_market)
       assign(:vertical_market, @vertical_market)
       assign(:lead, Lead.new)
       assign(:reference_systems, [@reference_system])
@@ -51,12 +51,12 @@ describe "vertical_markets/show.html.erb" do
 
   context "bottom-level vertical" do
     before do
-      @vertical_market = FactoryGirl.create(:vertical_market)
+      @vertical_market = FactoryBot.create(:vertical_market)
     end
 
     describe "and reference systems" do
       before do
-        @reference_systems = FactoryGirl.create_list(:reference_system, 9, vertical_market: @vertical_market)
+        @reference_systems = FactoryBot.create_list(:reference_system, 9, vertical_market: @vertical_market)
         assign(:lead, Lead.new)
         assign(:vertical_market, @vertical_market)
 
@@ -85,7 +85,7 @@ describe "vertical_markets/show.html.erb" do
 
     describe "with only one reference system" do
       before do
-        @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
+        @reference_system = FactoryBot.create(:reference_system, vertical_market: @vertical_market)
         assign(:vertical_market, @vertical_market)
         assign(:lead, Lead.new)
 
@@ -99,9 +99,9 @@ describe "vertical_markets/show.html.erb" do
 
     describe "and case studies" do
       before do
-        @case_studies = FactoryGirl.create_list(:case_study, 4)
+        @case_studies = FactoryBot.create_list(:case_study, 4)
         @vertical_market.case_studies += @case_studies
-        @reference_system = FactoryGirl.build_stubbed(:reference_system, vertical_market: @vertical_market)
+        @reference_system = FactoryBot.build_stubbed(:reference_system, vertical_market: @vertical_market)
         assign(:vertical_market, @vertical_market)
         assign(:lead, Lead.new)
 
@@ -119,9 +119,9 @@ describe "vertical_markets/show.html.erb" do
 
   context "child vertical" do
     before do
-      @parent = FactoryGirl.create(:vertical_market)
-      @vertical_market = FactoryGirl.create(:vertical_market, parent_id: @parent.id)
-      @reference_system = FactoryGirl.build_stubbed(:reference_system, vertical_market: @vertical_market)
+      @parent = FactoryBot.create(:vertical_market)
+      @vertical_market = FactoryBot.create(:vertical_market, parent_id: @parent.id)
+      @reference_system = FactoryBot.build_stubbed(:reference_system, vertical_market: @vertical_market)
       assign(:vertical_market, @vertical_market)
       assign(:reference_systems, [@reference_system])
       assign(:lead, Lead.new)

@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "CMS Routes" do
 
   before :all do
-    @locale = FactoryGirl.create(:available_locale, key: 'es')
+    @locale = FactoryBot.create(:available_locale, key: 'es')
   end
 
   after :all do
@@ -34,7 +34,7 @@ RSpec.describe "CMS Routes" do
   end
 
   it "routes translatable item" do
-    brand = FactoryGirl.create(:brand)
+    brand = FactoryBot.create(:brand)
     expect(get: "/cms/available_locales/#{ @locale.key }/brands/#{ brand.to_param }").to route_to(
       controller: "cms/brands",
       action: "show",

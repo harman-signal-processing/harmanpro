@@ -2,11 +2,11 @@ require "rails_helper"
 
 RSpec.describe "cms/available_locales/menu_items/index.html.erb" do
   before :all do
-    @locale = FactoryGirl.create(:available_locale)
-    @menu_item = FactoryGirl.create(:menu_item, locale: @locale)
-    @store_link = FactoryGirl.create(:site_setting)
-    @blog_link = FactoryGirl.create(:site_setting)
-    @blog_link_name = FactoryGirl.create(:site_setting)
+    @locale = FactoryBot.create(:available_locale)
+    @menu_item = FactoryBot.create(:menu_item, locale: @locale)
+    @store_link = FactoryBot.create(:site_setting)
+    @blog_link = FactoryBot.create(:site_setting)
+    @blog_link_name = FactoryBot.create(:site_setting)
   end
 
   before :each do

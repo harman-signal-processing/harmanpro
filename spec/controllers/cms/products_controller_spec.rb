@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Cms::ProductsController, type: :controller do
   before :all do
-    @available_locale = FactoryGirl.create(:available_locale, key: 'es')
-    @admin_user = FactoryGirl.create(:user, translator: true)
-    @product = FactoryGirl.create(:product)
+    @available_locale = FactoryBot.create(:available_locale, key: 'es')
+    @admin_user = FactoryBot.create(:user, translator: true)
+    @product = FactoryBot.create(:product)
   end
 
   after :all do

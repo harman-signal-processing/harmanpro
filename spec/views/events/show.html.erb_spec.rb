@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "events/show.html.erb", as: :view do
 
   before :all do
-    @current_event = FactoryGirl.create(:event,
+    @current_event = FactoryBot.create(:event,
                                         start_on: 2.days.ago,
                                         end_on: 2.days.from_now,
                                         description: "Coolest show",

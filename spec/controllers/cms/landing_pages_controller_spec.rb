@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Cms::LandingPagesController, type: :controller do
   before :all do
-    FactoryGirl.create(:available_locale, key: I18n.default_locale.to_s)
-    @available_locale = FactoryGirl.create(:available_locale, key: 'es')
-    @admin_user = FactoryGirl.create(:user, translator: true)
-    @landing_page = FactoryGirl.create(:landing_page)
+    FactoryBot.create(:available_locale, key: I18n.default_locale.to_s)
+    @available_locale = FactoryBot.create(:available_locale, key: 'es')
+    @admin_user = FactoryBot.create(:user, translator: true)
+    @landing_page = FactoryBot.create(:landing_page)
   end
 
   after :all do

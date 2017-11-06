@@ -4,7 +4,7 @@ RSpec.describe VenuesController, as: :controller do
 
   describe "GET index.json" do
     before do
-      @venue = FactoryGirl.create(:venue)
+      @venue = FactoryBot.create(:venue)
       get :index, params: { format: :json }
     end
 

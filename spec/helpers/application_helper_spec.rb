@@ -4,8 +4,8 @@ RSpec.describe ApplicationHelper do
 
   describe "#top_vertical_market_navigation" do
     before do
-      @vertical_markets = FactoryGirl.create_list(:vertical_market, 3)
-      @child_vertical = FactoryGirl.create(:vertical_market, parent_id: @vertical_markets.first.id)
+      @vertical_markets = FactoryBot.create_list(:vertical_market, 3)
+      @child_vertical = FactoryBot.create(:vertical_market, parent_id: @vertical_markets.first.id)
     end
 
     it "no longer links to each top-level vertical market" do
@@ -19,7 +19,7 @@ RSpec.describe ApplicationHelper do
 
   describe "#current_locale" do
     it "retrieves the current AvailableLocale from the I18n.locale" do
-      espanish = FactoryGirl.create(:available_locale, key: "es")
+      espanish = FactoryBot.create(:available_locale, key: "es")
       I18n.locale = espanish.key
 
       loc = helper.current_locale

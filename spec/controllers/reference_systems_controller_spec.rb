@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe ReferenceSystemsController, :type => :controller do
 
   before :all do
-    @vertical_market = FactoryGirl.create(:vertical_market)
-    @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
+    @vertical_market = FactoryBot.create(:vertical_market)
+    @reference_system = FactoryBot.create(:reference_system, vertical_market: @vertical_market)
   end
 
   describe "GET show.html" do
@@ -32,11 +32,11 @@ RSpec.describe ReferenceSystemsController, :type => :controller do
 
   describe "GET show.json" do
     before do
-      product_type = FactoryGirl.create(:product_type)
-      rspt = FactoryGirl.create(:reference_system_product_type,
+      product_type = FactoryBot.create(:product_type)
+      rspt = FactoryBot.create(:reference_system_product_type,
                                 reference_system: @reference_system,
                                 product_type: product_type)
-      FactoryGirl.create(:reference_system_product_type_product,
+      FactoryBot.create(:reference_system_product_type_product,
                          reference_system_product_type: rspt)
       get :show, params: { id: @reference_system.id, vertical_market_id: @vertical_market.id, format: :json }
     end

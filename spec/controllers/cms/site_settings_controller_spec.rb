@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Cms::SiteSettingsController, type: :controller do
   before :all do
-    @available_locale = FactoryGirl.create(:available_locale, key: 'es')
-    @admin_user = FactoryGirl.create(:user, translator: true)
-    @site_setting = FactoryGirl.create(:site_setting)
+    @available_locale = FactoryBot.create(:available_locale, key: 'es')
+    @admin_user = FactoryBot.create(:user, translator: true)
+    @site_setting = FactoryBot.create(:site_setting)
   end
 
   after :all do

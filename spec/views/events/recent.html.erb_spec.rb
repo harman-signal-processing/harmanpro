@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "events/recent.html.erb", as: :view do
 
   before :all do
-    @past_event = FactoryGirl.create(:event,
+    @past_event = FactoryBot.create(:event,
                                       start_on: 2.weeks.ago,
                                       end_on: 1.week.ago,
                                       active: true)

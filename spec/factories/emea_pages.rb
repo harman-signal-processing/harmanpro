@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :emea_page do
     sequence(:title) {|n| "EmeaPage #{n}"}
     highlight_color "#CCFF00"

@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe LocaleTranslator, type: :model do
 
   before :all do
-    user = FactoryGirl.create(:user, translator: true)
-    @lt = FactoryGirl.create(:locale_translator, translator: user)
+    user = FactoryBot.create(:user, translator: true)
+    @lt = FactoryBot.create(:locale_translator, translator: user)
   end
 
   subject { @lt }

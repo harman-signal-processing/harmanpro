@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "artists/show.html.erb", type: :view do
 
   before :all do
-    @artist = FactoryGirl.build_stubbed(:artist)
+    @artist = FactoryBot.build_stubbed(:artist)
   end
 
   before do

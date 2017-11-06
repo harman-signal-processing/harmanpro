@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe OnlineRetailer, type: :model do
 
   before(:all) do
-    @online_retailer = FactoryGirl.create(:online_retailer)
+    @online_retailer = FactoryBot.create(:online_retailer)
   end
 
   subject { @online_retailer }

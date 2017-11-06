@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Cms::CaseStudiesController, type: :controller do
   before :all do
-    @available_locale = FactoryGirl.create(:available_locale, key: 'es')
-    @admin_user = FactoryGirl.create(:user, translator: true)
-    @case_study = FactoryGirl.create(:case_study)
+    @available_locale = FactoryBot.create(:available_locale, key: 'es')
+    @admin_user = FactoryBot.create(:user, translator: true)
+    @case_study = FactoryBot.create(:case_study)
   end
 
   after :all do

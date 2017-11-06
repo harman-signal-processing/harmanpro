@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Product, :type => :model do
   before :all do
-    @product = FactoryGirl.create(:product)
+    @product = FactoryBot.create(:product)
   end
 
   subject { @product }
@@ -16,7 +16,7 @@ RSpec.describe Product, :type => :model do
 
   describe "deleting" do
     it "should delete any ReferenceSystemProductTypeProducts" do
-      rsptp = FactoryGirl.create(:reference_system_product_type_product)
+      rsptp = FactoryBot.create(:reference_system_product_type_product)
       reference_system_product_type = rsptp.reference_system_product_type
       product = rsptp.product
 
@@ -36,7 +36,7 @@ RSpec.describe Product, :type => :model do
     end
 
     it "#ecommerce_enabled? should return 'false' when no ecommerce_id is provided" do
-      product = FactoryGirl.create(:product)
+      product = FactoryBot.create(:product)
       product.update_column(:ecommerce_id, '')
 
       expect(product.ecommerce_enabled?).to be(false)

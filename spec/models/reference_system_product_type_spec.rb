@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ReferenceSystemProductType, :type => :model do
 
   before :all do
-    @reference_system_product_type = FactoryGirl.create(:reference_system_product_type)
+    @reference_system_product_type = FactoryBot.create(:reference_system_product_type)
   end
 
   subject { @reference_system_product_type }
@@ -18,7 +18,7 @@ RSpec.describe ReferenceSystemProductType, :type => :model do
 
   describe "deleting" do
     it "should delete corresponding ReferenceSystemProductTypeProducts" do
-      rsptp = FactoryGirl.create(:reference_system_product_type_product)
+      rsptp = FactoryBot.create(:reference_system_product_type_product)
       reference_system_product_type = rsptp.reference_system_product_type
       product = rsptp.product
 

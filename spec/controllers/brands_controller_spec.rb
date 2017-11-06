@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe BrandsController do
 
   before :all do
-    @brand = FactoryGirl.create(:brand)
+    @brand = FactoryBot.create(:brand)
   end
 
   describe "GET :show" do
@@ -28,7 +28,7 @@ RSpec.describe BrandsController do
     end
 
     it "redirects to root for service-only brand" do
-      service_brand = FactoryGirl.create(:brand, show_on_main_site: false)
+      service_brand = FactoryBot.create(:brand, show_on_main_site: false)
 
       get :show, params: { id: service_brand.id }
 

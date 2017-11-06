@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Visitor to contact page" do
 
   before :all do
-    @brand = FactoryGirl.create(:brand, support_url: "http://support.lvh.me")
+    @brand = FactoryBot.create(:brand, support_url: "http://support.lvh.me")
   end
 
   before :each do

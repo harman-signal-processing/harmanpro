@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Cms::VenuesController, type: :controller do
   before :all do
-    @available_locale = FactoryGirl.create(:available_locale, key: 'es')
-    @admin_user = FactoryGirl.create(:user, translator: true)
-    @venue = FactoryGirl.create(:venue)
+    @available_locale = FactoryBot.create(:available_locale, key: 'es')
+    @admin_user = FactoryBot.create(:user, translator: true)
+    @venue = FactoryBot.create(:venue)
   end
 
   after :all do

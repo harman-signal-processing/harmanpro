@@ -3,17 +3,17 @@ require 'rails_helper'
 RSpec.describe "reference_systems/show.html.erb", :type => :view do
 
   before :all do
-    @vertical_market = FactoryGirl.create(:vertical_market)
-    @reference_systems = FactoryGirl.create_list(:reference_system, 3, vertical_market: @vertical_market)
+    @vertical_market = FactoryBot.create(:vertical_market)
+    @reference_systems = FactoryBot.create_list(:reference_system, 3, vertical_market: @vertical_market)
     @reference_system = @reference_systems.second
-    @product_type = FactoryGirl.create(:product_type)
-    @product = FactoryGirl.create(:product)
-    rspt = FactoryGirl.create(
+    @product_type = FactoryBot.create(:product_type)
+    @product = FactoryBot.create(:product)
+    rspt = FactoryBot.create(
       :reference_system_product_type,
       reference_system: @reference_system,
       product_type: @product_type
     )
-    FactoryGirl.create(
+    FactoryBot.create(
       :reference_system_product_type_product,
       reference_system_product_type: rspt,
       product: @product

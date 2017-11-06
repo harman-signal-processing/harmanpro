@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Cms::VerticalMarketsController, type: :controller do
   before :all do
-    @available_locale = FactoryGirl.create(:available_locale, key: 'es')
-    @admin_user = FactoryGirl.create(:user, translator: true)
-    @vertical_market = FactoryGirl.create(:vertical_market)
+    @available_locale = FactoryBot.create(:available_locale, key: 'es')
+    @admin_user = FactoryBot.create(:user, translator: true)
+    @vertical_market = FactoryBot.create(:vertical_market)
   end
 
   after :all do

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ChannelCountryManager, type: :model do
 
   before :all do
-    @ccm = FactoryGirl.create(:channel_country_manager)
+    @ccm = FactoryBot.create(:channel_country_manager)
   end
 
   subject { @ccm }

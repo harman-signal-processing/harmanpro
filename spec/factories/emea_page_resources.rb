@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :emea_page_resource do
     emea_page
     sequence(:name) {|n| "Resource #{n}"}

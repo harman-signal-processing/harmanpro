@@ -14,7 +14,7 @@ RSpec.describe EventsHelper, type: :helper do
 
   describe "event date formatter" do
     it "omits the end date if it is the same as start date" do
-      event = FactoryGirl.create(:event, start_on: 2.days.from_now, end_on: 2.days.from_now)
+      event = FactoryBot.create(:event, start_on: 2.days.from_now, end_on: 2.days.from_now)
 
       formatted = helper.event_date(event)
       expect(formatted).not_to include(" - ") # the separator
@@ -22,7 +22,7 @@ RSpec.describe EventsHelper, type: :helper do
     end
 
     it "includes the end date if it is different from start date" do
-      event = FactoryGirl.create(:event, start_on: 2.days.from_now, end_on: 4.days.from_now)
+      event = FactoryBot.create(:event, start_on: 2.days.from_now, end_on: 4.days.from_now)
 
       formatted = helper.event_date(event)
       expect(formatted).to include(" - ") # the separator

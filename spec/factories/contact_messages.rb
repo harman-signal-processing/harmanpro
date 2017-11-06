@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :contact_message do
     name "MyString"
     email "me@me.com"

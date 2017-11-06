@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :landing_page do
     title "PageTitle"
     subtitle "PageSubTitle"

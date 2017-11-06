@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Cms::EventsController, type: :controller do
   before :all do
-    @available_locale = FactoryGirl.create(:available_locale, key: 'es')
-    @admin_user = FactoryGirl.create(:user, translator: true)
-    @event = FactoryGirl.create(:event)
+    @available_locale = FactoryBot.create(:available_locale, key: 'es')
+    @admin_user = FactoryBot.create(:user, translator: true)
+    @event = FactoryBot.create(:event)
   end
 
   after :all do

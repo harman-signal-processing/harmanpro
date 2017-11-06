@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Artist, type: :model do
 
   before :all do
-    @artist = FactoryGirl.create(:artist)
+    @artist = FactoryBot.create(:artist)
   end
 
   subject { @artist }

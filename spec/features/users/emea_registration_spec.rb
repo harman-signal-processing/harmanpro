@@ -3,7 +3,7 @@ require "rails_helper"
 feature "EMEA Distributors registration" do
 
   before :all do
-    @invitation_code = FactoryGirl.create(
+    @invitation_code = FactoryBot.create(
       :site_setting,
       name: "emea_distributor_invitation_code",
       content: "this-is-the-code"
@@ -21,7 +21,7 @@ feature "EMEA Distributors registration" do
   end
 
   scenario "successfully and gets correct role" do
-    user = FactoryGirl.build(:user)
+    user = FactoryBot.build(:user)
     fill_in "Email", with: user.email
     fill_in "Password", with: "this-is-my-password"
     fill_in "Password confirmation", with: "this-is-my-password"
@@ -36,7 +36,7 @@ feature "EMEA Distributors registration" do
   end
 
   scenario "unsuccessfully with wrong code" do
-    user = FactoryGirl.build(:user)
+    user = FactoryBot.build(:user)
     fill_in "Email", with: user.email
     fill_in "Password", with: "this-is-my-password"
     fill_in "Password confirmation", with: "this-is-my-password"

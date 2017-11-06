@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ServiceCenter, type: :model do
 
   before :all do
-    @service_center = FactoryGirl.create(:service_center, active: true)
+    @service_center = FactoryBot.create(:service_center, active: true)
   end
 
   subject { @service_center }
@@ -18,7 +18,7 @@ RSpec.describe ServiceCenter, type: :model do
 
   describe "deleting" do
     it "deletes any related ServiceCenterServiceGroups" do
-      service_center_service_group = FactoryGirl.create(:service_center_service_group)
+      service_center_service_group = FactoryBot.create(:service_center_service_group)
       service_center = service_center_service_group.service_center
       service_group = service_center_service_group.service_group
 
@@ -30,7 +30,7 @@ RSpec.describe ServiceCenter, type: :model do
   end
 
   it ".active should select only active service centers" do
-    inactive_service_center = FactoryGirl.create(:service_center, active: false)
+    inactive_service_center = FactoryBot.create(:service_center, active: false)
 
     results = ServiceCenter.active
 

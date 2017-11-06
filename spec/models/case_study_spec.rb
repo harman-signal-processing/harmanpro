@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CaseStudy, :type => :model do
   before :all do
-    case_study_vertical_market = FactoryGirl.create(:case_study_vertical_market)
+    case_study_vertical_market = FactoryBot.create(:case_study_vertical_market)
     @case_study = case_study_vertical_market.case_study
   end
 
@@ -40,8 +40,8 @@ RSpec.describe CaseStudy, :type => :model do
   end
 
   it ".featured should choose good case studies to feature on the homepage" do
-    inactive_vertical = FactoryGirl.create(:vertical_market, live: false)
-    inactive_study = FactoryGirl.create(:case_study)
+    inactive_vertical = FactoryBot.create(:vertical_market, live: false)
+    inactive_study = FactoryBot.create(:case_study)
     inactive_vertical.case_studies << inactive_study
 
     featured = CaseStudy.featured

@@ -3,10 +3,10 @@ require "rails_helper"
 RSpec.describe "main/sitemap.html.erb", as: :view do
 
   before :all do
-    @brand = FactoryGirl.create(:brand)
-    @vertical_market = FactoryGirl.create(:vertical_market)
-    @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
-    csvm = FactoryGirl.create(:case_study_vertical_market, vertical_market: @vertical_market)
+    @brand = FactoryBot.create(:brand)
+    @vertical_market = FactoryBot.create(:vertical_market)
+    @reference_system = FactoryBot.create(:reference_system, vertical_market: @vertical_market)
+    csvm = FactoryBot.create(:case_study_vertical_market, vertical_market: @vertical_market)
     @case_study = csvm.case_study
 
     assign(:vertical_markets, [@vertical_market])

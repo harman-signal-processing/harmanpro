@@ -3,8 +3,8 @@ require "rails_helper"
 feature "Find a service center" do
 
   before :all do
-    @service_group = FactoryGirl.create(:service_group)
-    @service_center = FactoryGirl.create(:service_center)
+    @service_group = FactoryBot.create(:service_group)
+    @service_center = FactoryBot.create(:service_center)
     @service_center.service_groups << @service_group
   end
 

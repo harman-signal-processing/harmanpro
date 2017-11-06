@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :media_library_access_request do
     first_name "MyString"
     last_name "MyString"

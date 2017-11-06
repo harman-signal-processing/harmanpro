@@ -10,9 +10,9 @@ feature "Lead generation" do
   include ActiveJob::TestHelper
 
   before :all do
-    @vertical_market = FactoryGirl.create(:vertical_market, retail: false)
-    @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
-    @title = FactoryGirl.create(:site_setting, name: "thanks", content: "Thanks!")
+    @vertical_market = FactoryBot.create(:vertical_market, retail: false)
+    @reference_system = FactoryBot.create(:reference_system, vertical_market: @vertical_market)
+    @title = FactoryBot.create(:site_setting, name: "thanks", content: "Thanks!")
   end
 
   after :all do
@@ -23,7 +23,7 @@ feature "Lead generation" do
   # I want to fill out a contact form
   # So that I can be contacted by sales
   scenario "complete installer help form on vertical market page" do
-    lead = FactoryGirl.build(:lead, name: "Vertical Market Installer Lead")
+    lead = FactoryBot.build(:lead, name: "Vertical Market Installer Lead")
     visit vertical_market_path(@vertical_market)
 
     expect_any_instance_of(Lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
@@ -40,7 +40,7 @@ feature "Lead generation" do
   # I want to fill out a contact form
   # So that I can be contacted by sales
   scenario "complete installer help form on reference system page" do
-    lead = FactoryGirl.build(:lead, name: "Reference System Installer Lead")
+    lead = FactoryBot.build(:lead, name: "Reference System Installer Lead")
     visit vertical_market_reference_system_path(@vertical_market, @reference_system)
 
     expect_any_instance_of(Lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
@@ -55,8 +55,8 @@ feature "Lead generation" do
 
   scenario "new lead is delivered to sales department" do
     perform_enqueued_jobs do
-      sales_recipients = FactoryGirl.create(:site_setting, name: "leadgen-recipients", content: "yo@mama.com")
-      lead = FactoryGirl.build(:lead, name: "Reference System Installer Lead")
+      sales_recipients = FactoryBot.create(:site_setting, name: "leadgen-recipients", content: "yo@mama.com")
+      lead = FactoryBot.build(:lead, name: "Reference System Installer Lead")
       visit vertical_market_reference_system_path(@vertical_market, @reference_system)
 
       expect_any_instance_of(Lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
@@ -79,7 +79,7 @@ feature "Lead generation" do
   # So that I can correct my errors
   scenario "incorrectly complete installer help form" do
     lead_count = Lead.count
-    lead = FactoryGirl.build(:lead, name: nil, email: nil)
+    lead = FactoryBot.build(:lead, name: nil, email: nil)
     visit vertical_market_path(@vertical_market)
 
     expect_any_instance_of(Lead).not_to receive(:silverpop_client).and_return(SilverPopStub.new)

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :reference_system_product_type do
     reference_system
     product_type

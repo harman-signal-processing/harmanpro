@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe "vertical_markets/_learn.html.erb", :type => :view do
 
   before :all do
-    @vertical_market = FactoryGirl.create(:vertical_market, show_hef: true)
-    csvm = FactoryGirl.create(:case_study_vertical_market, vertical_market: @vertical_market)
+    @vertical_market = FactoryBot.create(:vertical_market, show_hef: true)
+    csvm = FactoryBot.create(:case_study_vertical_market, vertical_market: @vertical_market)
     @case_study = csvm.case_study
-    @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
+    @reference_system = FactoryBot.create(:reference_system, vertical_market: @vertical_market)
   end
 
   before :each do
@@ -25,15 +25,15 @@ RSpec.describe "vertical_markets/_learn.html.erb", :type => :view do
 
   context "non-retail" do
     before do
-      @parent_vertical_market = FactoryGirl.create(:vertical_market)
+      @parent_vertical_market = FactoryBot.create(:vertical_market)
       @vertical_market.update_column(:parent_id, @parent_vertical_market.id)
       @vertical_market.update_column(:retail, false)
-      FactoryGirl.create(:site_setting, name: "hef-sidebar-title", content: "HEF Headline")
-      FactoryGirl.create(:site_setting, name: "hef-description", content: "HEF description")
-      FactoryGirl.create(:site_setting, name: "subheader-help-find-installer", content: "Help Me Find Installer")
-      FactoryGirl.create(:site_setting, name: "help-find-installer-description", content: "Paragraph helping customer find installer.")
-      FactoryGirl.create(:site_setting, name: "button-help-find-installer", content: "Help Me Find Installer")
-      FactoryGirl.create(:site_setting, name: "hef-link", content: "www.hef.com")
+      FactoryBot.create(:site_setting, name: "hef-sidebar-title", content: "HEF Headline")
+      FactoryBot.create(:site_setting, name: "hef-description", content: "HEF description")
+      FactoryBot.create(:site_setting, name: "subheader-help-find-installer", content: "Help Me Find Installer")
+      FactoryBot.create(:site_setting, name: "help-find-installer-description", content: "Paragraph helping customer find installer.")
+      FactoryBot.create(:site_setting, name: "button-help-find-installer", content: "Help Me Find Installer")
+      FactoryBot.create(:site_setting, name: "hef-link", content: "www.hef.com")
       render partial: "vertical_markets/learn", locals: { vertical_market: @vertical_market }
     end
 

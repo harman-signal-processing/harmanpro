@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe ProductsController do
 
   before :all do
-    @brand = FactoryGirl.create(:brand)
-    @product = FactoryGirl.create(:product, brand: @brand)
+    @brand = FactoryBot.create(:brand)
+    @product = FactoryBot.create(:product, brand: @brand)
   end
 
   describe "GET :index (json)" do

@@ -4,7 +4,7 @@ feature "EMEA Distributors cannot access /admin" do
 
   before :all do
     @password = "ABCD1234"
-    @distributor = FactoryGirl.create(:user,
+    @distributor = FactoryBot.create(:user,
                                       emea_distributor: true,
                                       password: @password,
                                       password_confirmation: @password)

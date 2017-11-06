@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Resource Library Routes" do
 
   before :all do
-    @resource = FactoryGirl.create(:resource)
+    @resource = FactoryBot.create(:resource)
   end
 
   it "answers on permalink" do

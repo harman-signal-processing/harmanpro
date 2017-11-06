@@ -3,14 +3,14 @@ require 'rails_helper'
 RSpec.describe ConsultantsController, type: :controller do
 
   before :all do
-    @brand = FactoryGirl.create(:brand,
+    @brand = FactoryBot.create(:brand,
                                 show_on_consultant_page: true,
                                 contact_info_for_consultants: "FOO",
                                 api_url: 'http://localhost/')
-    @brand_without_contacts = FactoryGirl.create(:brand,
+    @brand_without_contacts = FactoryBot.create(:brand,
                                                  show_on_consultant_page: true,
                                                  contact_info_for_consultants: '')
-    @other_brand = FactoryGirl.create(:brand,
+    @other_brand = FactoryBot.create(:brand,
                                       show_on_consultant_page: false)
   end
 

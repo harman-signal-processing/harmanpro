@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe ReferenceSystem, :type => :model do
   before :all do
-    @vertical_market = FactoryGirl.create(:vertical_market)
-    @reference_systems = FactoryGirl.create_list(:reference_system, 3, vertical_market: @vertical_market)
+    @vertical_market = FactoryBot.create(:vertical_market)
+    @reference_systems = FactoryBot.create_list(:reference_system, 3, vertical_market: @vertical_market)
     @reference_system = @reference_systems.second
   end
 
@@ -32,7 +32,7 @@ RSpec.describe ReferenceSystem, :type => :model do
 
   describe "deleting" do
     it "should delete related ReferenceSystemProductTypes" do
-      reference_system_product_type = FactoryGirl.create(:reference_system_product_type)
+      reference_system_product_type = FactoryBot.create(:reference_system_product_type)
       reference_system = reference_system_product_type.reference_system
       product_type = reference_system_product_type.product_type
 
@@ -64,7 +64,7 @@ RSpec.describe ReferenceSystem, :type => :model do
     end
 
     it "does not include those which are translated" do
-      reference_system = FactoryGirl.create(:reference_system)
+      reference_system = FactoryBot.create(:reference_system)
 
       I18n.locale = :es
       reference_system.name = "Translated Name"
@@ -82,7 +82,7 @@ RSpec.describe ReferenceSystem, :type => :model do
   describe "updated_but_not_translated(:locale) collection" do
 
     it "includes those where main item was updated, but translation was not" do
-      reference_system = FactoryGirl.create(:reference_system)
+      reference_system = FactoryBot.create(:reference_system)
 
       I18n.locale = :es
       reference_system.name = "Translated Name"

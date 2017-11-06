@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe EventsController, type: :controller do
 
   before :all do
-    @future_event = FactoryGirl.create(:event, start_on: 4.weeks.from_now, end_on: 5.weeks.from_now, active: true)
-    @current_event = FactoryGirl.create(:event, start_on: 2.days.ago, end_on: 2.days.from_now, featured: true, active: true)
-    @past_event = FactoryGirl.create(:event, start_on: 5.weeks.ago, end_on: 4.weeks.ago, active: true)
-    @hidden_event = FactoryGirl.create(:event, active: false)
+    @future_event = FactoryBot.create(:event, start_on: 4.weeks.from_now, end_on: 5.weeks.from_now, active: true)
+    @current_event = FactoryBot.create(:event, start_on: 2.days.ago, end_on: 2.days.from_now, featured: true, active: true)
+    @past_event = FactoryBot.create(:event, start_on: 5.weeks.ago, end_on: 4.weeks.ago, active: true)
+    @hidden_event = FactoryBot.create(:event, active: false)
   end
 
   describe "GET index" do

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "landing_pages/show.html.erb", type: :view do
 
   before :all do
-    @landing_page = FactoryGirl.create(:landing_page)
+    @landing_page = FactoryBot.create(:landing_page)
     assign(:landing_page, @landing_page)
   end
 

@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Cms::MenuItemsController, type: :controller do
   before :all do
-    @available_locale = FactoryGirl.create(:available_locale, key: 'es')
-    @admin_user = FactoryGirl.create(:user, translator: true)
+    @available_locale = FactoryBot.create(:available_locale, key: 'es')
+    @admin_user = FactoryBot.create(:user, translator: true)
   end
 
   after :all do
@@ -51,7 +51,7 @@ RSpec.describe Cms::MenuItemsController, type: :controller do
 
     describe "GET :edit" do
       before do
-        @menu_item = FactoryGirl.create(:menu_item, locale: @available_locale)
+        @menu_item = FactoryBot.create(:menu_item, locale: @available_locale)
         get :edit, params: { available_locale_id: @available_locale.id, id: @menu_item.id }
       end
 
@@ -63,7 +63,7 @@ RSpec.describe Cms::MenuItemsController, type: :controller do
 
     describe "PUT :update" do
       before do
-        @menu_item = FactoryGirl.create(:menu_item, locale: @available_locale)
+        @menu_item = FactoryBot.create(:menu_item, locale: @available_locale)
       end
 
       it "updates the item" do

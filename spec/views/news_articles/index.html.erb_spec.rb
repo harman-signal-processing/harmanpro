@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "news_articles/index.html.erb", type: :view do
   before :all do
-    @news_article = FactoryGirl.create(:news_article)
-    @featured_news = FactoryGirl.create(:news_article, title: "Featured Article")
+    @news_article = FactoryBot.create(:news_article)
+    @featured_news = FactoryBot.create(:news_article, title: "Featured Article")
 
     assign(:news_articles,  [@news_article])
     assign(:featured_article, @featured_news)

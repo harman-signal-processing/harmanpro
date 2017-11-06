@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Landing pages" do
 
   before :all do
-    @landing_page = FactoryGirl.create(:landing_page)
+    @landing_page = FactoryBot.create(:landing_page)
   end
 
   before :each do

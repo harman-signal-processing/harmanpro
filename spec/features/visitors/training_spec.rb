@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Visitor to training page" do
 
   before :all do
-    @brand = FactoryGirl.create(:brand, training_url: "http://training.lvh.me")
+    @brand = FactoryBot.create(:brand, training_url: "http://training.lvh.me")
   end
 
   before :each do

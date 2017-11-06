@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe ResourcesController do
 
   before :all do
-    @resource = FactoryGirl.create(:resource)
+    @resource = FactoryBot.create(:resource)
   end
 
   # The show method becomes the permalink using the

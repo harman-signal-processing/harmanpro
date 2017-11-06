@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "case_studies/show.html.erb", :type => :view do
 
   before :all do
-    csvm = FactoryGirl.create(:case_study_vertical_market)
+    csvm = FactoryBot.create(:case_study_vertical_market)
     @vertical_market = csvm.vertical_market
     @case_study = csvm.case_study
 

@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Cms::TrainingContentPagesController, type: :controller do
   before :all do
-    FactoryGirl.create(:available_locale, key: I18n.default_locale.to_s)
-    @available_locale = FactoryGirl.create(:available_locale, key: 'es')
-    @admin_user = FactoryGirl.create(:user, translator: true)
-    @training_content_page = FactoryGirl.create(:training_content_page)
+    FactoryBot.create(:available_locale, key: I18n.default_locale.to_s)
+    @available_locale = FactoryBot.create(:available_locale, key: 'es')
+    @admin_user = FactoryBot.create(:user, translator: true)
+    @training_content_page = FactoryBot.create(:training_content_page)
   end
 
   after :all do

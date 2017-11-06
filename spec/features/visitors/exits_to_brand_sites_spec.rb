@@ -3,7 +3,7 @@ require 'rails_helper'
 feature "Exits to brand sites via brand page" do
 
   before :all do
-    rsptp = FactoryGirl.create(:reference_system_product_type_product)
+    rsptp = FactoryBot.create(:reference_system_product_type_product)
     @product = rsptp.product
     @brand = @product.brand
     @reference_system_product_type = rsptp.reference_system_product_type

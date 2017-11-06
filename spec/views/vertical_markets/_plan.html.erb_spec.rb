@@ -3,21 +3,21 @@ require 'rails_helper'
 RSpec.describe "vertical_markets/_plan.html.erb", :type => :view do
 
   before do
-    @vertical_market = FactoryGirl.create(:vertical_market)
-    @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
+    @vertical_market = FactoryBot.create(:vertical_market)
+    @reference_system = FactoryBot.create(:reference_system, vertical_market: @vertical_market)
   end
 
   context "non-retail" do
     before do
-      @parent_vertical_market = FactoryGirl.create(:vertical_market)
+      @parent_vertical_market = FactoryBot.create(:vertical_market)
       @vertical_market.update_column(:parent_id, @parent_vertical_market.id)
       @vertical_market.update_column(:retail, false)
-      FactoryGirl.create(:site_setting, name: "hef-sidebar-title", content: "HEF Headline")
-      FactoryGirl.create(:site_setting, name: "hef-description", content: "HEF description")
-      FactoryGirl.create(:site_setting, name: "subheader-help-find-installer", content: "Help Me Find Installer")
-      FactoryGirl.create(:site_setting, name: "help-find-installer-description", content: "Paragraph helping customer find installer.")
-      FactoryGirl.create(:site_setting, name: "button-help-find-installer", content: "Help Me Find Installer")
-      FactoryGirl.create(:site_setting, name: "hef-link", content: "www.hef.com")
+      FactoryBot.create(:site_setting, name: "hef-sidebar-title", content: "HEF Headline")
+      FactoryBot.create(:site_setting, name: "hef-description", content: "HEF description")
+      FactoryBot.create(:site_setting, name: "subheader-help-find-installer", content: "Help Me Find Installer")
+      FactoryBot.create(:site_setting, name: "help-find-installer-description", content: "Paragraph helping customer find installer.")
+      FactoryBot.create(:site_setting, name: "button-help-find-installer", content: "Help Me Find Installer")
+      FactoryBot.create(:site_setting, name: "hef-link", content: "www.hef.com")
       render partial: "vertical_markets/plan", locals: { vertical_market: @vertical_market }
     end
 
@@ -39,8 +39,8 @@ RSpec.describe "vertical_markets/_plan.html.erb", :type => :view do
 
   context "retail" do
     before do
-      FactoryGirl.create(:site_setting, name: "retail-plan-section-subheader", content: "How To Buy Stuff")
-      FactoryGirl.create(:site_setting, name: "retail-plan-section-paragraph", content: "Paragraph on buying stuff")
+      FactoryBot.create(:site_setting, name: "retail-plan-section-subheader", content: "How To Buy Stuff")
+      FactoryBot.create(:site_setting, name: "retail-plan-section-paragraph", content: "Paragraph on buying stuff")
       @vertical_market.update_column(:retail, true)
 
       render partial: "vertical_markets/plan", locals: { vertical_market: @vertical_market }

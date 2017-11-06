@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "cms/available_locales/show.html.erb" do
 
   before :all do
-    @locale = FactoryGirl.create(:available_locale)
+    @locale = FactoryBot.create(:available_locale)
   end
 
   before :each do

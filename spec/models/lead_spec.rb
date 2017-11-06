@@ -8,7 +8,7 @@ end
 
 RSpec.describe Lead, :type => :model do
   before :all do
-    @lead = FactoryGirl.build(:lead)
+    @lead = FactoryBot.build(:lead)
   end
 
   subject { @lead }
@@ -22,7 +22,7 @@ RSpec.describe Lead, :type => :model do
 
   describe "marketing automation" do
     it "sends to silverpop list" do
-      lead = FactoryGirl.build(:lead)
+      lead = FactoryBot.build(:lead)
       expect(lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
       expect_any_instance_of(SilverPopStub).to receive(:add_recipient).and_return(true)
 
@@ -32,7 +32,7 @@ RSpec.describe Lead, :type => :model do
 
   describe "emailing" do
     it "sends contact info to several configured recipients" do
-      lead = FactoryGirl.build(:lead)
+      lead = FactoryBot.build(:lead)
       expect(lead).to receive(:notify_leadgen_recipients)
       expect(lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
       expect_any_instance_of(SilverPopStub).to receive(:add_recipient).and_return(true)

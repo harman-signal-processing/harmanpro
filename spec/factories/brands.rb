@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :brand do
     sequence(:name) {|n| "Brand#{n}"}
     url "http://www.brand.site"

@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.describe ContactMessage, :type => :model do
   before do
-    @brand = FactoryGirl.create(:brand)
-    @contact_message = FactoryGirl.build(:contact_message, brand: @brand)
+    @brand = FactoryBot.create(:brand)
+    @contact_message = FactoryBot.build(:contact_message, brand: @brand)
   end
 
   subject { @contact_message }

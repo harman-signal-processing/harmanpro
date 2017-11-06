@@ -5,11 +5,11 @@ RSpec.describe MainController do
   describe "GET index" do
 
     before do
-      csvm = FactoryGirl.create(:case_study_vertical_market)
+      csvm = FactoryBot.create(:case_study_vertical_market)
       @vertical_market = csvm.vertical_market
       @case_study = csvm.case_study
-      locale = FactoryGirl.create(:available_locale, key: I18n.default_locale)
-      @slide = FactoryGirl.create(:slide, locale: locale)
+      locale = FactoryBot.create(:available_locale, key: I18n.default_locale)
+      @slide = FactoryBot.create(:slide, locale: locale)
       get :index
     end
 
@@ -49,7 +49,7 @@ RSpec.describe MainController do
   describe "GET sitemap (html)" do
 
     before do
-      @vertical_market = FactoryGirl.create(:vertical_market)
+      @vertical_market = FactoryBot.create(:vertical_market)
       get :sitemap
     end
 

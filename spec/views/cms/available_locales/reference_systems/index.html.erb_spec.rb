@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe "cms/available_locales/reference_systems/index.html.erb" do
 
   before :all do
-    @reference_system = FactoryGirl.create(:reference_system)
-    @locale = FactoryGirl.create(:available_locale)
+    @reference_system = FactoryBot.create(:reference_system)
+    @locale = FactoryBot.create(:available_locale)
   end
 
   before :each do

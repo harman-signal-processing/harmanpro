@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe ServiceMailer, type: :mailer do
   describe "tech support message" do
     before do
-      @contact_message = FactoryGirl.create(:contact_message, message_type: "tech_support")
+      @contact_message = FactoryBot.create(:contact_message, message_type: "tech_support")
     end
 
     let(:mail) { ServiceMailer.contact_form(@contact_message) }
@@ -19,7 +19,7 @@ RSpec.describe ServiceMailer, type: :mailer do
 
   describe "parts message" do
     before do
-      @contact_message = FactoryGirl.create(:contact_message, message_type: "parts_request")
+      @contact_message = FactoryBot.create(:contact_message, message_type: "parts_request")
     end
 
     let(:mail) { ServiceMailer.contact_form(@contact_message) }
@@ -35,7 +35,7 @@ RSpec.describe ServiceMailer, type: :mailer do
 
   describe "repair message" do
     before do
-      @contact_message = FactoryGirl.create(:contact_message, message_type: "repair_request")
+      @contact_message = FactoryBot.create(:contact_message, message_type: "repair_request")
     end
 
     let(:mail) { ServiceMailer.contact_form(@contact_message) }

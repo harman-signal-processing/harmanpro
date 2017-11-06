@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :case_study do
     sequence(:headline) {|n| "CS Headline##{n}" }
     description "CS Description"

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Brand, :type => :model do
   before :each do
-    @brand = FactoryGirl.build(:brand)
+    @brand = FactoryBot.build(:brand)
   end
 
   subject { @brand }
@@ -24,7 +24,7 @@ RSpec.describe Brand, :type => :model do
 
   describe "deleting" do
     it "raises an error when related products exist" do
-      product = FactoryGirl.create(:product)
+      product = FactoryBot.create(:product)
       brand = product.brand
 
       brand.destroy
@@ -34,9 +34,9 @@ RSpec.describe Brand, :type => :model do
   end
 
   it "#all_for_site loads all brands in alphabetical order except service-only brands" do
-    brand1 = FactoryGirl.create(:brand, name: "ZZZZ")
-    brand2 = FactoryGirl.create(:brand, name: "AAAAA")
-    brand3 = FactoryGirl.create(:brand, show_on_main_site: false)
+    brand1 = FactoryBot.create(:brand, name: "ZZZZ")
+    brand2 = FactoryBot.create(:brand, name: "AAAAA")
+    brand3 = FactoryBot.create(:brand, show_on_main_site: false)
 
     all = Brand.all_for_site
 
@@ -47,9 +47,9 @@ RSpec.describe Brand, :type => :model do
 
   it "#for_consultant_portal loads brands which are flagged with show_on_consultant_page" do
     Brand.delete_all
-    brand1 = FactoryGirl.create(:brand, name: "ZZZZ", show_on_consultant_page: false)
-    brand2 = FactoryGirl.create(:brand, name: "AAAAA", show_on_consultant_page: true)
-    brand3 = FactoryGirl.create(:brand, show_on_main_site: false, show_on_consultant_page: true)
+    brand1 = FactoryBot.create(:brand, name: "ZZZZ", show_on_consultant_page: false)
+    brand2 = FactoryBot.create(:brand, name: "AAAAA", show_on_consultant_page: true)
+    brand3 = FactoryBot.create(:brand, show_on_main_site: false, show_on_consultant_page: true)
 
     brands = Brand.for_consultant_portal
 
@@ -60,9 +60,9 @@ RSpec.describe Brand, :type => :model do
 
   it "#for_consultant_portal_with_contacts loads only brands with contact info and flagged for consultant page" do
     Brand.delete_all
-    brand1 = FactoryGirl.create(:brand, name: "ZZZZ", show_on_consultant_page: false)
-    brand2 = FactoryGirl.create(:brand, name: "AAAAA", show_on_consultant_page: true, contact_info_for_consultants: "FOO")
-    brand3 = FactoryGirl.create(:brand, show_on_main_site: false, show_on_consultant_page: true, contact_info_for_consultants: '')
+    brand1 = FactoryBot.create(:brand, name: "ZZZZ", show_on_consultant_page: false)
+    brand2 = FactoryBot.create(:brand, name: "AAAAA", show_on_consultant_page: true, contact_info_for_consultants: "FOO")
+    brand3 = FactoryBot.create(:brand, show_on_main_site: false, show_on_consultant_page: true, contact_info_for_consultants: '')
 
     brands = Brand.for_consultant_portal_with_contacts
 
@@ -73,9 +73,9 @@ RSpec.describe Brand, :type => :model do
 
   it "#for_service_site loads only brands relevant for service site" do
     Brand.delete_all
-    brand1 = FactoryGirl.create(:brand, name: "ZZZZ")
-    brand2 = FactoryGirl.create(:brand, name: "AAAAA")
-    brand3 = FactoryGirl.create(:brand, show_on_services_site: false)
+    brand1 = FactoryBot.create(:brand, name: "ZZZZ")
+    brand2 = FactoryBot.create(:brand, name: "AAAAA")
+    brand3 = FactoryBot.create(:brand, show_on_services_site: false)
 
     brands = Brand.for_service_site
 

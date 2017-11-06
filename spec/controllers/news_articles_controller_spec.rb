@@ -11,7 +11,7 @@ RSpec.describe NewsArticlesController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      article = FactoryGirl.create(:news_article)
+      article = FactoryBot.create(:news_article)
       get :show, params: { id: article.id }
       expect(response).to have_http_status(:success)
     end

@@ -3,8 +3,8 @@ require "rails_helper"
 feature "Translators translate a vertical_market" do
 
   before :all do
-    @translator = FactoryGirl.create(:user, translator: true)
-    @locale = FactoryGirl.create(:available_locale, key: 'es')
+    @translator = FactoryBot.create(:user, translator: true)
+    @locale = FactoryBot.create(:available_locale, key: 'es')
     @translator.locales << @locale
   end
 
@@ -27,7 +27,7 @@ feature "Translators translate a vertical_market" do
   end
 
   scenario "translates a record" do
-    vertical_market = FactoryGirl.create(:vertical_market) # which means it needs translation
+    vertical_market = FactoryBot.create(:vertical_market) # which means it needs translation
 
     visit cms_available_locale_path(@locale)
     click_on "Vertical Markets"

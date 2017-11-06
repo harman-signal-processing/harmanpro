@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :emea_employee_contact do
     department "MyString"
     job_function "MyString"

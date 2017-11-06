@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ServiceGroup, type: :model do
 
   before :all do
-    @service_group = FactoryGirl.create(:service_group)
+    @service_group = FactoryBot.create(:service_group)
   end
 
   subject { @service_group }
@@ -13,7 +13,7 @@ RSpec.describe ServiceGroup, type: :model do
 
   describe "deleting" do
     it "deletes any related ServiceCenterServiceGroups" do
-      service_center_service_group = FactoryGirl.create(:service_center_service_group)
+      service_center_service_group = FactoryBot.create(:service_center_service_group)
       service_center = service_center_service_group.service_center
       service_group = service_center_service_group.service_group
 

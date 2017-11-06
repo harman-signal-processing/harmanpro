@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe "consultants/index.html.erb", as: :view do
 
   before :all do
-    @brand1 = FactoryGirl.create(:brand, api_url: "http://foo.com/", contact_info_for_consultants: "Joe Johnson @ 555-5555")
-    @brand2 = FactoryGirl.create(:brand, downloads_page_url: "http://foo2.com")
+    @brand1 = FactoryBot.create(:brand, api_url: "http://foo.com/", contact_info_for_consultants: "Joe Johnson @ 555-5555")
+    @brand2 = FactoryBot.create(:brand, downloads_page_url: "http://foo2.com")
     assign(:brands, [@brand1, @brand2])
     assign(:brands_with_contact_info, [@brand1])
   end

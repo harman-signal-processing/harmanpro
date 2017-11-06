@@ -3,9 +3,9 @@ require "rails_helper"
 RSpec.describe "layouts/application.html.erb", as: :view do
 
   before :all do
-    @brand = FactoryGirl.create(:brand)
-    @vertical_market = FactoryGirl.create(:vertical_market, parent_id: nil)
-    @child_vertical = FactoryGirl.create(:vertical_market, parent_id: @vertical_market.id)
+    @brand = FactoryBot.create(:brand)
+    @vertical_market = FactoryBot.create(:vertical_market, parent_id: nil)
+    @child_vertical = FactoryBot.create(:vertical_market, parent_id: @vertical_market.id)
   end
 
   before :each do
@@ -48,8 +48,8 @@ RSpec.describe "layouts/application.html.erb", as: :view do
 
   describe "custom locale menu" do
     before :each do
-      @locale = FactoryGirl.create(:available_locale, key: 'es')
-      @menu_item = FactoryGirl.create(:menu_item,
+      @locale = FactoryBot.create(:available_locale, key: 'es')
+      @menu_item = FactoryBot.create(:menu_item,
                                      locale: @locale,
                                      title: "Tienda",
                                      link: "http://shop.harmanpro.com",

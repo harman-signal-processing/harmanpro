@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe "cms/index.html.erb" do
 
   before :all do
-    @translator = FactoryGirl.create(:user, translator: true)
-    @locale = FactoryGirl.create(:available_locale)
+    @translator = FactoryBot.create(:user, translator: true)
+    @locale = FactoryBot.create(:available_locale)
     @translator.locales << @locale
   end
 

@@ -3,12 +3,12 @@ require "rails_helper"
 feature "Basic visitor flow" do
 
   before :all do
-    @brand = FactoryGirl.create(:brand)
-    @service_brand = FactoryGirl.create(:brand, show_on_main_site: false)
-    @parent_vertical = FactoryGirl.create(:vertical_market)
-    @child_vertical = FactoryGirl.create(:vertical_market, parent_id: @parent_vertical.id)
-    @reference_system = FactoryGirl.create(:reference_system, vertical_market: @child_vertical)
-    @case_study = FactoryGirl.create(:case_study)
+    @brand = FactoryBot.create(:brand)
+    @service_brand = FactoryBot.create(:brand, show_on_main_site: false)
+    @parent_vertical = FactoryBot.create(:vertical_market)
+    @child_vertical = FactoryBot.create(:vertical_market, parent_id: @parent_vertical.id)
+    @reference_system = FactoryBot.create(:reference_system, vertical_market: @child_vertical)
+    @case_study = FactoryBot.create(:case_study)
     @child_vertical.case_studies << @case_study
   end
 

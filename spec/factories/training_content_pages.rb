@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :training_content_page do
     title "MyString"
     subtitle "MyString"

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :reference_system do
     sequence(:name) {|n| "RefSystem#{n}"}
     vertical_market

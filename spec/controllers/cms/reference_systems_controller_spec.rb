@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Cms::ReferenceSystemsController, type: :controller do
   before :all do
-    @available_locale = FactoryGirl.create(:available_locale, key: 'es')
-    @admin_user = FactoryGirl.create(:user, translator: true)
-    @reference_system = FactoryGirl.create(:reference_system)
+    @available_locale = FactoryBot.create(:available_locale, key: 'es')
+    @admin_user = FactoryBot.create(:user, translator: true)
+    @reference_system = FactoryBot.create(:reference_system)
   end
 
   after :all do

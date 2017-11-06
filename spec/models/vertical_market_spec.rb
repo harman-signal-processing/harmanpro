@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe VerticalMarket, :type => :model do
 
   before :all do
-    @vertical_market = FactoryGirl.create(:vertical_market, parent_id: nil)
-    @child_vertical = FactoryGirl.create(:vertical_market, parent_id: @vertical_market.id)
+    @vertical_market = FactoryBot.create(:vertical_market, parent_id: nil)
+    @child_vertical = FactoryBot.create(:vertical_market, parent_id: @vertical_market.id)
   end
 
   subject { @child_vertical }
@@ -20,8 +20,8 @@ RSpec.describe VerticalMarket, :type => :model do
 
   describe "deleting" do
     it "raises an error when related case studies exist" do
-      case_study = FactoryGirl.create(:case_study)
-      vertical_market = FactoryGirl.create(:vertical_market)
+      case_study = FactoryBot.create(:case_study)
+      vertical_market = FactoryBot.create(:vertical_market)
       vertical_market.case_studies << case_study
 
       vertical_market.destroy
@@ -30,7 +30,7 @@ RSpec.describe VerticalMarket, :type => :model do
     end
 
     it "raises an error when related reference systems exist" do
-      reference_system = FactoryGirl.create(:reference_system)
+      reference_system = FactoryBot.create(:reference_system)
       vertical_market = reference_system.vertical_market
 
       vertical_market.destroy
@@ -58,7 +58,7 @@ RSpec.describe VerticalMarket, :type => :model do
     end
 
     it "has reference_systems" do
-      reference_system = FactoryGirl.create(:reference_system, vertical_market: @child_vertical)
+      reference_system = FactoryBot.create(:reference_system, vertical_market: @child_vertical)
 
       @child_vertical.reload
 
@@ -66,14 +66,14 @@ RSpec.describe VerticalMarket, :type => :model do
     end
 
     it "#featured_reference_systems limits them to 6" do
-      FactoryGirl.create_list(:reference_system, 7, vertical_market: @child_vertical)
+      FactoryBot.create_list(:reference_system, 7, vertical_market: @child_vertical)
       @child_vertical.reload
 
       expect(@child_vertical.featured_reference_systems.length).to eq(6)
     end
 
     it "#featured_case_studies is limited to 3" do
-      case_studies = FactoryGirl.create_list(:case_study, 4)
+      case_studies = FactoryBot.create_list(:case_study, 4)
       @child_vertical.case_studies += case_studies
       @child_vertical.reload
 
@@ -82,7 +82,7 @@ RSpec.describe VerticalMarket, :type => :model do
 
     describe "#all_diagrams_present?" do
       it "is true if all its reference systems have diagrams" do
-        reference_system = FactoryGirl.create(:reference_system, vertical_market: @child_vertical)
+        reference_system = FactoryBot.create(:reference_system, vertical_market: @child_vertical)
         reference_system.system_diagram = File.new(Rails.root.join('spec', 'fixtures', 'test.jpg'))
         reference_system.save
 
@@ -93,7 +93,7 @@ RSpec.describe VerticalMarket, :type => :model do
       end
 
       it "is false if any reference system don't have diagrams" do
-        reference_system = FactoryGirl.create(:reference_system, vertical_market: @child_vertical)
+        reference_system = FactoryBot.create(:reference_system, vertical_market: @child_vertical)
 
         @child_vertical.reload
 

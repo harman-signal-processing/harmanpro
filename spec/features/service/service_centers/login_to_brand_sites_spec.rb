@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Service centers log in to brand tech sites" do
 
   before :all do
-    @brand = FactoryGirl.create(:brand, tech_url: "http://tech.foo.com")
+    @brand = FactoryBot.create(:brand, tech_url: "http://tech.foo.com")
   end
 
   before do

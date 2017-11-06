@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe MenuItem, type: :model do
 
   before :all do
-    @menu_item = FactoryGirl.create(:menu_item)
+    @menu_item = FactoryBot.create(:menu_item)
   end
 
   subject { @menu_item }

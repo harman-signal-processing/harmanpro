@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "news_articles/show.html.erb", type: :view do
 
   before :all do
-    @news_article = FactoryGirl.create(:news_article)
+    @news_article = FactoryBot.create(:news_article)
 
     assign(:news_article, @news_article)
   end

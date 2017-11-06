@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Venue, type: :model do
 
   before(:all) do
-    @venue = FactoryGirl.create :venue
+    @venue = FactoryBot.create :venue
   end
 
   subject { @venue }

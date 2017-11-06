@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe "cms/available_locales/menu_items/edit.html.erb", as: :view do
 
   before :all do
-    @available_locale = FactoryGirl.create(:available_locale)
-    @menu_item = FactoryGirl.create(:menu_item, locale: @available_locale)
+    @available_locale = FactoryBot.create(:available_locale)
+    @menu_item = FactoryBot.create(:menu_item, locale: @available_locale)
   end
 
   before :each do

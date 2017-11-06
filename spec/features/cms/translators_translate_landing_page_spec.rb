@@ -3,8 +3,8 @@ require "rails_helper"
 feature "Translators translate a landing page" do
 
   before :all do
-    @translator = FactoryGirl.create(:user, translator: true)
-    @locale = FactoryGirl.create(:available_locale, key: 'es')
+    @translator = FactoryBot.create(:user, translator: true)
+    @locale = FactoryBot.create(:available_locale, key: 'es')
     @translator.locales << @locale
   end
 
@@ -27,7 +27,7 @@ feature "Translators translate a landing page" do
   end
 
   scenario "translates a record" do
-    landing_page = FactoryGirl.create(:landing_page) # which means it needs translation
+    landing_page = FactoryBot.create(:landing_page) # which means it needs translation
 
     visit cms_available_locale_path(@locale)
     within '#translatables' do

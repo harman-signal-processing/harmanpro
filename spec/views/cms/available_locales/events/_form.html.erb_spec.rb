@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe "cms/available_locales/events/_form.html.erb" do
 
   before :all do
-    @locale = FactoryGirl.create(:available_locale)
-    @event = FactoryGirl.create(:event)
+    @locale = FactoryBot.create(:available_locale)
+    @event = FactoryBot.create(:event)
   end
 
   before :each do

@@ -5,7 +5,7 @@ feature "Registering to become a service center" do
 
   before :each do
     clear_enqueued_jobs
-    @service_center = FactoryGirl.build(:service_center)
+    @service_center = FactoryBot.build(:service_center)
 
     visit new_service_center_path
   end

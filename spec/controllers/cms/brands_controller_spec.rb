@@ -3,9 +3,9 @@ require "rails_helper"
 RSpec.describe Cms::BrandsController do
 
   before :all do
-    @available_locale = FactoryGirl.create(:available_locale, key: 'es')
-    @admin_user = FactoryGirl.create(:user, translator: true)
-    @brand = FactoryGirl.create(:brand)
+    @available_locale = FactoryBot.create(:available_locale, key: 'es')
+    @admin_user = FactoryBot.create(:user, translator: true)
+    @brand = FactoryBot.create(:brand)
   end
 
   after :all do

@@ -3,11 +3,11 @@ require "rails_helper"
 feature "Sitemap" do
 
   before :all do
-    @brand = FactoryGirl.create(:brand)
-    csvm = FactoryGirl.create(:case_study_vertical_market)
+    @brand = FactoryBot.create(:brand)
+    csvm = FactoryBot.create(:case_study_vertical_market)
     @vertical_market = csvm.vertical_market
     @case_study = csvm.case_study
-    @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
+    @reference_system = FactoryBot.create(:reference_system, vertical_market: @vertical_market)
   end
 
   context "XML output" do

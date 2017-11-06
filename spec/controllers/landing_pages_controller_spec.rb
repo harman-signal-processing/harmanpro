@@ -4,7 +4,7 @@ RSpec.describe LandingPagesController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      landing_page = FactoryGirl.create(:landing_page)
+      landing_page = FactoryBot.create(:landing_page)
 
       get :show, params: { id: landing_page.to_param }
 
@@ -41,7 +41,7 @@ RSpec.describe LandingPagesController, type: :controller do
 
   describe "GET privacy_policy" do
     it "responds with privacy policy page" do
-      privacy_policy = FactoryGirl.create(:landing_page)
+      privacy_policy = FactoryBot.create(:landing_page)
       expect(LandingPage).to receive(:exists?).with(slug: "privacy-policy").and_return(true)
       expect(LandingPage).to receive(:find).with("privacy-policy").and_return(privacy_policy)
       get :privacy_policy
@@ -54,7 +54,7 @@ RSpec.describe LandingPagesController, type: :controller do
 
   describe "GET terms_of_use" do
     it "responds with terms page" do
-      terms_of_use = FactoryGirl.create(:landing_page)
+      terms_of_use = FactoryBot.create(:landing_page)
       expect(LandingPage).to receive(:exists?).with(slug: "terms-of-use").and_return(true)
       expect(LandingPage).to receive(:find).with("terms-of-use").and_return(terms_of_use)
       get :terms_of_use

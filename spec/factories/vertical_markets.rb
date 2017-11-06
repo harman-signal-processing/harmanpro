@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :vertical_market do
     sequence(:name) {|n| "Vertical Market#{n}"}
     headline "Vertical Market Headline"

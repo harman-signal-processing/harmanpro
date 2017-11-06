@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe ServiceCenterMailer, type: :mailer do
   describe "registration" do
     before do
-      @service_center = FactoryGirl.create(:service_center)
+      @service_center = FactoryBot.create(:service_center)
     end
 
     let(:mail) { ServiceCenterMailer.registration(@service_center) }

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Channel, type: :model do
 
   before :all do
-    @channel = FactoryGirl.create(:channel)
+    @channel = FactoryBot.create(:channel)
   end
 
   subject { @channel }

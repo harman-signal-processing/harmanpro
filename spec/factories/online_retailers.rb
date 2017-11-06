@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :online_retailer do
     sequence(:name) {|n| "Retailer#{n}" }
     sequence(:url) {|n| "http://retailer#{n}.lvh.me" }

@@ -3,8 +3,8 @@ require "rails_helper"
 feature "Translators translate a case study" do
 
   before :all do
-    @translator = FactoryGirl.create(:user, translator: true)
-    @locale = FactoryGirl.create(:available_locale, key: 'es')
+    @translator = FactoryBot.create(:user, translator: true)
+    @locale = FactoryBot.create(:available_locale, key: 'es')
     @translator.locales << @locale
   end
 
@@ -27,7 +27,7 @@ feature "Translators translate a case study" do
   end
 
   scenario "translates a record" do
-    case_study = FactoryGirl.create(:case_study) # which means it needs translation
+    case_study = FactoryBot.create(:case_study) # which means it needs translation
 
     visit cms_available_locale_path(@locale)
     click_on "Case Studies"

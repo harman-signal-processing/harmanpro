@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Resources nav menu customization" do
 
   before :all do
-    @locale = FactoryGirl.create(:available_locale, key: 'es')
+    @locale = FactoryBot.create(:available_locale, key: 'es')
   end
 
   scenario "default locale shows only default items" do
@@ -14,7 +14,7 @@ feature "Resources nav menu customization" do
   end
 
   scenario "customized locale shows only custom links under Resources" do
-    menu_item = FactoryGirl.create(:menu_item,
+    menu_item = FactoryBot.create(:menu_item,
                                    locale: @locale,
                                    title: "Tienda",
                                    link: "http://shop.harmanpro.com",

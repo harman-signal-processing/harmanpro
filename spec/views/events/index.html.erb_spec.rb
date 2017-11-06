@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe "events/index.html.erb", as: :view do
 
   before :all do
-    @future_event = FactoryGirl.create(:event, start_on: 4.weeks.from_now, end_on: 5.weeks.from_now, active: true)
-    @current_event = FactoryGirl.create(:event,
+    @future_event = FactoryBot.create(:event, start_on: 4.weeks.from_now, end_on: 5.weeks.from_now, active: true)
+    @current_event = FactoryBot.create(:event,
                                         start_on: 2.days.ago,
                                         end_on: 2.days.from_now,
                                         featured: true,
@@ -13,7 +13,7 @@ RSpec.describe "events/index.html.erb", as: :view do
                                         image: File.new(Rails.root.join('spec','fixtures','test.jpg')),
                                         active: true)
     # so the 'recent events' button appears
-    FactoryGirl.create(:event, start_on: 3.weeks.ago, end_on: 2.weeks.ago, active: true)
+    FactoryBot.create(:event, start_on: 3.weeks.ago, end_on: 2.weeks.ago, active: true)
   end
 
   before do

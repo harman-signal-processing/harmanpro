@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe LandingPage, type: :model do
 
   before :all do
-    @landing_page = FactoryGirl.create(:landing_page)
+    @landing_page = FactoryBot.create(:landing_page)
   end
 
   subject { @landing_page }

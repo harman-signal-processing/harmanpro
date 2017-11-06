@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :event do
     sequence(:name) {|n| "Event #{n}"}
     start_on 1.day.from_now

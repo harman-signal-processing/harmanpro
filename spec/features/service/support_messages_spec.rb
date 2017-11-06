@@ -1,7 +1,7 @@
 feature 'completing support form' do
 
   before :all do
-    @brand = FactoryGirl.create(:brand)
+    @brand = FactoryBot.create(:brand)
   end
 
   before :each do

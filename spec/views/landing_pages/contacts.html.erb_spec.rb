@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe "landing_pages/contacts.html.erb", as: :view do
 
   before :all do
-    @brand1 = FactoryGirl.create(:brand, support_url: "http://support.lvh.me")
-    @brand2 = FactoryGirl.create(:brand)
+    @brand1 = FactoryBot.create(:brand, support_url: "http://support.lvh.me")
+    @brand2 = FactoryBot.create(:brand)
   end
 
   before do

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Slide, type: :model do
 
   before :all do
-    @slide = FactoryGirl.create(:slide)
+    @slide = FactoryBot.create(:slide)
   end
 
   subject { @slide }

@@ -15,11 +15,11 @@ RSpec.describe EmeaHelper, type: :helper do
   describe "top nav generator" do
 
     before do
-      @user = FactoryGirl.build(:user)
+      @user = FactoryBot.build(:user)
     end
 
     it "links to the homepage" do
-      FactoryGirl.create(:emea_page, title: "Home", position: 1)
+      FactoryBot.create(:emea_page, title: "Home", position: 1)
 
       topnav = helper.emea_top_nav_items(@user)
 
@@ -27,7 +27,7 @@ RSpec.describe EmeaHelper, type: :helper do
     end
 
     it "generates anchor links" do
-      page = FactoryGirl.create(
+      page = FactoryBot.create(
         :emea_page,
         position: 2,
         content: "...<a id=\"foo-bar\"></a>..."
@@ -43,8 +43,8 @@ RSpec.describe EmeaHelper, type: :helper do
   describe "employee only top nav" do
 
     it "shows employee-only content to employees" do
-      user = FactoryGirl.build(:user, email: "fred@harman.com")
-      page = FactoryGirl.create(:emea_page, title: "For Employees", position: 8, employee_only: true)
+      user = FactoryBot.build(:user, email: "fred@harman.com")
+      page = FactoryBot.create(:emea_page, title: "For Employees", position: 8, employee_only: true)
 
       topnav = helper.emea_top_nav_items(user)
 
@@ -52,8 +52,8 @@ RSpec.describe EmeaHelper, type: :helper do
     end
 
     it "does not show employee-only content to non-employees" do
-      user = FactoryGirl.build(:user, email: "fred@not_harman.com")
-      page = FactoryGirl.create(:emea_page, title: "For Employees", position: 8, employee_only: true)
+      user = FactoryBot.build(:user, email: "fred@not_harman.com")
+      page = FactoryBot.create(:emea_page, title: "For Employees", position: 8, employee_only: true)
 
       topnav = helper.emea_top_nav_items(user)
 
