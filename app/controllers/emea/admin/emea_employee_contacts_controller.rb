@@ -38,7 +38,7 @@ class Emea::Admin::EmeaEmployeeContactsController < Emea::AdminController
   def destroy
     @employee_contact = EmeaEmployeeContact.find(params[:id])
     if @employee_contact.destroy
-      redirect_to emea_admin_emea_employee_contacts_path
+      redirect_to emea_admin_emea_employee_contacts_path, notice: "#{@employee_contact.name} was deleted."
     end
   end
 

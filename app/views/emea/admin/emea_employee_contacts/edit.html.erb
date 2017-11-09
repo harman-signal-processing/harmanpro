@@ -4,4 +4,15 @@
   <div class="medium-8 columns">
     <%= render 'form' %>
   </div>
+  <div class="medium-3 columns text-right">
+    <%= link_to [:emea, :admin, @employee_contact],
+      method: :delete,
+      data: {
+        confirm: "Are you sure?"
+      }, class: "alert button" do %>
+      <i class="fa fa-trash" aria-hidden="true"></i>
+      Delete Contact
+    <% end %>
+  </div>
+
 </div>
