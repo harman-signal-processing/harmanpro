@@ -10,7 +10,7 @@
         <thead>
           <tr>
             <th>Email</th>
-            <th>Date Created</th>
+            <th>Created</th>
             <th>Last Login</th>
           </tr>
         </thead>
@@ -28,18 +28,30 @@
     <% else %>
 
       <h1>Recent EMEA Registrations</h1>
-      <p><%= link_to "<< back to admin", emea_admin_path %></p>
+      <div class="row">
+        <div class="medium-6 columns">
+          <p><%= link_to "<< back to admin", emea_admin_path %></p>
+        </div>
+        <div class="medium-6 columns text-right">
+          <p>
+            <%= link_to emea_admin_users_path(format: 'csv') do %>
+              <i class="fa fa-download" aria-hidden="true"></i>
+              all users
+            <% end %>
+          </p>
+        </div>
+      </div>
 
       <table style="width: 100%">
         <thead>
           <tr>
             <th>Email</th>
-            <th>Date Created</th>
+            <th>Created</th>
             <th>Last Login</th>
           </tr>
         </thead>
         <tbody>
-          <% @emea_distributors.order("created_at DESC").limit(10).each do |user| %>
+          <% @emea_distributors.order("created_at DESC").limit(20).each do |user| %>
             <tr>
               <td><%= link_to user.email, [:emea, :admin, user] %></td>
               <td><%=l user.created_at %></td>

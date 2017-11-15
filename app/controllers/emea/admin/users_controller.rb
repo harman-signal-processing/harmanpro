@@ -3,13 +3,22 @@ class Emea::Admin::UsersController < Emea::AdminController
 
   def index
     @emea_distributors = User.where(emea_distributor: true)
-    @users = []
-    @q ||= @emea_distributors.ransack(params[:q])
-    if params[:q]
-      @users = @q.result(:distinct => true)
-    end
 
-    @invitation_code = SiteSetting.where(name: "emea_distributor_invitation_code").first_or_initialize
+    respond_to do |format|
+      format.html {
+        @users = []
+        @q ||= @emea_distributors.ransack(params[:q])
+        if params[:q]
+          @users = @q.result(:distinct => true)
+        end
+
+        @invitation_code = SiteSetting.where(name: "emea_distributor_invitation_code").first_or_initialize
+      }
+      format.csv {
+        headers['Content-Disposition'] = "attachment; filename=\"EMEA-portal-users-#{Date.today.to_s}.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      }
+    end
   end
 
   def show

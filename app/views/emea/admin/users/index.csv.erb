@@ -1,0 +1,5 @@
+<%- headers = ['Email', 'Created', 'Last Login'] -%>
+<%= CSV.generate_line headers %>
+<%- @emea_distributors.each do |user| -%>
+  <%= CSV.generate_line([user.email, user.created_at.to_date, user.last_sign_in_at.to_date]) -%>
+<%- end -%>
