@@ -144,7 +144,17 @@ Rails.application.routes.draw do
   get '/sureroute-test-object(.:format)' => 'main#sureroute', as: :sureroute_test_object
 
   # The usual stuff
-  get '/contacts' => 'landing_pages#contacts'
+
+  # get '/contacts' => 'landing_pages#contacts'
+  get "/contacts", to: "contacts#index"
+  resource "contacts", only: [:index] do
+    get "most_popular"
+    get "asia", to: "contacts#asia_method"
+  end
+  get "/contacts/:search", to: "contacts#show"
+  get "/contacts/:search/:map", to: "contacts#show"
+
+  
   get '/thankyou' => 'landing_pages#thankyou', as: :thankyou # Thank you page after leadgen form
   get '/thanks' => 'landing_pages#thanks', as: :thanks # Generic thanks page
   get '/privacy_policy' => 'landing_pages#privacy_policy', as: :privacy_policy
