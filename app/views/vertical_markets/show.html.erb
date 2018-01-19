@@ -2,7 +2,6 @@
 <%= content_for :description do %>
   <%= t('vertical_market_page.meta_description', vertical_market: @vertical_market.name) %>
 <% end %>
-
 <% if @vertical_market.children.where(live: true).length > 0 %>
   <div class="container main-container parent-category-container" data-background="<%= @vertical_market.background.url %>">
     <div class="bubble" id="bubble-1"></div>
@@ -52,7 +51,6 @@
       <div class="medium-4 small-12 columns end">
         <% if @vertical_market.show_hef? %>
           <% if @vertical_market.hef_banner.present? %>
-
             <%= link_to SiteSetting.value("hef-link") do %>
               <%= image_tag @vertical_market.hef_banner.url, width: 750, height: 70, alt: SiteSetting.value("hef-description"), style: 'margin-bottom: 1.42857rem;' %>
             <% end %>
@@ -76,7 +74,6 @@
   </div>
 
 <% else %>
-
   <div ng-controller="VerticalMarketCtrl" ng-cloak
     locale="<%= I18n.locale %>"
     vmid="<%= @vertical_market.to_param %>">
@@ -94,24 +91,10 @@
 
       <div class="row">
         <div class="large-5 large-offset-2 medium-6 medium-offset-2 small-12 columns">
-          <div class="slider-container panel">
+          <div style="margin-top:15px;">
             <a name="learn"></a>
-            <h1 data-magellan-destination="learn"><%= @vertical_market.name %></h1>
+            <h2 data-magellan-destination="learn"><%= @vertical_market.name %></h2>
 
-            <% if @vertical_market.reference_systems.count > 1 %>
-              <div ng-show="systems.length > 1">
-                <input slider
-                  ng-model="slider_pos"
-                  options="{
-                    from: 1,
-                    to: systems.length,
-                    step: 1,
-                    smooth: true,
-                    scale: system_labels,
-                  }"
-                />
-              </div>
-            <% end %>
 
           </div>
         </div>
