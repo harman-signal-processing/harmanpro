@@ -1,3 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="large-8 large-offset-2 columns">
+      <br/>
+      <% if vertical_market.show_hef? %>
+        <div class="row">
+          <div class="small-12 columns">
+            <%= render "vertical_markets/hef" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <div class="container plan-container" data-magellan-destination="plan">
 
   <a name="plan"></a>
