@@ -29,6 +29,7 @@
  *= require training_courses
  *= require training_calendar
  *= require features
+ *= require frontend
  */
 
 span.spinner {
@@ -99,22 +100,4 @@ img.no-resize { max-width: none; }
       margin-left: 0;
     }
   }
-}
-
-.solutionButton {
-  margin: 3px !important;
-  width: 141px;
-  font-size: 14px !important;
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-  vertical-align: middle;
-  height: 59px;
-}
-
-.line1 {
-  padding-top: 20px !important;
-}
-
-.line3 {
-  padding-top: 4px !important;
 }

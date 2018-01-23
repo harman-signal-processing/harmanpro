@@ -2,7 +2,7 @@ ActiveAdmin.register CaseStudy do
   menu label: "Case Studies", priority: 2
 
   # :nocov:
-  permit_params :headline, :description, :content, :banner,
+  permit_params :headline, :description, :content, :banner, :pdf, :pdf_external_url,
     case_study_vertical_markets_attributes: [:id, :vertical_market_id, :_destroy]
 
   config.paginate = false
@@ -28,6 +28,8 @@ ActiveAdmin.register CaseStudy do
         "Preferred size: 1170x400 px with a strongly horizontal orientation."
       f.input :headline, hint: "Maximum characters: 40", input_html: { maxlength: 40 }
       f.input :description, hint: "Maximum characters: 60", input_html: { maxlength: 60, rows: 5 }
+      f.input :pdf_external_url, label: "Link to PDF", hint: "Use this when the PDF is hosted elsewhere.", placeholder: "http://path.to/external.pdf"
+      f.input :pdf, label: "Attached PDF", hint: "Use this when uploading a PDF directly to this Case Study."
       f.input :content, input_html: { rows: 15 }
     end
     f.has_many :case_study_vertical_markets, heading: "Vertical Markets", new_record: "Add a vertical market" do |s|

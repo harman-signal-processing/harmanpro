@@ -30,6 +30,22 @@
         <%= link_to new_lead_path, class: "medium radius button" do %>
           <%=t "case_study_page.connect_with_harman" %>
         <% end %>
+
+        <% if @case_study.pdf_external_url.present? %>
+          <div class="text-center">
+            <%= link_to @case_study.pdf_external_url do %>
+              <%= image_tag "pdf-icon.png" %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if @case_study.pdf.present? %>
+          <div class="text-center">
+            <%= link_to @case_study.pdf.url do %>
+              <%= image_tag "pdf-icon.png" %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
 
     </div>
