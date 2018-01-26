@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180123143601) do
+ActiveRecord::Schema.define(version: 20180126203027) do
 
   create_table "active_admin_comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "namespace"
@@ -755,6 +755,7 @@ ActiveRecord::Schema.define(version: 20180123143601) do
     t.string "hef_banner_content_type"
     t.integer "hef_banner_file_size"
     t.datetime "hef_banner_updated_at"
+    t.string "preview_code"
     t.index ["parent_id"], name: "index_vertical_markets_on_parent_id"
   end
 
