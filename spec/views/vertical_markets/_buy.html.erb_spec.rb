@@ -17,33 +17,6 @@ RSpec.describe "vertical_markets/_buy.html.erb", :type => :view do
     @lead = Lead.new(vertical_market: @vertical_market)
   end
 
-  context "non-retail" do
-    before do
-      @vertical_market.update_column(:retail, false)
-      assign(:lead, @lead)
-      render partial: "vertical_markets/buy", locals: { vertical_market: @vertical_market }
-    end
-
-    it "should use infographic as 'buy' section" do
-      skip "Now we embed the form"
-      expect(rendered).to have_content("AV System Design")
-      expect(rendered).to have_content("In 8 Easy Steps")
-      expect(rendered).to have_css("img.infographic")
-    end
-
-    it "shows a leadgen button to help me get started" do
-      skip "Now we embed the form"
-      expect(rendered).to have_link(@help_me_get_started.content, href: new_lead_path)
-    end
-
-    it "won't have retailer link" do
-      expect(rendered).not_to have_content("Buy From A Retailer")
-      expect(rendered).not_to have_content("Buy Direct From Us")
-      expect(rendered).not_to have_link(@retailer.name, href: @retailer.url)
-    end
-
-  end
-
   context "retail" do
     before do
       @vertical_market.update_column(:retail, true)
