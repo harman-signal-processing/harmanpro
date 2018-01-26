@@ -23,18 +23,24 @@
     </div>
     <div class="large-3 medium-12 small-12 end columns">
       <% if @case_study.pdf_external_url.present? %>
-        <div class="text-center">
-          <%= link_to @case_study.pdf_external_url do %>
-            <%= image_tag "pdf-icon.png" %>
-          <% end %>
+        <div class="row">
+          <div class="medium-8 medium-offset-2 columns text-center">
+            <%= link_to @case_study.pdf_external_url do %>
+              <%= image_tag "pdf-icon.png" %>
+            <% end %>
+            <p>&nbsp;</p>
+          </div>
         </div>
       <% end %>
 
       <% if @case_study.pdf.present? %>
-        <div class="text-center">
-          <%= link_to @case_study.pdf.url do %>
-            <%= image_tag "pdf-icon.png" %>
-          <% end %>
+        <div class="row">
+          <div class="medium-8 medium-offset-2 columns text-center">
+            <%= link_to @case_study.pdf.url do %>
+              <%= image_tag "pdf-icon.png" %>
+            <% end %>
+            <p>&nbsp;</p>
+          </div>
         </div>
       <% end %>
 
