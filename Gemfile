@@ -81,6 +81,7 @@ group :development do
   #gem 'byebug',      '3.4.0'
   gem 'pry-byebug'
   gem 'rails-erd'
+  gem 'awesome_print'
 end
 
 group :development, :test do

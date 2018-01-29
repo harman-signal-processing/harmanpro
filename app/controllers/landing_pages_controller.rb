@@ -9,7 +9,34 @@ class LandingPagesController < ApplicationController
     render_landing_page(params[:id])
   end
 
-  def contacts
+  def contacts_home
+    if LandingPage.exists?(slug: "contact-us-test")
+      @landing_page = LandingPage.find("contact-us-test")
+      render action: :show and return false
+    else
+      redirect_to "https://pro.harman.com" and return false
+    end
+  end
+
+  def contacts_solutions
+    if LandingPage.exists?(slug: "solutions-contacts")
+      @landing_page = LandingPage.find("solutions-contacts")
+      render action: :show and return false
+    else
+      redirect_to "https://pro.harman.com" and return false
+    end
+  end
+
+  def contacts_channel_map
+    if LandingPage.exists?(slug: "contactsmap")
+      @landing_page = LandingPage.find("contactsmap")
+      render action: :show and return false
+    else
+      redirect_to "https://pro.harman.com" and return false
+    end
+  end
+
+  def brand_contacts
   end
 
   def training

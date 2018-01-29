@@ -1,4 +1,12 @@
-<h1 style="margin-bottom:20px;">Contacts</h1>
+
+<a href="/contacts">
+    <!--<img src="https://hpro-with-contacts-sweetcleancode.c9users.io/system/landing_pages/banners/102_1517242055/contact_header_original_original.jpg" alt="Contact header original original">-->
+  <% if @landing_page.banner.present? %>
+    <%= image_tag @landing_page.banner.url %>
+  <% end %>    
+</a>
+
+<h1 style="margin-bottom:20px;"><%=@contactType%> for <%=@pageTitle%></h1>
 
 <!--<% @contacts[:unique_groups].sort.each do |group| %>-->
 <!--    <p><%=group%></p>-->

@@ -221,7 +221,7 @@
         "title": "Solutions Manager, Tour Lighting",
         "email": "peter.skytte@harman.com",
         "phone1": "+1 45 7215 0232",
-        "group1": "Tour & Performing Arts CSU Solutions",
+        "group1": "Tour",
         "g1Sort": 3,
         "officeId": "Aarhus",
         "showonweb": "no",
@@ -233,7 +233,7 @@
         "title": "Solutions Manager, Tour Audio",
         "email": "george.georgallis@harman.com",
         "phone1": "+1 818 895 8194",
-        "group1": "Tour & Performing Arts CSU Solutions",
+        "group1": "Tour",
         "g1Sort": 4,
         "officeId": "Northridge",
         "showonweb": "no",
@@ -244,7 +244,7 @@
         "name": "Jeremy Smith",
         "email": "jeremy.smith@harman.com",
         "phone1": "+1 574 294 8095",
-        "group1": "Tour & Performing Arts CSU Solutions",
+        "group1": "Tour",
         "g1Sort": 5,
         "officeId": "Northridge",
         "showonweb": "no",
@@ -268,7 +268,7 @@
         "title": "Director, Transportation Sales, Global",
         "email": "nick.screen@harman.com",
         "phone1": "+44 1707 668285",
-        "group1": "Large Venue CSU Solutions",
+        "group1": "Transportation",
         "g1Sort": 3,
         "officeId": "London Wall (Wales)",
         "showonweb": "yes",
@@ -293,7 +293,7 @@
         "title": "Director, Global Cinema Sales",
         "email": "john.batliner@harman.com",
         "phone1": "+1 574 294 8053",
-        "group1": "Hospitality & Cinema CSU Solutions",
+        "group1": "Cinema",
         "g1Sort": 2,
         "officeId": "Elkhart",
         "showonweb": "yes",
@@ -306,7 +306,7 @@
         "title": "Director, Solutions & Marketing",
         "email": "bradley.drummond@harman.com",
         "phone1": "+1 702 479 4096",
-        "group1": "Hospitality & Cinema CSU Solutions",
+        "group1": "All Hospitality (hotels, cruiseships, portablepa, broadcasttelevision, broadcastradio, retail, housesofworship, cinema, cinemas, karaoke, casinos, tour, nightlife, barsrestaurants)",
         "g1Sort": 3,
         "officeId": "Home",
         "showonweb": "no",
@@ -318,7 +318,7 @@
         "title": "Director, Global Broadcast Sales",
         "email": "mark.hosking@harman.com",
         "phone1": "+44 1707 668017",
-        "group1": "Hospitality & Cinema CSU Solutions",
+        "group1": "All Broadcast (broadcasttelevision, broadcastradio)",
         "g1Sort": 4,
         "officeId": "London Wall (Hertfordshire)",
         "showonweb": "yes",
@@ -331,7 +331,7 @@
         "title": "Solutions Manager, Cinema",
         "email": "daniel.saenz@harman.com",
         "phone1": "+1 574 294 8306",
-        "group1": "Hospitality & Cinema CSU Solutions",
+        "group1": "Cinema",
         "g1Sort": 5,
         "officeId": "Elkhart",
         "showonweb": "no",
@@ -343,7 +343,7 @@
         "title": "Global Cruiseline Sales",
         "email": "morten.gjotz@harman.com",
         "phone1": "+45 7215 0147",
-        "group1": "Hospitality & Cinema CSU Solutions",
+        "group1": "Cruiseships",
         "g1Sort": 6,
         "officeId": "Aarhus",
         "showonweb": "yes",
@@ -412,10 +412,10 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Northeast",
-        "t5": "Southeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
         "undefined": "note: West is defined as Alaksa, Washington, Oregon, Idaho, Montana, Wyoming, Colorado, New Mexico, Arizona, Utah, Nevada, California, Hawaii"
     },
@@ -431,7 +431,9 @@
         "officeId": "Northridge",
         "showonweb": "no",
         "solutionsMap": "no",
-        "channelMap": "no"
+        "channelMap": "no",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral"
     },
     {
         "name": "Paul Cantwell",
@@ -448,10 +450,10 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Northeast",
-        "t5": "Southeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada"
     },
     {
@@ -473,7 +475,7 @@
         "title": "Director, Hospitality & Broadcast Business Development, North America",
         "email": "mark.aichele@harman.com",
         "phone1": "+1 810 223 8381",
-        "group1": "Hospitality & Cinema Solutions\n(Bars & Restaurants, Broadcast, Cruise Lines, Hotels & Casinos,\nHouses of Worship, Nightlife, Retail Destinations, Cinema)",
+        "group1": "All Hospitality (hotels, cruiseships, portablepa, broadcasttelevision, broadcastradio, retail, housesofworship, cinema, cinemas, karaoke, casinos, tour, nightlife, barsrestaurants)",
         "g1Sort": 6,
         "group2": "Hospitality & Cinema Solutions\n(Bars & Restaurants, Broadcast, Cruise Lines, Hotels & Casinos,\nHouses of Worship, Nightlife, Retail Destinations, Cinema)",
         "g2Sort": 1,
@@ -481,10 +483,10 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada"
     },
     {
@@ -504,7 +506,7 @@
         "title": "Director, Large Venue Business\nDevelopment, North America",
         "email": "olivier.roure@harman.com",
         "phone1": "+1 609 575 1266",
-        "group1": "Large Venue Solutions\n(Convention Centers, Museums, Stadiums & Arenas,\nThemed Attractions, Transportation)",
+        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
         "g1Sort": 8,
         "group2": "Large Venue Solutions\n(Convention Centers, Museums, Stadiums & Arenas,\nThemed Attractions, Transportation)",
         "g2Sort": 1,
@@ -512,10 +514,10 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada"
     },
     {
@@ -531,17 +533,17 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West",
-        "t3": "Central Region",
-        "t4": "Southeast",
-        "t5": "Northeast"
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Greg Jones",
         "title": "Director, Touring Business Development,\nNorth America",
         "email": "greg.jones@harman.com",
         "phone1": "+1 805 587 9208",
-        "group1": "Tour & Performing Arts Solutions",
+        "group1": "Tour",
         "g1Sort": 10,
         "group2": "Tour & Performing Arts Solutions",
         "g2Sort": 1,
@@ -549,10 +551,10 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada"
     },
     {
@@ -580,12 +582,12 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Craig Paller",
@@ -600,7 +602,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West"
+        "t2": "unitedstateswest"
     },
     {
         "name": "Mark Templeton",
@@ -615,7 +617,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t4": "Southeast",
+        "t4": "unitedstatessoutheast",
         "undefined": "note: Southeast is defined as Florida, Georgia, Alabama, MIssissippi, Tennessee, South Carolina, North Carolina, Virginia, West Virginia, Delaware, Maryland, DC"
     },
     {
@@ -631,7 +633,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t3": "Central",
+        "t3": "unitedstatescentral",
         "undefined": "note: Central Region is defined as North Dakota, South Dakota, Nebraska, Kansas, Oklahoma, Texas, Minnesota, Iowa, Missouri, Arkansas, Louisiana, Wisconsin, Illinois, Indiana, Michigan, Ohio, Kentucky"
     },
     {
@@ -645,7 +647,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t5": "Northeast",
+        "t5": "unitedstatesnortheast",
         "undefined": "note: Northeast is defined as New Hampshire, Vermont, Massachusetts, New York, New Jersey, Connecticut, Pennsylvania"
     },
     {
@@ -659,7 +661,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West"
+        "t2": "unitedstateswest"
     },
     {
         "name": "Robert Guzman",
@@ -672,7 +674,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West",
+        "t2": "unitedstateswest",
         "undefined": "NV"
     },
     {
@@ -686,7 +688,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West",
+        "t2": "unitedstateswest",
         "undefined": "Washington State, Hawaii, Alaska, California, Oregon"
     },
     {
@@ -700,7 +702,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West",
+        "t2": "unitedstateswest",
         "undefined": "CA"
     },
     {
@@ -714,7 +716,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West"
+        "t2": "unitedstateswest"
     },
     {
         "name": "Andrea Bikofsky",
@@ -727,7 +729,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West",
+        "t2": "unitedstateswest",
         "undefined": "NM"
     },
     {
@@ -741,7 +743,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West"
+        "t2": "unitedstateswest"
     },
     {
         "name": "Jim Bowles",
@@ -754,7 +756,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West",
+        "t2": "unitedstateswest",
         "undefined": "NV"
     },
     {
@@ -768,7 +770,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West",
+        "t2": "unitedstateswest",
         "undefined": "MT"
     },
     {
@@ -782,7 +784,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t3": "Central"
+        "t3": "unitedstatescentral"
     },
     {
         "name": "Jorge Balderas",
@@ -795,7 +797,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t3": "Central"
+        "t3": "unitedstatescentral"
     },
     {
         "name": "Michael Kesterson",
@@ -808,7 +810,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t3": "Central"
+        "t3": "unitedstatescentral"
     },
     {
         "name": "Rodney Rupp",
@@ -821,12 +823,12 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Bobby Ramoz",
@@ -839,20 +841,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t3": "Central"
-    },
-    {
-        "name": "Lewis Long",
-        "title": "Lighting Sales Manager",
-        "email": "lewis.long@harman.com",
-        "phone1": "+1 954 663 8793",
-        "group1": "North America Channel Sales, Central",
-        "g1Sort": 7,
-        "officeId": "Sunrise",
-        "showonweb": "yes",
-        "solutionsMap": "no",
-        "channelMap": "yes",
-        "t3": "Central"
+        "t3": "unitedstatescentral"
     },
     {
         "name": "Nick Barbieri",
@@ -863,7 +852,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t3": "Central"
+        "t3": "unitedstatescentral"
     },
     {
         "name": "Bill Fons",
@@ -876,7 +865,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t3": "Central"
+        "t3": "unitedstatescentral"
     },
     {
         "name": "Jason Baez",
@@ -889,7 +878,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t3": "Central",
+        "t3": "unitedstatescentral",
         "undefined": "KS"
     },
     {
@@ -903,7 +892,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t4": "Southeast"
+        "t4": "unitedstatessoutheast"
     },
     {
         "name": "Jason Puccio",
@@ -916,7 +905,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t4": "Southeast"
+        "t4": "unitedstatessoutheast"
     },
     {
         "name": "Sawyer Smith",
@@ -929,7 +918,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t4": "Southeast"
+        "t4": "unitedstatessoutheast"
     },
     {
         "name": "Rod Collins",
@@ -942,7 +931,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t4": "Southeast"
+        "t4": "unitedstatessoutheast"
     },
     {
         "name": "Caroline Feldmeier",
@@ -955,8 +944,8 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t4": "Southeast",
-        "t5": "Northeast"
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Jeff Goodman",
@@ -969,7 +958,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t4": "Southeast"
+        "t4": "unitedstatessoutheast"
     },
     {
         "name": "Ken Romaine",
@@ -982,7 +971,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t4": "Southeast"
+        "t4": "unitedstatessoutheast"
     },
     {
         "name": "David Volpe",
@@ -995,8 +984,8 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t4": "Southeast",
-        "t5": "Northeast"
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Jimmy Fuller",
@@ -1009,7 +998,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t4": "Southeast"
+        "t4": "unitedstatessoutheast"
     },
     {
         "name": "Shawn Brechbill",
@@ -1022,12 +1011,12 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Jared Lederhandler",
@@ -1038,10 +1027,10 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast"
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Melissa Moskau",
@@ -1054,10 +1043,10 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast"
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Mike Byrne",
@@ -1070,7 +1059,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t4": "Southeast"
+        "t4": "unitedstatessoutheast"
     },
     {
         "name": "Sean Cameron",
@@ -1083,7 +1072,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t5": "Northeast"
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Mike Perlmeter",
@@ -1096,7 +1085,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "West"
+        "t2": "unitedstateswest"
     },
     {
         "name": "Jeff Vinklarek",
@@ -1109,14 +1098,14 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t3": "Central"
+        "t3": "unitedstatescentral"
     },
     {
         "name": "David Wood",
         "title": "Business Development Director, West, U.S.",
         "email": "david.wood@harman.com",
         "phone1": "+1 714 813 7189",
-        "group1": "Business Development, Corporate, Education & Government",
+        "group1": "Corporate Solutions",
         "g1Sort": 2,
         "group2": "Corporate Solutions",
         "g2Sort": 2,
@@ -1124,14 +1113,14 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West"
+        "t2": "unitedstateswest"
     },
     {
         "name": "Frank Covelli",
         "title": "Director, Education Business Development, U.S.",
         "email": "frank.covelli@harman.com",
         "phone1": "+1 512 786 0107",
-        "group1": "Business Development, Corporate, Education & Government",
+        "group1": "Education Solutions \n(K-12, Higher Education)",
         "g1Sort": 3,
         "group2": "Education Solutions \n(K-12, Higher Education)",
         "g2Sort": 1,
@@ -1139,10 +1128,10 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast"
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Randy Schwab",
@@ -1157,14 +1146,14 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t3": "Central"
+        "t3": "unitedstatescentral"
     },
     {
         "name": "Charlie Booth",
         "title": "Director, Government Business Development, U.S.",
         "email": "charlie.booth@harman.com",
         "phone1": "+1 703 862 6647",
-        "group1": "Business Development, Corporate, Education & Government",
+        "group1": "Government Solutions \n(Federal, Civilian, Department of Defense, State & Local)",
         "g1Sort": 5,
         "group2": "Government Solutions \n(Federal, Civilian, Department of Defense, State & Local)",
         "g2Sort": 1,
@@ -1172,10 +1161,10 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast"
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Steve Demkowski",
@@ -1188,7 +1177,7 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
+        "t2": "unitedstateswest",
         "undefined": "NV"
     },
     {
@@ -1202,7 +1191,7 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
+        "t2": "unitedstateswest",
         "undefined": "IN"
     },
     {
@@ -1216,7 +1205,7 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
+        "t2": "unitedstateswest",
         "undefined": "AK"
     },
     {
@@ -1230,7 +1219,7 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "Central",
+        "t3": "unitedstatescentral",
         "undefined": "AR"
     },
     {
@@ -1244,7 +1233,7 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
+        "t2": "unitedstateswest",
         "undefined": "CO"
     },
     {
@@ -1258,8 +1247,8 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t4": "Southeast",
-        "t5": "Northeast"
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Paul Gessler",
@@ -1270,12 +1259,12 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Michael Yonks",
@@ -1288,10 +1277,10 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast"
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Kevin Diltz",
@@ -1304,7 +1293,7 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t3": "Central",
+        "t3": "unitedstatescentral",
         "undefined": "AR"
     },
     {
@@ -1318,7 +1307,7 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t5": "Northeast"
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Steve Schwarz",
@@ -1331,7 +1320,7 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t4": "Southeast"
+        "t4": "unitedstatessoutheast"
     },
     {
         "name": "Kendall Herring",
@@ -1344,7 +1333,7 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West"
+        "t2": "unitedstateswest"
     },
     {
         "name": "Kevin Felts",
@@ -1357,10 +1346,10 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast"
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Troy Trujillo",
@@ -1373,10 +1362,10 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast"
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Richard Gatchell",
@@ -1389,10 +1378,10 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast"
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Sonny Lastrella",
@@ -1405,10 +1394,10 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast"
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Jon Parker",
@@ -1421,92 +1410,93 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast"
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast"
     },
     {
         "name": "Caitlyn Rough",
         "title": "Business Development Manager, Restaurants & Retail, North America",
         "email": "caitlyn.rough2@harman.com",
         "phone1": "+1 574 294 8078",
-        "group1": "Hospitality & Cinema Solutions\n(Bars & Restaurants, Broadcast, Cruise Lines, Hotels & Casinos,\nHouses of Worship, Nightlife, Retail Destinations, Cinema)",
+        "group1": "Retail Solutions",
+        "group2": "All Bars and Restaurants (barsrestaurants)",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Chris Pyron",
         "title": "Business Development Manager, Houses of Worship, North America",
         "email": "chris.pyron@harman.com",
         "phone1": "+1 574 226 4389",
-        "group1": "Hospitality & Cinema Solutions\n(Bars & Restaurants, Broadcast, Cruise Lines, Hotels & Casinos,\nHouses of Worship, Nightlife, Retail Destinations, Cinema)",
+        "group1": "houseofworship",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Daryl Sutton",
         "title": "Senior Manager, Business Development, Houses of Worship, North America",
         "email": "daryl.sutton@harman.com",
         "phone1": "+1 417 593 3620",
-        "group1": "Hospitality & Cinema Solutions\n(Bars & Restaurants, Broadcast, Cruise Lines, Hotels & Casinos,\nHouses of Worship, Nightlife, Retail Destinations, Cinema)",
+        "group1": "houseofworship",
         "g1Sort": 2,
         "officeId": "Home",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Eric Einspanjer",
         "title": "Business Development Manager, Hotels & Casinos, North America",
         "email": "eric.einspanjer@harman.com",
         "phone1": "+1 224 558 2858",
-        "group1": "Hospitality & Cinema Solutions\n(Bars & Restaurants, Broadcast, Cruise Lines, Hotels & Casinos,\nHouses of Worship, Nightlife, Retail Destinations, Cinema)",
+        "group1": "hotels and casinos",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Nick Cohen",
         "title": "Inside Sales, Hospitality, U.S.",
         "email": "nicholas.cohen@harman.com",
         "phone1": "+1 818 895 5764",
-        "group1": "Hospitality & Cinema Solutions\n(Bars & Restaurants, Broadcast, Cruise Lines, Hotels & Casinos,\nHouses of Worship, Nightlife, Retail Destinations, Cinema)",
+        "group1": "All Hospitality (hotels, cruiseships, portablepa, broadcasttelevision, broadcastradio, retail, housesofworship, cinema, cinemas, karaoke, casinos, tour, nightlife, barsrestaurants)",
         "g1Sort": 3,
         "officeId": "Northridge",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada"
     },
     {
@@ -1514,175 +1504,144 @@
         "title": "Business Development Manager, Nightlife & Cruise Lines, North America",
         "email": "tony.perez@harman.com",
         "phone1": "+1 954 375 2817",
-        "group1": "Hospitality & Cinema Solutions\n(Bars & Restaurants, Broadcast, Cruise Lines, Hotels & Casinos,\nHouses of Worship, Nightlife, Retail Destinations, Cinema)",
+        "group1": "Cruiseships",
+        "group2": "Nightlife",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
-    },
-    {
-        "name": "Michael Kurcab",
-        "title": "Senior Sales Manager, Business Development, Hotels & Casinos, North America",
-        "email": "michael.kurcab@harman.com",
-        "phone1": "+1 702 479 4095",
-        "group1": "Hospitality & Cinema Solutions\n(Bars & Restaurants, Broadcast, Cruise Lines, Hotels & Casinos,\nHouses of Worship, Nightlife, Retail Destinations, Cinema)",
-        "g1Sort": 4,
-        "officeId": "Home",
-        "showonweb": "yes",
-        "solutionsMap": "yes",
-        "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
-        "t6": "Canada",
-        "t7": "Latin America"
-    },
-    {
-        "name": "Mike Franklin",
-        "title": "Regional Sales Manager,\nBroadcast US East & Canada",
-        "email": "michael.franklin@harman.com",
-        "phone1": "+1 615 394 7340",
-        "group1": "Hospitality & Cinema Solutions\n(Bars & Restaurants, Broadcast, Cruise Lines, Hotels & Casinos,\nHouses of Worship, Nightlife, Retail Destinations, Cinema)",
-        "g1Sort": 5,
-        "officeId": "Home",
-        "showonweb": "yes",
-        "solutionsMap": "yes",
-        "channelMap": "no",
-        "t4": "Southeast",
-        "t5": "Northeast",
-        "t6": "Canada"
+        "t7": "latinamerica"
     },
     {
         "name": "Saben Shawhan",
         "title": "Business Development Manager,\nLarge Venues, North America",
         "email": "saben.shawhan@harman.com",
         "phone1": "+1 574 226 2080",
-        "group1": "Large Venue Solutions\n(Convention Centers, Museums, Stadiums & Arenas,\nThemed Attractions, Transportation)",
+        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
         "g1Sort": 2,
         "officeId": "Home",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Tim Mazur",
         "title": "Business Development, Large Venues, North America",
         "email": "tim.mazur@harman.com",
         "phone1": "+1 717 686 6734",
-        "group1": "Large Venue Solutions\n(Convention Centers, Museums, Stadiums & Arenas,\nThemed Attractions, Transportation)",
+        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
         "g1Sort": 3,
         "officeId": "Home",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Brad Ricks",
         "title": "Application Sales Specialist, Large Venues, North America",
         "email": "brad.ricks@harman.com",
         "phone1": "+1 214 450 3277",
-        "group1": "Large Venue Solutions\n(Convention Centers, Museums, Stadiums & Arenas,\nThemed Attractions, Transportation)",
+        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
         "g1Sort": 4,
         "officeId": "Home",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Troy Bornman",
         "title": "Channel Sales Manager, Large Venues, North America",
         "email": "troy.bornman@harman.com",
         "phone1": "+1 574 849 4787",
-        "group1": "Large Venue Solutions\n(Convention Centers, Museums, Stadiums & Arenas,\nThemed Attractions, Transportation)",
+        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
         "g1Sort": 5,
         "officeId": "Elkhart",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Connie Andre",
         "title": "Junior Business Development,\nLarge Venues, North America",
         "email": "connie.andre@harman.com",
         "phone1": "+1 574 294 8092",
-        "group1": "Large Venue Solutions\n(Convention Centers, Museums, Stadiums & Arenas,\nThemed Attractions, Transportation)",
+        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
         "g1Sort": 6,
         "officeId": "Elkhart",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Eric Elwell",
         "title": "Business Development Manager, Tour Audio, North America",
         "email": "eric.elwell@harman.com",
         "phone1": "+1 574 226 4478",
-        "group1": "Tour & Performing Arts Solutions",
+        "group1": "Tour",
         "g1Sort": 2,
         "officeId": "Northridge",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Brad Schiller",
         "title": "Business Development Manager, Lighting, North America",
         "email": "brad.schiller@harman.com",
         "phone1": "+1 512 538 3979",
-        "group1": "Tour & Performing Arts Solutions",
+        "group1": "All Hospitality (hotels, cruiseships, portablepa, broadcasttelevision, broadcastradio, retail, housesofworship, cinema, cinemas, karaoke, casinos, tour, nightlife, barsrestaurants)",
         "g1Sort": 3,
+        "group2": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
         "officeId": "Home",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Brad Haynes",
@@ -1695,48 +1654,31 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
-    },
-    {
-        "name": "Eric Friedlander",
-        "title": "Business Development Manager, Tour Audio, North America",
-        "email": "eric.friedlander@harman.com",
-        "phone1": "+1 818 895 8135",
-        "group1": "Tour & Performing Arts Solutions",
-        "g1Sort": 5,
-        "officeId": "Northridge",
-        "showonweb": "yes",
-        "solutionsMap": "yes",
-        "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
-        "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Jeff Washburn",
         "title": "Business Development Manager, Lighting, North America",
         "email": "jeff.washburn@harman.com",
         "phone1": "+1 512 577 7450",
-        "group1": "Tour & Performing Arts Solutions",
+        "group1": "All Hospitality (hotels, cruiseships, portablepa, broadcasttelevision, broadcastradio, retail, housesofworship, cinema, cinemas, karaoke, casinos, tour, nightlife, barsrestaurants)",
         "g1Sort": 6,
+        "group2": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
         "officeId": "Home",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Tyler Mason",
@@ -1749,30 +1691,12 @@
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
+        "t2": "unitedstateswest",
+        "t3": "unitedstatescentral",
+        "t4": "unitedstatessoutheast",
+        "t5": "unitedstatesnortheast",
         "t6": "Canada",
-        "t7": "Latin America"
-    },
-    {
-        "name": "Nathan Baglyos",
-        "title": "Technical Resources Lead, Sales, North America",
-        "email": "nathan.baglyos@harman.com",
-        "phone1": "+1 818 895 3369",
-        "group1": "Retail Solutions",
-        "g1Sort": 3,
-        "officeId": "Northridge",
-        "showonweb": "yes",
-        "solutionsMap": "yes",
-        "channelMap": "no",
-        "t2": "West",
-        "t3": "Central",
-        "t4": "Southeast",
-        "t5": "Northeast",
-        "t6": "Canada",
-        "t7": "Latin America"
+        "t7": "latinamerica"
     },
     {
         "name": "Allison Zych",
@@ -1831,37 +1755,37 @@
         "solutionsMap": "no",
         "channelMap": "yes",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Guy Hawley",
         "title": "Senior Manager, Cinema Sales & Business Development, EMEA",
         "email": "guy.hawley@harman.com",
         "phone1": "+44 7827 361874",
-        "group1": "Hospitality & Cinema Solutions\n(Bars & Restaurants, Broadcast, Cruise Lines, Hotels & Casinos,\nHouses of Worship, Nightlife, Retail Destinations, Cinema)",
+        "group1": "Cinema",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Christopher Connett",
         "title": "Business Development Manager, Cinema, EMEA",
         "email": "christopher.connett@harman.com",
         "phone1": "+44 7780 339573",
-        "group1": "Hospitality & Cinema Solutions\n(Bars & Restaurants, Broadcast, Cruise Lines, Hotels & Casinos,\nHouses of Worship, Nightlife, Retail Destinations, Cinema)",
+        "group1": "Cinema",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Dan Osborne",
@@ -1873,23 +1797,9 @@
         "solutionsMap": "yes",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
-    },
-    {
-        "name": "Karl Chapman",
-        "title": "Senior Sales Manager, Broadcast, EMEA",
-        "email": "karl.chapman@harman.com",
-        "phone1": "+44 7827 998596",
-        "group1": "Hospitality & Cinema Solutions\n(Bars & Restaurants, Broadcast, Cruise Lines, Hotels & Casinos,\nHouses of Worship, Nightlife, Retail Destinations, Cinema)",
-        "showonweb": "yes",
-        "solutionsMap": "yes",
-        "channelMap": "no",
-        "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Philippe Poppe",
@@ -1901,9 +1811,9 @@
         "solutionsMap": "no",
         "channelMap": "yes",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Mike Parker",
@@ -1917,40 +1827,24 @@
         "solutionsMap": "yes",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Jason Bacon",
         "title": "Business Development Manager, Finance & Hospitality, EMEA",
         "email": "jason.bacon@harman.com",
         "phone1": "+44 7943 233964",
-        "group1": "Hospitality & Cinema Solutions\n(Bars & Restaurants, Broadcast, Cruise Lines, Hotels & Casinos,\nHouses of Worship, Nightlife, Retail Destinations, Cinema)",
+        "group1": "All Hospitality (hotels, cruiseships, portablepa, broadcasttelevision, broadcastradio, retail, housesofworship, cinema, cinemas, karaoke, casinos, tour, nightlife, barsrestaurants)",
         "group2": "Corporate Solutions",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
-    },
-    {
-        "name": "Charlie Sullivan",
-        "title": "Business Development Manager, Large Venue & Automotive, EMEA",
-        "email": "charlie.sullivan@harman.com",
-        "phone1": "+44 7824 804870",
-        "group1": "Large Venue Solutions\n(Convention Centers, Museums, Stadiums & Arenas,\nThemed Attractions, Transportation)",
-        "group2": "Automotive",
-        "group3": "Corporate Solutions",
-        "showonweb": "yes",
-        "solutionsMap": "yes",
-        "channelMap": "no",
-        "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Matt Short",
@@ -1962,23 +1856,9 @@
         "solutionsMap": "yes",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
-    },
-    {
-        "name": "Greg Clare-Campbell",
-        "title": "Business Development Manager, Consultants, EMEA",
-        "email": "greg.clarecampbell@harman.com",
-        "phone1": "+44 7917 426798",
-        "group1": "Consultants",
-        "showonweb": "yes",
-        "solutionsMap": "no",
-        "channelMap": "yes",
-        "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Jonas Stenvinkel",
@@ -1990,9 +1870,9 @@
         "solutionsMap": "no",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Leif Orkelbog-Andresen",
@@ -2004,51 +1884,54 @@
         "solutionsMap": "yes",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Allison Rose",
         "title": "Sales Engineer, Lighting, EMEA",
         "email": "allison.rose@harman.com",
         "phone1": "+44 7500 004873",
-        "group1": "Lighting",
+        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
+        "group2": "All Hospitality (hotels, cruiseships, portablepa, broadcasttelevision, broadcastradio, retail, housesofworship, cinema, cinemas, karaoke, casinos, tour, nightlife, barsrestaurants)",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Mike Walker",
         "title": "Business Development Manager, Live & Lighting, EMEA",
         "email": "michael.walker@harman.com",
         "phone1": "+44 1507 604399",
-        "group1": "Lighting",
+        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
+        "group2": "All Hospitality (hotels, cruiseships, portablepa, broadcasttelevision, broadcastradio, retail, housesofworship, cinema, cinemas, karaoke, casinos, tour, nightlife, barsrestaurants)",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Peter Dahlin",
         "title": "Channel Manager, Lighting EMEA",
         "email": "peter.dahlin@harman.com",
         "phone1": "+45 7215 0145",
-        "group1": "Lighting",
+        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
+        "group2": "All Hospitality (hotels, cruiseships, portablepa, broadcasttelevision, broadcastradio, retail, housesofworship, cinema, cinemas, karaoke, casinos, tour, nightlife, barsrestaurants)",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Koen Tillie NL, EMEA",
@@ -2061,23 +1944,23 @@
         "solutionsMap": "yes",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Gareth Cooke",
         "title": "Business Development Manager, Venues, EMEA",
         "email": "gareth.cooke@harman.com",
         "phone1": "+44 7880 033054",
-        "group1": "Large Venue Solutions\n(Convention Centers, Museums, Stadiums & Arenas,\nThemed Attractions, Transportation)",
+        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Roly Oliver",
@@ -2090,9 +1973,9 @@
         "solutionsMap": "yes",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Scott Aslett",
@@ -2103,7 +1986,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t9": "North West EMEA"
+        "t9": "emeanorthwest"
     },
     {
         "name": "Richard Hutchinson",
@@ -2114,7 +1997,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t9": "North West EMEA"
+        "t9": "emeanorthwest"
     },
     {
         "name": "Paul Johnson UK",
@@ -2126,7 +2009,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t9": "North West EMEA"
+        "t9": "emeanorthwest"
     },
     {
         "name": "James Baxter",
@@ -2137,7 +2020,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t9": "North West EMEA"
+        "t9": "emeanorthwest"
     },
     {
         "name": "Faouzi Bounakhla",
@@ -2148,7 +2031,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t9": "North West EMEA"
+        "t9": "emeanorthwest"
     },
     {
         "name": "Ben Lekkerkerer",
@@ -2159,7 +2042,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t9": "North West EMEA"
+        "t9": "emeanorthwest"
     },
     {
         "name": "Marco Thiele NL",
@@ -2170,7 +2053,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t9": "North West EMEA"
+        "t9": "emeanorthwest"
     },
     {
         "name": "Francois Drouadaine",
@@ -2181,7 +2064,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t9": "North West EMEA"
+        "t9": "emeanorthwest"
     },
     {
         "name": "Eric Tabuteau",
@@ -2192,7 +2075,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t9": "North West EMEA"
+        "t9": "emeanorthwest"
     },
     {
         "name": "Marina Sadrin",
@@ -2203,7 +2086,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t9": "North West EMEA"
+        "t9": "emeanorthwest"
     },
     {
         "name": "Stephan Saremba",
@@ -2214,7 +2097,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t10": "Central EMEA"
+        "t10": "emeacentral"
     },
     {
         "name": "Katya Freiberger (D)",
@@ -2225,7 +2108,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t10": "Central EMEA"
+        "t10": "emeacentral"
     },
     {
         "name": "Joachim Bogetvedt (No)",
@@ -2236,7 +2119,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t10": "Central EMEA"
+        "t10": "emeacentral"
     },
     {
         "name": "Espen Bechmann (No)",
@@ -2247,7 +2130,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t10": "Central EMEA"
+        "t10": "emeacentral"
     },
     {
         "name": "Fredrik Barno (Sw)",
@@ -2258,7 +2141,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t10": "Central EMEA"
+        "t10": "emeacentral"
     },
     {
         "name": "Aljoscha Bergforth",
@@ -2269,7 +2152,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t10": "Central EMEA"
+        "t10": "emeacentral"
     },
     {
         "name": "Jan-Henning Oeker",
@@ -2280,7 +2163,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t10": "Central EMEA"
+        "t10": "emeacentral"
     },
     {
         "name": "Arno Nock",
@@ -2291,7 +2174,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t10": "Central EMEA"
+        "t10": "emeacentral"
     },
     {
         "name": "Felix Gittinger",
@@ -2302,7 +2185,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t10": "Central EMEA"
+        "t10": "emeacentral"
     },
     {
         "name": "Alexander Linder",
@@ -2313,7 +2196,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t10": "Central EMEA"
+        "t10": "emeacentral"
     },
     {
         "name": "Radko Mach (CZ)",
@@ -2324,7 +2207,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t10": "Central EMEA"
+        "t10": "emeacentral"
     },
     {
         "name": "Mark Coombes",
@@ -2335,7 +2218,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t11": "South EMEA"
+        "t11": "emeasouth"
     },
     {
         "name": "Delwin Davis",
@@ -2346,7 +2229,7 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t11": "South EMEA"
+        "t11": "emeasouth"
     },
     {
         "name": "Fernando Moya",
@@ -2357,53 +2240,53 @@
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t11": "South EMEA"
+        "t11": "emeasouth"
     },
     {
         "name": "Jose Carlos Barbosa",
         "title": "Senior Sales Manager, Iberia",
         "email": "jose.carlosbarbosa@harman.com",
         "phone1": "+34 6189 69881",
-        "group1": "Large Venue Solutions\n(Convention Centers, Museums, Stadiums & Arenas,\nThemed Attractions, Transportation)",
+        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
-        "t9": "North West EMEA"
+        "t9": "emeanorthwest"
     },
     {
         "name": "Nans Nijssen",
         "title": "Senior Sales Manager, Transportation, EMEA",
         "email": "hans.nijssen@harman.com",
         "phone1": "+49 2157 132069",
-        "group1": "Large Venue Solutions\n(Convention Centers, Museums, Stadiums & Arenas,\nThemed Attractions, Transportation)",
+        "group1": "Transportation",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Andrew Taylor",
         "title": "Sales Support Specialist, Transportation, EMEA",
         "email": "andrew.taylor@harman.com",
         "phone1": "+44 1707 668284",
-        "group1": "Large Venue Solutions\n(Convention Centers, Museums, Stadiums & Arenas,\nThemed Attractions, Transportation)",
+        "group1": "Transportation",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
         "t8": "EMEA",
-        "t9": "North West EMEA",
-        "t10": "Central EMEA",
-        "t11": "South EMEA"
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth"
     },
     {
         "name": "Rodney Houston",
         "title": "Sales Director, Entertainment, APAC",
         "email": "rodney.houston@im.harman.com",
-        "phone1": "+65 6870 5000",
-        "group1": "APAC Management",
+        "phone1": "+65 6870 5084",
+        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
         "group2": "Entertainment",
         "showonweb": "yes",
         "solutionsMap": "yes",
@@ -2414,7 +2297,7 @@
         "name": "Thomas Marcher",
         "title": "Channel Sales Director, APAC",
         "email": "thomas.marcher@im.harman.com",
-        "phone1": "+65 6870 5000",
+        "phone1": "+65 6870 5082",
         "group1": "Channel Sales APAC",
         "showonweb": "yes",
         "solutionsMap": "no",
@@ -2425,7 +2308,7 @@
         "name": "Takayoshi Umeda",
         "title": "Country Leader, Japan",
         "email": "takayoshi.umeda@im.harman.com",
-        "phone1": "+81 3 6732 1533",
+        "phone1": "+81 367321533",
         "group1": "APAC Management",
         "showonweb": "no",
         "solutionsMap": "no",
@@ -2435,6 +2318,7 @@
     {
         "name": "Kim Ki-Hyun",
         "title": "Country Leader, South Korea",
+        "phone1": "+82 234889801",
         "showonweb": "no",
         "solutionsMap": "no",
         "channelMap": "yes",
@@ -2444,6 +2328,7 @@
         "name": "RV Ramachandran",
         "title": "Senior Marketing Manager, APAC",
         "email": "rv.ramachandran@im.harman.com",
+        "phone1": "+65 68705092",
         "group1": "APAC Management",
         "showonweb": "no",
         "solutionsMap": "no",
@@ -2454,7 +2339,7 @@
         "name": "Paul Lee",
         "title": "Technical & Training Senior Manager",
         "email": "paul.lee@im.harman.com",
-        "phone1": "+65 6870 5063",
+        "phone1": "+65 68705063",
         "group1": "APAC Management",
         "showonweb": "no",
         "solutionsMap": "no",
@@ -2465,7 +2350,7 @@
         "name": "Alison Shee",
         "title": "HR Director",
         "email": "alison.shee@harman.com",
-        "phone1": "+65 6870 5010",
+        "phone1": "+65 68705010",
         "group1": "APAC Management",
         "showonweb": "no",
         "solutionsMap": "no",
@@ -2476,7 +2361,7 @@
         "name": "Amar Subash",
         "title": "Finance Director",
         "email": "amar.subash@harman.com",
-        "phone1": "+65 6870 5097",
+        "phone1": "+65 68705097",
         "group1": "APAC Management",
         "showonweb": "no",
         "solutionsMap": "no",
@@ -2487,7 +2372,7 @@
         "name": "Janine Hawke",
         "title": "Channel Sales Manager, ANZ",
         "email": "janine.hawke@harman.com",
-        "phone1": "+61 0409 706 555",
+        "phone1": "+61 409 706555",
         "group1": "Channel Sales APAC",
         "showonweb": "yes",
         "solutionsMap": "no",
@@ -2498,7 +2383,7 @@
         "name": "Asnura Arifin",
         "title": "Sales Operations",
         "email": "asnura.arifin@harman.com",
-        "phone1": "+65 6870 5057",
+        "phone1": "+65 68705057",
         "group1": "Sales Operations",
         "showonweb": "no",
         "solutionsMap": "no",
@@ -2509,7 +2394,7 @@
         "name": "Jamez Lau",
         "title": "Channel Sales Manager, Singapore",
         "email": "jamez.lau@harman.com",
-        "phone1": "+65 91184539",
+        "phone1": "+65 68705291",
         "group1": "Channel Sales APAC",
         "showonweb": "yes",
         "solutionsMap": "no",
@@ -2531,7 +2416,7 @@
         "name": "William Saw",
         "title": "Channel Sales Manager",
         "email": "william.saw@harman.com",
-        "phone1": "+65 90086341",
+        "phone1": "+65 68705076",
         "group1": "Channel Sales APAC",
         "showonweb": "yes",
         "solutionsMap": "no",
@@ -2542,7 +2427,7 @@
         "name": "Joel Tsi",
         "title": "Channel Sales Manager",
         "email": "joel.tsi@harman.com",
-        "phone1": "+65 6870 5061",
+        "phone1": "+65 68705061",
         "group1": "Channel Sales APAC",
         "showonweb": "yes",
         "solutionsMap": "no",
@@ -2553,7 +2438,7 @@
         "name": "Atul Ghaisas",
         "title": "Business Development, CEG, APAC",
         "email": "atul.ghaisas@harman.com",
-        "phone1": "+65 6870 5095",
+        "phone1": "+65 68705095",
         "group1": "APAC Business Development",
         "showonweb": "yes",
         "solutionsMap": "yes",
@@ -2564,8 +2449,8 @@
         "name": "David Tan",
         "title": "Business Development, CEG, APAC",
         "email": "david.tan@harman.com",
-        "phone1": "+65 6846 7960",
-        "group1": "APAC Business Development",
+        "phone1": "+65 68705060",
+        "group1": "Corporate, Education & Government CSU Solutions",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
@@ -2575,7 +2460,9 @@
         "name": "Jen Amos",
         "title": "Business Development, Broadcast, House of Worship, APAC",
         "email": "amos.jen@harman.com",
-        "group1": "APAC Business Development",
+        "phone1": "+65 68705064",
+        "group1": "All Broadcast (broadcasttelevision, broadcastradio)",
+        "group2": "houseofworship",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
@@ -2585,17 +2472,19 @@
         "name": "David Wong",
         "title": "Business Development, Hotels, Casinos, Restaurants, Retail, Nighlife, APAC",
         "phone1": "+65 68705066",
-        "group1": "APAC Business Development",
+        "group1": "Hotels, Casinos, barsrestaurants, Retail, Nighlife,",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
         "t13": "APAC"
     },
     {
-        "name": "Cheng Yi Neo",
+        "name": "Neo Cheng Yi",
         "title": "Business Development, Large Venues, APAC",
         "email": "chengyi@harman.com",
-        "group1": "APAC Business Development",
+        "phone1": "+65 68705081",
+        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
+        "group2": "All Bars and Restaurants (barsrestaurants)",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
@@ -2605,8 +2494,8 @@
         "name": "Melissa Puran",
         "title": "Business Development, Retail, APAC",
         "email": "melissa.puran@harman.com",
-        "phone1": "+65 98598743",
-        "group1": "APAC Business Development",
+        "phone1": "+65 68705068",
+        "group1": "Retail Solutions",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
@@ -2616,8 +2505,8 @@
         "name": "Henry Noel",
         "title": "Business Development, Cinema, APAC",
         "email": "henry.noel@harman.com",
-        "phone1": "+65 98598676",
-        "group1": "APAC Business Development",
+        "phone1": "+65 68705065",
+        "group1": "Cinema",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
@@ -2627,8 +2516,8 @@
         "name": "Desmond Kwan",
         "title": "Business Development, Entertainment Lighting, APAC",
         "email": "desmond.kwan@harman.com",
-        "phone1": "+65 68423031",
-        "group1": "APAC Business Development",
+        "phone1": "+65 68705072",
+        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
@@ -2638,7 +2527,10 @@
         "name": "Alvin Ang",
         "title": "Business Development, Enterprise, APAC",
         "email": "alvin.ang@harman.com",
-        "group1": "APAC Business Development",
+        "phone1": "+65 68705069",
+        "group1": "All Hospitality (hotels, cruiseships, portablepa, broadcasttelevision, broadcastradio, retail, housesofworship, cinema, cinemas, karaoke, casinos, tour, nightlife, barsrestaurants)",
+        "group2": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
+        "group3": "Business Development, Corporate, Education & Government",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
@@ -2648,8 +2540,10 @@
         "name": "Glenn Loh",
         "title": "Business Development, Enterprise, APAC",
         "email": "glenn.loh@harman.com",
-        "phone1": "+65 91195801",
-        "group1": "APAC Business Development",
+        "phone1": "+65 68705073",
+        "group1": "All Hospitality (hotels, cruiseships, portablepa, broadcasttelevision, broadcastradio, retail, housesofworship, cinema, cinemas, karaoke, casinos, tour, nightlife, barsrestaurants)",
+        "group2": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
+        "group3": "Business Development, Corporate, Education & Government",
         "showonweb": "yes",
         "solutionsMap": "yes",
         "channelMap": "no",
@@ -2659,6 +2553,7 @@
         "name": "Vincent Tan",
         "title": "Application & Training Manager, APAC",
         "email": "vincent.tan@harman.com",
+        "phone1": "+65 68705070",
         "group1": "APAC Management",
         "showonweb": "no",
         "solutionsMap": "no",
@@ -2668,6 +2563,7 @@
         "name": "Mike Aw",
         "title": "Service Manager, APAC",
         "email": "mike.aw@harman.com",
+        "phone1": "+65 68705086",
         "group1": "APAC Management",
         "showonweb": "no",
         "solutionsMap": "no",
@@ -2677,6 +2573,7 @@
         "name": "Amanda Heng",
         "title": "Marketing Lead, APAC",
         "email": "amanda.heng@harman.com",
+        "phone1": "+65 68705055",
         "group1": "APAC Management",
         "showonweb": "no",
         "solutionsMap": "no",

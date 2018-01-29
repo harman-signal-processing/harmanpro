@@ -1,14 +1,26 @@
 class ContactsController < ApplicationController
 
     def index
+       contacts = get_contacts
+       @contacts = { contacts: contacts, unique_groups: []}
         # binding.pry
-       @contacts = get_contacts
        @contacts
     end
     
     def show
+        @landing_page = LandingPage.find("contactsmap")
+        # binding.pry
         search_term = params[:search].downcase
         map_to_use = params[:map].nil? ? "solutions" : params[:map].downcase
+        
+        slugs = get_contact_slugs
+        
+        titleSlug = slugs.map{|item| item["slug"] == search_term ? item["pageTitle"] : nil}.compact[0]
+        
+        @pageTitle = titleSlug.nil? ? search_term.titlecase : titleSlug
+        @contactType = map_to_use.titlecase + " Sales"
+        # binding.pry
+        
         contacts = get_contacts
         @contacts = { contacts: [], unique_groups: []}
         contacts.each do |contact|
@@ -33,7 +45,7 @@ class ContactsController < ApplicationController
             @contacts[:unique_groups] << group3 unless @contacts[:unique_groups].include?(group3)
             
         # binding.pry
-           if contact_territory_values.include?(search_term) or group1&.include?(search_term) or group2&.include?(search_term) or group3&.include?(search_term)
+           if (contact_territory_values.include?(search_term) or group1&.include?(search_term) or group2&.include?(search_term) or group3&.include?(search_term))
              if map_to_use == "channel" && contact["channelMap"].downcase == "yes"
                @contacts[:contacts] << contact
              elsif map_to_use == "solutions" && contact["solutionsMap"].downcase == "yes"
@@ -61,5 +73,10 @@ class ContactsController < ApplicationController
         contacts = contacts.select {|contact| contact["showonweb"].downcase == "yes"}
         contacts
     end 
+
+    def get_contact_slugs
+        contact_slugs = Contacts.get_all_contact_slugs
+        contact_slugs
+    end
 
 end

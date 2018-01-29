@@ -90,6 +90,7 @@ GEM
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (8.0.0)
+    awesome_print (1.8.0)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -530,6 +531,7 @@ DEPENDENCIES
   acts-as-taggable-on
   acts_as_list
   acts_as_tree
+  awesome_print
   bower-rails
   capistrano
   capistrano-bundler

@@ -146,7 +146,12 @@ Rails.application.routes.draw do
   # The usual stuff
 
   # get '/contacts' => 'landing_pages#contacts'
-  get "/contacts", to: "contacts#index"
+  get '/contacts/brands' => 'landing_pages#brand_contacts'
+  # get "/contacts", to: "contacts#index"
+  get "/contacts", to: "landing_pages#contacts_home"
+  get "/contacts/solutions", to: "landing_pages#contacts_solutions"
+  get "/contacts/channel", to: "landing_pages#contacts_channel_map"
+  
   resource "contacts", only: [:index] do
     get "most_popular"
     get "asia", to: "contacts#asia_method"
