@@ -14,6 +14,7 @@ ActiveAdmin.register VerticalMarket do
     :retail,
     :show_hef,
     :hide_buy_section,
+    :preview_code,
     case_study_vertical_markets_attributes: [:id, :case_study_id, :_destroy]
 
 
@@ -87,13 +88,14 @@ ActiveAdmin.register VerticalMarket do
         "Used for top-level verticals on the homepage and on the category page."
       f.input :hef_banner, hint: f.object.hef_banner.present? ?
         image_tag(f.object.hef_banner.url(:thumb)) + content_tag(:br) + "Appears on solutions pages as Harman Finance background. Preferred size: 1170x400 px with a strongly horizontal orientation." :
-        "Appears on solutions pages as Harman Finance background. Preferred size: 750x70 px with a strongly horizontal orientation."        
+        "Appears on solutions pages as Harman Finance background. Preferred size: 750x70 px with a strongly horizontal orientation."
       f.input :description, hint: "Maximum recommended characters: 650", input_html: { rows: 10 }
       f.input :extra_content, hint: "Appears after the case studies", input_html: { rows: 10, class: "mceEditor"}
       f.input :retail, label: "Offer retailer/ecommerce links with this vertical market."
       f.input :lead_form_content, hint: "Replaces the retailer links if present and the default lead form.", input_html: { class: "mceEditor"}
       f.input :hide_buy_section, label: "Hide both the retailer links and the lead capture form."
       f.input :show_hef, label: "Show the Harman finance strip on this vertical market's page."
+      f.input :preview_code, hint: "Put something here if you want to allow someone to preview the page before it goes live. Then, give them the link with ?preview_code=(whatever) at the end."
     end
     f.has_many :case_study_vertical_markets, heading: "Case Studies", new_record: "Add a case study" do |s|
       s.input :id, as: :hidden
