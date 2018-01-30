@@ -1,110 +1,104 @@
-# A sample Guardfile
-# More info at https://github.com/guard/guard#readme
-
-## Uncomment and set this to only include directories you want to watch
-# directories %w(app lib config test spec features)
-
-## Uncomment to clear the screen before every task
-# clearing :on
-
-## Guard internally checks for changes in the Guardfile and exits.
-## If you want Guard to automatically start up again, run guard in a
-## shell loop, e.g.:
-##
-##  $ while bundle exec guard; do echo "Restarting Guard..."; done
-##
-## Note: if you are using the `directories` clause above and you are not
-## watching the project directory ('.'), then you will want to move
-## the Guardfile to a watched dir and symlink it back, e.g.
-#
-#  $ mkdir config
-#  $ mv Guardfile config/
-#  $ ln -s config/Guardfile .
-#
-# and, you'll have to watch "config/Guardfile" instead of "Guardfile"
-
-# Note: The cmd option is now required due to the increasing number of ways
-#       rspec may be run, below are examples of the most common uses.
-#  * bundler: 'bundle exec rspec'
-#  * bundler binstubs: 'bin/rspec'
-#  * spring: 'bin/rspec' (This will use spring if running and you have
-#                          installed the spring binstubs per the docs)
-#  * zeus: 'zeus rspec' (requires the server to be started separately)
-#  * 'just' rspec: 'rspec'
-
-guard :rspec, cmd: "bundle exec rspec" do
-  require "guard/rspec/dsl"
-  dsl = Guard::RSpec::Dsl.new(self)
-
-  # Feel free to open issues for suggestions and improvements
-
-  # RSpec files
-  rspec = dsl.rspec
-  watch(rspec.spec_helper) { rspec.spec_dir }
-  watch(rspec.spec_support) { rspec.spec_dir }
-  watch(rspec.spec_files)
-
-  # Ruby files
-  ruby = dsl.ruby
-  dsl.watch_spec_files_for(ruby.lib_files)
-
-  # Rails files
-  rails = dsl.rails(view_extensions: %w(erb haml slim))
-  dsl.watch_spec_files_for(rails.app_files)
-  dsl.watch_spec_files_for(rails.views)
-
-  watch(rails.controllers) do |m|
-    [
-      rspec.spec.("routing/#{m[1]}_routing"),
-      rspec.spec.("controllers/#{m[1]}_controller"),
-      rspec.spec.("acceptance/#{m[1]}")
-    ]
-  end
-
-  # Rails config changes
-  watch(rails.spec_helper)     { rspec.spec_dir }
-  watch(rails.routes)          { "#{rspec.spec_dir}/routing" }
-  watch(rails.app_controller)  { "#{rspec.spec_dir}/controllers" }
-
-  # Capybara features specs
-  watch(rails.view_dirs)     { |m| rspec.spec.("features/#{m[1]}") }
-
-  # Turnip features and steps
-  watch(%r{^spec/acceptance/(.+)\.feature$})
-  watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
-    Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
-  end
+source 'https://rubygems.org'
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
 end
 
-guard :bundler do
-  require 'guard/bundler'
-  require 'guard/bundler/verify'
-  helper = Guard::Bundler::Verify.new
+gem 'rails', '5.1.4'
+gem 'responders', '~> 2.0'
+gem 'mysql2'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails' #, '~> 4.1.0'
+gem 'sprockets'
+gem 'font-awesome-rails'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer',  platforms: :ruby
+gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 5.0'
+gem 'jbuilder', '~> 2.0'
+gem 'bower-rails'
+gem "active_model_serializers", "0.9.5" # 0.10+ is not backwards compatible
+gem 'dalli'
+gem 'figaro'
+gem 'simple_form'
+gem 'RedCloth'
+gem 'tinymce-rails', git: 'https://github.com/spohlenz/tinymce-rails.git'
+gem 'foundation-rails', '~> 5.5' # After this, getting incompatible units errors
+gem 'friendly_id', '>= 5.2'
+gem 'paperclip'
+gem 'fog-rackspace'
+gem 'acts_as_list'
+gem 'acts_as_tree'
+gem 'acts-as-taggable-on' #, '~> 3.4'
+gem 'devise'
+gem 'activeadmin', github: 'activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'activeadmin-sortable'
+gem 'pundit'
+gem 'delayed_job_active_record', '>= 4.1.1'
+gem 'daemons'
+gem 'httparty'
+gem 'rails_autolink'
+gem 'silverpop'
+gem 'hashie', '~> 3.4.6' # 3.5.1 was causing errors with some silverpop transactions
+gem 'oauth2'
+gem 'ransack' # using for service center search
+gem 'exception_notification'
+gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'mailgun_rails' # mailer service from Rackspace
+gem 'recaptcha', require: "recaptcha/rails"
+gem 'nokogiri' # for parsing HTML to generate subnavs on EMEA portal
+gem 'thinking-sphinx', '~> 3.0'
+gem 'kaminari'
 
-  files = ['Gemfile']
-  files += Dir['*.gemspec'] if files.any? { |f| helper.uses_gemspec?(f) }
+gem 'globalize', '5.1.0.beta2' #github: 'globalize', branch: '999b5dfa656ff0f706dbcd07ce7552d5b783d5a1' # 3/2017 master branch had errors #'~> 5.0.0'
+gem 'friendly_id-globalize'
+gem 'http_accept_language'
+gem 'rails-i18n'
 
-  # Assume files are symlinked from somewhere
-  files.each { |file| watch(helper.real_path(file)) }
+gem 'email_validator'
+gem 'country_select'
+
+group :development do
+  gem 'letter_opener'
+#  gem 'web-console', '~> 3.0'
+  gem 'spring'
+  gem 'guard-bundler'
+  gem 'guard-rails'
+  gem 'guard-rspec'
+
+  gem 'rb-fchange', :require=>false
+  gem 'rb-fsevent', :require=>false
+  gem 'rb-inotify', :require=>false
+  gem 'sshkit'
+  gem 'colorize'
+  gem 'capistrano'
+  gem 'capistrano3-delayed-job', '~> 1.0'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger'
+  gem 'byebug',      '3.4.0'
+  gem 'rails-erd'
 end
 
-# Guard-Rails supports a lot options with default values:
-# daemon: false                        # runs the server as a daemon.
-# debugger: false                      # enable ruby-debug gem.
-# environment: 'development'           # changes server environment.
-# force_run: false                     # kills any process that's holding the listen port before attempting to (re)start Rails.
-# pid_file: 'tmp/pids/[RAILS_ENV].pid' # specify your pid_file.
-# host: 'localhost'                    # server hostname.
-# port: 3000                           # server port number.
-# root: '/spec/dummy'                  # Rails' root path.
-# server: thin                         # webserver engine.
-# start_on_start: true                 # will start the server when starting Guard.
-# timeout: 30                          # waits untill restarting the Rails server, in seconds.
-# zeus_plan: server                    # custom plan in zeus, only works with `zeus: true`.
-# zeus: false                          # enables zeus gem.
-# CLI: 'rails server'                  # customizes runner command. Omits all options except `pid_file`!
+group :development, :test do
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'jasmine-rails'
+end
 
-guard 'rails', port: 3111 do
-  watch('Gemfile.lock')
-  watch(%r{^(config|lib)/.*})
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'simplecov', require: false
+  gem 'json-schema'
+  gem 'faker'
+  gem 'selenium-webdriver'
+  #gem 'chromedriver-helper' # nice for testing in a browser window
+  gem 'launchy'
+  # This brings back the 'assigns' method I used a lot in testing which DHH
+  # now discourages. But, requiring it here breaks other tests. So I do the
+  # require in spec/rails_helper.rb
+  gem 'rails-controller-testing', require: false
 end
