@@ -19,8 +19,10 @@ class CaseStudy < ApplicationRecord
       thumb: "83x50",
       thumb_square: "64x64#"
   }, default_url: "missing/banners/:style.jpg"
+  has_attached_file :pdf
 
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :pdf, content_type: /pdf/
   validates :headline, presence: true, uniqueness: true
 
   accepts_nested_attributes_for :case_study_vertical_markets, reject_if: :all_blank, allow_destroy: true

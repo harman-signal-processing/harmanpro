@@ -12,7 +12,7 @@ class MainController < ApplicationController
   end
 
   def sitemap
-    @vertical_markets = VerticalMarket.all
+    @vertical_markets = VerticalMarket.active
     respond_to do |format|
       format.html
       format.xml { build_xml_sitemap_pages }

@@ -38,8 +38,8 @@ class VerticalMarket < ApplicationRecord
   }, default_url: "missing/background/:style.jpg"
 
   validates_attachment_content_type :background, content_type: /\Aimage\/.*\Z/
-  
-    has_attached_file :hef_banner,
+
+  has_attached_file :hef_banner,
     styles: {
       large: "1170x1755#",
       medium: "585x877#",

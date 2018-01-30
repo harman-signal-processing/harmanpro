@@ -6,6 +6,7 @@
       <%= paginate @results %>
       <ul id="search_results">
         <% @results.each do |result| %>
+          <% next if result.respond_to?(:live?) && !result.live? %>
           <li><%= link_to result.link_name, page_link(result) %><br/>
             <% if result.content_preview && !result.content_preview.blank? %>
               <%= truncate(strip_html(result.content_preview), length: 200) %><br/>
