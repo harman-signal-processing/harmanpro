@@ -42,33 +42,10 @@
       <div class="row">
         <div class="large-8 large-offset-2 columns">
 
-          <div class="reference_system_container"
-            ng-show="systems.length > 0">
-
             <% # don't show system['headline'] for new solutions pages%>
             <% if @current_locale[:key] != "en" %>
-              <h2>{{ system['headline'] }}</h2>
+              <%= render "reference_systems", vertical_market: @vertical_market %>
             <% end %>
-            <div ng-bind-html="getHtml(system['description'])"></div>
-            <% if @vertical_market.all_diagrams_present? || ENV['show_placeholders'] == "true" %>
-              <div class="system-diagram-container">
-                <%= render "reference_systems/system_diagram_popups" %>
-
-                <img ng-src="{{ system['system_diagram_url'] }}" img-preload/>
-              </div>
-            <% else %>
-              <hr/>
-            <% end %>
-          </div> <!-- end reference_system_container -->
-
-          <noscript>
-            <h5 class="subheader"><%= t('vertical_market_page.explore_examples') %>:</h5>
-            <ul>
-              <%= @vertical_market.featured_reference_systems.each do |reference_system| %>
-                <li><%= link_to reference_system.name, [@vertical_market, reference_system] %></li>
-              <% end %>
-            </ul>
-          </noscript>
 
           <%= render "learn", vertical_market: @vertical_market %>
 
