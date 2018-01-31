@@ -158,6 +158,14 @@ Rails.application.routes.draw do
   get 'system/:model/:attachment/:id_and_timestamp/:basename.:extension' => 'paperclips#redirects'
   get 'system/:model/:attachment/:id1/:id2/:id3/:style/:basename.:extension' => 'paperclips#redirects'
 
+  # Social media
+  get '/facebook', to: redirect('https://www.facebook.com/HarmanInt?_rdr=p')
+  get '/twitter', to: redirect('https://twitter.com/Harman')
+  get '/linkedin', to: redirect('https://www.linkedin.com/company/harman-international')
+  get '/youtube', to: redirect('https://www.youtube.com/user/HarmanIntl')
+  get '/pinterest', to: redirect('https://www.pinterest.com/harmanint/')
+  get '/google', to: redirect('https://plus.google.com/+HarmanIntl/videos')
+
   root to: 'main#index'
 
 end
