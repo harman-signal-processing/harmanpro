@@ -145,19 +145,13 @@ Rails.application.routes.draw do
 
   # The usual stuff
 
-  # get '/contacts' => 'landing_pages#contacts'
-  get '/contacts/brands' => 'landing_pages#brand_contacts'
-  # get "/contacts", to: "contacts#index"
+  # Contacts
   get "/contacts", to: "landing_pages#contacts_home"
   get "/contacts/solutions", to: "landing_pages#contacts_solutions"
+  get "/contacts/brands", to: "landing_pages#brand_contacts"
   get "/contacts/channel", to: "landing_pages#contacts_channel_map"
-  
-  resource "contacts", only: [:index] do
-    get "most_popular"
-    get "asia", to: "contacts#asia_method"
-  end
   get "/contacts/:search", to: "contacts#show"
-  get "/contacts/:search/:map", to: "contacts#show"
+  get "/contacts/:search/:chosen_contacts_path", to: "contacts#show"
 
   
   get '/thankyou' => 'landing_pages#thankyou', as: :thankyou # Thank you page after leadgen form
