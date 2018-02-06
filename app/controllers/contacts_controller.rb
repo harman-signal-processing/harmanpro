@@ -1,11 +1,5 @@
 class ContactsController < ApplicationController
 
-    def index
-       contacts = get_contacts
-       @contacts = { contacts: contacts, unique_groups: []}
-       @contacts
-    end
-    
     def show
         search_term = params[:search].downcase
         chosen_contacts_path = params[:chosen_contacts_path].nil? ? "solutions" : params[:chosen_contacts_path].downcase
@@ -19,9 +13,9 @@ class ContactsController < ApplicationController
         @contact_nav_list = get_contacts_nav_list(chosen_contacts_path)
         
         slugs = get_contact_slugs
-        titleSlug = slugs.map{|item| item["slug"] == search_term ? item["pageTitle"] : nil}.compact[0]
+        page_title_for_slug = slugs.map{|item| item["slug"] == search_term ? item["pageTitle"] : nil}.compact[0]
         
-        @contact_grouping_type = titleSlug.nil? ? search_term.titlecase : titleSlug
+        @contact_grouping_type = page_title_for_slug.nil? ? search_term.titlecase : page_title_for_slug
         @contact_sales_type = chosen_contacts_path.titlecase.singularize + " Sales"
         
         contacts = get_contacts
