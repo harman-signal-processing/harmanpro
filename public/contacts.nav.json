@@ -1,0 +1,167 @@
+[
+    {
+        "path": "/contacts/barsrestaurants",
+        "name": "Bars & Restaurants",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/broadcastradio",
+        "name": "Broadcast Radio",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/broadcasttelevision",
+        "name": "Broadcast TV",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/casinos",
+        "name": "Casinos",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/cinemas",
+        "name": "Cinemas",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/conventioncenters",
+        "name": "Convention Centers",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/corporate",
+        "name": "Corporate",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/cruiseships",
+        "name": "Cruise Ships",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/education",
+        "name": "Education",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/government",
+        "name": "Government",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/hotels",
+        "name": "Hotels",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/housesofworship",
+        "name": "Houses of Worship",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/karaoke",
+        "name": "Karaoke",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/museums",
+        "name": "Museums",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/nightlife",
+        "name": "Nightlife",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/performingarts",
+        "name": "Performing Arts",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/portablepa",
+        "name": "Portable PA",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/recordingstudio",
+        "name": "Recording & Studio",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/retail",
+        "name": "Retail",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/stadiumsarenas",
+        "name": "Stadiums & Arenas",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/themedattractions",
+        "name": "Themed Attractions",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/tour",
+        "name": "Tour",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/transportation",
+        "name": "Transportation",
+        "type": "solution"
+    },
+    {
+        "path": "/contacts/canada/channel",
+        "name": "Canada",
+        "type": "channel"
+    },
+    {
+        "path": "/contacts/unitedstateswest/channel",
+        "name": "United States, West",
+        "type": "channel"
+    },
+    {
+        "path": "/contacts/unitedstatescentral/channel",
+        "name": "United States, Central",
+        "type": "channel"
+    },
+    {
+        "path": "/contacts/unitedstatesnortheast/channel",
+        "name": "United States, Northeast",
+        "type": "channel"
+    },
+    {
+        "path": "/contacts/unitedstatessoutheast/channel",
+        "name": "United States, Southeast",
+        "type": "channel"
+    },
+    {
+        "path": "/contacts/latinamerica/channel",
+        "name": "Latin America",
+        "type": "channel"
+    },
+    {
+        "path": "/contacts/emeanorthwest/channel",
+        "name": "EMEA, Northwest",
+        "type": "channel"
+    },
+    {
+        "path": "/contacts/emeacentral/channel",
+        "name": "EMEA, Central",
+        "type": "channel"
+    },
+    {
+        "path": "/contacts/emeasouth/channel",
+        "name": "EMEA, South",
+        "type": "channel"
+    },
+    {
+        "path": "/contacts/apac/channel",
+        "name": "APAC",
+        "type": "channel"
+    }
+]

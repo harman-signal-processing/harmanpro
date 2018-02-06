@@ -45,15 +45,15 @@
     },
     {
         "slug": "emeacentral",
-        "pageTitle": "EMEA Central"
+        "pageTitle": "EMEA, Central"
     },
     {
         "slug": "emeanorthwest",
-        "pageTitle": "EMEA Northwest"
+        "pageTitle": "EMEA, Northwest"
     },
     {
         "slug": "emeasouth",
-        "pageTitle": "EMEA South"
+        "pageTitle": "EMEA, South"
     },
     {
         "slug": "global",
@@ -121,18 +121,18 @@
     },
     {
         "slug": "unitedstatescentral",
-        "pageTitle": "United States Central"
+        "pageTitle": "United States, Central"
     },
     {
         "slug": "unitedstatesnortheast",
-        "pageTitle": "United States Northeast"
+        "pageTitle": "United States, Northeast"
     },
     {
         "slug": "unitedstatessoutheast",
-        "pageTitle": "United States Southeast"
+        "pageTitle": "United States, Southeast"
     },
     {
         "slug": "unitedstateswest",
-        "pageTitle": "United States West"
+        "pageTitle": "United States, West"
     }
 ]
