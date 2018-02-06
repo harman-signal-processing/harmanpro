@@ -10,8 +10,8 @@ class LandingPagesController < ApplicationController
   end
 
   def contacts_home
-    if LandingPage.exists?(slug: "contact-us-test")
-      @landing_page = LandingPage.find("contact-us-test")
+    if LandingPage.exists?(custom_slug: "contacts-home")
+      @landing_page = LandingPage.find_by(custom_slug:"contacts-home")
       render action: :show and return false
     else
       redirect_to "https://pro.harman.com" and return false
@@ -28,8 +28,8 @@ class LandingPagesController < ApplicationController
   end
 
   def contacts_channel_map
-    if LandingPage.exists?(slug: "contactsmap")
-      @landing_page = LandingPage.find("contactsmap")
+    if LandingPage.exists?(custom_slug: "channel-contacts")
+      @landing_page = LandingPage.find_by(custom_slug:"channel-contacts")
       render action: :show and return false
     else
       redirect_to "https://pro.harman.com" and return false
