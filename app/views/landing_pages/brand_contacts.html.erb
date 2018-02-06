@@ -5,9 +5,18 @@
 
 <div class="bumped-up">
   <div class="banner-container">
-    <h1><%= image_tag "contact_header.jpg", alt: t('contacts_page.title') %></h1>
+    <h1><%= link_to(image_tag(Resource.find_by(name:"Contacts Banner - Brands").attachment.url, alt: t('contacts_page.title')),"/contacts") %></h1>
   </div>
 </div>
+
+<div class="row" style="margin-top:10px;">
+    <div class="large-2 columns">
+        <%= link_to contacts_path, class: "small radius button" do %>
+            <%= fa_icon "home" %>
+            Contacts
+        <% end %>
+    </div>
+</div>    
 
 <div class="container main-container ">
   <div class="row">

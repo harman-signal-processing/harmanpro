@@ -1,35 +1,42 @@
+<% if @contacts_banner_image_url.present? %>
+<%= link_to((image_tag @contacts_banner_image_url), contacts_path) %>
+<% end %>    
 
-<a href="/contacts">
-    <!--<img src="https://hpro-with-contacts-sweetcleancode.c9users.io/system/landing_pages/banners/102_1517242055/contact_header_original_original.jpg" alt="Contact header original original">-->
-  <% if @landing_page.banner.present? %>
-    <%= image_tag @landing_page.banner.url %>
-  <% end %>    
-</a>
+<div class="row" style="margin-top:10px;">
+    <div class="large-2 columns">
+        <%= link_to contacts_path, class: "small radius button" do %>
+            <%= fa_icon "home" %>
+            Contacts
+        <% end %>
+    </div>
+    <div class="large-4 large-offset-0 medium-8 medium-offset-2 columns">
+        <select id="contacts_nav_list" name="contacts_nav_list" onchange="location = this.options[this.selectedIndex].value;" class="small radius button">
+            <% @contact_nav_list.each do |nav_item| %>
+                <% if request.fullpath == nav_item["path"]%>
+                    <option selected="selected" value="<%=nav_item["path"]%>"><%=nav_item["name"]%></option>
+                <% else %>
+                    <option value="<%=nav_item["path"]%>"><%=nav_item["name"]%></option>
+                <% end %>
+            <% end %>
+        </select>
+    </div><!-- <div class="large-4 large-offset-0 medium-8 medium-offset-2 columns"> -->
+</div><!-- <div class="row" style="margin-top:10px;"> -->
 
-<h1 style="margin-bottom:20px;"><%=@contactType%> for <%=@pageTitle%></h1>
-
-<!--<% @contacts[:unique_groups].sort.each do |group| %>-->
-<!--    <p><%=group%></p>-->
-<!--<% end %>-->
+<h1 style="margin-bottom:20px;"><%=@contact_sales_type%> for <%=@contact_grouping_type%></h1>
 
 <div class="row">
     <div class="large-12 large-offset-0 medium-8 medium-offset-2 columns" data-equalizer="contactbox">
-        <ul class="large-block-grid-4 medium-block-grid-3 small-block-grid-1">
-        
+        <ul class="large-block-grid-4 medium-block-grid-2 small-block-grid-1">
             <% @contacts[:contacts].each do |contact|%>
-            <li>
-                <div class="panel" data-equalizer-watch="contactbox">
-                    <em><%=contact["name"]%></em></br>
-                    <%=contact["title"]%></br>
-                    <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp; <a href="mailto:<%=contact["email"]%>"><%=contact["email"]%></a></br>
-                    <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;<%=contact["phone1"]%></br>
-                    <!--<b>Groups:</b> <%=([contact["group1"].to_s,contact["group2"].to_s,contact["group3"].to_s] - ["", nil]).join("</br>").html_safe%>                    -->
-                </div>
-
-            </li>
+                <li>
+                    <div class="panel" data-equalizer-watch="contactbox">
+                        <em><%=contact["name"]%></em></br>
+                        <%=contact["title"]%></br>
+                        <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp; <a href="mailto:<%=contact["email"]%>"><%=contact["email"]%></a></br>
+                        <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;<%=contact["phone1"]%>
+                    </div>
+                </li>
             <% end %>
         </ul><!-- <ul class="large-block-grid-5 medium-block-grid-3 small-block-grid-1"> -->
     </div><!-- <div class="large-12 large-offset-0 medium-8 medium-offset-2 columns" data-equalizer="contact-box">  -->
 </div><!-- <div class="row"> -->
-
-<!--<%=@contacts%>-->
