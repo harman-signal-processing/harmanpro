@@ -52,7 +52,13 @@ class ContactsController < ApplicationController
     
     def get_contacts
         contacts = Contacts.get_all_contacts
-        contacts = contacts.select {|contact| contact["showonweb"].downcase == "yes" }
+        contacts = contacts.select {|contact| 
+            begin
+                contact["showonweb"].downcase == "yes" 
+            rescue
+                puts (contact["name"] + " missing showonweb attribute").colorize(:color => :light_blue, :background => :red)
+            end
+        }
         contacts
     end 
 
