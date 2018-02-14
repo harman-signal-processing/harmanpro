@@ -56,7 +56,7 @@ class ContactsController < ApplicationController
             begin
                 contact["showonweb"].downcase == "yes" 
             rescue
-                puts (contact["name"] + " missing showonweb attribute").colorize(:color => :light_blue, :background => :red)
+                # puts (contact["name"] + " missing showonweb attribute").colorize(:color => :light_blue, :background => :red)
             end
         }
         contacts
