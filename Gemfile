@@ -78,8 +78,10 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-passenger'
-  gem 'byebug',      '3.4.0'
+  # gem 'byebug',      '3.4.0'
+  gem 'pry-byebug'
   gem 'rails-erd'
+  gem 'awesome_print'
 end
 
 group :development, :test do
