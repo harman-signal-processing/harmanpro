@@ -14,7 +14,7 @@ class LandingPagesController < ApplicationController
       @landing_page = LandingPage.find_by(custom_slug:"contacts-home")
       render action: :show and return false
     else
-      redirect_to "https://pro.harman.com" and return false
+      redirect_to root_path and return false
     end
   end
 
@@ -23,7 +23,7 @@ class LandingPagesController < ApplicationController
       @landing_page = LandingPage.find("solutions-contacts")
       render action: :show and return false
     else
-      redirect_to "https://pro.harman.com" and return false
+      redirect_to root_path and return false
     end
   end
 
@@ -32,7 +32,7 @@ class LandingPagesController < ApplicationController
       @landing_page = LandingPage.find_by(custom_slug:"channel-contacts")
       render action: :show and return false
     else
-      redirect_to "https://pro.harman.com" and return false
+      redirect_to root_path and return false
     end
   end
 
@@ -47,7 +47,7 @@ class LandingPagesController < ApplicationController
       @landing_page = LandingPage.find("privacy-policy")
       render action: :show and return false
     else
-      redirect_to "http://www.harman.com" and return false
+      redirect_to "http://www.harman.com/privacy-policy" and return false
     end
   end
 
@@ -56,7 +56,7 @@ class LandingPagesController < ApplicationController
       @landing_page = LandingPage.find("terms-of-use")
       render action: :show and return false
     else
-      redirect_to "http://www.harman.com" and return false
+      redirect_to "http://www.harman.com/terms-use" and return false
     end
   end
 
