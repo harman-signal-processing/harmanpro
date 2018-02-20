@@ -53,6 +53,7 @@ de:
     consultants: Consultants
     news: News
     contacts: Contacts
+    contact_us: Contact Us
     service: Service
     shop: Shop
     learn: Learn
@@ -79,7 +80,7 @@ de:
     consignment_form: Consignment Form
 
   contacts_page:
-    title: HARMAN Professional Brand Contacts
+    title: Brand Contacts
     meta_description: "Support and other contact links for HARMAN Professional brands: %{brand_names}."
     click_to_contact: click to contact these brands
     brand_support: "%{brand} Support"

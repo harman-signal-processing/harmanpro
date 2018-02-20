@@ -30,15 +30,6 @@ RSpec.describe LandingPagesController, type: :controller do
     end
   end
 
-  describe "GET contacts" do
-    it "responds with contacts page" do
-      get :contacts
-
-      expect(response).to be_success
-      expect(response).to render_template("contacts")
-    end
-  end
-
   describe "GET privacy_policy" do
     it "responds with privacy policy page" do
       privacy_policy = FactoryBot.create(:landing_page)

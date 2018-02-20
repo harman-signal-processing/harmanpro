@@ -1,0 +1,138 @@
+[
+    {
+        "slug": "apac",
+        "pageTitle": "APAC"
+    },
+    {
+        "slug": "barsrestaurants",
+        "pageTitle": "Bars & Restaurants"
+    },
+    {
+        "slug": "broadcastradio",
+        "pageTitle": "Broadcast Radio"
+    },
+    {
+        "slug": "broadcasttelevision",
+        "pageTitle": "Broadcast Television"
+    },
+    {
+        "slug": "casinos",
+        "pageTitle": "Casinos"
+    },
+    {
+        "slug": "cinemas",
+        "pageTitle": "Cinemas"
+    },
+    {
+        "slug": "conventioncenters",
+        "pageTitle": "Convention Centers"
+    },
+    {
+        "slug": "corporate",
+        "pageTitle": "Corporate"
+    },
+    {
+        "slug": "cruiseships",
+        "pageTitle": "Cruise Ships"
+    },
+    {
+        "slug": "education",
+        "pageTitle": "Education"
+    },
+    {
+        "slug": "emea",
+        "pageTitle": "EMEA"
+    },
+    {
+        "slug": "emeacentral",
+        "pageTitle": "EMEA, Central"
+    },
+    {
+        "slug": "emeanorthwest",
+        "pageTitle": "EMEA, Northwest"
+    },
+    {
+        "slug": "emeasouth",
+        "pageTitle": "EMEA, South"
+    },
+    {
+        "slug": "global",
+        "pageTitle": "Global"
+    },
+    {
+        "slug": "government",
+        "pageTitle": "Government"
+    },
+    {
+        "slug": "hotels",
+        "pageTitle": "Hotels"
+    },
+    {
+        "slug": "housesofworship",
+        "pageTitle": "Houses of Worship"
+    },
+    {
+        "slug": "karaoke",
+        "pageTitle": "Karaoke"
+    },
+    {
+        "slug": "latinamerica",
+        "pageTitle": "Latin America"
+    },
+    {
+        "slug": "museums",
+        "pageTitle": "Museums"
+    },
+    {
+        "slug": "nightlife",
+        "pageTitle": "Nightlife"
+    },
+    {
+        "slug": "performingarts",
+        "pageTitle": "Performing Arts"
+    },
+    {
+        "slug": "portablepa",
+        "pageTitle": "Portable PA"
+    },
+    {
+        "slug": "recordingstudio",
+        "pageTitle": "Recording Studio"
+    },
+    {
+        "slug": "retail",
+        "pageTitle": "Retail"
+    },
+    {
+        "slug": "stadiumsarenas",
+        "pageTitle": "Stadiums & Arenas"
+    },
+    {
+        "slug": "themedattractions",
+        "pageTitle": "Themed Attractions"
+    },
+    {
+        "slug": "tour",
+        "pageTitle": "Tour"
+    },
+    {
+        "slug": "transportation",
+        "pageTitle": "Transportation"
+    },
+    {
+        "slug": "unitedstatescentral",
+        "pageTitle": "United States, Central"
+    },
+    {
+        "slug": "unitedstatesnortheast",
+        "pageTitle": "United States, Northeast"
+    },
+    {
+        "slug": "unitedstatessoutheast",
+        "pageTitle": "United States, Southeast"
+    },
+    {
+        "slug": "unitedstateswest",
+        "pageTitle": "United States, West"
+    }
+]

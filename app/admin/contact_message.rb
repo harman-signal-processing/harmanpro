@@ -73,4 +73,41 @@ ActiveAdmin.register ContactMessage do
 
     end
   end
+
+  csv do
+    column :id
+    column :name
+    column :email
+    column :subject
+    column :message
+    column :product
+    column :operating_system
+    column :message_type
+    column :company
+    column :account_number
+    column :phone
+    column :fax
+    column :billing_address
+    column :billing_city
+    column :billing_state
+    column :billing_zip
+    column :shipping_address
+    column :shipping_city
+    column :shipping_state
+    column :shipping_zip
+    column :product_sku
+    column :product_serial_number
+    column :warranty
+    column :purchased_on
+    column :part_number
+    column :board_location
+    column :shipping_country
+    column :created_at
+    column :updated_at
+    column :attachment_file_name
+    column :attachment_content_type
+    column :attachment_file_size
+    column :attachment_updated_at
+    column(:brand) { |contact_message| contact_message.brand.name }
+  end
 end
