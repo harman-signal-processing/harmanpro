@@ -1,0 +1,59 @@
+  <div ng-controller="VerticalMarketCtrl" ng-cloak
+    locale="<%= I18n.locale %>"
+    vmid="<%= @vertical_market.to_param %>">
+
+    <div class="bumped-up">
+
+      <div data-system-id="{{ currentSystem()['id'] }}"></div>
+      <div class="banner-container vertical-market">
+        <% if @current_locale[:key] == "en" %>
+          <% # this is for the new solutions pages%>
+          <%= image_tag(@vertical_market.banner.url(:large)) %>
+        <% else%>
+          
+          <% # keeping this so we don't break existing non-english solutions pages%>        
+          <% if @vertical_market.reference_systems.count > 0 %>
+            <img ng-src="{{ system['banner_url'] }}" img-preload />
+          <% else %>
+            <%= image_tag(@vertical_market.banner.url(:large)) %>
+          <% end %>        
+        
+        <% end %>
+
+      </div>
+
+      <div class="row">
+        <div class="large-5 large-offset-2 medium-6 medium-offset-2 small-12 columns">
+          <% if @current_locale[:key] == "en" %>
+            <% # this is for the new solutions pages%>
+            <%= render "new_solutions_header", vertical_market: @vertical_market %>
+          <% else %>
+            <% # keeping this so we don't break existing non-english solutions pages%>  
+            <%= render "slider_box", vertical_market: @vertical_market %>
+          <% end %>
+        </div>
+      </div>
+
+    </div> <!-- end bumped-up -->
+
+    <%= render "shared/learn_plan_buy_nav.html.erb" %>
+
+    <div class="container">
+      <div class="row">
+        <div class="large-8 large-offset-2 columns">
+
+            <% # don't show system['headline'] for new solutions pages%>
+            <% if @current_locale[:key] != "en" %>
+              <%= render "reference_systems", vertical_market: @vertical_market %>
+            <% end %>
+
+          <%= render "learn", vertical_market: @vertical_market %>
+
+        </div>
+      </div>
+    </div> <!-- end main container for reference systems -->
+
+  </div> <!-- end ng-controller="VerticalMarketCtrl" -->
+
+  <%= render "plan", vertical_market: @vertical_market %>
+  <%= render "buy", vertical_market: @vertical_market %>
