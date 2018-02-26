@@ -42,19 +42,6 @@ feature "Basic visitor flow" do
     expect(page).to have_link(@child_vertical.name, href: vertical_market_path(@child_vertical))
   end
 
-  # As a casual visitor on a parent vertical market page
-  # I want to click through to a child vertical market page
-  # So I can find out about the system solutions
-  scenario "Visit a child vertical market page" do
-    #click_on @parent_vertical.name # 8/2017 no longer featured on homepage
-    visit vertical_market_path(@parent_vertical)
-
-    click_on @child_vertical.name
-
-    expect(page).to have_link(@reference_system.name, href: vertical_market_reference_system_path(@child_vertical, @reference_system))
-    expect(page).to have_link(@case_study.headline, href: case_study_path(@case_study))
-  end
-
   # As a casual visitor
   # I want to land directly on a reference page
   # So I can learn directly about that system

@@ -153,7 +153,6 @@ Rails.application.routes.draw do
   get "/contacts/:search", to: "contacts#show"
   get "/contacts/:search/:chosen_contacts_path", to: "contacts#show"
 
-  
   get '/thankyou' => 'landing_pages#thankyou', as: :thankyou # Thank you page after leadgen form
   get '/thanks' => 'landing_pages#thanks', as: :thanks # Generic thanks page
   get '/privacy_policy' => 'landing_pages#privacy_policy', as: :privacy_policy
@@ -176,5 +175,6 @@ Rails.application.routes.draw do
   get '/google', to: redirect('https://plus.google.com/+HarmanIntl/videos')
 
   root to: 'main#index'
+  get "*shorturl" => "shorturls#show", as: :shorturl
 
 end
