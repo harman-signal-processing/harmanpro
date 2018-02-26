@@ -2,7 +2,8 @@
 lock '~> 3.10.0'
 
 set :application, 'harmanpro'
-set :repo_url, 'https://github.com/harman-signal-processing/harmanpro'
+#set :repo_url, 'https://github.com/harman-signal-processing/harmanpro'
+set :repo_url, 'ssh://git@github.com/harman-signal-processing/harmanpro.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
