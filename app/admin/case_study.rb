@@ -3,7 +3,7 @@ ActiveAdmin.register CaseStudy do
 
   # :nocov:
   permit_params :headline, :description, :content, :banner, :pdf, :pdf_external_url,
-    case_study_vertical_markets_attributes: [:id, :vertical_market_id, :_destroy]
+    case_study_vertical_markets_attributes: [:id, :vertical_market_id, :show_on_vertical_market_page, :_destroy]
 
   config.paginate = false
   #config.sort_order = 'name_asc'
@@ -35,6 +35,7 @@ ActiveAdmin.register CaseStudy do
     f.has_many :case_study_vertical_markets, heading: "Vertical Markets", new_record: "Add a vertical market" do |s|
       s.input :id, as: :hidden
       s.input :vertical_market
+      s.input :show_on_vertical_market_page
       s.input :_destroy, as: :boolean, label: "Delete"
     end
     f.actions
