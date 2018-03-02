@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227174251) do
+ActiveRecord::Schema.define(version: 20180301194039) do
 
   create_table "active_admin_comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "namespace"
@@ -686,6 +686,83 @@ ActiveRecord::Schema.define(version: 20180227174251) do
     t.index ["original_locale_id"], name: "index_training_content_pages_on_original_locale_id"
   end
 
+  create_table "tse_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.integer "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "index_tse_categories_on_parent_id"
+  end
+
+  create_table "tse_category_contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "tse_category_id"
+    t.integer "tse_contact_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tse_category_id"], name: "index_tse_category_contacts_on_tse_category_id"
+    t.index ["tse_contact_id"], name: "index_tse_category_contacts_on_tse_contact_id"
+  end
+
+  create_table "tse_contact_domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "tse_contact_id"
+    t.integer "tse_domain_id"
+    t.integer "rank"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tse_contact_id"], name: "index_tse_contact_domains_on_tse_contact_id"
+    t.index ["tse_domain_id"], name: "index_tse_contact_domains_on_tse_domain_id"
+  end
+
+  create_table "tse_contact_regions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "tse_contact_id"
+    t.integer "tse_region_id"
+    t.integer "rank"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tse_contact_id"], name: "index_tse_contact_regions_on_tse_contact_id"
+    t.index ["tse_region_id"], name: "index_tse_contact_regions_on_tse_region_id"
+  end
+
+  create_table "tse_contact_technologies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "tse_contact_id"
+    t.integer "tse_technology_id"
+    t.integer "rank"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tse_contact_id"], name: "index_tse_contact_technologies_on_tse_contact_id"
+    t.index ["tse_technology_id"], name: "index_tse_contact_technologies_on_tse_technology_id"
+  end
+
+  create_table "tse_contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "job_title"
+    t.string "phone"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "address"
+    t.string "manager"
+    t.string "company"
+  end
+
+  create_table "tse_domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tse_regions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tse_technologies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -705,6 +782,7 @@ ActiveRecord::Schema.define(version: 20180227174251) do
     t.boolean "admin", default: false
     t.boolean "emea_admin", default: false
     t.boolean "emea_distributor", default: false
+    t.boolean "tse_admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

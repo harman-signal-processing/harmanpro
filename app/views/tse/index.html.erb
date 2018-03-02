@@ -1,0 +1,102 @@
+<div class="row">
+  <div class="small-10 columns">
+    <h3>Technology &amp; Service Experts</h3>
+  </div>
+  <div class="small-2 columns text-right">
+    <%= link_to "admin", tse_admin_path %>
+  </div>
+</div>
+
+<div ng-controller="TseCtrl" ng-cloak
+  locale="<%= I18n.locale %>" class="row">
+  <div class="medium-4 small-12 large-3 columns">
+    <div class="panel">
+      <form id="tse_lookup" method="get">
+        <label>I need to find someone who can help me with:</label>
+        <select name="nav1" id="nav1"
+                ng-model="selectedParentCategory"
+                ng-change="updateParentResults()"
+                ng-options="parent.id as parent.name for parent in parent_categories">
+        </select>
+        <div ng-show="child_categories.length">
+          <label>More specifically:</label>
+          <select name="nav2" id="nav2"
+                  ng-model="selectedChildCategory"
+                  ng-change="updateChildResults()"
+                  ng-options="child.id as child.name for child in child_categories">
+          </select>
+        </div>
+        <div ng-show="contacts.length">
+          <hr/>
+          <div class="row">
+            <div class="small-6 columns">
+              <h6><strong>FILTERS</strong></h6>
+            </div>
+            <div class="small-6 text-right columns">
+              <a ng-click="resetFilters()">reset</a>
+            </div>
+          </div>
+          <label>Technology:</label>
+          <select name="technology" id="technology"
+                  ng-model="selectedTechnology"
+                  ng-options="technology.name for technology in technologies">
+          </select>
+          <div ng-show="selectedTechnology">
+            <label>Region:</label>
+            <select name="region" id="region"
+                    ng-model="selectedRegion"
+                    ng-options="region.name for region in regions">
+            </select>
+            <div ng-show="selectedRegion">
+              <label>Domain:</label>
+              <select name="domain" id="domain"
+                      ng-model="selectedDomain"
+                      ng-options="domain.name for domain in domains">
+              </select>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="show-for-small">Results appear below...</div>
+    </div>
+  </div>
+
+  <div class="medium-8 large-9 small-12 columns">
+    <table id="results" ng-show="contacts.length" style="width: 100%">
+      <thead>
+        <tr>
+          <td width="30%">Name/Title</td>
+          <td width="30%">Contact Info</td>
+          <td width="40%">Expertise</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="contact in contacts | filter:includeContact ">
+          <td valign="top">
+            <h5>{{ contact.name }}</h5>
+            {{ contact.job_title }}
+          </td>
+          <td valign="top">
+            <div ng-show="contact.phone">{{ contact.phone }}</div>
+            <div ng-show="contact.email"><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></div>
+            <div ng-show="contact.address">{{ contact.address }}</div>
+          </td>
+          <td valign="top">
+            <div class="row" ng-show="contact.technologies.length">
+              <div class="small-12 medium-5 large-3 columns"><strong>Tech:</strong></div>
+              <div class="small-12 medium-7 large-9 columns">{{ contact.technologies.join(', ') }}</div>
+            </div>
+            <div class="row" ng-show="contact.regions.length">
+              <div class="small-12 medium-5 large-3 columns"><strong>Regions:</strong></div>
+              <div class="small-12 medium-7 large-9 columns">{{ contact.regions.join(', ') }}</div>
+            </div>
+            <div class="row" ng-show="contact.domains.length">
+              <div class="small-12 medium-5 large-3 columns"><strong>Domains:</strong></div>
+              <div class="small-12 medium-7 large-9 columns">{{ contact.domains.join(', ') }}</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
