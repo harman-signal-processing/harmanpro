@@ -117,7 +117,7 @@
                   <%= top_vertical_market_navigation(dropdowns: false) %>
                 </ul>
               </li>
-              <li><%= link_to t("case_study").pluralize, case_studies_path %></li>
+              <li><%= link_to t("nav.case_studies"), case_studies_path %></li>
               <li class="has-dropdown">
                 <a href="#" class="disabled"><%= t('nav.resources') %></a>
                 <ul class="dropdown">
@@ -140,6 +140,7 @@
                   <% end %>
                 </ul>
               </li>
+              <li><%= link_to t('nav.contact_us'), contacts_path %></li>
               <% if SiteSetting.set_for_locale?("blog_link_name") && SiteSetting.set_for_locale?("blog_link") %>
                 <li>
                   <%= link_to SiteSetting.value("blog_link_name"), SiteSetting.value("blog_link"), target: "_blank" %>

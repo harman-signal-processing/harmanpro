@@ -83,8 +83,12 @@ class VerticalMarket < ApplicationRecord
     reference_systems.limit(limit)
   end
 
+  def featured_case_studies_ids
+    case_study_vertical_markets.where(show_on_vertical_market_page: true).pluck(:case_study_id)
+  end
+
   def featured_case_studies(limit = 3)
-    @featured_case_studies ||= case_studies.order("RAND()").limit(limit)
+    @featured_case_studies ||= CaseStudy.where(id: featured_case_studies_ids).order("RAND()").limit(limit)
   end
 
   def all_diagrams_present?

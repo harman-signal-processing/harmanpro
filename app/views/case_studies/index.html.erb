@@ -1,6 +1,6 @@
 <div class="row">
   <div class="medium-9 columns">
-    <h1><% if @vertical_market %><%= @vertical_market.name.titleize %><% end %> <%= t('case_study').pluralize.titleize %></h1>
+    <h1><% if @vertical_market %><%= @vertical_market.name.titleize %><% end %> <%= t('nav.case_studies').titleize %></h1>
 
     <ul class="medium-block-grid-3 small-block-grid-1">
       <% @case_studies.each do |case_study| %>

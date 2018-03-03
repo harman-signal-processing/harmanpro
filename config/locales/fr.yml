@@ -46,6 +46,7 @@ fr:
   nav: 
     menu: Menu
     solutions: Solutions
+    case_studies: Études de cas
     resources: Resources
     training: Entraînement
     event: Événements
@@ -53,6 +54,7 @@ fr:
     consultants: Consultants
     news: Actualités
     contacts: Contacts
+    contact_us: Contacts
     service: Service
     shop: Boutique
     learn: Apprendre

@@ -46,6 +46,7 @@
   nav:
     menu: Меню
     solutions: Решения
+    case_studies: Проектные решения
     resources: Материалы
     training: Тренинг
     events: События и мероприятия
@@ -53,6 +54,7 @@
     consultants: Консультанты
     news: Новости
     contacts: Контакты
+    contact_us: Контакты
     service: Сервис
     shop: Магазин
     learn: Узнать

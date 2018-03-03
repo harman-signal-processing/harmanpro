@@ -1,0 +1,20 @@
+          <div class="slider-container panel">
+            <a name="learn"></a>
+            <h1 data-magellan-destination="learn"><%= @vertical_market.name %></h1>
+
+            <% if @vertical_market.reference_systems.count > 1 %>
+              <div ng-show="systems.length > 1">
+                <input slider
+                  ng-model="slider_pos"
+                  options="{
+                    from: 1,
+                    to: systems.length,
+                    step: 1,
+                    smooth: true,
+                    scale: system_labels,
+                  }"
+                />
+              </div>
+            <% end %>
+
+          </div>

@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 20180302190219) do
     t.integer "vertical_market_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "show_on_vertical_market_page", default: true
   end
 
   create_table "channel_countries", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -612,6 +613,13 @@ ActiveRecord::Schema.define(version: 20180302190219) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_service_groups_on_brand_id"
+  end
+
+  create_table "shorturls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "shortcut"
+    t.string "full_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "site_setting_translations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -1,0 +1,70 @@
+  <div class="container main-container parent-category-container" data-background="<%= @vertical_market.background.url %>">
+    <div class="bubble" id="bubble-1"></div>
+    <div class="bubble" id="bubble-2-removed"></div>
+    <div class="bubble" id="bubble-3"></div>
+
+    <div class="row">
+      <div class="medium-5 medium-offset-1 columns">
+        <div class="panel">
+          <h2><%= @vertical_market.name %></h2>
+          <h5 class="subheader"><%= @vertical_market.headline %></h5>
+          <%= raw textilize @vertical_market.description %>
+        </div>
+        <p>&nbsp;</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="medium-10 medium-offset-1 columns">
+        <h2 class="white"><%= t("explore") %> <%= t("vertical_market_solutions", vertical_market_name: @vertical_market.name) %></h2>
+        <br/>
+        <ul class="large-block-grid-5 medium-block-grid-3 small-block-grid-2 %>">
+          <% @vertical_market.children_or_reference_systems.each do |vm| %>
+            <li>
+            <%= link_to vm, class: "vertical-market-icon" do %>
+              <% if vm.banner.present? || ENV['show_placeholders'] == "true" %>
+                <%= image_tag vm.banner.url(:small) %>
+              <% end %>
+              <div class="overlay">
+                <h5><%= vm.name %></h5>
+                <span class="description"><%= vm.headline %></span>
+              </div>
+            <% end %>
+            </li>
+          <% end %>
+        </ul>
+        <p>&nbsp;</p>
+      </div>
+    </div>
+
+    <div class="row" data-equalizer="info-panels">
+      <div class="medium-6 medium-offset-1 small-12 columns">
+        <div class="info-panel panel text-center" data-equalizer-watch="info-panels">
+          <%= render "find_installer" %>
+        </div>
+      </div>
+      <div class="medium-4 small-12 columns end">
+        <% if @vertical_market.show_hef? %>
+          <% if @vertical_market.hef_banner.present? %>
+            <%= link_to SiteSetting.value("hef-link") do %>
+              <%= image_tag @vertical_market.hef_banner.url, width: 750, height: 70, alt: SiteSetting.value("hef-description"), style: 'margin-bottom: 1.42857rem;' %>
+            <% end %>
+
+          <% else %>
+            <div class="info-panel panel text-center" data-equalizer-watch="info-panels">
+              <h4><%= SiteSetting.value("hef-sidebar-title") %></h4>
+              <div class="space-after">
+                <%= raw textilize SiteSetting.value("hef-description") %>
+              </div>
+              <%= link_to t('learn_more'),
+                SiteSetting.value("hef-link"),
+                target: (SiteSetting.value("hef-link").to_s.match(/^http/) ? "_blank" : ""),
+                class: "small radius button" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+  </div> 
+  <!-- end of parent-category-container --> 

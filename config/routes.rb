@@ -149,7 +149,15 @@ Rails.application.routes.draw do
   get '/sureroute-test-object(.:format)' => 'main#sureroute', as: :sureroute_test_object
 
   # The usual stuff
-  get '/contacts' => 'landing_pages#contacts'
+
+  # Contacts
+  get "/contacts", to: "landing_pages#contacts_home"
+  get "/contacts/solutions", to: "landing_pages#contacts_solutions"
+  get "/contacts/brands", to: "landing_pages#brand_contacts"
+  get "/contacts/channel", to: "landing_pages#contacts_channel_map"
+  get "/contacts/:search", to: "contacts#show"
+  get "/contacts/:search/:chosen_contacts_path", to: "contacts#show"
+
   get '/thankyou' => 'landing_pages#thankyou', as: :thankyou # Thank you page after leadgen form
   get '/thanks' => 'landing_pages#thanks', as: :thanks # Generic thanks page
   get '/privacy_policy' => 'landing_pages#privacy_policy', as: :privacy_policy
@@ -172,5 +180,6 @@ Rails.application.routes.draw do
   get '/google', to: redirect('https://plus.google.com/+HarmanIntl/videos')
 
   root to: 'main#index'
+  get "*shorturl" => "shorturls#show", as: :shorturl
 
 end
