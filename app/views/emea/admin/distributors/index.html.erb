@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="small-8 columns">
+    <h1>Distributors</h1>
+  </div>
+  <div class="small-4 columns text-right">
+    <br/>
+    <%= link_to "new", new_emea_admin_distributor_path, class: "small radius success button" %>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <td>Distributor</td>
+      <td>Country</td>
+      <td>Channel Manager</td>
+    </tr>
+  </thead>
+  <% @distributors.each do |distributor| %>
+    <tr>
+      <td><%= link_to distributor.name, [:emea, :admin, distributor] %></td>
+      <td><%= distributor.country %></td>
+      <td><%= distributor.channel_manager %></td>
+    </tr>
+  <% end %>
+</table>

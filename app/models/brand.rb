@@ -16,6 +16,8 @@ class Brand < ApplicationRecord
   has_many :products, dependent: :restrict_with_error
   has_many :brand_news_articles, dependent: :destroy, inverse_of: :brand
   has_many :news_articles, through: :brand_news_articles
+  has_many :brand_distributors, dependent: :destroy
+  has_many :distributors, through: :brand_distributors
 
   has_attached_file :logo,
     styles: {

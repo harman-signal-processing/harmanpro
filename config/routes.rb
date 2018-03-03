@@ -63,7 +63,8 @@ Rails.application.routes.draw do
       resources :channels,
         :channel_countries,
         :channel_managers,
-        :channel_country_managers
+        :channel_country_managers,
+        :distributors
       resources :users, only: [:index, :show, :destroy]
       post 'update_invitation_code'
       patch 'update_invitation_code'
@@ -74,6 +75,10 @@ Rails.application.routes.draw do
     get "departments(.:format)" => 'employee_contacts#departments', defaults: { format: 'json' }
     get "department/:department_id/job_functions(.:format)" => 'employee_contacts#job_functions', defaults: { format: 'json' }
     get "department/:department_id/job_function/:job_function_id/contacts(.:format)" => 'employee_contacts#contacts', defaults: { format: 'json' }
+
+    get "distributors/countries(.:format)" => 'distributors#countries', defaults: { format: 'json' }
+    get "distributors/brands(.:format)" => 'distributors#brands', defaults: { format: 'json' }
+    get "distributors/country/:country_id/brand/:brand_id/distributors(.:format)" => 'distributors#distributors', defaults: { format: 'json' }
   end
   resources :emea_pages, path: 'emea', only: [:index, :show]
 
