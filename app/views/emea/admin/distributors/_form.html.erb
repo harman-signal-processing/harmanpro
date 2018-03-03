@@ -1,0 +1,44 @@
+<%= simple_form_for [:emea, :admin, @distributor] do |f| %>
+  <%= f.input :region, as: :hidden %>
+
+  <%= f.input :name %>
+  <%= f.input :website %>
+
+  <div class="row">
+    <div class="small-12 medium-4 columns">
+      <%= f.input :country, as: :string %>
+    </div>
+    <div class="small-12 medium-4 columns">
+      <%= f.input :time_zone, as: :string %>
+    </div>
+    <div class="small-12 medium-4 columns">
+      <%= f.input :channel_manager %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-4 columns">
+      <%= f.input :contact_name %>
+    </div>
+    <div class="small-12 medium-4 columns">
+      <%= f.input :contact_phone %>
+    </div>
+    <div class="small-12 medium-4 columns">
+      <%= f.input :contact_email %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.input :details_public %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.input :details_private %>
+    </div>
+  </div>
+
+  <%= f.association :brands, as: :check_boxes, collection: Brand.all_for_site.order(:name) %>
+
+  <%= f.submit class: "small button" %>
+
+<% end %>

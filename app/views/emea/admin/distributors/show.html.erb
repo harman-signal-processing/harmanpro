@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="small-8 columns">
+    <h1>Distributor Details</h1>
+  </div>
+  <div class="small-4 columns text-right">
+    <br/>
+    <%= link_to "edit",
+      edit_emea_admin_distributor_path(@distributor),
+      class: "small radius button" %>
+  </div>
+</div>
+
+<h2><%= @distributor.name %></h2>
+<h4>Brands: <%= @distributor.brands.order(:name).map{|b| b.name}.join(", ") %></h4>
+<div class="row">
+  <div class="small-12 medium-6 columns">
+    Country: <%= @distributor.country %><br/>
+    Channel Manager: <%= @distributor.channel_manager %><br/>
+    Time Zone: <%= @distributor.time_zone %><br/>
+    Website:
+    <% if @distributor.website.present? && @distributor.website.match(/http|www/i) %>
+      <%= link_to @distributor.website, @distributor.website, target: "_blank" %>
+    <% else %>
+      <%= @distributor.website %>
+    <% end %>
+  </div>
+  <div class="small-12 medium-6 columns">
+    Contact Name: <%= @distributor.contact_name %><br/>
+    Contact Phone: <%= @distributor.contact_phone %><br/>
+    Contact Email: <%= mail_to @distributor.contact_email, @distributor.contact_email %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 medium-6 columns">
+    <div class="panel">
+      <h6>Details Public</h6>
+      <%=raw @distributor.details_public %>
+    </div>
+  </div>
+
+  <div class="small-12 medium-6 columns">
+    <div class="panel">
+      <h6>Details Private</h6>
+      <%=raw @distributor.details_private %>
+    </div>
+  </div>
+</div>
+

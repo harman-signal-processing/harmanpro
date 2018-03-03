@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126203027) do
+ActiveRecord::Schema.define(version: 20180302190219) do
 
   create_table "active_admin_comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "namespace"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20180126203027) do
     t.boolean "live"
     t.index ["key"], name: "index_available_locales_on_key"
     t.index ["slug"], name: "index_available_locales_on_slug"
+  end
+
+  create_table "brand_distributors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "distributor_id"
+    t.integer "brand_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_brand_distributors_on_brand_id"
+    t.index ["distributor_id"], name: "index_brand_distributors_on_distributor_id"
   end
 
   create_table "brand_news_articles", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -227,6 +236,22 @@ ActiveRecord::Schema.define(version: 20180126203027) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "distributors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "country"
+    t.string "channel_manager"
+    t.string "contact_name"
+    t.string "contact_phone"
+    t.string "contact_email"
+    t.string "time_zone"
+    t.text "details_public"
+    t.text "details_private"
+    t.string "region"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "website"
   end
 
   create_table "emea_employee_contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

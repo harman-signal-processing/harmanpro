@@ -1,6 +1,20 @@
 require 'csv'
 namespace :emea do
 
+  desc "Import distributors"
+  task :import_distributors => :environment do
+    file = Rails.root.join("db", "emea_distributors.csv")
+
+    Distributor.where(region: "EMEA").delete_all
+
+    CSV.foreach(file, headers: true, header_converters: :symbol) do |row|
+      d_hash = row.to_hash
+      d_hash[:region] = "EMEA"
+      Distributor.create(d_hash)
+    end
+    puts "There are now #{ Distributor.count } distributors."
+  end
+
   desc "Seed the employee contact database"
   task :seed_employee_contacts => :environment do
     seed_file = Rails.root.join("db", "emea_contacts.csv")
