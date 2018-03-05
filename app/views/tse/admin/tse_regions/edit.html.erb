@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="small-8 columns">
+    <h1>Editing Region:</h1>
+  </div>
+
+  <div class="small-4 columns text-right">
+    <%= link_to "delete region",
+      [:tse, :admin, @tse_region],
+      method: :delete,
+      data: { confirm: "Are you sure?" },
+      class: "small alert radius button" %>
+  </div>
+</div>
+
+<%= render 'form' %>

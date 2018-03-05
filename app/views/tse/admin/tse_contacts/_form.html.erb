@@ -1,0 +1,15 @@
+<%= simple_form_for [:tse, :admin, @tse_contact] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :job_title %>
+  <%= f.input :phone %>
+  <%= f.input :email %>
+  <%= f.input :address %>
+  <%#= f.input :manager %>
+  <%#= f.input :company %>
+
+  <%= f.association :tse_technologies, label: "Technologies", as: :check_boxes %>
+  <%= f.association :tse_regions, label: "Regions", as: :check_boxes %>
+  <%= f.association :tse_domains, label: "Domains", as: :check_boxes %>
+
+  <%= f.submit class: "radius button" %>
+<% end %>

@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="small-8 columns">
+    <h1>Editing Category:</h1>
+  </div>
+
+  <div class="small-4 columns text-right">
+    <%= link_to "delete category",
+      [:tse, :admin, @tse_category],
+      method: :delete,
+      data: { confirm: "Are you sure?" },
+      class: "small alert radius button" %>
+  </div>
+</div>
+
+<%= render 'form' %>

@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="small-8 columns">
+    <h1>Technologies</h1>
+  </div>
+
+  <div class="small-4 columns text-right">
+    <%= link_to "new technology", new_tse_admin_tse_technology_path, class: "small success radius button" %>
+  </div>
+</div>
+
+<ul>
+  <% @tse_technologies.each do |technology| %>
+    <li>
+      <%= link_to technology.name, edit_tse_admin_tse_technology_path(technology) %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="small-8 columns">
+    <h1>Categories</h1>
+  </div>
+
+  <div class="small-4 columns text-right">
+    <%= link_to "new category", new_tse_admin_tse_category_path, class: "small success radius button" %>
+  </div>
+</div>
+
+<ul>
+  <% @tse_categories.where(parent_id: nil).each do |category| %>
+    <li>
+      <%= link_to category.name, edit_tse_admin_tse_category_path(category) %>
+      <% if category.children.length > 0 %>
+        <ul>
+          <% category.children.each do |child| %>
+            <li><%= link_to child.name, edit_tse_admin_tse_category_path(child) %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

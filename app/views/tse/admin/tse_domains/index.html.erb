@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="small-8 columns">
+    <h1>Domains</h1>
+  </div>
+
+  <div class="small-4 columns text-right">
+    <%= link_to "new domain", new_tse_admin_tse_domain_path, class: "small success radius button" %>
+  </div>
+</div>
+
+<ul>
+  <% @tse_domains.each do |domain| %>
+    <li>
+      <%= link_to domain.name, edit_tse_admin_tse_domain_path(domain) %>
+    </li>
+  <% end %>
+</ul>

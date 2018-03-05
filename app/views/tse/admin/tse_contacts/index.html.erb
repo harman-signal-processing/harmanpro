@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="small-8 columns">
+    <h1>Contacts</h1>
+  </div>
+
+  <div class="small-4 columns text-right">
+    <%= link_to "new contact", new_tse_admin_tse_contact_path, class: "small success radius button" %>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Tech</td>
+      <td>Regions</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tse_contacts.order(:name).each do |tse_contact| %>
+      <tr>
+        <td><%= link_to tse_contact.name, edit_tse_admin_tse_contact_path(tse_contact) %></td>
+        <td><%= tse_contact.tse_technologies.pluck(:name).join(", ") %></td>
+        <td><%= tse_contact.tse_regions.pluck(:name).join(", ") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
