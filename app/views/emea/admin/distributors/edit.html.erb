@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="small-8 columns">
+    <h1>Editing Distributor</h1>
+  </div>
+  <div class="small-4 columns text-right">
+    <br/>
+    <%= link_to "delete",
+      [:emea, :admin, @distributor],
+      method: :delete,
+      data: { confirm: "Are you sure?" },
+      class: "small radius alert button" %>
+  </div>
+</div>
+
+<%= render 'form' %>
+

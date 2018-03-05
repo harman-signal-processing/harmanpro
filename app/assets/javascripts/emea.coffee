@@ -121,3 +121,71 @@ jQuery ($) ->
 
   $("form#employee-lookup").each -> new EmployeeLookup(@)
 
+  class DistributorLookup
+    constructor: (@this_form) ->
+      @country_select = $(@this_form).find("select#country")
+      @brand_select = $(@this_form).find("select#brand")
+      @country_id = ''
+      @brand_id = ''
+      @distributors = {}
+      @content_container = $("div#distributors-content")
+      @load_countries()
+      @brand_container = $("div#brand-container")
+      @brand_container.hide()
+      @handle_change()
+
+    load_countries: =>
+      url = "/emea/distributors/countries.json"
+      $.getJSON url, (data) =>
+        $.each data.distributors, (key, country) =>
+          @country_select.append $("<option value='#{country}'>#{country}</option>")
+        @country_select.find("option.loading").html('Select A Country...').val('')
+
+    load_brands: =>
+      @brand_container.hide()
+      @brand_select.children().remove()
+      @brand_select.append $("<option class='loading'>loading...</option>")
+      url = "/emea/distributors/brands.json"
+      $.getJSON url, (data) =>
+        $.each data.distributors, (key, brand) =>
+          @brand_select.append $("<option value='#{brand.id}'>#{brand.name}</option>")
+        @brand_select.find("option.loading").html('Select A Brand...').val('')
+        @brand_container.show()
+
+    handle_change: =>
+      @country_select.change (e) =>
+        @country_id = @country_select.val()
+        @load_brands()
+        @content_container.empty()
+      @brand_select.change (e) =>
+        @brand_id = @brand_select.val()
+        @build_or_retrieve_panel()
+
+    build_or_retrieve_panel: =>
+      panel = $("<div></div>")
+      if @country_id.length && @brand_id.length
+        search_url = "/emea/distributors/country/#{ @country_id }/brand/#{ @brand_id }/distributors.json"
+        $.getJSON search_url, (data) =>
+          $.each data.distributors, (key, distributor) =>
+            panel.append("<div><h5>#{distributor.name}</h5>")
+            if distributor.website
+              panel.append("<a href=\"#{distributor.website}\" target=\"_blank\">#{ distributor.website }</a></br>")
+            if distributor.brand_names
+              panel.append("<p>Brands: #{ distributor.brand_names.join(', ') }</p>")
+            if distributor.channel_manager
+              panel.append("<p>Channel Manager: #{distributor.channel_manager}</p>")
+            if distributor.contact_name
+              panel.append("Primary Contact: #{ distributor.contact_name }<br/>")
+            if distributor.contact_email
+              panel.append("<i class=\"fa fa-envelope\" aria-hidden=\"true\"></i>&nbsp;<a href=\"mailto:#{ distributor.contact_email }\">#{ distributor.contact_email }</a></br>" )
+            if distributor.contact_phone
+              panel.append("<i class=\"fa fa-phone\" aria-hidden=\"true\"></i>&nbsp;#{ distributor.contact_phone }</br>")
+            if distributor.time_zone
+              panel.append("Time Zone: #{ distributor.time_zone }<br/>")
+            if distributor.details_public
+              panel.append("<div><br/>Details:<br/>#{distributor.details_public}</div>")
+            panel.append("</div><hr/>")
+          @content_container.html( panel )
+
+  $("form#distributor-lookup").each -> new DistributorLookup(@)
+
