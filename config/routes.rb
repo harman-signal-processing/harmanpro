@@ -1,5 +1,23 @@
 Rails.application.routes.draw do
 
+  # TSE lookup utility (Technical Something Expert) primarily for internal use.
+  get 'tse' => 'tse#index'
+  namespace :tse do
+    resources :tse_categories, path: :categories
+    resources :tse_contacts, path: :contacts
+    resources :tse_technologies, path: :technologies
+    resources :tse_domains, path: :domains
+    resources :tse_regions, path: :regions
+    get 'admin' => 'admin#index'
+    namespace :admin do
+      resources :tse_categories, path: :categories
+      resources :tse_contacts, path: :contacts
+      resources :tse_technologies, path: :technologies
+      resources :tse_domains, path: :domains
+      resources :tse_regions, path: :regions
+    end
+  end
+
   get 'training_calendar/show'
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)

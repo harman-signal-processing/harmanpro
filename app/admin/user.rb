@@ -2,7 +2,7 @@ ActiveAdmin.register User do
   menu parent: "Settings", priority: 2
   permit_params :email, :password, :password_confirmation,
     :service_department, :super_admin, :translator, :admin,
-    :emea_admin, :emea_distributor,
+    :emea_admin, :emea_distributor, :tse_admin,
     locale_translators_attributes: [:id, :available_locale_id, :_destroy]
 
   #menu if: proc { current_user.can?(:manage, AdminUser) }
@@ -47,6 +47,7 @@ ActiveAdmin.register User do
       f.input :translator
       f.input :emea_distributor
       f.input :emea_admin
+      f.input :tse_admin
       f.input :super_admin
     end
     f.has_many :locale_translators, heading: "Authorized Locales", new_record: "Add an authorized locale" do |s|

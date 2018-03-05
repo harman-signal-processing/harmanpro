@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="small-8 columns">
+    <h1>Regions</h1>
+  </div>
+
+  <div class="small-4 columns text-right">
+    <%= link_to "new region", new_tse_admin_tse_region_path, class: "small success radius button" %>
+  </div>
+</div>
+
+<ul>
+  <% @tse_regions.each do |region| %>
+    <li>
+      <%= link_to region.name, edit_tse_admin_tse_region_path(region) %>
+    </li>
+  <% end %>
+</ul>

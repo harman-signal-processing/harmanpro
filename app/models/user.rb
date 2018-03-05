@@ -19,6 +19,7 @@ class User < ApplicationRecord
     translator
     emea_distributor
     emea_admin
+    tse_admin
     super_admin
     service_department
   ]
@@ -73,6 +74,10 @@ class User < ApplicationRecord
   # EMEA admin access
   def emea_admin_access?
     emea_admin? || admin?
+  end
+
+  def tse_admin_access?
+    tse_admin? || admin?
   end
 
   def is_employee?

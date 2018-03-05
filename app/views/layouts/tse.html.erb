@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="harmanpro">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : t('default_meta_description', brand_names: all_brands.map{|b| b.name}.join(', ') ) %>">
+    <link rel="shortcut icon" type="image/x-icon" href="/harman.ico" />
+    <link rel="icon" type="image/x-icon" href="/harman.ico" />
+    <meta name="google-site-verification" content="WZ9C3gBAzwP1aubYp-I5aweY5QRDsEOG8zLsYq_U--E" />
+
+    <%# Silverpop tracking %>
+    <% if Rails.env.production? %>
+      <meta name="com.silverpop.brandeddomains" content="www.pages08.net,akg.com,amx.com,bssaudio.com,crownaudio.com,dbxpro.com,digitech.com,jblpro.com,lexiconpro.com,martin.com,pro.harman.com,soundcraft.com,studer.ch" />
+      <meta name="com.silverpop.cothost" content="pod8.ibmmarketingcloud.com" />
+      <script src="https://www.sc.pages08.net/lp/static/js/iMAWebCookie.js?4724915e-155c1210684-6681ada67421f5d3ed5e65517ed2e77a&h=www.pages08.net" type="text/javascript"></script>
+    <% end %>
+
+    <title><%= content_for?(:title) ? yield(:title) + " | " : '' %> <%= t('site_name') %></title>
+
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/nwmatcher/1.2.5/nwmatcher.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/corysimmons-selectivizr2/1.0.9/selectivizr2.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
+    <![endif]-->
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "header" %>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.32/angular.min.js"></script>
+    <![endif]-->
+    <!--[if (gte IE 9) | (!IE)]><!-->
+      <%= javascript_include_tag "angular/angular" %>
+    <!--<![endif]-->
+    <%= csrf_meta_tags %>
+    <%= yield :header_code %>
+  </head>
+
+  <body>
+
+    <div class="row">
+      <div class="small-9 columns">
+        <h3><%= link_to_unless_current "Technology & Service Experts", tse_path %></h3>
+      </div>
+      <div class="small-3 columns text-right">
+        <% if user_signed_in? %>
+          <% if current_user.tse_admin_access? %>
+            <%= link_to 'Admin', tse_admin_path %> |
+          <% end %>
+          <%= link_to 'Sign Out', destroy_user_session_path, method: 'delete' %>
+        <% else %>
+          <%= link_to 'Sign In', new_user_session_path %> |
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 columns">
+        <%= render 'layouts/flash_messages' %>
+        <%= yield %>
+      </div>
+    </div>
+
+    <%= yield :footer_code %>
+
+    <%= javascript_include_tag "application" %>
+
+    <%= render 'shared/marketing_tracking' %>
+
+  </body>
+</html>
+
