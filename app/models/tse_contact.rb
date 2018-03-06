@@ -19,4 +19,9 @@ class TseContact < ApplicationRecord
   accepts_nested_attributes_for :tse_contact_domains
   accepts_nested_attributes_for :tse_contact_regions
 
+  def tse_categories_flattened
+    parents = tse_categories.where("parent_id > 0").pluck(:parent_id)
+    children = tse_categories.pluck(:id)
+    TseCategory.where(id: (parents + children).uniq)
+  end
 end

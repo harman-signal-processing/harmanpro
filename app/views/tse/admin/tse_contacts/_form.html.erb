@@ -1,15 +1,42 @@
 <%= simple_form_for [:tse, :admin, @tse_contact] do |f| %>
   <%= f.input :name %>
-  <%= f.input :job_title %>
-  <%= f.input :phone %>
-  <%= f.input :email %>
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.input :job_title %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.association :tse_categories,
+        label: "Expertise Category",
+        label_method: :tree_name,
+        input_html: { multiple: false }
+      %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.input :phone %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.input :email %>
+    </div>
+  </div>
+
   <%= f.input :address %>
   <%#= f.input :manager %>
   <%#= f.input :company %>
 
-  <%= f.association :tse_technologies, label: "Technologies", as: :check_boxes %>
-  <%= f.association :tse_regions, label: "Regions", as: :check_boxes %>
-  <%= f.association :tse_domains, label: "Domains", as: :check_boxes %>
+  <div class="row">
+    <div class="small-12 medium-4 columns">
+      <%= f.association :tse_technologies, label: "Technologies", as: :check_boxes %>
+    </div>
+    <div class="small-12 medium-4 columns">
+      <%= f.association :tse_regions, label: "Regions", as: :check_boxes %>
+    </div>
+    <div class="small-12 medium-4 columns">
+      <%= f.association :tse_domains, label: "Domains", as: :check_boxes %>
+    </div>
+  </div>
 
   <%= f.submit class: "radius button" %>
 <% end %>

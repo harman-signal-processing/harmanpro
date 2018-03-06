@@ -53,7 +53,7 @@ class Tse::Admin::TseContactsController < Tse::AdminController
                                        :address,
                                        :manager,
                                        :company,
-                                       tse_category_ids: [],
+                                       :tse_category_ids,
                                        tse_technology_ids: [],
                                        tse_region_ids: [],
                                        tse_domain_ids: []
