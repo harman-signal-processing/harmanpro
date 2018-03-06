@@ -8,7 +8,8 @@ class TseContactSerializer < ActiveModel::Serializer
     :job_title,
     :regions,
     :technologies,
-    :domains
+    :domains,
+    :categories
 
   def regions
     object.tse_regions.pluck(:name)
@@ -20,5 +21,9 @@ class TseContactSerializer < ActiveModel::Serializer
 
   def domains
     object.tse_domains.pluck(:name)
+  end
+
+  def categories
+    object.tse_categories_flattened.pluck(:name)
   end
 end
