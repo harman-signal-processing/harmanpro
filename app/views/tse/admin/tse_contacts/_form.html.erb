@@ -8,6 +8,7 @@
       <%= f.association :tse_categories,
         label: "Expertise Category",
         label_method: :tree_name,
+        collection: TseCategory.all_sorted,
         input_html: { multiple: false }
       %>
     </div>
@@ -31,7 +32,12 @@
       <%= f.association :tse_technologies, label: "Technologies", as: :check_boxes %>
     </div>
     <div class="small-12 medium-4 columns">
-      <%= f.association :tse_regions, label: "Regions", as: :check_boxes %>
+      <%= f.association :tse_regions,
+        label: "Regions",
+        as: :check_boxes,
+        label_method: :tree_name,
+        collection: TseRegion.all_sorted
+      %>
     </div>
     <div class="small-12 medium-4 columns">
       <%= f.association :tse_domains, label: "Domains", as: :check_boxes %>

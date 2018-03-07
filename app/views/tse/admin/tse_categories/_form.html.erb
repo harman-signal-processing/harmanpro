@@ -1,6 +1,7 @@
 <%= simple_form_for [:tse, :admin, @tse_category] do |f| %>
   <%= f.input :name %>
   <%= f.association :parent, collection: TseCategory.where(parent_id: nil) - [f.object] %>
+  <%= f.input :notes, hint: "Only appears for top-level categories." %>
 
   <%= f.submit class: "radius button" %>
 <% end %>

@@ -12,7 +12,7 @@ class TseContactSerializer < ActiveModel::Serializer
     :categories
 
   def regions
-    object.tse_regions.pluck(:name)
+    object.tse_regions.order(:name).pluck(:name)
   end
 
   def technologies

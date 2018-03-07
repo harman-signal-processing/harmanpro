@@ -15,6 +15,7 @@ angular.module("harmanpro")
 
       TseRegion.get {
         locale: $attrs.locale
+        parent: true
       }, (data) ->
         $scope.regions = data.tse_regions
 

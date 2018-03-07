@@ -9,9 +9,14 @@
 </div>
 
 <ul>
-  <% @tse_regions.each do |region| %>
+  <% @tse_regions.where(parent_id: nil).order(:name).each do |region| %>
     <li>
       <%= link_to region.name, edit_tse_admin_tse_region_path(region) %>
+      <ul>
+        <% region.children.each do |child| %>
+          <li><%= link_to child.name, edit_tse_admin_tse_region_path(child) %></li>
+        <% end %>
+      </ul>
     </li>
   <% end %>
 </ul>

@@ -46,7 +46,7 @@ class Tse::Admin::TseCategoriesController < Tse::AdminController
   end
 
   def tse_category_params
-    params.require(:tse_category).permit(:name, :parent_id)
+    params.require(:tse_category).permit(:name, :parent_id, :notes)
   end
 end
 

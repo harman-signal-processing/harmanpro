@@ -3,6 +3,9 @@ class Tse::TseRegionsController < TseController
 
   def index
     @regions = TseRegion.all
+    if params[:parent] == "true"
+      @regions = @regions.where(parent_id: nil).order(:name)
+    end
     respond_with @regions
   end
 

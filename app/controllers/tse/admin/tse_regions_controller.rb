@@ -46,7 +46,7 @@ class Tse::Admin::TseRegionsController < Tse::AdminController
   end
 
   def tse_region_params
-    params.require(:tse_region).permit(:name)
+    params.require(:tse_region).permit(:name, :parent_id)
   end
 end
 

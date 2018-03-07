@@ -2,7 +2,7 @@ class Tse::TseTechnologiesController < TseController
   respond_to :json
 
   def index
-    @technologies = TseTechnology.all
+    @technologies = TseTechnology.order(:name)
     respond_with @technologies
   end
 

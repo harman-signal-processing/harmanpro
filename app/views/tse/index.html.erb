@@ -24,10 +24,13 @@
         </div>
       </form>
       <div class="show-for-small">Results appear below...</div>
+      <a ng-click="startOver()"
+         ng-show="selectedTechnology"
+         class="tiny secondary radius button">Start Over</a>
     </div>
-    <a ng-click="startOver()"
-       ng-show="selectedTechnology"
-       class="tiny secondary radius button">Start Over</a>
+    <div ng-show="selectedParentCategory">
+      {{ selectedParentCategory.notes }}
+    </div>
   </div>
 
   <div class="medium-8 large-9 small-12 columns">
@@ -51,10 +54,10 @@
                 <div>
                   <p><strong>Contact Info:</strong><br/>
                     <span ng-show="contact.phone">
-                      <a href="tel:{{ contact.phone }}"><i class="fas fa-phone"></i> {{ contact.phone }}</a><br/>
+                      <a href="tel:{{ contact.phone }}"><i class="fa fa-phone"></i> {{ contact.phone }}</a><br/>
                     </span>
                     <span ng-show="contact.email">
-                      <a href="mailto:{{ contact.email }}"><i class="fas fa-envelope"></i> {{ contact.email }}</a><br/>
+                      <a href="mailto:{{ contact.email }}"><i class="fa fa-envelope"></i> {{ contact.email }}</a><br/>
                     </span>
                     <span ng-show="contact.address">{{ contact.address }}<br/></span>
                   </p>
@@ -82,10 +85,10 @@
             </td>
             <td valign="top" class="hide-for-small">
               <div ng-show="contact.phone">
-                <a href="tel:{{ contact.phone }}"><i class="fas fa-phone"></i> {{ contact.phone }}</a>
+                <a href="tel:{{ contact.phone }}"><i class="fa fa-phone"></i> {{ contact.phone }}</a>
               </div>
               <div ng-show="contact.email">
-                <a href="mailto:{{ contact.email }}"><i class="fas fa-envelope"></i> {{ contact.email }}</a>
+                <a href="mailto:{{ contact.email }}"><i class="fa fa-envelope"></i> {{ contact.email }}</a>
               </div>
               <div ng-show="contact.address">{{ contact.address }}</div>
             </td>

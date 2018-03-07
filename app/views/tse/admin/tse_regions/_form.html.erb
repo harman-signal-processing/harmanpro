@@ -1,5 +1,6 @@
 <%= simple_form_for [:tse, :admin, @tse_region] do |f| %>
   <%= f.input :name %>
+  <%= f.association :parent, collection: TseRegion.where(parent_id: nil) - [f.object] %>
 
   <%= f.submit class: "radius button" %>
 <% end %>

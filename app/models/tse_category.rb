@@ -7,4 +7,11 @@ class TseCategory < ApplicationRecord
   def tree_name
     (parent_id.present? ? "--" : "") + name
   end
+
+  def self.all_sorted
+    where(parent_id: nil).map do |p|
+      [p, where(parent_id: p.id)]
+    end.flatten
+  end
+
 end
