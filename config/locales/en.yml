@@ -168,10 +168,10 @@ en:
       site_setting: Site Setting
       venue: Venue
       vertical_market: Vertical Market
-      tse_category: Category
+      tse_category: Expertise Area
       tse_region: Region
-      tse_technology: Technology
-      tse_domain: Domain
+      tse_technology: Product
+      tse_domain: Vertical Market
       tse_contact: Contact
     attributes:
       lead:

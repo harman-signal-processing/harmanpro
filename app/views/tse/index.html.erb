@@ -9,40 +9,18 @@
                 ng-options="technology.name for technology in technologies">
         </select>
         <div ng-show="selectedTechnology">
-          <label>Region:</label>
+          <label>Type of expertise needed:</label>
+          <select name="nav1" id="nav1"
+                  ng-model="selectedParentCategory"
+                  ng-options="parent.name for parent in parent_categories">
+          </select>
+        </div>
+        <div ng-show="selectedParentCategory">
+          <label>Client Location:</label>
           <select name="region" id="region"
                   ng-model="selectedRegion"
                   ng-options="region.name for region in regions">
           </select>
-        </div>
-        <div ng-show="selectedTechnology">
-          <hr/>
-          <div class="row">
-            <div class="small-6 columns">
-              <h6><strong>FILTERS</strong></h6>
-            </div>
-            <div class="small-6 text-right columns">
-              <a ng-click="resetFilters()">reset</a>
-            </div>
-          </div>
-          <label>Domain:</label>
-          <select name="domain" id="domain"
-                  ng-model="selectedDomain"
-                  ng-options="domain.name for domain in domains">
-          </select>
-          <label>Area of expertise:</label>
-          <select name="nav1" id="nav1"
-                  ng-model="selectedParentCategory"
-                  ng-change="updateChildCategories()"
-                  ng-options="parent.name for parent in parent_categories">
-          </select>
-          <div ng-show="child_categories.length">
-            <label>More specifically:</label>
-            <select name="nav2" id="nav2"
-                    ng-model="selectedChildCategory"
-                    ng-options="child.name for child in child_categories">
-            </select>
-          </div>
         </div>
       </form>
       <div class="show-for-small">Results appear below...</div>
@@ -53,42 +31,81 @@
   </div>
 
   <div class="medium-8 large-9 small-12 columns">
-    <table id="results" ng-show="contacts.length && selectedTechnology" style="width: 100%">
-      <thead>
-        <tr>
-          <td width="30%">Name/Title</td>
-          <td width="30%">Contact Info</td>
-          <td width="40%">Expertise</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="contact in contacts | filter:includeContact ">
-          <td valign="top">
-            <h5>{{ contact.name }}</h5>
-            {{ contact.job_title }}
-            <div class="hint"><em>Expertise:</em> {{ contact.categories.join(', ') }}</div>
-          </td>
-          <td valign="top">
-            <div ng-show="contact.phone">{{ contact.phone }}</div>
-            <div ng-show="contact.email"><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></div>
-            <div ng-show="contact.address">{{ contact.address }}</div>
-          </td>
-          <td valign="top">
-            <div class="row" ng-show="contact.technologies.length">
-              <div class="small-12 medium-5 large-3 columns"><strong>Tech:</strong></div>
-              <div class="small-12 medium-7 large-9 columns">{{ contact.technologies.join(', ') }}</div>
-            </div>
-            <div class="row" ng-show="contact.regions.length">
-              <div class="small-12 medium-5 large-3 columns"><strong>Regions:</strong></div>
-              <div class="small-12 medium-7 large-9 columns">{{ contact.regions.join(', ') }}</div>
-            </div>
-            <div class="row" ng-show="contact.domains.length">
-              <div class="small-12 medium-5 large-3 columns"><strong>Domains:</strong></div>
-              <div class="small-12 medium-7 large-9 columns">{{ contact.domains.join(', ') }}</div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div ng-show="contacts.length && selectedTechnology && selectedParentCategory">
+      <table id="results" style="width: 100%">
+        <thead class="hide-for-small">
+          <tr>
+            <td width="30%">Name/Title</td>
+            <td width="30%">Contact Info</td>
+            <td width="40%">Expertise</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="contact in contacts | filter:includeContact ">
+            <td valign="top">
+              <h5>{{ contact.name }}</h5>
+              {{ contact.job_title }}
+              <div class="hint"><em>Expertise:</em> {{ contact.categories.join(', ') }}</div>
+              <div class="show-for-small">
+                <br/>
+                <div>
+                  <p><strong>Contact Info:</strong><br/>
+                    <span ng-show="contact.phone">
+                      <a href="tel:{{ contact.phone }}"><i class="fas fa-phone"></i> {{ contact.phone }}</a><br/>
+                    </span>
+                    <span ng-show="contact.email">
+                      <a href="mailto:{{ contact.email }}"><i class="fas fa-envelope"></i> {{ contact.email }}</a><br/>
+                    </span>
+                    <span ng-show="contact.address">{{ contact.address }}<br/></span>
+                  </p>
+                </div>
+
+                <div ng-show="contact.technologies.length">
+                  <p>
+                    <strong>Products:</strong><br/>
+                    {{ contact.technologies.join(', ') }}
+                  </p>
+                </div>
+                <div ng-show="contact.regions.length">
+                  <p>
+                    <strong>Regions Supported:</strong><br/>
+                    {{ contact.regions.join(', ') }}
+                  </p>
+                </div>
+                <div ng-show="contact.domains.length">
+                  <p>
+                    <strong>Vert&nbsp;Mkts:</strong><br/>
+                    {{ contact.domains.join(', ') }}
+                  </p>
+                </div>
+              </div>
+            </td>
+            <td valign="top" class="hide-for-small">
+              <div ng-show="contact.phone">
+                <a href="tel:{{ contact.phone }}"><i class="fas fa-phone"></i> {{ contact.phone }}</a>
+              </div>
+              <div ng-show="contact.email">
+                <a href="mailto:{{ contact.email }}"><i class="fas fa-envelope"></i> {{ contact.email }}</a>
+              </div>
+              <div ng-show="contact.address">{{ contact.address }}</div>
+            </td>
+            <td valign="top" class="hide-for-small">
+              <div class="row" ng-show="contact.technologies.length">
+                <div class="medium-5 large-3 columns"><strong>Products:</strong></div>
+                <div class="medium-7 large-9 columns">{{ contact.technologies.join(', ') }}</div>
+              </div>
+              <div class="row" ng-show="contact.regions.length">
+                <div class="medium-5 large-3 columns"><strong>Regions Supported:</strong></div>
+                <div class="medium-7 large-9 columns">{{ contact.regions.join(', ') }}</div>
+              </div>
+              <div class="row" ng-show="contact.domains.length">
+                <div class="medium-5 large-3 columns"><strong>Vert&nbsp;Mkts:</strong></div>
+                <div class="medium-7 large-9 columns">{{ contact.domains.join(', ') }}</div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
