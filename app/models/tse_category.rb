@@ -14,4 +14,11 @@ class TseCategory < ApplicationRecord
     end.flatten
   end
 
+  # The default list of contacts needs to be in a specific order
+  # (by category)
+  def self.default_contact_sort_order
+    product_expertise = where("name LIKE ?", '%product%').where(parent_id: nil)
+    [product_expertise.first] + (where(parent_id: nil) - [product_expertise.first])
+  end
+
 end

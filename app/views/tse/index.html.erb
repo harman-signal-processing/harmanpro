@@ -23,14 +23,19 @@
           </select>
         </div>
       </form>
-      <div class="show-for-small">Results appear below...</div>
-      <a ng-click="startOver()"
-         ng-show="selectedTechnology"
-         class="tiny secondary radius button">Start Over</a>
+      <div class="row">
+        <div class="small-3 medium-12 columns">
+          <a ng-click="startOver()"
+             ng-show="selectedTechnology"
+             class="tiny secondary radius button">Start Over</a>
+        </div>
+        <div class="show-for-small small-9 columns text-right">Results appear below...</div>
+      </div>
     </div>
     <div ng-show="selectedParentCategory">
       {{ selectedParentCategory.notes }}
     </div>
+    <br/>
   </div>
 
   <div class="medium-8 large-9 small-12 columns">
@@ -39,7 +44,7 @@
         <thead class="hide-for-small">
           <tr>
             <td width="30%">Name/Title</td>
-            <td width="30%">Contact Info</td>
+            <td width="30%" class="hide-for-medium-down">Contact Info</td>
             <td width="40%">Expertise</td>
           </tr>
         </thead>
@@ -49,41 +54,40 @@
               <h5>{{ contact.name }}</h5>
               {{ contact.job_title }}
               <div class="hint"><em>Expertise:</em> {{ contact.categories.join(', ') }}</div>
-              <div class="show-for-small">
-                <br/>
-                <div>
-                  <p><strong>Contact Info:</strong><br/>
-                    <span ng-show="contact.phone">
-                      <a href="tel:{{ contact.phone }}"><i class="fa fa-phone"></i> {{ contact.phone }}</a><br/>
-                    </span>
-                    <span ng-show="contact.email">
-                      <a href="mailto:{{ contact.email }}"><i class="fa fa-envelope"></i> {{ contact.email }}</a><br/>
-                    </span>
-                    <span ng-show="contact.address">{{ contact.address }}<br/></span>
-                  </p>
-                </div>
+              <div class="show-for-medium-down">
+                <p><strong>Contact Info:</strong><br/>
+                  <span ng-show="contact.phone">
+                    <a href="tel:{{ contact.phone }}"><i class="fa fa-phone"></i> {{ contact.phone }}</a><br/>
+                  </span>
+                  <span ng-show="contact.email">
+                    <a href="mailto:{{ contact.email }}"><i class="fa fa-envelope"></i> {{ contact.email }}</a><br/>
+                  </span>
+                  <span ng-show="contact.address">{{ contact.address }}<br/></span>
+                </p>
 
-                <div ng-show="contact.technologies.length">
-                  <p>
-                    <strong>Products:</strong><br/>
-                    {{ contact.technologies.join(', ') }}
-                  </p>
-                </div>
-                <div ng-show="contact.regions.length">
-                  <p>
-                    <strong>Regions Supported:</strong><br/>
-                    {{ contact.regions.join(', ') }}
-                  </p>
-                </div>
-                <div ng-show="contact.domains.length">
-                  <p>
-                    <strong>Vert&nbsp;Mkts:</strong><br/>
-                    {{ contact.domains.join(', ') }}
-                  </p>
+                <div class="show-for-small">
+                  <div ng-show="contact.technologies.length">
+                    <p>
+                      <strong>Products:</strong><br/>
+                      {{ contact.technologies.join(', ') }}
+                    </p>
+                  </div>
+                  <div ng-show="contact.regions.length">
+                    <p>
+                      <strong>Regions Supported:</strong><br/>
+                      {{ contact.regions.join(', ') }}
+                    </p>
+                  </div>
+                  <div ng-show="contact.domains.length">
+                    <p>
+                      <strong>Vertical Markets:</strong><br/>
+                      {{ contact.domains.join(', ') }}
+                    </p>
+                  </div>
                 </div>
               </div>
             </td>
-            <td valign="top" class="hide-for-small">
+            <td valign="top" class="hide-for-medium-down">
               <div ng-show="contact.phone">
                 <a href="tel:{{ contact.phone }}"><i class="fa fa-phone"></i> {{ contact.phone }}</a>
               </div>
