@@ -14,6 +14,11 @@
                   ng-model="selectedParentCategory"
                   ng-options="parent.name for parent in parent_categories">
           </select>
+          <div ng-show="selectedParentCategory && selectedParentCategory.notes.length">
+            <p><i class="fa fa-info-circle"></i>
+            {{ selectedParentCategory.notes }}
+            </p>
+          </div>
         </div>
         <div ng-show="selectedParentCategory">
           <label>Client Location:</label>
@@ -29,90 +34,91 @@
              ng-show="selectedTechnology"
              class="tiny secondary radius button">Start Over</a>
         </div>
-        <div class="show-for-small small-9 columns text-right">Results appear below...</div>
+        <div class="show-for-small small-9 columns text-right"><i>Results appear below...</i></div>
       </div>
-    </div>
-    <div ng-show="selectedParentCategory">
-      {{ selectedParentCategory.notes }}
     </div>
     <br/>
   </div>
 
   <div class="medium-8 large-9 small-12 columns">
-    <div ng-show="contacts.length && selectedTechnology && selectedParentCategory">
-      <table id="results" style="width: 100%">
-        <thead class="hide-for-small">
-          <tr>
-            <td width="30%">Name/Title</td>
-            <td width="30%" class="hide-for-medium-down">Contact Info</td>
-            <td width="40%">Expertise</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="contact in contacts | filter:includeContact ">
-            <td valign="top">
-              <h5>{{ contact.name }}</h5>
-              {{ contact.job_title }}
-              <div class="hint"><em>Expertise:</em> {{ contact.categories.join(', ') }}</div>
-              <div class="show-for-medium-down">
-                <p><strong>Contact Info:</strong><br/>
-                  <span ng-show="contact.phone">
-                    <a href="tel:{{ contact.phone }}"><i class="fa fa-phone"></i> {{ contact.phone }}</a><br/>
-                  </span>
-                  <span ng-show="contact.email">
-                    <a href="mailto:{{ contact.email }}"><i class="fa fa-envelope"></i> {{ contact.email }}</a><br/>
-                  </span>
-                  <span ng-show="contact.address">{{ contact.address }}<br/></span>
-                </p>
+    <div ng-show="selectedTechnology && selectedParentCategory">
+      <div ng-repeat="contact in filtered_contacts = (contacts | filter:includeContact)"></div>
+      <div ng-show="filtered_contacts.length">
+        <table id="results" style="width: 100%">
+          <thead class="hide-for-small">
+            <tr>
+              <td width="30%">Name/Title</td>
+              <td width="30%" class="hide-for-medium-down">Contact Info</td>
+              <td width="40%">Expertise</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="contact in filtered_contacts">
+              <td valign="top">
+                <h5>{{ contact.name }}</h5>
+                {{ contact.job_title }}
+                <div class="hint"><em>Expertise:</em> {{ contact.categories.join(', ') }}</div>
+                <div class="show-for-medium-down">
+                  <p><strong>Contact Info:</strong><br/>
+                    <span ng-show="contact.phone">
+                      <a href="tel:{{ contact.phone }}"><i class="fa fa-phone"></i> {{ contact.phone }}</a><br/>
+                    </span>
+                    <span ng-show="contact.email">
+                      <a href="mailto:{{ contact.email }}"><i class="fa fa-envelope"></i> {{ contact.email }}</a><br/>
+                    </span>
+                    <span ng-show="contact.address">{{ contact.address }}<br/></span>
+                  </p>
 
-                <div class="show-for-small">
-                  <div ng-show="contact.technologies.length">
-                    <p>
-                      <strong>Products:</strong><br/>
-                      {{ contact.technologies.join(', ') }}
-                    </p>
-                  </div>
-                  <div ng-show="contact.regions.length">
-                    <p>
-                      <strong>Regions Supported:</strong><br/>
-                      {{ contact.regions.join(', ') }}
-                    </p>
-                  </div>
-                  <div ng-show="contact.domains.length">
-                    <p>
-                      <strong>Vertical Markets:</strong><br/>
-                      {{ contact.domains.join(', ') }}
-                    </p>
+                  <div class="show-for-small">
+                    <div ng-show="contact.technologies.length">
+                      <p>
+                        <strong>Products:</strong><br/>
+                        {{ contact.technologies.join(', ') }}
+                      </p>
+                    </div>
+                    <div ng-show="contact.regions.length">
+                      <p>
+                        <strong>Regions Supported:</strong><br/>
+                        {{ contact.regions.join(', ') }}
+                      </p>
+                    </div>
+                    <div ng-show="contact.domains.length">
+                      <p>
+                        <strong>Vertical Markets:</strong><br/>
+                        {{ contact.domains.join(', ') }}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </td>
-            <td valign="top" class="hide-for-medium-down">
-              <div ng-show="contact.phone">
-                <a href="tel:{{ contact.phone }}"><i class="fa fa-phone"></i> {{ contact.phone }}</a>
-              </div>
-              <div ng-show="contact.email">
-                <a href="mailto:{{ contact.email }}"><i class="fa fa-envelope"></i> {{ contact.email }}</a>
-              </div>
-              <div ng-show="contact.address">{{ contact.address }}</div>
-            </td>
-            <td valign="top" class="hide-for-small">
-              <div class="row" ng-show="contact.technologies.length">
-                <div class="medium-5 large-3 columns"><strong>Products:</strong></div>
-                <div class="medium-7 large-9 columns">{{ contact.technologies.join(', ') }}</div>
-              </div>
-              <div class="row" ng-show="contact.regions.length">
-                <div class="medium-5 large-3 columns"><strong>Regions Supported:</strong></div>
-                <div class="medium-7 large-9 columns">{{ contact.regions.join(', ') }}</div>
-              </div>
-              <div class="row" ng-show="contact.domains.length">
-                <div class="medium-5 large-3 columns"><strong>Vert&nbsp;Mkts:</strong></div>
-                <div class="medium-7 large-9 columns">{{ contact.domains.join(', ') }}</div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              </td>
+              <td valign="top" class="hide-for-medium-down">
+                <div ng-show="contact.phone">
+                  <a href="tel:{{ contact.phone }}"><i class="fa fa-phone"></i> {{ contact.phone }}</a>
+                </div>
+                <div ng-show="contact.email">
+                  <a href="mailto:{{ contact.email }}"><i class="fa fa-envelope"></i> {{ contact.email }}</a>
+                </div>
+                <div ng-show="contact.address">{{ contact.address }}</div>
+              </td>
+              <td valign="top" class="hide-for-small">
+                <div class="row" ng-show="contact.technologies.length">
+                  <div class="medium-5 large-3 columns"><strong>Products:</strong></div>
+                  <div class="medium-7 large-9 columns">{{ contact.technologies.join(', ') }}</div>
+                </div>
+                <div class="row" ng-show="contact.regions.length">
+                  <div class="medium-5 large-3 columns"><strong>Regions Supported:</strong></div>
+                  <div class="medium-7 large-9 columns">{{ contact.regions.join(', ') }}</div>
+                </div>
+                <div class="row" ng-show="contact.domains.length">
+                  <div class="medium-5 large-3 columns"><strong>Vert&nbsp;Mkts:</strong></div>
+                  <div class="medium-7 large-9 columns">{{ contact.domains.join(', ') }}</div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Matching contacts: {{ filtered_contacts.length }}</p>
     </div>
   </div>
 </div>

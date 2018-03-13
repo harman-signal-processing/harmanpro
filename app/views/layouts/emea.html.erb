@@ -64,14 +64,17 @@
       </div>
     <% end %>
 
-    <div class="row logo-container hide-for-small">
+    <div class="row logo-container">
       <div class="medium-12 columns">
         <div class="row">
 
           <div class="medium-8 small-7 columns">
-            <h1 class="logo">
+            <h1 class="logo hide-for-small">
               <a href="http://www.harman.com"><%= image_tag "logo.png", alt: t('logo_alt_text'), id: "logo" %></a>
               <small><a href="/"><%= t("professional_solutions").upcase %></a></small>
+            </h1>
+            <h1 class="logo show-for-small">
+              <a href="/"><%= image_tag "logo_sm.png", alt: t('logo_alt_text') %></a>
             </h1>
           </div>
 
