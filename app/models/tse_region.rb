@@ -7,7 +7,7 @@ class TseRegion < ApplicationRecord
   acts_as_tree
 
   def tree_name
-    (parent_id.present? ? "--" : "") + name
+    (parent_id.present? ? " ... " : "") + name
   end
 
   def self.all_sorted

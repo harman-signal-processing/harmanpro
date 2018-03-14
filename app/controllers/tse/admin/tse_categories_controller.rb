@@ -2,7 +2,7 @@ class Tse::Admin::TseCategoriesController < Tse::AdminController
   before_action :load_category, except: [:index, :new, :create]
 
   def index
-    @tse_categories = TseCategory.all
+    @tse_categories = TseCategory.order(:position)
   end
 
   def show
@@ -46,7 +46,7 @@ class Tse::Admin::TseCategoriesController < Tse::AdminController
   end
 
   def tse_category_params
-    params.require(:tse_category).permit(:name, :parent_id, :notes)
+    params.require(:tse_category).permit(:name, :parent_id, :notes, :position)
   end
 end
 

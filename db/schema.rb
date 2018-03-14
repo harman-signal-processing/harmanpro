@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307205701) do
+ActiveRecord::Schema.define(version: 20180314190731) do
 
   create_table "active_admin_comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "namespace"
@@ -717,6 +717,7 @@ ActiveRecord::Schema.define(version: 20180307205701) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "notes"
+    t.integer "position"
     t.index ["parent_id"], name: "index_tse_categories_on_parent_id"
   end
 

@@ -3,9 +3,9 @@ class Tse::TseContactsController < TseController
 
   def index
     @contacts = TseContact.where(name: "something-that-doesn't-exist")
-    TseCategory.default_contact_sort_order.each do |category|
+    TseCategory.ordered_parents.each do |category|
       @contacts += category.tse_contacts
-      category.children.each do |sub_category|
+      category.children.order(:position).each do |sub_category|
         @contacts += sub_category.tse_contacts
       end
     end
