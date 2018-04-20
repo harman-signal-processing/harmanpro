@@ -20,7 +20,9 @@
             <div class="course-info-attribute courseName">
                 <strong><%=item["CourseName"]%></strong>
                 <br />
-                <div class="linkButton"><%=item["CourseDescription"].html_safe%></div><!-- <div class="linkButton"> -->
+                <% if item["CourseDescription"].present? %>
+                  <div class="linkButton"><%=item["CourseDescription"].html_safe%></div><!-- <div class="linkButton"> -->
+                <% end %>
                 <div class="linkButton"><a href='<%=item["EnrollmentURL"]%>' target='_blank'>Start Here</a></div><!-- <div class="linkButton"> -->
             </div><!-- <div class="course-info-attribute courseName"> -->
             
