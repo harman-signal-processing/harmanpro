@@ -184,6 +184,9 @@ Rails.application.routes.draw do
   get '/terms_of_use' => 'landing_pages#terms_of_use', as: :terms_of_use
   get '/sitemap(.:format)' => 'main#sitemap', as: :sitemap
 
+  # New Products
+  get "/new-products", to: "landing_pages#show", id: "new-products"
+
   # Search
   get '/search' => 'search#search', as: :search
 
