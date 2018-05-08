@@ -182,8 +182,8 @@ Rails.application.routes.draw do
 
   get '/thankyou' => 'landing_pages#thankyou', as: :thankyou # Thank you page after leadgen form
   get '/thanks' => 'landing_pages#thanks', as: :thanks # Generic thanks page
-  get '/privacy_policy' => 'landing_pages#privacy_policy', as: :privacy_policy
-  get '/terms_of_use' => 'landing_pages#terms_of_use', as: :terms_of_use
+  get '/privacy_policy', to: redirect('https://www.harman.com/privacy-policy'), as: :privacy_policy
+  get '/terms_of_use', to: redirect('https://www.harman.com/terms-use'), as: :terms_of_use
   get '/sitemap(.:format)' => 'main#sitemap', as: :sitemap
 
   # New Products
