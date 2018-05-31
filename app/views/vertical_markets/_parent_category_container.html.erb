@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="medium-4 small-12 columns end">
-        <% if @vertical_market.show_hef? %>
+        <% if @vertical_market.show_hef? && current_locale.show_hef? %>
           <% if @vertical_market.hef_banner.present? %>
             <%= link_to SiteSetting.value("hef-link") do %>
               <%= image_tag @vertical_market.hef_banner.url, width: 750, height: 70, alt: SiteSetting.value("hef-description"), style: 'margin-bottom: 1.42857rem;' %>
@@ -66,5 +66,5 @@
       </div>
     </div>
 
-  </div> 
-  <!-- end of parent-category-container --> 
+  </div>
+  <!-- end of parent-category-container -->

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314190731) do
+ActiveRecord::Schema.define(version: 20180531160301) do
 
   create_table "active_admin_comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "namespace"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20180314190731) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.boolean "live"
+    t.boolean "show_hef", default: true
     t.index ["key"], name: "index_available_locales_on_key"
     t.index ["slug"], name: "index_available_locales_on_slug"
   end

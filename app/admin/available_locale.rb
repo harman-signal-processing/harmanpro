@@ -1,7 +1,7 @@
 ActiveAdmin.register AvailableLocale do
   menu parent: "Settings", priority: 9
 
-  permit_params :name, :key, :live
+  permit_params :name, :key, :live, :show_hef
 
   # :nocov:
   index do
@@ -19,6 +19,7 @@ ActiveAdmin.register AvailableLocale do
       f.input :name
       f.input :key, as: :select, collection: I18n.available_locales.sort
       f.input :live
+      f.input :show_hef, as: :boolean, label: "Show Harman Finance banners?"
     end
     f.actions
   end
