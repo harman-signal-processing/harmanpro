@@ -13,7 +13,7 @@
       <%= f.input :post_on, as: :string, label: "Publish Date", input_html: { class: "datepicker" } %>
     </div>
     <div class="medium-4 columns">
-      <%= f.input :news_photo %>
+      <%= f.input :news_photo, hint: "Ideal size: 1170x400 pixels. Others will be re-sized." %>
     </div>
     <div class="medium-4 columns">
       <% if @news_article.news_photo.present? %>
