@@ -40,14 +40,6 @@ ActiveAdmin.register_page "Dashboard" do
             end
           end
         end
-        panel "Homepage Venue Popups" do
-          ul do
-            li link_to("+ New Venue Popup", new_admin_venue_path)
-            Venue.all.map do |venue|
-              li link_to(venue.name, admin_venue_path(venue))
-            end
-          end
-        end
       end
       column do
         panel "Some Instructions" do

@@ -122,7 +122,6 @@ Rails.application.routes.draw do
   get 'lp/:id(/:random)' => 'landing_pages#show', as: :landing_page
   get 'ep/:id(/:embed)' => 'landing_pages#show', defaults: { embed: 'true' }
   resources :leads, path: 'plan/help', only: [:new, :create]
-  resources :venues, only: :index
   resources :news_articles, path: 'news', only: [:index, :show]
   resources :artists, only: [:index, :show]
   resources :products, only: [:index, :show]

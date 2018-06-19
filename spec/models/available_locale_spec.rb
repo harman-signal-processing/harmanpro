@@ -20,7 +20,6 @@ RSpec.describe AvailableLocale, type: :model do
     landing_page = FactoryBot.create(:landing_page)
     product_type = FactoryBot.create(:product_type)
     product = FactoryBot.create(:product)
-    venue = FactoryBot.create(:venue)
     site_setting = FactoryBot.create(:site_setting)
 
     expect(@loc.items_to_translate).to include(vertical_market)
@@ -30,7 +29,6 @@ RSpec.describe AvailableLocale, type: :model do
     expect(@loc.items_to_translate).to include(landing_page)
     expect(@loc.items_to_translate).to include(product_type)
     expect(@loc.items_to_translate).to include(product)
-    expect(@loc.items_to_translate).to include(venue)
     expect(@loc.items_to_translate).to include(site_setting)
   end
 

@@ -1,37 +1,20 @@
-<script type="text/ng-template" id="venue_popup">
-  <div class="triangle"></div>
-  <div class="ns-popover-tooltip">
-    <div class="row collapse">
-      <div class="large-11 small-11 columns">
-        <h5 class="subheader">{{ venue.name }}</h5>
-      </div>
-      <div class="large-1 small-1 columns text-right">
-        <a ng-click="hidePopover()"><%= image_tag('close.png', alt: "X") %></a>
-      </div>
-    </div>
-    <p>{{ venue.description }}</p>
-  </div>
-</script>
-
-<div ng-controller="HomepageBannerCtrl as banner" locale="<%= I18n.locale %>">
-  <div class="bumped-up">
-    <div class="banner-container text-center" style="background: white">
-      <div class="slick-show">
-        <% @slides.each do |slide| %>
-          <div class="slick-slide homepage-banner">
-            <% if slide.headline.present? %>
-              <h1 class="homepage-banner"><%=raw format_headline slide.headline %></h1>
-            <% end %>
-            <% if slide.link_url.present? %>
-              <%= link_to slide.link_url, target: (slide.link_new_window?) ? "_blank" : "" do %>
-                <%= image_tag slide.background.url, alt: slide.name %>
-              <% end %>
-            <% else %>
+<div class="bumped-up">
+  <div class="banner-container text-center" style="background: white">
+    <div class="slick-show">
+      <% @slides.each do |slide| %>
+        <div class="slick-slide homepage-banner">
+          <% if slide.headline.present? %>
+            <h1 class="homepage-banner"><%=raw format_headline slide.headline %></h1>
+          <% end %>
+          <% if slide.link_url.present? %>
+            <%= link_to slide.link_url, target: (slide.link_new_window?) ? "_blank" : "" do %>
               <%= image_tag slide.background.url, alt: slide.name %>
             <% end %>
-          </div>
-        <% end %>
-      </div>
+          <% else %>
+            <%= image_tag slide.background.url, alt: slide.name %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
