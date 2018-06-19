@@ -17,17 +17,6 @@
   <div class="bumped-up">
     <div class="banner-container text-center" style="background: white">
       <div class="slick-show">
-        <div class="text-center homepage-banner">
-          <h1 class="homepage-banner"><%=raw format_headline SiteSetting.value("homepage-main-headline") %></h1>
-          <%= image_tag "HarmanSkylineImage.jpg" %>
-          <img src="<%= asset_path('H-Pointer.png') %>" alt="[H]" class="help-icon animated bounceIn hide-for-small-down" ns-popover
-            ng-repeat="venue in venues"
-            vid="{{ venue.id }}"
-            ng-style="{'left': venue.left, 'top': venue.top, '-moz-animation-delay': venue.id*2/5+'s', '-animation-delay': venue.id*2/5+'s', '-webkit-animation-delay': venue.id*2/5+'s'}"
-            ns-popover-modal="venue-popups"
-            ns-popover-theme="ns-popover-tooltip-theme"
-            ns-popover-template="venue_popup"/>
-        </div>
         <% @slides.each do |slide| %>
           <div class="slick-slide homepage-banner">
             <% if slide.headline.present? %>

@@ -20,13 +20,8 @@ ActiveAdmin.register ServiceCenter do
 
   index do
     column :name
-    column :contact_name
     column :city
     column :state
-    column :phone
-    column :fax
-    column :email
-    column :website
     column :account_number
     column :active
     actions
