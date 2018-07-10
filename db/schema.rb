@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180531160301) do
+ActiveRecord::Schema.define(version: 20180710215300) do
 
   create_table "active_admin_comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "namespace"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 20180531160301) do
     t.string "tech_support_email"
     t.string "repair_email"
     t.string "parts_email"
+    t.boolean "show_on_training_page"
     t.index ["show_on_main_site"], name: "index_brands_on_show_on_main_site"
     t.index ["show_on_services_site"], name: "index_brands_on_show_on_services_site"
     t.index ["slug"], name: "index_brands_on_slug"

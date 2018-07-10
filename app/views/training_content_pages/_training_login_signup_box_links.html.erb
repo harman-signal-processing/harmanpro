@@ -16,7 +16,7 @@
                     <% end %>
                 </li>
                 <% end %>
-                <% all_brands.each do |brand| %>
+                <% all_brands_for_training.each do |brand| %>
                 <% if brand.training_url.present? %>
                 <li>
                     <%= link_to haveEncodedUserData && brand.training_url.include?("traininglogin") ? "/training/sso" : brand.training_url, target: "_blank" do %>

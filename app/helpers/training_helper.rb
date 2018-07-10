@@ -13,4 +13,8 @@ module TrainingHelper
         params[:ud] || session[:training_user_encoded]
     end  #  encodedUserData
     
+    def all_brands_for_training
+        Brand.for_training_pages
+    end
+    
 end  #  TrainingHelper

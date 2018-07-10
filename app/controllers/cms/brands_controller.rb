@@ -55,6 +55,7 @@ class Cms::BrandsController < CmsController
       :show_on_main_site,
       :show_on_service_site,
       :show_on_consultants_page,
+      :show_on_training_page,
       :contact_info_for_consultants
     )
   end

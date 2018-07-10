@@ -17,6 +17,7 @@ ActiveAdmin.register Brand do
     :show_on_main_site,
     :show_on_services_site,
     :show_on_consultant_page,
+    :show_on_training_page,
     :api_url,
     :tech_support_email,
     :parts_email,
@@ -35,6 +36,7 @@ ActiveAdmin.register Brand do
     column :show_on_main_site
     column :show_on_services_site
     column :show_on_consultant_page
+    column :show_on_training_page
     actions
   end
 
@@ -68,6 +70,7 @@ ActiveAdmin.register Brand do
       row :show_on_main_site
       row :show_on_services_site
       row :show_on_consultant_page
+      row :show_on_training_page
       row :contact_info_for_consultants do
         raw(textilize(brand.contact_info_for_consultants))
       end
@@ -104,6 +107,7 @@ ActiveAdmin.register Brand do
       f.input :show_on_main_site
       f.input :show_on_services_site
       f.input :show_on_consultant_page
+      f.input :show_on_training_page
       f.input :api_url, hint: "Base URL for API queries.", placeholder: "http://brand.com/api/v2/brand"
       f.input :downloads_page_url, hint: "If API URL is blank, and this is present, the link will appear on the consultants page.", placeholder: "http://brand.name.com/downloads"
       f.input :contact_info_for_consultants
