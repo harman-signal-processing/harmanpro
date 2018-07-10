@@ -80,6 +80,10 @@ class Brand < ApplicationRecord
     where(show_on_services_site: true).order("UPPER(name)")
   end
 
+  def self.for_training_pages
+    where(show_on_training_page: true).order("UPPER(name)")
+  end
+
   def first_name
     self.name.split(/\s/).first
   end
