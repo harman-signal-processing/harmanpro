@@ -6,7 +6,7 @@ class CaseStudy < ApplicationRecord
   attribute :content
 
   extend FriendlyId
-  friendly_id :slug_candidates, use: :globalize
+  friendly_id :slug_candidates, use: [:globalize, :history, :finders]
 
   has_many :case_study_vertical_markets, dependent: :restrict_with_error, inverse_of: :case_study
   has_many :vertical_markets, through: :case_study_vertical_markets

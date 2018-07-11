@@ -26,6 +26,13 @@ GIT
       responders
 
 GIT
+  remote: https://github.com/norman/friendly_id-globalize.git
+  revision: b5c1b8b442f62d174759000facf5fb8b0eed280e
+  specs:
+    friendly_id-globalize (1.0.0.alpha4)
+      friendly_id (>= 5.1.0, < 6.0)
+
+GIT
   remote: https://github.com/spohlenz/tinymce-rails.git
   revision: 6fd047eb303929e855bfffbd3eb4df76dd42fe12
   specs:
@@ -214,8 +221,6 @@ GEM
       sass (>= 3.3.0, < 3.5)
     friendly_id (5.2.4)
       activerecord (>= 4.0.0)
-    friendly_id-globalize (1.0.0.alpha3)
-      friendly_id (>= 5.2.0, < 6.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     globalize (5.1.0)
@@ -558,7 +563,7 @@ DEPENDENCIES
   font-awesome-rails
   foundation-rails (~> 5.5)
   friendly_id (>= 5.2)
-  friendly_id-globalize
+  friendly_id-globalize!
   globalize (~> 5.1.0)
   guard-bundler
   guard-rails

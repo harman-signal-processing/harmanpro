@@ -85,4 +85,5 @@ FriendlyId.defaults do |config|
   #     text.to_slug.normalize! :transliterations => [:russian, :latin]
   #   end
   # }
+  #config.use :history # Don't use this since some models are using globalize and some aren't.
 end

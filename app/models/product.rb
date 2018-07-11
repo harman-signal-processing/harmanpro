@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   attribute :description
 
   extend FriendlyId
-  friendly_id :name, use: :globalize
+  friendly_id :name, use: [:globalize, :history, :finders]
 
   belongs_to :brand
   has_many :reference_system_product_type_products, dependent: :destroy

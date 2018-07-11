@@ -7,7 +7,7 @@ class ReferenceSystem < ApplicationRecord
   attribute :venue_size_descriptor
 
   extend FriendlyId
-  friendly_id :slug_candidates, use: :globalize
+  friendly_id :slug_candidates, use: [:globalize, :history, :finders]
 
   belongs_to :vertical_market
   has_many :reference_system_product_types, dependent: :destroy

@@ -8,7 +8,7 @@ class VerticalMarket < ApplicationRecord
   attribute :extra_content
 
   extend FriendlyId
-  friendly_id :slug_candidates, use: :globalize
+  friendly_id :slug_candidates, use: [:globalize, :history, :finders]
 
   has_many :case_study_vertical_markets, dependent: :restrict_with_error, inverse_of: :vertical_market
   has_many :case_studies, through: :case_study_vertical_markets
