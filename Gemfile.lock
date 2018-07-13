@@ -1,6 +1,6 @@
 GIT
-  remote: https://github.com/activeadmin/activeadmin.git
-  revision: 075d396158bfd2dd8a9e13094b7321dbcbc85c4a
+  remote: git://github.com/activeadmin/activeadmin
+  revision: 951a2901b950c84f8ff17c72c954446a31527136
   specs:
     activeadmin (2.0.0.alpha)
       arbre (>= 1.1.1)
@@ -9,15 +9,15 @@ GIT
       inherited_resources (>= 1.7.0)
       jquery-rails (>= 4.2.0)
       kaminari (>= 1.0.1)
-      railties (>= 4.2, < 5.2)
+      railties (>= 4.2, < 5.3)
       ransack (>= 1.8.7)
       sass (~> 3.4)
       sprockets (>= 3.0, < 4.1)
       sprockets-es6 (>= 0.9.2)
 
 GIT
-  remote: https://github.com/activeadmin/inherited_resources.git
-  revision: 8603b3054683fa798134d76c12a32d9e287b307e
+  remote: git://github.com/activeadmin/inherited_resources
+  revision: bb9047bf95b1b2861b60db69e958c23957cb8099
   specs:
     inherited_resources (1.8.0)
       actionpack (>= 4.2, <= 5.2)
@@ -26,17 +26,17 @@ GIT
       responders
 
 GIT
-  remote: https://github.com/norman/friendly_id-globalize.git
+  remote: git://github.com/norman/friendly_id-globalize
   revision: b5c1b8b442f62d174759000facf5fb8b0eed280e
   specs:
     friendly_id-globalize (1.0.0.alpha4)
       friendly_id (>= 5.1.0, < 6.0)
 
 GIT
-  remote: https://github.com/spohlenz/tinymce-rails.git
-  revision: 6fd047eb303929e855bfffbd3eb4df76dd42fe12
+  remote: git://github.com/spohlenz/tinymce-rails.git
+  revision: 4d49e67feaf28444dea60e1d9f4134860d77b5f1
   specs:
-    tinymce-rails (4.7.6)
+    tinymce-rails (4.8.0)
       railties (>= 3.1.1)
 
 GEM
@@ -248,9 +248,9 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
-    has_scope (0.7.1)
-      actionpack (>= 4.1, < 5.2)
-      activesupport (>= 4.1, < 5.2)
+    has_scope (0.7.2)
+      actionpack (>= 4.1)
+      activesupport (>= 4.1)
     hashie (3.4.6)
     http-cookie (1.0.3)
       domain_name (~> 0.5)

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
+  "git://github.com/#{repo_name}"
 end
 
 gem 'rails', '5.1.6'
@@ -23,7 +23,7 @@ gem 'dalli'
 gem 'figaro'
 gem 'simple_form'
 gem 'RedCloth'
-gem 'tinymce-rails', git: 'https://github.com/spohlenz/tinymce-rails.git'
+gem 'tinymce-rails', github: 'spohlenz/tinymce-rails.git'
 gem 'foundation-rails', '~> 5.5' # After this, getting incompatible units errors
 gem 'friendly_id', '>= 5.2'
 gem 'paperclip'
