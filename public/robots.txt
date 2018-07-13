@@ -1,3 +1,6 @@
 # robots.txt for www.harmanpro.com
 User-agent: *
 Sitemap: http://www.harmanpro.com/sitemap.xml
+Disallow: /lp/la-experience-center
+Noindex: /lp/la-experience-center
+
