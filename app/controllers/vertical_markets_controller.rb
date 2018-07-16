@@ -5,7 +5,12 @@ class VerticalMarketsController < ApplicationController
   def index
     @vertical_markets = VerticalMarket.active
     respond_with @vertical_markets do |format|
-      format.html { redirect_to root_path and return false }
+      format.html {
+        template = LandingPage.where(slug: "solutions")
+        if template.exists?
+          render_landing_page("solutions") and return false
+        end
+      }
       format.json
     end
   end

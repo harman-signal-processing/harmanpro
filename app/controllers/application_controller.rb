@@ -105,6 +105,12 @@ class ApplicationController < ActionController::Base
     render_to_string partial: "leads/form"
   end
 
+  # For dynamically inserting all the active vertical markets grid with:
+  # ~solutions_grid~
+  def solutions_grid
+    render_to_string partial: "vertical_markets/grid"
+  end
+
   def save_passed_in_amx_trade_site_user_in_session_cookie
     if params[:ud].present?
       encoded_hash = params[:ud] # This would be encoded user email and userid sent in from trade.amx.com

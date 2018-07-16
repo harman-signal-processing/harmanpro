@@ -1,0 +1,21 @@
+<div data-equalizer="markets">
+
+  <ul class="large-block-grid-7 medium-block-grid-4 small-block-grid-2">
+    <% active_child_verticals.each do |vm| %>
+      <li>
+        <div class="panel text-center" data-equalizer-watch="markets">
+          <div class="brand-logo">
+            <p>
+              <%= link_to vm do %>
+                <%= image_tag vm.icon.url(:standard), alt: vm.name %>
+              <% end %>
+            </p>
+          </div>
+          <p><%= link_to vm.name, vm %></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+</div>
+

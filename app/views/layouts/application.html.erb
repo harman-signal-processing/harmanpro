@@ -109,12 +109,13 @@
           <ul>
             <%= cache ["top-nav", Date.today, current_locale] do %>
               <li class="has-dropdown show-for-medium-up">
-                <a href="#" class="disabled" data-dropdown="megaMenu" data-options="is_hover:true;" id="megaTrigger"><%= t('nav.solutions') %></a>
+                <a href="<%= vertical_markets_path %>" class="disabled" data-dropdown="megaMenu" data-options="is_hover:true;" id="megaTrigger"><%= t('nav.solutions') %></a>
               </li>
               <li class="has-dropdown show-for-small-only">
-                <a href="#" class="disabled"><%= t('nav.solutions') %></a>
+                <%= link_to t('nav.solutions'), vertical_markets_path, class: "disabled" %>
                 <ul class="dropdown">
                   <%= top_vertical_market_navigation(dropdowns: false) %>
+                  <li><%= link_to t('nav.browse_all_solutions'), vertical_markets_path %></li>
                 </ul>
               </li>
               <li><%= link_to t("nav.case_studies"), case_studies_path %></li>
@@ -203,6 +204,9 @@
             <% end %>
           </ul>
 
+          <div class="text-right">
+            <em><%= link_to t('nav.browse_all_solutions') + " >>", vertical_markets_path %></em>
+          </div>
         </div>
       </div>
     </div>

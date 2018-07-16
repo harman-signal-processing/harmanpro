@@ -16,6 +16,14 @@ class VerticalMarket < ApplicationRecord
   has_many :leads
   acts_as_tree #order: "name"
 
+  has_attached_file :icon,
+    styles: {
+      standard: "93x93#",
+      thumb: "48x48#"
+  }, default_url: "missing/icon.png"
+
+  validates_attachment_content_type :icon, content_type: /\Aimage\/.*\Z/
+
   has_attached_file :banner,
     styles: {
       large: "1170x400#",

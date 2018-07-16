@@ -6,6 +6,7 @@ ActiveAdmin.register VerticalMarket do
     :headline,
     :description,
     :extra_content,
+    :icon,
     :banner,
     :background,
     :hef_banner,
@@ -80,6 +81,8 @@ ActiveAdmin.register VerticalMarket do
       f.input :parent
       f.input :name, hint: "Maximum characters: 20", input_html: {maxlength: 20}
       f.input :headline, hint: "Maximum characters: 70", input_html: { maxlength: 70 }
+      f.input :icon, hint: f.object.icon.present? ?
+        image_tag(f.object.icon.url(:thumb)) + content_tag(:br) + "Appears on the overall solutions index." : "Appears on the overall solutions index. Preferred size is 93x93 px."
       f.input :banner, hint: f.object.banner.present? ?
         image_tag(f.object.banner.url(:thumb)) + content_tag(:br) + "Appears on solutions pages on brand sites. Preferred size: 1170x400 px with a strongly horizontal orientation." :
         "Appears on solutions pages on brand sites. Preferred size: 1170x400 px with a strongly horizontal orientation."
