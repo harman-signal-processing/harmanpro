@@ -15,6 +15,23 @@
         </div>
       </li>
     <% end %>
+
+    <% Resource.tagged_with("show-on-solutions-index").each do |brochure| %>
+      <li>
+        <div class="text-center" data-equalizer-watch="markets">
+          <div class="brand-logo">
+            <p>
+              <% if brochure.image.present? %>
+                <%= link_to brochure.attachment.url do %>
+                  <%= image_tag brochure.image.url %>
+                <% end %>
+              <% end %>
+            </p>
+          </div>
+          <p><%= link_to brochure.name, brochure.attachment.url %></p>
+        </div>
+      </li>
+    <% end %>
   </ul>
 
 </div>
