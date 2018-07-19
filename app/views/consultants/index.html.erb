@@ -12,8 +12,7 @@
     <div class="large-10 large-offset-1 columns">
 
       <div><%=raw textilize SiteSetting.value("consultant-portal-welcome-paragraph") %></div>
-      
-      
+
       <% if SiteSetting.set_for_locale?('consultant-portal-contacts') %>
         <div class="row">
           <div class="large-12 medium-12 columns">
@@ -23,7 +22,7 @@
               <%= raw auto_link textilize SiteSetting.value("consultant-portal-contacts") %>
           </div>
         </div>
-      <% end %>      
+      <% end %>
 
       <% if SiteSetting.set_for_locale?("consultant-portal-loan-program-paragraph") %>
         <div class="row">
@@ -37,8 +36,12 @@
             <%= link_to t('consultant_page.consignment_form'), asset_path("consignment-template.xlsx"), class: "tiny radius button" %>
           </div>
         </div>
+        <p>&nbsp;</p>
       <% end %>
 
+      <a name="technical-resources"></a>
+      <hr/>
+      <p>&nbsp;</p>
       <h3><%= t('consultant_page.technical_product_resources') %></h3>
       <div class="row">
         <div class="large-6 medium-6 columns">
