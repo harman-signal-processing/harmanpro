@@ -6,6 +6,7 @@ class ConsultantsController < ApplicationController
     all_brands_with_contact_info = Brand.for_consultant_portal_with_contacts
     first_brands_with_contact_info = all_brands_with_contact_info.where("name LIKE 'Harman%%'")
     @brands_with_contact_info = first_brands_with_contact_info + (all_brands_with_contact_info - first_brands_with_contact_info)
+    @banner_image = Resource.find_by(name:"Banner: Consultants")
   end
 
   # All software from all brands

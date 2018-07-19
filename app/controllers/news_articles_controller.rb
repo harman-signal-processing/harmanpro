@@ -9,6 +9,7 @@ class NewsArticlesController < ApplicationController
       @featured_article = @news_articles.first
       @news_articles = @news_articles.where.not(id: @featured_article.id)
     end
+    @banner_image = Resource.find_by(name:"Banner: News")
   end
 
   def show
