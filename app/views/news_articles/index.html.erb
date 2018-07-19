@@ -5,15 +5,13 @@
   <%= t('site_name') %> <%= t('nav.news') %>
 <% end %>
 
-<% if @featured_article && (@featured_article.news_photo.present? || ENV['show_placeholders'] == "true") %>
-  <div class="bumped-up">
+  <div class="bumped-up" style="margin-bottom: 1em;">
     <div class="banner-container">
-      <%= link_to @featured_article do %>
-        <h1><%= image_tag @featured_article.news_photo.url(:large), alt: "#{t('site_name')} #{t('nav.news')}" %></h1>
-      <% end %>
+      <% if @banner_image.present? %>
+        <h1><%= image_tag @banner_image.attachment.url, alt: "News" %></h1>
+      <% end %>        
     </div>
   </div>
-<% end %>
 
 <div class="container main-container">
   <div class="row">

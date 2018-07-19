@@ -4,6 +4,7 @@ class EventsController < ApplicationController
     all_events = Event.current_and_upcoming.
       where("start_on < ?", 6.months.from_now)
     @events = filter_by_locale(all_events)
+    @banner_image = Resource.find_by(name:"Banner: Events")
   end
 
   def show

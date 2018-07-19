@@ -1489,10 +1489,12 @@
         "t7": "latinamerica"
     },
     {
-        "name": "Nick Cohen",
-        "title": "Inside Sales, Hospitality, U.S.",
+        "name": "Nicholas Cohen",
+        "title": "Business Development Lead, Global",
         "email": "nicholas.cohen@harman.com",
         "phone1": "+1 818 895 5764",
+        "group1": "eSports",
+        "g1Sort": 1,
         "officeId": "Northridge",
         "showonweb": "yes",
         "solutionsMap": "yes",
@@ -1501,7 +1503,13 @@
         "t3": "unitedstatescentral",
         "t4": "unitedstatessoutheast",
         "t5": "unitedstatesnortheast",
-        "t6": "Canada"
+        "t6": "Canada",
+        "t7": "latinamerica",
+        "t8": "EMEA",
+        "t9": "emeanorthwest",
+        "t10": "emeacentral",
+        "t11": "emeasouth",
+        "t13": "APAC"
     },
     {
         "name": "Tony Perez",

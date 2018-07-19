@@ -1,7 +1,13 @@
+<div class="bumped-up" style="margin-bottom:1em;">
+  <div class="banner-container">
+    <% if @banner_image.present? %>
+      <h1><%= image_tag @banner_image.attachment.url, alt: t('nav.case_studies').titleize %></h1>
+    <% end %>
+  </div>
+</div>
+
 <div class="row">
   <div class="medium-9 columns">
-    <h1><% if @vertical_market %><%= @vertical_market.name.titleize %><% end %> <%= t('nav.case_studies').titleize %></h1>
-
     <ul class="medium-block-grid-3 small-block-grid-1">
       <% @case_studies.each do |case_study| %>
         <li><%= link_to case_study do %>

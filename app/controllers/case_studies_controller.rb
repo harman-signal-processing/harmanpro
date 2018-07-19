@@ -8,6 +8,7 @@ class CaseStudiesController < ApplicationController
     else
       @case_studies = CaseStudy.order("created_at DESC").limit(60)
     end
+    @banner_image = Resource.find_by(name:"Banner: Case Studies")
   end
 
   def show

@@ -3,7 +3,9 @@
 
 <div class="bumped-up">
   <div class="banner-container">
-    <h1><%= image_tag "consultants_header.jpg", alt: t('consultant_page.title') %></h1>
+    <% if @banner_image.present? %>
+      <h1><%= image_tag @banner_image.attachment.url, alt: t('consultant_page.title') %></h1>
+    <% end %>    
   </div>
 </div>
 
