@@ -37,7 +37,7 @@
         <% else %>
 
           <div class="row">
-            <div class="large-8 columns">
+            <div class="small-12 columns">
               <% if vertical_market.parent %>
                 <%= cache ["parent-vertical-content", vertical_market.parent, Date.today, current_locale] do %>
                   <h3><%= vertical_market.parent.headline %></h3>

@@ -1,7 +1,7 @@
 <div class="case-study-panel case-study">
   <% if case_study.banner.present? || ENV['show_placeholders'] == "true" %>
     <%= link_to(case_study) do %>
-      <div class="img_container stretchy-image-container" data-background="<%= case_study.banner.url(:small) %>"></div>
+      <div class="img_container stretchy-image-container" data-background="<%= case_study.banner.url(:large) %>"></div>
     <% end %>
   <% end %>
   <h5>
