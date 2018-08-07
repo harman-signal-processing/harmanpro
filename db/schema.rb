@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180716204152) do
+ActiveRecord::Schema.define(version: 20180807211154) do
 
   create_table "active_admin_comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "namespace"
@@ -395,6 +395,8 @@ ActiveRecord::Schema.define(version: 20180716204152) do
     t.text "header_code"
     t.text "footer_code"
     t.string "custom_slug"
+    t.boolean "live", default: true
+    t.string "preview_code"
     t.index ["original_locale_id"], name: "index_landing_pages_on_original_locale_id"
   end
 

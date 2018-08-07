@@ -31,7 +31,11 @@ class ApplicationController < ActionController::Base
     @landing_page.left_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
     @landing_page.right_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
     @landing_page.sub_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
-    render "landing_pages/show"
+    if @landing_page.live? || special_access_granted?(@landing_page)
+      render "landing_pages/show"
+    else
+      redirect_to root_path and return false
+    end
   end
 
   def get_training_content_page(slug)
@@ -120,5 +124,17 @@ class ApplicationController < ActionController::Base
       session[:training_user_encoded] = encoded_hash
     end
   end  #  def save_passed_in_amx_trade_site_user_in_session_cookie
+
+  def special_access_granted?(item)
+    preview_code_provided?(item) || admin_logged_in?
+  end
+
+  def admin_logged_in?
+    user_signed_in? && (current_user.admin_access? || curent_user.cms_user?)
+  end
+
+  def preview_code_provided?(item)
+    item.respond_to?(:preview_code) && item.preview_code.present? && params[:preview_code] == item.preview_code
+  end
 
 end

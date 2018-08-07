@@ -14,6 +14,8 @@ ActiveAdmin.register LandingPage do
     :custom_slug,
     :header_code,
     :footer_code,
+    :live,
+    :preview_code,
     features_attributes: [
       :id,
       :featurable_id,
@@ -57,6 +59,7 @@ ActiveAdmin.register LandingPage do
         link_to "Direct Link", landing_page_path(lp), target: "_blank"
       end
     end
+    column :live
     column :created_at
     actions
   end
@@ -85,6 +88,8 @@ ActiveAdmin.register LandingPage do
           link_to "Direct Link", landing_page_path(id: this_slug), target: "_blank"
         end
       end
+      row :live
+      row :preview_code
 
       row :main_content do
         raw(textilize(landing_page.main_content))
@@ -137,6 +142,8 @@ ActiveAdmin.register LandingPage do
       f.input :header_code, hint: "Javascript, etc. here will load in the page's HTML header"
       f.input :footer_code, hint: "Javascript, etc. here will load just before the page's closing body tag"
       f.input :custom_slug, label: "Custom Friendly ID", hint: "Almost always leave this blank--unless the person requesting the page is smarter than you are and he/she needs a specific URL that doesn't match the page title. Don't include the page format (html, xml, js, etc.)"
+      f.input :live
+      f.input :preview_code, hint: "Put something here if you want to allow someone to preview the page before it goes live. Then, give them the link with ?preview_code=(whatever) at the end."
     end
     f.actions
   end
