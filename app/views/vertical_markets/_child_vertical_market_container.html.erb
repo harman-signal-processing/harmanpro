@@ -10,29 +10,25 @@
           <% # this is for the new solutions pages%>
           <%= image_tag(@vertical_market.banner.url(:large)) %>
         <% else%>
-          
-          <% # keeping this so we don't break existing non-english solutions pages%>        
+
+          <% # keeping this so we don't break existing non-english solutions pages%>
           <% if @vertical_market.reference_systems.count > 0 %>
             <img ng-src="{{ system['banner_url'] }}" img-preload />
           <% else %>
             <%= image_tag(@vertical_market.banner.url(:large)) %>
-          <% end %>        
-        
+          <% end %>
+
         <% end %>
 
       </div>
 
-      <div class="row">
-        <div class="large-5 large-offset-2 medium-6 medium-offset-2 small-12 columns">
-          <% if @current_locale[:key] == "en" %>
-            <% # this is for the new solutions pages%>
-            <%= render "new_solutions_header", vertical_market: @vertical_market %>
-          <% else %>
-            <% # keeping this so we don't break existing non-english solutions pages%>  
-            <%= render "slider_box", vertical_market: @vertical_market %>
-          <% end %>
-        </div>
-      </div>
+      <% if @current_locale[:key] == "en" %>
+        <% # this is for the new solutions pages%>
+        <%= render "new_solutions_header", vertical_market: @vertical_market %>
+      <% else %>
+        <% # keeping this so we don't break existing non-english solutions pages%>
+        <%= render "slider_box", vertical_market: @vertical_market %>
+      <% end %>
 
     </div> <!-- end bumped-up -->
 
