@@ -64,7 +64,7 @@ class VerticalMarket < ApplicationRecord
   accepts_nested_attributes_for :case_study_vertical_markets, reject_if: :all_blank, allow_destroy: true
 
   def self.active
-    where(live: true)
+    with_translations(I18n.locale).where(live: true)
   end
 
   def self.parent_verticals
@@ -96,7 +96,7 @@ class VerticalMarket < ApplicationRecord
   end
 
   def featured_case_studies(limit = 3)
-    @featured_case_studies ||= CaseStudy.where(id: featured_case_studies_ids).order("RAND()").limit(limit)
+    @featured_case_studies ||= CaseStudy.with_translations(I18n.locale).where(id: featured_case_studies_ids).order("RAND()").limit(limit)
   end
 
   def all_diagrams_present?

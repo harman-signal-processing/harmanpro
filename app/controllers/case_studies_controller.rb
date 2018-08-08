@@ -4,9 +4,9 @@ class CaseStudiesController < ApplicationController
   def index
     if params[:vertical_market_id].present?
       @vertical_market = VerticalMarket.find(params[:vertical_market_id])
-      @case_studies = @vertical_market.case_studies.order("created_at DESC").limit(60)
+      @case_studies = @vertical_market.case_studies.with_translations(I18n.locale).order("created_at DESC").limit(60)
     else
-      @case_studies = CaseStudy.order("created_at DESC").limit(60)
+      @case_studies = CaseStudy.with_translations(I18n.locale).order("created_at DESC").limit(60)
     end
     @banner_image = Resource.find_by(name:"Banner: Case Studies")
   end
