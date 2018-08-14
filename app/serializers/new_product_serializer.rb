@@ -7,10 +7,10 @@ class NewProductSerializer < ActiveModel::Serializer
     :press_release,
     :month_year,
     :year,
-    :image_path
+    :image_url
 
-  def image_path
-    object.image.present? ? object.image.path(:medium) : nil
+  def image_url
+    object.image.present? ? expanded_image_url : nil
   end
 
   def month_year
@@ -23,5 +23,11 @@ class NewProductSerializer < ActiveModel::Serializer
 
   def brands
     object.brands.map{|b| b.name.downcase.parameterize.underscore}
+  end
+
+  private
+
+  def expanded_image_url
+    ActionController::Base.helpers.asset_path object.image.url(:medium)
   end
 end

@@ -14,9 +14,9 @@ ActiveAdmin.register NewProduct do
   filter :name
   filter :released_on
 
-  sidebar "See the future", only: [:index, :show] do
-    p "To see how future products appear on the new products page, use #{ link_to("this link", "/new_products?show_future=true") }.".html_safe
-  end
+  #sidebar "See the future", only: [:index, :show] do
+  #  p "To see how future products appear on the new products page, use #{ link_to("this link", "/new_products?show_future=true") }.".html_safe
+  #end
 
   show do
     attributes_table do
