@@ -127,6 +127,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
 
   get 'new-products', to: redirect('/lp/new-products'), as: :new_products
+  get 'new_products' => 'new_products#index'
 
   # Cinema Calculator
   get '/cinema/calculator' => 'calculators#cinema'

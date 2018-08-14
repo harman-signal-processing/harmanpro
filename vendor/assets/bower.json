@@ -7,7 +7,5 @@
     "angular-awesome-slider": "latest",
     "nsPopover": "latest",
     "REM-unit-polyfill": "latest"
-  },
-  "resolutions": {
   }
 }

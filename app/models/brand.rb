@@ -18,6 +18,8 @@ class Brand < ApplicationRecord
   has_many :news_articles, through: :brand_news_articles
   has_many :brand_distributors, dependent: :destroy
   has_many :distributors, through: :brand_distributors
+  has_many :new_product_brands, dependent: :destroy, inverse_of: :brand
+  has_many :new_products, through: :new_product_brands
 
   has_attached_file :logo,
     styles: {

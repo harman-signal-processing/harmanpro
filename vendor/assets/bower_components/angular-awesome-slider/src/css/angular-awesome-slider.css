@@ -306,7 +306,7 @@
   left: 15px;
   width: 10px;
   height: 10px;
-  margin-left: -3px;
+  margin-left: -5px;
   background-color: silver;
   background-color: #615959;
   border-radius: 50%;
@@ -314,6 +314,9 @@
 .jslider.sliderCSS div.jslider-bg i,
 .jslider.sliderCSS div.jslider-pointer {
   background: none;
+}
+.jslider.sliderCSS.vertical td {
+  height: 100%;
 }
 .jslider.sliderCSS.vertical div.jslider-bg i {
   left: 50%;

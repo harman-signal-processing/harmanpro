@@ -1,4 +1,4 @@
-angular-awesome-slider [![NPM version](https://badge.fury.io/js/angular-awesome-slider.png)](http://badge.fury.io/js/angular-awesome-slider) [![Build Status](https://travis-ci.org/darul75/angular-awesome-slider.png?branch=master)](https://travis-ci.org/darul75/angular-awesome-slider) [![Total views](https://sourcegraph.com/api/repos/github.com/darul75/angular-awesome-slider/counters/views.png)](https://sourcegraph.com/github.com/darul75/angular-awesome-slider)
+angular-awesome-slider [![NPM version](https://badge.fury.io/js/angular-awesome-slider.png)](http://badge.fury.io/js/angular-awesome-slider) [![Build Status](https://travis-ci.org/darul75/angular-awesome-slider.png?branch=master)](https://travis-ci.org/darul75/angular-awesome-slider) [![Join the chat at https://gitter.im/darul75/angular-awesome-slider](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/darul75/angular-awesome-slider?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 =====================
 
 Angular directive slider control.
@@ -91,7 +91,8 @@ Options for your slider in json format {from:.....}
 * `threshold`: minimum distance allowed between 2 pointers, default both pointers overlap
 * `limits`: true/false; toggles bounds labels visibility
 * `modelLabels`: custom model for pointers labels based on pointer value
-
+* `watchOptions`: default is 'true', watch this options changes by [equals](https://docs.angularjs.org/api/ng/function/angular.equals)
+* `heterogeneity`: array [percentage of point on slider]/[value in that point]
 
 ![angular slider css](http://darul75.github.io/angular-awesome-slider/images/slider2.png "angular slider css explained")
 ```
@@ -115,6 +116,16 @@ callback: function(value, released) {
 }
 ```
 
+* `scale` : model for slide scale
+
+```javascript
+// divide slider into parts
+scale: [0, '|', 10, '|', 20, '|' , 30, '|', 40]
+
+// or with some custom labels
+scale: [{val:10, label:'low'}, {val:25, label:'middle'}, {val:30, label:'high'}]
+```
+
 * `modelLabels` : model for pointers labels by object or function
 
 ```javascript
@@ -125,6 +136,12 @@ modelLabels: {1: 'top', 2: 'middle', 3: 'bottom'};
 modelLabels: function(value) {
 	return 'my value is' + value; // momentjs external library call...
 }
+```
+
+* `heterogeneity` : repartition of possible values
+```javascript
+// example here, first value is percentage of slider length, second is value
+heterogeneity: ['50/100', '75/250'] // 50% value is 100, 75% value must be 250
 ```
 
 Installation
@@ -145,6 +162,16 @@ bower install angular-awesome-slider
 RELEASE
 -------------
 
+* 2.4.4: move by grabbing the label
+* 2.4.3: fix label + switch from range <=> one value
+* 2.4.2: update angular version + fix for programmatic movement of slider (double value)
+* 2.4.1: non-minified version added + bower update
+* 2.4.0: fix while updating both range values from code
+* 2.3.9: callback not fired in case slider is on threshold values
+* 2.3.8: bind to touch AND non touch events
+* 2.3.7: heterogeneity option
+* 2.3.6: watch options, fix threshold and click handler + date display testing.
+* 2.3.5: do not remember
 * 2.3.4: fix css regressions + modelLabels with function
 * 2.3.3: details for modelLabels options + merge showLabels option
 * 2.3.2: fix css pointer position + hover sking pointers background positions
@@ -198,6 +225,8 @@ To help me on reproducing any issues, please feel free to modify/fork this fiddl
 ## who's who
 
 Who use it ? feel free add issue or edit readme with PR, to see how you use it and give some ideas, thx
+
+[openenergygroup](https://www.openenergygroup.com/)
 
 [google?](https://www.google.com)
 

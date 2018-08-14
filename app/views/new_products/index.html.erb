@@ -1,0 +1,53 @@
+<%= image_tag "new_products_header.jpg" %>
+
+<div ng-controller="NewProductsCtrl" ng-cloak class="row">
+  <div class="medium-3 medium-push-9 small-12 columns">
+    <br/>
+    <p><strong>FILTERS</strong></p>
+
+    <h6>BRAND</h6>
+    <% brand_ids = @new_products.map{|np| np.brands.map{|b| b.id}}.flatten.uniq %>
+    <% Brand.where(id: brand_ids).order("UPPER(name)").each do |brand| %>
+      <div>
+        <label>
+          <input type="checkbox" ng-model="selectedBrands.<%= brand.name.parameterize.underscore %>">
+          <%= brand.name %>
+        </label>
+      </div>
+    <% end %>
+
+    <br/>
+    <h6>YEAR</h6>
+    <% @new_products.map{|np| np.released_on.year}.uniq.sort.reverse.each do |year| %>
+      <div>
+        <label>
+          <input type="checkbox" ng-model="selectedYears.y<%= year %>">
+          <%= year %>
+        </label>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="medium-9 medium-pull-3 small-12 columns">
+    <div ng-repeat="(key, value) in nps = (new_products | filter:includeProduct | groupBy: 'month_year')">
+      <h3>{{ key }}</h3>
+      <ul class="small-block-grid-2 medium-block-grid-4">
+        <li ng-repeat="new_product in value">
+          <div ng-show="new_product.image_path">
+            <img ng-src="{{ new_product.image_path }}" img-preload />
+          </div>
+          <div ng-bind-html="getHtml( new_product.content)"></div>
+          <p ng-show="new_product.more_info || new_product.press_release">
+            <div ng-show="new_product.more_info">
+              <a href="{{ new_product.more_info }}" target="_blank"><%= t('more_information').titleize %></a>
+            </div>
+            <div ng-show="new_product.press_release">
+              <a href="{{ new_product.press_release }}" target="_blank">Press Release</a>
+            </div>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

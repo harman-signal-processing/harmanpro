@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180807211154) do
+ActiveRecord::Schema.define(version: 20180809164718) do
 
   create_table "active_admin_comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "namespace"
@@ -446,6 +446,29 @@ ActiveRecord::Schema.define(version: 20180807211154) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["locale_id"], name: "index_menu_items_on_locale_id"
+  end
+
+  create_table "new_product_brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "new_product_id"
+    t.integer "brand_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_new_product_brands_on_brand_id"
+    t.index ["new_product_id"], name: "index_new_product_brands_on_new_product_id"
+  end
+
+  create_table "new_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.text "content"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.date "released_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "more_info"
+    t.string "press_release"
   end
 
   create_table "news_articles", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -14,7 +14,7 @@
     };
 
     Draggable.prototype.onmousedown = function(){
-      this.ptr.css({ position: "absolute" });
+      this.ptr.css({ position: 'absolute' });
     };
 
     Draggable.prototype.onmousemove = function( evt, x, y ){
@@ -33,6 +33,7 @@
     Draggable.prototype._init = function() {
       if( arguments.length > 0 ){
         this.ptr = arguments[0];
+        this.label = arguments[3];
         this.parent = arguments[2];
 
         if (!this.ptr)
@@ -66,11 +67,12 @@
     Draggable.prototype._bindEvent = function( ptr, eventType, handler ){
       var self = this;
 
-      if( this.supportTouches_ )
-        ptr[0].addEventListener( this.events_[ eventType ], handler, false );
-
-      else
-        ptr.bind( this.events_[ eventType ], handler );
+      // PS need to bind to touch and non-touch events for devices which support both
+      if( this.supportTouches_ ){
+        ptr[0].addEventListener( this.events_[ eventType ].touch, handler, false );
+      }
+      
+      ptr.bind( this.events_[ eventType ].nonTouch, handler );
     };
 
     Draggable.prototype._events = function(){
@@ -78,16 +80,16 @@
 
       this.supportTouches_ = 'ontouchend' in document;
       this.events_ = {
-        "click": this.supportTouches_ ? "touchstart" : "click",
-        "down": this.supportTouches_ ? "touchstart" : "mousedown",
-        "move": this.supportTouches_ ? "touchmove" : "mousemove",
-        "up"  : this.supportTouches_ ? "touchend" : "mouseup",
-        "mousedown"  : this.supportTouches_ ? "mousedown" : "mousedown"
+        'click': { touch : 'touchstart', nonTouch : 'click' },
+        'down': { touch : 'touchstart', nonTouch : 'mousedown' },
+        'move': { touch : 'touchmove', nonTouch : 'mousemove' },
+        'up'  : { touch : 'touchend', nonTouch: 'mouseup'},
+        'mousedown'  : { touch : 'mousedown', nonTouch : 'mousedown' }
       };
 
       var documentElt = angular.element(window.document);
 
-      this._bindEvent(documentElt, "move", function(event) {        
+      this._bindEvent(documentElt, 'move', function(event) {        
         if(self.is.drag) {
           event.stopPropagation();
           event.preventDefault();
@@ -96,21 +98,29 @@
           }  
         }
       });
-      this._bindEvent(documentElt, "down", function(event) {
+      this._bindEvent(documentElt, 'down', function(event) {
         if(self.is.drag) {
           event.stopPropagation();
           event.preventDefault();
         }
       });
-      this._bindEvent(documentElt, "up", function(event) {        
+      this._bindEvent(documentElt, 'up', function(event) {        
         self._mouseup(event);        
       });
 
-      this._bindEvent( this.ptr, "down", function(event) {
+      this._bindEvent( this.label, 'down', function(event) {
         self._mousedown( event );
         return false;
       });
-      this._bindEvent( this.ptr, "up", function(event) {
+      this._bindEvent( this.label, 'up', function(event) {
+        self._mouseup( event );
+      });      
+     
+      this._bindEvent( this.ptr, 'down', function(event) {
+        self._mousedown( event );
+        return false;
+      });
+      this._bindEvent( this.ptr, 'up', function(event) {
         self._mouseup( event );
       });      
      
@@ -135,7 +145,7 @@
       });
 
       if( this.outer && this.outer.get(0) ){
-        this.outer.css({ height: Math.max(this.outer.height(), $(document.body).height()), overflow: "hidden" });
+        this.outer.css({ height: Math.max(this.outer.height(), $(document.body).height()), overflow: 'hidden' });
       }
 
       this.onmousedown( evt );

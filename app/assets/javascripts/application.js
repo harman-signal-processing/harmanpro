@@ -12,6 +12,7 @@
 //
 //= require angular-resource
 //= require angular-awesome-slider/dist/angular-awesome-slider.min
+//= require angular-filter/dist/angular-filter.min.js
 //= require nsPopover
 //= require_tree ./app
 //= require foundation
