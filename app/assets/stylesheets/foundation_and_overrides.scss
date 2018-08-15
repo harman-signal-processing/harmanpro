@@ -775,11 +775,11 @@ $f-dropdown-bg: $gainsboro;
 
 // $include-html-off-canvas-classes: $include-html-classes;
 
-// $tabbar-bg: $oil;
+ $tabbar-bg: $white;
 // $tabbar-height: rem-calc(45);
 // $tabbar-icon-width: $tabbar-height;
 // $tabbar-line-height: $tabbar-height;
-// $tabbar-color: $white;
+$tabbar-color: $oil;
 // $tabbar-middle-padding: 0 rem-calc(10);
 
 // Off Canvas Divider Styles
@@ -787,14 +787,14 @@ $f-dropdown-bg: $gainsboro;
 // $tabbar-left-section-border: solid 1px scale-color($tabbar-bg, $lightness: -50%);
 
 // Off Canvas Tab Bar Headers
-// $tabbar-header-color: $white;
+ $tabbar-header-color: $oil;
 // $tabbar-header-weight: $font-weight-bold;
 // $tabbar-header-line-height: $tabbar-height;
 // $tabbar-header-margin: 0;
 
 // Off Canvas Menu Variables
 // $off-canvas-width: rem-calc(250);
-// $off-canvas-bg: $oil;
+ $off-canvas-bg: $snow;
 // $off-canvas-bg-hover: scale-color($tabbar-bg, $lightness: -30%);
 
 // Off Canvas Menu List Variables
@@ -835,7 +835,7 @@ $f-dropdown-bg: $gainsboro;
 // Off Canvas Back-Link Overlay
 // $off-canvas-overlay-transition: background 300ms ease;
 // $off-canvas-overlay-cursor: pointer;
-// $off-canvas-overlay-box-shadow: -4px 0 4px rgba($black, 0.5), 4px 0 4px rgba($black, 0.5);
+ $off-canvas-overlay-box-shadow: -4px 0 4px rgba($iron, 0.5), 4px 0 4px rgba($iron, 0.5);
 // $off-canvas-overlay-background: rgba($white, 0.2);
 // $off-canvas-overlay-background-hover: rgba($white, 0.05);
 

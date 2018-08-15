@@ -1,53 +1,107 @@
+<div id="top"></div>
 <%= image_tag "new_products_header.jpg" %>
 
-<div ng-controller="NewProductsCtrl" ng-cloak class="row">
-  <div class="medium-3 medium-push-9 small-12 columns">
-    <br/>
-    <p><strong>FILTERS</strong></p>
+<div ng-controller="NewProductsCtrl" ng-cloak>
+  <div class="off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+      <div class="show-for-medium-down">
+        <nav class="tab-bar">
+          <section class="right">
+            <a class="right-off-canvas-toggle" href="#"><i class="fa fa-filter"></i> FILTER RESULTS&nbsp;</a>
+          </section>
+        </nav>
 
-    <h6>BRAND</h6>
-    <% brand_ids = @new_products.map{|np| np.brands.map{|b| b.id}}.flatten.uniq %>
-    <% Brand.where(id: brand_ids).order("UPPER(name)").each do |brand| %>
-      <div>
-        <label>
-          <input type="checkbox" ng-model="selectedBrands.<%= brand.name.parameterize.underscore %>">
-          <%= brand.name %>
-        </label>
-      </div>
-    <% end %>
+        <aside class="right-off-canvas-menu">
+          <div class="row">
+            <div class="small-11 small-offset-1 columns">
+              <br/>
 
-    <br/>
-    <h6>YEAR</h6>
-    <% @new_products.map{|np| np.released_on.year}.uniq.sort.reverse.each do |year| %>
-      <div>
-        <label>
-          <input type="checkbox" ng-model="selectedYears.y<%= year %>">
-          <%= year %>
-        </label>
-      </div>
-    <% end %>
-  </div>
+              <h6>BRAND</h6>
+              <% brand_ids = @new_products.map{|np| np.brands.map{|b| b.id}}.flatten.uniq %>
+              <% Brand.where(id: brand_ids).order("UPPER(name)").each do |brand| %>
+                <div>
+                  <label>
+                    <input type="checkbox" ng-model="selectedBrands.<%= brand.name.parameterize.underscore %>">
+                    <%= brand.name %>
+                  </label>
+                </div>
+              <% end %>
 
-  <div class="medium-9 medium-pull-3 small-12 columns">
-    <div ng-repeat="(key, value) in nps = (new_products | filter:includeProduct | groupBy: 'month_year')">
-      <h3>{{ key }}</h3>
-      <ul class="small-block-grid-2 medium-block-grid-4">
-        <li ng-repeat="new_product in (value | reverse)">
-          <div ng-show="new_product.image_url">
-            <img ng-src="{{ new_product.image_url }}" img-preload />
+              <br/>
+              <h6>YEAR</h6>
+              <% @new_products.map{|np| np.released_on.year}.uniq.sort.reverse.each do |year| %>
+                <div>
+                  <label>
+                    <input type="checkbox" ng-model="selectedYears.y<%= year %>">
+                    <%= year %>
+                  </label>
+                </div>
+              <% end %>
+
+              <br/>
+              <p><small><i>Collapse this menu to see results.</i></small></p>
+            </div>
           </div>
-          <div ng-bind-html="getHtml( new_product.content)"></div>
-          <p ng-show="new_product.more_info || new_product.press_release">
-            <div ng-show="new_product.more_info">
-              <a href="{{ new_product.more_info }}" target="_blank"><%= t('more_information').titleize %></a>
+        </aside>
+      </div>
+
+      <div class="row">
+        <div class="small-12 medium-12 large-9 columns">
+          <div ng-repeat="(key, value) in nps = (new_products | filter:includeProduct | groupBy: 'month_year')">
+            <h3>{{ key }}</h3>
+            <ul class="small-block-grid-2 medium-block-grid-4">
+              <li ng-repeat="new_product in (value | reverse)">
+                <div ng-show="new_product.image_url">
+                  <img ng-src="{{ new_product.image_url }}" img-preload />
+                </div>
+                <div ng-bind-html="getHtml( new_product.content)"></div>
+                <p ng-show="new_product.more_info || new_product.press_release">
+                  <div ng-show="new_product.more_info">
+                    <a href="{{ new_product.more_info }}" target="_blank"><%= t('more_information').titleize %></a>
+                  </div>
+                  <div ng-show="new_product.press_release">
+                    <a href="{{ new_product.press_release }}" target="_blank">Press Release</a>
+                  </div>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="show-for-large-up large-3 columns stickler_container">
+          <div class="stickler">
+          <br/>
+          <p><strong>FILTERS</strong></p>
+
+          <h6>BRAND</h6>
+          <% brand_ids = @new_products.map{|np| np.brands.map{|b| b.id}}.flatten.uniq %>
+          <% Brand.where(id: brand_ids).order("UPPER(name)").each do |brand| %>
+            <div>
+              <label>
+                <input type="checkbox" ng-model="selectedBrands.<%= brand.name.parameterize.underscore %>">
+                <%= brand.name %>
+              </label>
             </div>
-            <div ng-show="new_product.press_release">
-              <a href="{{ new_product.press_release }}" target="_blank">Press Release</a>
+          <% end %>
+
+          <br/>
+          <h6>YEAR</h6>
+          <% @new_products.map{|np| np.released_on.year}.uniq.sort.reverse.each do |year| %>
+            <div>
+              <label>
+                <input type="checkbox" ng-model="selectedYears.y<%= year %>">
+                <%= year %>
+              </label>
             </div>
-          </p>
-        </li>
-      </ul>
+          <% end %>
+          </div>
+        </div>
+
+
+      </div>
+      <a class="exit-off-canvas"></a>
     </div>
   </div>
 </div>
 
+<a href="#top" class="small button">Back to Top</a>

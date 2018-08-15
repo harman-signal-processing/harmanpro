@@ -12,7 +12,7 @@
 //
 //= require angular-resource
 //= require angular-awesome-slider/dist/angular-awesome-slider.min
-//= require angular-filter/dist/angular-filter.min.js
+//= require angular-filter/dist/angular-filter.min
 //= require nsPopover
 //= require_tree ./app
 //= require foundation
@@ -31,6 +31,7 @@
 //= require tiny
 //= require slick.min
 //= require REM-unit-polyfill
+//= require jquery-sticky/jquery.sticky
 // require_tree .
 
 $(function(){
@@ -60,4 +61,7 @@ $(function(){
 
 $(document).ready(function(e) {
   $('img[usemap]').rwdImageMaps();
+  $('.stickler').sticky({
+    topSpacing: 40
+  });
 });

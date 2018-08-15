@@ -119,15 +119,17 @@ Rails.application.routes.draw do
       get :recent
     end
   end
+
+  get 'new_products' => 'new_products#index', as: :new_products
+  get '/lp/new-products', to: redirect('/new_products')
+  get 'new-products', to: redirect('/new_products')
+
   get 'lp/:id(/:random)' => 'landing_pages#show', as: :landing_page
   get 'ep/:id(/:embed)' => 'landing_pages#show', defaults: { embed: 'true' }
   resources :leads, path: 'plan/help', only: [:new, :create]
   resources :news_articles, path: 'news', only: [:index, :show]
   resources :artists, only: [:index, :show]
   resources :products, only: [:index, :show]
-
-  get 'new-products', to: redirect('/lp/new-products'), as: :new_products
-  get 'new_products' => 'new_products#index'
 
   # Cinema Calculator
   get '/cinema/calculator' => 'calculators#cinema'
