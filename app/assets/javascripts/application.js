@@ -61,7 +61,4 @@ $(function(){
 
 $(document).ready(function(e) {
   $('img[usemap]').rwdImageMaps();
-  $('.stickler').sticky({
-    topSpacing: 40
-  });
 });

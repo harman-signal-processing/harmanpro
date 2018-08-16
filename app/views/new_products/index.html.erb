@@ -20,7 +20,7 @@
               <% if brand_ids.length > 0 %>
                 <h6>BRAND</h6>
                 <% Brand.where(id: brand_ids).order("UPPER(name)").each do |brand| %>
-                  <div>
+                  <div class="side-filter">
                     <label>
                       <input type="checkbox" ng-model="selectedBrands.<%= brand.friendly_id.underscore %>">
                       <%= brand.name %>
@@ -34,7 +34,7 @@
                 <br/>
                 <h6>PRODUCT TYPE</h6>
                 <% ProductType.with_translations(I18n.locale).where(id: product_type_ids).order(:name).each do |product_type| %>
-                  <div>
+                  <div class="side-filter">
                     <label>
                       <input type="checkbox" ng-model="selectedProductTypes.<%= product_type.friendly_id.underscore %>">
                       <%= product_type.name %>
@@ -46,7 +46,7 @@
               <br/>
               <h6>YEAR</h6>
               <% @new_products.map{|np| np.released_on.year}.uniq.sort.reverse.each do |year| %>
-                <div>
+                <div class="side-filter">
                   <label>
                     <input type="checkbox" ng-model="selectedYears.y<%= year %>">
                     <%= year %>
@@ -63,7 +63,8 @@
 
       <div class="row">
         <div class="small-12 medium-12 large-9 columns">
-          <div ng-repeat="(key, value) in nps = (new_products | filter:includeProduct | groupBy: 'month_year')">
+          <div ng-repeat="new_product in filtered_new_products = (new_products | filter:includeProduct)"></div>
+          <div ng-repeat="(key, value) in nps = (filtered_new_products | groupBy: 'month_year')">
             <h3>{{ key }}</h3>
             <ul class="small-block-grid-2 medium-block-grid-4">
               <li ng-repeat="new_product in (value | reverse)">
@@ -82,10 +83,16 @@
               </li>
             </ul>
           </div>
+
+          <div ng-hide="filtered_new_products.length" class="text-center">
+            <br/><br/><br/>
+            <p>
+              Sorry, there are no matching results.
+            </p>
+          </div>
         </div>
 
-        <div class="show-for-large-up large-3 columns stickler_container">
-          <div class="stickler">
+        <div class="show-for-large-up large-3 columns">
           <br/>
           <p><strong>FILTERS</strong></p>
 
@@ -93,7 +100,7 @@
           <% if brand_ids.length > 0 %>
             <h6>BRAND</h6>
             <% Brand.where(id: brand_ids).order("UPPER(name)").each do |brand| %>
-              <div>
+              <div class="side-filter">
                 <label>
                   <input type="checkbox" ng-model="selectedBrands.<%= brand.friendly_id.underscore %>">
                   <%= brand.name %>
@@ -107,7 +114,7 @@
             <br/>
             <h6>PRODUCT TYPE</h6>
             <% ProductType.with_translations(I18n.locale).where(id: product_type_ids).order(:name).each do |product_type| %>
-              <div>
+              <div class="side-filter">
                 <label>
                   <input type="checkbox" ng-model="selectedProductTypes.<%= product_type.friendly_id.underscore %>">
                   <%= product_type.name %>
@@ -119,16 +126,14 @@
           <br/>
           <h6>YEAR</h6>
           <% @new_products.map{|np| np.released_on.year}.uniq.sort.reverse.each do |year| %>
-            <div>
+            <div class="side-filter">
               <label>
                 <input type="checkbox" ng-model="selectedYears.y<%= year %>">
                 <%= year %>
               </label>
             </div>
           <% end %>
-          </div>
         </div>
-
 
       </div>
       <a class="exit-off-canvas"></a>

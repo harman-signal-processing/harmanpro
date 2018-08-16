@@ -101,3 +101,11 @@ img.no-resize { max-width: none; }
     }
   }
 }
+.side-filter {
+  label {
+    display: inline-block;
+    line-height: 2px !important;
+    margin-bottom: 0px;
+  }
+  margin-bottom: 5px;
+}
