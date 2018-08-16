@@ -1,6 +1,8 @@
 class NewProduct < ApplicationRecord
   has_many :new_product_brands, dependent: :destroy, inverse_of: :new_product
   has_many :brands, through: :new_product_brands
+  has_many :new_product_product_types, dependent: :destroy, inverse_of: :new_product
+  has_many :product_types, through: :new_product_product_types
 
   validates :name, presence: true
   validates :released_on, presence: true
@@ -17,4 +19,5 @@ class NewProduct < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   accepts_nested_attributes_for :new_product_brands, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :new_product_product_types, reject_if: :all_blank, allow_destroy: true
 end

@@ -1,6 +1,7 @@
 ActiveAdmin.register NewProduct do
-  menu parent: "Brands & Products", priority: 3, label: "New Products"
+  menu parent: "Brands & Products", priority: 4, label: "New Products"
   permit_params :name, :image, :content, :released_on, :more_info, :press_release,
+    new_product_product_types_attributes: [:id, :product_type_id, :_destroy],
     new_product_brands_attributes: [:id, :brand_id, :_destroy]
 
   index do
@@ -35,6 +36,9 @@ ActiveAdmin.register NewProduct do
       row :brands do
         new_product.brands.map{|b| b.name}.join(", ")
       end
+      row :product_types do
+        new_product.product_types.map{|pt| pt.name}.join(", ")
+      end
     end
     active_admin_comments
   end
@@ -51,8 +55,13 @@ ActiveAdmin.register NewProduct do
     end
     f.has_many :new_product_brands, heading: "Brand(s)", new_record: "Add a brand" do |s|
       s.input :id, as: :hidden
-      s.input :brand
+      s.input :brand, collection: Brand.order("UPPER(name)")
       s.input :_destroy, as: :boolean, label: "Delete"
+    end
+    f.has_many :new_product_product_types, heading: "Product Types(s)", new_record: "Add a product type" do |pt|
+      pt.input :id, as: :hidden
+      pt.input :product_type, collection: ProductType.with_translations(I18n.locale).order(:name)
+      pt.input :_destroy, as: :boolean, label: "Delete"
     end
     f.actions
   end

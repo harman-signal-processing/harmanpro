@@ -10,6 +10,7 @@ angular.module("harmanpro")
       $scope.includeProduct = (product) ->
         brand_filter = true
         year_filter = true
+        product_type_filter = true
 
         if $scope.selectedBrands
           selected_brand_list = []
@@ -29,7 +30,16 @@ angular.module("harmanpro")
             for y in selected_years_list
               year_filter = (y == "y#{product.year}") unless year_filter == true
 
-        return(brand_filter && year_filter)
+        if $scope.selectedProductTypes
+          selected_product_type_list = []
+          for k,v of $scope.selectedProductTypes
+            selected_product_type_list.push k if v
+          if selected_product_type_list.length > 0
+            product_type_filter = false
+            for pt in selected_product_type_list
+              product_type_filter = product.product_types.includes(pt) unless product_type_filter == true
+
+        return(brand_filter && year_filter && product_type_filter)
 
       $scope.getHtml = (html) ->
         $sce.trustAsHtml html

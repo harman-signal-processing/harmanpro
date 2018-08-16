@@ -38,7 +38,7 @@ ActiveAdmin.register NewsArticle do
     end
     f.has_many :brand_news_articles, heading: "Related Brands", new_record: "Add a related brand" do |s|
       s.input :id, as: :hidden
-      s.input :brand
+      s.input :brand, collection: Brand.order("UPPER(name)")
       s.input :_destroy, as: :boolean, label: "Delete"
     end
     f.actions

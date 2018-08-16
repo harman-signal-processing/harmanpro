@@ -102,7 +102,7 @@ ActiveAdmin.register VerticalMarket do
     end
     f.has_many :case_study_vertical_markets, heading: "Case Studies", new_record: "Add a case study" do |s|
       s.input :id, as: :hidden
-      s.input :case_study
+      s.input :case_study, collection: CaseStudy.with_translations(I18n.locale).order(:headline)
       s.input :_destroy, as: :boolean, label: "Delete"
     end
     f.actions

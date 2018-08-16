@@ -16,15 +16,31 @@
             <div class="small-11 small-offset-1 columns">
               <br/>
 
-              <h6>BRAND</h6>
               <% brand_ids = @new_products.map{|np| np.brands.map{|b| b.id}}.flatten.uniq %>
-              <% Brand.where(id: brand_ids).order("UPPER(name)").each do |brand| %>
-                <div>
-                  <label>
-                    <input type="checkbox" ng-model="selectedBrands.<%= brand.name.parameterize.underscore %>">
-                    <%= brand.name %>
-                  </label>
-                </div>
+              <% if brand_ids.length > 0 %>
+                <h6>BRAND</h6>
+                <% Brand.where(id: brand_ids).order("UPPER(name)").each do |brand| %>
+                  <div>
+                    <label>
+                      <input type="checkbox" ng-model="selectedBrands.<%= brand.friendly_id.underscore %>">
+                      <%= brand.name %>
+                    </label>
+                  </div>
+                <% end %>
+              <% end %>
+
+              <% product_type_ids = @new_products.map{|np| np.product_types.map{|pt| pt.id}}.flatten.uniq %>
+              <% if product_type_ids.length > 0 %>
+                <br/>
+                <h6>PRODUCT TYPE</h6>
+                <% ProductType.with_translations(I18n.locale).where(id: product_type_ids).order(:name).each do |product_type| %>
+                  <div>
+                    <label>
+                      <input type="checkbox" ng-model="selectedProductTypes.<%= product_type.friendly_id.underscore %>">
+                      <%= product_type.name %>
+                    </label>
+                  </div>
+                <% end %>
               <% end %>
 
               <br/>
@@ -73,15 +89,31 @@
           <br/>
           <p><strong>FILTERS</strong></p>
 
-          <h6>BRAND</h6>
           <% brand_ids = @new_products.map{|np| np.brands.map{|b| b.id}}.flatten.uniq %>
-          <% Brand.where(id: brand_ids).order("UPPER(name)").each do |brand| %>
-            <div>
-              <label>
-                <input type="checkbox" ng-model="selectedBrands.<%= brand.name.parameterize.underscore %>">
-                <%= brand.name %>
-              </label>
-            </div>
+          <% if brand_ids.length > 0 %>
+            <h6>BRAND</h6>
+            <% Brand.where(id: brand_ids).order("UPPER(name)").each do |brand| %>
+              <div>
+                <label>
+                  <input type="checkbox" ng-model="selectedBrands.<%= brand.friendly_id.underscore %>">
+                  <%= brand.name %>
+                </label>
+              </div>
+            <% end %>
+          <% end %>
+
+          <% product_type_ids = @new_products.map{|np| np.product_types.map{|pt| pt.id}}.flatten.uniq %>
+          <% if product_type_ids.length > 0 %>
+            <br/>
+            <h6>PRODUCT TYPE</h6>
+            <% ProductType.with_translations(I18n.locale).where(id: product_type_ids).order(:name).each do |product_type| %>
+              <div>
+                <label>
+                  <input type="checkbox" ng-model="selectedProductTypes.<%= product_type.friendly_id.underscore %>">
+                  <%= product_type.name %>
+                </label>
+              </div>
+            <% end %>
           <% end %>
 
           <br/>

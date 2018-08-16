@@ -34,7 +34,7 @@ ActiveAdmin.register CaseStudy do
     end
     f.has_many :case_study_vertical_markets, heading: "Vertical Markets", new_record: "Add a vertical market" do |s|
       s.input :id, as: :hidden
-      s.input :vertical_market
+      s.input :vertical_market, collection: VerticalMarket.with_translations(I18n.locale).order(:name)
       s.input :show_on_vertical_market_page
       s.input :_destroy, as: :boolean, label: "Delete"
     end

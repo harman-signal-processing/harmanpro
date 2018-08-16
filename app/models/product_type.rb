@@ -8,6 +8,8 @@ class ProductType < ApplicationRecord
   friendly_id :name, use: [:globalize, :history, :finders]
 
   has_many :reference_system_product_types, dependent: :destroy
+  has_many :new_product_product_types, dependent: :destroy, inverse_of: :product_type
+  has_many :new_products, through: :new_product_product_types
 
   validates :name, presence: true,  uniqueness: true
 

@@ -52,7 +52,7 @@ ActiveAdmin.register User do
     end
     f.has_many :locale_translators, heading: "Authorized Locales", new_record: "Add an authorized locale" do |s|
       s.input :id, as: :hidden
-      s.input :locale
+      s.input :locale, collection: AvailableLocale.order(:name)
       s.input :_destroy, as: :boolean, label: "Delete"
     end
     f.actions

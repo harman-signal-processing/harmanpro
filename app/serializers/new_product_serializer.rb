@@ -3,6 +3,7 @@ class NewProductSerializer < ActiveModel::Serializer
     :name,
     :content,
     :brands,
+    :product_types,
     :more_info,
     :press_release,
     :month_year,
@@ -22,7 +23,11 @@ class NewProductSerializer < ActiveModel::Serializer
   end
 
   def brands
-    object.brands.map{|b| b.name.downcase.parameterize.underscore}
+    object.brands.map{|b| b.friendly_id.underscore}
+  end
+
+  def product_types
+    object.product_types.map{|pt| pt.friendly_id.underscore}
   end
 
   private

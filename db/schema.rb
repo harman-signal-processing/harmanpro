@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180809164718) do
+ActiveRecord::Schema.define(version: 20180816170900) do
 
   create_table "active_admin_comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "namespace"
@@ -455,6 +455,15 @@ ActiveRecord::Schema.define(version: 20180809164718) do
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_new_product_brands_on_brand_id"
     t.index ["new_product_id"], name: "index_new_product_brands_on_new_product_id"
+  end
+
+  create_table "new_product_product_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "new_product_id"
+    t.integer "product_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["new_product_id"], name: "index_new_product_product_types_on_new_product_id"
+    t.index ["product_type_id"], name: "index_new_product_product_types_on_product_type_id"
   end
 
   create_table "new_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -1,8 +1,7 @@
 ActiveAdmin.register ProductType do
+  menu parent: "Brands & Products", priority: 3, label: "Product Types"
 
   permit_params :name, :description
-
-  menu false
 
   # :nocov:
   filter :updated_at
