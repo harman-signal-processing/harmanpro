@@ -2,6 +2,8 @@ angular.module("harmanpro")
   .controller 'NewProductsCtrl',
     ['$attrs', '$scope', '$sce', 'NewProduct', ($attrs, $scope, $sce, NewProduct) ->
 
+      $scope.no_results = ""
+
       NewProduct.get {
         locale: $attrs.locale
       }, (data) ->
@@ -11,6 +13,7 @@ angular.module("harmanpro")
         brand_filter = true
         year_filter = true
         product_type_filter = true
+        $scope.no_results = "Sorry, there were no matching results."
 
         if $scope.selectedBrands
           selected_brand_list = []

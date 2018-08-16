@@ -84,10 +84,10 @@
             </ul>
           </div>
 
-          <div ng-hide="filtered_new_products.length" class="text-center">
+          <div ng-show="!filtered_new_products.length">
             <br/><br/><br/>
-            <p>
-              Sorry, there are no matching results.
+            <p class="text-center">
+              {{ no_results }}
             </p>
           </div>
         </div>
