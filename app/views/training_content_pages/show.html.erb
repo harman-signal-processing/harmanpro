@@ -17,9 +17,9 @@
     <div class="row training-top-content-row">
 
         <!-- begin left nav  -->
-        <div class="medium-<%= @training_content_page.side_column_width %> small-12 columns">
-            <%= render partial: 'training_leftnav', locals: { training_content: @training_content_page } %>
-        </div>
+        <!--<div class="medium-<%#= @training_content_page.side_column_width %> small-12 columns">-->
+            <%#= render partial: 'training_leftnav', locals: { training_content: @training_content_page } %>
+        <!--</div>-->
 
         <!-- begin main content  -->
         <div class="medium-<%= @training_content_page.main_content_width %> small-12 columns">
@@ -36,17 +36,18 @@
             <%= render_content(@training_content_page, :main_content) %>
 
             <%#if @training_content_page.slug === "training-home" %>
-            <%= render 'training_content_pages/training_login_signup_box_links' %>
+            <%#= render 'training_content_pages/training_login_signup_box_links' %>
             <%#end%>
 
         </div><!-- <div class="medium-<%= @training_content_page.main_content_width %> small-12 columns">  -->
         <!-- end main content  -->
-        <% if @training_content_page.right_content.present? %>
+        
+        <%# if @training_content_page.right_content.present? %>
         <!-- begin right content  -->
-        <div class="medium-<%= @training_content_page.side_column_width %> small-12 columns">
-            <%= render_content(@training_content_page, :right_content) %>
-        </div>  <!-- <div class="medium-<%= @training_content_page.side_column_width %> small-12 columns">  -->
-        <% end %>
+        <!--<div class="medium-<%= @training_content_page.side_column_width %> small-12 columns">-->
+            <%#= render_content(@training_content_page, :right_content) %>
+        <!--</div>-->  <!-- <div class="medium-<%= @training_content_page.side_column_width %> small-12 columns">  -->
+        <%# end %>
 
     </div><!-- <div class="row training-top-content-row">  -->
     <!-- end main content row  -->

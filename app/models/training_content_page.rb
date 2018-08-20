@@ -46,7 +46,7 @@ class TrainingContentPage < ApplicationRecord
   end
 
   def main_content_width
-    mcw = 9
+    mcw = 12
     mcw -= side_column_width if self.right_content.present?
     mcw
   end
