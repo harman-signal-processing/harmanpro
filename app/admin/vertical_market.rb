@@ -79,7 +79,7 @@ ActiveAdmin.register VerticalMarket do
     f.inputs do
       f.input :live
       f.input :parent
-      f.input :name, hint: "Maximum characters: 20", input_html: {maxlength: 20}
+      f.input :name, hint: "Maximum characters: 25", input_html: {maxlength: 25}
       f.input :headline, hint: "Maximum characters: 70", input_html: { maxlength: 70 }
       f.input :icon, hint: f.object.icon.present? ?
         image_tag(f.object.icon.url(:thumb)) + content_tag(:br) + "Appears on the overall solutions index." : "Appears on the overall solutions index. Preferred size is 93x93 px."
