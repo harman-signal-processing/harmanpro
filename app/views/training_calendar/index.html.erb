@@ -16,18 +16,19 @@
     <!-- begin main content row  -->
     <div class="row training-top-content-row">
         <!-- begin left nav  -->
-        <div class="medium-3 small-12 columns">
-            <%= render partial: 'training_content_pages/training_leftnav' %>
-        </div>
+        <!--<div class="medium-3 small-12 columns">-->
+            <%#= render partial: 'training_content_pages/training_leftnav' %>
+        <!--</div>-->
+        
         <!-- begin main content  -->
-        <div class="medium-9 small-12 columns">
+        <div class="medium-12 small-12 columns">
             <h1 class="space-after"><%= @training_content_page.title %></h1>
             <% if @training_content_page.subtitle.present? %>
             <h4 class="subheader"><%= @training_content_page.subtitle %></h4>
             <br />
             <% end %>
 
-            <%#= render_content(@training_content_page, :main_content) %>
+            <%= render_content(@training_content_page, :main_content) %>
 
             <%= render 'training_calendar/country_links_list' %>
             
@@ -45,7 +46,7 @@
             
             <%= render 'training_calendar/schedule_list' %>
 
-            <%= render 'training_content_pages/training_login_signup_box_links' %>
+            <%#= render 'training_content_pages/training_login_signup_box_links' %>
         </div><!-- <div class="medium-9 small-12 columns"> -->
     </div><!-- <div class="row training-top-content-row"> -->
     <!-- end main content row -->
