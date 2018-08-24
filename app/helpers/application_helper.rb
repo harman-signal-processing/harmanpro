@@ -1,9 +1,5 @@
 module ApplicationHelper
 
-  def max_items_in_top_nav_columns
-    6
-  end
-
   def parent_verticals
     @parent_verticals ||= VerticalMarket.parent_verticals
   end
@@ -54,16 +50,6 @@ module ApplicationHelper
       css_class += vm.children_or_reference_systems.length > 0 ? "has-dropdown" : ""
     end
     css_class
-  end
-
-  def top_menu_width_for(vm)
-    # We only list 6 dependencies in a column, so divide by 6:
-    # Then multiply by 3 since the columns are too narrow
-    (vm.children_or_reference_systems.count.to_f / max_items_in_top_nav_columns.to_f).ceil * 3
-  end
-
-  def footer_menu_width_for(vm)
-    vm.children_or_reference_systems.count > 10 ? 3 : 2
   end
 
   def format_headline(content)

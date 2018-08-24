@@ -192,8 +192,8 @@
       <div class="mega-menu-content">
         <div class="row">
 
-          <ul class="medium-block-grid-<%= active_child_verticals.in_groups_of(max_items_in_top_nav_columns).length %>">
-            <% active_child_verticals.in_groups_of(max_items_in_top_nav_columns) do |group| %>
+          <ul class="medium-block-grid-4">
+            <% active_child_verticals.in_groups(4) do |group| %>
               <li>
                 <ul>
                   <% group.each do |item| %>
