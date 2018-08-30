@@ -8,7 +8,7 @@
     label: "How may we help you?",
     as: :radio_buttons,
     collection: ContactMessage.message_types,
-    input_html: { :"ng-model" => "message_type", class: "trigger-datepicker" }
+    input_html: { :"ng-model" => "message_type" }
   %>
 
   <div class="message_type_container" ng-switch="message_type">

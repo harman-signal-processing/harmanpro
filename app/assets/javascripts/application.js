@@ -24,7 +24,6 @@
 //= require training_courses
 //= require training_calendar
 //= require training_maintenance_message
-//= require service
 //= require locale
 //= require effects
 //= require_tree ./cms

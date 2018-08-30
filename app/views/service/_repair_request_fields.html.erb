@@ -39,7 +39,7 @@
         label: "Date of Purchase",
         as: :string,
         required: true,
-        input_html: { class: 'ui-datepicker-past-only' } %>
+        input_html: { :"ng-model" => "date_of_purchase", jqdatepickerpastonly: true } %>
     </div>
   </div>
   <div class="row">
