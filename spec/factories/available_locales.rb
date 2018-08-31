@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :available_locale do
     sequence(:key) {|n| "loc#{n}"}
-    name "LocaleName"
+    name { "LocaleName" }
   end
 
 end

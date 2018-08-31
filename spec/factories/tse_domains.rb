@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :tse_domain do
-    name "MyString"
+    name { "MyString" }
   end
 end

@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :tse_region do
-    name "MyString"
+    name { "MyString" }
   end
 end

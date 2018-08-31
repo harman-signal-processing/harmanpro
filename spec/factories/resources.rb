@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :resource do
-    name "ResourceName"
+    name { "ResourceName" }
     attachment { File.new(Rails.root.join("spec", "fixtures", "test.jpg")) }
-    resource_type "ResourceType"
-    description "ResourceDescription"
+    resource_type { "ResourceType" }
+    description { "ResourceDescription" }
   end
 
 end
