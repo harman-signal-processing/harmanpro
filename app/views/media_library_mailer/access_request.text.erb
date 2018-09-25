@@ -3,18 +3,26 @@ Hello, the following person has requested access to the DAM:
 First Name: <%= @media_library_access_request.first_name %>
 Last Name: <%= @media_library_access_request.last_name %>
 Email: <%= @media_library_access_request.email %>
+Company: <%= @media_library_access_request.company %>
 Job title: <%= @media_library_access_request.job_title %>
 Relationship: <%= @media_library_access_request.relationship %>
-
-(if employee...)
-CSU: <%= @media_library_access_request.employee_csu %>
-Office: <%= @media_library_access_request.employee_office %>
-
-(if rep, etc...)
-Region: <%= @media_library_access_request.region %>
-
-(if other)
+<% if @media_library_access_request.other_relationship.present? %>
 Other relationship: <%= @media_library_access_request.other_relationship %>
+<% end %>
 
+<% if @media_library_access_request.employee_office.present? %>
+HARMAN Employee office:
+<%= @media_library_access_request.employee_office %>
+<% end %>
 
+<% if @media_library_access_request.region.present? %>
+Location:
+<%= @media_library_access_request.region %>
+<% end %>
+
+Why are you requesting access to the HARMAN Professional Media Library?
+<%= @media_library_access_request.reason_for_request %>
+
+What specific marketing materials are you looking for in the Media Library?
+<%= @media_library_access_request.what_assets %>
 

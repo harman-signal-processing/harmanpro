@@ -1,19 +1,58 @@
 <%= simple_form_for @media_library_access_request do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :email %>
-  <%= f.input :job_title %>
-  <%= f.input :relationship,
-    as: :radio_buttons,
-    collection: ["HARMAN Employee","US Rep","Int'l Distributor","Other"] %>
-  <fieldset>
-    <legend>For HARMAN Employees</legend>
-    <%= f.input :employee_csu, label: "CSU",
-      as: :select,
-      collection: ["Retail", "Tour", "CEG", "Hospitality", "Large Venue", "Cinema", "Broadcast", "n/a"] %>
-    <%= f.input :employee_office, label: "Office Location" %>
-  </fieldset>
-  <%= f.input :region, label: "Rep Region/Country/Territory" %>
-  <%= f.input :other_relationship, label: "If other, please explain your relationship with HARMAN." %>
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :first_name %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <%= f.input :last_name %>
+    </div>
+  </div>
+  <%= f.input :email, label: "Email used for work"  %>
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :job_title %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <%= f.input :company, label: "Company name" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :relationship,
+        as: :select,
+        collection: ["HARMAN Employee (using HARMAN email address)",
+                     "HARMAN Professional US Rep Firm",
+                     "HARMAN Professional Int'l Distributor",
+                     "Authorized Service Center",
+                     "Authorized Reseller or Dealer",
+                     "Other"]
+                   %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <%= f.input :other_relationship,
+          label: "If Other, please explain your relationship with HARMAN:" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <fieldset>
+        <legend>For HARMAN Employees</legend>
+        <%= f.input :employee_office, label: "Office Location" %>
+      </fieldset>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <fieldset>
+        <legend>For Everyone Else</legend>
+        <%= f.input :region, label: "City, State/Provice, Country" %>
+      </fieldset>
+    </div>
+  </div>
+
+  <%= f.input :reason_for_request,
+      label: "Why are you requesting access to the HARMAN Professional Media Library?" %>
+
+  <%= f.input :what_assets,
+      label: "What specific marketing materials are you looking for in the Media Library?" %>
+
   <%= f.submit "Submit", class: "medium button" %>
 <% end %>

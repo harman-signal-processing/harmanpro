@@ -4,21 +4,30 @@
 First Name: <%= @media_library_access_request.first_name %><br/>
 Last Name: <%= @media_library_access_request.last_name %><br/>
 Email: <%= @media_library_access_request.email %><br/>
+Company: <%= @media_library_access_request.company %><br/>
 Job title: <%= @media_library_access_request.job_title %><br/>
 Relationship: <%= @media_library_access_request.relationship %>
+<% if @media_library_access_request.other_relationship.present? %>
+  <br/>Other relationship: <%= @media_library_access_request.other_relationship %>
+<% end %>
 </p>
 
-<p>(if employee...)<br/>
-CSU: <%= @media_library_access_request.employee_csu %><br/>
-Office: <%= @media_library_access_request.employee_office %>
+<% if @media_library_access_request.employee_office.present? %>
+<p>HARMAN Employee office:<br/>
+<%= @media_library_access_request.employee_office %>
 </p>
+<% end %>
 
-<p>(if rep, etc...)<br/>
-Region: <%= @media_library_access_request.region %>
+<% if @media_library_access_request.region.present? %>
+<p>Location:<br/>
+<%= @media_library_access_request.region %>
 </p>
+<% end %>
 
-<p>(if other)<br/>
-Other relationship: <%= @media_library_access_request.other_relationship %>
-</p>
+<p>Why are you requesting access to the HARMAN Professional Media Library?</p>
+<div><%= @media_library_access_request.reason_for_request %></div>
+
+<p>What specific marketing materials are you looking for in the Media Library?</p>
+<div><%= @media_library_access_request.what_assets %></div>
 
 

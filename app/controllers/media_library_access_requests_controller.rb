@@ -24,7 +24,10 @@ class MediaLibraryAccessRequestsController < ApplicationController
                                                          :employee_csu,
                                                          :employee_office,
                                                          :job_title,
+                                                         :company,
                                                          :region,
-                                                         :other_relationship)
+                                                         :other_relationship,
+                                                         :reason_for_request,
+                                                         :what_assets)
   end
 end
