@@ -30,6 +30,7 @@
  *= require training_calendar
  *= require features
  *= require frontend
+ *= require search
  */
 
 span.spinner {
@@ -46,12 +47,20 @@ span.spinner {
 img.help-icon {
   cursor: pointer;
 }
-img.no-resize { max-width: none; }
+
+img.no-resize {
+  max-width: none;
+}
 
 .jslider {
   margin-left: 2px;
   margin-top: 18px;
-  table thead tr th, table tfoot tr th, table tfoot tr td, table tbody tr th, table tbody tr td, table tr td {
+  table thead tr th,
+  table tfoot tr th,
+  table tfoot tr td,
+  table tbody tr th,
+  table tbody tr td,
+  table tr td {
     line-height: 1.4;
     div.jslider-scale {
       span {
@@ -101,6 +110,7 @@ img.no-resize { max-width: none; }
     }
   }
 }
+
 .side-filter {
   label {
     display: inline-block;
