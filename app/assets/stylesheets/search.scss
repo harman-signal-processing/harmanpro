@@ -1,0 +1,41 @@
+ul#search_results .result-type-header {
+  background-color: #ededed;
+  padding: 4px;
+  border-radius: .2em;
+}
+
+ul#search_results .result-item-number {
+  float: right;
+  font-size: xx-small;
+  color: #999;
+}
+
+ul#search_results .result-item-title-link {
+  display: block;
+  margin-bottom: 5px;
+}
+
+ul#search_results .result-item-image-link {
+  float: left;
+  margin-top: 6px;
+  margin-right: 10px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+
+#search_results_count_message {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+ul.pagination li.current {
+  background: #e6e6e6;
+  border-radius: 3px;
+  transition: background-color 300ms ease-out; // background: none;
+  color: #999999;
+  display: block;
+  font-size: 1em;
+  font-weight: normal;
+  line-height: inherit;
+  padding: 0.07143rem 0.71429rem 0.07143rem;
+}
