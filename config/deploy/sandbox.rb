@@ -12,7 +12,7 @@
 # used to set extended properties on the server.
 
 
-server 'rackspace1', user: 'hmg', roles: %w{web app db}
+server 'rackspace1', user: 'hpro', roles: %w{web app db}
 
 set :application, "harmanpro_sandbox"
 set :deploy_to, "/var/www/harmanpro-sandbox"
