@@ -193,7 +193,7 @@ namespace :refresh do
   task :sandbox_uploads do
 
     on roles(:web) do |host|
-      execute :rsync, "-avz /mnt/cloudfiles/hpro #{ shared_path }/public/system"
+      execute :rsync, "-ravz /mnt/cloudfiles/hpro/ #{ shared_path }/public/system"
     end
 
   end

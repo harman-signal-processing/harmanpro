@@ -51,6 +51,12 @@
   <%= f.input :reason_for_request,
       label: "Why are you requesting access to the HARMAN Professional Media Library?" %>
 
+  <div class="alert-box info">
+    If you are only looking for HARMAN Pro brand logos, you don’t need access to the
+    Media Library. You can find the logos by going to the
+    <%= link_to "HARMAN Pro Logo Portal", "https://assets.harman.com/portals/dgmnridj/HARMANProBrandLogos", target: "_blank" %>.
+  </div>
+
   <%= f.input :what_assets,
       label: "What specific marketing materials are you looking for in the Media Library?" %>
 
