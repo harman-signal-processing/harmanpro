@@ -1,17 +1,5 @@
 [
     {
-        "name": "Kevin Morrison",
-        "title": "Senior Vice President, Customer Solutions SBU",
-        "email": "kevin.morrison@harman.com",
-        "phone1": "+1 469 624 7010",
-        "group1": "Customer Solutions SBU Leadership",
-        "g1Sort": 1,
-        "officeId": "Richardson",
-        "showonweb": "no",
-        "solutionsMap": "no",
-        "channelMap": "no"
-    },
-    {
         "name": "Shaun Robinson",
         "title": "Vice President, Corporate, Education &\nGovernment CSU",
         "email": "shaun.robinson@harman.com",
@@ -2723,5 +2711,8 @@
         "showonweb": "no",
         "solutionsMap": "no",
         "channelMap": "no"
+    },
+    {
+        "name": "TEST"
     }
 ]
