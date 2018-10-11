@@ -33,7 +33,9 @@
                         <em><%=contact["name"]%></em></br>
                         <%=contact["title"]%></br>
                         <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp; <a href="mailto:<%=contact["email"]%>"><%=contact["email"]%></a></br>
+                        <% if contact["phone1"].present? %>
                         <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;<%=contact["phone1"]%>
+                        <% end %>
                     </div>
                 </li>
             <% end %>
