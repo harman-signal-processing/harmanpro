@@ -4,7 +4,7 @@
     </div><!-- <div id="loadMessage" -->
     
     <% @calendar.each do |item| %>
-        <% 
+        <% #binding.pry
             remainingSeats = item["RemainingSeats"].to_i
             remaininSeatsMessage = remainingSeats > 0 ? "Seats Available" : "No Seats Available"
             remainingSeatsCssClass = remainingSeats > 0 ? "seatsAvailable" : "noSeatsAvailable"
@@ -16,16 +16,30 @@
                 <br />
                 <span class="<%=remainingSeatsCssClass%>"><%=remaininSeatsMessage%></span><!-- <span class="<%=remainingSeatsCssClass%>"> -->
             </div><!-- <div class="course-info-attribute sessionName"> -->
-            
             <div class="course-info-attribute courseName">
-                <strong><%=item["CourseName"]%></strong>
-                <br />
-                <% if item["CourseDescription"].present? %>
-                  <div class="linkButton"><%=item["CourseDescription"].html_safe%></div><!-- <div class="linkButton"> -->
-                <% end %>
-                <div class="linkButton"><a href='<%=item["EnrollmentURL"]%>' target='_blank'>Start Here</a></div><!-- <div class="linkButton"> -->
-            </div><!-- <div class="course-info-attribute courseName"> -->
-            
+            <% if item["Notes"].present? %>
+                
+                    <strong><%=item["CourseName"]%></strong>
+                    <br />
+                    <% if item["Notes"]["COURSE_INFO_URL"].present? %>
+                        <div class="linkButton"><%=link_to item["Notes"]["COURSE_INFO_LABEL"], item["Notes"]["COURSE_INFO_URL"], target: "_blank" %></div><!-- <div class="linkButton"> --> 
+                    <%end %>
+                    <% if item["Notes"]["HOW_TO_REGISTER_URL"].present?%>
+                        <div class="linkButton"><%=link_to item["Notes"]["HOW_TO_REGISTER_LABEL"], item["Notes"]["HOW_TO_REGISTER_URL"], target: "_blank" %></div><!-- <div class="linkButton"> --> 
+                    <% end %>
+                    <% if item["Notes"]["START_HERE_URL"].present?%>
+                        <div class="linkButton"><%=link_to item["Notes"]["START_HERE_LABEL"], item["Notes"]["START_HERE_URL"], target: "_blank" %></div><!-- <div class="linkButton"> --> 
+                    <% end %>
+                          
+            <% else %>
+                    <strong><%=item["CourseName"]%></strong>
+                    <br />
+                    <% if item["CourseDescription"].present? %>
+                      <div class="linkButton"><%=item["CourseDescription"].html_safe%></div><!-- <div class="linkButton"> -->
+                    <% end %>
+                    <div class="linkButton"><a href='<%=item["EnrollmentURL"]%>' target='_blank'>Start Here</a></div><!-- <div class="linkButton"> -->
+            <% end %>
+            </div><!-- <div class="course-info-attribute courseName"> -->  
             <div style="clear:both;"></div>
         </div><!-- <div class="courserow"> -->
     <% end %> <%# @calendar.each do |item| %>
