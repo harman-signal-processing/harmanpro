@@ -5,82 +5,71 @@ htd.allcourselistwithNOcountry = [];
 htd.countrylist = [];
 htd.getbycountry = {};
 
-$(function ()
-{
+$(function () {
 
-    var getdata = function getdata()
-    {
+    var getdata = function getdata() {
         var today = new Date(); //Today's Date
-        var toDate = new Date(today.getFullYear()+1, today.getMonth(), today.getDate());
+        var toDate = new Date(today.getFullYear() + 1, today.getMonth(), today.getDate());
 
         var dataToSend = {
-            fromDate: today.getMonth()+1 + "-" + today.getDate() + "-" + today.getFullYear(),
-            toDate: toDate.getMonth()+1 + "-" + toDate.getDate() + "-" + toDate.getFullYear(),
+            fromDate: today.getMonth() + 1 + "-" + today.getDate() + "-" + today.getFullYear(),
+            toDate: toDate.getMonth() + 1 + "-" + toDate.getDate() + "-" + toDate.getFullYear(),
             resultFormat: "JSON"
         };
         var ajaxRequest =
-                    $.ajax(
-                            {
-                                type: "GET",
-                                url: "/training/calendar.json",
+            $.ajax({
+                type: "GET",
+                url: "/training/calendar.json",
 
-                                //sending json data
-                                //data: dataToSend,
-                                data: JSON.stringify(dataToSend),
+                //sending json data
+                //data: dataToSend,
+                data: JSON.stringify(dataToSend),
 
-                                //contentType = type sent to server
-                                contentType: "application/json; charset=utf-8",
+                //contentType = type sent to server
+                contentType: "application/json; charset=utf-8",
 
-                                //dataType = help jquery know what type to expect to get back from the server
-                                dataType: "json",
-                                //dataType: "jsonp",
+                //dataType = help jquery know what type to expect to get back from the server
+                dataType: "json",
+                //dataType: "jsonp",
 
-                                success: function (dataFromServer, status, xmlhttp)
-                                {
-                                    //everything is handled by the caller
-                                },
-                                error: function (XMLHttpRequest, textStatus, errorThrown)
-                                {
-                                    //everything is handled by the caller
-                                }
+                success: function (dataFromServer, status, xmlhttp) {
+                    //everything is handled by the caller
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //everything is handled by the caller
+                }
 
-                            });     //$.ajax(
+            }); //$.ajax(
 
         return ajaxRequest;
-    };  //  var getdata = function getdata()
+    }; //  var getdata = function getdata()
 
     showData();
 
-    function showData()
-    {
+    function showData() {
         var results = getdata();
         //cleardisplaylist();
 
         results.done(
-            
-            function (dataFromServer, status, xmlhttp)
-            {
 
-                $.each(dataFromServer["training_calendar"], function (index, value)
-                {
-                    
+            function (dataFromServer, status, xmlhttp) {
+
+                $.each(dataFromServer["training_calendar"], function (index, value) {
+
 
                     htd.allcourselist.push(value);
 
                     // add the country to the list if the value exist and is not already in the list
-                    if (typeof value.VenueCountry != "undefined")
-                    {
-                        if ($.inArray(value.VenueCountry, htd.countrylist) === -1)
-                        {
+                    if (typeof value.VenueCountry != "undefined") {
+                        if ($.inArray(value.VenueCountry, htd.countrylist) === -1) {
                             htd.countrylist.push(value.VenueCountry);
 
                             //add new object into getbycountry
                             htd.getbycountry[value.VenueCountry] = [];
                             htd.getbycountry[value.VenueCountry].push(value);
 
-                        }  //  if(!!$.inArray(value.VenueCountry, htd.countrylist))
-                        else
-                        {
+                        } //  if(!!$.inArray(value.VenueCountry, htd.countrylist))
+                        else {
                             htd.getbycountry[value.VenueCountry].push(value);
                         }
 
@@ -88,15 +77,14 @@ $(function ()
 
                         //showCourseInfo(value);
 
-                    }  //  if (typeof value.VenueCountry != "undefined")
-                    else
-                    {
+                    } //  if (typeof value.VenueCountry != "undefined")
+                    else {
                         htd.allcourselistwithNOcountry.push(value);
                     }
-                    
 
-                });  //  $.each(data, function ()
-                
+
+                }); //  $.each(data, function ()
+
                 //buildCountryListLinks();
                 //$("#country-list").show("slow");
                 $(".choosen-value").html("ALL  " + htd.allcourselistwithcountry.length + "");
@@ -106,107 +94,124 @@ $(function ()
             }); //results.done
 
         results.fail(
-            function (XMLHttpRequest, textStatus, errorThrown)
-            {
+            function (XMLHttpRequest, textStatus, errorThrown) {
                 var errorHtml = "<div>XMLHttpRequest.responseText: " + XMLHttpRequest.responseText + "<br>" +
-                "XMLHttpRequest.responseXML: " + XMLHttpRequest.responseXML + "<br>" +
-                "textStatus: " + textStatus + "<br>" +
-                "errorThrown: " + errorThrown + "</div>";
+                    "XMLHttpRequest.responseXML: " + XMLHttpRequest.responseXML + "<br>" +
+                    "textStatus: " + textStatus + "<br>" +
+                    "errorThrown: " + errorThrown + "</div>";
 
                 //$("#divError").html(errorHtml);
                 $('body').append(errorHtml);
             }); //results.fail
 
-    }  //  function showData()
+    } //  function showData()
 
-    function showCourseInfo(courseInfo)
-    {
+    function showCourseInfo(courseInfo) {
         var $table = $("#calendar-table");
 
         var $div = $('<div />', { class: 'courserow' }).appendTo($table);
 
         var RemainingSeats = parseInt(courseInfo.RemainingSeats),
-        RemainingSeatsMessage = RemainingSeats > 0 ? "Seats Available" : "No Seats Available",
-        RemainingSeatsCssClass = RemainingSeats > 0 ? "seatsAvailable" : "noSeatsAvailable";
+            RemainingSeatsMessage = RemainingSeats > 0 ? "Seats Available" : "No Seats Available",
+            RemainingSeatsCssClass = RemainingSeats > 0 ? "seatsAvailable" : "noSeatsAvailable";
 
         //EnrollmentURL
 
-        var html = "<div class='course-info-attribute sessionName'><strong>" + courseInfo.SessionName + "</strong>" +
-            "<br /><span class='"+RemainingSeatsCssClass+"'>"+RemainingSeatsMessage+"</span></div>" +
-            "<div class='course-info-attribute courseName'><strong>" + courseInfo.CourseName + "</strong><br />" +
-                "<div class='linkButton'>"+courseInfo.CourseDescription+"</div>" +
-                "<div class='linkButton'><a href='"+ courseInfo.EnrollmentURL +"' target='_blank'>Start Here</a></div>" +
-            "</div>" +
+        var html = '';
+        var hasNotesField = typeof courseInfo.Notes != "undefined";
+
+        if (hasNotesField) {
+            var
+                hasCourseInfo = typeof courseInfo.Notes.COURSE_INFO_URL != "undefined",
+                hasHowToRegister = typeof courseInfo.Notes.HOW_TO_REGISTER_URL != "undefined",
+                hasStartHere = typeof courseInfo.Notes.START_HERE_URL != "undefined";
+
+            html = "<div class='course-info-attribute sessionName'><strong>" + courseInfo.SessionName + "</strong>" +
+                "<br /><span class='" + RemainingSeatsCssClass + "'>" + RemainingSeatsMessage + "</span></div>" +
+                "<div class='course-info-attribute courseName'><strong>" + courseInfo.CourseName + "</strong><br />";
+            if (hasCourseInfo) {
+                html += "<div class='linkButton'><a href='" + courseInfo.Notes.COURSE_INFO_URL + "' target='_blank'>" + courseInfo.Notes.COURSE_INFO_LABEL + "</a></div>";
+            }
+            if (hasHowToRegister) {
+                html += "<div class='linkButton'><a href='" + courseInfo.Notes.HOW_TO_REGISTER_URL + "' target='_blank'>" + courseInfo.Notes.HOW_TO_REGISTER_LABEL + "</a></div>";
+            }
+            if (hasStartHere) {
+                html += "<div class='linkButton'><a href='" + courseInfo.Notes.START_HERE_URL + "' target='_blank'>" + courseInfo.Notes.START_HERE_LABEL + "</a></div>";
+            }
+
+            html += "</div>";
+            html += "<div style='clear:both;'></div>";
+            html += "";
+        }
+        else {
+            html = "<div class='course-info-attribute sessionName'><strong>" + courseInfo.SessionName + "</strong>" +
+                "<br /><span class='" + RemainingSeatsCssClass + "'>" + RemainingSeatsMessage + "</span></div>" +
+                "<div class='course-info-attribute courseName'><strong>" + courseInfo.CourseName + "</strong><br />" +
+                "<div class='linkButton'>" + courseInfo.CourseDescription + "</div>" +
+                "<div class='linkButton'><a href='" + courseInfo.EnrollmentURL + "' target='_blank'>Start Here</a></div>" +
+                "</div>" +
 
 
-        "<div style='clear:both;'></div>" +
-        "";
+                "<div style='clear:both;'></div>" +
+                "";
+        }
+
 
         $div.html(html);
 
-    }  //  function showCourseInfo(courseInfo)
+    } //  function showCourseInfo(courseInfo)
 
-    function cleardisplaylist()
-    {
+    function cleardisplaylist() {
         $("#calendar-table").html("");
-    }//  function cleardisplaylist()
+    } //  function cleardisplaylist()
 
-    function buildCountryListLinks()
-    {
+    function buildCountryListLinks() {
         var $countryListLinksContainer = $("#country-list");
-        $countryListLinksContainer.append("<a href='#' class='country-link'>All</a>  "+ htd.allcourselistwithcountry.length + " | ");
+        $countryListLinksContainer.append("<a href='#' class='country-link'>All</a>  " + htd.allcourselistwithcountry.length + " | ");
         var count = 0;
-        $.each(htd.countrylist.sort(), function (index, value)
-        {
+        $.each(htd.countrylist.sort(), function (index, value) {
             // if last country don't add pipe
-            if (htd.countrylist.length-1 == count)
-            {
+            if (htd.countrylist.length - 1 == count) {
                 $countryListLinksContainer.append("<a href='#' class='country-link'>" + value + "</a>  " + htd.getbycountry[value].length);
             }
-            else
-            {
+            else {
                 $countryListLinksContainer.append("<a href='#' class='country-link'>" + value + "</a>  " + htd.getbycountry[value].length + " | ");
             }
             count++;
-        });  //  $.each(htd.countrylist, function (index, value)
+        }); //  $.each(htd.countrylist, function (index, value)
 
-    }//  function buildCountryListLinks()
+    } //  function buildCountryListLinks()
 
     // user clicking country link
-    $(document).on("click","a.country-link", function (e)
-    {
+    $(document).on("click", "a.country-link", function (e) {
         e.preventDefault();
         var country = $(this).text();
 
         $("#h-country-choosen").val(country);
 
-        $("#calendar-table").hide("slow", function ()
-        {
+        $("#calendar-table").hide("slow", function () {
             cleardisplaylist();
-            
+
             var courseCount = 0;
 
-            if (country === "All")
-            {
+            if (country === "All") {
                 courseCount = htd.allcourselistwithcountry.length;
                 showCourseInfoByList(htd.allcourselistwithcountry);
             }
-            else
-            {
+            else {
                 courseCount = htd.getbycountry[country].length;
                 showCourseInfoByList(htd.getbycountry[country]);
             }
 
-            $(".choosen-value").html(country + " ("+courseCount+")");
+            $(".choosen-value").html(country + " (" + courseCount + ")");
             $("#calendar-table").show("slow");
 
-        });  //  $("#calendar-table").hide("slow", function ()
+        }); //  $("#calendar-table").hide("slow", function ()
 
         console.log(country);
-    });  //  $("a.country-link").on("click", function ()
+    }); //  $("a.country-link").on("click", function ()
 
-    $(document).on("click", "a.sort-link", function (e)
-    {
+    $(document).on("click", "a.sort-link", function (e) {
         e.preventDefault();
         var $this = $(this);
         var sortItem = $this.text(),
@@ -214,187 +219,154 @@ $(function ()
             country = $("#h-country-choosen").val(),
             courseList = [];
 
-        switch (sortItem + "-" + sortDirection)
-        {
-            case "Date-asc":
-                if (country == "All")
-                {
-                    courseList = htd.allcourselistwithcountry.sort(sortCourseStartAsc);
-                }
-                else
-                {
-                    courseList = htd.getbycountry[country].sort(sortCourseStartAsc);
-                }
-                
-                break;
-            case "Date-desc":
-                if (country == "All")
-                {
-                    courseList = htd.allcourselistwithcountry.sort(sortCourseStartDesc);
-                }
-                else
-                {
-                    courseList = htd.getbycountry[country].sort(sortCourseStartDesc);
-                }
-                
-                break;
-            case "Course-asc":
-                if (country == "All")
-                {
-                    courseList = htd.allcourselistwithcountry.sort(sortCourseNameAsc);
-                }
-                else
-                {
-                    courseList = htd.getbycountry[country].sort(sortCourseNameAsc);  
-                }
-                
-                break;
-            case "Course-desc":
-                if (country == "All")
-                {
-                    courseList = htd.allcourselistwithcountry.sort(sortCourseNameDesc);
-                }
-                else
-                {
-                    courseList = htd.getbycountry[country].sort(sortCourseNameDesc);  
-                }
-                
-                break;
+        switch (sortItem + "-" + sortDirection) {
+        case "Date-asc":
+            if (country == "All") {
+                courseList = htd.allcourselistwithcountry.sort(sortCourseStartAsc);
+            }
+            else {
+                courseList = htd.getbycountry[country].sort(sortCourseStartAsc);
+            }
 
-            case "Location-asc":
-                if (country == "All")
-                {
-                    courseList = htd.allcourselistwithcountry.sort(sortVenueLocationAsc);
-                }
-                else
-                {
-                    courseList = htd.getbycountry[country].sort(sortVenueLocationAsc);  
-                }
-                
-                break;
-            case "Location-desc":
-                if (country == "All")
-                {
-                    courseList = htd.allcourselistwithcountry.sort(sortVenueLocationDesc);
-                }
-                else
-                {
-                    courseList = htd.getbycountry[country].sort(sortVenueLocationDesc);  
-                }
-                
-                break;                
+            break;
+        case "Date-desc":
+            if (country == "All") {
+                courseList = htd.allcourselistwithcountry.sort(sortCourseStartDesc);
+            }
+            else {
+                courseList = htd.getbycountry[country].sort(sortCourseStartDesc);
+            }
 
-        }  //  switch (sortItem)
+            break;
+        case "Course-asc":
+            if (country == "All") {
+                courseList = htd.allcourselistwithcountry.sort(sortCourseNameAsc);
+            }
+            else {
+                courseList = htd.getbycountry[country].sort(sortCourseNameAsc);
+            }
+
+            break;
+        case "Course-desc":
+            if (country == "All") {
+                courseList = htd.allcourselistwithcountry.sort(sortCourseNameDesc);
+            }
+            else {
+                courseList = htd.getbycountry[country].sort(sortCourseNameDesc);
+            }
+
+            break;
+
+        case "Location-asc":
+            if (country == "All") {
+                courseList = htd.allcourselistwithcountry.sort(sortVenueLocationAsc);
+            }
+            else {
+                courseList = htd.getbycountry[country].sort(sortVenueLocationAsc);
+            }
+
+            break;
+        case "Location-desc":
+            if (country == "All") {
+                courseList = htd.allcourselistwithcountry.sort(sortVenueLocationDesc);
+            }
+            else {
+                courseList = htd.getbycountry[country].sort(sortVenueLocationDesc);
+            }
+
+            break;
+
+        } //  switch (sortItem)
 
         // toggle the sort order and store it
         sortDirection == "asc" ? $this.data("sortDirection", "desc") : $this.data("sortDirection", "asc");
 
-        $("#calendar-table").hide("slow", function ()
-        {
+        $("#calendar-table").hide("slow", function () {
             cleardisplaylist();
             showCourseInfoByList(courseList);
             $("#calendar-table").show("slow");
-        });  //  $("#calendar-table").hide("slow", function ()
+        }); //  $("#calendar-table").hide("slow", function ()
 
-    });  //  $(document).on("click", "a.sort-link", function (e)
+    }); //  $(document).on("click", "a.sort-link", function (e)
 
-    $(document).on("click", ".coursedescriptionlink", function (e)
-    {
+    $(document).on("click", ".coursedescriptionlink", function (e) {
 
 
     });
 
 
-    function showCourseInfoByList(listOfCourses)
-    {
-        $.each(listOfCourses, function (index, value)
-        {
+    function showCourseInfoByList(listOfCourses) {
+        $.each(listOfCourses, function (index, value) {
             showCourseInfo(value);
             //console.log("-"+value.CourseName+"-");
-        });  //  $.each(listOfCourses, function (index, value)
+        }); //  $.each(listOfCourses, function (index, value)
 
-    }  //  function showCourseInfoByList(listOfCourses)
+    } //  function showCourseInfoByList(listOfCourses)
 
-    function sortCourseNameAsc(a, b)
-    {
+    function sortCourseNameAsc(a, b) {
         var nameA = a.CourseName.toUpperCase(); // ignore upper and lowercase
         var nameB = b.CourseName.toUpperCase(); // ignore upper and lowercase
-        if (nameA < nameB)
-        {
+        if (nameA < nameB) {
             return -1;
         }
-        if (nameA > nameB)
-        {
+        if (nameA > nameB) {
             return 1;
         }
 
         // sort by date if course names are equal
         return sortCourseStartAsc(a, b);
-    }  //  function sortCourseNameAsc(a, b)
-    function sortCourseNameDesc(a, b)
-    {
+    } //  function sortCourseNameAsc(a, b)
+    function sortCourseNameDesc(a, b) {
         var nameA = a.CourseName.toUpperCase(); // ignore upper and lowercase
         var nameB = b.CourseName.toUpperCase(); // ignore upper and lowercase
-        if (nameA > nameB)
-        {
+        if (nameA > nameB) {
             return -1;
         }
-        if (nameA < nameB)
-        {
+        if (nameA < nameB) {
             return 1;
         }
 
         // sort by date if course names are equal
         return sortCourseStartAsc(a, b);
-    }  //  function sortCourseNameDesc(a, b)
+    } //  function sortCourseNameDesc(a, b)
 
-    function sortVenueLocationAsc(a, b)
-    {
+    function sortVenueLocationAsc(a, b) {
         var nameA = a.VenueName.toUpperCase(); // ignore upper and lowercase
         var nameB = b.VenueName.toUpperCase(); // ignore upper and lowercase
-        if (nameA < nameB)
-        {
+        if (nameA < nameB) {
             return -1;
         }
-        if (nameA > nameB)
-        {
+        if (nameA > nameB) {
             return 1;
         }
 
         // sort by date if locations are equal
         return sortCourseStartAsc(a, b);
-    }  //  function sortVenueLocationAsc(a, b)
-    function sortVenueLocationDesc(a, b)
-    {
+    } //  function sortVenueLocationAsc(a, b)
+    function sortVenueLocationDesc(a, b) {
         var nameA = a.VenueName.toUpperCase(); // ignore upper and lowercase
         var nameB = b.VenueName.toUpperCase(); // ignore upper and lowercase
-        if (nameA > nameB)
-        {
+        if (nameA > nameB) {
             return -1;
         }
-        if (nameA < nameB)
-        {
+        if (nameA < nameB) {
             return 1;
         }
 
         // sort by date if locations are equal
         return sortCourseStartAsc(a, b);
-    }  //  function sortVenueLocationDesc(a, b)
+    } //  function sortVenueLocationDesc(a, b)
 
-    function sortCourseStartAsc(a, b)
-    {
+    function sortCourseStartAsc(a, b) {
         return Math.sign(new Date(a.StartDate) - new Date(b.StartDate));
-    }  //  function sortCourseStartAsc(a, b)
-    function sortCourseStartDesc(a, b)
-    {
+    } //  function sortCourseStartAsc(a, b)
+    function sortCourseStartDesc(a, b) {
         return Math.sign(new Date(b.StartDate) - new Date(a.StartDate));
-    }  //  function sortCourseStartDesc(a, b)
+    } //  function sortCourseStartDesc(a, b)
 
     //  Math.sign Polyfill for stupid IE
-    if (!Math.sign) 
-    {
-        Math.sign = function(x) 
-        {
+    if (!Math.sign) {
+        Math.sign = function (x) {
             // If x is NaN, the result is NaN.
             // If x is -0, the result is -0.
             // If x is +0, the result is +0.
@@ -402,11 +374,10 @@ $(function ()
             // If x is positive and not +0, the result is +1.
             x = +x; // convert to a number
             if (x === 0 || isNaN(x)) {
-            return Number(x);
+                return Number(x);
             }
             return x > 0 ? 1 : -1;
         };
     }
 
-});  //  $(function ()
-
+}); //  $(function ()
