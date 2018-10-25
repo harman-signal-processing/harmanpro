@@ -639,16 +639,16 @@
     },
     {
         "name": "Matt Gallagher",
-        "title": "Inside Sales, West",
+        "title": "Regional Sales Manager, South Central US",
         "email": "matt.gallagher@harman.com",
         "phone1": "+1 469 624 7715",
-        "group1": "North America Channel Sales, West",
+        "group1": "North America Channel Sales, Central",
         "g1Sort": 2,
         "officeId": "Richardson",
         "showonweb": "yes",
         "solutionsMap": "no",
         "channelMap": "yes",
-        "t2": "unitedstateswest"
+        "t3": "unitedstatescentral"
     },
     {
         "name": "Robert Guzman",
@@ -787,19 +787,6 @@
         "t3": "unitedstatescentral"
     },
     {
-        "name": "Michael Kesterson",
-        "title": "Regional Sales Manager",
-        "email": "michael.kesterson@harman.com",
-        "phone1": "+1 469 624 6660",
-        "group1": "North America Channel Sales, Central",
-        "g1Sort": 4,
-        "officeId": "Richardson",
-        "showonweb": "yes",
-        "solutionsMap": "no",
-        "channelMap": "yes",
-        "t3": "unitedstatescentral"
-    },
-    {
         "name": "Rodney Rupp",
         "title": "Business Development Manager, Retail, North America, Georgia, Alabama, Tennessee",
         "email": "rodney.rupp@harman.com",
@@ -814,19 +801,6 @@
         "t5": "unitedstatesnortheast",
         "t6": "Canada",
         "t7": "latinamerica"
-    },
-    {
-        "name": "Bobby Ramoz",
-        "title": "Regional Sales Manager",
-        "email": "bobby.ramoz@harman.com",
-        "phone1": "+1 469 624 6506",
-        "group1": "North America Channel Sales, Central",
-        "g1Sort": 6,
-        "officeId": "Richardson",
-        "showonweb": "yes",
-        "solutionsMap": "no",
-        "channelMap": "yes",
-        "t3": "unitedstatescentral"
     },
     {
         "name": "Nick Barbieri",
