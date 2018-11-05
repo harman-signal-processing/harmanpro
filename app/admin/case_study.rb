@@ -26,7 +26,7 @@ ActiveAdmin.register CaseStudy do
       f.input :banner, hint: f.object.banner.present? ?
         image_tag(f.object.banner.url(:thumb)) + content_tag(:br) + "Preferred size: 1170x400 px with a strongly horizontal orientation." :
         "Preferred size: 1170x400 px with a strongly horizontal orientation."
-      f.input :headline, hint: "Maximum characters: 40", input_html: { maxlength: 40 }
+      f.input :headline, hint: "Maximum characters: 50", input_html: { maxlength: 50 }
 # Most have been created without the description. So now it looks funny when one of them shows up...
 #      f.input :description, hint: "Maximum characters: 60", input_html: { maxlength: 60, rows: 5 }
       f.input :pdf_external_url, label: "Link to PDF", hint: "Use this when the PDF is hosted elsewhere.", placeholder: "http://path.to/external.pdf"
