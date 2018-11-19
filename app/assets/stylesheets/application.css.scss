@@ -33,6 +33,10 @@
  *= require search
  */
 
+area {
+  display: block !important;
+  cursor: pointer;
+}
 span.spinner {
   display: block;
   position: absolute;
