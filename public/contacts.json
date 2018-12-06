@@ -2169,16 +2169,16 @@
         "t11": "emeasouth"
     },
     {
-        "name": "Rodney Houston",
-        "title": "Sales Director, Entertainment, APAC",
-        "email": "rodney.houston@im.harman.com",
-        "phone1": "+65 6870 5084",
-        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
-        "group2": "Entertainment",
+        "name": "David Wong",
+        "title": "Business Development Manager, Hospitality & Large Venues, APAC",
+        "email": "david.wong@harman.com",
+        "group1": "All Hospitality (hotels, cruiseships, broadcasttelevision, broadcastradio, retail, housesofworship, cinema, cinemas, karaoke, casinos, nightlife, barsrestaurants)",
+        "g1Sort": 2,
+        "group2": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
+        "g2Sort": 2,
         "showonweb": "yes",
         "solutionsMap": "yes",
-        "channelMap": "no",
-        "t13": "APAC"
+        "channelMap": "no"
     },
     {
         "name": "Thomas Marcher",
@@ -2370,18 +2370,6 @@
         "t13": "APAC"
     },
     {
-        "name": "Neo Cheng Yi",
-        "title": "Business Development, Large Venues, APAC",
-        "email": "chengyi@harman.com",
-        "phone1": "+65 68705081",
-        "group1": "All Large Venue (stadiumsarenas, performingarts, conventioncenters, museums, transportation, themedattractions)",
-        "g1Sort": 2,
-        "showonweb": "yes",
-        "solutionsMap": "yes",
-        "channelMap": "no",
-        "t13": "APAC"
-    },
-    {
         "name": "Melissa Puran",
         "title": "Business Development, Retail, APAC",
         "email": "melissa.puran@harman.com",
@@ -2419,7 +2407,7 @@
     },
     {
         "name": "Alvin Ang",
-        "title": "Business Development, Enterprise, APAC",
+        "title": "Business Development, Architectural Lighting, APAC",
         "email": "alvin.ang@harman.com",
         "phone1": "+65 68705069",
         "group1": "All Hospitality (hotels, cruiseships, broadcasttelevision, broadcastradio, retail, housesofworship, cinema, cinemas, karaoke, casinos, nightlife, barsrestaurants)",
@@ -2433,7 +2421,7 @@
     },
     {
         "name": "Glenn Loh",
-        "title": "Business Development, Enterprise, APAC",
+        "title": "Business Development, Architectural Lighting, APAC",
         "email": "glenn.loh@harman.com",
         "phone1": "+65 68705073",
         "group1": "All Hospitality (hotels, cruiseships, broadcasttelevision, broadcastradio, retail, housesofworship, cinema, cinemas, karaoke, casinos, nightlife, barsrestaurants)",
