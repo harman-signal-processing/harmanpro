@@ -3,7 +3,7 @@ class NewsArticlesController < ApplicationController
 
   def index
     news_articles = NewsArticle.where("post_on <= ?", Date.today)
-    @news_articles = filter_by_locale(news_articles).limit(999).order("post_on DESC")
+    @news_articles = filter_by_locale(news_articles).limit(999).order(Arel.sql("post_on DESC"))
     @featured_article = nil
     if @news_articles.count > 0
       @featured_article = @news_articles.first

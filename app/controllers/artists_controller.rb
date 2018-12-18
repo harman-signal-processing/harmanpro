@@ -2,7 +2,7 @@ class ArtistsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @artists = filter_by_locale(Artist.all).limit(999).order("name DESC")
+    @artists = filter_by_locale(Artist.all).limit(999).order(Arel.sql("name DESC"))
   end
 
   def show

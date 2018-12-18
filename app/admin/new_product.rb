@@ -55,7 +55,7 @@ ActiveAdmin.register NewProduct do
     end
     f.has_many :new_product_brands, heading: "Brand(s)", new_record: "Add a brand" do |s|
       s.input :id, as: :hidden
-      s.input :brand, collection: Brand.order("UPPER(name)")
+      s.input :brand, collection: Brand.order(Arel.sql("UPPER(name)"))
       s.input :_destroy, as: :boolean, label: "Delete"
     end
     f.has_many :new_product_product_types, heading: "Product Types(s)", new_record: "Add a product type" do |pt|

@@ -16,7 +16,7 @@ class AvailableLocale < ApplicationRecord
   has_many :news_articles, foreign_key: :locale_id
   has_many :artists, foreign_key: :locale_id, dependent: :destroy
   has_many :online_retailers, foreign_key: :locale_id, dependent: :destroy
-  has_many :slides, -> { order("position ASC") }, foreign_key: :locale_id
+  has_many :slides, -> { order(Arel.sql("position ASC")) }, foreign_key: :locale_id
 
   def self.default
     find_by(key: I18n.default_locale.to_s)

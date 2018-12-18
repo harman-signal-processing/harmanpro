@@ -16,7 +16,7 @@
           <th>Name</th>
           <th>Date Range</th>
         </tr>
-        <% @slides.order('position').each do |slide| %>
+        <% @slides.order(Arel.sql('position')).each do |slide| %>
           <tr>
             <td><%= slide.position %></td>
             <td><%= link_to image_tag(slide.background.url(:thumb)), slide.background.url %></td>

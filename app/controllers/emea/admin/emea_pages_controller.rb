@@ -1,7 +1,7 @@
 class Emea::Admin::EmeaPagesController < Emea::AdminController
 
   def index
-    @emea_pages = EmeaPage.all.order("title")
+    @emea_pages = EmeaPage.all.order(Arel.sql("title"))
   end
 
   def new

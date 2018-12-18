@@ -4,7 +4,7 @@
   <div class="medium-10 small-12 columns">
     <h3>Choose a brand:</h3>
     <ul>
-      <% @brands.order('name').each do |brand| %>
+      <% @brands.order(Arel.sql('name')).each do |brand| %>
         <li class="<%= 'needs-translation' if brand.needs_translation?(@available_locale.key) %>">
           <%= link_to brand.name,edit_cms_available_locale_brand_path(@available_locale, brand) %>
         </li>

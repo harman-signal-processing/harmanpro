@@ -6,7 +6,7 @@ RSpec.describe TrainingCoursesController, type: :controller do
     it "returns courses list" do
       skip "Training courses index path route was removed"
       get :index
-      expect(response).to be_success
+      expect(response.successful?).to be true
       expect(response).to render_template("index")
     end
   end  #  describe "GET index" do

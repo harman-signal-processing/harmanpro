@@ -13,7 +13,7 @@
           <th>Title <i>(click to edit page)</i></th>
           <th>Public Link <i>(click to view page)</i></th>
         </tr>
-        <% @training_content_pages.order('title').each do |training_content_page| %>
+        <% @training_content_pages.order(Arel.sql('title')).each do |training_content_page| %>
           <tr>
             <td><%= link_to training_content_page.title, edit_cms_available_locale_training_content_page_path(@available_locale, training_content_page) %></td>
             <td><%= link_to(training_content_page_url(training_content_page, locale: training_content_page.original_locale.key),

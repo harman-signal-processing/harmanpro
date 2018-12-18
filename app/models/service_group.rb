@@ -7,6 +7,6 @@ class ServiceGroup < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   def self.names
-    order("UPPER(name)").pluck(:name).uniq
+    order(Arel.sql("UPPER(name)")).pluck(:name).uniq
   end
 end

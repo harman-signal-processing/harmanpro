@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   "git://github.com/#{repo_name}"
 end
 
-gem 'rails', '5.1.6'
+gem 'rails', '~> 5.2'
 gem 'responders', '~> 2.0'
 gem 'mysql2'
 gem 'sass-rails', '~> 5.0'
@@ -54,7 +54,8 @@ gem 'thinking-sphinx', '~> 4.0.0'
 gem 'kaminari'
 
 gem 'globalize', '~> 5.2.0' #'5.1.0.beta2' #github: 'globalize', branch: '999b5dfa656ff0f706dbcd07ce7552d5b783d5a1' # 3/2017 master branch had errors #'~> 5.0.0'
-gem 'friendly_id-globalize', github: "norman/friendly_id-globalize"
+# 12/2018 main repo isn't compatible with rails 5.2, using unmerged PR from kaspernj for now:
+gem 'friendly_id-globalize', github: "kaspernj/friendly_id-globalize", branch: "fixed-rails-5-2-plain-sql-order-warning" #"norman/friendly_id-globalize"
 gem 'http_accept_language'
 gem 'rails-i18n'
 

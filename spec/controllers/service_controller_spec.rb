@@ -7,7 +7,7 @@ RSpec.describe ServiceController, as: :controller do
     it "renders the template" do
       get :index
 
-      expect(response).to be_success
+      expect(response.successful?).to be true
       expect(response).to render_template('index')
     end
 

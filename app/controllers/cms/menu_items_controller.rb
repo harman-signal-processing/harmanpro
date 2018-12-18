@@ -32,7 +32,7 @@ class Cms::MenuItemsController < CmsController
   def add_defaults
     if @available_locale
       I18n.locale = @available_locale.key
-      last_item = MenuItem.where(locale: @available_locale).order('position').last
+      last_item = MenuItem.where(locale: @available_locale).order(Arel.sql('position')).last
       MenuItem.where(locale_id: nil).each do |mi|
         new_mi = mi.dup
         new_mi.locale = @available_locale

@@ -37,7 +37,7 @@ class EmeaPage < ApplicationRecord
   end
 
   def features
-    resources.where(featured: true).order('position')
+    resources.where(featured: true).order(Arel.sql('position'))
   end
 
   def published?
