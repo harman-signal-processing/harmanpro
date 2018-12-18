@@ -13,7 +13,7 @@ class LandingPage < ApplicationRecord
   friendly_id :title, use: [:globalize, :history, :finders]
 
   belongs_to :original_locale, class_name: "AvailableLocale"
-  has_many :features, -> { order('position') }, as: :featurable, dependent: :destroy
+  has_many :features, -> { order(Arel.sql('position')) }, as: :featurable, dependent: :destroy
 
   has_attached_file :banner,
     styles: {

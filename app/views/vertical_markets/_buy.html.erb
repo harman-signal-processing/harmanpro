@@ -30,7 +30,7 @@
             <% if retailers.count > 0 %>
               <h4><%= SiteSetting.value("buy_from_online_retailer_headline") %></h4>
               <br/>
-              <% retailers.order("RAND()").each do |online_retailer| %>
+              <% retailers.order(Arel.sql("RAND()")).each do |online_retailer| %>
                 <%= link_to online_retailer.url, class: "retailer", target: "_blank" do %>
                   <% if online_retailer.logo.present? || ENV['show_placeholders'] == "true" %>
                     <%= image_tag online_retailer.logo.url(:medium), alt: online_retailer.name %>

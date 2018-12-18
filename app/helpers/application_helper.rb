@@ -61,7 +61,7 @@ module ApplicationHelper
   end
 
   def active_locales
-    @active_locales ||= AvailableLocale.where(live: true).order("name")
+    @active_locales ||= AvailableLocale.where(live: true).order(Arel.sql("name"))
   end
 
 end

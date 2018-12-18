@@ -8,7 +8,7 @@ class MainController < ApplicationController
       where(featured: true).
       where("start_on < ?", 6.months.from_now).
       where("start_on > ?", 1.day.ago).
-      order("start_on ASC").first
+      order(Arel.sql("start_on ASC")).first
   end
 
   def sitemap

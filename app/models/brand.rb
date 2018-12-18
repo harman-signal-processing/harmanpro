@@ -64,11 +64,11 @@ class Brand < ApplicationRecord
   validates_attachment_content_type :logo_collection, content_type: /\Aapp|zip|exe.*\Z/
 
   def self.all_for_site
-    where(show_on_main_site: true).order("UPPER(name)")
+    where(show_on_main_site: true).order(Arel.sql("UPPER(name)"))
   end
 
   def self.for_consultant_portal
-    where(show_on_consultant_page: true).order("UPPER(name)")
+    where(show_on_consultant_page: true).order(Arel.sql("UPPER(name)"))
   end
 
   def self.for_consultant_portal_with_contacts
@@ -79,11 +79,11 @@ class Brand < ApplicationRecord
   end
 
   def self.for_service_site
-    where(show_on_services_site: true).order("UPPER(name)")
+    where(show_on_services_site: true).order(Arel.sql("UPPER(name)"))
   end
 
   def self.for_training_pages
-    where(show_on_training_page: true).order("UPPER(name)")
+    where(show_on_training_page: true).order(Arel.sql("UPPER(name)"))
   end
 
   def first_name

@@ -1,7 +1,7 @@
 class Emea::Admin::EmeaEmployeeContactsController < Emea::AdminController
 
   def index
-    @employee_contacts = EmeaEmployeeContact.all.order("name")
+    @employee_contacts = EmeaEmployeeContact.all.order(Arel.sql("name"))
     @employee_contact = EmeaEmployeeContact.new
   end
 

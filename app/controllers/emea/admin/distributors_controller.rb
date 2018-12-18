@@ -4,7 +4,7 @@ class Emea::Admin::DistributorsController < Emea::AdminController
   def index
     respond_to do |format|
       format.html {
-        @distributors = Distributor.where(region: "EMEA").order("name")
+        @distributors = Distributor.where(region: "EMEA").order(Arel.sql("name"))
         @q ||= @distributors.ransack(params[:q])
         if params[:q]
           @distributors = @q.result(:distinct => true)

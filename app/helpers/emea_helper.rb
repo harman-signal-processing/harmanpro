@@ -5,7 +5,7 @@ module EmeaHelper
     if current_user.is_employee?
       page_options = { include_employee_only_pages: true }
     end
-    EmeaPage.for_top_nav(page_options).order("position").map do |page|
+    EmeaPage.for_top_nav(page_options).order(Arel.sql("position")).map do |page|
       emea_nav_for(page)
     end.join.html_safe
   end

@@ -19,7 +19,7 @@
               <% brand_ids = @new_products.map{|np| np.brands.map{|b| b.id}}.flatten.uniq %>
               <% if brand_ids.length > 0 %>
                 <h6>BRAND</h6>
-                <% Brand.where(id: brand_ids).order("UPPER(name)").each do |brand| %>
+                <% Brand.where(id: brand_ids).order(Arel.sql("UPPER(name)")).each do |brand| %>
                   <div class="side-filter">
                     <label>
                       <input type="checkbox" ng-model="selectedBrands.<%= brand.friendly_id.underscore %>">
@@ -99,7 +99,7 @@
           <% brand_ids = @new_products.map{|np| np.brands.map{|b| b.id}}.flatten.uniq %>
           <% if brand_ids.length > 0 %>
             <h6>BRAND</h6>
-            <% Brand.where(id: brand_ids).order("UPPER(name)").each do |brand| %>
+            <% Brand.where(id: brand_ids).order(Arel.sql("UPPER(name)")).each do |brand| %>
               <div class="side-filter">
                 <label>
                   <input type="checkbox" ng-model="selectedBrands.<%= brand.friendly_id.underscore %>">

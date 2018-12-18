@@ -23,7 +23,7 @@
     </ul>
 
     <ol>
-      <% @available_locale.menu_items.order('position').each do |menu_item| %>
+      <% @available_locale.menu_items.order(Arel.sql('position')).each do |menu_item| %>
         <li>
           <%= link_to menu_item.title, edit_cms_available_locale_menu_item_path(@available_locale, menu_item) %>
           <% if menu_item.new_tab? %>(new tab)<% end %>

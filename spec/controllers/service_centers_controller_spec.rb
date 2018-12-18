@@ -62,7 +62,7 @@ RSpec.describe ServiceCentersController, as: :controller do
     it "renderes the form successfully" do
       expect(assigns(:service_center)).to be_a_new(ServiceCenter)
       expect(response).to render_template("new")
-      expect(response).to be_success
+      expect(response.successful?).to be true
     end
   end
 

@@ -17,7 +17,7 @@ class Emea::DistributorsController < EmeaController
 
     respond_with brand.distributors.where(
       country: params[:country_id]
-    ).order("name")
+    ).order(Arel.sql("name"))
   end
 
 end

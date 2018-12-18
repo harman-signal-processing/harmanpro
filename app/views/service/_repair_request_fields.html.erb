@@ -18,7 +18,7 @@
     <div class="medium-6 small-12 columns">
       <%= f.association :brand,
         label: "Brand of Your Product",
-        collection: Brand.where("repair_email IS NOT NULL").order("name"),
+        collection: Brand.where("repair_email IS NOT NULL").order(Arel.sql("name")),
         required: true %>
     </div>
     <div class="medium-6 small-12 columns">

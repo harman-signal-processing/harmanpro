@@ -12,7 +12,7 @@ class VerticalMarket < ApplicationRecord
 
   has_many :case_study_vertical_markets, dependent: :restrict_with_error, inverse_of: :vertical_market
   has_many :case_studies, through: :case_study_vertical_markets
-  has_many :reference_systems, -> { order("position ASC") }, dependent: :restrict_with_error
+  has_many :reference_systems, -> { order(Arel.sql("position ASC")) }, dependent: :restrict_with_error
   has_many :leads
   acts_as_tree #order: "name"
 
@@ -72,7 +72,7 @@ class VerticalMarket < ApplicationRecord
   end
 
   def self.active_child_verticals
-    active.where(parent_id: parent_verticals.pluck(:id)).with_translations(I18n.locale).order("name")
+    active.where(parent_id: parent_verticals.pluck(:id)).with_translations(I18n.locale).order(Arel.sql("name"))
   end
 
   def slug_candidates
@@ -96,7 +96,7 @@ class VerticalMarket < ApplicationRecord
   end
 
   def featured_case_studies(limit = 3)
-    @featured_case_studies ||= CaseStudy.with_translations(I18n.locale).where(id: featured_case_studies_ids).order("RAND()").limit(limit)
+    @featured_case_studies ||= CaseStudy.with_translations(I18n.locale).where(id: featured_case_studies_ids).order(Arel.sql("RAND()")).limit(limit)
   end
 
   def all_diagrams_present?
@@ -105,7 +105,7 @@ class VerticalMarket < ApplicationRecord
 
   # Only for top-level verticals, helps determine menu structure
   def children_or_reference_systems
-    (self.children.where(live: true).count > 0) ? self.children.where(live: true).with_translations(I18n.locale).order('name') : self.reference_systems
+    (self.children.where(live: true).count > 0) ? self.children.where(live: true).with_translations(I18n.locale).order(Arel.sql('name')) : self.reference_systems
   end
 
   # Link name for search results
