@@ -66,4 +66,13 @@ class LandingPagesController < ApplicationController
   def thanks
   end
 
+  def jblmasterclass
+    if LandingPage.exists?(custom_slug: "jblmasterclass")
+      @landing_page = LandingPage.find_by(custom_slug: "jblmasterclass")
+      render action: :show, layout: "embedded" and return false
+    else
+      redirect_to root_path and return false
+    end
+  end
+
 end
