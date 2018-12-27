@@ -141,7 +141,9 @@
                   <% end %>
                 </ul>
               </li>
-              <li><%= link_to t('nav.new_products'), "/new-products" %></li>
+              <% if I18n.locale.to_s == I18n.default_locale.to_s %>
+                <li><%= link_to t('nav.new_products'), "/new-products" %></li>
+              <% end %>
               <li><%= link_to t('nav.contact_us'), contacts_path %></li>
               <% if SiteSetting.set_for_locale?("blog_link_name") && SiteSetting.set_for_locale?("blog_link") %>
                 <li>
