@@ -1,6 +1,12 @@
 class ShorturlsController < ApplicationController
   def show
-    @short_url = Shorturl.where(shortcut: params[:shorturl]).first
-    redirect_to @short_url.full_url, status: 301
+    if Shorturl.exists?(shortcut: params[:shorturl])
+      @short_url = Shorturl.where(shortcut: params[:shorturl]).first
+      redirect_to @short_url.full_url, status: 301
+    elsif LandingPage.exists?(slug: params[:shorturl].downcase)
+      redirect_to LandingPage.find(params[:shorturl].downcase)
+    else
+      redirect_to root_path
+    end
   end
 end

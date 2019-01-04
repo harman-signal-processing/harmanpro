@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180925185045) do
+ActiveRecord::Schema.define(version: 2018_09_25_185045) do
 
-  create_table "active_admin_comments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "active_admin_comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_id", null: false
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
-  create_table "artists", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "artists", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.text "overview"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["slug"], name: "index_artists_on_slug", unique: true
   end
 
-  create_table "available_locales", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "available_locales", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "key"
     t.datetime "created_at", null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["slug"], name: "index_available_locales_on_slug"
   end
 
-  create_table "brand_distributors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "brand_distributors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "distributor_id"
     t.integer "brand_id"
     t.datetime "created_at", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["distributor_id"], name: "index_brand_distributors_on_distributor_id"
   end
 
-  create_table "brand_news_articles", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "brand_news_articles", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "brand_id"
     t.integer "news_article_id"
     t.datetime "created_at", null: false
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["news_article_id"], name: "index_brand_news_articles_on_news_article_id"
   end
 
-  create_table "brand_translations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "brand_translations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "brand_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["locale"], name: "index_brand_translations_on_locale"
   end
 
-  create_table "brands", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "brands", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.string "url"
     t.datetime "created_at"
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["slug"], name: "index_brands_on_slug"
   end
 
-  create_table "case_studies", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "case_studies", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "banner_file_name"
@@ -137,7 +137,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.string "pdf_external_url"
   end
 
-  create_table "case_study_translations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "case_study_translations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "case_study_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -150,7 +150,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["locale"], name: "index_case_study_translations_on_locale"
   end
 
-  create_table "case_study_vertical_markets", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "case_study_vertical_markets", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "case_study_id"
     t.integer "vertical_market_id"
     t.datetime "created_at", null: false
@@ -158,13 +158,13 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.boolean "show_on_vertical_market_page", default: true
   end
 
-  create_table "channel_countries", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "channel_countries", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "channel_country_managers", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "channel_country_managers", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "channel_manager_id"
     t.integer "channel_country_id"
     t.integer "channel_id"
@@ -175,7 +175,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["channel_manager_id"], name: "index_channel_country_managers_on_channel_manager_id"
   end
 
-  create_table "channel_managers", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "channel_managers", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "telephone"
@@ -183,13 +183,13 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "channels", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "channels", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "contact_messages", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "contact_messages", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "subject"
@@ -226,7 +226,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["brand_id"], name: "index_contact_messages_on_brand_id"
   end
 
-  create_table "delayed_jobs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "delayed_jobs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
     t.integer "attempts", default: 0, null: false
     t.text "handler", null: false
@@ -241,7 +241,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-  create_table "distributors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "distributors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "country"
     t.string "channel_manager"
@@ -257,7 +257,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.string "website"
   end
 
-  create_table "emea_employee_contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "emea_employee_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "department"
     t.string "job_function"
     t.string "position"
@@ -273,7 +273,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["job_function"], name: "index_emea_employee_contacts_on_job_function"
   end
 
-  create_table "emea_page_resources", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "emea_page_resources", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "attachment_file_name"
     t.integer "attachment_file_size"
@@ -289,7 +289,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["emea_page_id"], name: "index_emea_page_resources_on_emea_page_id"
   end
 
-  create_table "emea_pages", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "emea_pages", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "slug"
     t.string "highlight_color"
@@ -304,7 +304,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["slug"], name: "index_emea_pages_on_slug"
   end
 
-  create_table "event_translations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "event_translations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "event_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -317,7 +317,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["locale"], name: "index_event_translations_on_locale"
   end
 
-  create_table "events", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "events", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "start_on"
     t.date "end_on"
     t.boolean "featured"
@@ -335,7 +335,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["original_locale_id"], name: "index_events_on_original_locale_id"
   end
 
-  create_table "features", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "features", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "featurable_type"
     t.integer "featurable_id"
     t.integer "position"
@@ -352,7 +352,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["featurable_type", "featurable_id"], name: "index_features_on_featurable_type_and_featurable_id"
   end
 
-  create_table "friendly_id_slugs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "friendly_id_slugs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
@@ -366,7 +366,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
-  create_table "landing_page_translations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "landing_page_translations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "landing_page_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -383,7 +383,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["locale"], name: "index_landing_page_translations_on_locale"
   end
 
-  create_table "landing_pages", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "landing_pages", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "hide_title"
@@ -400,7 +400,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["original_locale_id"], name: "index_landing_pages_on_original_locale_id"
   end
 
-  create_table "leads", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "leads", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.string "company"
     t.string "email"
@@ -413,7 +413,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.integer "vertical_market_id"
   end
 
-  create_table "locale_translators", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "locale_translators", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "available_locale_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -422,7 +422,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["user_id"], name: "index_locale_translators_on_user_id"
   end
 
-  create_table "media_library_access_requests", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "media_library_access_requests", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
@@ -439,7 +439,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.text "what_assets"
   end
 
-  create_table "menu_items", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "menu_items", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "locale_id"
     t.string "title"
     t.string "link"
@@ -451,7 +451,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["locale_id"], name: "index_menu_items_on_locale_id"
   end
 
-  create_table "new_product_brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "new_product_brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "new_product_id"
     t.integer "brand_id"
     t.datetime "created_at", null: false
@@ -460,7 +460,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["new_product_id"], name: "index_new_product_brands_on_new_product_id"
   end
 
-  create_table "new_product_product_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "new_product_product_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "new_product_id"
     t.integer "product_type_id"
     t.datetime "created_at", null: false
@@ -469,7 +469,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["product_type_id"], name: "index_new_product_product_types_on_product_type_id"
   end
 
-  create_table "new_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "new_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "content"
     t.string "image_file_name"
@@ -483,7 +483,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.string "press_release"
   end
 
-  create_table "news_articles", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "news_articles", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "locale_id"
     t.string "title"
     t.text "body"
@@ -500,7 +500,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["locale_id"], name: "index_news_articles_on_locale_id"
   end
 
-  create_table "online_retailers", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "online_retailers", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.string "slug"
     t.string "url"
@@ -515,7 +515,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["slug"], name: "index_online_retailers_on_slug"
   end
 
-  create_table "product_translations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "product_translations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "product_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -527,7 +527,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["product_id"], name: "index_product_translations_on_product_id"
   end
 
-  create_table "product_type_translations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "product_type_translations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "product_type_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -539,12 +539,12 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["product_type_id"], name: "index_product_type_translations_on_product_type_id"
   end
 
-  create_table "product_types", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "product_types", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "products", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "products", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "url"
     t.string "photo_file_name"
     t.string "photo_content_type"
@@ -556,7 +556,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.string "ecommerce_id"
   end
 
-  create_table "reference_system_product_type_products", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "reference_system_product_type_products", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "reference_system_product_type_id"
     t.integer "product_id"
     t.datetime "created_at"
@@ -564,7 +564,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["reference_system_product_type_id"], name: "r_s_p_t_id"
   end
 
-  create_table "reference_system_product_types", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "reference_system_product_types", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "reference_system_id"
     t.integer "product_type_id"
     t.integer "quantity"
@@ -575,7 +575,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["reference_system_id"], name: "index_reference_system_product_types_on_reference_system_id"
   end
 
-  create_table "reference_system_translations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "reference_system_translations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "reference_system_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -589,7 +589,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["reference_system_id"], name: "index_reference_system_translations_on_reference_system_id"
   end
 
-  create_table "reference_systems", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "reference_systems", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "vertical_market_id"
     t.integer "position"
     t.datetime "created_at"
@@ -605,7 +605,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["vertical_market_id"], name: "index_reference_systems_on_vertical_market_id"
   end
 
-  create_table "resources", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "resources", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "attachment_file_name"
     t.string "attachment_content_type"
@@ -621,7 +621,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.integer "image_file_size"
   end
 
-  create_table "service_center_service_groups", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "service_center_service_groups", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "service_center_id"
     t.integer "service_group_id"
     t.datetime "created_at", null: false
@@ -630,7 +630,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["service_group_id"], name: "index_service_center_service_groups_on_service_group_id"
   end
 
-  create_table "service_centers", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "service_centers", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.string "city"
@@ -648,7 +648,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["active"], name: "index_service_centers_on_active"
   end
 
-  create_table "service_groups", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "service_groups", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.integer "brand_id"
     t.datetime "created_at", null: false
@@ -656,14 +656,14 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["brand_id"], name: "index_service_groups_on_brand_id"
   end
 
-  create_table "shorturls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "shorturls", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "shortcut"
     t.string "full_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "site_setting_translations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "site_setting_translations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "site_setting_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -673,14 +673,14 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["site_setting_id"], name: "index_site_setting_translations_on_site_setting_id"
   end
 
-  create_table "site_settings", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "site_settings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["name"], name: "index_site_settings_on_name", unique: true
   end
 
-  create_table "slides", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "slides", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "locale_id"
     t.integer "position"
@@ -703,7 +703,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "taggings", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "tag_id"
     t.integer "taggable_id"
     t.string "taggable_type"
@@ -715,13 +715,13 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
   end
 
-  create_table "tags", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", collation: "utf8_bin"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  create_table "training_content_page_translations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "training_content_page_translations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "training_content_page_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -737,7 +737,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["training_content_page_id"], name: "index_d73f0ce584cd69245ae320eec6d9ea12689da0e6"
   end
 
-  create_table "training_content_pages", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "training_content_pages", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "hide_title"
@@ -752,7 +752,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["original_locale_id"], name: "index_training_content_pages_on_original_locale_id"
   end
 
-  create_table "tse_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tse_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "parent_id"
     t.datetime "created_at", null: false
@@ -762,7 +762,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["parent_id"], name: "index_tse_categories_on_parent_id"
   end
 
-  create_table "tse_category_contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tse_category_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "tse_category_id"
     t.integer "tse_contact_id"
     t.datetime "created_at", null: false
@@ -771,7 +771,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["tse_contact_id"], name: "index_tse_category_contacts_on_tse_contact_id"
   end
 
-  create_table "tse_contact_domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tse_contact_domains", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "tse_contact_id"
     t.integer "tse_domain_id"
     t.integer "rank"
@@ -781,7 +781,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["tse_domain_id"], name: "index_tse_contact_domains_on_tse_domain_id"
   end
 
-  create_table "tse_contact_regions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tse_contact_regions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "tse_contact_id"
     t.integer "tse_region_id"
     t.integer "rank"
@@ -791,7 +791,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["tse_region_id"], name: "index_tse_contact_regions_on_tse_region_id"
   end
 
-  create_table "tse_contact_technologies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tse_contact_technologies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "tse_contact_id"
     t.integer "tse_technology_id"
     t.integer "rank"
@@ -801,7 +801,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["tse_technology_id"], name: "index_tse_contact_technologies_on_tse_technology_id"
   end
 
-  create_table "tse_contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tse_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "job_title"
     t.string "phone"
@@ -813,13 +813,13 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.string "company"
   end
 
-  create_table "tse_domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tse_domains", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "tse_regions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tse_regions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -827,13 +827,13 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["parent_id"], name: "index_tse_regions_on_parent_id"
   end
 
-  create_table "tse_technologies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tse_technologies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -857,7 +857,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "venue_translations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "venue_translations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "venue_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -869,14 +869,14 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["venue_id"], name: "index_venue_translations_on_venue_id"
   end
 
-  create_table "venues", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "venues", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "left"
     t.string "top"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "vertical_market_translations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "vertical_market_translations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "vertical_market_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
@@ -891,7 +891,7 @@ ActiveRecord::Schema.define(version: 20180925185045) do
     t.index ["vertical_market_id"], name: "index_vertical_market_translations_on_vertical_market_id"
   end
 
-  create_table "vertical_markets", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "vertical_markets", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
