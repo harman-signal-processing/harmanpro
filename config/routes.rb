@@ -206,9 +206,6 @@ Rails.application.routes.draw do
   get '/pinterest', to: redirect('https://www.pinterest.com/harmanint/')
   get '/google', to: redirect('https://plus.google.com/+HarmanIntl/videos')
 
-  # Temporary landing page
-  get '/jblmasterclass' => 'landing_pages#jblmasterclass'
-
   root to: 'main#index'
   get "*shorturl" => "shorturls#show", as: :shorturl
 
