@@ -139,7 +139,8 @@
                     <%= fa_icon 'long-arrow-right' %>
                   <% end %>
                 </p>
-              <% else %>
+              <%# Removing linkedin banner 2019-1-11 per Kent %>
+              <% elsif 1 === 99 %>
                 <div class="img_container">
                   <%= link_to 'https://www.linkedin.com/company/10201306', target: "_blank" do %>
                     <div class="linkedin-banner"></div>
@@ -149,6 +150,20 @@
                 <h4><%= link_to "#{t('site_name')} on LinkedIn", 'https://www.linkedin.com/company/10201306', target: "_blank" %></h4>
                 <p>
                   <%= link_to "https://www.linkedin.com/company/10201306" do %>
+                    <%= t('learn_more').upcase %>
+                    <%= fa_icon 'long-arrow-right' %>
+                  <% end %>
+                </p>
+              <% else %>
+                <div class="img_container">
+                  <%= link_to '/training', target: "_blank" do %>
+                    <div class="training-banner"></div>
+                  <% end %>
+                </div>
+                <h6><%= t('nav.resources') %>:</h6>
+                <h4><%= link_to "#{t('site_name')} #{t('nav.training')}", "/training", target: "_blank" %></h4>
+                <p>
+                  <%= link_to "/training" do %>
                     <%= t('learn_more').upcase %>
                     <%= fa_icon 'long-arrow-right' %>
                   <% end %>
