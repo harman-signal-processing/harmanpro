@@ -65,6 +65,8 @@ class ApplicationController < ActionController::Base
         I18n.default_locale
     end
     @current_locale = AvailableLocale.where(key: I18n.locale).first_or_initialize
+
+    @geo_ip = GEOIP_DB.lookup(request.remote_ip)
   end
 
   def all_brands

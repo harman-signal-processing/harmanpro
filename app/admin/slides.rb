@@ -20,13 +20,15 @@ ActiveAdmin.register Slide do
     #:description,
     #:link_text,
     :link_url,
-    :link_new_window
+    :link_new_window,
+    :geo_target_country
 
   # :nocov:
   index do
     column :name
     column :position
     column :locale
+    column :geo_target_country
     column :start_on
     column :end_on
     actions
@@ -43,6 +45,7 @@ ActiveAdmin.register Slide do
       row :start_on
       row :end_on
       row :locale
+      row :geo_target_country
       row :background do
         if slide.background_file_name.present?
           link_to(image_tag(slide.background.url(:small)), slide.background.url)
@@ -67,6 +70,10 @@ ActiveAdmin.register Slide do
     f.inputs do
       f.input :name, hint: "Becomes the 'alt text' on the image"
       f.input :locale
+      f.input :geo_target_country,
+        as: :country,
+        hint: "If present, only show this slide if the visitor's IP address appears to be in the selected country.",
+        include_blank: true
       f.input :position, hint: "the sort order"
       f.input :start_on, as: :datepicker, hint: "optional"
       f.input :end_on, as: :datepicker, hint: "optional"

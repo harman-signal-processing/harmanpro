@@ -58,7 +58,8 @@ gem 'globalize', '~> 5.2.0' #'5.1.0.beta2' #github: 'globalize', branch: '999b5d
 gem 'friendly_id-globalize', github: "kaspernj/friendly_id-globalize", branch: "fixed-rails-5-2-plain-sql-order-warning" #"norman/friendly_id-globalize"
 gem 'http_accept_language'
 gem 'rails-i18n'
-
+gem 'maxminddb' # for geocoding ip addresses
+gem 'geolite2_city' # db for maxminddb
 gem 'email_validator'
 gem 'country_select'
 
