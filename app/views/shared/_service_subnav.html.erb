@@ -11,11 +11,6 @@
         <dd class="<%= 'active' if request.fullpath.match(/#{service_centers_path}$/) %>">
           <%= link_to t('service_page.subnav.find_service'), service_centers_path %>
         </dd>
-        <dd>
-          <%= link_to ENV['warranty_registration_url'], target: "_blank" do %>
-            <%= SiteSetting.value('service-page-register-your-products-subheader') %>
-          <% end %>
-        </dd>
       </dl>
     </div>
   </div>
