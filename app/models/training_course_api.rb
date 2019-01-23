@@ -12,7 +12,11 @@ class TrainingCourseApi
     fromDate = Date.today.month.to_s + "-" + Date.today.day.to_s + "-" + Date.today.year.to_s
     plusOneYear = Date.today + 1.year
     toDate = plusOneYear.month.to_s + "-" + plusOneYear.day.to_s + "-" + plusOneYear.year.to_s
-    JSON.parse(get('/GetTrainingCalendar?fromDate=' + fromDate + '&toDate=' + toDate + '&resultFormat=JSON')["string"])
+    begin
+      JSON.parse(get('/GetTrainingCalendar?fromDate=' + fromDate + '&toDate=' + toDate + '&resultFormat=JSON')["string"])
+    rescue
+      {}
+    end
   end
   
 end
