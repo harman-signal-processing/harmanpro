@@ -361,7 +361,7 @@
         "group2": "North America Channel Sales",
         "g2Sort": 1,
         "officeId": "Elkhart",
-        "showonweb": "yes",
+        "showonweb": "no",
         "solutionsMap": "no",
         "channelMap": "yes",
         "t2": "unitedstateswest",
@@ -924,8 +924,7 @@
         "t3": "unitedstatescentral",
         "t4": "unitedstatessoutheast",
         "t5": "unitedstatesnortheast",
-        "t6": "Canada",
-        "t7": "latinamerica"
+        "t6": "latinamerica"
     },
     {
         "name": "Jared Lederhandler",
