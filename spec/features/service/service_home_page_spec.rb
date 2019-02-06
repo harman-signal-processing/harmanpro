@@ -8,16 +8,6 @@ feature 'Service landing page' do
     visit service_path
   end
 
-  # Scenario: Visit the home page
-  #   Given I am a visitor
-  #   When I visit the home page
-  #   Then I see relevant sections
-  scenario 'click through to warranty registration page' do
-    click_on 'register-your-products'
-
-    expect(current_url).to match(ENV['warranty_registration_url'])
-  end
-
   scenario 'click through to dealer portal' do
     click_on 'Order Now'
 
