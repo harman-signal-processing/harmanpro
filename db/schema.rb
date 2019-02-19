@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_16_222159) do
+ActiveRecord::Schema.define(version: 2019_02_18_222505) do
 
   create_table "active_admin_comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -185,6 +185,138 @@ ActiveRecord::Schema.define(version: 2019_01_16_222159) do
 
   create_table "channels", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contact_info_contact_data_clients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "contact_info_contact_id"
+    t.bigint "contact_info_data_client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_contact_id"], name: "idx_contact_data_clients_on_contact_id"
+    t.index ["contact_info_data_client_id"], name: "idx_contact_data_clients_on_data_client_id"
+  end
+
+  create_table "contact_info_contact_emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "contact_info_contact_id"
+    t.bigint "contact_info_email_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_contact_id"], name: "index_contact_info_contact_emails_on_contact_info_contact_id"
+    t.index ["contact_info_email_id"], name: "index_contact_info_contact_emails_on_contact_info_email_id"
+  end
+
+  create_table "contact_info_contact_phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "contact_info_contact_id"
+    t.bigint "contact_info_phone_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_contact_id"], name: "index_contact_info_contact_phones_on_contact_info_contact_id"
+    t.index ["contact_info_phone_id"], name: "index_contact_info_contact_phones_on_contact_info_phone_id"
+  end
+
+  create_table "contact_info_contact_pro_site_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.boolean "showonweb", default: false, null: false
+    t.boolean "showforsolutions", default: false, null: false
+    t.boolean "showforchannels", default: false, null: false
+    t.bigint "contact_info_contact_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_contact_id"], name: "idx_contact_prosite_options_on_contact_id"
+  end
+
+  create_table "contact_info_contact_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "contact_info_contact_id"
+    t.bigint "contact_info_tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_contact_id"], name: "index_contact_info_contact_tags_on_contact_info_contact_id"
+    t.index ["contact_info_tag_id"], name: "index_contact_info_contact_tags_on_contact_info_tag_id"
+  end
+
+  create_table "contact_info_contact_team_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "contact_info_contact_id"
+    t.bigint "contact_info_team_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_contact_id"], name: "idx_contact_team_groups_on_contact_id"
+    t.index ["contact_info_team_group_id"], name: "idx_contact_team_groups_on_team_group_id"
+  end
+
+  create_table "contact_info_contact_territories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "contact_info_contact_id"
+    t.bigint "contact_info_territory_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_contact_id"], name: "idx_contact_territories_on_contact_id"
+    t.index ["contact_info_territory_id"], name: "idx_contact_territories_on_territory_id"
+  end
+
+  create_table "contact_info_contact_websites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "contact_info_contact_id"
+    t.bigint "contact_info_website_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_contact_id"], name: "index_contact_info_contact_websites_on_contact_info_contact_id"
+    t.index ["contact_info_website_id"], name: "index_contact_info_contact_websites_on_contact_info_website_id"
+  end
+
+  create_table "contact_info_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "label"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contact_info_data_clients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contact_info_emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "label"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contact_info_phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "phone"
+  end
+
+  create_table "contact_info_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contact_info_team_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contact_info_territories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contact_info_websites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "label"
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -920,4 +1052,19 @@ ActiveRecord::Schema.define(version: 2019_01_16_222159) do
     t.index ["parent_id"], name: "index_vertical_markets_on_parent_id"
   end
 
+  add_foreign_key "contact_info_contact_data_clients", "contact_info_contacts"
+  add_foreign_key "contact_info_contact_data_clients", "contact_info_data_clients"
+  add_foreign_key "contact_info_contact_emails", "contact_info_contacts"
+  add_foreign_key "contact_info_contact_emails", "contact_info_emails"
+  add_foreign_key "contact_info_contact_phones", "contact_info_contacts"
+  add_foreign_key "contact_info_contact_phones", "contact_info_phones"
+  add_foreign_key "contact_info_contact_pro_site_options", "contact_info_contacts"
+  add_foreign_key "contact_info_contact_tags", "contact_info_contacts"
+  add_foreign_key "contact_info_contact_tags", "contact_info_tags"
+  add_foreign_key "contact_info_contact_team_groups", "contact_info_contacts"
+  add_foreign_key "contact_info_contact_team_groups", "contact_info_team_groups"
+  add_foreign_key "contact_info_contact_territories", "contact_info_contacts"
+  add_foreign_key "contact_info_contact_territories", "contact_info_territories"
+  add_foreign_key "contact_info_contact_websites", "contact_info_contacts"
+  add_foreign_key "contact_info_contact_websites", "contact_info_websites"
 end
