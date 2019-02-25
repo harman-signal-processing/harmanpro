@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_18_222505) do
+ActiveRecord::Schema.define(version: 2019_02_22_223144) do
 
   create_table "active_admin_comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -272,6 +272,7 @@ ActiveRecord::Schema.define(version: 2019_02_18_222505) do
   create_table "contact_info_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "label"
     t.string "name"
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -291,9 +292,9 @@ ActiveRecord::Schema.define(version: 2019_02_18_222505) do
 
   create_table "contact_info_phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "label"
+    t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "phone"
   end
 
   create_table "contact_info_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -371,6 +372,23 @@ ActiveRecord::Schema.define(version: 2019_02_18_222505) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "distributor_info_distributor_brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "distributor_info_distributor_id"
+    t.integer "brand_id"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "idx_dist_info_on_brands_brand_id"
+    t.index ["distributor_info_distributor_id"], name: "idx_dist_info_on_brands_distributor_id"
+  end
+
+  create_table "distributor_info_distributors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "account_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "distributors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -552,6 +570,48 @@ ActiveRecord::Schema.define(version: 2019_02_18_222505) do
     t.datetime "updated_at", null: false
     t.index ["available_locale_id"], name: "index_locale_translators_on_available_locale_id"
     t.index ["user_id"], name: "index_locale_translators_on_user_id"
+  end
+
+  create_table "location_info_location_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "location_info_location_id"
+    t.bigint "contact_info_contact_id"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_contact_id"], name: "idx_location_contacts_on_contact_id"
+    t.index ["location_info_location_id"], name: "idx_location_contactss_on_location_id"
+  end
+
+  create_table "location_info_location_regions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "location_info_location_id"
+    t.bigint "location_info_region_id"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_info_location_id"], name: "idx_location_regions_on_location_id"
+    t.index ["location_info_region_id"], name: "idx_location_regions_on_region_id"
+  end
+
+  create_table "location_info_locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "address1"
+    t.string "address2"
+    t.string "address3"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "postal"
+    t.string "lat"
+    t.string "lng"
+    t.string "google_map_place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "location_info_regions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "media_library_access_requests", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -1067,4 +1127,10 @@ ActiveRecord::Schema.define(version: 2019_02_18_222505) do
   add_foreign_key "contact_info_contact_territories", "contact_info_territories"
   add_foreign_key "contact_info_contact_websites", "contact_info_contacts"
   add_foreign_key "contact_info_contact_websites", "contact_info_websites"
+  add_foreign_key "distributor_info_distributor_brands", "brands"
+  add_foreign_key "distributor_info_distributor_brands", "distributor_info_distributors"
+  add_foreign_key "location_info_location_contacts", "contact_info_contacts"
+  add_foreign_key "location_info_location_contacts", "location_info_locations"
+  add_foreign_key "location_info_location_regions", "location_info_locations"
+  add_foreign_key "location_info_location_regions", "location_info_regions"
 end

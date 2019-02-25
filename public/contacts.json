@@ -922,8 +922,7 @@
         "t2": "unitedstateswest",
         "t3": "unitedstatescentral",
         "t4": "unitedstatessoutheast",
-        "t5": "unitedstatesnortheast",
-        "t6": "latinamerica"
+        "t5": "unitedstatesnortheast"
    },
     {
         "name": "Jared Lederhandler",
@@ -2526,15 +2525,6 @@
         "channelMap": "no"
    },
     {
-        "name": "Hans Nijssen",
-        "title": "Global Business Development Manager, EN54 Specialist - Transportation Solutions, EMEA",
-        "email": "hans.nijssen@harman.com",
-        "group1": "Transportation",
-        "showonweb": "yes",
-        "solutionsMap": "yes",
-        "channelMap": "no"
-   },
-    {
         "name": "Mark Lewis",
         "title": "Sales Support Specialist, Transportation, EMEA",
         "email": "steffan.lewis@harman.com",
@@ -2678,8 +2668,5 @@
         "showonweb": "no",
         "solutionsMap": "no",
         "channelMap": "no"
-   },
-    {
-        "name": "TEST"
    }
 ]

@@ -3,6 +3,6 @@ FactoryBot.define do
     showonweb { false }
     showforsolutions { false }
     showforchannels { false }
-    contact { nil }
+    contact { ContactInfo::Contact.create(name: 'Contact 1') }
   end
 end
