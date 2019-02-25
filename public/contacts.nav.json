@@ -45,6 +45,11 @@
         "type": "solution"
     },
     {
+        "path": "/contacts/esports",
+        "name": "Esports",
+        "type": "solution"
+    },
+    {
         "path": "/contacts/government",
         "name": "Government",
         "type": "solution"
