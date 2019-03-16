@@ -5,6 +5,8 @@ class MediaLibraryMailer < ApplicationMailer
 
     tos = SiteSetting.value('media-library-recipients').split(',')
     from = SiteSetting.value('media-library-sender') || "noreply@harmanpro.com"
-    mail to: tos, from: from
+    mail to: tos,
+      from: from,
+      subject: "DAM access request"
   end
 end
