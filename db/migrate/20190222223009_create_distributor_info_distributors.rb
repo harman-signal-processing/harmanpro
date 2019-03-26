@@ -6,5 +6,7 @@ class CreateDistributorInfoDistributors < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :distributor_info_distributors, :name
+    add_index :distributor_info_distributors, :account_number
   end
 end

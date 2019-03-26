@@ -1,0 +1,17 @@
+<%= link_to 'Team/Group List', contact_info_admin_team_groups_path, class: "small button round" %>
+
+<h1>New Team/Group</h1>
+
+<%if @contact.present?%>
+<p>This new team/group will be associated with <%=link_to "#{@contact.name} - #{@contact.title}", edit_contact_info_admin_contact_path(@contact)%>. (You can change this later)<br />
+Or if you want to create the team/group without associating it to a contact? <%= link_to "Click to here create new team/group without association.", new_contact_info_admin_team_group_path %>
+</p>
+<%end%>
+
+<%= simple_form_for @team_group, url: contact_info_admin_team_groups_path do |f| %>
+  <%= f.input :name, label: "Name" %>
+  <%= f.hidden_field :contact_id, value: "#{params[:team_group][:contact_id]}" unless params[:team_group].nil? %>
+
+    </br>
+  <%= f.button :submit %>
+<% end # simple_form_for @team_group, url: contact_info_admin_team_groups_path do |f|%>

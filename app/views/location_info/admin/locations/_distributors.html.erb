@@ -1,0 +1,32 @@
+<!-- Distributors -->
+	<div class="small-12 medium-6 columns" id="Distributors">
+        <div class="group">
+          <h4>Distributors</h4>
+          <p>Choose one or more distributor below. Doing so will associate this location address with the distributor.</p>
+
+          <%= simple_form_for [@distributor_location], url: distributor_info_admin_distributor_locations_path, remote: true do |f| %>
+            <%= f.hidden_field :location_info_location_id %>
+            <%= hidden_field_tag :called_from, "location" %>
+            <%= f.association :distributor, 
+            collection: DistributorInfo::Distributor.not_associated_with_this_location(@distributor_location.location),
+            label: false,
+            # label_method: -> (contact) { "#{contact.name} - #{contact.title}" },
+            input_html: { class: 'chosen-select', multiple: true,  data: { placeholder: 'Select distributors'} }%>
+            <%= f.submit "add distributor", class: "small round button", style:"margin-top:10px;" %>
+          <% end %>
+					
+					<strong>Current distributors</strong>
+          <ul id="distributor_locations" class="list">
+            <% @distributor_locations.each do |association| %>
+              <%= render "/distributor_info/admin/distributor_locations/distributor_location_row", association: association, called_from: "location" %>
+            <% end %>
+          </ul>
+          
+          <p>
+          	Can't find the distributor in the list above? <%= link_to "Create a new distributor", new_distributor_info_admin_distributor_path(distributor: {location_id: "#{@location.id}"}) %>.
+          </p>
+          <p>Go to: <%= link_to "Distributor List", distributor_info_admin_distributors_path %></p>
+          <a href="#">Go to top</a>
+        </div>
+        
+  </div> 

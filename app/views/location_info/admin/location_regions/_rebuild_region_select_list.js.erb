@@ -1,0 +1,15 @@
+(function(){
+	var $regions_dropdown = $('#location_info_location_region_location_info_region_id');
+
+	// clear the region list before we rebuild it
+	$regions_dropdown.empty();
+	
+	// rebuild region dropdown list
+	$regions_dropdown.append($("<option></option>"));		
+	<% LocationInfo::Region.not_associated_with_this_location(@location_region.location).each do |region| %>
+		$regions_dropdown.append($("<option value='<%=region.id%>'><%=escape_javascript(region.name)%></option>"));
+	<% end %>
+	
+	// let chosen know the region dropdown list has been updated
+	$regions_dropdown.trigger('chosen:updated');
+})();

@@ -1,0 +1,10 @@
+(function(){
+    // remove associated supported_brand
+    $('#contact_supported_brand_<%= @contact_supported_brand.id %>').remove();
+    
+<%if @called_from == "contact" %>
+	<%= render "/contact_info/admin/contact_supported_brands/rebuild_supported_brand_select_list" %>
+<% end %>	
+})();
+
+<% flash.discard %>

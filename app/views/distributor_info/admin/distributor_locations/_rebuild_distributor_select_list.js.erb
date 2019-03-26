@@ -1,0 +1,15 @@
+(function(){
+	var $distributors_dropdown = $('#distributor_info_distributor_location_distributor_info_distributor_id');
+
+	// clear the distributor list before we rebuild it
+	$distributors_dropdown.empty();
+	
+	// rebuild distributor dropdown list
+	$distributors_dropdown.append($("<option></option>"));		
+	<% DistributorInfo::Distributor.not_associated_with_this_location(@distributor_location.location).each do |distributor| %>
+		$distributors_dropdown.append($("<option value='<%=distributor.id%>'><%=distributor.name%></option>"));
+	<% end %>
+	
+	// let chosen know the phone dropdown list has been updated
+	$distributors_dropdown.trigger('chosen:updated');
+})();

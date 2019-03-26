@@ -1,0 +1,33 @@
+<!-- Data Clients -->
+	<div class="small-12 medium-6 columns" id="TeamGroups">
+        <div class="group">
+          <h4>Data Clients</h4>
+          <p>Data client is the site that will be showing this contact's data. Different options may appear on this page based on the data client associated with this contact.</p>
+          <p>Choose one or more data client below. Doing so will associate this contact with the data client.</p>
+
+          <%= simple_form_for [@contact_data_client], url: contact_info_admin_contact_data_clients_path, remote: true do |f| %>
+            <%= f.hidden_field :contact_info_contact_id %>
+            <%= hidden_field_tag :called_from, "contact" %>
+            <%= f.association :data_client, 
+            collection: ContactInfo::DataClient.not_associated_with_this_contact(@contact_data_client.contact).order(:name),
+            label: false,
+            # label_method: "#{data_client.name}",
+            input_html: { class: 'chosen-select', multiple: true,  data: { placeholder: 'Select data clients'} }%>
+            <%= f.submit "add data client", class: "small round button", style:"margin-top:10px;" %>
+          <% end %>
+					
+					<strong>Current Data Clients</strong>
+          <ul id="contact_data_clients" class="list">
+            <% @contact_data_clients.order(:position).each do |association| %>
+              <%= render "/contact_info/admin/contact_data_clients/contact_data_client_row", association: association, called_from: "contact" %>
+            <% end %>
+          </ul>
+          
+          <p>
+          	Can't find the data client in the list above? <%= link_to "Create a new data client", new_contact_info_admin_data_client_path(data_client: {contact_id: "#{@contact.id}"}) %>.
+          </p>
+          <p>Go to: <%= link_to "Data Client List", contact_info_admin_data_clients_path %></p>
+          <a href="#">Go to top</a>
+        </div>
+        
+  </div> 

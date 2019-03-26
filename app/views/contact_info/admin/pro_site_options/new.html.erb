@@ -1,0 +1,22 @@
+<%= link_to 'Pro Site Options List', contact_info_admin_pro_site_options_path, class: "small button round" %>
+
+<h1>New Pro Site Option</h1>
+
+<% if ContactInfo::Contact.without_pro_site_option.empty? %>
+  <p>A Pro Site Option record must be associated with a single contact. Currently all Contacts have a Pro Site Option record.</p>
+  <p>You can
+  <ul>
+    <li><%=link_to "Create a new Contact", new_contact_info_admin_contact_path %></li>
+    <li><%=link_to "Find an existing Contact", contact_info_admin_contacts_path%></li>
+  </ul>
+  </p>
+<% else %>
+  <%= simple_form_for @pro_site_option, url: contact_info_admin_pro_site_options_path do |f| %>
+              <%= f.association :contact, 
+              collection: ContactInfo::Contact.without_pro_site_option,
+              label: false,
+              label_method: -> (contact) { "#{contact.name} - #{contact.title}" },
+              input_html: { class: 'chosen-select', multiple: false,  data: { placeholder: 'Select contact'} }%>
+  <% end #  simple_form_for @pro_site_option, url: contact_info_admin_pro_site_options_path do |f| %>
+
+<% end #  if ContactInfo::Contact.without_pro_site_option.empty? %>

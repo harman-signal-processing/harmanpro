@@ -1,0 +1,10 @@
+(function(){
+	var $list_of_associated_supported_countries = $('#contact_supported_countries');
+	build_list_of_supported_countries_associated_with_this_contact($list_of_associated_supported_countries);
+	
+	function build_list_of_supported_countries_associated_with_this_contact($list_of_associated_supported_countries) {
+		<% @contact_supported_countries.each do |contact_supported_country| %>
+			$list_of_associated_supported_countries.append('<%= escape_javascript(render "/contact_info/admin/contact_supported_countries/contact_supported_country_row", association: contact_supported_country, called_from: @called_from) %>');
+		<% end %>	
+	}  //  function build_list_of_supported_countries_associated_with_this_contact($list_of_associated_supported_countries)
+})();

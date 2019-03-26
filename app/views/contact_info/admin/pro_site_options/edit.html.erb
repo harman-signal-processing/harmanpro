@@ -1,0 +1,21 @@
+<ul class="button-group round">
+    <li><%= link_to 'Pro Site Option List', contact_info_admin_pro_site_options_path, class: "small button round" %>	</li>
+    <li><%= link_to 'Delete', contact_info_admin_pro_site_option_path(@pro_site_option), confirm: 'Are you sure?', method: :delete, class: "small alert button" %> </li>
+</ul>
+<h1>Edit Pro Site Options for <%=@pro_site_option.contact.name%></h1>
+
+<%= simple_form_for @pro_site_option, url: contact_info_admin_pro_site_option_path do |f| %>
+  <%= f.input :showonweb, label: "Show on Web" %>
+  <%= f.input :showforsolutions, label: "Show in Solutions" %>
+  <%= f.input :showforchannels, label: "Show in Channels" %>
+  <%= f.hidden_field :contact_info_contact_id, value: @pro_site_option.contact.id %>
+
+    </br>
+  <%= f.button :submit %>
+<% end # simple_form_for @pro_site_option, url: contact_info_admin_pro_site_option_path do |f|%>
+
+
+<div class="row">
+  <%#= render 'contacts' %>
+</div>  <!-- <div class="row">  -->
+

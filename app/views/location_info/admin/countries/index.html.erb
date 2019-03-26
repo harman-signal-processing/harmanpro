@@ -1,0 +1,46 @@
+<h1>Countries</h1>
+
+<ul class="button-group round">
+	<li><%= link_to 'Countries List', location_info_admin_countries_path, class: "small button round" %>	</li>
+	<li><%= link_to 'New Country', new_location_info_admin_country_path, class: "small success button" %></li>
+</ul>
+
+<table class="data">
+  <tr>
+  	<th></th>
+    <th>Name</th>
+    <th>Harman Name</th>
+    <th>Alpha2</th>
+    <th>Alpha3</th>
+    <th>Continent</th>
+    <th>Region</th>
+    <th>Sub Region</th>
+    <th>World Region</th>
+    <th>Harman World Region</th>
+    <th>Calling Code</th>
+    <th>Numeric Code</th>
+    <th>Supported Locations</th>
+  </tr>
+
+<% @countries.each do |country| %>
+  <tr style="vertical-align:text-bottom;">
+    <td><%= link_to 'Edit', edit_location_info_admin_country_path(country), class: "small round button" %></td>
+    <td><%= country.name %></td>
+    <td><%= country.harman_name %></td>
+    <td><%= country.alpha2 %></td>
+    <td><%= country.alpha3 %></td>
+    <td><%= country.continent %></td>
+    <td><%= country.region %></td>
+    <td><%= country.sub_region %></td>
+    <td><%= country.world_region %></td>
+    <td><%= country.harman_world_region %></td>
+    <td><%= country.calling_code %></td>
+    <td><%= country.numeric_code %></td>
+    <td>
+      <% country.supported_locations.each do |supported_location| %>
+        <%= supported_location.name %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>

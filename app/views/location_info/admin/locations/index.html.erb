@@ -1,0 +1,64 @@
+<h1>Locations</h1>
+
+<ul class="button-group round">
+	<li><%= link_to 'Locations List', location_info_admin_locations_path, class: "small button round" %>	</li>
+	<li><%= link_to 'New Location', new_location_info_admin_location_path, class: "small success button" %></li>
+</ul>
+
+<table class="data">
+  <tr>
+  	<th></th>
+    <th>Name</th>
+    <th>Region</th>
+    <th>Supported Countries</th>
+    <th>Supported Brands</th>
+    <th>Address1</th>
+    <th>Address2</th>
+    <th>Address3</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Country</th>
+    <th>Postal</th>
+    <th>Lat</th>
+    <th>Lng</th>
+    <th>Google Map/Place ID</th>
+  </tr>
+
+<% @locations.order(:name).each do |location| %>
+  <tr style="vertical-align:text-bottom;">
+    <td><%= link_to 'Edit', edit_location_info_admin_location_path(location), class: "small round button" %></td>
+    <td><%= location.name %></td>
+    <td>
+      <ul>
+      <% location.regions.each do |region| %>
+        <li><%= region.name %></li>
+      <% end %>
+      </ul>
+    </td>
+    <td>
+      <ul>
+      <% location.supported_countries.each do |supported_country| %>
+        <li><%= supported_country.name %></li>
+      <% end %>
+      </ul>
+    </td>   
+    <td>
+      <ul>
+      <% location.supported_brands.order(:name).each do |supported_brand| %>
+        <li><%= supported_brand.name %></li>
+      <% end %>
+      </ul>
+    </td>     
+    <td><%= location.address1 %></td>
+    <td><%= location.address2 %></td>
+    <td><%= location.address3 %></td>
+    <td><%= location.city %></td>
+    <td><%= location.state %></td>
+    <td><%= LocationInfo::Country.long_name(location.country) %></td>
+    <td><%= location.postal %></td>
+    <td><%= location.lat %></td>
+    <td><%= location.lng %></td>
+    <td><%= location.google_map_place_id %></td>
+  </tr>
+<% end %>
+</table>

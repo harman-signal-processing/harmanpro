@@ -1,0 +1,10 @@
+(function(){
+	var $list_of_associated_tags = $('#contact_tags');
+	build_list_of_tags_associated_with_this_contact($list_of_associated_tags);
+	
+	function build_list_of_tags_associated_with_this_contact($list_of_associated_tags) {
+		<% @contact_tags.each do |contact_tag| %>
+			$list_of_associated_tags.append('<%= escape_javascript(render "/contact_info/admin/contact_tags/contact_tag_row", association: contact_tag, called_from: @called_from) %>');
+		<% end %>	
+	}  //  function build_list_of_tags_associated_with_this_contact($list_of_associated_tags)
+})();

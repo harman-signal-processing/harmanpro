@@ -1,0 +1,15 @@
+(function(){
+    // remove associated brand
+    $('#distributor_brand_<%= @distributor_brand.id %>').remove();
+    
+<%if @called_from == "distributor" %>
+	<%= render "/distributor_info/admin/distributor_brands/rebuild_brand_select_list" %>
+<% end %>	
+
+<%if @called_from == "brand" %>
+	<%= render "/distributor_info/admin/distributor_brands/rebuild_distributor_select_list" %>
+<% end %>	
+
+})();
+
+<% flash.discard %>

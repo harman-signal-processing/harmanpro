@@ -1,0 +1,15 @@
+(function(){
+    // remove associated location
+    $('#distributor_location_<%= @distributor_location.id %>').remove();
+    
+<%if @called_from == "distributor" %>
+	<%= render "/distributor_info/admin/distributor_locations/rebuild_location_select_list" %>
+<% end %>	
+
+<%if @called_from == "location" %>
+	<%= render "/distributor_info/admin/distributor_locations/rebuild_distributor_select_list" %>
+<% end %>	
+
+})();
+
+<% flash.discard %>

@@ -5,5 +5,6 @@ class CreateContactInfoTags < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :contact_info_tags, :name
   end
 end

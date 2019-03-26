@@ -11,6 +11,8 @@ RSpec.describe ContactInfo::Contact, type: :model do
     @website = FactoryBot.create(:contact_info_website)
     @tag = FactoryBot.create(:contact_info_tag)
     @data_client = FactoryBot.create(:contact_info_data_client)
+    @supported_brand = FactoryBot.create(:brand)
+    @supported_country = FactoryBot.create(:location_info_country)
   end  #  before do
   context 'Validate Contact attributes' do
 
@@ -113,6 +115,28 @@ RSpec.describe ContactInfo::Contact, type: :model do
   		@contact.data_clients.destroy(@data_client)
   		expect(@contact.data_clients.count).to eq(0)
   	end   	
+  	
+  	it 'Contact should allow supported Brand associations' do
+  		@contact.supported_brands << @supported_brand
+  		expect(@contact.supported_brands.count).to eq(1)
+  	end
+  	it 'Contact should allow removal of supported Brand associations' do
+			@contact.supported_brands << @supported_brand
+  		expect(@contact.supported_brands.count).to eq(1)  		
+  		@contact.supported_brands.destroy(@supported_brand)
+  		expect(@contact.supported_brands.count).to eq(0)
+  	end   	
+  	
+  	it 'Contact should allow supported Country associations' do
+  		@contact.supported_countries << @supported_country
+  		expect(@contact.supported_countries.count).to eq(1)
+  	end
+  	it 'Contact should allow removal of supported Country associations' do
+			@contact.supported_countries << @supported_country
+  		expect(@contact.supported_countries.count).to eq(1)  		
+  		@contact.supported_countries.destroy(@supported_country)
+  		expect(@contact.supported_countries.count).to eq(0)
+  	end  	
   	
   end  #  context 'Validate Contact associations' do
   

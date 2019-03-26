@@ -1,0 +1,17 @@
+<%= link_to 'Tags List', contact_info_admin_tags_path, class: "small button round" %>
+
+<h1>New Tag</h1>
+
+<%if @contact.present?%>
+<p>This new tag number will be associated with <%=link_to "#{@contact.name} - #{@contact.title}", edit_contact_info_admin_contact_path(@contact)%>. (You can change this later)<br />
+Or if you want to create the tag without associating it to a contact? <%= link_to "Click to here create new tag without association.", new_contact_info_admin_tag_path %>
+</p>
+<%end%>
+
+<%= simple_form_for @tag, url: contact_info_admin_tags_path do |f| %>
+  <%= f.input :name, label: "Name" %>
+  <%= f.hidden_field :contact_id, value: "#{params[:tag][:contact_id]}" unless params[:tag].nil? %>
+
+    </br>
+  <%= f.button :submit %>
+<% end # simple_form_for @tag, url: contact_info_admin_tags_path do |f|%>

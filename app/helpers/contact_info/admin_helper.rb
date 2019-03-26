@@ -1,0 +1,2 @@
+module ContactInfo::AdminHelper
+end

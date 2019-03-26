@@ -1,0 +1,15 @@
+(function(){
+    // remove associated website
+    $('#contact_website_<%= @contact_website.id %>').remove();
+    
+<%if @called_from == "contact" %>
+	<%= render "/contact_info/admin/contact_websites/rebuild_website_select_list" %>
+<% end %>	
+
+<%if @called_from == "website" %>
+	<%= render "/contact_info/admin/contact_websites/rebuild_contact_select_list" %>
+<% end %>	
+
+})();
+
+<% flash.discard %>

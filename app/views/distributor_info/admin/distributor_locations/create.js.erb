@@ -1,0 +1,11 @@
+<%if @called_from == "distributor" %>
+	<%= render "/distributor_info/admin/distributor_locations/rebuild_location_select_list" %>
+<% end %>	
+
+<%if @called_from == "location" %>
+	<%= render "/distributor_info/admin/distributor_locations/rebuild_distributor_select_list" %>
+<% end %>	
+
+<%= render "/distributor_info/admin/distributor_locations/add_to_associated_item_list" %>
+
+<% flash.discard %>

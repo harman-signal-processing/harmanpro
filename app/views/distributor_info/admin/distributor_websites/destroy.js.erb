@@ -1,0 +1,15 @@
+(function(){
+    // remove associated website
+    $('#distributor_website_<%= @distributor_website.id %>').remove();
+    
+<%if @called_from == "distributor" %>
+	<%= render "/distributor_info/admin/distributor_websites/rebuild_website_select_list" %>
+<% end %>	
+
+<%if @called_from == "website" %>
+	<%= render "/distributor_info/admin/distributor_websites/rebuild_distributor_select_list" %>
+<% end %>	
+
+})();
+
+<% flash.discard %>

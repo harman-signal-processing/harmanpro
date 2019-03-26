@@ -4,6 +4,8 @@ RSpec.describe ContactInfo::Phone, type: :model do
   before do
     @phone = FactoryBot.create(:contact_info_phone)
     @contact = FactoryBot.create(:contact_info_contact)     
+    @distributor = FactoryBot.create(:distributor_info_distributor)     
+    @location = FactoryBot.create(:location_info_location)     
   end  #  before do
   
   context 'Validate Phone attributes' do
@@ -29,7 +31,30 @@ RSpec.describe ContactInfo::Phone, type: :model do
   		expect(@phone.contacts.count).to eq(1)  		
   		@phone.contacts.destroy(@contact)
   		expect(@phone.contacts.count).to eq(0)
-  	end     
+  	end   
+  	
+  	it 'Phone should allow Distributor associations' do
+  		@phone.distributors << @distributor
+  		expect(@phone.distributors.count).to eq(1)
+  	end
+  	it 'Phone should allow removal of Distributor associations' do
+			@phone.distributors << @distributor
+  		expect(@phone.distributors.count).to eq(1)  		
+  		@phone.distributors.destroy(@distributor)
+  		expect(@phone.distributors.count).to eq(0)
+  	end    	
+  	
+  	it 'Phone should allow Location associations' do
+  		@phone.locations << @location
+  		expect(@phone.locations.count).to eq(1)
+  	end
+  	it 'Phone should allow removal of Location associations' do
+			@phone.locations << @location
+  		expect(@phone.locations.count).to eq(1)  		
+  		@phone.locations.destroy(@location)
+  		expect(@phone.locations.count).to eq(0)
+  	end   	
+  	
   end  #  context 'Validate Phone associations' do  
   
 end  #  RSpec.describe ContactInfo::Phone, type: :model do

@@ -1,10 +1,10 @@
 require 'json'
 namespace 'contact_info' do
   
-  task :default => [:list_contacts]
-  
-  desc 'Read and list data from public/contacts.json'
-  task :list_contacts => :environment do
+  task :default => [:add_prosite_contacts_to_db]
+
+  desc 'Read data from public/contacts.json and save to db'
+  task :add_prosite_contacts_to_db => :environment do
     
     contacts_file = "#{Rails.root}/public/contacts.json"
     # puts "#{Rails.root}/public/contacts.json"
@@ -25,10 +25,14 @@ namespace 'contact_info' do
       #create contact
       name = contact["name"]
       title = contact["title"]
-      # binding.pry
+
       puts "Creating contact: #{name}"
       newcontact = ContactInfo::Contact.find_or_create_by({name: "#{name}"})
       newcontact.title = title unless title.blank?
+      newcontact.save
+      
+      #set data client
+      newcontact.data_clients << ContactInfo::DataClient.find_or_create_by({name:"pro.harman.com/contacts"})
       
       #create contact emails
       email = contact["email"]
@@ -42,7 +46,6 @@ namespace 'contact_info' do
       phones << contact["phone1"] unless contact["phone1"].blank?
       phones << contact["phone2"] unless contact["phone2"].blank?
       
-# binding.pry     
       if !phones.nil?
         phones.each do |phone|
           puts "Creating and associating phone:#{phone} to contact:#{newcontact.name}"
@@ -62,10 +65,10 @@ namespace 'contact_info' do
         groups.each_with_index do |group, index|
           if !group.nil?
             team = ContactInfo::TeamGroup.find_or_create_by(name: "#{group}")
-            # binding.pry
+
             puts "Associating team: #{team.name} with contact: #{newcontact.name}"
             newteamassociation = ContactInfo::ContactTeamGroup.find_or_create_by(contact_info_contact_id: "#{newcontact.id}", contact_info_team_group_id: "#{team.id}")
-            # binding.pry
+
             group_position = group_positions[index] unless group_positions.blank?
             puts "Updating position for #{team.name}-#{newcontact.name} to #{group_position}" unless group_position.blank?
             newteamassociation.position = group_position unless group_position.blank?
@@ -104,7 +107,7 @@ namespace 'contact_info' do
     end  #  contacts.each do |contact|
     
     
-  end  #  task :list_contacts => :environment do
+  end  #  task :add_prosite_contacts_to_db => :environment do
   
   desc 'Delete everything before adding new data. Just used for testing.'
   task :delete_everything => :environment do

@@ -1,0 +1,15 @@
+(function(){
+    // remove associated contact
+    $('#distributor_contact_<%= @distributor_contact.id %>').remove();
+    
+<%if @called_from == "distributor" %>
+	<%= render "/distributor_info/admin/distributor_contacts/rebuild_contact_select_list" %>
+<% end %>	
+
+<%if @called_from == "contact" %>
+	<%= render "/distributor_info/admin/distributor_contacts/rebuild_distributor_select_list" %>
+<% end %>	
+
+})();
+
+<% flash.discard %>

@@ -1,0 +1,15 @@
+(function(){
+    // remove associated territory
+    $('#contact_territory_<%= @contact_territory.id %>').remove();
+    
+<%if @called_from == "contact" %>
+	<%= render "/contact_info/admin/contact_territories/rebuild_territory_select_list" %>
+<% end %>	
+
+<%if @called_from == "territory" %>
+	<%= render "/contact_info/admin/contact_territories/rebuild_contact_select_list" %>
+<% end %>	
+
+})();
+
+<% flash.discard %>

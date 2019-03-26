@@ -1,0 +1,10 @@
+(function(){
+	var $list_of_associated_regions = $('#location_regions');
+	build_list_of_regions_associated_with_this_location($list_of_associated_regions);
+	
+	function build_list_of_regions_associated_with_this_location($list_of_associated_regions) {
+		<% @location_regions.each do |location_region| %>
+			$list_of_associated_regions.append('<%= escape_javascript(render "/location_info/admin/location_regions/location_region_row", association: location_region, called_from: @called_from) %>');
+		<% end %>	
+	}  //  function build_list_of_regions_associated_with_this_location($list_of_associated_regions)
+})();

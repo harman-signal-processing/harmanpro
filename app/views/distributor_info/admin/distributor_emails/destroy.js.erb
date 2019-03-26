@@ -1,0 +1,15 @@
+(function(){
+    // remove associated email
+    $('#distributor_email_<%= @distributor_email.id %>').remove();
+    
+<%if @called_from == "distributor" %>
+	<%= render "/distributor_info/admin/distributor_emails/rebuild_email_select_list" %>
+<% end %>	
+
+<%if @called_from == "email" %>
+	<%= render "/distributor_info/admin/distributor_emails/rebuild_distributor_select_list" %>
+<% end %>	
+
+})();
+
+<% flash.discard %>

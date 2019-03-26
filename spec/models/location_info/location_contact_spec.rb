@@ -11,5 +11,5 @@ RSpec.describe LocationInfo::LocationContact, type: :model do
 	  new_location_contact = LocationInfo::LocationContact.new(contact_info_contact_id: "#{existing_contact.id}", location_info_location_id: "#{existing_location.id}")
 	  expect(new_location_contact).not_to be_valid
 	  expect(new_location_contact.errors.messages[:contact_info_contact_id]).to include("has already been taken")    
-  end  #  it 'Contact Location associations should be unique' do
+  end  #  it 'Location contact associations should be unique' do
 end  #  RSpec.describe ContactInfo::ContactLocation, type: :model do

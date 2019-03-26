@@ -1,0 +1,39 @@
+<script>
+(function(){
+
+  <% if @is_pro_site_contact %>
+    $('[data-client="pro-contacts"]').show('slow');
+  <% else %>
+    $('[data-client="pro-contacts"]').hide('slow');
+  <% end %>
+  
+  <% if @supports_specific_brands && @is_brandsite_distributor %>
+    $('[data-client="supports-specific-brands"]').show('slow');
+    $('[data-client="supports-specific-brands-message"]').hide('slow');
+  <% else %>
+    $('[data-client="supports-specific-brands"]').hide('slow');
+    $('[data-client="supports-specific-brands-message"]').show('slow');
+  <% end %>
+
+  <% if @supports_specific_countries && @is_brandsite_distributor %>
+    $('[data-client="supports-specific-countries"]').show('slow');
+    $('[data-client="supports-specific-countries-message"]').hide('slow');
+  <% else %>
+    $('[data-client="supports-specific-countries"]').hide('slow');
+    $('[data-client="supports-specific-countries-message"]').show('slow');
+  <% end %>
+
+  $("#hrefspecificbrandsupport").click(function(e){
+    e.preventDefault();
+    $('[data-client="supports-specific-brands"]').show('slow');
+    $('[data-client="supports-specific-brands-message"]').hide('slow');    
+  });  //  $("#hrefspecificbrandsupport").click(function(){
+
+  $("#hrefspecificcountrysupport").click(function(e){
+    e.preventDefault();
+    $('[data-client="supports-specific-countries"]').show('slow');
+    $('[data-client="supports-specific-countries-message"]').hide('slow');    
+  });  //  $("#hrefspecificbrandsupport").click(function(){
+
+})();
+</script>

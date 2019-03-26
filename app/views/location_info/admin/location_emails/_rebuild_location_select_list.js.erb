@@ -1,0 +1,15 @@
+(function(){
+	var $locations_dropdown = $('#location_info_location_email_location_info_location_id');
+
+	// clear the email list before we rebuild it
+	$locations_dropdown.empty();
+	
+	// rebuild email dropdown list
+	$locations_dropdown.append($("<option></option>"));		
+	<% LocationInfo::Location.not_associated_with_this_email(@location_email.email).each do |location| %>
+		$locations_dropdown.append($("<option value='<%=location.id%>'><%=location.name%></option>"));
+	<% end %>
+	
+	// let chosen know the email dropdown list has been updated
+	$locations_dropdown.trigger('chosen:updated');
+})();

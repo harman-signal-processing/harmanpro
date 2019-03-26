@@ -1,0 +1,41 @@
+$(function()
+{
+
+  //Item drag and drop sorting
+  <% [
+    {element_id: :contact_phones, route_path: :update_order_contact_info_admin_contact_phones_path},
+    {element_id: :contact_emails, route_path: :update_order_contact_info_admin_contact_emails_path},
+    {element_id: :contact_websites, route_path: :update_order_contact_info_admin_contact_websites_path},
+    {element_id: :contact_team_groups, route_path: :update_order_contact_info_admin_contact_team_groups_path},
+    {element_id: :contact_territories, route_path: :update_order_contact_info_admin_contact_territories_path},
+    {element_id: :contact_tags, route_path: :update_order_contact_info_admin_contact_tags_path},
+    {element_id: :contact_data_clients, route_path: :update_order_contact_info_admin_contact_data_clients_path},
+    {element_id: :distributor_contacts, route_path: :update_order_distributor_info_admin_distributor_contacts_path},
+    {element_id: :location_contacts, route_path: :update_order_location_info_admin_location_contacts_path},
+    {element_id: :location_emails, route_path: :update_order_location_info_admin_location_emails_path},
+    {element_id: :location_phones, route_path: :update_order_location_info_admin_location_phones_path},
+    {element_id: :location_websites, route_path: :update_order_location_info_admin_location_websites_path}
+    ].each do |item| %>
+  	$('#<%= item[:element_id] %>').sortable({
+  		axis: 'y',
+  		dropOnEmpty: false,
+  		cursor: 'crosshair',
+  		handle: '.handle',
+  		items: 'li',
+  		opacity: 0.4,
+  		scroll: true,
+  		update: function(){
+  			$.ajax({
+  				type: 'post',
+  				data: $('#<%= item[:element_id] %>').sortable('serialize'),
+  				dataType: 'script',
+  				complete: function(request){
+  					$('#<%= item[:element_id] %>').effect('highlight');
+  				},
+  				url: '<%= eval("Rails.application.routes.url_helpers.#{item[:route_path]}") %>'
+  			});
+  		}
+  	});
+  <% end %>
+
+}); // $(function()

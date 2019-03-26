@@ -1,0 +1,28 @@
+<h1>Data Clients</h1>
+
+<ul class="button-group round">
+	<li><%= link_to 'Contact List', contact_info_admin_contacts_path, class: "small button round" %>	</li>
+	<li><%= link_to 'New Data Client', new_contact_info_admin_data_client_path, class: "small success button" %></li>
+</ul>
+
+<table class="data">
+  <tr>
+  	<th></th>
+    <th>Data Client</th>
+    <th>Associated Contacts</th>
+  </tr>
+
+<% @data_clients.each do |data_client| %>
+  <tr style="vertical-align:text-bottom;">
+    <td><%= link_to 'Edit', edit_contact_info_admin_data_client_path(data_client), class: "small round button" %></td>
+    <td><%= data_client.name %></td>
+    <td>
+      <ul>
+        <% data_client.contacts.order(:name).each do |contact|%>
+          <li><%= link_to "#{contact.name}", edit_contact_info_admin_contact_path(contact) %> - <span style='font-size: x-small;'><%="#{contact.title}"%></span></li>
+        <%end%>
+      </ul>
+    </td>
+  </tr>
+<% end %>
+</table>

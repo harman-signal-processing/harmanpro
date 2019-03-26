@@ -1,0 +1,59 @@
+<%= link_to "Contact List", contact_info_admin_contacts_path, class: "small success radius button" %>
+<div class="row">
+  <div class="small-8 columns">
+    <h1>Editing Contact:</h1>
+  </div>
+
+  <div class="small-4 columns text-right">
+    <%= link_to "delete contact",
+      contact_info_admin_contact_path,
+      method: :delete,
+      data: { confirm: "Are you sure you want to delete contact #{@contact.name}?" },
+      class: "small alert radius button" %>
+  </div>
+</div>
+
+<%= simple_form_for @contact, url: contact_info_admin_contact_path do |f| %>
+<%= f.input :name %>
+<%= f.input :title %>
+
+<%= f.submit class: "radius button" %>
+<% end %>
+
+<div class="row">
+  <%= render 'emails' %>
+  <%= render 'phones' %>
+</div>  <!-- <div class="row">  -->
+
+<div class="row">
+  <%= render 'locations' %>
+  <%= render 'websites' %>
+</div>  <!-- <div class="row">  -->
+
+
+<div class="row">
+  <%= render 'data_clients' %>
+  <%= render 'pro_site_options' %>
+</div>  <!-- <div class="row">  -->
+
+<div class="row">
+  <%= render 'supported_brands' %>
+  <%= render 'supported_countries' %>
+</div>  <!-- <div class="row">  -->
+
+<!-- pro.harman.com/contact attributes below  -->
+
+<div class="row">
+  <%= render 'territories' %>
+  <%= render 'team_groups' %>
+</div>  <!-- <div class="row">  -->
+
+
+<!-- not currently used, maybe in future  -->
+
+<div class="row">
+  <%#= render 'distributors' %>
+  <%#= render 'tags' %>
+</div>  <!-- <div class="row">  -->
+
+<%= render "show_hide_data_client_options" %>

@@ -1,0 +1,10 @@
+(function(){
+    // remove associated region
+    $('#location_region_<%= @location_region.id %>').remove();
+    
+<%if @called_from == "location" %>
+	<%= render "/location_info/admin/location_regions/rebuild_region_select_list" %>
+<% end %>	
+})();
+
+<% flash.discard %>

@@ -1,0 +1,10 @@
+(function(){
+	var $list_of_associated_countries = $('#distributor_countries');
+	build_list_of_countries_associated_with_this_distributor($list_of_associated_countries);
+	
+	function build_list_of_countries_associated_with_this_distributor($list_of_associated_countries) {
+		<% @distributor_countries.each do |distributor_country| %>
+			$list_of_associated_countries.append('<%= escape_javascript(render "/distributor_info/admin/distributor_countries/distributor_country_row", association: distributor_country, called_from: @called_from) %>');
+		<% end %>	
+	}  //  function build_list_of_countries_associated_with_this_distributor($list_of_associated_countries)
+})();

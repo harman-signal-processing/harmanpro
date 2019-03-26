@@ -6,5 +6,7 @@ class CreateContactInfoPhones < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :contact_info_phones, :label
+    add_index :contact_info_phones, :phone
   end
 end

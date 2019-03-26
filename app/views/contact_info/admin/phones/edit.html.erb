@@ -1,0 +1,23 @@
+<ul class="button-group round">
+    <li><%= link_to 'Phones List', contact_info_admin_phones_path, class: "small button round" %>	</li>
+    <li><%= link_to 'Delete', contact_info_admin_phone_path(@phone), confirm: 'Are you sure?', method: :delete, class: "small alert button" %> </li>
+</ul>
+<h1>Edit Phone</h1>
+
+<%= simple_form_for @phone, url: contact_info_admin_phone_path do |f| %>
+  <%= f.input :phone, label: "Phone" %>
+  <%= f.input :label, label: "Label" %>
+
+    </br>
+  <%= f.button :submit %>
+<% end # simple_form_for @phone, url: contact_info_admin_phone_path do |f|%>
+
+
+<div class="row">
+  <%= render 'contacts' %>
+  <%= render 'distributors' %>
+</div>  <!-- <div class="row">  -->
+
+<div class="row">
+  <%= render 'locations' %>
+</div>  <!-- <div class="row">  -->

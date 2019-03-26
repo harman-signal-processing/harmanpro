@@ -1,0 +1,18 @@
+<ul class="button-group round">
+    <li><%= link_to 'Territories List', contact_info_admin_territories_path, class: "small button round" %>	</li>
+    <li><%= link_to 'Delete', contact_info_admin_territory_path(@territory), confirm: 'Are you sure?', method: :delete, class: "small alert button" %> </li>
+</ul>
+<h1>Edit Territory</h1>
+
+<%= simple_form_for @territory, url: contact_info_admin_territory_path do |f| %>
+  <%= f.input :name, label: "Name" %>
+
+    </br>
+  <%= f.button :submit %>
+<% end # simple_form_for @territory, url: contact_info_admin_territory_path do |f|%>
+
+
+<div class="row">
+  <%= render 'contacts' %>
+</div>  <!-- <div class="row">  -->
+

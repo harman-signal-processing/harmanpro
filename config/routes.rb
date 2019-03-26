@@ -18,6 +18,74 @@ Rails.application.routes.draw do
     end
   end
 
+  # New Contacts paths
+  namespace :contact_info do
+    
+    get 'admin' => 'admin#index'
+    namespace :admin do
+      resources :contacts, path: :contacts
+      resources :emails, path: :emails
+      resources :phones, path: :phones
+      resources :websites, path: :websites
+      resources :team_groups, path: :teamgroups
+      resources :territories, path: :territories
+      resources :tags, path: :tags
+      resources :data_clients, path: :dataclients
+      resources :pro_site_options, path: :prositeoptions
+      
+      resources :contact_supported_countries
+      resources :contact_supported_brands      
+      
+      resources :contact_emails,
+        :contact_phones,
+        :contact_websites,
+        :contact_team_groups,
+        :contact_territories,
+        :contact_tags,
+        :contact_data_clients do
+          collection { post :update_order }
+      end
+      
+    end  #  namespace :admin do
+  end  #  namespace :contact_info do
+
+  # New Locations paths
+  namespace :location_info do
+    get 'admin' => 'admin#index'
+    namespace :admin do
+      resources :locations, path: :locations
+      resources :regions, path: :regions
+      resources :countries, path: :countries
+      resources :location_regions
+      resources :location_supported_countries
+      resources :location_supported_brands
+      resources :location_contacts,
+        :location_emails,
+        :location_phones,
+        :location_websites do
+        collection { post :update_order }
+      end
+    end  #  namespace :admin do
+  end  #  namespace :location_info do
+
+  # New Distributors paths
+  namespace :distributor_info do
+    get 'admin' => 'admin#index'
+    namespace :admin do
+      resources :distributors, path: :distributors
+      
+      resources :distributor_countries,
+        :distributor_locations,
+        :distributor_contacts,
+        :distributor_emails,
+        :distributor_phones,
+        :distributor_websites,
+        :distributor_brands do
+        collection { post :update_order }
+      end
+    end  # namespace :admin do
+  end  #  namespace :distributor_info do
+
   get 'training_calendar/show'
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)

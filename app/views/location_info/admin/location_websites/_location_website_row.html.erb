@@ -1,0 +1,16 @@
+<% called_from ||= 'location' %>
+<li id="location_website_<%= association.id %>">
+	<% if (called_from == 'location') %><span class="handle"><%= image_tag("icons/drag_handle.gif") %></span><% end %>
+
+	<% if (called_from == 'location') %> 
+		<%= link_to("#{association.website.url}", edit_contact_info_admin_website_path(association.website)) %> 
+	<%else%>
+		<%=link_to("#{association.location.name}", edit_location_info_admin_location_path(association.location))%> <span style="font-size: x-small"> - <%="#{association.location.city}" %></span> 
+	<%end%>
+
+	<%= link_to(image_tag("icons/trash.gif"), 
+			location_info_admin_location_website_path(association, called_from: called_from), 
+			confirm: "Are you sure? (This won't delete the website --it will only remove the association.)", 
+			remote: true,
+			method: :delete) %>
+</li>

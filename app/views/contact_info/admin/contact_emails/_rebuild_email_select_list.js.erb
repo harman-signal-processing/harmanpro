@@ -1,0 +1,15 @@
+(function(){
+	var $emails_dropdown = $('#contact_info_contact_email_contact_info_email_id');
+
+	// clear the email list before we rebuild it
+	$emails_dropdown.empty();
+	
+	// rebuild email dropdown list
+	$emails_dropdown.append($("<option></option>"));		
+	<% ContactInfo::Email.not_associated_with_this_contact(@contact_email.contact).each do |email| %>
+		$emails_dropdown.append($("<option value='<%=email.id%>'><%=email.email%></option>"));
+	<% end %>
+	
+	// let chosen know the email dropdown list has been updated
+	$emails_dropdown.trigger('chosen:updated');
+})();

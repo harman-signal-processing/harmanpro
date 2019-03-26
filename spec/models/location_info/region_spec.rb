@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe LocationInfo::Region, type: :model do
   before do
     @region = FactoryBot.create(:location_info_region)
+    @location = FactoryBot.create(:location_info_location)
   end
   context 'Validate Region attributes' do
     it 'Region should have name' do
@@ -14,4 +15,18 @@ RSpec.describe LocationInfo::Region, type: :model do
   	  expect(region.errors[:name]).to include("has already been taken")      
     end
   end  #  context 'Validate Region attributes' do
+  
+  context 'Validate Region associations' do
+  	it 'Region should allow Location associations' do
+  		@region.locations << @location
+  		expect(@region.locations.count).to eq(1)
+  	end
+  	it 'Region should allow removal of Location associations' do
+			@region.locations << @location
+  		expect(@region.locations.count).to eq(1)  		
+  		@region.locations.destroy(@location)
+  		expect(@region.locations.count).to eq(0)
+  	end     
+  end  #  context 'Validate Region associations' do
+  
 end

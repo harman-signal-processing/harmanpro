@@ -1,0 +1,7 @@
+<%if @called_from == "location" %>
+	<%= render "/location_info/admin/location_supported_brands/rebuild_supported_brand_select_list" %>
+<% end %>	
+
+<%= render "/location_info/admin/location_supported_brands/add_to_associated_item_list" %>
+
+<% flash.discard %>

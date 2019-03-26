@@ -4,5 +4,4 @@ class LocationInfo::LocationContact < ApplicationRecord
   
   validates :location_info_location_id, presence: true
   validates :contact_info_contact_id, presence: true, uniqueness: {scope: :location_info_location_id}  
-  
 end

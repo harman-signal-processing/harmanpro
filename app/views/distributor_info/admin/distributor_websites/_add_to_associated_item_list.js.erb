@@ -1,0 +1,10 @@
+(function(){
+	var $list_of_associated_websites = $('#distributor_websites');
+	build_list_of_websites_associated_with_this_distributor($list_of_associated_websites);
+	
+	function build_list_of_websites_associated_with_this_distributor($list_of_associated_websites) {
+		<% @distributor_websites.each do |distributor_website| %>
+			$list_of_associated_websites.append('<%= escape_javascript(render "/distributor_info/admin/distributor_websites/distributor_website_row", association: distributor_website, called_from: @called_from) %>');
+		<% end %>	
+	}  //  function build_list_of_websites_associated_with_this_distributor($list_of_associated_websites)
+})();

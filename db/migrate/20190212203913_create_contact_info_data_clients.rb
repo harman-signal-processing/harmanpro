@@ -5,5 +5,6 @@ class CreateContactInfoDataClients < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :contact_info_data_clients, :name
   end
 end

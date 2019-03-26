@@ -1,0 +1,15 @@
+(function(){
+	var $territories_dropdown = $('#contact_info_contact_territory_contact_info_territory_id');
+
+	// clear the territory list before we rebuild it
+	$territories_dropdown.empty();
+	
+	// rebuild territory dropdown list
+	$territories_dropdown.append($("<option></option>"));		
+	<% ContactInfo::Territory.not_associated_with_this_contact(@contact_territory.contact).each do |territory| %>
+		$territories_dropdown.append($("<option value='<%=territory.id%>'><%=territory.name%></option>"));
+	<% end %>
+	
+	// let chosen know the territory dropdown list has been updated
+	$territories_dropdown.trigger('chosen:updated');
+})();

@@ -20,6 +20,7 @@ class User < ApplicationRecord
     emea_distributor
     emea_admin
     tse_admin
+    contact_admin
     super_admin
     service_department
   ]
@@ -78,6 +79,10 @@ class User < ApplicationRecord
 
   def tse_admin_access?
     tse_admin? || admin?
+  end
+
+  def contact_admin_access?
+    contact_admin? || admin?
   end
 
   def is_employee?

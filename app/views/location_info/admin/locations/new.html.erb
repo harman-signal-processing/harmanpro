@@ -1,0 +1,41 @@
+<%= link_to "Location List", location_info_admin_locations_path, class: "small success radius button" %>
+<h1>New Location</h1>
+
+<%if @contact.present? && params.dig(:location, :contact_id).present? %>
+<p>This new contact will be associated with <%=link_to "#{@contact.name}", edit_contact_info_admin_contact_path(@contact)%>. (You can change this later)<br />
+If you want to create the location without associating it to a contact, <%= link_to "click to here create new location without association.", new_location_info_admin_location_path %>
+</p>
+<%end%>
+
+<%if @distributor.present? && params.dig(:location, :distributor_id).present? %>
+<p>This new location will be associated with <%=link_to "#{@distributor.name}", edit_distributor_info_admin_distributor_path(@distributor)%>. (You can change this later)<br />
+If you want to create the location without associating it to a distributor, <%= link_to "click to here create new location without association.", new_location_info_admin_location_path %>
+</p>
+<%end%>
+
+<%if @country.present? && params.dig(:location, :country_id).present? %>
+<p>This new location will be associated as supporting <%=link_to "#{@country.name}", edit_location_info_admin_country_path(@country)%>. (You can change this later)<br />
+If you want to create the location without associating it to a country, <%= link_to "click to here create new location without association.", new_location_info_admin_location_path %>
+</p>
+<%end%>
+
+<%= simple_form_for @location, url: location_info_admin_locations_path do |f| %>
+<%= f.input :name %>
+<%= f.input :address1 %>
+<%= f.input :address2 %>
+<%= f.input :address3 %>
+<%= f.input :city %>
+<%= f.input :state %>
+<p><%= f.input :country, input_html: { class: 'chosen-select',  data: { placeholder: 'Select country'} } %></p>
+<%= f.input :postal %>
+<%= f.input :lat %>
+<%= f.input :lng %>
+<%= f.input :google_map_place_id %>
+<%= f.input :account_number %>
+<%= f.hidden_field :contact_id, value: "#{params[:location][:contact_id]}" unless params[:location].nil? %>
+<%= f.hidden_field :distributor_id, value: "#{params[:location][:distributor_id]}" unless params[:location].nil? %>
+<%= f.hidden_field :region_id, value: "#{params[:location][:region_id]}" unless params[:location].nil? %>
+<%= f.hidden_field :country_id, value: "#{params[:location][:country_id]}" unless params[:location].nil? %>
+
+<%= f.submit class: "radius button" %>
+<% end %>

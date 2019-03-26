@@ -1,0 +1,32 @@
+<!-- Contacts -->
+	<div class="small-12 medium-6 columns" id="Contacts">
+        <div class="group">
+          <h4>Contacts associated with <%=@contact_website.website.url%></h4>
+          <p>Choose one or more contact below. Doing so will associate this website with the contact.</p>
+
+          <%= simple_form_for [@contact_website], url: contact_info_admin_contact_websites_path, remote: true do |f| %>
+            <%= f.hidden_field :contact_info_website_id %>
+            <%= hidden_field_tag :called_from, "website" %>
+            <%= f.association :contact, 
+            collection: ContactInfo::Contact.not_associated_with_this_website(@contact_website.website),
+            label: false,
+            label_method: -> (contact) { "#{contact.name} - #{contact.title}" },
+            input_html: { class: 'chosen-select', multiple: true,  data: { placeholder: 'Select contacts'} }%>
+            <%= f.submit "add contact", class: "small round button", style:"margin-top:10px;" %>
+          <% end %>
+					
+					<strong>Current contacts</strong>
+          <ul id="contact_websites" class="list">
+            <% @contact_websites.each do |association| %>
+              <%= render "/contact_info/admin/contact_websites/contact_website_row", association: association, called_from: "website" %>
+            <% end %>
+          </ul>
+          
+          <p>
+          	Can't find the contact in the list above? <%= link_to "Create a new contact", new_contact_info_admin_contact_path(contact: {website_id: "#{@website.id}"}) %>.
+          </p>
+          <p>Go to: <%= link_to "Contacts List", contact_info_admin_contacts_path %></p>
+          <a href="#">Go to top</a>
+        </div>
+        
+  </div> 

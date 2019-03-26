@@ -4,6 +4,11 @@ RSpec.describe DistributorInfo::Distributor, type: :model do
   before do
     @distributor = FactoryBot.create(:distributor_info_distributor)
     @brand = FactoryBot.create(:brand) 
+    @location = FactoryBot.create(:location_info_location)
+    @contact = FactoryBot.create(:contact_info_contact)
+    @email = FactoryBot.create(:contact_info_email)
+    @phone = FactoryBot.create(:contact_info_phone)
+    @country = FactoryBot.create(:location_info_country)
   end  #  before do
   
   context 'Validate Distributor attributes' do
@@ -24,6 +29,62 @@ RSpec.describe DistributorInfo::Distributor, type: :model do
   		@distributor.brands.destroy(@brand)
   		expect(@distributor.brands.count).to eq(0)
   	end     
+  	
+  	it 'Distributor should allow Location associations' do
+  		@distributor.locations << @location
+  		expect(@distributor.locations.count).to eq(1)
+  	end
+  	it 'Distributor should allow removal of Location associations' do
+			@distributor.locations << @location
+  		expect(@distributor.locations.count).to eq(1)  		
+  		@distributor.locations.destroy(@location)
+  		expect(@distributor.locations.count).to eq(0)
+  	end   	
+  	
+  	it 'Distributor should allow Contact associations' do
+  		@distributor.contacts << @contact
+  		expect(@distributor.contacts.count).to eq(1)
+  	end
+  	it 'Distributor should allow removal of Contact associations' do
+			@distributor.contacts << @contact
+  		expect(@distributor.contacts.count).to eq(1)  		
+  		@distributor.contacts.destroy(@contact)
+  		expect(@distributor.contacts.count).to eq(0)
+  	end   	
+  	
+  	it 'Distributor should allow Email associations' do
+  		@distributor.emails << @email
+  		expect(@distributor.emails.count).to eq(1)
+  	end
+  	it 'Distributor should allow removal of Email associations' do
+			@distributor.emails << @email
+  		expect(@distributor.emails.count).to eq(1)  		
+  		@distributor.emails.destroy(@email)
+  		expect(@distributor.emails.count).to eq(0)
+  	end  	
+  	
+  	it 'Distributor should allow Phone associations' do
+  		@distributor.phones << @phone
+  		expect(@distributor.phones.count).to eq(1)
+  	end
+  	it 'Distributor should allow removal of Phone associations' do
+			@distributor.phones << @phone
+  		expect(@distributor.phones.count).to eq(1)  		
+  		@distributor.phones.destroy(@phone)
+  		expect(@distributor.phones.count).to eq(0)
+  	end   	
+  	
+  	it 'Distributor should allow Country associations' do
+  		@distributor.countries << @country
+  		expect(@distributor.countries.count).to eq(1)
+  	end
+  	it 'Distributor should allow removal of Country associations' do
+			@distributor.countries << @country
+  		expect(@distributor.countries.count).to eq(1)  		
+  		@distributor.countries.destroy(@country)
+  		expect(@distributor.countries.count).to eq(0)
+  	end   	
+  	
   end  #  context 'Validate Distributor associations' do  
   
 end  #  RSpec.describe DistributorInfo::Distributor, type: :model do

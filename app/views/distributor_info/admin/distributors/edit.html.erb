@@ -1,0 +1,36 @@
+<%= link_to "Distributor List", distributor_info_admin_distributors_path, class: "small success radius button" %>
+
+<div class="row">
+  <div class="small-8 columns">
+    <h1>Edit Distributor:</h1>
+  </div>
+
+  <div class="small-4 columns text-right">
+    <%= link_to "delete distributor",
+      distributor_info_admin_distributor_path,
+      method: :delete,
+      data: { confirm: "Are you sure you want to delete distributor #{@distributor.name}?" },
+      class: "small alert radius button" %>
+  </div>
+</div>
+
+
+<%= simple_form_for @distributor, url: distributor_info_admin_distributor_path do |f| %>
+<%= f.input :name %>
+<%= f.input :account_number %>
+
+
+<%= f.submit class: "radius button" %>
+<% end %>
+
+<div class="row">
+  <%= render 'locations' %>
+  <%= render 'emails' %>
+  <%#= render 'brands' %>
+</div>  <!-- <div class="row">  -->
+
+<div class="row">
+  <%= render 'phones' %>
+  <%= render 'websites' %>
+  <%#= render 'countries' %>
+</div>  <!-- <div class="row">  -->

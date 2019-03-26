@@ -15,5 +15,10 @@ class CreateLocationInfoLocations < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :location_info_locations, :name
+    add_index :location_info_locations, :city
+    add_index :location_info_locations, :state
+    add_index :location_info_locations, :country
+    add_index :location_info_locations, :google_map_place_id
   end
 end

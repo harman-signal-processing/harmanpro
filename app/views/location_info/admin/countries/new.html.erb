@@ -1,0 +1,19 @@
+<%= link_to "Country List", location_info_admin_countries_path, class: "small success radius button" %>
+<h1>New Country</h1>
+
+<%= simple_form_for @country, url: location_info_admin_countries_path do |f| %>
+<%= f.input :name %>
+<%= f.input :harman_name %>
+<%= f.input :alpha2 %>
+<%= f.input :alpha3 %>
+<%= f.input :continent %>
+<%= f.input :region %>
+<%= f.input :sub_region %>
+<%= f.input :world_region %>
+<%= f.input :harman_world_region %>
+<%= f.input :calling_code %>
+<%= f.input :numeric_code %>
+
+
+<%= f.submit class: "radius button" %>
+<% end %>

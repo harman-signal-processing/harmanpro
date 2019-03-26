@@ -1,0 +1,33 @@
+<!-- Locations -->
+	<div class="small-12 medium-6 columns" id="Contacts">
+        <div class="group">
+          <h4>Locations</h4>
+          <p>Choose one or more location below. Doing so will associate this location with the distributor.</p>
+
+          <%= simple_form_for [@distributor_location], url: distributor_info_admin_distributor_locations_path, remote: true do |f| %>
+            <%= f.hidden_field :distributor_info_distributor_id %>
+            <%= hidden_field_tag :called_from, "distributor" %>
+            <%= f.association :location, 
+            collection: LocationInfo::Location.not_associated_with_this_distributor(@distributor_location.distributor),
+            label: false,
+            # label_method: -> (contact) { "#{contact.name} - #{contact.title}" },
+            input_html: { class: 'chosen-select', multiple: true,  data: { placeholder: 'Select locations'} }%>
+            <%= f.submit "add location", class: "small round button", style:"margin-top:10px;" %>
+          <% end %>
+					
+					<strong>Current locations</strong>
+          <ul id="distributor_locations" class="list">
+            <% @distributor_locations.each do |association| %>
+              <%= render "/distributor_info/admin/distributor_locations/distributor_location_row", association: association, called_from: "distributor" %>
+            <% end %>
+          </ul>
+          
+          <p>
+          	Can't find the location in the list above? <%= link_to "Create a new location", new_location_info_admin_location_path(location: {distributor_id: "#{@distributor.id}"}) %>.
+          </p>          
+          
+          <p>Go to: <%= link_to "Location List", location_info_admin_locations_path %></p>
+          <a href="#">Go to top</a>
+        </div>
+        
+  </div> 

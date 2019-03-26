@@ -1,0 +1,17 @@
+<%= link_to 'Data Client List', contact_info_admin_data_clients_path, class: "small button round" %>
+
+<h1>New Data Client</h1>
+
+<%if @contact.present?%>
+<p>This new Data Client will be associated with <%=link_to "#{@contact.name} - #{@contact.title}", edit_contact_info_admin_contact_path(@contact)%>. (You can change this later)<br />
+Or if you want to create the Data Client without associating it to a contact? <%= link_to "Click to here create new Data Client without association.", new_contact_info_admin_data_client_path %>
+</p>
+<%end%>
+
+<%= simple_form_for @data_client, url: contact_info_admin_data_clients_path do |f| %>
+  <%= f.input :name, label: "Name" %>
+  <%= f.hidden_field :contact_id, value: "#{params[:data_client][:contact_id]}" unless params[:data_client].nil? %>
+
+    </br>
+  <%= f.button :submit %>
+<% end # simple_form_for @data_client, url: contact_info_admin_data_clients_path do |f|%>

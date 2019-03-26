@@ -31,9 +31,11 @@
 //= require slick.min
 //= require REM-unit-polyfill
 //= require jquery-sticky/jquery.sticky
+//= require chosen-jquery
+//= require admin
 // require_tree .
 
-$(function(){
+$(function () {
 
   $(document).foundation({
     "magellan-expedition": {
@@ -56,8 +58,17 @@ $(function(){
     $('#roadblock').foundation('reveal', 'open');
   }
 
-});
+  // enable chosen js
+  $('.chosen-select').chosen({
+    allow_single_deselect: true,
+    no_results_text: 'No results matched',
+    width: '100%'
+  });
 
-$(document).ready(function(e) {
+
+
+}); // $(function() {
+
+$(document).ready(function (e) {
   $('img[usemap]').rwdImageMaps();
 });

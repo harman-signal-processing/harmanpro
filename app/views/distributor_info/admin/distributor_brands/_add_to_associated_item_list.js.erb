@@ -1,0 +1,10 @@
+(function(){
+	var $list_of_associated_brands = $('#distributor_brands');
+	build_list_of_brands_associated_with_this_distributor($list_of_associated_brands);
+	
+	function build_list_of_brands_associated_with_this_distributor($list_of_associated_brands) {
+		<% @distributor_brands.each do |distributor_brand| %>
+			$list_of_associated_brands.append('<%= escape_javascript(render "/distributor_info/admin/distributor_brands/distributor_brand_row", association: distributor_brand, called_from: @called_from) %>');
+		<% end %>	
+	}  //  function build_list_of_brands_associated_with_this_distributor($list_of_associated_brands)
+})();

@@ -1,0 +1,10 @@
+(function(){
+	var $list_of_associated_supported_brands = $('#location_supported_brands');
+	build_list_of_supported_brands_associated_with_this_location($list_of_associated_supported_brands);
+	
+	function build_list_of_supported_brands_associated_with_this_location($list_of_associated_supported_brands) {
+		<% @location_supported_brands.each do |location_supported_brand| %>
+			$list_of_associated_supported_brands.append('<%= escape_javascript(render "/location_info/admin/location_supported_brands/location_supported_brand_row", association: location_supported_brand, called_from: @called_from) %>');
+		<% end %>	
+	}  //  function build_list_of_supported_brands_associated_with_this_location($list_of_associated_supported_brands)
+})();

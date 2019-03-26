@@ -1,0 +1,15 @@
+<%= link_to "Distributor List", distributor_info_admin_distributors_path, class: "small success radius button" %>
+<h1>New Distributor</h1>
+
+<%if @contact.present? && params.dig(:distributor, :contact_id).present? %>
+<p>This new distributor will be associated with <%=link_to "#{@contact.name}", edit_contact_info_admin_contact_path(@contact)%>. (You can change this later)<br />
+If you want to create the distributor without associating it to a contact, <%= link_to "click to here create new distributor without association.", new_distributor_info_admin_distributor_path %>
+</p>
+<%end%>
+
+<%= simple_form_for @distributor, url: distributor_info_admin_distributors_path do |f| %>
+<%= f.input :name %>
+<%= f.input :account_number %>
+
+<%= f.submit class: "radius button" %>
+<% end %>

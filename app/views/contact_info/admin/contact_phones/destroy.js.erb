@@ -1,0 +1,15 @@
+(function(){
+    // remove associated phone
+    $('#contact_phone_<%= @contact_phone.id %>').remove();
+    
+<%if @called_from == "contact" %>
+	<%= render "/contact_info/admin/contact_phones/rebuild_phone_select_list" %>
+<% end %>	
+
+<%if @called_from == "phone" %>
+	<%= render "/contact_info/admin/contact_phones/rebuild_contact_select_list" %>
+<% end %>	
+
+})();
+
+<% flash.discard %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_22_223144) do
+ActiveRecord::Schema.define(version: 2019_03_25_173508) do
 
   create_table "active_admin_comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -197,6 +197,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.datetime "updated_at", null: false
     t.index ["contact_info_contact_id"], name: "idx_contact_data_clients_on_contact_id"
     t.index ["contact_info_data_client_id"], name: "idx_contact_data_clients_on_data_client_id"
+    t.index ["position"], name: "index_contact_info_contact_data_clients_on_position"
   end
 
   create_table "contact_info_contact_emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -207,6 +208,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.datetime "updated_at", null: false
     t.index ["contact_info_contact_id"], name: "index_contact_info_contact_emails_on_contact_info_contact_id"
     t.index ["contact_info_email_id"], name: "index_contact_info_contact_emails_on_contact_info_email_id"
+    t.index ["position"], name: "index_contact_info_contact_emails_on_position"
   end
 
   create_table "contact_info_contact_phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -217,6 +219,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.datetime "updated_at", null: false
     t.index ["contact_info_contact_id"], name: "index_contact_info_contact_phones_on_contact_info_contact_id"
     t.index ["contact_info_phone_id"], name: "index_contact_info_contact_phones_on_contact_info_phone_id"
+    t.index ["position"], name: "index_contact_info_contact_phones_on_position"
   end
 
   create_table "contact_info_contact_pro_site_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -229,6 +232,28 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.index ["contact_info_contact_id"], name: "idx_contact_prosite_options_on_contact_id"
   end
 
+  create_table "contact_info_contact_supported_brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "contact_info_contact_id"
+    t.integer "brand_id"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "idx_contact_info_on_supported_brands_brand_id"
+    t.index ["contact_info_contact_id"], name: "idx_contact_info_on_supported_brands_contact_id"
+    t.index ["position"], name: "index_contact_info_contact_supported_brands_on_position"
+  end
+
+  create_table "contact_info_contact_supported_countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "contact_info_contact_id"
+    t.bigint "location_info_country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_contact_id"], name: "idx_contact_supported_countries_on_contact_id"
+    t.index ["location_info_country_id"], name: "idx_contact_supported_countries_on_country_id"
+    t.index ["position"], name: "index_contact_info_contact_supported_countries_on_position"
+  end
+
   create_table "contact_info_contact_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "position"
     t.bigint "contact_info_contact_id"
@@ -237,6 +262,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.datetime "updated_at", null: false
     t.index ["contact_info_contact_id"], name: "index_contact_info_contact_tags_on_contact_info_contact_id"
     t.index ["contact_info_tag_id"], name: "index_contact_info_contact_tags_on_contact_info_tag_id"
+    t.index ["position"], name: "index_contact_info_contact_tags_on_position"
   end
 
   create_table "contact_info_contact_team_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -247,6 +273,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.datetime "updated_at", null: false
     t.index ["contact_info_contact_id"], name: "idx_contact_team_groups_on_contact_id"
     t.index ["contact_info_team_group_id"], name: "idx_contact_team_groups_on_team_group_id"
+    t.index ["position"], name: "index_contact_info_contact_team_groups_on_position"
   end
 
   create_table "contact_info_contact_territories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -257,6 +284,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.datetime "updated_at", null: false
     t.index ["contact_info_contact_id"], name: "idx_contact_territories_on_contact_id"
     t.index ["contact_info_territory_id"], name: "idx_contact_territories_on_territory_id"
+    t.index ["position"], name: "index_contact_info_contact_territories_on_position"
   end
 
   create_table "contact_info_contact_websites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -267,6 +295,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.datetime "updated_at", null: false
     t.index ["contact_info_contact_id"], name: "index_contact_info_contact_websites_on_contact_info_contact_id"
     t.index ["contact_info_website_id"], name: "index_contact_info_contact_websites_on_contact_info_website_id"
+    t.index ["position"], name: "index_contact_info_contact_websites_on_position"
   end
 
   create_table "contact_info_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -275,12 +304,16 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["label"], name: "index_contact_info_contacts_on_label"
+    t.index ["name"], name: "index_contact_info_contacts_on_name"
+    t.index ["title"], name: "index_contact_info_contacts_on_title"
   end
 
   create_table "contact_info_data_clients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_contact_info_data_clients_on_name"
   end
 
   create_table "contact_info_emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -288,6 +321,8 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_contact_info_emails_on_email"
+    t.index ["label"], name: "index_contact_info_emails_on_label"
   end
 
   create_table "contact_info_phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -295,24 +330,29 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["label"], name: "index_contact_info_phones_on_label"
+    t.index ["phone"], name: "index_contact_info_phones_on_phone"
   end
 
   create_table "contact_info_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_contact_info_tags_on_name"
   end
 
   create_table "contact_info_team_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_contact_info_team_groups_on_name"
   end
 
   create_table "contact_info_territories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_contact_info_territories_on_name"
   end
 
   create_table "contact_info_websites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -320,6 +360,8 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["label"], name: "index_contact_info_websites_on_label"
+    t.index ["url"], name: "index_contact_info_websites_on_url"
   end
 
   create_table "contact_messages", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -382,6 +424,73 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "idx_dist_info_on_brands_brand_id"
     t.index ["distributor_info_distributor_id"], name: "idx_dist_info_on_brands_distributor_id"
+    t.index ["position"], name: "index_distributor_info_distributor_brands_on_position"
+  end
+
+  create_table "distributor_info_distributor_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "distributor_info_distributor_id"
+    t.bigint "contact_info_contact_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_contact_id"], name: "idx_distributor_contacts_on_contact_id"
+    t.index ["distributor_info_distributor_id"], name: "idx_distributor_contacts_on_distributor_id"
+    t.index ["position"], name: "index_distributor_info_distributor_contacts_on_position"
+  end
+
+  create_table "distributor_info_distributor_countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "distributor_info_distributor_id"
+    t.bigint "location_info_country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["distributor_info_distributor_id"], name: "idx_distributor_countries_on_distributor_id"
+    t.index ["location_info_country_id"], name: "idx_distributor_countries_on_country_id"
+    t.index ["position"], name: "index_distributor_info_distributor_countries_on_position"
+  end
+
+  create_table "distributor_info_distributor_emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "distributor_info_distributor_id"
+    t.bigint "contact_info_email_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_email_id"], name: "idx_distributor_emails_on_email_id"
+    t.index ["distributor_info_distributor_id"], name: "idx_distributor_emails_on_distributor_id"
+    t.index ["position"], name: "index_distributor_info_distributor_emails_on_position"
+  end
+
+  create_table "distributor_info_distributor_locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "distributor_info_distributor_id"
+    t.bigint "location_info_location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["distributor_info_distributor_id"], name: "idx_distributor_locations_on_distributor_id"
+    t.index ["location_info_location_id"], name: "idx_distributor_locations_on_location_id"
+    t.index ["position"], name: "index_distributor_info_distributor_locations_on_position"
+  end
+
+  create_table "distributor_info_distributor_phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "distributor_info_distributor_id"
+    t.bigint "contact_info_phone_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_phone_id"], name: "idx_distributor_phones_on_phone_id"
+    t.index ["distributor_info_distributor_id"], name: "idx_distributor_phones_on_distributor_id"
+    t.index ["position"], name: "index_distributor_info_distributor_phones_on_position"
+  end
+
+  create_table "distributor_info_distributor_websites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "distributor_info_distributor_id"
+    t.bigint "contact_info_website_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_website_id"], name: "idx_distributor_websites_on_website_id"
+    t.index ["distributor_info_distributor_id"], name: "idx_distributor_websites_on_distributor_id"
+    t.index ["position"], name: "index_distributor_info_distributor_websites_on_position"
   end
 
   create_table "distributor_info_distributors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -389,6 +498,8 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.string "account_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["account_number"], name: "index_distributor_info_distributors_on_account_number"
+    t.index ["name"], name: "index_distributor_info_distributors_on_name"
   end
 
   create_table "distributors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -572,6 +683,27 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.index ["user_id"], name: "index_locale_translators_on_user_id"
   end
 
+  create_table "location_info_countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "harman_name"
+    t.string "alpha2"
+    t.string "alpha3"
+    t.string "continent"
+    t.string "region"
+    t.string "sub_region"
+    t.string "world_region"
+    t.string "harman_world_region"
+    t.integer "calling_code"
+    t.integer "numeric_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alpha2"], name: "index_location_info_countries_on_alpha2"
+    t.index ["alpha3"], name: "index_location_info_countries_on_alpha3"
+    t.index ["harman_name"], name: "index_location_info_countries_on_harman_name"
+    t.index ["harman_world_region"], name: "index_location_info_countries_on_harman_world_region"
+    t.index ["name"], name: "index_location_info_countries_on_name"
+  end
+
   create_table "location_info_location_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "location_info_location_id"
     t.bigint "contact_info_contact_id"
@@ -580,6 +712,29 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.datetime "updated_at", null: false
     t.index ["contact_info_contact_id"], name: "idx_location_contacts_on_contact_id"
     t.index ["location_info_location_id"], name: "idx_location_contactss_on_location_id"
+    t.index ["position"], name: "index_location_info_location_contacts_on_position"
+  end
+
+  create_table "location_info_location_emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "location_info_location_id"
+    t.bigint "contact_info_email_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_email_id"], name: "idx_location_emails_on_email_id"
+    t.index ["location_info_location_id"], name: "idx_location_emails_on_location_id"
+    t.index ["position"], name: "index_location_info_location_emails_on_position"
+  end
+
+  create_table "location_info_location_phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "location_info_location_id"
+    t.bigint "contact_info_phone_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_phone_id"], name: "idx_location_phones_on_phone_id"
+    t.index ["location_info_location_id"], name: "idx_location_emails_on_location_id"
+    t.index ["position"], name: "index_location_info_location_phones_on_position"
   end
 
   create_table "location_info_location_regions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -590,6 +745,40 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.datetime "updated_at", null: false
     t.index ["location_info_location_id"], name: "idx_location_regions_on_location_id"
     t.index ["location_info_region_id"], name: "idx_location_regions_on_region_id"
+    t.index ["position"], name: "index_location_info_location_regions_on_position"
+  end
+
+  create_table "location_info_location_supported_brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "location_info_location_id"
+    t.integer "brand_id"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "idx_location_info_on_supported_brands_brand_id"
+    t.index ["location_info_location_id"], name: "idx_location_info_on_supported_brands_location_id"
+    t.index ["position"], name: "index_location_info_location_supported_brands_on_position"
+  end
+
+  create_table "location_info_location_supported_countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "location_info_location_id"
+    t.bigint "location_info_country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_info_country_id"], name: "idx_location_supported_countries_on_country_id"
+    t.index ["location_info_location_id"], name: "idx_location_supported_countries_on_location_id"
+    t.index ["position"], name: "index_location_info_location_supported_countries_on_position"
+  end
+
+  create_table "location_info_location_websites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "location_info_location_id"
+    t.bigint "contact_info_website_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_website_id"], name: "idx_location_websites_on_website_id"
+    t.index ["location_info_location_id"], name: "idx_location_websites_on_location_id"
+    t.index ["position"], name: "index_location_info_location_websites_on_position"
   end
 
   create_table "location_info_locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -606,12 +795,19 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.string "google_map_place_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "account_number"
+    t.index ["city"], name: "index_location_info_locations_on_city"
+    t.index ["country"], name: "index_location_info_locations_on_country"
+    t.index ["google_map_place_id"], name: "index_location_info_locations_on_google_map_place_id"
+    t.index ["name"], name: "index_location_info_locations_on_name"
+    t.index ["state"], name: "index_location_info_locations_on_state"
   end
 
   create_table "location_info_regions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_location_info_regions_on_name"
   end
 
   create_table "media_library_access_requests", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -1046,6 +1242,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
     t.boolean "emea_admin", default: false
     t.boolean "emea_distributor", default: false
     t.boolean "tse_admin"
+    t.boolean "contact_admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -1119,6 +1316,10 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
   add_foreign_key "contact_info_contact_phones", "contact_info_contacts"
   add_foreign_key "contact_info_contact_phones", "contact_info_phones"
   add_foreign_key "contact_info_contact_pro_site_options", "contact_info_contacts"
+  add_foreign_key "contact_info_contact_supported_brands", "brands"
+  add_foreign_key "contact_info_contact_supported_brands", "contact_info_contacts"
+  add_foreign_key "contact_info_contact_supported_countries", "contact_info_contacts"
+  add_foreign_key "contact_info_contact_supported_countries", "location_info_countries"
   add_foreign_key "contact_info_contact_tags", "contact_info_contacts"
   add_foreign_key "contact_info_contact_tags", "contact_info_tags"
   add_foreign_key "contact_info_contact_team_groups", "contact_info_contacts"
@@ -1129,8 +1330,30 @@ ActiveRecord::Schema.define(version: 2019_02_22_223144) do
   add_foreign_key "contact_info_contact_websites", "contact_info_websites"
   add_foreign_key "distributor_info_distributor_brands", "brands"
   add_foreign_key "distributor_info_distributor_brands", "distributor_info_distributors"
+  add_foreign_key "distributor_info_distributor_contacts", "contact_info_contacts"
+  add_foreign_key "distributor_info_distributor_contacts", "distributor_info_distributors"
+  add_foreign_key "distributor_info_distributor_countries", "distributor_info_distributors"
+  add_foreign_key "distributor_info_distributor_countries", "location_info_countries"
+  add_foreign_key "distributor_info_distributor_emails", "contact_info_emails"
+  add_foreign_key "distributor_info_distributor_emails", "distributor_info_distributors"
+  add_foreign_key "distributor_info_distributor_locations", "distributor_info_distributors"
+  add_foreign_key "distributor_info_distributor_locations", "location_info_locations"
+  add_foreign_key "distributor_info_distributor_phones", "contact_info_phones"
+  add_foreign_key "distributor_info_distributor_phones", "distributor_info_distributors"
+  add_foreign_key "distributor_info_distributor_websites", "contact_info_websites"
+  add_foreign_key "distributor_info_distributor_websites", "distributor_info_distributors"
   add_foreign_key "location_info_location_contacts", "contact_info_contacts"
   add_foreign_key "location_info_location_contacts", "location_info_locations"
+  add_foreign_key "location_info_location_emails", "contact_info_emails"
+  add_foreign_key "location_info_location_emails", "location_info_locations"
+  add_foreign_key "location_info_location_phones", "contact_info_phones"
+  add_foreign_key "location_info_location_phones", "location_info_locations"
   add_foreign_key "location_info_location_regions", "location_info_locations"
   add_foreign_key "location_info_location_regions", "location_info_regions"
+  add_foreign_key "location_info_location_supported_brands", "brands"
+  add_foreign_key "location_info_location_supported_brands", "location_info_locations"
+  add_foreign_key "location_info_location_supported_countries", "location_info_countries"
+  add_foreign_key "location_info_location_supported_countries", "location_info_locations"
+  add_foreign_key "location_info_location_websites", "contact_info_websites"
+  add_foreign_key "location_info_location_websites", "location_info_locations"
 end

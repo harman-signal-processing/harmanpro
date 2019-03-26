@@ -1,0 +1,11 @@
+<%if @called_from == "contact" %>
+	<%= render "/contact_info/admin/contact_tags/rebuild_tag_select_list" %>
+<% end %>	
+
+<%if @called_from == "tag" %>
+	<%= render "/contact_info/admin/contact_tags/rebuild_contact_select_list" %>
+<% end %>	
+
+<%= render "/contact_info/admin/contact_tags/add_to_associated_item_list" %>
+
+<% flash.discard %>

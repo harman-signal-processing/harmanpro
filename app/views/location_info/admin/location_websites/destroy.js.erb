@@ -1,0 +1,15 @@
+(function(){
+    // remove associated website
+    $('#location_website_<%= @location_website.id %>').remove();
+    
+<%if @called_from == "location" %>
+	<%= render "/location_info/admin/location_websites/rebuild_website_select_list" %>
+<% end %>	
+
+<%if @called_from == "website" %>
+	<%= render "/location_info/admin/location_websites/rebuild_location_select_list" %>
+<% end %>	
+
+})();
+
+<% flash.discard %>

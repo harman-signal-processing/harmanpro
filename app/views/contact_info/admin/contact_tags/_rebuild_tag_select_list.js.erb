@@ -1,0 +1,15 @@
+(function(){
+	var $tags_dropdown = $('#contact_info_contact_tag_contact_info_tag_id');
+
+	// clear the tag list before we rebuild it
+	$tags_dropdown.empty();
+	
+	// rebuild tag dropdown list
+	$tags_dropdown.append($("<option></option>"));		
+	<% ContactInfo::Tag.not_associated_with_this_contact(@contact_tag.contact).each do |tag| %>
+		$tags_dropdown.append($("<option value='<%=tag.id%>'><%=tag.name%></option>"));
+	<% end %>
+	
+	// let chosen know the tag dropdown list has been updated
+	$tags_dropdown.trigger('chosen:updated');
+})();

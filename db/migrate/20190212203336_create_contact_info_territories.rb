@@ -5,5 +5,6 @@ class CreateContactInfoTerritories < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :contact_info_territories, :name
   end
 end

@@ -1,0 +1,15 @@
+(function(){
+    // remove associated email
+    $('#location_email_<%= @location_email.id %>').remove();
+    
+<%if @called_from == "location" %>
+	<%= render "/location_info/admin/location_emails/rebuild_email_select_list" %>
+<% end %>	
+
+<%if @called_from == "email" %>
+	<%= render "/location_info/admin/location_emails/rebuild_location_select_list" %>
+<% end %>	
+
+})();
+
+<% flash.discard %>
