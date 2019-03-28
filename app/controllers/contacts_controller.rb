@@ -25,6 +25,7 @@ class ContactsController < ApplicationController
             group1 = contact["group1"]&.downcase.to_s
             group2 = contact["group2"]&.downcase.to_s
             group3 = contact["group3"]&.downcase.to_s
+            group4 = contact["group4"]&.downcase.to_s
             
             territory_keys = (1..15).map{|num| "t#{num}"}
             
@@ -33,8 +34,9 @@ class ContactsController < ApplicationController
             @contacts[:unique_groups] << group1 unless @contacts[:unique_groups].include?(group1)
             @contacts[:unique_groups] << group2 unless @contacts[:unique_groups].include?(group2)
             @contacts[:unique_groups] << group3 unless @contacts[:unique_groups].include?(group3)
+            @contacts[:unique_groups] << group4 unless @contacts[:unique_groups].include?(group4)
             
-           if (contact_territory_values.include?(search_term) or group1&.include?(search_term) or group2&.include?(search_term) or group3&.include?(search_term))
+           if (contact_territory_values.include?(search_term) or group1&.include?(search_term) or group2&.include?(search_term) or group3&.include?(search_term) or group4&.include?(search_term))
              if chosen_contacts_path == "channel" && contact["channelMap"].downcase == "yes"
                @contacts[:contacts] << contact
              elsif chosen_contacts_path == "solutions" && contact["solutionsMap"].downcase == "yes"
