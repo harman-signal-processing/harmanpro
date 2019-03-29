@@ -9,33 +9,12 @@
         <%count = 1%>
         <% @results.each do |result| %>
           <% next if result.respond_to?(:live?) && !result.live? %>
-          <li>
-            <div class="result-type-header"><strong><%= category_name(result.class.name)%></strong>: <span class="result-item-number"><%=current_item_number(@results, count)%></span></div>
-            
-            <!-- item title link with translation -->
-            <%#= link_to translate_content(result, result.link_name_method), page_link(result), class:"result-item-title-link" %>
-            
-            <!-- item title link without translation -->
-            <%= link_to result.link_name, page_link(result), class:"result-item-title-link" %>
-            
-            <!-- item image link  -->
-            <% image = get_result_image(result)%>
-            <% if image.present? %>
-              <%= link_to image_tag(image), page_link(result), class:"result-item-image-link" %>
-            <%end%>
-            
-            <!-- item description with translation -->
-            <%#=result_description(result)%><!--<br />            -->
-            
-            <!-- item description without translation -->
-            <% if result.content_preview && !result.content_preview.blank? %>
-              <%= truncate(strip_html(result.content_preview).lstrip, length: 200) %><br />
-            <% end %>
-            
-            <span class="search_link">
-              <%#= link_to page_link(result), page_link(result) %>
-            </span>
-          </li>
+          <% # this is for consultants page %>
+          <% if result.class.name == "SiteSetting" %>
+            <%= render "result_consultant", count: count %>
+          <% else %>
+              <%= render "result_normal", result: result, count: count %>
+          <% end %>
           <%count += 1%>
         <% end %>
       </ul>

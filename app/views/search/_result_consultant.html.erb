@@ -1,0 +1,6 @@
+<li>
+  <div class="result-type-header"><strong>Consultant Contacts</strong>: <span class="result-item-number"><%=current_item_number(@results, count)%></span></div>
+  
+  <%= link_to "Consultant Contacts", consultants_path, class:"result-item-title-link" %>
+  <%= truncate(strip_html(raw textilize SiteSetting.value("consultant-portal-welcome-paragraph")).lstrip, length: 200) %><br />
+</li>

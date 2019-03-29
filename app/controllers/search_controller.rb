@@ -10,14 +10,16 @@ class SearchController < ApplicationController
       ThinkingSphinx::Query.escape(query),
       indices: indices
     ).page(params[:page]).per(10)
+    @results
   end
 
   private
 
   def indices
-    ["case_study", "vertical_market", "landing_page"].map do |elem|
+    indices = ["case_study", "vertical_market", "landing_page", "site_setting"].map do |elem|
       "#{elem}_#{I18n.locale.to_s.gsub(/\-/, '_')}_core"
     end
+    indices
   end
 
 end
