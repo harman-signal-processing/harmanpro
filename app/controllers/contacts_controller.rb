@@ -74,4 +74,4 @@ class ContactsController < ApplicationController
         contacts_nav_list = contacts_nav_list.select {|item| item["type"].downcase == contact_type.singularize}
     end
 
-end
+end  #  class ContactsController < ApplicationController
