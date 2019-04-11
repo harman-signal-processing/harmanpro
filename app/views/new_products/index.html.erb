@@ -77,7 +77,7 @@
                     <a href="{{ new_product.more_info }}" target="_blank"><%= t('more_information').titleize %></a>
                   </div>
                   <div ng-show="new_product.press_release">
-                    <a href="{{ new_product.press_release }}" target="_blank">Press Release</a>
+                    <a href="{{ new_product.press_release }}" target="_blank"><%= t('activerecord.models.press_release').titleize %></a>
                   </div>
                 </p>
               </li>
@@ -94,11 +94,11 @@
 
         <div class="show-for-large-up large-3 columns">
           <br/>
-          <p><strong>FILTERS</strong></p>
+          <p><strong><%= t("new_products_page.filters").upcase %></strong></p>
 
           <% brand_ids = @new_products.map{|np| np.brands.map{|b| b.id}}.flatten.uniq %>
           <% if brand_ids.length > 0 %>
-            <h6>BRAND</h6>
+            <h6><%= t('activerecord.models.brand').titleize %></h6>
             <% Brand.where(id: brand_ids).order(Arel.sql("UPPER(name)")).each do |brand| %>
               <div class="side-filter">
                 <label>
@@ -112,7 +112,7 @@
           <% product_type_ids = @new_products.map{|np| np.product_types.map{|pt| pt.id}}.flatten.uniq %>
           <% if product_type_ids.length > 0 %>
             <br/>
-            <h6>PRODUCT TYPE</h6>
+            <h6><%= t('activerecord.models.product_type').titleize %></h6>
             <% ProductType.with_translations(I18n.locale).where(id: product_type_ids).order(:name).each do |product_type| %>
               <div class="side-filter">
                 <label>
@@ -124,7 +124,7 @@
           <% end %>
 
           <br/>
-          <h6>YEAR</h6>
+          <h6><%= t('date.year').titleize %></h6>
           <% @new_products.map{|np| np.released_on.year}.uniq.sort.reverse.each do |year| %>
             <div class="side-filter">
               <label>

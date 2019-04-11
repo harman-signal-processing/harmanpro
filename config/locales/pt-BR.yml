@@ -28,6 +28,7 @@ pt-BR:
   vertical_market_solutions: "%{vertical_market_name} Soluções"
 
   date:
+    year: Ano
     formats:
       default: "%a, %d %B %Y"
       short: "%b %d, %Y"
@@ -164,6 +165,7 @@ pt-BR:
       site_setting: Confugurações do Site
       venue: Local
       vertical_market: Mercado Vertical
+      press_release: Comunicado de imprensa
     attributes:
       lead:
         name: Nome
@@ -190,3 +192,6 @@ pt-BR:
     landingpage: Landing Page
     verticalmarket: Mercado Vertical
     consultantcontacts: Contatos de Consultores
+
+  new_products_page:
+    filters: Filtros

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_16_222159) do
+ActiveRecord::Schema.define(version: 2019_04_11_182139) do
 
   create_table "active_admin_comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -469,9 +469,20 @@ ActiveRecord::Schema.define(version: 2019_01_16_222159) do
     t.index ["product_type_id"], name: "index_new_product_product_types_on_product_type_id"
   end
 
-  create_table "new_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "new_product_translations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "new_product_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name"
     t.text "content"
+    t.string "more_info"
+    t.string "press_release"
+    t.index ["locale"], name: "index_new_product_translations_on_locale"
+    t.index ["new_product_id"], name: "index_new_product_translations_on_new_product_id"
+  end
+
+  create_table "new_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image_file_name"
     t.string "image_content_type"
     t.integer "image_file_size"
@@ -479,8 +490,6 @@ ActiveRecord::Schema.define(version: 2019_01_16_222159) do
     t.date "released_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "more_info"
-    t.string "press_release"
   end
 
   create_table "news_articles", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
