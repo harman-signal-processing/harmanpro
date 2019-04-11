@@ -28,6 +28,7 @@
   vertical_market_solutions: "%{vertical_market_name}: Решения"
 
   date:
+    year: Год
     formats:
       default: "%a, %d %B %Y"
       short: "%b %d, %Y"
@@ -166,6 +167,7 @@
       site_setting: Настройки сайта
       venue: Объект
       vertical_market: Вертикальные рынки
+      press_release: Пресс-релиз
     attributes:
       lead:
         name: Имя
@@ -191,4 +193,6 @@
     casestudy: Проектные решения
     landingpage: Страница посадки
     verticalmarket: Вертикальный рынок
-    
+
+  new_products_page:
+    filters: фильтры

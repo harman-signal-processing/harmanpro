@@ -28,6 +28,7 @@ de:
   vertical_market_solutions: "%{vertical_market_name} Solutions"
 
   date:
+    year: Jahr
     formats:
       default: "%a, %d %B %Y"
       short: "%b %d, %Y"
@@ -155,18 +156,19 @@ de:
 
   activerecord:
     models:
-      brand: Brand
-      case_study: Case Study
+      brand: Marke
+      case_study: Fallstudie
       landing_page: Landing Page
       lead: Lead
-      product_type: Product Type
-      product: Product
+      product_type: Produktart
+      product: Produkt
       reference_system: Reference System
       resource: Resource
       service_center: Service Center
       site_setting: Site Setting
       venue: Venue
       vertical_market: Vertical Market
+      press_release: Pressemitteilung
     attributes:
       lead:
         name: Name
@@ -192,3 +194,6 @@ de:
     casestudy: Fallbeispiele
     landingpage: Zielseite
     verticalmarket: Vertikaler Markt
+
+  new_products_page:
+    filters: Filter

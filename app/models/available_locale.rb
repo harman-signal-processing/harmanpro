@@ -27,7 +27,18 @@ class AvailableLocale < ApplicationRecord
   end
 
   def self.translatables
-    %w(Brand CaseStudy Event LandingPage ProductType Product ReferenceSystem SiteSetting VerticalMarket TrainingContentPage)
+    %w(Brand
+    CaseStudy
+    Event
+    LandingPage
+    ProductType
+    Product
+    NewProduct
+    ReferenceSystem
+    SiteSetting
+    VerticalMarket
+    TrainingContentPage
+    )
   end
 
   def self.live

@@ -28,6 +28,7 @@ en:
   vertical_market_solutions: "%{vertical_market_name} Solutions"
 
   date:
+    year: Year
     formats:
       default: "%a, %d %B %Y"
       short: "%b %d, %Y"
@@ -175,6 +176,7 @@ en:
       tse_technology: Product
       tse_domain: Vertical Market
       tse_contact: Contact
+      press_release: Press Release
     attributes:
       lead:
         name: Name
@@ -200,6 +202,7 @@ en:
     casestudy: Case Study
     landingpage: Landing Page
     verticalmarket: Vertical Market
-    
 
-    
+  new_products_page:
+    filters: Filters
+

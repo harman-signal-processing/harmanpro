@@ -28,6 +28,7 @@ zh:
   vertical_market_solutions: "%{vertical_market_name} 解决方案"
 
   date:
+    year: 年
     formats:
       default: "%a, %d %B %Y"
       short: "%b %d, %Y"
@@ -167,6 +168,7 @@ zh:
       site_setting: 网页设置
       venue: 应用地点
       vertical_market: 垂直市场
+      press_release: 新闻稿
     attributes:
       lead:
         name: 姓名
@@ -192,4 +194,6 @@ zh:
     casestudy: 项目案例
     landingpage: 登录页面
     verticalmarket: 垂直市场
-    
+
+  new_products_page:
+    filters: 过滤器
