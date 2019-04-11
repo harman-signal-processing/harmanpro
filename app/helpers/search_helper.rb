@@ -32,16 +32,15 @@ module SearchHelper
   end
 
 	def results_item_count_range_for_page(results)
-	  
 		if results.current_page == 1
 			first_number = 1
-			second_number = results.per_page
+			second_number = results.count < results.limit_value ? results.count : results.limit_value
 		else
-			first_number = results.offset + 1
-			if results.count == results.per_page
-				second_number = first_number + results.per_page - 1
+			first_number = results.offset_value + 1
+			if results.count == results.limit_value
+				second_number = first_number + results.limit_value - 1
 			else
-				second_number = results.count + results.offset
+				second_number = results.count + results.offset_value
 			end
 		end
 		first_number.to_s + " - " + second_number.to_s
@@ -51,7 +50,8 @@ module SearchHelper
 		if results.current_page == 1
 			item_number = count
 		else
-			item_number = count + results.offset
+			# item_number = count + results.offset
+			item_number = count + results.offset_value
 		end
 		
 		item_number
