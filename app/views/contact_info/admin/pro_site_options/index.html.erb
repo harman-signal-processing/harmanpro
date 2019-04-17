@@ -1,0 +1,26 @@
+<h1>Pro Site Options</h1>
+
+<ul class="button-group round">
+	<li><%= link_to 'Contact List', contact_info_admin_contacts_path, class: "small button round" %>	</li>
+	<li><%= link_to 'New Pro Site Option', new_contact_info_admin_pro_site_option_path, class: "small success button" %></li>
+</ul>
+
+<table class="data">
+  <tr>
+  	<th></th>
+    <th>Show On Web</th>
+    <th>Show in Solution</th>
+    <th>Show in Channels</th>
+    <th>Associated Contacts</th>
+  </tr>
+
+<% @pro_site_options.each do |contact_pro_site_option| %>
+  <tr style="vertical-align:text-bottom;">
+    <td><%= link_to 'Edit', edit_contact_info_admin_pro_site_option_path(contact_pro_site_option), class: "small round button" %></td>
+    <td><%= contact_pro_site_option.showonweb %></td>
+    <td><%= contact_pro_site_option.showforsolutions %></td>
+    <td><%= contact_pro_site_option.showforchannels %></td>
+    <td><%= link_to "#{contact_pro_site_option.contact.name}", edit_contact_info_admin_contact_path(contact_pro_site_option.contact) %> - <span style='font-size: x-small;'><%="#{contact_pro_site_option.contact.title}"%></span></td>
+  </tr>
+<% end %>
+</table>

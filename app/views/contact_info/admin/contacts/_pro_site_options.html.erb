@@ -1,0 +1,24 @@
+<!-- Pro Site Options -->
+	<div class="small-12 medium-6 columns" id="Tags" data-client="pro-contacts">
+        <div class="group">
+          <h4>Pro Site Options</h4>
+          <p>Choose one or more tag below. Doing so will associate this contact with the tag.</p>
+
+
+          <%= simple_form_for @contact.pro_site_options, url: contact_info_admin_pro_site_option_path, remote: true do |f| %>
+            <%= f.input :showonweb, label: "Show on Web" %>
+            <%= f.input :showforsolutions, label: "Show in Solutions" %>
+            <%= f.input :showforchannels, label: "Show in Channels" %>
+            <%= f.hidden_field :contact_info_contact_id, value: @contact.id %>
+            <%= hidden_field_tag :called_from, "contact" %>
+          
+              </br>
+            <%= f.button :submit, "update pro site options", class: "small round button", style:"margin-top:10px;" %>
+          <% end # simple_form_for @pro_site_option, url: contact_info_admin_pro_site_option_path do |f|%>
+
+
+          <p>Go to: <%= link_to "Pro Site Options List", contact_info_admin_pro_site_options_path %></p>
+          <a href="#">Go to top</a>
+        </div>
+        
+  </div> 

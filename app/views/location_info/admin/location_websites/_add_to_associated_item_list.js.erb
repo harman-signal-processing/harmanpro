@@ -1,0 +1,10 @@
+(function(){
+	var $list_of_associated_websites = $('#location_websites');
+	build_list_of_websites_associated_with_this_location($list_of_associated_websites);
+	
+	function build_list_of_websites_associated_with_this_location($list_of_associated_websites) {
+		<% @location_websites.each do |location_website| %>
+			$list_of_associated_websites.append('<%= escape_javascript(render "/location_info/admin/location_websites/location_website_row", association: location_website, called_from: @called_from) %>');
+		<% end %>	
+	}  //  function build_list_of_websites_associated_with_this_location($list_of_associated_websites)
+})();

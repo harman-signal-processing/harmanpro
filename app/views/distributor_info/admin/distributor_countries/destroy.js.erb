@@ -1,0 +1,15 @@
+(function(){
+    // remove associated country
+    $('#distributor_country_<%= @distributor_country.id %>').remove();
+    
+<%if @called_from == "distributor" %>
+	<%= render "/distributor_info/admin/distributor_countries/rebuild_country_select_list" %>
+<% end %>	
+
+<%if @called_from == "country" %>
+	<%= render "/distributor_info/admin/distributor_countries/rebuild_distributor_select_list" %>
+<% end %>	
+
+})();
+
+<% flash.discard %>

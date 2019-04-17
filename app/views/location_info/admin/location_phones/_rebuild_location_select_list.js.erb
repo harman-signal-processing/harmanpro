@@ -1,0 +1,15 @@
+(function(){
+	var $locations_dropdown = $('#location_info_location_phone_location_info_location_id');
+
+	// clear the phone list before we rebuild it
+	$locations_dropdown.empty();
+	
+	// rebuild phone dropdown list
+	$locations_dropdown.append($("<option></option>"));		
+	<% LocationInfo::Location.not_associated_with_this_phone(@location_phone.phone).each do |location| %>
+		$locations_dropdown.append($("<option value='<%=location.id%>'><%=location.name%></option>"));
+	<% end %>
+	
+	// let chosen know the phone dropdown list has been updated
+	$locations_dropdown.trigger('chosen:updated');
+})();

@@ -1,0 +1,15 @@
+(function(){
+	var $data_clients_dropdown = $('#contact_info_contact_data_client_contact_info_data_client_id');
+
+	// clear the data_client list before we rebuild it
+	$data_clients_dropdown.empty();
+	
+	// rebuild data_client dropdown list
+	$data_clients_dropdown.append($("<option></option>"));		
+	<% ContactInfo::DataClient.not_associated_with_this_contact(@contact_data_client.contact).each do |data_client| %>
+		$data_clients_dropdown.append($("<option value='<%=data_client.id%>'><%=data_client.name%></option>"));
+	<% end %>
+	
+	// let chosen know the data_client dropdown list has been updated
+	$data_clients_dropdown.trigger('chosen:updated');
+})();

@@ -1,0 +1,18 @@
+<ul class="button-group round">
+    <li><%= link_to 'Tags List', contact_info_admin_tags_path, class: "small button round" %>	</li>
+    <li><%= link_to 'Delete', contact_info_admin_tag_path(@tag), confirm: 'Are you sure?', method: :delete, class: "small alert button" %> </li>
+</ul>
+<h1>Edit Tag</h1>
+
+<%= simple_form_for @tag, url: contact_info_admin_tag_path do |f| %>
+  <%= f.input :name, label: "Name" %>
+
+    </br>
+  <%= f.button :submit %>
+<% end # simple_form_for @tag, url: contact_info_admin_tag_path do |f|%>
+
+
+<div class="row">
+  <%= render 'contacts' %>
+</div>  <!-- <div class="row">  -->
+

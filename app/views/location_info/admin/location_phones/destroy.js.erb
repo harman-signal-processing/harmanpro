@@ -1,0 +1,15 @@
+(function(){
+    // remove associated phone
+    $('#location_phone_<%= @location_phone.id %>').remove();
+    
+<%if @called_from == "location" %>
+	<%= render "/location_info/admin/location_phones/rebuild_phone_select_list" %>
+<% end %>	
+
+<%if @called_from == "phone" %>
+	<%= render "/location_info/admin/location_phones/rebuild_location_select_list" %>
+<% end %>	
+
+})();
+
+<% flash.discard %>

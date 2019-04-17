@@ -1,0 +1,18 @@
+<ul class="button-group round">
+    <li><%= link_to 'Team/Group List', contact_info_admin_team_groups_path, class: "small button round" %>	</li>
+    <li><%= link_to 'Delete', contact_info_admin_team_group_path(@team_group), confirm: 'Are you sure?', method: :delete, class: "small alert button" %> </li>
+</ul>
+<h1>Edit Team/Group</h1>
+
+<%= simple_form_for @team_group, url: contact_info_admin_team_group_path do |f| %>
+  <%= f.input :name, label: "Name" %>
+
+    </br>
+  <%= f.button :submit %>
+<% end # simple_form_for @team_group, url: contact_info_admin_team_group_path do |f|%>
+
+
+<div class="row">
+  <%= render 'contacts' %>
+</div>  <!-- <div class="row">  -->
+

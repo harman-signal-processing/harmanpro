@@ -1,0 +1,30 @@
+<!-- Countries -->
+	<div class="small-12 medium-6 columns" id="Contacts">
+        <div class="group">
+          <h4>Countries</h4>
+          <p>These are the countries that will be used to find the distributors that match the site visitor's country. This is used in the brand sites support section.</p>
+          <p>Choose one or more country below. Doing so will associate this country with the distributor.</p>
+
+          <%= simple_form_for [@distributor_country], url: distributor_info_admin_distributor_countries_path, remote: true do |f| %>
+            <%= f.hidden_field :distributor_info_distributor_id %>
+            <%= hidden_field_tag :called_from, "distributor" %>
+            <%= f.association :country, 
+            collection: LocationInfo::Country.not_associated_with_this_distributor(@distributor_country.distributor),
+            label: false,
+            # label_method: -> (contact) { "#{contact.name} - #{contact.title}" },
+            input_html: { class: 'chosen-select', multiple: true,  data: { placeholder: 'Select countries'} }%>
+            <%= f.submit "add country", class: "small round button", style:"margin-top:10px;" %>
+          <% end %>
+					
+					<strong>Current countries</strong>
+          <ul id="distributor_countries" class="list">
+            <% @distributor_countries.each do |association| %>
+              <%= render "/distributor_info/admin/distributor_countries/distributor_country_row", association: association, called_from: "distributor" %>
+            <% end %>
+          </ul>
+          
+          <p>Go to: <%= link_to "Country List", location_info_admin_countries_path %></p>
+          <a href="#">Go to top</a>
+        </div>
+        
+  </div> 

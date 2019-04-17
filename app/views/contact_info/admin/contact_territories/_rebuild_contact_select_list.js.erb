@@ -1,0 +1,15 @@
+(function(){
+	var $contacts_dropdown = $('#contact_info_contact_territory_contact_info_contact_id');
+
+	// clear the contact list before we rebuild it
+	$contacts_dropdown.empty();
+	
+	// rebuild contact dropdown list
+	$contacts_dropdown.append($("<option></option>"));		
+	<% ContactInfo::Contact.not_associated_with_this_territory(@contact_territory.territory).each do |contact| %>
+		$contacts_dropdown.append($("<option value='<%=contact.id%>'><%=contact.name%> - <%=escape_javascript(contact.title)%></option>"));
+	<% end %>
+	
+	// let chosen know the email dropdown list has been updated
+	$contacts_dropdown.trigger('chosen:updated');
+})();

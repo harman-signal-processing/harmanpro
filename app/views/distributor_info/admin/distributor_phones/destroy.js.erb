@@ -1,0 +1,15 @@
+(function(){
+    // remove associated phone
+    $('#distributor_phone_<%= @distributor_phone.id %>').remove();
+    
+<%if @called_from == "distributor" %>
+	<%= render "/distributor_info/admin/distributor_phones/rebuild_phone_select_list" %>
+<% end %>	
+
+<%if @called_from == "phone" %>
+	<%= render "/distributor_info/admin/distributor_phones/rebuild_distributor_select_list" %>
+<% end %>	
+
+})();
+
+<% flash.discard %>

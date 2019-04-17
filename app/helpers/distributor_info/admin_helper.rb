@@ -1,0 +1,2 @@
+module DistributorInfo::AdminHelper
+end

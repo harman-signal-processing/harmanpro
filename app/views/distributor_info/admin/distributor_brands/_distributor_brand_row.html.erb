@@ -1,0 +1,17 @@
+<% called_from ||= 'distributor' %>
+<li id="distributor_brand_<%= association.id %>">
+	<% if (called_from == 'brand') %><span class="handle"><%= image_tag("icons/drag_handle.gif") %></span><% end %>
+
+	<% if (called_from == 'distributor') %> 
+		<%#= link_to("#{association.brand.name}", edit_location_info_admin_brand_path(association.brand)) %>
+		<%=association.brand.name%>
+	<%else%>
+		<%=link_to("#{association.distributor.name}", edit_distributor_info_admin_distributor_path(association.distributor))%><% if association.distributor.account_number.present?%> - (<%=association.distributor.account_number%>)<% end%></span> 
+	<%end%>
+
+	<%= link_to(image_tag("icons/trash.gif"), 
+			distributor_info_admin_distributor_brand_path(association, called_from: called_from), 
+			confirm: "Are you sure? (This won't delete the brand --it will only remove the association.)", 
+			remote: true,
+			method: :delete) %>
+</li>

@@ -1,0 +1,32 @@
+<!-- Websites -->
+	<div class="small-12 medium-6 columns" id="Websites">
+        <div class="group">
+          <h4>Websites</h4>
+          <p>Choose one or more website below. Doing so will associate this location address with the website.</p>
+
+          <%= simple_form_for [@location_website], url: location_info_admin_location_websites_path, remote: true do |f| %>
+            <%= f.hidden_field :location_info_location_id %>
+            <%= hidden_field_tag :called_from, "location" %>
+            <%= f.association :website, 
+            collection: ContactInfo::Website.not_associated_with_this_location(@location_website.location).order(:url),
+            label: false,
+            label_method: -> (website) { website.label.present? ? "#{website.url} (#{website.label})" : "#{website.url}" },
+            input_html: { class: 'chosen-select', multiple: true,  data: { placeholder: 'Select websites'} }%>
+            <%= f.submit "add website", class: "small round button", style:"margin-top:10px;" %>
+          <% end %>
+					
+					<strong>Current websites</strong>
+          <ul id="location_websites" class="sortable_list">
+            <% @location_websites.order(:position).each do |association| %>
+              <%= render "/location_info/admin/location_websites/location_website_row", association: association, called_from: "location" %>
+            <% end %>
+          </ul>
+          
+          <p>
+          	Can't find the website in the list above? <%= link_to "Create a new website", new_contact_info_admin_website_path(website: {location_id: "#{@location.id}"}) %>.
+          </p>
+          <p>Go to: <%= link_to "Websites List", contact_info_admin_websites_path %></p>
+          <a href="#">Go to top</a>
+        </div>
+        
+  </div> 

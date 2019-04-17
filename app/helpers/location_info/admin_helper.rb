@@ -1,0 +1,2 @@
+module LocationInfo::AdminHelper
+end

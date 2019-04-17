@@ -1,0 +1,54 @@
+<%= link_to "Location List", location_info_admin_locations_path, class: "small success radius button" %>
+
+<div class="row">
+  <div class="small-8 columns">
+    <h1>Edit Location:</h1>
+  </div>
+
+  <div class="small-4 columns text-right">
+    <%= link_to "delete location",
+      location_info_admin_location_path,
+      method: :delete,
+      data: { confirm: "Are you sure you want to delete location #{@location.name}?" },
+      class: "small alert radius button" %>
+  </div>
+</div>
+
+
+<%= simple_form_for @location, url: location_info_admin_location_path do |f| %>
+<%= f.input :name %>
+<%= f.input :address1 %>
+<%= f.input :address2 %>
+<%= f.input :address3 %>
+<%= f.input :city %>
+<%= f.input :state %>
+<%= f.input :country %>
+<%= f.input :postal %>
+<%= f.input :lat %>
+<%= f.input :lng %>
+<%= f.input :google_map_place_id %>
+<%= f.input :account_number %>
+
+
+<%= f.submit class: "radius button" %>
+<% end %>
+
+<div class="row">
+  <%= render 'regions' %>
+  <%= render 'supported_countries' %>
+</div>  <!-- <div class="row">  -->
+
+<div class="row">
+  <%= render 'distributors' %>
+  <%= render 'contacts' %>
+</div>  <!-- <div class="row">  -->
+
+<div class="row">
+  <%= render 'emails' %>
+  <%= render 'phones' %>
+</div>  <!-- <div class="row">  -->
+
+<div class="row">
+  <%= render 'websites' %>
+  <%= render 'supported_brands' %>
+</div>  <!-- <div class="row">  -->

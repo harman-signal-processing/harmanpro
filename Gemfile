@@ -22,6 +22,7 @@ gem "active_model_serializers", "0.9.5" # 0.10+ is not backwards compatible
 gem 'dalli'
 gem 'figaro'
 gem 'simple_form'
+gem 'chosen-rails'
 gem 'RedCloth'
 gem 'tinymce-rails', github: 'spohlenz/tinymce-rails.git'
 gem 'foundation-rails', '~> 5.5' # After this, getting incompatible units errors

@@ -1,0 +1,15 @@
+(function(){
+	var $countries_dropdown = $('#distributor_info_distributor_country_location_info_country_id');
+
+	// clear the country list before we rebuild it
+	$countries_dropdown.empty();
+	
+	// rebuild country dropdown list
+	$countries_dropdown.append($("<option></option>"));		
+	<% LocationInfo::Country.not_associated_with_this_distributor(@distributor_country.distributor).each do |country| %>
+		$countries_dropdown.append($("<option value='<%=country.id%>'><%=country.name%></option>"));
+	<% end %>
+	
+	// let chosen know the phone dropdown list has been updated
+	$countries_dropdown.trigger('chosen:updated');
+})();

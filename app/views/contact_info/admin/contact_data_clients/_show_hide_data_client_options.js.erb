@@ -1,0 +1,24 @@
+(function(){
+  <%
+  if @contact_data_clients.present?
+    @is_pro_site_contact = @contact_data_clients.first.contact.data_clients.map{|client| client.name == "pro.harman.com/contacts"}.any?
+    # @is_brandsite_distributor = @contact_data_clients.first.contact.data_clients.map{|client| client.name == "brandsite/distributors"}.any?
+  elsif @contact_data_client.present?
+    @is_pro_site_contact = @contact_data_client.contact.data_clients.map{|client| client.name == "pro.harman.com/contacts"}.any?
+    # @is_brandsite_distributor = @contact_data_client.contact.data_clients.map{|client| client.name == "brandsite/distributors"}.any?
+  end
+  %>
+
+  <% if @is_pro_site_contact %>
+    $('[data-client="pro-contacts"]').show('slow');
+  <% else %>
+    $('[data-client="pro-contacts"]').hide('slow');
+  <% end %>
+  
+  <%# if @is_brandsite_distributor %>
+    // $('[data-client="brandsite-distributors"]').show('slow');
+  <%# else %>
+    // $('[data-client="brandsite-distributors"]').hide('slow');
+  <%# end %>
+
+})();

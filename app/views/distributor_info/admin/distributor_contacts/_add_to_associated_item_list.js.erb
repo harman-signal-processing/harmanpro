@@ -1,0 +1,10 @@
+(function(){
+	var $list_of_associated_contacts = $('#distributor_contacts');
+	build_list_of_contacts_associated_with_this_distributor($list_of_associated_contacts);
+	
+	function build_list_of_contacts_associated_with_this_distributor($list_of_associated_contacts) {
+		<% @distributor_contacts.each do |distributor_contact| %>
+			$list_of_associated_contacts.append('<%= escape_javascript(render "/distributor_info/admin/distributor_contacts/distributor_contact_row", association: distributor_contact, called_from: @called_from) %>');
+		<% end %>	
+	}  //  function build_list_of_contacts_associated_with_this_distributor($list_of_associated_contacts)
+})();

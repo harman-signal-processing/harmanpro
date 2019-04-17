@@ -1,0 +1,15 @@
+(function(){
+	var $team_groups_dropdown = $('#contact_info_contact_team_group_team_contact_info_group_id');
+
+	// clear the team_group list before we rebuild it
+	$team_groups_dropdown.empty();
+	
+	// rebuild team_group dropdown list
+	$team_groups_dropdown.append($("<option></option>"));		
+	<% ContactInfo::TeamGroup.not_associated_with_this_contact(@contact_team_group.contact).each do |team_group| %>
+		$team_groups_dropdown.append($("<option value='<%=team_group.id%>'><%=team_group.name%></option>"));
+	<% end %>
+	
+	// let chosen know the team_group dropdown list has been updated
+	$team_groups_dropdown.trigger('chosen:updated');
+})();

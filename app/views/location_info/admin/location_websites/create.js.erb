@@ -1,0 +1,11 @@
+<%if @called_from == "location" %>
+	<%= render "/location_info/admin/location_websites/rebuild_website_select_list" %>
+<% end %>	
+
+<%if @called_from == "website" %>
+	<%= render "/location_info/admin/location_websites/rebuild_location_select_list" %>
+<% end %>
+
+<%= render "/location_info/admin/location_websites/add_to_associated_item_list" %>
+
+<% flash.discard %>

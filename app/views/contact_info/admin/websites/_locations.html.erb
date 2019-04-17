@@ -1,0 +1,33 @@
+<!-- Locations -->
+	<div class="small-12 medium-6 columns" id="Locations">
+        <div class="group">
+          <h4>Locations associated with <%=@contact_website.website.url%></h4>
+          <p>Choose one or more location below. Doing so will associate this website with the location.</p>
+
+          <%= simple_form_for [@location_website], url: location_info_admin_location_websites_path, remote: true do |f| %>
+            <%= f.hidden_field :contact_info_website_id %>
+            <%= hidden_field_tag :called_from, "website" %>
+            <%= f.association :location, 
+            collection: LocationInfo::Location.not_associated_with_this_website(@location_website.website),
+            label: false,
+            label_method: -> (location) { "#{location.name} - #{location.city}" },
+            # label_method: -> (location) { "#{location.name}" },
+            input_html: { class: 'chosen-select', multiple: true,  data: { placeholder: 'Select locations'} }%>
+            <%= f.submit "add location", class: "small round button", style:"margin-top:10px;" %>
+          <% end %>
+					
+					<strong>Current locations</strong>
+          <ul id="location_websites" class="list">
+            <% @location_websites.each do |association| %>
+              <%= render "/location_info/admin/location_websites/location_website_row", association: association, called_from: "website" %>
+            <% end %>
+          </ul>
+          
+          <p>
+          	Can't find the location in the list above? <%= link_to "Create a new location", new_location_info_admin_location_path(location: {website_id: "#{@website.id}"}) %>.
+          </p>
+          <p>Go to: <%= link_to "Locations List", location_info_admin_locations_path %></p>
+          <a href="#">Go to top</a>
+        </div>
+        
+  </div> 

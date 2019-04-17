@@ -139,4 +139,12 @@ class ApplicationController < ActionController::Base
     item.respond_to?(:preview_code) && item.preview_code.present? && params[:preview_code] == item.preview_code
   end
 
+  # Utility function used to re-order an ActiveRecord list
+  # Pass in a model name and a list of ordered objects
+  def update_list_order(model, order)
+    order.to_a.each_with_index do |item, pos|
+      model.update(item, position:(pos + 1))
+    end
+  end
+
 end

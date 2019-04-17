@@ -1,0 +1,21 @@
+<h1>Regions</h1>
+
+<ul class="button-group round">
+	<li><%= link_to 'Location List', location_info_admin_locations_path, class: "small button round" %>	</li>
+	<li><%= link_to 'Regions List', location_info_admin_regions_path, class: "small button round" %>	</li>
+	<li><%= link_to 'New Region', new_location_info_admin_region_path, class: "small success button" %></li>
+</ul>
+
+<table class="data">
+  <tr>
+  	<th></th>
+    <th>Name</th>
+  </tr>
+
+<% @regions.each do |region| %>
+  <tr style="vertical-align:text-bottom;">
+    <td><%= link_to 'Edit', edit_location_info_admin_region_path(region), class: "small round button" %></td>
+    <td><%= region.name %></td>
+  </tr>
+<% end %>
+</table>

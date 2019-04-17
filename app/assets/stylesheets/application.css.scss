@@ -31,12 +31,14 @@
  *= require features
  *= require frontend
  *= require search
+ *= require chosen
  */
 
 area {
   display: block !important;
   cursor: pointer;
 }
+
 span.spinner {
   display: block;
   position: absolute;
@@ -122,4 +124,35 @@ img.no-resize {
     margin-bottom: 0px;
   }
   margin-bottom: 5px;
+}
+
+/***** Sortable *****/
+
+ul.sortable_list {
+  margin: 4px 0px;
+  padding: 0px;
+  li {
+    margin: 0;
+    margin-bottom: 4px;
+    padding: 1px 0px;
+    /*background-image: asset-url('icons/drag_handle.gif');*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: 5px 6px;*/
+    cursor: move;
+    list-style: none;
+    color: #888;
+  }
+}
+
+ul.nosort .handle {
+  display: none;
+}
+
+div.group {
+  // background: #FFF;
+  background: #f2f2f2;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  padding: 5px 18px;
+  border: 1px solid #D6E8EE
 }

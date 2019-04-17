@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="small-8 columns">
+    <h1>Contacts</h1>
+  </div>
+
+  <div class="small-4 columns text-right">
+    <%= link_to "new contact", new_contact_info_admin_contact_path, class: "small success radius button" %>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Emails</td>
+      <td>Phones</td>
+      <td>Titles</td>
+      <td>Locations</td>
+      <td>Websites</td>
+      <td>Data Clients</td>
+      <td>Supported Brands (uncommon)</td>
+      <td>Supported Countries (uncommon)</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.order(:name).each do |contact| %>
+      <tr>
+        <td><%= link_to contact.name, edit_contact_info_admin_contact_path(contact) %></td>
+        <td>
+          <ul>
+            <% contact.emails.order(:email).each do |email|%>
+              <li><%= link_to email.email, edit_contact_info_admin_email_path(email)%></li>
+            <% end %>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <% contact.phones.order(:phone).each do |phone|%>
+              <li><%= link_to phone.phone, edit_contact_info_admin_phone_path(phone)%></li>
+            <% end %>
+          </ul>
+        </td>
+        <td><%= contact.title %></td>
+        <td>
+          <ul>
+          <% contact.locations.order(:name).each do |location| %>
+            <li><%= link_to location.name, edit_location_info_admin_location_path(location) %></li>
+          <% end %>
+          </ul>
+        </td>
+        <td>
+          <ul>
+          <% contact.websites.order(:url).each do |website| %>
+            <li><%= link_to website.url, edit_contact_info_admin_website_path(website) %></li>
+          <% end %>
+          </ul>
+        </td>        
+        <td>
+          <ul>
+            <% contact.data_clients.order(:name).each do |data_client|%>
+              <li><%= link_to data_client.name, edit_contact_info_admin_data_client_path(data_client)%></li>
+            <% end %>
+          </ul>
+        </td>     
+        <td>
+          <ul>
+            <% contact.supported_brands.order(:name).each do |supported_brand|%>
+              <li><%= supported_brand.name %></li>
+            <% end %>
+          </ul>
+        </td>  
+        <td>
+          <ul>
+            <% contact.supported_countries.order(:name).each do |supported_country|%>
+              <li><%= link_to supported_country.name, edit_location_info_admin_country_path(supported_country)%></li>
+            <% end %>
+          </ul>
+        </td>        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

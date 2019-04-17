@@ -1,0 +1,26 @@
+<%= link_to 'Emails List', contact_info_admin_emails_path, class: "small button round" %>
+
+<h1>New Email</h1>
+
+<%if @contact.present?%>
+<p>This new email address will be associated with <%=link_to "#{@contact.name} - #{@contact.title}", edit_contact_info_admin_contact_path(@contact)%>. (You can change this later)<br />
+Or if you want to create the email without associating it to a contact? <%= link_to "Click to here create new email without association.", new_contact_info_admin_email_path %>
+</p>
+<%end%>
+
+<%if @distributor.present?%>
+<p>This new email address will be associated with <%=link_to "#{@distributor.name}", edit_distributor_info_admin_distributor_path(@distributor)%>. (You can change this later)<br />
+Or if you want to create the email without associating it to a distributor? <%= link_to "Click to here create new email without association.", new_contact_info_admin_email_path %>
+</p>
+<%end%>
+
+<%= simple_form_for @email, url: contact_info_admin_emails_path do |f| %>
+  <%= f.input :email, label: "Email" %>
+  <%= f.input :label, label: "Label" %>
+  <%= f.hidden_field :contact_id, value: "#{params[:email][:contact_id]}" unless params[:email].nil? %>
+  <%= f.hidden_field :distributor_id, value: "#{params[:email][:distributor_id]}" unless params[:email].nil? %>
+
+    </br>
+  <%= f.button :submit %>
+<% end # simple_form_for @email, url: contact_info_admin_emails_path do |f|%>
+

@@ -21,6 +21,40 @@ class Brand < ApplicationRecord
   has_many :new_product_brands, dependent: :destroy, inverse_of: :brand
   has_many :new_products, through: :new_product_brands
 
+  # New Brand/Distributor associations
+  has_many :brand_to_distributor_association, dependent: :destroy, foreign_key: "brand_id", class_name: 'DistributorInfo::DistributorBrand'
+    # naming this :distributor_s to distinguish from :distributors
+  has_many :distributor_s, -> { order 'distributor_info_distributor_brands.position' }, through: :brand_to_distributor_association, source: :distributor, class_name: 'DistributorInfo::Distributor'
+    
+  scope :not_associated_with_this_distributor, ->(distributor) { 
+    brand_ids_already_associated_with_this_distributor = DistributorInfo::DistributorBrand.where("distributor_info_distributor_id = ?", distributor.id).map{|distributor_brand| distributor_brand.brand_id }
+    brands_not_associated_with_this_distributor = Brand.where.not(id: brand_ids_already_associated_with_this_distributor).order(:name)    
+    brands_not_associated_with_this_distributor
+  } 
+  # End New Brand/Distributor associations
+
+  # New Brand/Location associations
+  has_many :brand_to_location_association, dependent: :destroy, foreign_key: "brand_id", class_name: 'LocationInfo::LocationSupportedBrand'
+  has_many :supported_locations, -> { order 'location_info_location_supported_brands.position' }, through: :brand_to_location_association, source: :location, class_name: 'LocationInfo::Location'
+    
+  scope :not_associated_with_this_location, ->(location) { 
+    brand_ids_already_associated_with_this_location = LocationInfo::LocationSupportedBrand.where("location_info_location_id = ?", location.id).map{|location_supported_brand| location_supported_brand.brand_id }
+    brands_not_associated_with_this_location = Brand.where.not(id: brand_ids_already_associated_with_this_location).order(:name)    
+    brands_not_associated_with_this_location
+  } 
+  # End New Brand/Location associations
+
+  # New Brand/Contact associations
+  has_many :brand_to_contact_association, dependent: :destroy, foreign_key: "brand_id", class_name: 'ContactInfo::ContactSupportedBrand'
+  has_many :supported_contacts, -> { order 'contact_info_contact_supported_brands.position' }, through: :brand_to_contact_association, source: :contact, class_name: 'ContactInfo::Contact'
+    
+  scope :not_associated_with_this_contact, ->(contact) { 
+    brand_ids_already_associated_with_this_contact = ContactInfo::ContactSupportedBrand.where("contact_info_contact_id = ?", contact.id).map{|contact_supported_brand| contact_supported_brand.brand_id }
+    brands_not_associated_with_this_contact = Brand.where.not(id: brand_ids_already_associated_with_this_contact).order(:name)    
+    brands_not_associated_with_this_contact
+  } 
+  # End New Brand/Contact associations
+
   has_attached_file :logo,
     styles: {
       large: "250x156",

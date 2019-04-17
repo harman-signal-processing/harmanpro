@@ -1,0 +1,16 @@
+(function(){
+    // remove associated data_client
+    $('#contact_data_client_<%= @contact_data_client.id %>').remove();
+    
+<%if @called_from == "contact" %>
+	<%= render "/contact_info/admin/contact_data_clients/rebuild_data_client_select_list" %>
+	<%= render "/contact_info/admin/contact_data_clients/show_hide_data_client_options" %>
+<% end %>	
+
+<%if @called_from == "data_client" %>
+	<%= render "/contact_info/admin/contact_data_clients/rebuild_contact_select_list" %>
+<% end %>	
+
+})();
+
+<% flash.discard %>

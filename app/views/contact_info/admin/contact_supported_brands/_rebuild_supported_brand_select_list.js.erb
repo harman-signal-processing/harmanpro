@@ -1,0 +1,15 @@
+(function(){
+	var $supported_brands_dropdown = $('#contact_info_contact_supported_brand_brand_id');
+
+	// clear the supported_brand list before we rebuild it
+	$supported_brands_dropdown.empty();
+	
+	// rebuild supported_brand dropdown list
+	$supported_brands_dropdown.append($("<option></option>"));		
+	<% Brand.not_associated_with_this_contact(@contact_supported_brand.contact).each do |supported_brand| %>
+		$supported_brands_dropdown.append($("<option value='<%=supported_brand.id%>'><%=escape_javascript(supported_brand.name)%></option>"));
+	<% end %>
+	
+	// let chosen know the supported_brand dropdown list has been updated
+	$supported_brands_dropdown.trigger('chosen:updated');
+})();

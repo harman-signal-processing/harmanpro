@@ -1,0 +1,96 @@
+<h1>Distributors</h1>
+
+<ul class="button-group round">
+	<li><%= link_to 'Distributors List', distributor_info_admin_distributors_path, class: "small button round" %>	</li>
+	<li><%= link_to 'New Distributor', new_distributor_info_admin_distributor_path, class: "small success button" %></li>
+</ul>
+
+<table class="data">
+  <tr>
+  	<th></th>
+    <th>Name</th>
+    <th>Account Number</th>
+    <th>Locations</th>
+  </tr>
+
+<% @distributors.order(:name).each do |distributor| %>
+  <tr style="vertical-align:text-bottom;">
+    <td><%= link_to 'Edit', edit_distributor_info_admin_distributor_path(distributor), class: "small round button" %></td>
+    <td><%= distributor.name %></td>
+    <td><%= distributor.account_number %></td>
+    <td>
+      <ul>
+      <% distributor.locations.each do |location| %>
+        <li><%=link_to location.name, edit_location_info_admin_location_path(location) %> - <span style="font-size:x-small"><%= location.city %></span></li>
+        <table>
+          <tr>
+            <th>Supported Countries</th>
+            <th>Contacts</th>
+            <th>Emails</th>
+            <th>Phones</th>
+            <th>Websites</th>
+            <th>Supported Brands</th>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">
+                <% if location.supported_countries.present? %>
+                  <ul>
+                    <% location.supported_countries.each do |country| %>
+                      <li><%= link_to country.name, edit_location_info_admin_country_path(country) %></li>
+                    <% end %>
+                  </ul>
+                <% end  # if location.supported_countries.present?%>              
+            </td>
+            <td style="vertical-align: top;">
+              <% if location.contacts.present? %>
+                <ul>
+                  <% location.contacts.each do |contact| %>
+                    <li><%= link_to contact.name, edit_contact_info_admin_contact_path(contact) %> <span style="font-size:x-small"> - <%= contact.title %></span></li>
+                  <% end %>
+                </ul>
+              <% end  # if location.contacts.present?%>              
+            </td>
+            <td style="vertical-align: top;">
+              <% if location.emails.present? %>
+                <ul>
+                  <% location.emails.each do |email| %>
+                    <li><%= link_to email.email, edit_contact_info_admin_email_path(email) %></li>
+                  <% end %>
+                </ul>
+              <% end  # if location.email.present?%>              
+            </td>
+            <td style="vertical-align: top;">
+              <% if location.phones.present? %>
+                <ul>
+                  <% location.phones.each do |phone| %>
+                    <li><%= link_to phone.phone, edit_contact_info_admin_phone_path(phone) %></li>
+                  <% end %>
+                </ul>
+              <% end  # if location.phone.present?%>              
+            </td>
+            <td style="vertical-align: top;">
+              <% if location.websites.present? %>
+                <ul>
+                  <% location.websites.each do |website| %>
+                    <li><%= link_to website.url, edit_contact_info_admin_website_path(website) %></li>
+                  <% end %>
+                </ul>
+              <% end  # if location.website.present?%>              
+            </td>
+            <td style="vertical-align: top;">
+              <% if location.supported_brands.present? %>
+                <ul>
+                  <% location.supported_brands.order(:name).each do |brand| %>
+                    <li><%=brand.name%></li>
+                  <% end %>
+                </ul>
+              <% end  # if location.supported_countries.present?%>              
+            </td>            
+          </tr>
+        </table>
+      <% end  # distributor.locations.each do |location| %>
+      </ul>
+    </td>    
+  </tr>
+<% end %>
+</table>

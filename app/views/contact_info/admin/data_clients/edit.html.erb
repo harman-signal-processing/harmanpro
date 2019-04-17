@@ -1,0 +1,18 @@
+<ul class="button-group round">
+    <li><%= link_to 'Data Client List', contact_info_admin_data_clients_path, class: "small button round" %>	</li>
+    <li><%= link_to 'Delete', contact_info_admin_data_client_path(@data_client), confirm: 'Are you sure?', method: :delete, class: "small alert button" %> </li>
+</ul>
+<h1>Edit Data Client</h1>
+
+<%= simple_form_for @data_client, url: contact_info_admin_data_client_path do |f| %>
+  <%= f.input :name, label: "Name" %>
+
+    </br>
+  <%= f.button :submit %>
+<% end # simple_form_for @data_client, url: contact_info_admin_data_client_path do |f|%>
+
+
+<div class="row">
+  <%= render 'contacts' %>
+</div>  <!-- <div class="row">  -->
+

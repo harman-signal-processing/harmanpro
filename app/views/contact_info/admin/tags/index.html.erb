@@ -1,0 +1,28 @@
+<h1>Tags</h1>
+
+<ul class="button-group round">
+	<li><%= link_to 'Contact List', contact_info_admin_contacts_path, class: "small button round" %>	</li>
+	<li><%= link_to 'New Tag', new_contact_info_admin_tag_path, class: "small success button" %></li>
+</ul>
+
+<table class="data">
+  <tr>
+  	<th></th>
+    <th>Name</th>
+    <th>Associated Contacts</th>
+  </tr>
+
+<% @tags.each do |tag| %>
+  <tr style="vertical-align:text-bottom;">
+    <td><%= link_to 'Edit', edit_contact_info_admin_tag_path(tag), class: "small round button" %></td>
+    <td><%= tag.name %></td>
+    <td>
+      <ul>
+        <% tag.contacts.order(:name).each do |contact|%>
+          <li><%= link_to "#{contact.name}", edit_contact_info_admin_contact_path(contact) %> - <span style='font-size: x-small;'><%="#{contact.title}"%></span></li>
+        <%end%>
+      </ul>       
+    </td>
+  </tr>
+<% end %>
+</table>

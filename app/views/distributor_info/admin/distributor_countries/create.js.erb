@@ -1,0 +1,11 @@
+<%if @called_from == "distributor" %>
+	<%= render "/distributor_info/admin/distributor_countries/rebuild_country_select_list" %>
+<% end %>	
+
+<%if @called_from == "country" %>
+	<%= render "/distributor_info/admin/distributor_countries/rebuild_distributor_select_list" %>
+<% end %>	
+
+<%= render "/distributor_info/admin/distributor_countries/add_to_associated_item_list" %>
+
+<% flash.discard %>

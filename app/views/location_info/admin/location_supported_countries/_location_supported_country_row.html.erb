@@ -1,0 +1,16 @@
+<% called_from ||= 'location' %>
+<li id="location_supported_country_<%= association.id %>">
+	<% if (called_from == 'supported_country') %><span class="handle"><%= image_tag("icons/drag_handle.gif") %></span><% end %>
+
+	<% if (called_from == 'location') %> 
+		<%= link_to("#{association.country.name}", edit_location_info_admin_country_path(association.country)) %>
+	<%else%>
+		<%=link_to("#{association.location.name}", edit_location_info_admin_location_path(association.location))%> <span style="font-size: x-small"> - <%="#{association.location.city}" %></span> 
+	<%end%>
+
+	<%= link_to(image_tag("icons/trash.gif"), 
+			location_info_admin_location_supported_country_path(association, called_from: called_from), 
+			confirm: "Are you sure? (This won't delete the supported_country --it will only remove the association.)", 
+			remote: true,
+			method: :delete) %>
+</li>

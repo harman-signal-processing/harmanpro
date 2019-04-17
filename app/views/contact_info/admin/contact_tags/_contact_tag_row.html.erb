@@ -1,0 +1,16 @@
+<% called_from ||= 'contact' %>
+<li id="contact_tag_<%= association.id %>">
+	<% if (called_from == 'tag') %><span class="handle"><%= image_tag("icons/drag_handle.gif") %></span><% end %>
+	
+	<% if (called_from == 'contact') %> 
+		<%= link_to("#{association.tag.name}", edit_contact_info_admin_tag_path(association.tag)) %>
+	<% else %>
+	  <%=link_to("#{association.contact.name}", edit_contact_info_admin_contact_path(association.contact))%> <span style="font-size: x-small"> - <%="#{association.contact.title}" %></span> 
+	<% end %>	  
+	
+	<%= link_to(image_tag("icons/trash.gif"), 
+			contact_info_admin_contact_tag_path(association, called_from: called_from), 
+			confirm: "Are you sure? (This won't delete the tag --it will only remove the association.)", 
+			remote: true,
+			method: :delete) %>
+</li>

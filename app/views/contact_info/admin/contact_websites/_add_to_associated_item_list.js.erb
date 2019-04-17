@@ -1,0 +1,10 @@
+(function(){
+	var $list_of_associated_websites = $('#contact_websites');
+	build_list_of_websites_associated_with_this_contact($list_of_associated_websites);
+	
+	function build_list_of_websites_associated_with_this_contact($list_of_associated_websites) {
+		<% @contact_websites.each do |contact_website| %>
+			$list_of_associated_websites.append('<%= escape_javascript(render "/contact_info/admin/contact_websites/contact_website_row", association: contact_website, called_from: @called_from) %>');
+		<% end %>	
+	}  //  function build_list_of_websites_associated_with_this_contact($list_of_associated_websites)
+})();

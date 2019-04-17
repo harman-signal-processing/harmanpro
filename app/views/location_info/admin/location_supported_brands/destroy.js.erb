@@ -1,0 +1,10 @@
+(function(){
+    // remove associated supported_brand
+    $('#location_supported_brand_<%= @location_supported_brand.id %>').remove();
+    
+<%if @called_from == "location" %>
+	<%= render "/location_info/admin/location_supported_brands/rebuild_supported_brand_select_list" %>
+<% end %>	
+})();
+
+<% flash.discard %>

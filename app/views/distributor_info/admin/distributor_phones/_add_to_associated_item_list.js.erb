@@ -1,0 +1,10 @@
+(function(){
+	var $list_of_associated_phones = $('#distributor_phones');
+	build_list_of_phones_associated_with_this_distributor($list_of_associated_phones);
+	
+	function build_list_of_phones_associated_with_this_distributor($list_of_associated_phones) {
+		<% @distributor_phones.each do |distributor_phone| %>
+			$list_of_associated_phones.append('<%= escape_javascript(render "/distributor_info/admin/distributor_phones/distributor_phone_row", association: distributor_phone, called_from: @called_from) %>');
+		<% end %>	
+	}  //  function build_list_of_phones_associated_with_this_distributor($list_of_associated_phones)
+})();

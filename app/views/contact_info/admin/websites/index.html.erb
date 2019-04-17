@@ -1,0 +1,28 @@
+<h1>Websites</h1>
+
+<ul class="button-group round">
+	<li><%= link_to 'Contact List', contact_info_admin_contacts_path, class: "small button round" %>	</li>
+	<li><%= link_to 'New Website', new_contact_info_admin_website_path, class: "small success button" %></li>
+</ul>
+
+<table class="data">
+  <tr>
+  	<th></th>
+    <th>Label</th>
+    <th>website</th>
+    <th>Associated Contacts</th>
+  </tr>
+
+<% @websites.each do |website| %>
+  <tr style="vertical-align:text-bottom;">
+    <td><%= link_to 'Edit', edit_contact_info_admin_website_path(website), class: "small round button" %></td>
+    <td><%= website.label %></td>
+    <td><%= website.url %></td>
+    <td>
+      <%if website.contacts.present?%>
+        <% website.contacts.order(:name).each do |contact|%><%= "#{contact.name} - #{contact.title}"%><br /><%end%>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>

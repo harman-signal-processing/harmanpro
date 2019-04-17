@@ -1,0 +1,32 @@
+  <!-- Emails  -->
+	<div class="small-12 medium-6 columns" id="Emails">
+        <div class="group">
+          <h4>Emails</h4>
+          <p>Choose one or more email below. Doing so will associate this contact with the email.</p>
+
+          <%= simple_form_for [@contact_email], url: contact_info_admin_contact_emails_path, remote: true do |f| %>
+            <%= f.hidden_field :contact_info_contact_id %>
+            <%= hidden_field_tag :called_from, "contact" %>
+            <%= f.association :email, 
+            collection: ContactInfo::Email.not_associated_with_this_contact(@contact_email.contact),
+            label: false,
+            label_method: -> (email) { email.label.present? ? "#{email.email} (#{email.label})" : "#{email.email}" },
+            input_html: { class: 'chosen-select', multiple: true,  data: { placeholder: 'Select emails'} }%>
+            <%= f.submit "add email", class: "small round button", style:"margin-top:10px;" %>
+          <% end %>
+					
+					<strong>Current emails</strong>
+          <ul id="contact_emails" class="sortable_list">
+            <% @contact_emails.each do |association| %>
+              <%= render "/contact_info/admin/contact_emails/contact_email_row", association: association, called_from: "contact" %>
+            <% end %>
+          </ul>
+          
+          <p>
+          	Can't find the email in the list above? <%= link_to "Create a new email", new_contact_info_admin_email_path(email: {contact_id: "#{@contact.id}"}) %>.
+          </p>
+          <p>Go to: <%= link_to "Emails List", contact_info_admin_emails_path %></p>
+          <a href="#">Go to top</a>
+        </div>
+        
+  </div> <!-- <div class="small-12 medium-6 columns" id="Emails"> -->

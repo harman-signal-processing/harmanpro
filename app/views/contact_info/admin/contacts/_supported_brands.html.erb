@@ -1,0 +1,31 @@
+<!-- Supported Brands -->
+	<div class="small-12 medium-6 columns" id="SupportedBrands" data-client="supports-specific-brands" style="display:none;">
+        <div class="group">
+          <h4>Brands supported by <%=@contact.name%></h4>
+          <p>Choose one or more brand below. Doing so will associate this brand as supported by this contact. This is not common.</p>
+
+          <%= simple_form_for [@contact_supported_brand], url: contact_info_admin_contact_supported_brands_path, remote: true do |f| %>
+            <%= f.hidden_field :contact_info_contact_id %>
+            <%= hidden_field_tag :called_from, "contact" %>
+            <%= f.association :brand, 
+            collection: Brand.not_associated_with_this_contact(@contact_supported_brand.contact),
+            label: false,
+            # label_method: "#{brand.name}",
+            input_html: { class: 'chosen-select', multiple: true,  data: { placeholder: 'Select brands'} }%>
+            <%= f.submit "add brand", class: "small round button", style:"margin-top:10px;" %>
+          <% end %>
+					
+					<strong>Current brands</strong>
+          <ul id="contact_supported_brands" class="list">
+            <% @contact_supported_brands.each do |association| %>
+              <%= render "/contact_info/admin/contact_supported_brands/contact_supported_brand_row", association: association, called_from: "contact" %>
+            <% end %>
+          </ul>
+          
+          <a href="#">Go to top</a>
+        </div>
+        
+  </div> 
+  <div class="small-12 medium-6 columns" id="SupportedBrandsMessage" data-client="supports-specific-brands-message">
+    <div class="group"><a href="#" id="hrefspecificbrandsupport">Click here if <%=@contact.name%> needs to support specific brands. This is not common.</a></div>
+  </div>

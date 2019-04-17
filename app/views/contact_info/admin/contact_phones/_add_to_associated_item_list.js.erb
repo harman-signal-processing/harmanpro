@@ -1,0 +1,10 @@
+(function(){
+	var $list_of_associated_phones = $('#contact_phones');
+	build_list_of_phones_associated_with_this_contact($list_of_associated_phones);
+	
+	function build_list_of_phones_associated_with_this_contact($list_of_associated_phones) {
+		<% @contact_phones.each do |contact_phone| %>
+			$list_of_associated_phones.append('<%= escape_javascript(render "/contact_info/admin/contact_phones/contact_phone_row", association: contact_phone, called_from: @called_from) %>');
+		<% end %>	
+	}  //  function build_list_of_phones_associated_with_this_contact($list_of_associated_phones)
+})();

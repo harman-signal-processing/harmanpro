@@ -1,0 +1,57 @@
+<%= link_to "Contact List", contact_info_admin_contacts_path, class: "small success radius button" %>
+<h1>New Contact</h1>
+
+<%if @email.present? && params.dig(:contact, :email_id).present? %>
+<p>This new contact will be associated with <%=link_to "#{@email.email} - #{@email.label}", edit_contact_info_admin_email_path(@email)%>. (You can change this later)<br />
+If you want to create the contact without associating it to an email, <%= link_to "click to here create new contact without association.", new_contact_info_admin_contact_path %>
+</p>
+<%end%>
+
+<%if @phone.present? && params.dig(:contact, :phone_id).present? %>
+<p>This new contact will be associated with <%=link_to "#{@phone.phone} - #{@phone.label}", edit_contact_info_admin_phone_path(@phone)%>. (You can change this later)<br />
+If you want to create the contact without associating it to a phone number, <%= link_to "click to here create new contact without association.", new_contact_info_admin_contact_path %>
+</p>
+<%end%>
+
+<%if @website.present? && params.dig(:contact, :website_id).present? %>
+<p>This new contact will be associated with <%=link_to "#{@website.url}", edit_contact_info_admin_website_path(@website)%>. (You can change this later)<br />
+If you want to create the contact without associating it to a website, <%= link_to "click to here create new contact without association.", new_contact_info_admin_contact_path %>
+</p>
+<%end%>
+
+<%if @team_group.present? && params.dig(:contact, :team_group_id).present? %>
+<p>This new contact will be associated with <%=link_to "#{@team_group.name}", edit_contact_info_admin_team_group_path(@team_group)%>. (You can change this later)<br />
+If you want to create the contact without associating it to a team/group, <%= link_to "click to here create new contact without association.", new_contact_info_admin_contact_path %>
+</p>
+<%end%>
+
+<%if @territory.present? && params.dig(:contact, :territory_id).present? %>
+<p>This new contact will be associated with <%=link_to "#{@territory.name}", edit_contact_info_admin_territory_path(@territory)%>. (You can change this later)<br />
+If you want to create the contact without associating it to a territory, <%= link_to "click to here create new contact without association.", new_contact_info_admin_contact_path %>
+</p>
+<%end%>
+
+<%if @distributor.present? && params.dig(:contact, :distributor_id).present? %>
+<p>This new contact will be associated with <%=link_to "#{@distributor.name}", edit_distributor_info_admin_distributor_path(@distributor)%>. (You can change this later)<br />
+If you want to create the contact without associating it to a distributor, <%= link_to "click to here create new contact without association.", new_contact_info_admin_contact_path %>
+</p>
+<%end%>
+
+<%if @location.present? && params.dig(:contact, :location_id).present? %>
+<p>This new contact will be associated with <%=link_to "#{@location.name}", edit_location_info_admin_location_path(@location)%>. (You can change this later)<br />
+If you want to create the contact without associating it to a location, <%= link_to "click to here create new contact without association.", new_contact_info_admin_contact_path %>
+</p>
+<%end%>
+
+<%= simple_form_for @contact, url: contact_info_admin_contacts_path do |f| %>
+<%= f.input :name %>
+<%= f.input :title %>
+<%= f.hidden_field :email_id, value: "#{params[:contact][:email_id]}" unless params[:contact].nil? %>
+<%= f.hidden_field :phone_id, value: "#{params[:contact][:phone_id]}" unless params[:contact].nil? %>
+<%= f.hidden_field :website_id, value: "#{params[:contact][:website_id]}" unless params[:contact].nil? %>
+<%= f.hidden_field :team_group_id, value: "#{params[:contact][:team_group_id]}" unless params[:contact].nil? %>
+<%= f.hidden_field :territory_id, value: "#{params[:contact][:territory_id]}" unless params[:contact].nil? %>
+<%= f.hidden_field :distributor_id, value: "#{params[:contact][:distributor_id]}" unless params[:contact].nil? %>
+
+<%= f.submit class: "radius button" %>
+<% end %>

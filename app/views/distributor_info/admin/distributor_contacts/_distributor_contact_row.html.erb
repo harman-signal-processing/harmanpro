@@ -1,0 +1,16 @@
+<% called_from ||= 'distributor' %>
+<li id="distributor_contact_<%= association.id %>">
+	<% if (called_from == 'distributor') %><span class="handle"><%= image_tag("icons/drag_handle.gif") %></span><% end %>
+
+	<% if (called_from == 'distributor') %> 
+		<%= link_to("#{association.contact.name}", edit_contact_info_admin_contact_path(association.contact)) %><% if association.contact.title.present? %> - <span style="font-size:x-small"><%= association.contact.title %></span><% end %>
+	<%else%>
+		<%=link_to("#{association.distributor.name}", edit_distributor_info_admin_distributor_path(association.distributor))%><% if association.distributor.account_number.present?%> - (<%=association.distributor.account_number%>)<% end%>
+	<%end%>
+
+	<%= link_to(image_tag("icons/trash.gif"), 
+			distributor_info_admin_distributor_contact_path(association, called_from: called_from), 
+			confirm: "Are you sure? (This won't delete the contact --it will only remove the association.)", 
+			remote: true,
+			method: :delete) %>
+</li>

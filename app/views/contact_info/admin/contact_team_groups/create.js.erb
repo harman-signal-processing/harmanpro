@@ -1,0 +1,11 @@
+<%if @called_from == "contact" %>
+	<%= render "/contact_info/admin/contact_team_groups/rebuild_team_group_select_list" %>
+<% end %>	
+
+<%if @called_from == "team_group" %>
+	<%= render "/contact_info/admin/contact_team_groups/rebuild_contact_select_list" %>
+<% end %>	
+
+<%= render "/contact_info/admin/contact_team_groups/add_to_associated_item_list" %>
+
+<% flash.discard %>

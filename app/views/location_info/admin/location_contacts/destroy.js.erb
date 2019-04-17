@@ -1,0 +1,15 @@
+(function(){
+    // remove associated contact
+    $('#location_contact_<%= @location_contact.id %>').remove();
+    
+<%if @called_from == "location" %>
+	<%= render "/location_info/admin/location_contacts/rebuild_contact_select_list" %>
+<% end %>	
+
+<%if @called_from == "contact" %>
+	<%= render "/location_info/admin/location_contacts/rebuild_location_select_list" %>
+<% end %>	
+
+})();
+
+<% flash.discard %>
