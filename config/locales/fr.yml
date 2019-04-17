@@ -27,23 +27,24 @@ fr:
   all: tout
   vertical_market_solutions: "Solutions pour %{vertical_market_name}"
 
-  date: 
+  date:
+    year: Année
     formats:
       default: "%a, %d %B %Y"
       short: "%b %d, %Y"
       long: "%B %d, %Y"
-      month_day: "%b %d" 
+      month_day: "%b %d"
       month_year: "%B %Y"
       blog_month_day: "%B %d"
       mmddyy: "%d/%m/%y"
       mmddyyyy: "%d/%m/%Y"
 
-  time: 
+  time:
     formats:
       default: "%a, %d %B %Y, %I:%M %p"
       log: "%b %d, %Y, %I:%M %p"
 
-  nav: 
+  nav:
     menu: Menu
     solutions: Solutions
     case_studies: Études de cas
@@ -61,7 +62,7 @@ fr:
     plan : Plan
     buy: Acheter
 
-  home_page: 
+  home_page:
     shop_now: Achats
 
   brand_page:
@@ -167,6 +168,7 @@ fr:
       site_setting: Paramètres du site
       venue: Site
       vertical_market: Marché vertical
+      press_release: Communiqué de presse
     attributes:
       lead:
         name: Nom
@@ -192,4 +194,8 @@ fr:
     casestudy: Étude de cas
     landingpage: Page d'atterrissage
     verticalmarket: Marché vertical
+    consultantcontacts: Contacts du consultant
+
+  new_products_page:
+    filters: filtres
     

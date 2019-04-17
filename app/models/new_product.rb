@@ -1,4 +1,10 @@
 class NewProduct < ApplicationRecord
+  translates :name, :content, :more_info, :press_release
+  attribute :name
+  attribute :content
+  attribute :more_info
+  attribute :press_release
+
   has_many :new_product_brands, dependent: :destroy, inverse_of: :new_product
   has_many :brands, through: :new_product_brands
   has_many :new_product_product_types, dependent: :destroy, inverse_of: :new_product

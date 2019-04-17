@@ -13,7 +13,7 @@ ActiveAdmin.register Lead do
   end
 
   sidebar "Settings", only: [:index, :show] do
-    "Look for 'lead_recipient' in the Site Settings to configure who receives leads from the site."
+    "Look for 'leadgen_recipients' in the Site Settings to configure who receives leads from the site."
   end
 
   filter :location
