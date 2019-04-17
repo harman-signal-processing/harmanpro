@@ -1,4 +1,7 @@
 class ContactInfo::Website < ApplicationRecord
+  extend FriendlyId
+  friendly_id :url
+  
   validates :url, presence: true, uniqueness: { case_sensitive: false }
   
   has_many :website_to_contacts_association, dependent: :destroy, foreign_key: "contact_info_website_id", class_name: "ContactInfo::ContactWebsite"

@@ -1,4 +1,7 @@
 class ContactInfo::Territory < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name 
+ 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   
   has_many :territory_to_contacts_association, dependent: :destroy, foreign_key: "contact_info_territory_id", class_name: "ContactInfo::ContactTerritory"

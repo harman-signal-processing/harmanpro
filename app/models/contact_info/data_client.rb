@@ -1,4 +1,7 @@
 class ContactInfo::DataClient < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name 
+  
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   
   has_many :data_client_to_contacts_association, dependent: :destroy, foreign_key: "contact_info_data_client_id", class_name: 'ContactInfo::ContactDataClient'

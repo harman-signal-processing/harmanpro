@@ -1,4 +1,7 @@
 class LocationInfo::Region < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name
+  
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   
   has_many :region_to_locations_association, dependent: :destroy, foreign_key: 'location_info_region_id', class_name: 'LocationInfo::LocationRegion'

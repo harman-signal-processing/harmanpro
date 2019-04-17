@@ -1,4 +1,7 @@
 class ContactInfo::Contact < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name
+  
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   
   has_many :contact_to_locations_association, dependent: :destroy, foreign_key: "contact_info_contact_id", class_name: 'LocationInfo::LocationContact'

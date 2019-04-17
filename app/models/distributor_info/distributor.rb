@@ -1,4 +1,7 @@
 class DistributorInfo::Distributor < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name
+  
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   
   has_many :distributor_to_brands_association, dependent: :destroy, foreign_key: 'distributor_info_distributor_id', class_name: 'DistributorInfo::DistributorBrand'
@@ -57,5 +60,12 @@ class DistributorInfo::Distributor < ApplicationRecord
     distributors_not_associated_with_this_website = DistributorInfo::Distributor.where.not(id: distributor_ids_already_associated_with_this_website).order(:name)    
     distributors_not_associated_with_this_website
   }   
+  
+  # This method is currently only called from distributors.as_json in DistributorInfo::DistributorsController. 
+  # In this context it has only one association because it has already been filtered by brand. 
+  # There is probably a better way to get the sort order for this association.
+  def sort_order_for_brand
+    distributor_to_brands_association.first.nil? ? 0 : distributor_to_brands_association.first.position.nil? ? 0 : distributor_to_brands_association.first.position
+  end
   
 end

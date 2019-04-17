@@ -1,0 +1,2 @@
+module DistributorInfo::DistributorsHelper
+end

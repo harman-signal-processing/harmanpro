@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_25_173508) do
+ActiveRecord::Schema.define(version: 2019_04_15_175211) do
 
   create_table "active_admin_comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -299,6 +299,7 @@ ActiveRecord::Schema.define(version: 2019_03_25_173508) do
   end
 
   create_table "contact_info_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "slug"
     t.string "label"
     t.string "name"
     t.string "title"
@@ -306,32 +307,39 @@ ActiveRecord::Schema.define(version: 2019_03_25_173508) do
     t.datetime "updated_at", null: false
     t.index ["label"], name: "index_contact_info_contacts_on_label"
     t.index ["name"], name: "index_contact_info_contacts_on_name"
+    t.index ["slug"], name: "index_contact_info_contacts_on_slug", unique: true
     t.index ["title"], name: "index_contact_info_contacts_on_title"
   end
 
   create_table "contact_info_data_clients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "slug"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_contact_info_data_clients_on_name"
+    t.index ["slug"], name: "index_contact_info_data_clients_on_slug", unique: true
   end
 
   create_table "contact_info_emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "slug"
     t.string "label"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_contact_info_emails_on_email"
     t.index ["label"], name: "index_contact_info_emails_on_label"
+    t.index ["slug"], name: "index_contact_info_emails_on_slug", unique: true
   end
 
   create_table "contact_info_phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "slug"
     t.string "label"
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["label"], name: "index_contact_info_phones_on_label"
     t.index ["phone"], name: "index_contact_info_phones_on_phone"
+    t.index ["slug"], name: "index_contact_info_phones_on_slug", unique: true
   end
 
   create_table "contact_info_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -342,25 +350,31 @@ ActiveRecord::Schema.define(version: 2019_03_25_173508) do
   end
 
   create_table "contact_info_team_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "slug"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_contact_info_team_groups_on_name"
+    t.index ["slug"], name: "index_contact_info_team_groups_on_slug", unique: true
   end
 
   create_table "contact_info_territories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "slug"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_contact_info_territories_on_name"
+    t.index ["slug"], name: "index_contact_info_territories_on_slug", unique: true
   end
 
   create_table "contact_info_websites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "slug"
     t.string "label"
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["label"], name: "index_contact_info_websites_on_label"
+    t.index ["slug"], name: "index_contact_info_websites_on_slug", unique: true
     t.index ["url"], name: "index_contact_info_websites_on_url"
   end
 
@@ -494,12 +508,14 @@ ActiveRecord::Schema.define(version: 2019_03_25_173508) do
   end
 
   create_table "distributor_info_distributors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "slug"
     t.string "name"
     t.string "account_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_number"], name: "index_distributor_info_distributors_on_account_number"
     t.index ["name"], name: "index_distributor_info_distributors_on_name"
+    t.index ["slug"], name: "index_distributor_info_distributors_on_slug", unique: true
   end
 
   create_table "distributors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -684,6 +700,7 @@ ActiveRecord::Schema.define(version: 2019_03_25_173508) do
   end
 
   create_table "location_info_countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "slug"
     t.string "name"
     t.string "harman_name"
     t.string "alpha2"
@@ -702,6 +719,7 @@ ActiveRecord::Schema.define(version: 2019_03_25_173508) do
     t.index ["harman_name"], name: "index_location_info_countries_on_harman_name"
     t.index ["harman_world_region"], name: "index_location_info_countries_on_harman_world_region"
     t.index ["name"], name: "index_location_info_countries_on_name"
+    t.index ["slug"], name: "index_location_info_countries_on_slug", unique: true
   end
 
   create_table "location_info_location_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -782,6 +800,7 @@ ActiveRecord::Schema.define(version: 2019_03_25_173508) do
   end
 
   create_table "location_info_locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "slug"
     t.string "name"
     t.string "address1"
     t.string "address2"
@@ -800,14 +819,17 @@ ActiveRecord::Schema.define(version: 2019_03_25_173508) do
     t.index ["country"], name: "index_location_info_locations_on_country"
     t.index ["google_map_place_id"], name: "index_location_info_locations_on_google_map_place_id"
     t.index ["name"], name: "index_location_info_locations_on_name"
+    t.index ["slug"], name: "index_location_info_locations_on_slug", unique: true
     t.index ["state"], name: "index_location_info_locations_on_state"
   end
 
   create_table "location_info_regions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "slug"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_location_info_regions_on_name"
+    t.index ["slug"], name: "index_location_info_regions_on_slug", unique: true
   end
 
   create_table "media_library_access_requests", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

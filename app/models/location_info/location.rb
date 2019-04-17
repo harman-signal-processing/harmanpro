@@ -1,4 +1,7 @@
 class LocationInfo::Location < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name
+  
   validates :name, presence: true
   validates :address1, presence: true
   validates :city, presence: true

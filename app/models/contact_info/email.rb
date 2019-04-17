@@ -1,4 +1,7 @@
 class ContactInfo::Email < ApplicationRecord
+  extend FriendlyId
+  friendly_id :email 
+  
   validates :email, presence: true, uniqueness: { case_sensitive: false }
     
   has_many :email_to_contacts_association, dependent: :destroy, foreign_key: "contact_info_email_id", class_name: 'ContactInfo::ContactEmail'

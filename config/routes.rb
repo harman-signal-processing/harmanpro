@@ -84,6 +84,9 @@ Rails.application.routes.draw do
         collection { post :update_order }
       end
     end  # namespace :admin do
+    
+    # resources :distributors, only: [:index, :show]
+    get "distributors/:brand/:country_code" => "distributors#show", as: "brand_country"
   end  #  namespace :distributor_info do
 
   get 'training_calendar/show'

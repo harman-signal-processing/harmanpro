@@ -1,4 +1,7 @@
 class LocationInfo::Country < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name
+  
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   
   # will likely be removing the distributor association because countries will now be associated to locations instead

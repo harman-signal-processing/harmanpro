@@ -1,4 +1,7 @@
 class ContactInfo::Phone < ApplicationRecord
+  extend FriendlyId
+  friendly_id :phone
+  
   validates :phone, presence: true, uniqueness: { case_sensitive: false }
   
   has_many :phone_to_contacts_association, dependent: :destroy, foreign_key: "contact_info_phone_id", class_name: 'ContactInfo::ContactPhone'
