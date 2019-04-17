@@ -751,7 +751,7 @@ ActiveRecord::Schema.define(version: 2019_04_15_175211) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contact_info_phone_id"], name: "idx_location_phones_on_phone_id"
-    t.index ["location_info_location_id"], name: "idx_location_emails_on_location_id"
+    t.index ["location_info_location_id"], name: "idx_location_phones_on_location_id"
     t.index ["position"], name: "index_location_info_location_phones_on_position"
   end
 
