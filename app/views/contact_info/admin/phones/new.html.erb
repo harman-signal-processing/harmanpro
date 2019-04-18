@@ -8,10 +8,24 @@ Or if you want to create the phone without associating it to a contact? <%= link
 </p>
 <%end%>
 
+<%if @distributor.present?%>
+<p>This new phone number will be associated with <%=link_to "#{@distributor.name}", edit_distributor_info_admin_distributor_path(@distributor)%>. (You can change this later)<br />
+Or if you want to create the phone without associating it to a distributor? <%= link_to "Click to here create new phone without association.", new_contact_info_admin_phone_path %>
+</p>
+<%end%>
+
+<%if @location.present?%>
+<p>This new phone number will be associated with <%=link_to "#{@location.name}", edit_location_info_admin_location_path(@location)%>. (You can change this later)<br />
+Or if you want to create the phone without associating it to a location? <%= link_to "Click to here create new phone without association.", new_contact_info_admin_phone_path %>
+</p>
+<%end%>
+
 <%= simple_form_for @phone, url: contact_info_admin_phones_path do |f| %>
   <%= f.input :phone, label: "Phone" %>
   <%= f.input :label, label: "Label" %>
   <%= f.hidden_field :contact_id, value: "#{params[:phone][:contact_id]}" unless params[:phone].nil? %>
+  <%= f.hidden_field :distributor_id, value: "#{params[:phone][:distributor_id]}" unless params[:phone].nil? %>
+  <%= f.hidden_field :location_id, value: "#{params[:phone][:location_id]}" unless params[:phone].nil? %>  
 
     </br>
   <%= f.button :submit %>
