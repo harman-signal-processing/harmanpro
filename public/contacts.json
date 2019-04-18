@@ -2384,6 +2384,7 @@
        "email": "simone.scaramuzza@harman.com",
        "phone1": "+65 68705064",
        "group1": "All Broadcast (broadcasttelevision, broadcastradio)",
+       "g1Sort": 2,
        "showonweb": "yes",
        "solutionsMap": "yes",
        "channelMap": "no",
