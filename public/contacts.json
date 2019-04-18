@@ -2373,6 +2373,17 @@
        "phone1": "+65 68705064",
        "group1": "All Broadcast (broadcasttelevision, broadcastradio)",
        "group2": "housesofworship",
+       "showonweb": "no",
+       "solutionsMap": "no",
+       "channelMap": "no",
+       "t13": "APAC"
+   },
+   {
+       "name": "Simone Scaramuzza",
+       "title": "Business Development, Recording & Broadcast Solutions, APAC",
+       "email": "simone.scaramuzza@harman.com",
+       "phone1": "+65 68705064",
+       "group1": "All Broadcast (broadcasttelevision, broadcastradio)",
        "showonweb": "yes",
        "solutionsMap": "yes",
        "channelMap": "no",
