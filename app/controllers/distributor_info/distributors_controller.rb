@@ -23,6 +23,9 @@ class DistributorInfo::DistributorsController < ApplicationController
                   data_clients: { only: [:id, :name]}
                   }
                 },  # location contact emails, phones, websites, data clients
+              emails: { only: [:id, :email, :label]}, # location emails
+              phones: { only: [:id, :phone, :label]}, # location phones
+              websites: { only: [:id, :url, :label]}, # location websites              
               supported_countries: { only: [:id, :name, :harman_name, :alpha2, :world_region, :harman_world_region]},  # location supported countries
               supported_brands: { only: [:id, :name, :url]}  # location supported brands
               } # locations include
