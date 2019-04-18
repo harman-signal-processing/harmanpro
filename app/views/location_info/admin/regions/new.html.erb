@@ -1,8 +1,15 @@
 <%= link_to "Region List", location_info_admin_regions_path, class: "small success radius button" %>
 <h1>New Region</h1>
 
+<%if @location.present?%>
+<p>This new region will be associated with <%=link_to "#{@location.name}", edit_location_info_admin_location_path(@location)%>. (You can change this later)<br />
+Or if you want to create the region without associating it to a location? <%= link_to "Click to here create new region without association.", new_location_info_admin_region_path %>
+</p>
+<%end%>
+
 <%= simple_form_for @region, url: location_info_admin_regions_path do |f| %>
 <%= f.input :name %>
+<%= f.hidden_field :location_id, value: "#{params[:region][:location_id]}" unless params[:region].nil? %> 
 
 <%= f.submit class: "radius button" %>
 <% end %>

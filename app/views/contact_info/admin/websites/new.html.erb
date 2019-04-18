@@ -8,10 +8,24 @@ Or if you want to create the website without associating it to a contact? <%= li
 </p>
 <%end%>
 
+<%if @distributor.present?%>
+<p>This new website will be associated with <%=link_to "#{@distributor.name}", edit_distributor_info_admin_distributor_path(@distributor)%>. (You can change this later)<br />
+Or if you want to create the website without associating it to a distributor? <%= link_to "Click to here create new website without association.", new_contact_info_admin_website_path %>
+</p>
+<%end%>
+
+<%if @location.present?%>
+<p>This new website will be associated with <%=link_to "#{@location.name}", edit_location_info_admin_location_path(@location)%>. (You can change this later)<br />
+Or if you want to create the website without associating it to a location? <%= link_to "Click to here create new website without association.", new_contact_info_admin_website_path %>
+</p>
+<%end%>
+
 <%= simple_form_for @website, url: contact_info_admin_websites_path do |f| %>
   <%= f.input :url, label: "URL" %>
   <%= f.input :label, label: "Label" %>
   <%= f.hidden_field :contact_id, value: "#{params[:website][:contact_id]}" unless params[:website].nil? %>
+  <%= f.hidden_field :distributor_id, value: "#{params[:website][:distributor_id]}" unless params[:website].nil? %>
+  <%= f.hidden_field :location_id, value: "#{params[:website][:location_id]}" unless params[:website].nil? %> 
 
     </br>
   <%= f.button :submit %>

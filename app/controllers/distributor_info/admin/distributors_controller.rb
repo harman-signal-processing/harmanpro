@@ -18,6 +18,9 @@ class DistributorInfo::Admin::DistributorsController < DistributorInfo::AdminCon
     website_id = params[:distributor][:website_id] unless params[:distributor].nil?
     @website = ContactInfo::Website.find(website_id) if website_id.present?     
     
+    location_id = params[:distributor][:location_id] unless params[:distributor].nil?
+    @location = LocationInfo::Location.find(location_id) if location_id.present? 
+    
     @distributor = DistributorInfo::Distributor.new
   end  
   
@@ -45,9 +48,20 @@ class DistributorInfo::Admin::DistributorsController < DistributorInfo::AdminCon
   end  
   
   def create
-    @distributor = DistributorInfo::Distributor.new(distributor_params)
+    @distributor = DistributorInfo::Distributor.new(distributor_params.except(:location_id, :contact_id))
+    @contact = distributor_params[:contact_id].present? ? ContactInfo::Contact.find(distributor_params[:contact_id]) : nil
+    @location = distributor_params[:location_id].present? ? LocationInfo::Location.find(distributor_params[:location_id]) : nil
+    
     if @distributor.save
-      redirect_to edit_distributor_info_admin_distributor_path(@distributor), notice: "The distributor #{@distributor.name} was created successfully."
+      if @contact.present?
+        @distributor.contacts << @contact
+        redirect_to edit_contact_info_admin_contact_path(@contact), notice: "The distributor #{@distributor.name} was created successfully and assocated to #{@contact.name}."
+      elsif @location.present?
+        @distributor.locations << @location
+        redirect_to edit_location_info_admin_location_path(@location), notice: "The distributor #{@distributor.name} was created successfully and associated to #{@location.name}."      
+      else
+        redirect_to edit_distributor_info_admin_distributor_path(@distributor), notice: "The distributor #{@distributor.name} was created successfully."
+      end
     else
       render action: :new
     end

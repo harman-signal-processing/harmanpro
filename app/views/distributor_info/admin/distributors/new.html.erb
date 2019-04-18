@@ -7,9 +7,17 @@ If you want to create the distributor without associating it to a contact, <%= l
 </p>
 <%end%>
 
+<%if @location.present?%>
+<p>This new distributor will be associated with <%=link_to "#{@location.name}", edit_location_info_admin_location_path(@location)%>. (You can change this later)<br />
+Or if you want to create the distributor without associating it to a location? <%= link_to "Click to here create new distributor without association.", new_distributor_info_admin_distributor_path %>
+</p>
+<%end%>
+
 <%= simple_form_for @distributor, url: distributor_info_admin_distributors_path do |f| %>
 <%= f.input :name %>
 <%= f.input :account_number %>
+<%= f.hidden_field :location_id, value: "#{params[:distributor][:location_id]}" unless params[:distributor].nil? %> 
+<%= f.hidden_field :contact_id, value: "#{params[:distributor][:contact_id]}" unless params[:distributor].nil? %> 
 
 <%= f.submit class: "radius button" %>
 <% end %>
