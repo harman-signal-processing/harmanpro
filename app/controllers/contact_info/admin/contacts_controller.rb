@@ -100,9 +100,13 @@ class ContactInfo::Admin::ContactsController < ContactInfo::AdminController
       @contact.team_groups << @team_group unless @team_group.nil?
       @contact.territories << @territory unless @territory.nil?
       @contact.distributors << @distributor unless @distributor.nil?
-      @contact.locations << @location unless @location.nil?
       
-      redirect_to edit_contact_info_admin_contact_path(@contact), notice: "The contact #{@contact.name} was created successfully."
+      if @location.present?
+        @contact.locations << @location unless @location.nil?
+        redirect_to(edit_location_info_admin_location_path(@location), notice: "Contact #{@contact.name} was successfully created and associated to #{@location.name}.") 
+      else      
+        redirect_to edit_contact_info_admin_contact_path(@contact), notice: "The contact #{@contact.name} was created successfully."
+      end
     else
       render action: :new
     end     
