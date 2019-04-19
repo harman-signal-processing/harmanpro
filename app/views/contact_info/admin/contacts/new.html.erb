@@ -52,6 +52,7 @@ If you want to create the contact without associating it to a location, <%= link
 <%= f.hidden_field :team_group_id, value: "#{params[:contact][:team_group_id]}" unless params[:contact].nil? %>
 <%= f.hidden_field :territory_id, value: "#{params[:contact][:territory_id]}" unless params[:contact].nil? %>
 <%= f.hidden_field :distributor_id, value: "#{params[:contact][:distributor_id]}" unless params[:contact].nil? %>
+<%= f.hidden_field :location_id, value: "#{params[:contact][:location_id]}" unless params[:contact].nil? %>
 
 <%= f.submit class: "radius button" %>
 <% end %>
