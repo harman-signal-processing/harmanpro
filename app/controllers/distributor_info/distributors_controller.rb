@@ -7,7 +7,7 @@ class DistributorInfo::DistributorsController < ApplicationController
     brand = params[:brand].nil? ? "bss" : params[:brand]
     country_code = params[:country_code].nil? ? "us" : params[:country_code]
     
-    distributors = DistributorInfo::Distributor.joins(locations: [:supported_countries, :supported_brands]).where("location_info_countries.alpha2 = ? and brands.name = ?", country_code, brand)
+    distributors = DistributorInfo::Distributor.joins(:countries, :brands).where("location_info_countries.alpha2 = ? and brands.name = ?", country_code, brand)
     
     distributors_json = distributors.as_json(
         only: [:id,:name,:account_number], 
@@ -33,11 +33,12 @@ class DistributorInfo::DistributorsController < ApplicationController
           emails: { only: [:id, :email, :label]}, # distributor emails
           phones: { only: [:id, :phone, :label]}, # distributor phones
           websites: { only: [:id, :url, :label]}, # distributor websites
-          brands: { only: [:id, :name, :url]} # distributor brands
+          brands: { only: [:id, :name, :url]}, # distributor brands
+          countries: { only: [:id, :name, :harman_name, :alpha2, :world_region, :harman_world_region]}
         },  #  distributors include
         methods: :sort_order_for_brand
         )  #  distributors_json = distributors.as_json
-    
+        
     respond_with distributors_json
 
   end  #  def show

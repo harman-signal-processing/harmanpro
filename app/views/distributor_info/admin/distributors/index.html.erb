@@ -10,6 +10,8 @@
   	<th></th>
     <th>Name</th>
     <th>Account Number</th>
+    <th>Supported Countries</th>
+    <th>Supported Brands</th>
     <th>Locations</th>
   </tr>
 
@@ -18,6 +20,20 @@
     <td><%= link_to 'Edit', edit_distributor_info_admin_distributor_path(distributor), class: "small round button" %></td>
     <td><%= distributor.name %></td>
     <td><%= distributor.account_number %></td>
+    <td>
+      <ul>
+        <% distributor.countries.each do |country|%>
+          <li><%= country.name %></li>
+        <% end %>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <% distributor.brands.each do |brand|%>
+          <li><%= brand.name %></li>
+        <% end %>
+      </ul>
+    </td>    
     <td>
       <ul>
       <% distributor.locations.each do |location| %>
