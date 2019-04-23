@@ -22,14 +22,14 @@
     <td><%= distributor.account_number %></td>
     <td>
       <ul>
-        <% distributor.countries.each do |country|%>
+        <% distributor.countries.order(:name).each do |country|%>
           <li><%= country.name %></li>
         <% end %>
       </ul>
     </td>
     <td>
       <ul>
-        <% distributor.brands.each do |brand|%>
+        <% distributor.brands.order(:name).each do |brand|%>
           <li><%= brand.name %></li>
         <% end %>
       </ul>
@@ -51,7 +51,7 @@
             <td style="vertical-align: top;">
                 <% if location.supported_countries.present? %>
                   <ul>
-                    <% location.supported_countries.each do |country| %>
+                    <% location.supported_countries.order(:name).each do |country| %>
                       <li><%= link_to country.name, edit_location_info_admin_country_path(country) %></li>
                     <% end %>
                   </ul>
@@ -60,7 +60,7 @@
             <td style="vertical-align: top;">
               <% if location.contacts.present? %>
                 <ul>
-                  <% location.contacts.each do |contact| %>
+                  <% location.contacts.order(:name).each do |contact| %>
                     <li><%= link_to contact.name, edit_contact_info_admin_contact_path(contact) %> <span style="font-size:x-small"> - <%= contact.title %></span></li>
                   <% end %>
                 </ul>
