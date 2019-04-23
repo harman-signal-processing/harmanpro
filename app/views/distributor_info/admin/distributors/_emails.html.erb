@@ -8,9 +8,9 @@
             <%= f.hidden_field :distributor_info_distributor_id %>
             <%= hidden_field_tag :called_from, "distributor" %>
             <%= f.association :email, 
-            collection: ContactInfo::Email.not_associated_with_this_distributor(@distributor_email.distributor),
+            collection: ContactInfo::Email.not_associated_with_this_distributor(@distributor_email.distributor).order(:email),
             label: false,
-            # label_method: -> (contact) { "#{contact.name} - #{contact.title}" },
+            label_method: -> (email) { email.label.present? ? "#{email.email} (#{email.label})" : "#{email.email}" },
             input_html: { class: 'chosen-select', multiple: true,  data: { placeholder: 'Select emails'} }%>
             <%= f.submit "add email", class: "small round button", style:"margin-top:10px;" %>
           <% end %>
