@@ -39,7 +39,15 @@ class DistributorInfo::DistributorsController < ApplicationController
         methods: :sort_order_for_brand
         )  #  distributors_json = distributors.as_json
         
-    respond_with distributors_json
+        distributors_and_locations_filtered_by_country_and_brand = distributors_json.each do |distributor|
+          # removing locations that do not support country and brand
+          distributor["locations"].delete_if{|location| 
+            ((!location["supported_countries"].select {|country| country["alpha2"].downcase == country_code }.any?) && (!location["supported_brands"].select {|brand| brand["name"].downcase == brand }.any?))
+          }  #  distributor.locations.delete_if{|location|
+        end  #  distributors_and_locations_filtered_by_country_and_brand = distributors_json.each do |distributor|
+        
+    respond_with distributors_and_locations_filtered_by_country_and_brand
+    # respond_with distributors_json
 
   end  #  def show
 end  #  class DistributorInfo::DistributorsController < ApplicationController
