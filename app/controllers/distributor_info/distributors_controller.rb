@@ -36,7 +36,7 @@ class DistributorInfo::DistributorsController < ApplicationController
           brands: { only: [:id, :name, :url]}, # distributor brands
           countries: { only: [:id, :name, :harman_name, :alpha2, :world_region, :harman_world_region]}
         },  #  distributors include
-        methods: :sort_order_for_brand
+        methods: [:sort_order_for_brand, :sort_order_for_country]
         )  #  distributors_json = distributors.as_json
         
         distributors_and_locations_filtered_by_country_and_brand = distributors_json.each do |distributor|

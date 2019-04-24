@@ -7,7 +7,6 @@ class LocationInfo::Admin::RegionsController < LocationInfo::AdminController
   
   def new
     @region = LocationInfo::Region.new
-    # binding.pry
     location_id = params[:region][:location_id] unless params[:region].nil?
     @location = LocationInfo::Location.find(location_id) if location_id.present?    
     

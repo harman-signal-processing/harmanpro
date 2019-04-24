@@ -61,11 +61,15 @@ class DistributorInfo::Distributor < ApplicationRecord
     distributors_not_associated_with_this_website
   }   
   
-  # This method is currently only called from distributors.as_json in DistributorInfo::DistributorsController. 
-  # In this context it has only one association because it has already been filtered by brand. 
+  # The sort methods below currently only called from distributors.as_json in DistributorInfo::DistributorsController. 
+  # In this context it has only one association because it has already been filtered by brand and supported country. 
   # There is probably a better way to get the sort order for this association.
   def sort_order_for_brand
     distributor_to_brands_association.first.nil? ? 0 : distributor_to_brands_association.first.position.nil? ? 0 : distributor_to_brands_association.first.position
   end
+  
+  def sort_order_for_country
+    distributor_to_countries_association.first.nil? ? 0 : distributor_to_countries_association.first.position.nil? ? 0 : distributor_to_countries_association.first.position
+  end  
   
 end
