@@ -1,7 +1,7 @@
 <!-- Distributors -->
 	<div class="small-12 medium-6 columns" id="Contacts">
         <div class="group">
-          <h4>Distributors</h4>
+          <h4>Supported Distributors</h4>
           <p>Choose one or more distributor below. Doing so will associate this distributor with the country.</p>
 
           <%= simple_form_for [@distributor_country], url: distributor_info_admin_distributor_countries_path, remote: true do |f| %>
@@ -16,8 +16,8 @@
           <% end %>
 					
 					<strong>Current distributors</strong>
-          <ul id="distributor_countries" class="list">
-            <% @distributor_countries.each do |association| %>
+          <ul id="distributor_countries" class="sortable_list">
+            <% @distributor_countries.order(:position).each do |association| %>
               <%= render "/distributor_info/admin/distributor_countries/distributor_country_row", association: association, called_from: "country" %>
             <% end %>
           </ul>
