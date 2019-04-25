@@ -32,4 +32,17 @@ class ContactInfo::Email < ApplicationRecord
     emails_not_associated_with_this_location
   }  
   
+  # The sort methods below currently only called from distributors.as_json in DistributorInfo::DistributorsController. 
+  def email_sort_order_for_contact
+    email_to_contacts_association.first.nil? ? 0 : email_to_contacts_association.first.position.nil? ? 0 : email_to_contacts_association.first.position
+  end  
+  
+  def email_sort_order_for_distributor
+    email_to_distributors_association.first.nil? ? 0 : email_to_distributors_association.first.position.nil? ? 0 : email_to_distributors_association.first.position
+  end  
+  
+  def email_sort_order_for_location
+    email_to_locations_association.first.nil? ? 0 : email_to_locations_association.first.position.nil? ? 0 : email_to_locations_association.first.position
+  end   
+  
 end

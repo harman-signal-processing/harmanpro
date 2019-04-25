@@ -31,4 +31,17 @@ class ContactInfo::Phone < ApplicationRecord
     phones_not_associated_with_this_location
   }  
   
+  # The sort methods below currently only called from distributors.as_json in DistributorInfo::DistributorsController. 
+  def phone_sort_order_for_contact
+    phone_to_contacts_association.first.nil? ? 0 : phone_to_contacts_association.first.position.nil? ? 0 : phone_to_contacts_association.first.position
+  end 
+  
+  def phone_sort_order_for_distributor
+    phone_to_distributors_association.first.nil? ? 0 : phone_to_distributors_association.first.position.nil? ? 0 : phone_to_distributors_association.first.position
+  end 
+  
+  def phone_sort_order_for_location
+    phone_to_locations_association.first.nil? ? 0 : phone_to_locations_association.first.position.nil? ? 0 : phone_to_locations_association.first.position
+  end   
+  
 end

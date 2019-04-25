@@ -80,4 +80,9 @@ class LocationInfo::Location < ApplicationRecord
     locations_not_associated_with_this_brand
   }  
   
+  # The sort methods below currently only called from distributors.as_json in DistributorInfo::DistributorsController. 
+  def location_sort_order_for_distributor
+    location_to_distributors_association.first.nil? ? 0 : location_to_distributors_association.first.position.nil? ? 0 : location_to_distributors_association.first.position
+  end  
+  
 end

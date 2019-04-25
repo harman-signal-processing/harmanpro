@@ -113,4 +113,9 @@ class ContactInfo::Contact < ApplicationRecord
     contacts_not_associated_with_this_country
   }  
   
+  # The sort methods below currently only called from distributors.as_json in DistributorInfo::DistributorsController. 
+  def contact_sort_order_for_location
+    contact_to_locations_association.first.nil? ? 0 : contact_to_locations_association.first.position.nil? ? 0 : contact_to_locations_association.first.position
+  end 
+  
 end  #  class ContactInfo::Contact < ApplicationRecord
