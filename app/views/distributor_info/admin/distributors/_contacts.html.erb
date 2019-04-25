@@ -17,7 +17,7 @@
 					
 					<strong>Current contacts</strong>
           <ul id="distributor_contacts" class="sortable_list">
-            <% @distributor_contacts.each do |association| %>
+            <% @distributor_contacts.order(:position).each do |association| %>
               <%= render "/distributor_info/admin/distributor_contacts/distributor_contact_row", association: association, called_from: "distributor" %>
             <% end %>
           </ul>

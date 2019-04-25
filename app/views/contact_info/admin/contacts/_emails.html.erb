@@ -17,7 +17,7 @@
 					
 					<strong>Current emails</strong>
           <ul id="contact_emails" class="sortable_list">
-            <% @contact_emails.each do |association| %>
+            <% @contact_emails.order(:position).each do |association| %>
               <%= render "/contact_info/admin/contact_emails/contact_email_row", association: association, called_from: "contact" %>
             <% end %>
           </ul>
