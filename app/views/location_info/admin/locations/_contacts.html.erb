@@ -17,7 +17,7 @@
 					
 					<strong>Current contacts</strong>
           <ul id="location_contacts" class="sortable_list">
-            <% @location_contacts.each do |association| %>
+            <% @location_contacts.order(:position).each do |association| %>
               <%= render "/location_info/admin/location_contacts/location_contact_row", association: association, called_from: "location" %>
             <% end %>
           </ul>
