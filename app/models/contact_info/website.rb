@@ -31,4 +31,17 @@ class ContactInfo::Website < ApplicationRecord
     websites_not_associated_with_this_location
   }  
   
+  # The sort methods below currently only called from distributors.as_json in DistributorInfo::DistributorsController. 
+  def website_sort_order_for_contact
+    website_to_contacts_association.first.nil? ? 0 : website_to_contacts_association.first.position.nil? ? 0 : website_to_contacts_association.first.position
+  end 
+  
+  def website_sort_order_for_distributor
+    website_to_distributors_association.first.nil? ? 0 : website_to_distributors_association.first.position.nil? ? 0 : website_to_distributors_association.first.position
+  end   
+  
+  def website_sort_order_for_location
+    website_to_locations_association.first.nil? ? 0 : website_to_locations_association.first.position.nil? ? 0 : website_to_locations_association.first.position
+  end   
+  
 end
