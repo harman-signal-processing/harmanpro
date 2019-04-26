@@ -17,7 +17,7 @@
 					
 					<strong>Current distributors</strong>
           <ul id="distributor_locations" class="list">
-            <% @distributor_locations.each do |association| %>
+            <% @distributor_locations.joins(:distributor).order(:name).each do |association| %>
               <%= render "/distributor_info/admin/distributor_locations/distributor_location_row", association: association, called_from: "location" %>
             <% end %>
           </ul>
