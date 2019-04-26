@@ -21,7 +21,7 @@ class DistributorInfo::DistributorsController < ApplicationController
   
   private
   
-  def get_complete_distributor_tree_json (distributors)
+  def get_complete_distributor_tree_json(distributors)
     distributors_json = distributors.as_json(
       only: [:id,:name,:account_number], # distributor attributes to return
       include: { 
@@ -55,7 +55,7 @@ class DistributorInfo::DistributorsController < ApplicationController
     )  #  distributors_json = distributors.as_json
     
     distributors_json
-  end  #  get_complete_distributor_tree_json (distributors)
+  end  #  get_complete_distributor_tree_json(distributors)
   
   def filter_distributor_locations_by_brand_and_country(distributors, brand, country_code)
     distributors_and_locations_filtered_by_country_and_brand = distributors.each do |distributor|

@@ -11,14 +11,13 @@
             <%= f.association :country, 
             collection: LocationInfo::Country.not_associated_with_this_distributor(@distributor_country.distributor),
             label: false,
-            # label_method: -> (contact) { "#{contact.name} - #{contact.title}" },
             input_html: { class: 'chosen-select', multiple: true,  data: { placeholder: 'Select countries'} }%>
             <%= f.submit "add country", class: "small round button", style:"margin-top:10px;" %>
           <% end %>
 					
 					<strong>Current countries</strong>
           <ul id="distributor_countries" class="list">
-            <% @distributor_countries.each do |association| %>
+            <% @distributor_countries.joins(:country).order(:name).each do |association| %>
               <%= render "/distributor_info/admin/distributor_countries/distributor_country_row", association: association, called_from: "distributor" %>
             <% end %>
           </ul>
