@@ -10,10 +10,12 @@ class DistributorInfo::DistributorsController < ApplicationController
     distributors = DistributorInfo::Distributor.joins(:countries, :brands).where("location_info_countries.alpha2 = ? and brands.name = ?", country_code, brand)
     
     distributor_tree_unfiltered_json = get_complete_distributor_tree_json(distributors)
-        
-    distributors_tree_with_locations_filtered_by_country_and_brand_json = filter_distributor_locations_by_brand_and_country(distributor_tree_unfiltered_json, brand, country_code)
     
-    distributors_json = filter_contacts(distributors_tree_with_locations_filtered_by_country_and_brand_json)
+    distributor_tree_locations_with_country = remove_distributor_locations_not_matching_country(distributor_tree_unfiltered_json, country_code)
+    
+    distributor_tree_locations_with_brand = remove_distributor_locations_not_matching_brand(distributor_tree_locations_with_country, brand)
+    
+    distributors_json = remove_contacts_not_matching_brandsites_distributor_data_client(distributor_tree_locations_with_brand)
         
     respond_with distributors_json
 
@@ -57,18 +59,29 @@ class DistributorInfo::DistributorsController < ApplicationController
     distributors_json
   end  #  get_complete_distributor_tree_json(distributors)
   
-  def filter_distributor_locations_by_brand_and_country(distributors, brand, country_code)
-    distributors_and_locations_filtered_by_country_and_brand = distributors.each do |distributor|
-      # removing locations that do not support country and brand
+  def remove_distributor_locations_not_matching_country(distributors, country_code)
+    distributors_and_locations_filtered_by_country = distributors.each do |distributor|
+      # removing locations that do not support country
       distributor["locations"].delete_if{|location| 
-        ((!location["supported_countries"].select {|country| country["alpha2"].downcase == country_code }.any?) && (!location["supported_brands"].select {|brand| brand["name"].downcase == brand }.any?))
+        !location["supported_countries"].select {|country| country["alpha2"].downcase == country_code }.any?
       }  #  distributor.locations.delete_if{|location|
-    end  #  distributors_and_locations_filtered_by_country_and_brand = distributors.each do |distributor|  
+    end  #  distributors_and_locations_filtered_by_country = distributors.each do |distributor|  
+    
+    distributors_and_locations_filtered_by_country
+  end
   
-    distributors_and_locations_filtered_by_country_and_brand
-  end  #  def filter_distributor_locations_by_brand_and_country(distributors)
+  def remove_distributor_locations_not_matching_brand(distributors, brand)
+    distributors_and_locations_filtered_by_brand = distributors.each do |distributor|
+      # removing locations that do not support brand
+      distributor["locations"].delete_if{|location| 
+        !location["supported_brands"].select {|supported_brand| supported_brand["name"].downcase == brand }.any?
+      }  #  distributor.locations.delete_if{|location|
+    end  #  filter_distributor_locations_by_brand = distributors.each do |distributor|  
   
-  def filter_contacts(distributors)
+    distributors_and_locations_filtered_by_brand
+  end  #  def remove_distributor_locations_not_matching_brand(distributors)
+  
+  def remove_contacts_not_matching_brandsites_distributor_data_client(distributors)
       distributors_with_filtered_contacts = distributors.each do |distributor| 
         distributor["locations"].each do |location|
           location["contacts"].delete_if {|contact|
@@ -80,6 +93,6 @@ class DistributorInfo::DistributorsController < ApplicationController
       end  #  distributors_with_filtered_contacts = distributors.each do |distributor|   
         
     distributors_with_filtered_contacts
-  end  #  def filter_contacts(distributors)
+  end  #  def remove_contacts_not_matching_brandsites_distributor_data_client(distributors)
 
 end  #  class DistributorInfo::DistributorsController < ApplicationController
