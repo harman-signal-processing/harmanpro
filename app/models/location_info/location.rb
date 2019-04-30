@@ -8,16 +8,16 @@ class LocationInfo::Location < ApplicationRecord
   validates :country, presence: true
   
   has_many :location_to_contacts_association, dependent: :destroy, foreign_key: 'location_info_location_id', class_name: 'LocationInfo::LocationContact'
-  has_many :contacts, through: :location_to_contacts_association, source: :contact, class_name: 'ContactInfo::Contact'  
+  has_many :contacts, -> { order 'location_info_location_contacts.position' }, through: :location_to_contacts_association, source: :contact, class_name: 'ContactInfo::Contact'  
   
   has_many :location_to_emails_association, dependent: :destroy, foreign_key: 'location_info_location_id', class_name: 'LocationInfo::LocationEmail'
-  has_many :emails, through: :location_to_emails_association, source: :email, class_name: 'ContactInfo::Email'  
+  has_many :emails, -> { order 'location_info_location_emails.position' }, through: :location_to_emails_association, source: :email, class_name: 'ContactInfo::Email'  
   
   has_many :location_to_phones_association, dependent: :destroy, foreign_key: 'location_info_location_id', class_name: 'LocationInfo::LocationPhone'
-  has_many :phones, through: :location_to_phones_association, source: :phone, class_name: 'ContactInfo::Phone'  
+  has_many :phones, -> { order 'location_info_location_phones.position' }, through: :location_to_phones_association, source: :phone, class_name: 'ContactInfo::Phone'  
   
   has_many :location_to_websites_association, dependent: :destroy, foreign_key: 'location_info_location_id', class_name: 'LocationInfo::LocationWebsite'
-  has_many :websites, through: :location_to_websites_association, source: :website, class_name: 'ContactInfo::Website'  
+  has_many :websites, -> { order 'location_info_location_websites.position' }, through: :location_to_websites_association, source: :website, class_name: 'ContactInfo::Website'  
   
   has_many :location_to_regions_association, dependent: :destroy, foreign_key: 'location_info_location_id', class_name: 'LocationInfo::LocationRegion'
   has_many :regions, through: :location_to_regions_association, source: :region, class_name: 'LocationInfo::Region'
@@ -80,9 +80,4 @@ class LocationInfo::Location < ApplicationRecord
     locations_not_associated_with_this_brand
   }  
   
-  # The sort methods below currently only called from distributors.as_json in DistributorInfo::DistributorsController. 
-  def location_sort_order_for_distributor
-    location_to_distributors_association.first.nil? ? 0 : location_to_distributors_association.first.position.nil? ? 0 : location_to_distributors_association.first.position
-  end  
-  
-end
+end  #  class LocationInfo::Location < ApplicationRecord
