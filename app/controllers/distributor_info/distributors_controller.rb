@@ -7,7 +7,7 @@ class DistributorInfo::DistributorsController < ApplicationController
     brand = params[:brand].nil? ? "bss" : params[:brand]
     country_code = params[:country_code].nil? ? "us" : params[:country_code]
     
-    distributors = DistributorInfo::Distributor.joins(:countries, :brands).where("location_info_countries.alpha2 = ? and brands.name = ?", country_code, brand)
+    distributors = DistributorInfo::Distributor.joins(:countries, :brands).where("location_info_countries.alpha2 = ? and brands.name = ?", country_code, brand).order("distributor_info_distributor_countries.position")
     
     distributor_tree_unfiltered_json = get_complete_distributor_tree_json(distributors)
     
@@ -16,7 +16,12 @@ class DistributorInfo::DistributorsController < ApplicationController
     distributor_tree_locations_with_brand = remove_distributor_locations_not_matching_brand(distributor_tree_locations_with_country, brand)
     
     distributors_json = remove_contacts_not_matching_brandsites_distributor_data_client(distributor_tree_locations_with_brand)
-        
+    
+    # distributors_json.each do |distributor|
+    #   # distributor["id"]
+    #   binding.pry
+    # end
+    
     respond_with distributors_json
 
   end  #  def show
@@ -36,16 +41,14 @@ class DistributorInfo::DistributorsController < ApplicationController
                           phones: { only: [:id, :phone, :label], methods: [:phone_sort_order_for_contact]}, # contact phones
                           websites: { only: [:id, :url, :label], methods: [:website_sort_order_for_contact]}, # contact websites
                           data_clients: { only: [:id, :name]}     # contact data_clients
-                      },  # contacts include 
-                      methods: [:contact_sort_order_for_location]  # location contacts sort order
+                      }  # contacts include 
                   },  # contacts
                   emails: { only: [:id, :email, :label], methods: [:email_sort_order_for_location]}, # location emails
                   phones: { only: [:id, :phone, :label], methods: [:phone_sort_order_for_location]}, # location phones
                   websites: { only: [:id, :url, :label], methods: [:website_sort_order_for_distributor]}, # location websites              
                   supported_countries: { only: [:id, :name, :harman_name, :alpha2, :world_region, :harman_world_region]},  # location supported countries
                   supported_brands: { only: [:id, :name, :url]}  # location supported brands
-              }, # locations include
-              methods: [:location_sort_order_for_distributor], # distributor location sort order
+              } # locations include
           }, # locations 
           emails: { only: [:id, :email, :label], methods: [:email_sort_order_for_distributor]}, # distributor emails
           phones: { only: [:id, :phone, :label], methods: [:phone_sort_order_for_distributor]}, # distributor phones
@@ -53,7 +56,6 @@ class DistributorInfo::DistributorsController < ApplicationController
           brands: { only: [:id, :name, :url]}, # distributor brands
           countries: { only: [:id, :name, :harman_name, :alpha2, :world_region, :harman_world_region]} # distributor supported countries
       },  #  distributors include
-      methods: [:sort_order_for_brand, :sort_order_for_country] # brand, country distributor sort order
     )  #  distributors_json = distributors.as_json
     
     distributors_json

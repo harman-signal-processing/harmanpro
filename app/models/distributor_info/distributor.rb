@@ -8,19 +8,19 @@ class DistributorInfo::Distributor < ApplicationRecord
   has_many :brands, through: :distributor_to_brands_association, source: :brand, class_name: 'Brand'
   
   has_many :distributor_to_locations_association, dependent: :destroy, foreign_key: 'distributor_info_distributor_id', class_name: 'DistributorInfo::DistributorLocation'
-  has_many :locations, through: :distributor_to_locations_association, source: :location, class_name: 'LocationInfo::Location'
+  has_many :locations, -> { order 'distributor_info_distributor_locations.position' }, through: :distributor_to_locations_association, source: :location, class_name: 'LocationInfo::Location'
   
   has_many :distributor_to_contacts_association, dependent: :destroy, foreign_key: 'distributor_info_distributor_id', class_name: 'DistributorInfo::DistributorContact'
-  has_many :contacts, through: :distributor_to_contacts_association, source: :contact, class_name: 'ContactInfo::Contact'  
+  has_many :contacts, -> { order 'distributor_info_distributor_contacts.position' }, through: :distributor_to_contacts_association, source: :contact, class_name: 'ContactInfo::Contact'  
   
   has_many :distributor_to_emails_association, dependent: :destroy, foreign_key: 'distributor_info_distributor_id', class_name: 'DistributorInfo::DistributorEmail'
-  has_many :emails, through: :distributor_to_emails_association, source: :email, class_name: 'ContactInfo::Email'    
+  has_many :emails, -> { order 'distributor_info_distributor_emails.position' }, through: :distributor_to_emails_association, source: :email, class_name: 'ContactInfo::Email'    
   
   has_many :distributor_to_phones_association, dependent: :destroy, foreign_key: 'distributor_info_distributor_id', class_name: 'DistributorInfo::DistributorPhone'
-  has_many :phones, through: :distributor_to_phones_association, source: :phone, class_name: 'ContactInfo::Phone'    
+  has_many :phones, -> { order 'distributor_info_distributor_phones.position' }, through: :distributor_to_phones_association, source: :phone, class_name: 'ContactInfo::Phone'    
   
   has_many :distributor_to_websites_association, dependent: :destroy, foreign_key: 'distributor_info_distributor_id', class_name: 'DistributorInfo::DistributorWebsite'
-  has_many :websites, through: :distributor_to_websites_association, source: :website, class_name: 'ContactInfo::Website'    
+  has_many :websites, -> { order 'distributor_info_distributor_websites.position' }, through: :distributor_to_websites_association, source: :website, class_name: 'ContactInfo::Website'    
   
   has_many :distributor_to_countries_association, dependent: :destroy, foreign_key: 'distributor_info_distributor_id', class_name: 'DistributorInfo::DistributorCountry'
   has_many :countries, through: :distributor_to_countries_association, source: :country, class_name: 'LocationInfo::Country'    
@@ -61,15 +61,4 @@ class DistributorInfo::Distributor < ApplicationRecord
     distributors_not_associated_with_this_website
   }   
   
-  # The sort methods below currently only called from distributors.as_json in DistributorInfo::DistributorsController. 
-  # In this context it has only one association because it has already been filtered by brand and supported country. 
-  # There is probably a better way to get the sort order for this association.
-  def sort_order_for_brand
-    distributor_to_brands_association.first.nil? ? 0 : distributor_to_brands_association.first.position.nil? ? 0 : distributor_to_brands_association.first.position
-  end
-  
-  def sort_order_for_country
-    distributor_to_countries_association.first.nil? ? 0 : distributor_to_countries_association.first.position.nil? ? 0 : distributor_to_countries_association.first.position
-  end  
-  
-end
+end  #  class DistributorInfo::Distributor < ApplicationRecord
