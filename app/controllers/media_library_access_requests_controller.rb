@@ -6,7 +6,7 @@ class MediaLibraryAccessRequestsController < ApplicationController
 
   def create
     @media_library_access_request = MediaLibraryAccessRequest.new(media_library_access_request_params)
-    if @media_library_access_request.save
+    if verify_recaptcha(model: @media_library_access_request) && @media_library_access_request.save
       redirect_to media_library_path, notice: "Your request has been sent."
     else
       @landing_page = LandingPage.where(slug: 'request-media-library-access').first_or_initialize
