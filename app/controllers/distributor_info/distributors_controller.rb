@@ -15,12 +15,12 @@ class DistributorInfo::DistributorsController < ApplicationController
     
     distributor_tree_locations_with_brand = remove_distributor_locations_not_matching_brand(distributor_tree_locations_with_country, brand)
     
-    distributors_json = remove_contacts_not_matching_brandsites_distributor_data_client(distributor_tree_locations_with_brand)
+    distributors_contacts_with_correct_data_client_json = remove_contacts_not_matching_brandsites_distributor_data_client(distributor_tree_locations_with_brand)
     
-    # distributors_json.each do |distributor|
-    #   # distributor["id"]
-    #   binding.pry
-    # end
+    # Remove distributors that have no locations, no emails, no phones, no websites. 
+    # This is an edge case, where the distributor is associated with the country and brand but none of it's location are and no contact data provided.
+    # Example, Harman Professional Solutions and BSS, Mexico
+    distributors_json = remove_distributor_with_no_info(distributors_contacts_with_correct_data_client_json)
     
     respond_with distributors_json
 
@@ -60,6 +60,12 @@ class DistributorInfo::DistributorsController < ApplicationController
     
     distributors_json
   end  #  get_complete_distributor_tree_json(distributors)
+  
+  def remove_distributor_with_no_info(distributors)
+    distributors.delete_if{|distributor|
+      distributor["locations"].empty? && distributor["emails"].empty? && distributor["phones"].empty? && distributor["websites"].empty?
+    }  #  distributors.delete_if{|distributor|
+  end  #  def remove_distributor_with_no_info(distributors)
   
   def remove_distributor_locations_not_matching_country(distributors, country_code)
     distributors_and_locations_filtered_by_country = distributors.each do |distributor|
