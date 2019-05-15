@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_15_175211) do
+ActiveRecord::Schema.define(version: 2019_05_15_150546) do
 
   create_table "active_admin_comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -474,6 +474,17 @@ ActiveRecord::Schema.define(version: 2019_04_15_175211) do
     t.index ["position"], name: "index_distributor_info_distributor_emails_on_position"
   end
 
+  create_table "distributor_info_distributor_exclude_brand_countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "distributor_info_distributor_id"
+    t.integer "brand_id"
+    t.bigint "location_info_country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "idx_dist_exclude_on_brands_brand_id"
+    t.index ["distributor_info_distributor_id"], name: "idx_dist_exclude_on_distributor_id"
+    t.index ["location_info_country_id"], name: "idx_dist_exclude_on_country_id"
+  end
+
   create_table "distributor_info_distributor_locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "position"
     t.bigint "distributor_info_distributor_id"
@@ -742,6 +753,17 @@ ActiveRecord::Schema.define(version: 2019_04_15_175211) do
     t.index ["contact_info_email_id"], name: "idx_location_emails_on_email_id"
     t.index ["location_info_location_id"], name: "idx_location_emails_on_location_id"
     t.index ["position"], name: "index_location_info_location_emails_on_position"
+  end
+
+  create_table "location_info_location_exclude_brand_countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "location_info_location_id"
+    t.integer "brand_id"
+    t.bigint "location_info_country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "idx_location_exclude_on_supported_brands_brand_id"
+    t.index ["location_info_country_id"], name: "idx_location_exclude_on_country_id"
+    t.index ["location_info_location_id"], name: "idx_location_exclude_on_location_id"
   end
 
   create_table "location_info_location_phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -1367,6 +1389,9 @@ ActiveRecord::Schema.define(version: 2019_04_15_175211) do
   add_foreign_key "distributor_info_distributor_countries", "location_info_countries"
   add_foreign_key "distributor_info_distributor_emails", "contact_info_emails"
   add_foreign_key "distributor_info_distributor_emails", "distributor_info_distributors"
+  add_foreign_key "distributor_info_distributor_exclude_brand_countries", "brands"
+  add_foreign_key "distributor_info_distributor_exclude_brand_countries", "distributor_info_distributors"
+  add_foreign_key "distributor_info_distributor_exclude_brand_countries", "location_info_countries"
   add_foreign_key "distributor_info_distributor_locations", "distributor_info_distributors"
   add_foreign_key "distributor_info_distributor_locations", "location_info_locations"
   add_foreign_key "distributor_info_distributor_phones", "contact_info_phones"
@@ -1377,6 +1402,9 @@ ActiveRecord::Schema.define(version: 2019_04_15_175211) do
   add_foreign_key "location_info_location_contacts", "location_info_locations"
   add_foreign_key "location_info_location_emails", "contact_info_emails"
   add_foreign_key "location_info_location_emails", "location_info_locations"
+  add_foreign_key "location_info_location_exclude_brand_countries", "brands"
+  add_foreign_key "location_info_location_exclude_brand_countries", "location_info_countries"
+  add_foreign_key "location_info_location_exclude_brand_countries", "location_info_locations"
   add_foreign_key "location_info_location_phones", "contact_info_phones"
   add_foreign_key "location_info_location_phones", "location_info_locations"
   add_foreign_key "location_info_location_regions", "location_info_locations"
