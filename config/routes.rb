@@ -59,6 +59,7 @@ Rails.application.routes.draw do
       resources :location_regions
       resources :location_supported_countries
       resources :location_supported_brands
+      resources :location_exclude_brand_countries
       resources :location_contacts,
         :location_emails,
         :location_phones,
@@ -73,7 +74,7 @@ Rails.application.routes.draw do
     get 'admin' => 'admin#index'
     namespace :admin do
       resources :distributors, path: :distributors
-      
+      resources :distributor_exclude_brand_countries
       resources :distributor_countries,
         :distributor_locations,
         :distributor_contacts,

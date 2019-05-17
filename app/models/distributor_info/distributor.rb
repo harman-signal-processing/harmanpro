@@ -25,6 +25,8 @@ class DistributorInfo::Distributor < ApplicationRecord
   has_many :distributor_to_countries_association, dependent: :destroy, foreign_key: 'distributor_info_distributor_id', class_name: 'DistributorInfo::DistributorCountry'
   has_many :countries, through: :distributor_to_countries_association, source: :country, class_name: 'LocationInfo::Country'    
   
+  has_many :distributor_brand_country_exclusion_association, dependent: :destroy, foreign_key: 'distributor_info_distributor_id', class_name: 'DistributorInfo::DistributorExcludeBrandCountry'
+    
   scope :not_associated_with_this_country, ->(country) { 
     distributor_ids_already_associated_with_this_country = DistributorInfo::DistributorCountry.where("location_info_country_id = ?", country.id).map{|distributor_country| distributor_country.distributor_info_distributor_id }
     distributors_not_associated_with_this_country = DistributorInfo::Distributor.where.not(id: distributor_ids_already_associated_with_this_country).order(:name)    
@@ -60,5 +62,17 @@ class DistributorInfo::Distributor < ApplicationRecord
     distributors_not_associated_with_this_website = DistributorInfo::Distributor.where.not(id: distributor_ids_already_associated_with_this_website).order(:name)    
     distributors_not_associated_with_this_website
   }   
+  
+  scope :brands_countries_not_already_excluded, -> (distributor){
+    brands_countries = []
+    existing_brand_country_exclusions = distributor.distributor_brand_country_exclusion_association.map{|item| "#{item.brand_id}_#{item.location_info_country_id}"}
+    distributor.brands.order(:name).pluck(:id, :name).each do |brand|
+      distributor.countries.order(:name).pluck(:id, :name).each do |country|
+        already_excluded = existing_brand_country_exclusions.include?("#{brand[0]}_#{country[0]}")
+        brands_countries << { id: "#{brand[0]}_#{country[0]}", name: "#{brand[1]} - #{country[1]}"} unless already_excluded
+      end  #  distributor.countries.pluck(:id, :name).each do |country|
+    end  #  distributor.brands.pluck(:id, :name).each do |brand|
+    brands_countries
+  }
   
 end  #  class DistributorInfo::Distributor < ApplicationRecord

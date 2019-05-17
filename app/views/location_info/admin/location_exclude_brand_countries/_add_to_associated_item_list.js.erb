@@ -1,0 +1,10 @@
+(function(){
+	var $list_of_associated_brands_countries = $('#excluded_brands_countries');
+	build_list_of_brands_countries_associated_with_this_location($list_of_associated_brands_countries);
+	
+	function build_list_of_brands_countries_associated_with_this_location($list_of_associated_countries) {
+		<% @excluded_brands_countries.each do |location_brand_country| %>
+			$list_of_associated_brands_countries.append('<%= escape_javascript(render "/location_info/admin/location_exclude_brand_countries/location_exclude_brand_country_row", association: location_brand_country, called_from: @called_from) %>');
+		<% end %>	
+	}  //  function build_list_of_brands_countries_associated_with_this_location($list_of_associated_brands_countries)
+})();

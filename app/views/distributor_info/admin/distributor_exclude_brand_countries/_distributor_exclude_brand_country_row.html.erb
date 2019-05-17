@@ -1,0 +1,14 @@
+<% called_from ||= 'distributor' %>
+
+<li id="distributor_brand_country_<%= association.id %>">
+
+	<% if (called_from == 'distributor') %> 
+	  <%="#{association.brand.name} - #{association.country.name}"%>
+	<%end%>
+
+	<%= link_to(image_tag("icons/trash.gif"), 
+			distributor_info_admin_distributor_exclude_brand_country_path(association, called_from: called_from), 
+			confirm: "Are you sure? (This won't delete the brand or country --it will only remove the exclusion association.)", 
+			remote: true,
+			method: :delete) %>
+</li>

@@ -1,0 +1,13 @@
+(function(){
+
+    // remove associated country
+    $('#location_brand_country_<%= @excluded_brand_country.id %>').remove();
+    
+<%if @called_from == "location" %>
+	<%= render "/location_info/admin/location_exclude_brand_countries/rebuild_brand_country_select_list" %>
+<% end %>	
+
+
+})();  //  (function(){
+
+<% flash.discard %>

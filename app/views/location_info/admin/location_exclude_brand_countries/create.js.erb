@@ -1,0 +1,8 @@
+<%if @called_from == "location" %>
+	<%= render "/location_info/admin/location_exclude_brand_countries/rebuild_brand_country_select_list" %>
+<% end %>	
+
+
+<%= render "/location_info/admin/location_exclude_brand_countries/add_to_associated_item_list" %>
+
+<% flash.discard %>
