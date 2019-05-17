@@ -1,0 +1,26 @@
+<!-- Exclude Brands/Countries -->
+<div class="small-12 medium-6 columns" id="exclude_brands_countries">
+	  <div class="group"><h4>Exclude Brand / Country</h4></div>
+	  
+	  <p>Choose one or more brand / country combinations that you want to exclude this location from showing on the brand site's locations or support pages. (Note: This is not common)</p>
+	  <%= simple_form_for [@location_exclude_brand_country], url: location_info_admin_location_exclude_brand_countries_path, remote: true do |f| %>
+      <%= f.hidden_field :location_info_location_id %>
+      <%= hidden_field_tag :called_from, "location" %>	  
+      <%= f.select :brand_country, 
+          options_for_select(LocationInfo::Location.brands_countries_not_already_excluded(@location).collect {|bc| [ bc[:name], bc[:id] ] }),
+          {},
+          {class: 'chosen-select', multiple: true, data: { placeholder: 'Select Brand/Country'}}
+      %>
+      <%= f.submit "exclude brand / country", class: "small round button", style:"margin-top:10px;" %>
+	  <% end %>
+	  
+		<strong>Current brand / country exclusions for this location</strong>
+    <ul id="excluded_brands_countries" class="list">
+      <% @location_exclude_brand_countries.joins(:brand).order(:name).each do |association| %>
+        <%= render "/location_info/admin/location_exclude_brand_countries/location_exclude_brand_country_row", association: association, called_from: "location" %>
+      <% end %>
+    </ul>	  
+    
+    <a href="#">Go to top</a>
+	  
+</div> <!-- <div class="small-12 medium-6 columns" id="exclude_brands_countries"> -->

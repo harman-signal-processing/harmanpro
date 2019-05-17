@@ -44,7 +44,8 @@ $(function () {
         return ajaxRequest;
     }; //  var getdata = function getdata()
 
-    showData();
+    if (location.pathname.contains('training/calendar')) { showData(); }
+
 
     function showData() {
         var results = getdata();

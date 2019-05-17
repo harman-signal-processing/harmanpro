@@ -31,6 +31,7 @@ class LocationInfo::Location < ApplicationRecord
   has_many :location_to_supported_brands_association, dependent: :destroy, foreign_key: 'location_info_location_id', class_name: 'LocationInfo::LocationSupportedBrand'
   has_many :supported_brands, through: :location_to_supported_brands_association, source: :brand, class_name: 'Brand'  
     
+  has_many :location_brand_country_exclusion_association, dependent: :destroy, foreign_key: 'location_info_location_id', class_name: 'LocationInfo::LocationExcludeBrandCountry'    
   
   scope :not_associated_with_this_contact, ->(contact) { 
     location_ids_already_associated_with_this_contact = LocationInfo::LocationContact.where("contact_info_contact_id = ?", contact.id).map{|contact_location| contact_location.location_info_location_id }
@@ -78,6 +79,18 @@ class LocationInfo::Location < ApplicationRecord
     location_ids_already_associated_with_this_brand = LocationInfo::LocationSupportedBrand.where("brand_id = ?", brand.id).map{|location_supported_brand| location_supported_brand.location_info_location_id }
     locations_not_associated_with_this_brand = LocationInfo::Location.where.not(id: location_ids_already_associated_with_this_brand).order(:name)    
     locations_not_associated_with_this_brand
+  }  
+  
+  scope :brands_countries_not_already_excluded, -> (location){
+    brands_countries = []
+    existing_brand_country_exclusions = location.location_brand_country_exclusion_association.map{|item| "#{item.brand_id}_#{item.location_info_country_id}"}
+    location.supported_brands.order(:name).pluck(:id, :name).each do |brand|
+      location.supported_countries.order(:name).pluck(:id, :name).each do |country|
+        already_excluded = existing_brand_country_exclusions.include?("#{brand[0]}_#{country[0]}")
+        brands_countries << { id: "#{brand[0]}_#{country[0]}", name: "#{brand[1]} - #{country[1]}"} unless already_excluded
+      end  #  location.supported_countries.pluck(:id, :name).each do |country|
+    end  #  location.supported_brands.pluck(:id, :name).each do |brand|
+    brands_countries
   }  
   
 end  #  class LocationInfo::Location < ApplicationRecord

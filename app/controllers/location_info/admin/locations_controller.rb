@@ -54,8 +54,11 @@ class LocationInfo::Admin::LocationsController < LocationInfo::AdminController
     
     @location_supported_brand = LocationInfo::LocationSupportedBrand.new(location_info_location_id: @location.id)
     @location_supported_brands = LocationInfo::LocationSupportedBrand.where(location_info_location_id: @location.id)    
+       
+    @location_exclude_brand_country = LocationInfo::LocationExcludeBrandCountry.new(location_info_location_id: @location.id)
+    @location_exclude_brand_countries = LocationInfo::LocationExcludeBrandCountry.where(location_info_location_id: @location.id)    
         
-  end
+  end  #  def edit
   
   def create
     @location = LocationInfo::Location.new(location_params.except(:contact_id, :distributor_id, :region_id, :country_id, :email_id))

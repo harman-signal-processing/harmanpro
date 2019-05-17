@@ -44,7 +44,11 @@ class DistributorInfo::Admin::DistributorsController < DistributorInfo::AdminCon
     @distributor_brands = DistributorInfo::DistributorBrand.where(distributor_info_distributor_id: @distributor.id)
     
     @distributor_country = DistributorInfo::DistributorCountry.new(distributor_info_distributor_id: @distributor.id)
-    @distributor_countries = DistributorInfo::DistributorCountry.where(distributor_info_distributor_id: @distributor.id)    
+    @distributor_countries = DistributorInfo::DistributorCountry.where(distributor_info_distributor_id: @distributor.id) 
+    
+    @distributor_exclude_brand_country = DistributorInfo::DistributorExcludeBrandCountry.new(distributor_info_distributor_id: @distributor.id)
+    @distributor_exclude_brand_countries = DistributorInfo::DistributorExcludeBrandCountry.where(distributor_info_distributor_id: @distributor.id)    
+    
   end  
   
   def create
