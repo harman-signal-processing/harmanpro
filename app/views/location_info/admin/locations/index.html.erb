@@ -1,4 +1,4 @@
-<h1>Locations</h1>
+<h1 id="locations_admin_heading">Locations</h1>
 
 <ul class="button-group round">
 	<li><%= link_to 'Locations List', location_info_admin_locations_path, class: "small button round" %>	</li>
@@ -12,6 +12,7 @@
     <th>Region</th>
     <th>Supported Countries</th>
     <th>Supported Brands</th>
+    <th>Exclusions</th>
     <th>Address1</th>
     <th>Address2</th>
     <th>Address3</th>
@@ -46,6 +47,13 @@
       <ul>
       <% location.supported_brands.order(:name).each do |supported_brand| %>
         <li><%= supported_brand.name %></li>
+      <% end %>
+      </ul>
+    </td>    
+    <td>
+      <ul>
+      <% location.location_brand_country_exclusion_association.each do |exclusion| %>
+        <li><%= exclusion.brand.name %> - <%= exclusion.country.name %></li>
       <% end %>
       </ul>
     </td>     
