@@ -1,4 +1,4 @@
-<h1>Distributors</h1>
+<h1 id="distributors_admin_heading">Distributors</h1>
 
 <ul class="button-group round">
 	<li><%= link_to 'Distributors List', distributor_info_admin_distributors_path, class: "small button round" %>	</li>
@@ -12,6 +12,7 @@
     <th>Account Number</th>
     <th>Supported Countries</th>
     <th>Supported Brands</th>
+    <th>Exclusions</th>
     <th>Locations</th>
   </tr>
 
@@ -36,18 +37,28 @@
     </td>    
     <td>
       <ul>
+        <% distributor.distributor_brand_country_exclusion_association.each do |exclusion|%>
+          <li><%= exclusion.brand.name %> - <%= exclusion.country.name %></li>
+        <% end %>
+      </ul>
+    </td>     
+    
+    <td>
+      <ul>
       <% distributor.locations.each do |location| %>
         <li><%=link_to location.name, edit_location_info_admin_location_path(location) %> - <span style="font-size:x-small"><%= location.city %></span></li>
         <table>
           <tr>
             <th>Supported Countries</th>
+            <th>Supported Brands</th>
+            <th>Exclusions</th>
             <th>Contacts</th>
             <th>Emails</th>
             <th>Phones</th>
             <th>Websites</th>
-            <th>Supported Brands</th>
           </tr>
           <tr>
+            <!-- supported countries  -->
             <td style="vertical-align: top;">
                 <% if location.supported_countries.present? %>
                   <ul>
@@ -57,6 +68,27 @@
                   </ul>
                 <% end  # if location.supported_countries.present?%>              
             </td>
+            <!-- supported brands  -->
+            <td style="vertical-align: top;">
+              <% if location.supported_brands.present? %>
+                <ul>
+                  <% location.supported_brands.order(:name).each do |brand| %>
+                    <li><%=brand.name%></li>
+                  <% end %>
+                </ul>
+              <% end  # if location.supported_countries.present?%>              
+            </td>   
+            <!-- exclusions  -->
+            <td style="vertical-align: top;">
+              <% if location.location_brand_country_exclusion_association.present? %>
+                <ul>
+                  <% location.location_brand_country_exclusion_association.each do |exclusion| %>
+                    <li><%=exclusion.brand.name%> - <%=exclusion.country.name%></li>
+                  <% end %>
+                </ul>
+              <% end  # if location.location_brand_country_exclusion_association.present?%>              
+            </td>            
+            <!-- contacts  -->
             <td style="vertical-align: top;">
               <% if location.contacts.present? %>
                 <ul>
@@ -66,6 +98,7 @@
                 </ul>
               <% end  # if location.contacts.present?%>              
             </td>
+            <!-- emails  -->
             <td style="vertical-align: top;">
               <% if location.emails.present? %>
                 <ul>
@@ -75,6 +108,7 @@
                 </ul>
               <% end  # if location.email.present?%>              
             </td>
+            <!-- phones  -->
             <td style="vertical-align: top;">
               <% if location.phones.present? %>
                 <ul>
@@ -84,6 +118,7 @@
                 </ul>
               <% end  # if location.phone.present?%>              
             </td>
+            <!-- websites  -->
             <td style="vertical-align: top;">
               <% if location.websites.present? %>
                 <ul>
@@ -93,15 +128,6 @@
                 </ul>
               <% end  # if location.website.present?%>              
             </td>
-            <td style="vertical-align: top;">
-              <% if location.supported_brands.present? %>
-                <ul>
-                  <% location.supported_brands.order(:name).each do |brand| %>
-                    <li><%=brand.name%></li>
-                  <% end %>
-                </ul>
-              <% end  # if location.supported_countries.present?%>              
-            </td>            
           </tr>
         </table>
       <% end  # distributor.locations.each do |location| %>

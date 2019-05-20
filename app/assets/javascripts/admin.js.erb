@@ -40,4 +40,14 @@ $(function()
   	});
   <% end %>
 
+  if (location.pathname.contains('distributor_info/admin/distributors'))
+  {
+    $("#distributors_admin_heading").closest(".row").css({"maxWidth":"none"});
+  }
+  
+  if (location.pathname.contains('location_info/admin/locations'))
+  {
+    $("#locations_admin_heading").closest(".row").css({"maxWidth":"none"});
+  }
+
 }); // $(function()
