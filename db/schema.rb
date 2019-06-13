@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_15_150546) do
+ActiveRecord::Schema.define(version: 2019_06_12_213214) do
 
   create_table "active_admin_comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -365,6 +365,15 @@ ActiveRecord::Schema.define(version: 2019_05_15_150546) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_contact_info_territories_on_name"
     t.index ["slug"], name: "index_contact_info_territories_on_slug", unique: true
+  end
+
+  create_table "contact_info_territory_supported_countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "contact_info_territory_id"
+    t.bigint "location_info_country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_info_territory_id"], name: "idx_territory_supported_countries_on_territory_id"
+    t.index ["location_info_country_id"], name: "idx_territory_supported_countries_on_country_id"
   end
 
   create_table "contact_info_websites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -1381,6 +1390,8 @@ ActiveRecord::Schema.define(version: 2019_05_15_150546) do
   add_foreign_key "contact_info_contact_territories", "contact_info_territories"
   add_foreign_key "contact_info_contact_websites", "contact_info_contacts"
   add_foreign_key "contact_info_contact_websites", "contact_info_websites"
+  add_foreign_key "contact_info_territory_supported_countries", "contact_info_territories"
+  add_foreign_key "contact_info_territory_supported_countries", "location_info_countries"
   add_foreign_key "distributor_info_distributor_brands", "brands"
   add_foreign_key "distributor_info_distributor_brands", "distributor_info_distributors"
   add_foreign_key "distributor_info_distributor_contacts", "contact_info_contacts"

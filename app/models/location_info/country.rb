@@ -14,6 +14,8 @@ class LocationInfo::Country < ApplicationRecord
   has_many :country_to_supported_contacts_association, dependent: :destroy, foreign_key: 'location_info_country_id', class_name: 'ContactInfo::ContactSupportedCountry'
   has_many :supported_contacts, through: :country_to_supported_contacts_association, source: :contact, class_name: 'ContactInfo::Contact'  
     
+  has_many :country_to_supported_territories_association, dependent: :destroy, foreign_key: 'location_info_country_id', class_name: 'ContactInfo::TerritorySupportedCountry'
+  has_many :supported_territories, through: :country_to_supported_territories_association, source: :territory, class_name: 'ContactInfo::Territory'
   
   scope :not_associated_with_this_distributor, ->(distributor) { 
     country_ids_already_associated_with_this_distributor = DistributorInfo::DistributorCountry.where("distributor_info_distributor_id = ?", distributor.id).map{|distributor_country| distributor_country.location_info_country_id }
