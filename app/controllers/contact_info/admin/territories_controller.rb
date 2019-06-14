@@ -19,6 +19,9 @@ class ContactInfo::Admin::TerritoriesController < ContactInfo::AdminController
   def edit
     @contact_territory = ContactInfo::ContactTerritory.new(contact_info_territory_id: @territory.id)
     @contact_territories = ContactInfo::ContactTerritory.where(contact_info_territory_id: @territory.id)
+    
+    @territory_supported_country = ContactInfo::TerritorySupportedCountry.new(contact_info_territory_id: @territory.id)
+    @territory_supported_countries = ContactInfo::TerritorySupportedCountry.where(contact_info_territory_id: @territory.id)
   end
   
   def update

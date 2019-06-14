@@ -1,0 +1,15 @@
+(function(){
+	var $supported_territories_dropdown = $('#contact_info_territory_supported_country_contact_info_territory_id');
+
+	// clear the supported_territories list before we rebuild it
+	$supported_territories_dropdown.empty();
+	
+	// rebuild supported_territories dropdown list
+	$supported_territories_dropdown.append($("<option></option>"));		
+	<% ContactInfo::Territory.not_associated_with_this_country(@territory_supported_country.country).order(:name).each do |supported_territory| %>
+		$supported_territories_dropdown.append($("<option value='<%=supported_territory.id%>'><%=escape_javascript(supported_territory.name)%></option>"));
+	<% end %>
+	
+	// let chosen know the supported_territories dropdown list has been updated
+	$supported_territories_dropdown.trigger('chosen:updated');
+})();

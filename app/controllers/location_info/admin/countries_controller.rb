@@ -15,6 +15,9 @@ class LocationInfo::Admin::CountriesController <LocationInfo::AdminController
     
     @location_supported_country = LocationInfo::LocationSupportedCountry.new(location_info_country_id: @country.id)
     @location_supported_countries = LocationInfo::LocationSupportedCountry.where(location_info_country_id: @country.id)    
+
+    @territory_supported_country = ContactInfo::TerritorySupportedCountry.new(location_info_country_id: @country.id)
+    @territory_supported_countries = ContactInfo::TerritorySupportedCountry.where(location_info_country_id: @country.id)    
   end
   
   def create
