@@ -48,6 +48,9 @@ Rails.application.routes.draw do
       end
       
     end  #  namespace :admin do
+    
+    get "rso/:country_code" => "rsos#show", as: "rso_country"
+    
   end  #  namespace :contact_info do
 
   # New Locations paths
