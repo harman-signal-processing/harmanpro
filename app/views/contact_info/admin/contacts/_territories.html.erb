@@ -8,7 +8,7 @@
             <%= f.hidden_field :contact_info_contact_id %>
             <%= hidden_field_tag :called_from, "contact" %>
             <%= f.association :territory, 
-            collection: ContactInfo::Territory.not_associated_with_this_contact(@contact_territory.contact),
+            collection: ContactInfo::Territory.not_associated_with_this_contact(@contact_territory.contact).order(:name),
             label: false,
             # label_method: "#{territory.name}",
             input_html: { class: 'chosen-select', multiple: true,  data: { placeholder: 'Select territories'} }%>

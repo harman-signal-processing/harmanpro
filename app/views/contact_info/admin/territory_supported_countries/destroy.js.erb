@@ -1,0 +1,13 @@
+(function(){
+    // remove associated supported_country
+    $('#territory_supported_country_<%= @territory_supported_country.id %>').remove();
+    
+<%if @called_from == "territory" %>
+	<%= render "/contact_info/admin/territory_supported_countries/rebuild_supported_country_select_list" %>
+<% end %>	
+<%if @called_from == "country" %>
+	<%= render "/contact_info/admin/territory_supported_countries/rebuild_supported_territory_select_list" %>
+<% end %>
+})();
+
+<% flash.discard %>

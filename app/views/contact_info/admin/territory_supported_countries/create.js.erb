@@ -1,0 +1,11 @@
+<%if @called_from == "territory" %>
+	<%= render "/contact_info/admin/territory_supported_countries/rebuild_supported_country_select_list" %>
+<% end %>	
+
+<%if @called_from == "country" %>
+	<%= render "/contact_info/admin/territory_supported_countries/rebuild_supported_territory_select_list" %>
+<% end %>
+
+<%= render "/contact_info/admin/territory_supported_countries/add_to_associated_item_list" %>
+
+<% flash.discard %>

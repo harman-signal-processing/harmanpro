@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       
       resources :contact_supported_countries
       resources :contact_supported_brands      
+      resources :territory_supported_countries
       
       resources :contact_emails,
         :contact_phones,
