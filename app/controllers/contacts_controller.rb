@@ -90,7 +90,7 @@ class ContactsController < ApplicationController
     
     def get_contacts_new(search_term, chosen_contacts_path)
         showforsolutions = (chosen_contacts_path == "solutions") ? 1 : 0
-        showforchannels = (chosen_contacts_path == "channels") ? 1 : 0
+        showforchannels = (chosen_contacts_path == "channel") ? 1 : 0
         order_by = (chosen_contacts_path == "solutions") ? "contact_info_contact_team_groups.position" : "contact_info_contact_territories.position"
         contacts = ContactInfo::Contact.joins(:data_clients, :team_groups, :territories, :pro_site_options)
             .where("contact_info_contact_pro_site_options.showonweb = 1                     
@@ -101,7 +101,7 @@ class ContactsController < ApplicationController
                     "%#{search_term}%", 
                     "%#{search_term}%",
                     "pro.harman.com/contacts").order("#{order_by}").uniq
-        
+        # binding.pry
         contacts
     end  #  def get_contacts_new(search_term, chosen_contacts_path)
 
