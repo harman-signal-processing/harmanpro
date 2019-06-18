@@ -67,8 +67,6 @@ class ContactInfo::Admin::ProSiteOptionsController < ContactInfo::AdminControlle
   private
   
     def load_pro_site_option
-      # binding.pry
-      # @pro_site_option = ContactInfo::ContactProSiteOption.find(params[:id])
       @pro_site_option = ContactInfo::Contact.find(params[:id]).pro_site_options
     end   
   

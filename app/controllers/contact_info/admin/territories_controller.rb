@@ -38,7 +38,7 @@ class ContactInfo::Admin::TerritoriesController < ContactInfo::AdminController
   end
   
   def create
-    @territory = ContactInfo::Territory.new({territory: territory_params[:territory], label: territory_params[:label]})
+    @territory = ContactInfo::Territory.new({name: territory_params[:name]})
     @contact = territory_params[:contact_id].present? ? ContactInfo::Contact.find(territory_params[:contact_id]) : nil
     respond_to do |format|
       if @territory.save
