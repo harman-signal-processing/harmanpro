@@ -1,6 +1,6 @@
 class ContactInfo::Admin::ContactTeamGroupsController < ContactInfo::AdminController
   before_action :initialize_contact_team_group, only: :create
-	before_action :load_contact_team_group, only: :destroy
+	before_action :load_contact_team_group, only: [:destroy]
 	
   # GET /contact_info/admin/contact_team_groups/new
   # GET /contact_info/admin/contact_team_groups/new.xml

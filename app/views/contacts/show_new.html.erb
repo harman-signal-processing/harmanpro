@@ -1,0 +1,44 @@
+<% if @contacts_banner_image_url.present? %>
+<%= link_to((image_tag @contacts_banner_image_url), contacts_path) %>
+<% end %>    
+
+<div class="row" style="margin-top:10px;">
+    <div class="large-2 medium-3 small-5 columns">
+        <%= link_to contacts_path, class: "small radius button" do %>
+            <%= fa_icon "home" %>
+            Contacts
+        <% end %>
+    </div>
+    <div class="large-4 large-offset-0 medium-6 medium-offset-2 small-7 columns">
+        <select id="contacts_nav_list" name="contacts_nav_list" onchange="location = this.options[this.selectedIndex].value;" class="small radius button">
+            <% @contact_nav_list.each do |nav_item| %>
+                <% if request.fullpath == nav_item["path"]%>
+                    <option selected="selected" value="<%=nav_item["path"]%>"><%=nav_item["name"]%></option>
+                <% else %>
+                    <option value="<%=nav_item["path"]%>"><%=nav_item["name"]%></option>
+                <% end %>
+            <% end %>
+        </select>
+    </div><!-- <div class="large-4 large-offset-0 medium-8 medium-offset-2 columns"> -->
+</div><!-- <div class="row" style="margin-top:10px;"> -->
+
+<h1 style="margin-bottom:20px;"><%=@contact_sales_type%> for <%=@contact_grouping_type%></h1>
+
+<div class="row">
+    <div class="large-12 medium-12 columns" data-equalizer="contactbox">
+        <ul class="large-block-grid-4 medium-block-grid-3 small-block-grid-1">
+            <% @contacts.each do |contact|%>
+                <li>
+                    <div class="panel" data-equalizer-watch="contactbox">
+                        <em><%=contact.name%></em></br>
+                        <%=contact.title%></br>
+                        <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp; <a href="mailto:<%=contact.emails.first.email%>"><%=contact.emails.first.email%></a></br>
+                        <% if contact.phones.present? %>
+                        <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;<%=contact.phones.first.phone%>
+                        <% end %>
+                    </div>
+                </li>
+            <% end %>
+        </ul><!-- <ul class="large-block-grid-5 medium-block-grid-3 small-block-grid-1"> -->
+    </div><!-- <div class="large-12 large-offset-0 medium-8 medium-offset-2 columns" data-equalizer="contact-box">  -->
+</div><!-- <div class="row"> -->
