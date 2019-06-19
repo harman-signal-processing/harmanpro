@@ -18,7 +18,7 @@ namespace 'contact_info' do
     contacts = JSON.parse(contacts_file_content)
     
     #!!!CAREFUL MAKE SURE YOU WANT TO DELETE EVERYTHING!!!
-    Rake::Task["contact_info:delete_everything"].invoke
+    # Rake::Task["contact_info:delete_everything"].invoke
     
     contacts.each do |contact|
       
@@ -31,25 +31,36 @@ namespace 'contact_info' do
       newcontact.title = title unless title.blank?
       newcontact.save
       
+      already_has_data_client = newcontact.data_clients.select {|item| item["name"].downcase == "pro.harman.com/contacts"}.any?
+      
       #set data client
-      newcontact.data_clients << ContactInfo::DataClient.find_or_create_by({name:"pro.harman.com/contacts"})
+      newcontact.data_clients << ContactInfo::DataClient.find_or_create_by({name:"pro.harman.com/contacts"}) unless already_has_data_client
       
       #create contact emails
       email = contact["email"]
       
+      already_has_email = newcontact.emails.select {|item| item["email"].downcase == email.downcase }.any?
       
-      puts "Associating email:#{email} to contact:#{newcontact.name}" unless email.blank?
-      newcontact.emails << ContactInfo::Email.create({email: "#{email}"}) unless email.blank?
+      # binding.pry if email == "jose.valcarcel@harman.com"
+      
+      if !already_has_email
+        puts "Associating email:#{email} to contact:#{newcontact.name}" unless email.blank?
+        newcontact.emails << ContactInfo::Email.find_or_create_by({email: "#{email}"}) unless email.blank?
+      end
       
       #create contact phones
       phones = [] 
       phones << contact["phone1"] unless contact["phone1"].blank?
       phones << contact["phone2"] unless contact["phone2"].blank?
       
+      
       if !phones.nil?
         phones.each do |phone|
-          puts "Creating and associating phone:#{phone} to contact:#{newcontact.name}"
-          newcontact.phones << ContactInfo::Phone.find_or_create_by({phone: "#{phone}"})
+          already_has_phone = newcontact.phones.select {|item| item["phone"].downcase == phone.downcase }.any?
+          if !already_has_phone
+            puts "Creating and associating phone:#{phone} to contact:#{newcontact.name}"
+            newcontact.phones << ContactInfo::Phone.find_or_create_by({phone: "#{phone}"})
+          end
         end
       end
       
