@@ -110,9 +110,7 @@ class ContactsController < ApplicationController
                     "%#{search_term}%",
                     "pro.harman.com/contacts").order("#{order_by}").uniq            
         end  #  if (chosen_contacts_path == "solutions")
-
                    
-    #   binding.pry              
         contacts
     end  #  def get_contacts_new(search_term, chosen_contacts_path)
 
