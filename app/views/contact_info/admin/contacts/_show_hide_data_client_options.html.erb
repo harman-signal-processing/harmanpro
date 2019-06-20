@@ -7,6 +7,12 @@
     $('[data-client="pro-contacts"]').hide('slow');
   <% end %>
   
+  <% if @is_brandsite_support_rso || @is_pro_site_contact %>
+    $('#Territories').show('slow');
+  <% else %>
+    $('#Territories').hide('slow');
+  <% end %>  
+  
   <% if @supports_specific_brands && @is_brandsite_distributor %>
     $('[data-client="supports-specific-brands"]').show('slow');
     $('[data-client="supports-specific-brands-message"]').hide('slow');

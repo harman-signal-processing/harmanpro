@@ -2,9 +2,11 @@
   <%
   if @contact_data_clients.present?
     @is_pro_site_contact = @contact_data_clients.first.contact.data_clients.map{|client| client.name == "pro.harman.com/contacts"}.any?
+    @is_brandsite_support_rso = @contact_data_clients.first.contact.data_clients.map{|client| client.name == "brandsite/support/rsos"}.any?
     # @is_brandsite_distributor = @contact_data_clients.first.contact.data_clients.map{|client| client.name == "brandsite/distributors"}.any?
   elsif @contact_data_client.present?
     @is_pro_site_contact = @contact_data_client.contact.data_clients.map{|client| client.name == "pro.harman.com/contacts"}.any?
+    @is_brandsite_support_rso = @contact_data_client.contact.data_clients.map{|client| client.name == "brandsite/support/rsos"}.any?
     # @is_brandsite_distributor = @contact_data_client.contact.data_clients.map{|client| client.name == "brandsite/distributors"}.any?
   end
   %>
@@ -14,6 +16,12 @@
   <% else %>
     $('[data-client="pro-contacts"]').hide('slow');
   <% end %>
+  
+  <% if @is_brandsite_support_rso || @is_pro_site_contact %>
+    $('#Territories').show('slow');
+  <% else %>
+    $('#Territories').hide('slow');
+  <% end %>  
   
   <%# if @is_brandsite_distributor %>
     // $('[data-client="brandsite-distributors"]').show('slow');
