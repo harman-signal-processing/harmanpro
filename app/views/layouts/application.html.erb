@@ -141,7 +141,7 @@
                   <% end %>
                 </ul>
               </li>
-              <% if I18n.locale.to_s == I18n.default_locale.to_s %>
+              <% if NewProduct.with_translations(I18n.locale).count > 25 %>
                 <li><%= link_to t('nav.new_products'), "/new-products" %></li>
               <% end %>
               <li><%= link_to t('nav.contact_us'), contacts_path %></li>
