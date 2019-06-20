@@ -16,8 +16,10 @@
           <% end %>
 					
 					<p>
-					<strong>Current contacts</strong>					
-					<br />(Order for <%=link_to "https://pro.harman.com/contacts"%>)
+					<strong>Current contacts</strong>				
+					<% if @contact_data_client.data_client.name == "pro.harman.com/contacts" %>
+					  <br />(Order for <%=link_to "https://pro.harman.com/contacts"%>)
+					<% end %>
           </p>
 
           <ul id="contact_data_clients" class="sortable_list">

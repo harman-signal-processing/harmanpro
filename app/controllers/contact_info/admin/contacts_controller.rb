@@ -74,6 +74,7 @@ class ContactInfo::Admin::ContactsController < ContactInfo::AdminController
     @contact_supported_countries = ContactInfo::ContactSupportedCountry.where(contact_info_contact_id: @contact.id)    
     
     @is_pro_site_contact = @contact.data_clients.map{|client| client.name == "pro.harman.com/contacts"}.any?
+    @is_brandsite_support_rso = @contact.data_clients.map{|client| client.name == "brandsite/support/rsos"}.any?
     @is_brandsite_distributor = @contact.data_clients.map{|client| client.name == "brandsite/distributors"}.any?
     
     @supports_specific_brands = !@contact.supported_brands.empty?
