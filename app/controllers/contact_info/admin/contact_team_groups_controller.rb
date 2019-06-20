@@ -82,14 +82,16 @@ class ContactInfo::Admin::ContactTeamGroupsController < ContactInfo::AdminContro
       if contact_team_group_params[:contact_info_team_group_id].is_a?(Array)
         @contact_team_groups = []
         contact_id = contact_team_group_params[:contact_info_contact_id]
-        contact_team_group_params[:contact_info_team_group_id].reject(&:blank?).each do |team_group|
-          @contact_team_groups << ContactInfo::ContactTeamGroup.new({contact_info_contact_id: contact_id, contact_info_team_group_id: team_group})
+        team_group_ids = contact_team_group_params[:contact_info_team_group_id].reject(&:blank?).map(&:to_i)
+        team_group_ids.each do |team_group_id|
+          @contact_team_groups << ContactInfo::ContactTeamGroup.new({contact_info_contact_id: contact_id, contact_info_team_group_id: team_group_id})
         end        
       elsif contact_team_group_params[:contact_info_contact_id].is_a?(Array)
         @contact_team_groups = []
         team_group_id = contact_team_group_params[:contact_info_team_group_id]
-        contact_team_group_params[:contact_info_contact_id].reject(&:blank?).each do |contact|
-          @contact_team_groups << ContactInfo::ContactTeamGroup.new({contact_info_contact_id: contact, contact_info_team_group_id: team_group_id})
+        contact_ids = contact_team_group_params[:contact_info_contact_id].reject(&:blank?).map(&:to_i)
+        contact_ids.each do |contact_id|
+          @contact_team_groups << ContactInfo::ContactTeamGroup.new({contact_info_contact_id: contact_id, contact_info_team_group_id: team_group_id})
         end
       end	 	    
 	  end  #  def initialize_contact_team_group

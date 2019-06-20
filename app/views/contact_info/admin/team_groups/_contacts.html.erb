@@ -21,7 +21,7 @@
           </p>
 
           <ul id="contact_team_groups" class="sortable_list">
-            <% @contact_team_groups.each do |association| %>
+            <% @contact_team_groups.order(:position).each do |association| %>
               <%= render "/contact_info/admin/contact_team_groups/contact_team_group_row", association: association, called_from: "team_group" %>
             <% end %>
           </ul>
