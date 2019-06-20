@@ -18,7 +18,7 @@
     <td><%= team_group.name %></td>
     <td>
       <ul>
-        <% team_group.contacts.order(:name).each do |contact|%>
+        <% team_group.contacts.order(:position).each do |contact|%>
           <li><%= link_to "#{contact.name}", edit_contact_info_admin_contact_path(contact) %> - <span style='font-size: x-small;'><%="#{contact.title}"%></span></li>
         <%end%>
       </ul>

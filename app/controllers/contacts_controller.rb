@@ -92,15 +92,27 @@ class ContactsController < ApplicationController
         showforsolutions = (chosen_contacts_path == "solutions") ? 1 : 0
         showforchannels = (chosen_contacts_path == "channel") ? 1 : 0
         order_by = (chosen_contacts_path == "solutions") ? "contact_info_contact_team_groups.position" : "contact_info_contact_territories.position"
-        contacts = ContactInfo::Contact.joins(:data_clients, :team_groups, :territories, :pro_site_options)
+        
+        if (chosen_contacts_path == "solutions")
+            contacts = ContactInfo::Contact.joins(:data_clients, :team_groups, :pro_site_options)
             .where("contact_info_contact_pro_site_options.showonweb = 1                     
                     and showforsolutions = #{showforsolutions}
-                    and showforchannels = #{showforchannels}
-                    and (contact_info_team_groups.name like ? or contact_info_territories.name like ?)
+                    and contact_info_team_groups.name like ?
                     and contact_info_data_clients.name = ?",
                     "%#{search_term}%", 
+                    "pro.harman.com/contacts").order("#{order_by}").uniq            
+        else
+            contacts = ContactInfo::Contact.joins(:data_clients, :territories, :pro_site_options)
+            .where("contact_info_contact_pro_site_options.showonweb = 1                     
+                    and showforchannels = #{showforchannels}
+                    and contact_info_territories.name like ?
+                    and contact_info_data_clients.name = ?",
                     "%#{search_term}%",
-                    "pro.harman.com/contacts").order("#{order_by}").uniq
+                    "pro.harman.com/contacts").order("#{order_by}").uniq            
+        end  #  if (chosen_contacts_path == "solutions")
+
+                   
+    #   binding.pry              
         contacts
     end  #  def get_contacts_new(search_term, chosen_contacts_path)
 

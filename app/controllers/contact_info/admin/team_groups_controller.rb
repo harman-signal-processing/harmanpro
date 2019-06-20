@@ -35,7 +35,7 @@ class ContactInfo::Admin::TeamGroupsController < ContactInfo::AdminController
   end
   
   def create
-    @team_group = ContactInfo::TeamGroup.new({team_group: team_group_params[:name]})
+    @team_group = ContactInfo::TeamGroup.new({name: team_group_params[:name]})
     @contact = team_group_params[:contact_id].present? ? ContactInfo::Contact.find(team_group_params[:contact_id]) : nil
     respond_to do |format|
       if @team_group.save
