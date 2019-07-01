@@ -6,12 +6,10 @@ module Api
         
         def index
             @pdfs_to_index = []
-            @pdfs = Resource.where("resource_type is not null and include_in_pdf_search=1").pluck(:id, :name, :attachment_file_name)
+            @pdfs = Resource.where("resource_type is not null and include_in_pdf_search=1")
             @pdfs_to_index = @pdfs.map{|item|
-            # binding.pry
-                {id: item[0], name: item[1], file: item[2], url: resource_permalink_url(item)}
+                {id: item.id, name: item.name, file: item.attachment_file_name, url: item.attachment.url}
             }
-            # resource_permalink_url(resource)
             respond_with @pdfs_to_index.uniq
         end  #  index
     end  #  class PdfsController < ApplicationController

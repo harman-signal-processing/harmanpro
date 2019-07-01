@@ -1,6 +1,6 @@
 <h2>PDFs to include in search results</h2>
 <%count = 1%>
 <% @pdfs_to_index.each do |pdf|%>
-	(<%=count%>) <%= link_to pdf[:name] +" - "+ pdf[:url], pdf[:url] %><br />
+	(<%=count%>) <%= link_to "id:#{pdf[:id]} name:#{pdf[:name]} url:#{pdf[:url]}", pdf[:url] %><br />
 	<%count += 1%>
 <% end %>
