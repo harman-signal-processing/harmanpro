@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :pdfs, only: [:index]
+    end  #  namespace :v1 do
+  end  #  namespace :api, defaults: {format: 'json'} do
+
   # TSE lookup utility (Technical Something Expert) primarily for internal use.
   get 'tse' => 'tse#index'
   namespace :tse do
