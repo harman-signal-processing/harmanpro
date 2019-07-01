@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_12_213214) do
+ActiveRecord::Schema.define(version: 2019_06_28_220034) do
 
   create_table "active_admin_comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -1069,6 +1069,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_213214) do
     t.string "image_content_type"
     t.datetime "image_updated_at"
     t.integer "image_file_size"
+    t.boolean "include_in_pdf_search"
   end
 
   create_table "service_center_service_groups", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|

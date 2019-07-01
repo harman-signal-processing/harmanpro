@@ -2,7 +2,7 @@ ActiveAdmin.register Resource do
   # :nocov:
   menu label: "Resource Library"
 
-  permit_params :name, :attachment, :image, :resource_type, :tag_list, :description
+  permit_params :name, :attachment, :image, :resource_type, :tag_list, :description, :include_in_pdf_search
 
   filter :name
   filter :resource_type
@@ -37,6 +37,7 @@ ActiveAdmin.register Resource do
         link_to resource.attachment.url, resource.attachment.url, target: "_blank"
       end
       row :attachment_content_type
+      row :include_in_pdf_search if resource.attachment_content_type == "application/pdf"
       row :attachment_file_size do
         number_to_human_size(resource.attachment_file_size)
       end
@@ -72,7 +73,8 @@ ActiveAdmin.register Resource do
     f.inputs do
       f.input :name
       f.input :resource_type, hint: "ie, application guide, brochure, etc."
-      f.input :attachment
+      f.input :attachment,  hint: "#{f.object.attachment_file_name} (#{number_to_human_size(f.object.attachment_file_size)})"
+      f.input :include_in_pdf_search, hint: "Note: In order to have this PDF file be included in the pro site PDF search page, this box must be checked and Resource type must not be blank." if f.object.attachment_content_type == "application/pdf"
       f.input :image, label: "Preview image", hint: "will be available in several sizes"
       f.input :description
       f.input :tag_list, label: "Tags", hint: "separated by a comma."
