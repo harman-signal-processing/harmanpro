@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_28_220034) do
+ActiveRecord::Schema.define(version: 2019_07_08_155505) do
 
   create_table "active_admin_comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -1096,6 +1096,7 @@ ActiveRecord::Schema.define(version: 2019_06_28_220034) do
     t.datetime "updated_at", null: false
     t.string "contact_name"
     t.boolean "active", default: true
+    t.boolean "uses_rma_form", default: false
     t.index ["active"], name: "index_service_centers_on_active"
   end
 
