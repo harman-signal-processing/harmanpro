@@ -10,6 +10,18 @@ class ApplicationController < ActionController::Base
 
   layout :select_layout
 
+  def add_log(attributes)
+    if attributes[:user]
+      attributes[:user_id] = attributes[:user].id
+      attributes.delete(:user)
+    end
+    begin
+      AdminLog.create(attributes)
+    rescue
+      # don't worry if we can't log stuff
+    end
+  end
+
   private
 
   def select_layout
@@ -147,4 +159,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-end
+end  #  class ApplicationController < ActionController::Base

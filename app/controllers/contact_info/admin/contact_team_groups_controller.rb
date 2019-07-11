@@ -22,7 +22,7 @@ class ContactInfo::Admin::ContactTeamGroupsController < ContactInfo::AdminContro
             begin
               contact_team_group.save!
               @contact_team_group = contact_team_group
-              # website.add_log(user: current_user, action: "Associated #{contact_team_group.contact.name} with #{contact_team_group.team_group.name}")
+              add_log(user: current_user, action: "Associated #{contact_team_group.contact.name} with #{contact_team_group.team_group.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{contact_team_group.team_group.name}"
@@ -60,7 +60,7 @@ class ContactInfo::Admin::ContactTeamGroupsController < ContactInfo::AdminContro
   def update_order
     update_list_order(ContactInfo::ContactTeamGroup, params["contact_team_group"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted contact team_groups")
+    add_log(user: current_user, action: "Sorted contact team_groups")
   end 
 
   # DELETE /contact_info/admin/contact_team_groups/1
@@ -73,7 +73,7 @@ class ContactInfo::Admin::ContactTeamGroupsController < ContactInfo::AdminContro
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a team_group from #{@contact_team_group.contact.name}")
+    add_log(user: current_user, action: "Removed a team_group from #{@contact_team_group.contact.name}")
   end 
   
   private

@@ -22,7 +22,7 @@ class ContactInfo::Admin::ContactTerritoriesController < ContactInfo::AdminContr
             begin
               contact_territory.save!
               @contact_territory = contact_territory
-              # website.add_log(user: current_user, action: "Associated #{contact_territory.contact.name} with #{contact_territory.territory.name}")
+              add_log(user: current_user, action: "Associated #{contact_territory.contact.name} with #{contact_territory.territory.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{contact_territory.territory.name}"
@@ -60,7 +60,7 @@ class ContactInfo::Admin::ContactTerritoriesController < ContactInfo::AdminContr
   def update_order
     update_list_order(ContactInfo::ContactTerritory, params["contact_territory"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted contact territories")
+    add_log(user: current_user, action: "Sorted contact territories")
   end 
   
   # DELETE /contact_info/admin/contact_territories/1
@@ -73,7 +73,7 @@ class ContactInfo::Admin::ContactTerritoriesController < ContactInfo::AdminContr
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a territory from #{@contact_territory.contact.name}")
+    add_log(user: current_user, action: "Removed a territory from #{@contact_territory.contact.name}")
   end 
   
   private

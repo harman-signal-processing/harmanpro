@@ -27,7 +27,7 @@ class ContactInfo::Admin::DataClientsController < ContactInfo::AdminController
       if @data_client.update_attributes({name: data_client_params[:name]})
         format.html { redirect_to(contact_info_admin_data_clients_path, notice: "DataClient #{@data_client.name} was successfully updated.") }
         format.xml  { head :ok }
-        # website.add_log(user: current_user, action: "Updated data_client: #{@data_client.name}")
+        add_log(user: current_user, action: "Updated data_client: #{@data_client.name}")
       else
         format.html { render action: "edit" }
         format.xml  { render xml: @data_client.errors, status: :unprocessable_entity }
@@ -46,7 +46,7 @@ class ContactInfo::Admin::DataClientsController < ContactInfo::AdminController
         format.html { redirect_to(contact_info_admin_data_clients_path, notice: "DataClient #{@data_client.name} was successfully created.") }
         format.xml  { render xml: @data_client, status: :created, location: @data_client }
         format.js # Not really applicable because the attachment can't be sent via AJAX
-        # website.add_log(user: current_user, action: "Created data_client #{@data_client.name}")
+        add_log(user: current_user, action: "Created data_client #{@data_client.name}")
       else
         format.html { redirect_to(contact_info_admin_data_clients_path, notice: "There was a problem creating the DataClient #{@data_client.name}.") }
         format.xml  { render xml: @data_client.errors, status: :unprocessable_entity }
@@ -63,7 +63,7 @@ class ContactInfo::Admin::DataClientsController < ContactInfo::AdminController
       format.html { redirect_to(contact_info_admin_data_clients_url) }
       format.xml  { head :ok }
     end
-    # website.add_log(user: current_user, action: "Deleted data_client: #{@data_client.name}")
+    add_log(user: current_user, action: "Deleted data_client: #{@data_client.name}")
   end
   
   private

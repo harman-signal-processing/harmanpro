@@ -25,7 +25,7 @@ class ContactInfo::Admin::ProSiteOptionsController < ContactInfo::AdminControlle
       if @pro_site_option.update_attributes(pro_site_option_params)
         format.html { redirect_to(contact_info_admin_pro_site_options_path, notice: "Pro Site Options update for #{@pro_site_option.contact.name} was successfully updated.") }
         format.xml  { head :ok }
-        # website.add_log(user: current_user, action: "Updated pro_site_option: #{@pro_site_option.name}")
+        add_log(user: current_user, action: "Updated pro_site_option: #{@pro_site_option.name}")
       else
         format.html { render action: "edit" }
         format.xml  { render xml: @pro_site_option.errors, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class ContactInfo::Admin::ProSiteOptionsController < ContactInfo::AdminControlle
         format.html { redirect_to(contact_info_admin_pro_site_options_path, notice: "ContactProSiteOption #{@pro_site_option.name} was successfully created.") }
         format.xml  { render xml: @pro_site_option, status: :created, location: @pro_site_option }
         format.js # Not really applicable because the attachment can't be sent via AJAX
-        # website.add_log(user: current_user, action: "Created pro_site_option #{@pro_site_option.name}")
+        add_log(user: current_user, action: "Created pro_site_option #{@pro_site_option.name}")
       else
         format.html { redirect_to(contact_info_admin_pro_site_options_path, notice: "There was a problem creating the ProSiteOption #{@pro_site_option.name}.") }
         format.xml  { render xml: @pro_site_option.errors, status: :unprocessable_entity }
@@ -61,7 +61,7 @@ class ContactInfo::Admin::ProSiteOptionsController < ContactInfo::AdminControlle
       format.html { redirect_to(contact_info_admin_pro_site_options_url) }
       format.xml  { head :ok }
     end
-    # website.add_log(user: current_user, action: "Deleted pro_site_option: #{@pro_site_option.name}")
+    add_log(user: current_user, action: "Deleted pro_site_option: #{@pro_site_option.name}")
   end
   
   private

@@ -22,7 +22,7 @@ class LocationInfo::Admin::LocationPhonesController < LocationInfo::AdminControl
             begin
               location_phone.save!
               @location_phone = location_phone
-              # website.add_log(user: current_user, action: "Associated #{location_phone.location.name} with #{location_phone.phone.phone}")
+              add_log(user: current_user, action: "Associated #{location_phone.location.name} with #{location_phone.phone.phone}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{location_phone.location.name} - #{location_phone.phone.phone}"
@@ -60,7 +60,7 @@ class LocationInfo::Admin::LocationPhonesController < LocationInfo::AdminControl
   def update_order
     update_list_order(LocationInfo::LocationPhone, params["location_phone"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted location phones")
+    add_log(user: current_user, action: "Sorted location phones")
   end		
 	
   # DELETE /location_info/admin/location_phones/1
@@ -73,7 +73,7 @@ class LocationInfo::Admin::LocationPhonesController < LocationInfo::AdminControl
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a phone from #{@location_phone.location.name}")
+    add_log(user: current_user, action: "Removed a phone from #{@location_phone.location.name}")
   end	
 	
   private

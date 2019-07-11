@@ -22,7 +22,7 @@ class DistributorInfo::Admin::DistributorWebsitesController < DistributorInfo::A
             begin
               distributor_website.save!
               @distributor_website = distributor_website
-              # website.add_log(user: current_user, action: "Associated #{distributor_website.distributor.name} with #{distributor_website.website.url}")
+              add_log(user: current_user, action: "Associated #{distributor_website.distributor.name} with #{distributor_website.website.url}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{distributor_website.website.url}"
@@ -60,7 +60,7 @@ class DistributorInfo::Admin::DistributorWebsitesController < DistributorInfo::A
   def update_order
     update_list_order(DistributorInfo::DistributorWebsite, params["distributor_website"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted distributor websites")
+    add_log(user: current_user, action: "Sorted distributor websites")
   end  	
 	
   # DELETE /distributor_info/admin/distributor_websites/1
@@ -73,7 +73,7 @@ class DistributorInfo::Admin::DistributorWebsitesController < DistributorInfo::A
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a website from #{@distributor_website.distributor.name}")
+    add_log(user: current_user, action: "Removed a website from #{@distributor_website.distributor.name}")
   end 
   
   private

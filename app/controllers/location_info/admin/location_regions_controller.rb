@@ -22,7 +22,7 @@ class LocationInfo::Admin::LocationRegionsController < LocationInfo::AdminContro
             begin
               location_region.save!
               @location_region = location_region
-              # website.add_log(user: current_user, action: "Associated #{location_region.location.name} with #{location_region.region.name}")
+              add_log(user: current_user, action: "Associated #{location_region.location.name} with #{location_region.region.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{location_region.region.name}"
@@ -60,7 +60,7 @@ class LocationInfo::Admin::LocationRegionsController < LocationInfo::AdminContro
   def update_order
     update_list_order(LocationInfo::LocationRegion, params["location_region"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted location regions")
+    add_log(user: current_user, action: "Sorted location regions")
   end   
 	
   # DELETE /location_info/admin/location_regions/1
@@ -73,7 +73,7 @@ class LocationInfo::Admin::LocationRegionsController < LocationInfo::AdminContro
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a region from #{@location_region.location.name}")
+    add_log(user: current_user, action: "Removed a region from #{@location_region.location.name}")
   end 	
 	
   private

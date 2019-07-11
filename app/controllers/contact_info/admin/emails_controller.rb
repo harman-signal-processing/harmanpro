@@ -39,7 +39,7 @@ class ContactInfo::Admin::EmailsController < ContactInfo::AdminController
       if @email.update_attributes({email: email_params[:email], label: email_params[:label]})
         format.html { redirect_to(contact_info_admin_emails_path, notice: "Email #{@email.email} was successfully updated.") }
         format.xml  { head :ok }
-        # website.add_log(user: current_user, action: "Updated email: #{@email.email}")
+        add_log(user: current_user, action: "Updated email: #{@email.email}")
       else
         format.html { render action: "edit" }
         format.xml  { render xml: @email.errors, status: :unprocessable_entity }
@@ -70,7 +70,7 @@ class ContactInfo::Admin::EmailsController < ContactInfo::AdminController
         
         format.xml  { render xml: @email, status: :created, location: @email }
         format.js # Not really applicable because the attachment can't be sent via AJAX
-        # website.add_log(user: current_user, action: "Created email #{@email.email}")
+        add_log(user: current_user, action: "Created email #{@email.email}")
       else
         format.html { redirect_to(contact_info_admin_emails_path, notice: "There was a problem creating the email #{@email.email}.") }
         format.xml  { render xml: @email.errors, status: :unprocessable_entity }
@@ -87,7 +87,7 @@ class ContactInfo::Admin::EmailsController < ContactInfo::AdminController
       format.html { redirect_to(contact_info_admin_emails_url) }
       format.xml  { head :ok }
     end
-    # website.add_log(user: current_user, action: "Deleted contact email: #{@email.email}")
+    add_log(user: current_user, action: "Deleted contact email: #{@email.email}")
   end
   
   private

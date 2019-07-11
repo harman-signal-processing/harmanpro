@@ -22,7 +22,7 @@ class LocationInfo::Admin::LocationWebsitesController < LocationInfo::AdminContr
             begin
               location_website.save!
               @location_website = location_website
-              # website.add_log(user: current_user, action: "Associated #{location_website.location.name} with #{location_website.website.url}")
+              add_log(user: current_user, action: "Associated #{location_website.location.name} with #{location_website.website.url}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{location_website.location.name} - #{location_website.website.url}"
@@ -60,7 +60,7 @@ class LocationInfo::Admin::LocationWebsitesController < LocationInfo::AdminContr
   def update_order
     update_list_order(LocationInfo::LocationWebsite, params["location_website"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted location websites")
+    add_log(user: current_user, action: "Sorted location websites")
   end	  
   
   # DELETE /location_info/admin/location_websites/1
@@ -73,7 +73,7 @@ class LocationInfo::Admin::LocationWebsitesController < LocationInfo::AdminContr
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a website from #{@location_website.location.name}")
+    add_log(user: current_user, action: "Removed a website from #{@location_website.location.name}")
   end	  
   
 	  def initialize_location_website
