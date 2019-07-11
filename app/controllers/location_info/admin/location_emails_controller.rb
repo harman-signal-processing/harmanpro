@@ -22,7 +22,7 @@ class LocationInfo::Admin::LocationEmailsController < LocationInfo::AdminControl
             begin
               location_email.save!
               @location_email = location_email
-              # website.add_log(user: current_user, action: "Associated #{location_email.location.name} with #{location_email.email.email}")
+              add_log(user: current_user, action: "Associated #{location_email.location.name} with #{location_email.email.email}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{location_email.location.name} - #{location_email.email.email}"
@@ -60,7 +60,7 @@ class LocationInfo::Admin::LocationEmailsController < LocationInfo::AdminControl
   def update_order
     update_list_order(LocationInfo::LocationEmail, params["location_email"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted location emails")
+    add_log(user: current_user, action: "Sorted location emails")
   end	
 	
   # DELETE /location_info/admin/location_emails/1
@@ -73,7 +73,7 @@ class LocationInfo::Admin::LocationEmailsController < LocationInfo::AdminControl
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a email from #{@location_email.location.name}")
+    add_log(user: current_user, action: "Removed a email from #{@location_email.location.name}")
   end 	
 	
   private

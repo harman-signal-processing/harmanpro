@@ -26,7 +26,7 @@ class ContactInfo::Admin::TagsController < ContactInfo::AdminController
       if @tag.update_attributes({tag: tag_params[:tag]})
         format.html { redirect_to(contact_info_admin_tags_path, notice: "Tag #{@tag.name} was successfully updated.") }
         format.xml  { head :ok }
-        # website.add_log(user: current_user, action: "Updated tag: #{@tag.name}")
+        add_log(user: current_user, action: "Updated tag: #{@tag.name}")
       else
         format.html { render action: "edit" }
         format.xml  { render xml: @tag.errors, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ class ContactInfo::Admin::TagsController < ContactInfo::AdminController
         format.html { redirect_to(contact_info_admin_tags_path, notice: "Tag #{@tag.name} was successfully created.") }
         format.xml  { render xml: @tag, status: :created, location: @tag }
         format.js # Not really applicable because the attachment can't be sent via AJAX
-        # website.add_log(user: current_user, action: "Created tag #{@tag.name}")
+        add_log(user: current_user, action: "Created tag #{@tag.name}")
       else
         format.html { redirect_to(contact_info_admin_tags_path, notice: "There was a problem creating the Tag #{@tag.name}.") }
         format.xml  { render xml: @tag.errors, status: :unprocessable_entity }
@@ -62,7 +62,7 @@ class ContactInfo::Admin::TagsController < ContactInfo::AdminController
       format.html { redirect_to(contact_info_admin_tags_url) }
       format.xml  { head :ok }
     end
-    # website.add_log(user: current_user, action: "Deleted tag: #{@tag.name}")
+    add_log(user: current_user, action: "Deleted tag: #{@tag.name}")
   end
 
   private

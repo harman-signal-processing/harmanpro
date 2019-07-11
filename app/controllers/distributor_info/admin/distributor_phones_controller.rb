@@ -22,7 +22,7 @@ class DistributorInfo::Admin::DistributorPhonesController < DistributorInfo::Adm
             begin
               distributor_phone.save!
               @distributor_phone = distributor_phone
-              # website.add_log(user: current_user, action: "Associated #{distributor_phone.distributor.name} with #{distributor_phone.phone.phone}")
+              add_log(user: current_user, action: "Associated #{distributor_phone.distributor.name} with #{distributor_phone.phone.phone}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{distributor_phone.phone.phone}"
@@ -60,7 +60,7 @@ class DistributorInfo::Admin::DistributorPhonesController < DistributorInfo::Adm
   def update_order
     update_list_order(DistributorInfo::DistributorPhone, params["distributor_phone"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted distributor phones")
+    add_log(user: current_user, action: "Sorted distributor phones")
   end   
   
   # DELETE /distributor_info/admin/distributor_phones/1
@@ -73,7 +73,7 @@ class DistributorInfo::Admin::DistributorPhonesController < DistributorInfo::Adm
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a phone from #{@distributor_phone.distributor.name}")
+    add_log(user: current_user, action: "Removed a phone from #{@distributor_phone.distributor.name}")
   end  
   
   private

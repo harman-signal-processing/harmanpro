@@ -22,7 +22,7 @@ class DistributorInfo::Admin::DistributorBrandsController < DistributorInfo::Adm
             begin
               distributor_brand.save!
               @distributor_brand = distributor_brand
-              # website.add_log(user: current_user, action: "Associated #{distributor_brand.distributor.name} with #{distributor_brand.brand.name}")
+              add_log(user: current_user, action: "Associated #{distributor_brand.distributor.name} with #{distributor_brand.brand.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{distributor_brand.brand.name}"
@@ -60,7 +60,7 @@ class DistributorInfo::Admin::DistributorBrandsController < DistributorInfo::Adm
   def update_order
     update_list_order(DistributorInfo::DistributorBrand, params["distributor_brand"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted distributor brands")
+    add_log(user: current_user, action: "Sorted distributor brands")
   end     
   
   # DELETE /distributor_info/admin/distributor_brands/1
@@ -73,7 +73,7 @@ class DistributorInfo::Admin::DistributorBrandsController < DistributorInfo::Adm
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a brand from #{@distributor_brand.distributor.name}")
+    add_log(user: current_user, action: "Removed a brand from #{@distributor_brand.distributor.name}")
   end   
   
   private

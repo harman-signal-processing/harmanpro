@@ -22,7 +22,7 @@ class ContactInfo::Admin::ContactTagsController < ContactInfo::AdminController
             begin
               contact_tag.save!
               @contact_tag = contact_tag
-              # website.add_log(user: current_user, action: "Associated #{contact_tag.contact.name} with #{contact_tag.tag.name}")
+              add_log(user: current_user, action: "Associated #{contact_tag.contact.name} with #{contact_tag.tag.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{contact_tag.tag.name}"
@@ -60,7 +60,7 @@ class ContactInfo::Admin::ContactTagsController < ContactInfo::AdminController
   def update_order
     update_list_order(ContactInfo::ContactTag, params["contact_tag"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted contact tags")
+    add_log(user: current_user, action: "Sorted contact tags")
   end 
   
   # DELETE /contact_info/admin/contact_tags/1
@@ -73,7 +73,7 @@ class ContactInfo::Admin::ContactTagsController < ContactInfo::AdminController
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a tag from #{@contact_tag.contact.name}")
+    add_log(user: current_user, action: "Removed a tag from #{@contact_tag.contact.name}")
   end 
   
   private

@@ -25,7 +25,7 @@ class ContactInfo::Admin::ContactPhonesController < ContactInfo::AdminController
             begin
               contact_phone.save!
               @contact_phone = contact_phone
-              # website.add_log(user: current_user, action: "Associated #{contact_phone.contact.name} with #{contact_phone.phone.phone}")
+              add_log(user: current_user, action: "Associated #{contact_phone.contact.name} with #{contact_phone.phone.phone}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{contact_phone.phone.phone}"
@@ -63,7 +63,7 @@ class ContactInfo::Admin::ContactPhonesController < ContactInfo::AdminController
   def update_order
     update_list_order(ContactInfo::ContactPhone, params["contact_phone"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted contact phones")
+    add_log(user: current_user, action: "Sorted contact phones")
   end 
 
   # DELETE /contact_info/admin/contact_phones/1
@@ -76,7 +76,7 @@ class ContactInfo::Admin::ContactPhonesController < ContactInfo::AdminController
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a phone from #{@contact_phone.contact.name}")
+    add_log(user: current_user, action: "Removed a phone from #{@contact_phone.contact.name}")
   end 
 
   private

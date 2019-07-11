@@ -22,7 +22,7 @@ class ContactInfo::Admin::ContactDataClientsController < ContactInfo::AdminContr
             begin
               contact_data_client.save!
               @contact_data_client = contact_data_client
-              # website.add_log(user: current_user, action: "Associated #{contact_data_client.contact.name} with #{contact_data_client.data_client.name}")
+              add_log(user: current_user, action: "Associated #{contact_data_client.contact.name} with #{contact_data_client.data_client.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{contact_data_client.data_client.name}"
@@ -60,7 +60,7 @@ class ContactInfo::Admin::ContactDataClientsController < ContactInfo::AdminContr
   def update_order
     update_list_order(ContactInfo::ContactDataClient, params["contact_data_client"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted contact data_clients")
+    add_log(user: current_user, action: "Sorted contact data_clients")
   end 
 
   # DELETE /contact_info/admin/contact_data_clients/1
@@ -73,7 +73,7 @@ class ContactInfo::Admin::ContactDataClientsController < ContactInfo::AdminContr
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a data_client from #{@contact_data_client.contact.name}")
+    add_log(user: current_user, action: "Removed a data_client from #{@contact_data_client.contact.name}")
   end 
   
   private

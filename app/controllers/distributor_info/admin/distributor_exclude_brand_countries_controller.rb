@@ -22,7 +22,7 @@ class DistributorInfo::Admin::DistributorExcludeBrandCountriesController < Appli
             begin
               excluded_brand_country.save!
               @excluded_brand_country = excluded_brand_country
-              # website.add_log(user: current_user, action: "Exclude #{distributor_exclude_brand_country.distributor.name} from #{distributor_exclude_brand_country.brand.name} / #{distributor_exclude_brand_country.country.name}")
+              add_log(user: current_user, action: "Exclude #{distributor_exclude_brand_country.distributor.name} from #{distributor_exclude_brand_country.brand.name} / #{distributor_exclude_brand_country.country.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{excluded_brand_country.distributor.name} #{excluded_brand_country.brand.name}  #{excluded_brand_country.country.name}"
@@ -67,7 +67,7 @@ class DistributorInfo::Admin::DistributorExcludeBrandCountriesController < Appli
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed an brand/country exclusion from #{@excluded_brand_country.distributor.name}")
+    add_log(user: current_user, action: "Removed an brand/country exclusion from #{@excluded_brand_country.distributor.name}")
   end 	
 	
 	private

@@ -22,7 +22,7 @@ class ContactInfo::Admin::ContactSupportedCountriesController < ContactInfo::Adm
             begin
               contact_supported_country.save!
               @contact_supported_country = contact_supported_country
-              # website.add_log(user: current_user, action: "Associated #{contact_supported_country.contact.name} with #{contact_supported_country.supported_country.name}")
+              add_log(user: current_user, action: "Associated #{contact_supported_country.contact.name} with #{contact_supported_country.supported_country.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{contact_supported_country.country.name}"
@@ -60,7 +60,7 @@ class ContactInfo::Admin::ContactSupportedCountriesController < ContactInfo::Adm
   def update_order
     update_list_order(ContactInfo::ContactSupportedCountry, params["contact_supported_country"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted contact supported_countries")
+    add_log(user: current_user, action: "Sorted contact supported_countries")
   end  	
   
   # DELETE /contact_info/admin/contact_supported_countries/1
@@ -73,7 +73,7 @@ class ContactInfo::Admin::ContactSupportedCountriesController < ContactInfo::Adm
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a supported_country from #{@contact_supported_country.contact.name}")
+    add_log(user: current_user, action: "Removed a supported_country from #{@contact_supported_country.contact.name}")
   end   
 	
   private

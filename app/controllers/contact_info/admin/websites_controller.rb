@@ -39,7 +39,7 @@ class ContactInfo::Admin::WebsitesController < ContactInfo::AdminController
       if @website.update_attributes({url: website_params[:url], label: website_params[:label]})
         format.html { redirect_to(contact_info_admin_websites_path, notice: "Website #{@website.url} was successfully updated.") }
         format.xml  { head :ok }
-        # website.add_log(user: current_user, action: "Updated website: #{@website.url}")
+        add_log(user: current_user, action: "Updated website: #{@website.url}")
       else
         format.html { render action: "edit" }
         format.xml  { render xml: @website.errors, status: :unprocessable_entity }
@@ -70,7 +70,7 @@ class ContactInfo::Admin::WebsitesController < ContactInfo::AdminController
 
         format.xml  { render xml: @website, status: :created, location: @website }
         format.js # Not really applicable because the attachment can't be sent via AJAX
-        # website.add_log(user: current_user, action: "Created website #{@website.url}")
+        add_log(user: current_user, action: "Created website #{@website.url}")
       else
         format.html { redirect_to(contact_info_admin_websites_path, notice: "There was a problem creating the Website #{@website.url}.") }
         format.xml  { render xml: @website.errors, status: :unprocessable_entity }
@@ -87,7 +87,7 @@ class ContactInfo::Admin::WebsitesController < ContactInfo::AdminController
       format.html { redirect_to(contact_info_admin_websites_url) }
       format.xml  { head :ok }
     end
-    # website.add_log(user: current_user, action: "Deleted website: #{@website.url}")
+    add_log(user: current_user, action: "Deleted website: #{@website.url}")
   end     
   
   private

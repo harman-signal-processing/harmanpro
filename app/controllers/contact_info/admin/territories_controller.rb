@@ -29,7 +29,7 @@ class ContactInfo::Admin::TerritoriesController < ContactInfo::AdminController
       if @territory.update_attributes({territory: territory_params[:territory], label: territory_params[:label]})
         format.html { redirect_to(contact_info_admin_territories_path, notice: "Territory #{@territory.name} was successfully updated.") }
         format.xml  { head :ok }
-        # website.add_log(user: current_user, action: "Updated territory: #{@territory.name}")
+        add_log(user: current_user, action: "Updated territory: #{@territory.name}")
       else
         format.html { render action: "edit" }
         format.xml  { render xml: @territory.errors, status: :unprocessable_entity }
@@ -48,7 +48,7 @@ class ContactInfo::Admin::TerritoriesController < ContactInfo::AdminController
         format.html { redirect_to(contact_info_admin_territories_path, notice: "Territory #{@territory.name} was successfully created.") }
         format.xml  { render xml: @territory, status: :created, location: @territory }
         format.js # Not really applicable because the attachment can't be sent via AJAX
-        # website.add_log(user: current_user, action: "Created territory #{@territory.name}")
+        add_log(user: current_user, action: "Created territory #{@territory.name}")
       else
         format.html { redirect_to(contact_info_admin_territories_path, notice: "There was a problem creating the Territory #{@territory.name}.") }
         format.xml  { render xml: @territory.errors, status: :unprocessable_entity }
@@ -65,7 +65,7 @@ class ContactInfo::Admin::TerritoriesController < ContactInfo::AdminController
       format.html { redirect_to(contact_info_admin_territories_url) }
       format.xml  { head :ok }
     end
-    # website.add_log(user: current_user, action: "Deleted territory: #{@territory.name}")
+    add_log(user: current_user, action: "Deleted territory: #{@territory.name}")
   end
   
   private

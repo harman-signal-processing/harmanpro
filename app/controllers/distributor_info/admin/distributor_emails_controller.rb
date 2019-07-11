@@ -22,7 +22,7 @@ class DistributorInfo::Admin::DistributorEmailsController < DistributorInfo::Adm
             begin
               distributor_email.save!
               @distributor_email = distributor_email
-              # website.add_log(user: current_user, action: "Associated #{distributor_email.distributor.name} with #{distributor_email.email.email}")
+              add_log(user: current_user, action: "Associated #{distributor_email.distributor.name} with #{distributor_email.email.email}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{distributor_email.email.email}"
@@ -60,7 +60,7 @@ class DistributorInfo::Admin::DistributorEmailsController < DistributorInfo::Adm
   def update_order
     update_list_order(DistributorInfo::DistributorEmail, params["distributor_email"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted distributor emails")
+    add_log(user: current_user, action: "Sorted distributor emails")
   end  
   
   # DELETE /distributor_info/admin/distributor_emails/1
@@ -73,7 +73,7 @@ class DistributorInfo::Admin::DistributorEmailsController < DistributorInfo::Adm
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a email from #{@distributor_email.distributor.name}")
+    add_log(user: current_user, action: "Removed a email from #{@distributor_email.distributor.name}")
   end   
   
   private

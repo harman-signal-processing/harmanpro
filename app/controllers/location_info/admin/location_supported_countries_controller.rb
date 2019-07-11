@@ -22,7 +22,7 @@ class LocationInfo::Admin::LocationSupportedCountriesController < LocationInfo::
             begin
               location_supported_country.save!
               @location_supported_country = location_supported_country
-              # website.add_log(user: current_user, action: "Associated #{location_supported_country.location.name} with #{location_supported_country.supported_country.name}")
+              add_log(user: current_user, action: "Associated #{location_supported_country.location.name} with #{location_supported_country.supported_country.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{location_supported_country.country.name}"
@@ -60,7 +60,7 @@ class LocationInfo::Admin::LocationSupportedCountriesController < LocationInfo::
   def update_order
     update_list_order(LocationInfo::LocationSupportedCountry, params["location_supported_country"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted location supported_countries")
+    add_log(user: current_user, action: "Sorted location supported_countries")
   end    
   
   # DELETE /location_info/admin/location_supported_countries/1
@@ -73,7 +73,7 @@ class LocationInfo::Admin::LocationSupportedCountriesController < LocationInfo::
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a supported_country from #{@location_supported_country.location.name}")
+    add_log(user: current_user, action: "Removed a supported_country from #{@location_supported_country.location.name}")
   end   
   
   private
