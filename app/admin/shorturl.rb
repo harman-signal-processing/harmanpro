@@ -1,5 +1,5 @@
 ActiveAdmin.register Shorturl do
-  menu parent: "Settings"
+  menu parent: "Settings", priority: 10
 
   permit_params :shortcut, :full_url
 
