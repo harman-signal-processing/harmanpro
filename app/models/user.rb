@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :locale_translators, dependent: :destroy, inverse_of: :translator
   has_many :locales, through: :locale_translators
 
+  has_many :admin_logs
+  
   accepts_nested_attributes_for :locale_translators, reject_if: :all_blank, allow_destroy: true
 
   validate :invitation_code_is_valid, on: :create, if: :needs_invitation_code?
