@@ -22,7 +22,7 @@ class LocationInfo::Admin::LocationSupportedBrandsController < LocationInfo::Adm
             begin
               location_supported_brand.save!
               @location_supported_brand = location_supported_brand
-              add_log(user: current_user, action: "Associated #{location_supported_brand.location.name} with #{location_supported_brand.supported_brand.name}")
+              add_log(user: current_user, action: "Associated #{location_supported_brand.location.name} with #{location_supported_brand.brand.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{location_supported_brand.brand.name}"
