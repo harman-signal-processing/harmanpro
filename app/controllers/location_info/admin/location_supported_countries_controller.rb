@@ -22,7 +22,7 @@ class LocationInfo::Admin::LocationSupportedCountriesController < LocationInfo::
             begin
               location_supported_country.save!
               @location_supported_country = location_supported_country
-              add_log(user: current_user, action: "Associated #{location_supported_country.location.name} with #{location_supported_country.supported_country.name}")
+              add_log(user: current_user, action: "Associated #{location_supported_country.location.name} with #{location_supported_country.country.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{location_supported_country.country.name}"
