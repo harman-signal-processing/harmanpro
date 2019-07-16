@@ -22,7 +22,7 @@ class DistributorInfo::Admin::DistributorCountriesController < DistributorInfo::
             begin
               distributor_country.save!
               @distributor_country = distributor_country
-              # website.add_log(user: current_user, action: "Associated #{distributor_country.distributor.name} with #{distributor_country.country.name}")
+              add_log(user: current_user, action: "Associated #{distributor_country.distributor.name} with #{distributor_country.country.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{distributor_country.country.name}"
@@ -60,7 +60,7 @@ class DistributorInfo::Admin::DistributorCountriesController < DistributorInfo::
   def update_order
     update_list_order(DistributorInfo::DistributorCountry, params["distributor_country"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted distributor countries")
+    add_log(user: current_user, action: "Sorted distributor countries")
   end 	
   
   # DELETE /distributor_info/admin/distributor_countries/1
@@ -73,7 +73,7 @@ class DistributorInfo::Admin::DistributorCountriesController < DistributorInfo::
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a country from #{@distributor_country.distributor.name}")
+    add_log(user: current_user, action: "Removed a country from #{@distributor_country.distributor.name}")
   end    
 	
   private

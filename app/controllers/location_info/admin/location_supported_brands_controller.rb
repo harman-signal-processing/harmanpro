@@ -22,7 +22,7 @@ class LocationInfo::Admin::LocationSupportedBrandsController < LocationInfo::Adm
             begin
               location_supported_brand.save!
               @location_supported_brand = location_supported_brand
-              # website.add_log(user: current_user, action: "Associated #{location_supported_brand.location.name} with #{location_supported_brand.supported_brand.name}")
+              add_log(user: current_user, action: "Associated #{location_supported_brand.location.name} with #{location_supported_brand.brand.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{location_supported_brand.brand.name}"
@@ -60,7 +60,7 @@ class LocationInfo::Admin::LocationSupportedBrandsController < LocationInfo::Adm
   def update_order
     update_list_order(LocationInfo::LocationSupportedBrand, params["location_supported_brand"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted location supported_brands")
+    add_log(user: current_user, action: "Sorted location supported_brands")
   end    
   
   # DELETE /location_info/admin/location_supported_brands/1
@@ -73,7 +73,7 @@ class LocationInfo::Admin::LocationSupportedBrandsController < LocationInfo::Adm
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a supported_brand from #{@location_supported_brand.location.name}")
+    add_log(user: current_user, action: "Removed a supported_brand from #{@location_supported_brand.location.name}")
   end  
   
   private

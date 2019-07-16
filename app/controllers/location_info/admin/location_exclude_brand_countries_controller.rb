@@ -22,7 +22,7 @@ class LocationInfo::Admin::LocationExcludeBrandCountriesController < Application
             begin
               excluded_brand_country.save!
               @excluded_brand_country = excluded_brand_country
-              # website.add_log(user: current_user, action: "Exclude #{location_exclude_brand_country.location.name} from #{location_exclude_brand_country.brand.name} / #{location_exclude_brand_country.country.name}")
+              add_log(user: current_user, action: "Exclude #{location_exclude_brand_country.location.name} from #{location_exclude_brand_country.brand.name} / #{location_exclude_brand_country.country.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{excluded_brand_country.location.name} #{excluded_brand_country.brand.name}  #{excluded_brand_country.country.name}"
@@ -67,7 +67,7 @@ class LocationInfo::Admin::LocationExcludeBrandCountriesController < Application
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed an brand/country exclusion from #{@excluded_brand_country.location.name}")
+    add_log(user: current_user, action: "Removed an brand/country exclusion from #{@excluded_brand_country.location.name}")
   end 		
   
   private

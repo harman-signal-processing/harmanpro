@@ -26,7 +26,7 @@ class ContactInfo::Admin::TeamGroupsController < ContactInfo::AdminController
       if @team_group.update_attributes({team_group: team_group_params[:name]})
         format.html { redirect_to(contact_info_admin_team_groups_path, notice: "TeamGroup #{@team_group.team_group} was successfully updated.") }
         format.xml  { head :ok }
-        # website.add_log(user: current_user, action: "Updated team_group: #{@team_group.name}")
+        add_log(user: current_user, action: "Updated team_group: #{@team_group.name}")
       else
         format.html { render action: "edit" }
         format.xml  { render xml: @team_group.errors, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ class ContactInfo::Admin::TeamGroupsController < ContactInfo::AdminController
         format.html { redirect_to(contact_info_admin_team_groups_path, notice: "TeamGroup #{@team_group.name} was successfully created.") }
         format.xml  { render xml: @team_group, status: :created, location: @team_group }
         format.js # Not really applicable because the attachment can't be sent via AJAX
-        # website.add_log(user: current_user, action: "Created team_group #{@team_group.name}")
+        add_log(user: current_user, action: "Created team_group #{@team_group.name}")
       else
         format.html { redirect_to(contact_info_admin_team_groups_path, notice: "There was a problem creating the TeamGroup #{@team_group.name}.") }
         format.xml  { render xml: @team_group.errors, status: :unprocessable_entity }
@@ -62,7 +62,7 @@ class ContactInfo::Admin::TeamGroupsController < ContactInfo::AdminController
       format.html { redirect_to(contact_info_admin_team_groups_url) }
       format.xml  { head :ok }
     end
-    # website.add_log(user: current_user, action: "Deleted team_group: #{@team_group.name}")
+    add_log(user: current_user, action: "Deleted team_group: #{@team_group.name}")
   end  
   
   private

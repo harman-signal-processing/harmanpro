@@ -13,6 +13,7 @@ ActiveAdmin.register ServiceCenter do
     :website,
     :account_number,
     :active,
+    :uses_rma_form,
     service_center_service_groups_attributes: [:id, :service_group_id, :_destroy]
 
 
@@ -24,6 +25,7 @@ ActiveAdmin.register ServiceCenter do
     column :state
     column :account_number
     column :active
+    column :uses_rma_form
     actions
   end
 
@@ -44,6 +46,7 @@ ActiveAdmin.register ServiceCenter do
       f.input :website
       f.input :account_number
       f.input :active
+      f.input :uses_rma_form, hint: "RMA button will appear on brand sites /repairs listing for this service center"
     end
     f.has_many :service_center_service_groups, heading: "Service Groups", new_record: "Add a service group" do |s|
       s.input :id, as: :hidden

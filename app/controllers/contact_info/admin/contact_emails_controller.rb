@@ -24,7 +24,7 @@ class ContactInfo::Admin::ContactEmailsController < ContactInfo::AdminController
             begin
               contact_email.save!
               @contact_email = contact_email
-              # website.add_log(user: current_user, action: "Associated #{contact_email.contact.name} with #{contact_email.email.email}")
+              add_log(user: current_user, action: "Associated #{contact_email.contact.name} with #{contact_email.email.email}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{contact_email.email.email}"
@@ -62,7 +62,7 @@ class ContactInfo::Admin::ContactEmailsController < ContactInfo::AdminController
   def update_order
     update_list_order(ContactInfo::ContactEmail, params["contact_info_contact_email"]) # update_list_order is in application_controller
     head :ok
-    # email.add_log(user: current_user, action: "Sorted Contact emails")
+    add_log(user: current_user, action: "Sorted Contact emails")
   end  
   
   # DELETE /contact_info/admin/contact_emails/1
@@ -75,7 +75,7 @@ class ContactInfo::Admin::ContactEmailsController < ContactInfo::AdminController
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed an email from #{@contact_email.contact.name}")
+    add_log(user: current_user, action: "Removed an email from #{@contact_email.contact.name}")
   end 
   
   private

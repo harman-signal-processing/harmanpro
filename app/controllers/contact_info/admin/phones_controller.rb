@@ -39,7 +39,7 @@ class ContactInfo::Admin::PhonesController < ContactInfo::AdminController
       if @phone.update_attributes({phone: phone_params[:phone], label: phone_params[:label]})
         format.html { redirect_to(contact_info_admin_phones_path, notice: "Phone #{@phone.phone} was successfully updated.") }
         format.xml  { head :ok }
-        # website.add_log(user: current_user, action: "Updated phone: #{@phone.phone}")
+        add_log(user: current_user, action: "Updated phone: #{@phone.phone}")
       else
         format.html { render action: "edit" }
         format.xml  { render xml: @phone.errors, status: :unprocessable_entity }
@@ -70,7 +70,7 @@ class ContactInfo::Admin::PhonesController < ContactInfo::AdminController
 
         format.xml  { render xml: @phone, status: :created, location: @phone }
         format.js # Not really applicable because the attachment can't be sent via AJAX
-        # website.add_log(user: current_user, action: "Created phone #{@phone.phone}")
+        add_log(user: current_user, action: "Created phone #{@phone.phone}")
       else
         format.html { redirect_to(contact_info_admin_phones_path, notice: "There was a problem creating the Phone #{@phone.phone}.") }
         format.xml  { render xml: @phone.errors, status: :unprocessable_entity }
@@ -87,7 +87,7 @@ class ContactInfo::Admin::PhonesController < ContactInfo::AdminController
       format.html { redirect_to(contact_info_admin_phones_url) }
       format.xml  { head :ok }
     end
-    # website.add_log(user: current_user, action: "Deleted phone: #{@phone.phone}")
+    add_log(user: current_user, action: "Deleted phone: #{@phone.phone}")
   end   
   
   private

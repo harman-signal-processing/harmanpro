@@ -22,7 +22,7 @@ class ContactInfo::Admin::ContactWebsitesController < ContactInfo::AdminControll
             begin
               contact_website.save!
               @contact_website = contact_website
-              # website.add_log(user: current_user, action: "Associated #{contact_website.contact.name} with #{contact_website.website.url}")
+              add_log(user: current_user, action: "Associated #{contact_website.contact.name} with #{contact_website.website.url}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{contact_website.website.url}"
@@ -60,7 +60,7 @@ class ContactInfo::Admin::ContactWebsitesController < ContactInfo::AdminControll
   def update_order
     update_list_order(ContactInfo::ContactWebsite, params["contact_website"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted contact websites")
+    add_log(user: current_user, action: "Sorted contact websites")
   end 	
 	
   # DELETE /contact_info/admin/contact_websites/1
@@ -73,7 +73,7 @@ class ContactInfo::Admin::ContactWebsitesController < ContactInfo::AdminControll
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a website from #{@contact_website.contact.name}")
+    add_log(user: current_user, action: "Removed a website from #{@contact_website.contact.name}")
   end	
   
   private

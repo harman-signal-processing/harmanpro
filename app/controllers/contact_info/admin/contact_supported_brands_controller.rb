@@ -22,7 +22,7 @@ class ContactInfo::Admin::ContactSupportedBrandsController < ContactInfo::AdminC
             begin
               contact_supported_brand.save!
               @contact_supported_brand = contact_supported_brand
-              # website.add_log(user: current_user, action: "Associated #{contact_supported_brand.contact.name} with #{contact_supported_brand.supported_brand.name}")
+              add_log(user: current_user, action: "Associated #{contact_supported_brand.contact.name} with #{contact_supported_brand.supported_brand.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{contact_supported_brand.brand.name}"
@@ -60,7 +60,7 @@ class ContactInfo::Admin::ContactSupportedBrandsController < ContactInfo::AdminC
   def update_order
     update_list_order(ContactInfo::ContactSupportedBrand, params["contact_supported_brand"]) # update_list_order is in application_controller
     head :ok
-    # website.add_log(user: current_user, action: "Sorted contact supported_brands")
+    add_log(user: current_user, action: "Sorted contact supported_brands")
   end  
   
   # DELETE /contact_info/admin/contact_supported_brands/1
@@ -73,7 +73,7 @@ class ContactInfo::Admin::ContactSupportedBrandsController < ContactInfo::AdminC
       format.xml  { head :ok }
       format.js 
     end
-    # website.add_log(user: current_user, action: "Removed a supported_brand from #{@contact_supported_brand.contact.name}")
+    add_log(user: current_user, action: "Removed a supported_brand from #{@contact_supported_brand.contact.name}")
   end  
   
   private
