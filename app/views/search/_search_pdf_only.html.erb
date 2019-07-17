@@ -1,0 +1,36 @@
+<h1>Search Results (PDF Files Only)</h1>
+
+<div class="wide_centered_box" id="search_page_container">
+  <%= form_tag search_path %>
+    <div class="row collapse">
+      <div class="large-8 small-7 columns">
+        <%= text_field_tag :query, @query %>
+        <%= check_box_tag :pdf_only, 'yes', @pdf_only %> PDF Files Only
+      </div>
+      <div class="large-4 small-5 columns">
+        <%= submit_tag t('search'), class: "button search-button" %>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="row">
+  <div class="large-12 medium-12 small-12 columns">
+   
+      
+    <% if @results.length > 0 %>
+    <div id="search_results_count_message"><%=@results.total_count%> results found, showing <%= results_item_count_range_for_page(@results) %> for: <strong><%=@query%></strong></div>
+      <%= paginate @results %>
+      <ul id="search_results" class="large-block-grid-3">
+        <%count = 1%>
+        <% @results.each do |result| %>
+          <%= render "result_pdf", result: result, count: count %>
+          <%count += 1%>
+        <% end %>
+      </ul>
+      <%= paginate @results %>
+    <% else %>
+      <p><i>No results found.</i></p>
+    <% end %>
+  </div>
+</div>

@@ -63,9 +63,8 @@ class SearchController < ApplicationController
     if @query.present?
       thunderstone_search_profile = "hpro_pdfs"
       @pdf_results = ThunderstoneSearch.find(@query, thunderstone_search_profile, jump)
-      @pdf_results_paginated_list = WillPaginate::Collection.create(current_page, per_page, @pdf_results[:Summary][:TotalNum].to_i) do |pager|
-        pager.replace(@pdf_results[:ResultList].to_ary)
-      end    
+      paginatable_array = Kaminari.paginate_array(@pdf_results[:ResultList], total_count: @pdf_results[:Summary][:Total].to_i).page(current_page).per(10)
+      @results = paginatable_array
     end     
   end  #  def fetch_thunderstone_pdf_results
 

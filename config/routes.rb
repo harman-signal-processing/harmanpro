@@ -277,7 +277,7 @@ Rails.application.routes.draw do
   get "/new-products", to: "landing_pages#show", id: "new-products"
 
   # Search
-  get '/search' => 'search#search', as: :search
+  match '/search' => 'search#search', as: :search, via: :all
 
   # Old paperclip attachment redirects
   get 'system/:model/:attachment/:id_and_timestamp/:basename.:extension' => 'paperclips#redirects'

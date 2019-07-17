@@ -1,5 +1,19 @@
 <h1>Search Results</h1>
 
+<div class="wide_centered_box" id="search_page_container">
+  <%= form_tag search_path %>
+    <div class="row collapse">
+      <div class="large-8 small-7 columns">
+        <%= text_field_tag :query, @query %>
+        <%= check_box_tag :pdf_only, 'yes' %> PDF Files Only
+      </div>
+      <div class="large-4 small-5 columns">
+        <%= submit_tag t('search'), class: "button search-button" %>
+      </div>
+    </div>
+  </form>
+</div>  
+
 <div class="row">
   <div class="large-12 medium-12 small-12 columns">
    
