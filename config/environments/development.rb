@@ -44,9 +44,10 @@ Rails.application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   
-  # config.assets.debug = true
+  config.assets.debug = true
   # Set to false to speed up development
-  config.assets.debug = false
+  # Note: Setting config.assets.debug to false causes google fonts to not be downloaded which affects the appearance of the site in development
+  # config.assets.debug = false
   
   # Uncomment to speed up development
   config.assets.digest = true

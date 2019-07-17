@@ -1,0 +1,20 @@
+<li>
+    <div class="result-type-header"><strong><%= t("search_page.#{get_pdf_item_category(result).downcase}")%></strong>: <span class="result-item-number"><%=result[:Num]%></span></div>
+    
+    <!-- item title link without translation -->
+    <%= link_to result[:Url], class:"result-item-title-link" do %>
+    <%= image_tag "icons/pdf_17.png", style: "vertical-align: middle" %>
+    <%=get_pdf_item_title(result)%>
+    <% end %>
+    
+    <!-- item image link  -->
+    <% image = get_result_image(result)%>
+    <% if image.present? %>
+      <%= link_to image_tag(image), page_link(result), class:"result-item-image-link" %>
+    <%end%>
+    
+    <!-- item description without translation -->
+    <% if result[:Abstract] && !result[:Abstract].blank? %>
+      <%= truncate(strip_html(result[:Abstract]).lstrip, length: 200) %><br />
+    <% end %>
+</li>

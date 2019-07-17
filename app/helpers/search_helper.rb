@@ -78,4 +78,30 @@ module SearchHelper
 		
 	end  #  def get_result_image(item)	
 
-end
+	def get_pdf_item_category(result)
+		pdf_item = find_pdf_item_in_db(result)
+		category = 'Uncategorized'	
+		if pdf_item.present? && pdf_item.first.resource_type.present?
+			category = pdf_item.first.resource_type
+		end
+		category
+	end  #  def get_pdf_item_category(result)
+
+	def get_pdf_item_title(result)
+		pdf_item = find_pdf_item_in_db(result)
+		if pdf_item.present?
+				title = pdf_item.first.name
+		else
+			title = strip_html(result[:ResultTitle])
+		end
+		# title = pdf_item.present? ? pdf_item.name : 
+		title		
+	end  #  def get_pdf_item_title(result)
+
+	def find_pdf_item_in_db(result)
+		filename = URI.decode(File.basename(result[:Url]).split('#')[0].gsub("_original.pdf",".pdf"))
+		pdf_item = Resource.where("resource_type is not null and include_in_pdf_search=1 and attachment_file_name = ?","#{filename}")
+		pdf_item
+	end  #  def find_pdf_item_in_db(result)
+
+end  #  module SearchHelper
