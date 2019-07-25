@@ -1,9 +1,43 @@
 <h1 id="locations_admin_heading">Locations</h1>
 
 <ul class="button-group round">
-	<li><%= link_to 'Locations List', location_info_admin_locations_path, class: "small button round" %>	</li>
 	<li><%= link_to 'New Location', new_location_info_admin_location_path, class: "small success button" %></li>
 </ul>
+
+<div class="row" style="margin-bottom: 30px;">
+  <div class="small-12 medium-6 large-3 columns">
+      <%= select_tag "location-select", 
+      options_from_collection_for_select(LocationInfo::Location.all.sort_by(&:name), 'id', 'name', @location_id), 
+      prompt: "Filter by Location Name",
+      class: 'chosen-select'
+      %>  
+  </div>    
+  <div class="small-12 medium-6 large-3 columns">
+      <%= select_tag "country-select", 
+      options_from_collection_for_select(LocationInfo::Country.all.sort_by(&:name), 'id', 'name', @country_id), 
+      prompt: "Filter by Country",
+      class: 'chosen-select'
+      %>  
+  </div>   
+  <div class="small-12 medium-6 large-3 columns">
+      <%= select_tag "brand-select", 
+      options_from_collection_for_select(Brand.all.sort_by(&:name), 'id', 'name', @brand_id), 
+      prompt: "Filter by Brand",
+      class: 'chosen-select'
+      %>  
+  </div>   
+  
+  <div class="small-12 medium-6 large-3 columns">
+    <strong><%=link_to "Show All", distributor_info_admin_distributors_path(show_all:1) %></strong>
+  </div>   
+  
+</div>
+
+<% if @locations %>
+  <div style="margin-bottom:30px;"><%= raw @results_message%></div>
+<% else %>
+  <div style="margin-bottom:30px;"><strong>Use one of the filters above to see the Locations list.</strong></div>
+<% end %>
 
 <table class="data">
   <tr>
@@ -25,7 +59,8 @@
     <th>Google Map/Place ID</th>
   </tr>
 
-<% @locations.order(:name).each do |location| %>
+<% if @locations %>
+<% @locations.each do |location| %>
   <tr style="vertical-align:text-bottom;">
     <td><%= link_to 'Edit', edit_location_info_admin_location_path(location), class: "small round button" %></td>
     <td><%= location.name %></td>
@@ -68,5 +103,6 @@
     <td><%= location.lng %></td>
     <td><%= location.google_map_place_id %></td>
   </tr>
-<% end %>
+<% end %> <%# @locations.each do |location| %>
+<% end %> <%# if @locations %>
 </table>
