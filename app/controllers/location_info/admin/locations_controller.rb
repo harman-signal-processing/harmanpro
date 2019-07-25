@@ -2,8 +2,39 @@ class LocationInfo::Admin::LocationsController < LocationInfo::AdminController
   before_action :load_location, except: [:index, :new, :create]
   
   def index
-    @locations = LocationInfo::Location.all
-  end   
+    @location_id = params[:location_id] if params[:location_id].present?
+    @country_id = params[:country_id] if params[:country_id].present?
+    @brand_id = params[:brand_id] if params[:brand_id].present?
+    show_all = params[:show_all].present? 
+    
+    filter_in_use = @location_id.present? || @country_id.present? || @brand_id.present?    
+    if filter_in_use
+      if @location_id.present?
+        location = LocationInfo::Location.find(@location_id)
+        @locations = [] << location
+        @filtered_by = location.name
+        @result_count = 1
+      elsif @country_id.present?
+        @locations = LocationInfo::Location.joins(:supported_countries).where("location_info_countries.id = ?", @country_id).order(:name)
+        @filtered_by = LocationInfo::Country.find(@country_id).name
+        @result_count = @locations.count
+      elsif @brand_id.present?
+        @locations = LocationInfo::Location.joins(:supported_brands).where("brands.id = ?", @brand_id).order(:name)
+        @filtered_by = Brand.find(@brand_id).name
+        @result_count = @locations.count
+      end
+        
+    elsif show_all
+      @locations = LocationInfo::Location.all.order(:name)
+      @filtered_by = "All"
+      @result_count = @locations.count
+    else
+      # don't show all be default
+    end  #  if filter_in_use
+
+    @results_message = "Showing <strong>#{@result_count}</strong> Locations for <strong>#{@filtered_by}</strong>"
+    
+  end  #  def index
   
   def new
     contact_id = params[:location][:contact_id] unless params[:location].nil?
