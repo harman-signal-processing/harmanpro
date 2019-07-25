@@ -50,4 +50,31 @@ $(function()
     $("#locations_admin_heading").closest(".row").css({"maxWidth":"none"});
   }
 
+  $('#distributor-select').change(function(e){
+    var $this = $(this),
+        distributor_id = $this.val();
+    if (distributor_id.length > 0)
+    {
+      location.search = 'distributor_id=' + distributor_id;
+    }
+  });
+
+  $('#country-select').change(function(e){
+    var $this = $(this),
+        country_id = $this.val();
+    if (country_id.length > 0)
+    {
+      location.search = 'country_id=' + country_id;
+    }
+  });
+
+  $('#brand-select').change(function(e){
+    var $this = $(this),
+        brand_id = $this.val();
+    if (brand_id.length > 0)
+    {
+      location.search = 'brand_id=' + brand_id;
+    }
+  });
+
 }); // $(function()
