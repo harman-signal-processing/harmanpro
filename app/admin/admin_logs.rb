@@ -10,6 +10,7 @@ ActiveAdmin.register AdminLog do
         adminlog.user.email
     end
     column :action
+    column :updated_at
     actions defaults: false do |adminlog|
       item "View", admin_admin_log_path(adminlog)
     end
