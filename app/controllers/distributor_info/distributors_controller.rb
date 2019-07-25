@@ -4,8 +4,8 @@ class DistributorInfo::DistributorsController < ApplicationController
   end
   
   def show
-    brand = params[:brand].nil? ? "bss" : params[:brand]
-    country_code = params[:country_code].nil? ? "us" : params[:country_code]
+    brand = params[:brand].blank? ? "bss" : params[:brand]
+    country_code = params[:country_code].blank? ? "us" : params[:country_code]
     
     distributors = DistributorInfo::Distributor.joins(:countries, :brands).where("location_info_countries.alpha2 = ? and brands.name = ?", country_code, brand).order("distributor_info_distributor_countries.position")
     

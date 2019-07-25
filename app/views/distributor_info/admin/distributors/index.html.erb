@@ -1,9 +1,43 @@
 <h1 id="distributors_admin_heading">Distributors</h1>
 
 <ul class="button-group round">
-	<li><%= link_to 'Distributors List', distributor_info_admin_distributors_path, class: "small button round" %>	</li>
 	<li><%= link_to 'New Distributor', new_distributor_info_admin_distributor_path, class: "small success button" %></li>
 </ul>
+
+<div class="row" style="margin-bottom: 30px;">
+  <div class="small-12 medium-6 large-3 columns">
+      <%= select_tag "distributor-select", 
+      options_from_collection_for_select(DistributorInfo::Distributor.all.sort_by(&:name), 'id', 'name', @distributor_id), 
+      prompt: "Filter by Distributor Name",
+      class: 'chosen-select'
+      %>  
+  </div>    
+  <div class="small-12 medium-6 large-3 columns">
+      <%= select_tag "country-select", 
+      options_from_collection_for_select(LocationInfo::Country.all.sort_by(&:name), 'id', 'name', @country_id), 
+      prompt: "Filter by Country",
+      class: 'chosen-select'
+      %>  
+  </div>   
+  <div class="small-12 medium-6 large-3 columns">
+      <%= select_tag "brand-select", 
+      options_from_collection_for_select(Brand.all.sort_by(&:name), 'id', 'name', @brand_id), 
+      prompt: "Filter by Brand",
+      class: 'chosen-select'
+      %>  
+  </div>   
+  
+  <div class="small-12 medium-6 large-3 columns">
+    <strong><%=link_to "Show All", distributor_info_admin_distributors_path(show_all:1) %></strong>
+  </div>   
+  
+</div>
+
+<% if @distributors %>
+  <div style="margin-bottom:30px;"><%= raw @results_message%></div>
+<% else %>
+  <div style="margin-bottom:30px;"><strong>Use one of the filters above to see the Distributors list.</strong></div>
+<% end %>
 
 <table class="data">
   <tr>
@@ -16,7 +50,8 @@
     <th>Locations</th>
   </tr>
 
-<% @distributors.order(:name).each do |distributor| %>
+<% if @distributors %>
+<% @distributors.each do |distributor| %>
   <tr style="vertical-align:text-bottom;">
     <td><%= link_to 'Edit', edit_distributor_info_admin_distributor_path(distributor), class: "small round button" %></td>
     <td><%= distributor.name %></td>
@@ -134,5 +169,6 @@
       </ul>
     </td>    
   </tr>
-<% end %>
+<% end %>  <%# @distributors.each do |distributor| %>
+<% end %>  <%# if @distributors %>
 </table>
