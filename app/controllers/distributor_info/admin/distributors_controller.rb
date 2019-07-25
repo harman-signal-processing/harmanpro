@@ -105,6 +105,7 @@ class DistributorInfo::Admin::DistributorsController < DistributorInfo::AdminCon
   
   def update
     if @distributor.update_attributes(distributor_params)
+      add_log(user: current_user, action: "Updated distributor #{@distributor.name}")
       redirect_to distributor_info_admin_distributors_path
     else
       render action: :edit
@@ -113,6 +114,7 @@ class DistributorInfo::Admin::DistributorsController < DistributorInfo::AdminCon
   
   def destroy
     if @distributor.destroy
+      add_log(user: current_user, action: "Deleted distributor #{@distributor.name}")
       redirect_to distributor_info_admin_distributors_path
     end    
   end  

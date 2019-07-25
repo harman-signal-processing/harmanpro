@@ -115,6 +115,7 @@ class ContactInfo::Admin::ContactsController < ContactInfo::AdminController
   
   def update
     if @contact.update_attributes(contact_params)
+      add_log(user: current_user, action: "Updated contact #{@contact.name}")
       redirect_to contact_info_admin_contacts_path
     else
       render action: :edit
@@ -123,6 +124,7 @@ class ContactInfo::Admin::ContactsController < ContactInfo::AdminController
   
   def destroy
     if @contact.destroy
+      add_log(user: current_user, action: "Deleted contact #{@contact.name}")
       redirect_to contact_info_admin_contacts_path
     end
   end

@@ -135,6 +135,7 @@ class LocationInfo::Admin::LocationsController < LocationInfo::AdminController
   
   def update
     if @location.update_attributes(location_params)
+      add_log(user: current_user, action: "Updated location #{@location.name}")
       redirect_to location_info_admin_locations_path
     else
       render action: :edit
@@ -143,6 +144,7 @@ class LocationInfo::Admin::LocationsController < LocationInfo::AdminController
   
   def destroy
     if @location.destroy
+      add_log(user: current_user, action: "Deleted location #{@location.name}")
       redirect_to location_info_admin_locations_path
     end    
   end
