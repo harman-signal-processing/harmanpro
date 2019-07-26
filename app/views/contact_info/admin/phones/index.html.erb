@@ -5,6 +5,10 @@
 	<li><%= link_to 'New Phone', new_contact_info_admin_phone_path, class: "small success button" %></li>
 </ul>
 
+<% if @phones %>
+<div style="margin-bottom:30px;">Showing <strong><%= @phones.count%> Phones</strong></div>
+<% end %>
+
 <table class="data">
   <tr>
   	<th></th>

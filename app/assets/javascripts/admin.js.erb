@@ -85,5 +85,23 @@ $(function()
       location.search = 'location_id=' + location_id;
     }
   });
+  
+  $('#contact-select').change(function(e){
+    var $this = $(this),
+        contact_id = $this.val();
+    if (contact_id.length > 0)
+    {
+      location.search = 'contact_id=' + contact_id;
+    }
+  });
+  
+  $('#email-select').change(function(e){
+    var $this = $(this),
+        email_id = $this.val();
+    if (email_id.length > 0)
+    {
+      location.search = 'email_id=' + email_id;
+    }
+  });  
 
 }); // $(function()

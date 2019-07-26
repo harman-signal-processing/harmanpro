@@ -5,6 +5,10 @@
 	<li><%= link_to 'New Data Client', new_contact_info_admin_data_client_path, class: "small success button" %></li>
 </ul>
 
+<% if @data_clients %>
+<div style="margin-bottom:30px;">Showing <strong><%= @data_clients.count%> Data Clients</strong></div>
+<% end %>
+
 <table class="data">
   <tr>
   	<th></th>

@@ -5,6 +5,10 @@
 	<li><%= link_to 'New Email', new_contact_info_admin_email_path, class: "small success button" %></li>
 </ul>
 
+<% if @emails %>
+<div style="margin-bottom:30px;">Showing <strong><%= @emails.count%> Emails</strong></div>
+<% end %>
+
 <table class="data">
   <tr>
   	<th></th>

@@ -1,9 +1,12 @@
 <h1>Countries</h1>
 
 <ul class="button-group round">
-	<li><%= link_to 'Countries List', location_info_admin_countries_path, class: "small button round" %>	</li>
 	<li><%= link_to 'New Country', new_location_info_admin_country_path, class: "small success button" %></li>
 </ul>
+
+<% if @countries %>
+<div style="margin-bottom:30px;">Showing <strong><%= @countries.count%> Countries</strong></div>
+<% end %>
 
 <table class="data">
   <tr>
@@ -37,9 +40,11 @@
     <td><%= country.calling_code %></td>
     <td><%= country.numeric_code %></td>
     <td>
+      <ul>
       <% country.supported_locations.each do |supported_location| %>
-        <%= supported_location.name %>
+        <li><%= link_to supported_location.name, edit_location_info_admin_location_path(supported_location) %></li>
       <% end %>
+      </ul>
     </td>
   </tr>
 <% end %>

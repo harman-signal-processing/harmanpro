@@ -67,14 +67,14 @@
     <td>
       <ul>
       <% location.regions.each do |region| %>
-        <li><%= region.name %></li>
+        <li><%= link_to region.name, edit_location_info_admin_region_path(region) %></li>
       <% end %>
       </ul>
     </td>
     <td>
       <ul>
       <% location.supported_countries.each do |supported_country| %>
-        <li><%= supported_country.name %></li>
+        <li><%= link_to supported_country.name, edit_location_info_admin_country_path(supported_country) %></li>
       <% end %>
       </ul>
     </td>   
