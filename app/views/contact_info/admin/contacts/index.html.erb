@@ -1,12 +1,37 @@
-<div class="row">
-  <div class="small-8 columns">
-    <h1>Contacts</h1>
-  </div>
+<h1 id="contacts_admin_heading">Contacts</h1>
 
-  <div class="small-4 columns text-right">
-    <%= link_to "new contact", new_contact_info_admin_contact_path, class: "small success radius button" %>
-  </div>
-</div>
+<ul class="button-group round">
+	<li><%= link_to 'New Contact', new_contact_info_admin_contact_path, class: "small success button" %></li>
+</ul>
+
+<div class="row" style="margin-bottom: 30px;">
+  <div class="small-12 medium-6 large-4 columns">
+      <%= select_tag "contact-select", 
+      options_from_collection_for_select(ContactInfo::Contact.all.sort_by(&:name), 'id', 'name', @contact_id), 
+      prompt: "Filter by Contact Name",
+      class: 'chosen-select'
+      %>  
+  </div>    
+  <div class="small-12 medium-6 large-4 columns">
+      <%= select_tag "email-select", 
+      options_from_collection_for_select(ContactInfo::Email.joins(:contacts).sort_by(&:email), 'id', 'email', @email_id), 
+      prompt: "Filter by Email",
+      class: 'chosen-select'
+      %>  
+  </div>   
+
+  
+  <div class="small-12 medium-6 large-4 columns">
+    <strong><%=link_to "Show All", contact_info_admin_contacts_path(show_all:1) %></strong>
+  </div>   
+  
+</div><!-- <div class="row" style="margin-bottom: 30px;">  -->
+
+<% if @contacts %>
+  <div style="margin-bottom:30px;"><%= raw @results_message%></div>
+<% else %>
+  <div style="margin-bottom:30px;"><strong>Use one of the filters above to see the Contacts list.</strong></div>
+<% end %>
 
 <table>
   <thead>
@@ -22,9 +47,9 @@
       <td>Supported Countries (uncommon)</td>
     </tr>
   </thead>
-
+<% if @contacts %>
   <tbody>
-    <% @contacts.order(:name).each do |contact| %>
+    <% @contacts.each do |contact| %>
       <tr>
         <td><%= link_to contact.name, edit_contact_info_admin_contact_path(contact) %></td>
         <td>
@@ -80,5 +105,6 @@
       </tr>
     <% end %>
   </tbody>
+<% end %>  <%# if @contacts %>
 </table>
 

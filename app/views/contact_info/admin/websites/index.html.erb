@@ -5,6 +5,10 @@
 	<li><%= link_to 'New Website', new_contact_info_admin_website_path, class: "small success button" %></li>
 </ul>
 
+<% if @websites %>
+<div style="margin-bottom:30px;">Showing <strong><%= @websites.count%> Websites</strong></div>
+<% end %>
+
 <table class="data">
   <tr>
   	<th></th>

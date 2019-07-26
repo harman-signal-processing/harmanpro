@@ -5,6 +5,10 @@
 	<li><%= link_to 'New Territory', new_contact_info_admin_territory_path, class: "small success button" %></li>
 </ul>
 
+<% if @territories %>
+<div style="margin-bottom:30px;">Showing <strong><%= @territories.count%> Territories</strong></div>
+<% end %>
+
 <table class="data">
   <tr>
   	<th></th>

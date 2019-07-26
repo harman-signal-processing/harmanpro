@@ -2,8 +2,33 @@ class ContactInfo::Admin::ContactsController < ContactInfo::AdminController
   before_action :load_contact, except: [:index, :new, :create]
   
   def index
-    @contacts = ContactInfo::Contact.all
-  end  
+    @contact_id = params[:contact_id] if params[:contact_id].present?
+    @email_id = params[:email_id] if params[:email_id].present?
+    show_all = params[:show_all].present?     
+    
+    filter_in_use = @contact_id.present? || @email_id.present?
+    
+    if filter_in_use
+      if @contact_id.present?
+        contact = ContactInfo::Contact.find(@contact_id)
+        @contacts = [] << contact
+        @filtered_by = contact.name
+        @result_count = 1
+      elsif @email_id.present?
+        @contacts = ContactInfo::Contact.joins(:emails).where("contact_info_emails.id = ?", @email_id).order(:name)
+        @filtered_by = ContactInfo::Email.find(@email_id).email
+        @result_count = @contacts.count
+      end
+    elsif show_all
+      @contacts = ContactInfo::Contact.all.order(:name)
+      @filtered_by = "All"
+      @result_count = @contacts.count
+    else
+      # don't show all be default
+    end  #  if filter_in_use
+    @results_message = "Showing <strong>#{@result_count}</strong> Contacts for <strong>#{@filtered_by}</strong>"
+    
+  end  #  def index
   
   def new
     email_id = params[:contact][:email_id] unless params[:contact].nil?
