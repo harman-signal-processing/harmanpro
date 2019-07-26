@@ -73,7 +73,7 @@ class DistributorInfo::Admin::DistributorEmailsController < DistributorInfo::Adm
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a email from #{@distributor_email.distributor.name}")
+    add_log(user: current_user, action: "Removed #{@distributor_email.email.email} from #{@distributor_email.distributor.name}")
   end   
   
   private

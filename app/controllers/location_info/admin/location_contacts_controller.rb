@@ -73,7 +73,7 @@ class LocationInfo::Admin::LocationContactsController < LocationInfo::AdminContr
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a contact from #{@location_contact.location.name}")
+    add_log(user: current_user, action: "Removed #{@location_contact.contact.name} from #{@location_contact.location.name}")
   end 	
 	
   private

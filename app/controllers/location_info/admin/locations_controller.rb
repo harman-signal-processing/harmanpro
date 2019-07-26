@@ -105,26 +105,34 @@ class LocationInfo::Admin::LocationsController < LocationInfo::AdminController
       
       if @contact.present?
         @location.contacts << @contact
+        add_log(user: current_user, action: "Associated #{@location.name} to #{@contact.name}")
         redirect_to edit_contact_info_admin_contact_path(@contact), notice: "The location #{@location.name} was created successfully and assocated to #{@contact.name}."
       elsif @email.present?
         @location.emails << @email
+        add_log(user: current_user, action: "Associated #{@location.name} to #{@email.email}")
         redirect_to edit_contact_info_admin_email_path(@email), notice: "The location #{@location.name} was created successfully and assocated to #{@email.email}."        
       elsif @phone.present?
         @location.phones << @phone
+        add_log(user: current_user, action: "Associated #{@location.name} to #{@phone.phone}")
         redirect_to edit_contact_info_admin_phone_path(@phone), notice: "The location #{@location.name} was created successfully and assocated to #{@phone.phone}."              
       elsif @website.present?
         @location.websites << @website
+        add_log(user: current_user, action: "Associated #{@location.name} to #{@website.url}")
         redirect_to edit_contact_info_admin_website_path(@website), notice: "The location #{@location.name} was created successfully and assocated to #{@website.url}."              
       elsif @distributor.present?
         @location.distributors << @distributor
+        add_log(user: current_user, action: "Associated #{@location.name} to #{@distributor.name}")
         redirect_to edit_distributor_info_admin_distributor_path(@distributor), notice: "The location #{@location.name} was created successfully and associated to #{@distributor.name}."
       elsif @region.present?
         @location.regions << @region
+        add_log(user: current_user, action: "Associated #{@location.name} to #{@region.name}")
         redirect_to edit_region_info_admin_region_path(@region), notice: "The location #{@location.name} was created successfully and associated to #{@region.name}."
       elsif @country.present?
         @location.supported_countries << @country
+        add_log(user: current_user, action: "Associated #{@location.name} to #{@country.name}")
         redirect_to edit_location_info_admin_country_path(@country), notice: "The location #{@location.name} was created successfully and associated as supporting #{@country.name}."
       else
+        add_log(user: current_user, action: "Created location #{@location.name}")
         redirect_to location_info_admin_locations_path, notice: "The location #{@location.name} was created successfully."
       end
       

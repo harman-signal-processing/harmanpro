@@ -73,7 +73,7 @@ class ContactInfo::Admin::ContactDataClientsController < ContactInfo::AdminContr
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a data_client from #{@contact_data_client.contact.name}")
+    add_log(user: current_user, action: "Removed #{@contact_data_client.data_client.name} from #{@contact_data_client.contact.name}")
   end 
   
   private

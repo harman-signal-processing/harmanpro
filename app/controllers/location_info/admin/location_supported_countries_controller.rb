@@ -73,7 +73,7 @@ class LocationInfo::Admin::LocationSupportedCountriesController < LocationInfo::
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a supported_country from #{@location_supported_country.location.name}")
+    add_log(user: current_user, action: "Removed #{@location_supported_country.country.name} from #{@location_supported_country.location.name}")
   end   
   
   private

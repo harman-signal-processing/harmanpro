@@ -73,7 +73,7 @@ class DistributorInfo::Admin::DistributorBrandsController < DistributorInfo::Adm
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a brand from #{@distributor_brand.distributor.name}")
+    add_log(user: current_user, action: "Removed #{@distributor_brand.brand.name} from #{@distributor_brand.distributor.name}")
   end   
   
   private

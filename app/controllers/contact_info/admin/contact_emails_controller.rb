@@ -75,7 +75,7 @@ class ContactInfo::Admin::ContactEmailsController < ContactInfo::AdminController
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed an email from #{@contact_email.contact.name}")
+    add_log(user: current_user, action: "Removed #{@contact_email.email.email} from #{@contact_email.contact.name}")
   end 
   
   private

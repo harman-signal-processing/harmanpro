@@ -67,7 +67,7 @@ class LocationInfo::Admin::LocationExcludeBrandCountriesController < Application
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed an brand/country exclusion from #{@excluded_brand_country.location.name}")
+    add_log(user: current_user, action: "Removed an #{@excluded_brand_country.brand.name}/#{@excluded_brand_country.country.name} exclusion from #{@excluded_brand_country.location.name}")
   end 		
   
   private

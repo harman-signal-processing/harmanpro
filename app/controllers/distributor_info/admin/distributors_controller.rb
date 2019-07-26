@@ -91,11 +91,14 @@ class DistributorInfo::Admin::DistributorsController < DistributorInfo::AdminCon
     if @distributor.save
       if @contact.present?
         @distributor.contacts << @contact
+        add_log(user: current_user, action: "Associated #{@distributor.name} to #{@contact.name}")
         redirect_to edit_contact_info_admin_contact_path(@contact), notice: "The distributor #{@distributor.name} was created successfully and assocated to #{@contact.name}."
       elsif @location.present?
         @distributor.locations << @location
+        add_log(user: current_user, action: "Associated #{@location.name} to #{@distributor.name}")
         redirect_to edit_location_info_admin_location_path(@location), notice: "The distributor #{@distributor.name} was created successfully and associated to #{@location.name}."      
       else
+        add_log(user: current_user, action: "Created distributor #{@distributor.name}")
         redirect_to edit_distributor_info_admin_distributor_path(@distributor), notice: "The distributor #{@distributor.name} was created successfully."
       end
     else

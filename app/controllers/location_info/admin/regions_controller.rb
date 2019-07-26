@@ -24,8 +24,10 @@ class LocationInfo::Admin::RegionsController < LocationInfo::AdminController
     if @region.save
       if @location.present?
         @region.locations << @location
+        add_log(user: current_user, action: "Associated #{@region.name} to #{@location.name}")
         redirect_to edit_location_info_admin_location_path(@location), notice: "The region #{@region.name} was created successfully and associated to #{@location.name}."      
       else
+        add_log(user: current_user, action: "Created region #{@region.name}")
         redirect_to location_info_admin_regions_path, notice: "The region #{@region.name} was created successfully."
       end
     else

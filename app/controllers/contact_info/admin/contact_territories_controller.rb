@@ -73,7 +73,7 @@ class ContactInfo::Admin::ContactTerritoriesController < ContactInfo::AdminContr
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a territory from #{@contact_territory.contact.name}")
+    add_log(user: current_user, action: "Removed territory #{@contact_territory.territory.name} from #{@contact_territory.contact.name}")
   end 
   
   private

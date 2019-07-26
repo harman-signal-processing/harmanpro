@@ -22,7 +22,7 @@ class ContactInfo::Admin::ContactSupportedCountriesController < ContactInfo::Adm
             begin
               contact_supported_country.save!
               @contact_supported_country = contact_supported_country
-              add_log(user: current_user, action: "Associated #{contact_supported_country.contact.name} with #{contact_supported_country.supported_country.name}")
+              add_log(user: current_user, action: "Associated #{contact_supported_country.contact.name} with #{contact_supported_country.country.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{contact_supported_country.country.name}"
@@ -73,7 +73,7 @@ class ContactInfo::Admin::ContactSupportedCountriesController < ContactInfo::Adm
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a supported_country from #{@contact_supported_country.contact.name}")
+    add_log(user: current_user, action: "Removed #{@contact_supported_country.country.name} from #{@contact_supported_country.contact.name}")
   end   
 	
   private

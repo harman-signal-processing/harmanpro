@@ -57,14 +57,18 @@ class ContactInfo::Admin::EmailsController < ContactInfo::AdminController
 
         if @contact.present?
           @email.contacts << @contact
+          add_log(user: current_user, action: "Created email #{@email.email} and associated to contact #{@contact.name}")
           format.html { redirect_to(edit_contact_info_admin_contact_path(@contact), notice: "Email #{@email.email} was successfully created and associated to #{@contact.name}.") }
         elsif @distributor.present?
           @email.distributors << @distributor
+          add_log(user: current_user, action: "Created email #{@email.email} and associated to distributor #{@distributor.name}")
           format.html { redirect_to(edit_distributor_info_admin_distributor_path(@distributor), notice: "Email #{@email.email} was successfully created and associated to #{@distributor.name}.") }
         elsif @location.present?
           @email.locations << @location
+          add_log(user: current_user, action: "Created email #{@email.email} and associated to location #{@location.name}")
           format.html { redirect_to(edit_location_info_admin_location_path(@location), notice: "Email #{@email.email} was successfully created and associated to #{@location.name}.") }                    
         else
+          add_log(user: current_user, action: "Created email #{@email.email}")
           format.html { redirect_to(contact_info_admin_emails_path, notice: "Email #{@email.email} was successfully created.") }          
         end
         
@@ -87,7 +91,7 @@ class ContactInfo::Admin::EmailsController < ContactInfo::AdminController
       format.html { redirect_to(contact_info_admin_emails_url) }
       format.xml  { head :ok }
     end
-    add_log(user: current_user, action: "Deleted contact email: #{@email.email}")
+    add_log(user: current_user, action: "Deleted email: #{@email.email}")
   end
   
   private

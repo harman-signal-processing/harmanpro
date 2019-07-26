@@ -23,6 +23,7 @@ class LocationInfo::Admin::CountriesController <LocationInfo::AdminController
   def create
     @country = LocationInfo::Country.new(country_params)
     if @country.save
+      add_log(user: current_user, action: "Created country #{@country.name}")
       redirect_to location_info_admin_countrys_path, notice: "The country #{@country.name} was created successfully."
     else
       render action: :new
@@ -39,6 +40,7 @@ class LocationInfo::Admin::CountriesController <LocationInfo::AdminController
   
   def destroy
     if @country.destroy
+      add_log(user: current_user, action: "Deleted country #{@country.name}")
       redirect_to location_info_admin_countrys_path
     end    
   end  
