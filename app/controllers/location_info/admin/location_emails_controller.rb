@@ -73,7 +73,7 @@ class LocationInfo::Admin::LocationEmailsController < LocationInfo::AdminControl
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a email from #{@location_email.location.name}")
+    add_log(user: current_user, action: "Removed #{@location_email.email.email} from #{@location_email.location.name}")
   end 	
 	
   private

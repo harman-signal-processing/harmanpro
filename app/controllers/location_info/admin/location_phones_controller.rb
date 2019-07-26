@@ -73,7 +73,7 @@ class LocationInfo::Admin::LocationPhonesController < LocationInfo::AdminControl
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a phone from #{@location_phone.location.name}")
+    add_log(user: current_user, action: "Removed #{@location_phone.phone.phone} from #{@location_phone.location.name}")
   end	
 	
   private

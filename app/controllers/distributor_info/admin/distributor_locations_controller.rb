@@ -73,7 +73,7 @@ class DistributorInfo::Admin::DistributorLocationsController < DistributorInfo::
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a location from #{@distributor_location.distributor.name}")
+    add_log(user: current_user, action: "Removed #{@distributor_location.location.name} from #{@distributor_location.distributor.name}")
   end   
   
   private

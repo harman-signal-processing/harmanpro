@@ -73,7 +73,7 @@ class DistributorInfo::Admin::DistributorWebsitesController < DistributorInfo::A
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a website from #{@distributor_website.distributor.name}")
+    add_log(user: current_user, action: "Removed #{@distributor_website.website.url} from #{@distributor_website.distributor.name}")
   end 
   
   private

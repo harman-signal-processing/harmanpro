@@ -57,14 +57,18 @@ class ContactInfo::Admin::PhonesController < ContactInfo::AdminController
 
         if @contact.present?
           @phone.contacts << @contact unless @contact.nil?
+          add_log(user: current_user, action: "Created phone #{@phone.phone} and associated to contact #{@contact.name}")
           format.html { redirect_to(edit_contact_info_admin_contact_path(@contact), notice: "Phone #{@phone.phone} was successfully created and associated to #{@contact.name}.") }
         elsif @distributor.present?
           @phone.distributors << @distributor unless @distributor.nil?
+          add_log(user: current_user, action: "Created phone #{@phone.phone} and associated to distributor #{@distributor.name}")
           format.html { redirect_to(edit_distributor_info_admin_distributor_path(@distributor), notice: "Phone #{@phone.phone} was successfully created and associated to #{@distributor.name}.") }
         elsif @location.present?
           @phone.locations << @location unless @location.nil?
+          add_log(user: current_user, action: "Created phone #{@phone.phone} and associated to location #{@location.name}")
           format.html { redirect_to(edit_location_info_admin_location_path(@location), notice: "Phone #{@phone.phone} was successfully created and associated to #{@location.name}.") }                    
         else
+          add_log(user: current_user, action: "Created phone #{@phone.phone}")
           format.html { redirect_to(contact_info_admin_phones_path, notice: "Phone #{@phone.phone} was successfully created.") }
         end
 

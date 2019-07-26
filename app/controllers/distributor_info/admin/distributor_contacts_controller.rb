@@ -73,7 +73,7 @@ class DistributorInfo::Admin::DistributorContactsController < DistributorInfo::A
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a contact from #{@distributor_contact.distributor.name}")
+    add_log(user: current_user, action: "Removed #{@distributor_contact.contact.name} from #{@distributor_contact.distributor.name}")
   end   
   
   private

@@ -104,8 +104,10 @@ class ContactInfo::Admin::ContactsController < ContactInfo::AdminController
       
       if @location.present?
         @contact.locations << @location unless @location.nil?
+        add_log(user: current_user, action: "Created #{@contact.name} and associated with location #{@location.name}")
         redirect_to(edit_location_info_admin_location_path(@location), notice: "Contact #{@contact.name} was successfully created and associated to #{@location.name}.") 
       else      
+        add_log(user: current_user, action: "Created contact #{@contact.name}")
         redirect_to edit_contact_info_admin_contact_path(@contact), notice: "The contact #{@contact.name} was created successfully."
       end
     else

@@ -73,7 +73,7 @@ class ContactInfo::Admin::ContactWebsitesController < ContactInfo::AdminControll
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a website from #{@contact_website.contact.name}")
+    add_log(user: current_user, action: "Removed #{@contact_website.website.url} from #{@contact_website.contact.name}")
   end	
   
   private

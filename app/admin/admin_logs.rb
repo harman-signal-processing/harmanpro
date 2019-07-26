@@ -1,6 +1,4 @@
 ActiveAdmin.register AdminLog do
-#   belongs_to :user
-#   menu label: "AdminLog"
   menu parent: "Settings", priority: 11
   actions :all, except: [:new, :create, :edit, :destroy]
   
@@ -10,14 +8,17 @@ ActiveAdmin.register AdminLog do
         adminlog.user.email
     end
     column :action
-    column :updated_at
+    column :updated_at do |adminlog|
+      # Time.parse(adminlog.updated_at).in_time_zone("Central Time (US & Canada)")
+      adminlog.updated_at.strftime("%A %-m/%-d/%y %I:%M %p")
+    end
     actions defaults: false do |adminlog|
       item "View", admin_admin_log_path(adminlog)
     end
   end  
   
-#   filter :user
   filter :action
+  filter :updated_at
   
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

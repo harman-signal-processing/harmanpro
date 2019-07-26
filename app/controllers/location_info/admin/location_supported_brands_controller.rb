@@ -73,7 +73,7 @@ class LocationInfo::Admin::LocationSupportedBrandsController < LocationInfo::Adm
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a supported_brand from #{@location_supported_brand.location.name}")
+    add_log(user: current_user, action: "Removed #{@location_supported_brand.brand.name} from #{@location_supported_brand.location.name}")
   end  
   
   private

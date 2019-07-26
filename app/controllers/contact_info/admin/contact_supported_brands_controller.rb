@@ -22,7 +22,7 @@ class ContactInfo::Admin::ContactSupportedBrandsController < ContactInfo::AdminC
             begin
               contact_supported_brand.save!
               @contact_supported_brand = contact_supported_brand
-              add_log(user: current_user, action: "Associated #{contact_supported_brand.contact.name} with #{contact_supported_brand.supported_brand.name}")
+              add_log(user: current_user, action: "Associated #{contact_supported_brand.contact.name} with #{contact_supported_brand.brand.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{contact_supported_brand.brand.name}"
@@ -73,7 +73,7 @@ class ContactInfo::Admin::ContactSupportedBrandsController < ContactInfo::AdminC
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a supported_brand from #{@contact_supported_brand.contact.name}")
+    add_log(user: current_user, action: "Removed #{@contact_supported_brand.brand.name} from #{@contact_supported_brand.contact.name}")
   end  
   
   private

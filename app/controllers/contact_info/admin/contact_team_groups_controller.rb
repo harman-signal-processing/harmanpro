@@ -73,7 +73,7 @@ class ContactInfo::Admin::ContactTeamGroupsController < ContactInfo::AdminContro
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a team_group from #{@contact_team_group.contact.name}")
+    add_log(user: current_user, action: "Removed #{@contact_team_group.team_group.name} from #{@contact_team_group.contact.name}")
   end 
   
   private

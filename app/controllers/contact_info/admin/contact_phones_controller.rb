@@ -76,7 +76,7 @@ class ContactInfo::Admin::ContactPhonesController < ContactInfo::AdminController
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a phone from #{@contact_phone.contact.name}")
+    add_log(user: current_user, action: "Removed #{@contact_phone.phone.phone} from #{@contact_phone.contact.name}")
   end 
 
   private

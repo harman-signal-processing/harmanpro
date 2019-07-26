@@ -73,7 +73,7 @@ class DistributorInfo::Admin::DistributorPhonesController < DistributorInfo::Adm
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a phone from #{@distributor_phone.distributor.name}")
+    add_log(user: current_user, action: "Removed #{@distributor_phone.phone.phone} from #{@distributor_phone.distributor.name}")
   end  
   
   private

@@ -22,7 +22,7 @@ class ContactInfo::Admin::ContactTagsController < ContactInfo::AdminController
             begin
               contact_tag.save!
               @contact_tag = contact_tag
-              add_log(user: current_user, action: "Associated #{contact_tag.contact.name} with #{contact_tag.tag.name}")
+              add_log(user: current_user, action: "Associated tag #{contact_tag.contact.name} with #{contact_tag.tag.name}")
               format.js
             rescue => e
               @error = "Error: #{e.message} : #{contact_tag.tag.name}"
@@ -73,7 +73,7 @@ class ContactInfo::Admin::ContactTagsController < ContactInfo::AdminController
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a tag from #{@contact_tag.contact.name}")
+    add_log(user: current_user, action: "Removed tag #{@contact_tag.tag.name} from #{@contact_tag.contact.name}")
   end 
   
   private

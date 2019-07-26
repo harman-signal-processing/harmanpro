@@ -73,7 +73,7 @@ class LocationInfo::Admin::LocationWebsitesController < LocationInfo::AdminContr
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a website from #{@location_website.location.name}")
+    add_log(user: current_user, action: "Removed #{@location_website.website.url} from #{@location_website.location.name}")
   end	  
   
 	  def initialize_location_website

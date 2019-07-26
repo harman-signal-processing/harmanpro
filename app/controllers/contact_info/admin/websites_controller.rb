@@ -57,14 +57,18 @@ class ContactInfo::Admin::WebsitesController < ContactInfo::AdminController
 
         if @contact.present?
           @website.contacts << @contact unless @contact.nil?
+          add_log(user: current_user, action: "Created website #{@website.url} and associated to contact #{@contact.name}")
           format.html { redirect_to(edit_contact_info_admin_contact_path(@contact), notice: "Website #{@website.url} was successfully created and associated to #{@contact.name}.") }
         elsif @distributor.present?
           @website.distributors << @distributor unless @distributor.nil?
+          add_log(user: current_user, action: "Created website #{@website.url} and associated to distributor #{@distributor.name}")
           format.html { redirect_to(edit_distributor_info_admin_distributor_path(@distributor), notice: "Website #{@website.url} was successfully created and associated to #{@distributor.name}.") }          
         elsif @location.present?
           @website.locations << @location unless @location.nil?
+          add_log(user: current_user, action: "Created website #{@website.url} and associated to location #{@location.name}")
           format.html { redirect_to(edit_location_info_admin_location_path(@location), notice: "Website #{@website.url} was successfully created and associated to #{@location.name}.") }          
         else
+          add_log(user: current_user, action: "Created website #{@website.url}")
           format.html { redirect_to(contact_info_admin_websites_path, notice: "Website #{@website.url} was successfully created.") }
         end
 

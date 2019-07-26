@@ -73,7 +73,7 @@ class LocationInfo::Admin::LocationRegionsController < LocationInfo::AdminContro
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed a region from #{@location_region.location.name}")
+    add_log(user: current_user, action: "Removed #{@location_region.region.name} from #{@location_region.location.name}")
   end 	
 	
   private
