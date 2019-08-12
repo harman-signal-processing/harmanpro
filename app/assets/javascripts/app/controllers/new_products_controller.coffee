@@ -36,7 +36,8 @@ angular.module("harmanpro")
         if $scope.selectedProductTypes
           selected_product_type_list = []
           for k,v of $scope.selectedProductTypes
-            selected_product_type_list.push k if v
+            #k.slice(3) is used to remove the zzz that was prepended to make angular happy because it does not want model ids that begin with numbers
+            selected_product_type_list.push k.slice(3) if v
           if selected_product_type_list.length > 0
             product_type_filter = false
             for pt in selected_product_type_list

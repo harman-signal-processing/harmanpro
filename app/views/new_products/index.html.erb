@@ -36,7 +36,8 @@
                 <% ProductType.with_translations(I18n.locale).where(id: product_type_ids).order(:name).each do |product_type| %>
                   <div class="side-filter">
                     <label>
-                      <input type="checkbox" ng-model="selectedProductTypes.<%= product_type.friendly_id.underscore %>">
+                      <%#hacky solution below. Prepending zzz to make angular happy because some friendly ids end up beginning with numbers and angular does not like that%>
+                        <input type="checkbox" ng-model="selectedProductTypes.<%= "zzz#{product_type.friendly_id.underscore}" %>">
                       <%= product_type.name %>
                     </label>
                   </div>
@@ -116,7 +117,8 @@
             <% ProductType.with_translations(I18n.locale).where(id: product_type_ids).order(:name).each do |product_type| %>
               <div class="side-filter">
                 <label>
-                  <input type="checkbox" ng-model="selectedProductTypes.<%= product_type.friendly_id.underscore %>">
+                    <%#hacky solution below. Prepending zzz to make angular happy because some friendly ids end up beginning with numbers and angular does not like that%>
+                    <input type="checkbox" ng-model="selectedProductTypes.<%= "zzz#{product_type.friendly_id.underscore}" %>">
                   <%= product_type.name %>
                 </label>
               </div>
