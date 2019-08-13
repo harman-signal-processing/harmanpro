@@ -77,6 +77,7 @@ Rails.application.routes.draw do
         collection { post :update_order }
       end
     end  #  namespace :admin do
+    get "countries" => "locations#countries", as: "countries"
   end  #  namespace :location_info do
 
   # New Distributors paths
