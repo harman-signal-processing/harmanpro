@@ -24,7 +24,7 @@ class LocationInfo::Admin::CountriesController <LocationInfo::AdminController
     @country = LocationInfo::Country.new(country_params)
     if @country.save
       add_log(user: current_user, action: "Created country #{@country.name}")
-      redirect_to location_info_admin_countrys_path, notice: "The country #{@country.name} was created successfully."
+      redirect_to location_info_admin_countries_path, notice: "The country #{@country.name} was created successfully."
     else
       render action: :new
     end
@@ -32,7 +32,7 @@ class LocationInfo::Admin::CountriesController <LocationInfo::AdminController
   
   def update
     if @country.update_attributes(country_params)
-      redirect_to location_info_admin_countrys_path
+      redirect_to location_info_admin_countries_path
     else
       render action: :edit
     end    
@@ -41,7 +41,7 @@ class LocationInfo::Admin::CountriesController <LocationInfo::AdminController
   def destroy
     if @country.destroy
       add_log(user: current_user, action: "Deleted country #{@country.name}")
-      redirect_to location_info_admin_countrys_path
+      redirect_to location_info_admin_countries_path
     end    
   end  
   
@@ -50,7 +50,7 @@ class LocationInfo::Admin::CountriesController <LocationInfo::AdminController
   end  
   
   def country_params
-    params.require(:location_info_country).permit(:name)
+    params.require(:location_info_country).permit(:name, :harman_name, :alpha2, :alpha3, :continent, :region, :sub_region, :world_region, :harman_world_region, :calling_code, :numeric_code)
   end    
   
 end  #  class LocationInfo::Admin::CountriesController <LocationInfo::AdminController
