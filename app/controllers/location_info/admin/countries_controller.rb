@@ -32,6 +32,7 @@ class LocationInfo::Admin::CountriesController <LocationInfo::AdminController
   
   def update
     if @country.update_attributes(country_params)
+      add_log(user: current_user, action: "Updated country #{@country.name}")
       redirect_to location_info_admin_countries_path
     else
       render action: :edit
