@@ -43,7 +43,7 @@ class LocationInfo::Country < ApplicationRecord
   
   scope :long_name, ->(alpha2_code) {
     country = LocationInfo::Country.where(alpha2: alpha2_code)
-    country.first.harman_name
+    country.present? ? country.first.harman_name : "country not found"
   }
   
   def should_generate_new_friendly_id?
