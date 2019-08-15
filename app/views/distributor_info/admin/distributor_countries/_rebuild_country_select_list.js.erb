@@ -7,7 +7,7 @@
 	// rebuild country dropdown list
 	$countries_dropdown.append($("<option></option>"));		
 	<% LocationInfo::Country.not_associated_with_this_distributor(@distributor_country.distributor).each do |country| %>
-		$countries_dropdown.append($("<option value='<%=country.id%>'><%=country.name%></option>"));
+		$countries_dropdown.append($("<option value='<%=country.id%>'><%=country.harman_name%></option>"));
 	<% end %>
 	
 	// let chosen know the phone dropdown list has been updated

@@ -1,8 +1,9 @@
 class LocationInfo::Country < ApplicationRecord
   extend FriendlyId
-  friendly_id :name
+  friendly_id :harman_name
   
   validates :name, presence: true, uniqueness: { case_sensitive: false }
+  validates :harman_name, presence: true, uniqueness: { case_sensitive: false }
   
   # will likely be removing the distributor association because countries will now be associated to locations instead
   has_many :country_to_distributors_association, dependent: :destroy, foreign_key: 'location_info_country_id', class_name: 'DistributorInfo::DistributorCountry'
@@ -42,7 +43,11 @@ class LocationInfo::Country < ApplicationRecord
   
   scope :long_name, ->(alpha2_code) {
     country = LocationInfo::Country.where(alpha2: alpha2_code)
-    country.first.name
+    country.first.harman_name
   }
+  
+  def should_generate_new_friendly_id?
+    true
+  end  
   
 end  #  class LocationInfo::Country < ApplicationRecord

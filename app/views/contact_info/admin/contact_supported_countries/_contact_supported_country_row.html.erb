@@ -3,8 +3,8 @@
 	<% if (called_from == 'supported_country') %><span class="handle"><%= image_tag("icons/drag_handle.gif") %></span><% end %>
 
 	<% if (called_from == 'contact') %> 
-		<%#= link_to("#{association.country.name}", edit_contact_info_admin_country_path(association.country)) %>
-		<%= association.country.name %>
+		<%#= link_to("#{association.country.harman_name}", edit_contact_info_admin_country_path(association.country)) %>
+		<%= association.country.harman_name %>
 	<%else%>
 		<%=link_to("#{association.contact.name}", edit_contact_info_admin_contact_path(association.contact))%> <span style="font-size: x-small"> - <%="#{association.contact.city}" %></span> 
 	<%end%>

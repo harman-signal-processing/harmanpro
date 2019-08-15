@@ -11,7 +11,7 @@
             <%= f.association :country, 
             collection: LocationInfo::Country.not_associated_with_this_territory(@territory_supported_country.territory),
             label: false,
-            label_method: -> (country) { "#{country.name}" },
+            label_method: -> (country) { "#{country.harman_name}" },
             input_html: { class: 'chosen-select', multiple: true,  data: { placeholder: 'Select countries'} }%>
             <%= f.submit "add country", class: "small round button", style:"margin-top:10px;" %>
           <% end %>

@@ -3,7 +3,7 @@
 <li id="location_brand_country_<%= association.id %>">
 
 	<% if (called_from == 'location') %> 
-	  <%="#{association.brand.name} - #{association.country.name}"%>
+	  <%="#{association.brand.name} - #{association.country.harman_name}"%>
 	<%end%>
 
 	<%= link_to(image_tag("icons/trash.gif"), 

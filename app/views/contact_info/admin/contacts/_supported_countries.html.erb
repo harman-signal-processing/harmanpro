@@ -9,8 +9,8 @@
             <%= hidden_field_tag :called_from, "contact" %>
             <%= f.association :country, 
             collection: LocationInfo::Country.not_associated_with_this_contact(@contact_supported_country.contact),
-            label: false,
-            # label_method: "#{country.name}",
+            # label: false,
+            label_method: -> (country) { "#{country.harman_name}" },
             input_html: { class: 'chosen-select', multiple: true,  data: { placeholder: 'Select countries'} }%>
             <%= f.submit "add country", class: "small round button", style:"margin-top:10px;" %>
           <% end %>

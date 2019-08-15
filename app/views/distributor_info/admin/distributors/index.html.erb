@@ -14,7 +14,7 @@
   </div>    
   <div class="small-12 medium-6 large-3 columns">
       <%= select_tag "country-select", 
-      options_from_collection_for_select(LocationInfo::Country.all.sort_by(&:name), 'id', 'name', @country_id), 
+      options_from_collection_for_select(LocationInfo::Country.all.sort_by(&:harman_name), 'id', 'harman_name', @country_id), 
       prompt: "Filter by Country",
       class: 'chosen-select'
       %>  
@@ -59,7 +59,7 @@
     <td>
       <ul>
         <% distributor.countries.order(:name).each do |country|%>
-          <li><%= link_to country.name, edit_location_info_admin_country_path(country) %></li>
+          <li><%= link_to country.harman_name, edit_location_info_admin_country_path(country) %></li>
         <% end %>
       </ul>
     </td>
@@ -73,7 +73,7 @@
     <td>
       <ul>
         <% distributor.distributor_brand_country_exclusion_association.each do |exclusion|%>
-          <li><%= exclusion.brand.name %> - <%= exclusion.country.name %></li>
+          <li><%= exclusion.brand.name %> - <%= exclusion.country.harman_name %></li>
         <% end %>
       </ul>
     </td>     
@@ -98,7 +98,7 @@
                 <% if location.supported_countries.present? %>
                   <ul>
                     <% location.supported_countries.order(:name).each do |country| %>
-                      <li><%= link_to country.name, edit_location_info_admin_country_path(country) %></li>
+                      <li><%= link_to country.harman_name, edit_location_info_admin_country_path(country) %></li>
                     <% end %>
                   </ul>
                 <% end  # if location.supported_countries.present?%>              
@@ -118,7 +118,7 @@
               <% if location.location_brand_country_exclusion_association.present? %>
                 <ul>
                   <% location.location_brand_country_exclusion_association.each do |exclusion| %>
-                    <li><%=exclusion.brand.name%> - <%=exclusion.country.name%></li>
+                    <li><%=exclusion.brand.name%> - <%=exclusion.country.harman_name%></li>
                   <% end %>
                 </ul>
               <% end  # if location.location_brand_country_exclusion_association.present?%>              
