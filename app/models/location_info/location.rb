@@ -85,12 +85,16 @@ class LocationInfo::Location < ApplicationRecord
     brands_countries = []
     existing_brand_country_exclusions = location.location_brand_country_exclusion_association.map{|item| "#{item.brand_id}_#{item.location_info_country_id}"}
     location.supported_brands.order(:name).pluck(:id, :name).each do |brand|
-      location.supported_countries.order(:name).pluck(:id, :name).each do |country|
+      location.supported_countries.order(:harman_name).pluck(:id, :harman_name).each do |country|
         already_excluded = existing_brand_country_exclusions.include?("#{brand[0]}_#{country[0]}")
         brands_countries << { id: "#{brand[0]}_#{country[0]}", name: "#{brand[1]} - #{country[1]}"} unless already_excluded
-      end  #  location.supported_countries.pluck(:id, :name).each do |country|
+      end  #  location.supported_countries.pluck(:id, :harman_name).each do |country|
     end  #  location.supported_brands.pluck(:id, :name).each do |brand|
     brands_countries
   }  
+  
+  def should_generate_new_friendly_id?
+    true
+  end 
   
 end  #  class LocationInfo::Location < ApplicationRecord

@@ -3,7 +3,7 @@
 	<% if (called_from == 'country') %><span class="handle"><%= image_tag("icons/drag_handle.gif") %></span><% end %>
 
 	<% if (called_from == 'distributor') %> 
-		<%= link_to("#{association.country.name}", edit_location_info_admin_country_path(association.country)) %></span> 
+		<%= link_to("#{association.country.harman_name}", edit_location_info_admin_country_path(association.country)) %></span> 
 	<%else%>
 		<%=link_to("#{association.distributor.name}", edit_distributor_info_admin_distributor_path(association.distributor))%><% if association.distributor.account_number.present?%> - (<%=association.distributor.account_number%>)<% end%></span> 
 	<%end%>

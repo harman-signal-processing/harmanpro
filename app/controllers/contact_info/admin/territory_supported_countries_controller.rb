@@ -22,10 +22,10 @@ class ContactInfo::Admin::TerritorySupportedCountriesController < ApplicationCon
             begin
               territory_supported_country.save!
               @territory_supported_country = territory_supported_country
-              add_log(user: current_user, action: "Associated territory #{territory_supported_country.territory.name} with #{territory_supported_country.country.name}")
+              add_log(user: current_user, action: "Associated territory #{territory_supported_country.territory.name} with #{territory_supported_country.country.harman_name}")
               format.js
             rescue => e
-              @error = "Error: #{e.message} : #{territory_supported_country.country.name}"
+              @error = "Error: #{e.message} : #{territory_supported_country.country.harman_name}"
               format.js { render template: "/contact_info/admin/territory_supported_countries/create_error" }
             end
           end  #  @territory_supported_countries.each do |territory_supported_country|
@@ -67,7 +67,7 @@ class ContactInfo::Admin::TerritorySupportedCountriesController < ApplicationCon
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed country #{@territory_supported_country.country.name} from territory #{@territory_supported_country.territory.name}")
+    add_log(user: current_user, action: "Removed country #{@territory_supported_country.country.harman_name} from territory #{@territory_supported_country.territory.name}")
   end  
   
   private

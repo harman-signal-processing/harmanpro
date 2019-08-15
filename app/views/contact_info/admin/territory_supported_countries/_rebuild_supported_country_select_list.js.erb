@@ -7,7 +7,7 @@
 	// rebuild supported_country dropdown list
 	$supported_countries_dropdown.append($("<option></option>"));		
 	<% LocationInfo::Country.not_associated_with_this_territory(@territory_supported_country.territory).each do |supported_country| %>
-		$supported_countries_dropdown.append($("<option value='<%=supported_country.id%>'><%=escape_javascript(supported_country.name)%></option>"));
+		$supported_countries_dropdown.append($("<option value='<%=supported_country.id%>'><%=escape_javascript(supported_country.harman_name)%></option>"));
 	<% end %>
 	
 	// let chosen know the supported_country dropdown list has been updated

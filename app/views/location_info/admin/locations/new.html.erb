@@ -14,7 +14,7 @@ If you want to create the location without associating it to a distributor, <%= 
 <%end%>
 
 <%if @country.present? && params.dig(:location, :country_id).present? %>
-<p>This new location will be associated as supporting <%=link_to "#{@country.name}", edit_location_info_admin_country_path(@country)%>. (You can change this later)<br />
+<p>This new location will be associated as supporting <%=link_to "#{@country.harman_name}", edit_location_info_admin_country_path(@country)%>. (You can change this later)<br />
 If you want to create the location without associating it to a country, <%= link_to "click to here create new location without association.", new_location_info_admin_location_path %>
 </p>
 <%end%>

@@ -22,10 +22,10 @@ class DistributorInfo::Admin::DistributorCountriesController < DistributorInfo::
             begin
               distributor_country.save!
               @distributor_country = distributor_country
-              add_log(user: current_user, action: "Associated #{distributor_country.distributor.name} with #{distributor_country.country.name}")
+              add_log(user: current_user, action: "Associated #{distributor_country.distributor.name} with #{distributor_country.country.harman_name}")
               format.js
             rescue => e
-              @error = "Error: #{e.message} : #{distributor_country.country.name}"
+              @error = "Error: #{e.message} : #{distributor_country.country.harman_name}"
               format.js { render template: "/distributor_info/admin/distributor_countries/create_error" }
             end
           end  #  @distributor_countries.each do |distributor_country|

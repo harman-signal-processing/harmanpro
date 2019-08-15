@@ -129,8 +129,8 @@ class LocationInfo::Admin::LocationsController < LocationInfo::AdminController
         redirect_to edit_region_info_admin_region_path(@region), notice: "The location #{@location.name} was created successfully and associated to #{@region.name}."
       elsif @country.present?
         @location.supported_countries << @country
-        add_log(user: current_user, action: "Associated #{@location.name} to #{@country.name}")
-        redirect_to edit_location_info_admin_country_path(@country), notice: "The location #{@location.name} was created successfully and associated as supporting #{@country.name}."
+        add_log(user: current_user, action: "Associated #{@location.name} to #{@country.harman_name}")
+        redirect_to edit_location_info_admin_country_path(@country), notice: "The location #{@location.name} was created successfully and associated as supporting #{@country.harman_name}."
       else
         add_log(user: current_user, action: "Created location #{@location.name}")
         redirect_to location_info_admin_locations_path, notice: "The location #{@location.name} was created successfully."

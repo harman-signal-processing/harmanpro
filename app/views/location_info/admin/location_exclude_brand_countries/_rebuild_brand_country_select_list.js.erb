@@ -7,7 +7,7 @@
 	// rebuild brand/country exclusion dropdown list
 	$exclude_brands_countries_dropdown.append($("<option></option>"));		
 	<% LocationInfo::Location.brands_countries_not_already_excluded(@excluded_brand_country.location).each do |brand_country| %>
-		$exclude_brands_countries_dropdown.append($("<option value='<%=brand_country[:id]%>'><%=brand_country[:name]%></option>"));
+		$exclude_brands_countries_dropdown.append($("<option value='<%=brand_country[:id]%>'><%=brand_country[:harman_name]%></option>"));
 	<% end %>
 	
 	// let chosen know the dropdown list has been updated

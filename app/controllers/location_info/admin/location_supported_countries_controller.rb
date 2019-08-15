@@ -22,10 +22,10 @@ class LocationInfo::Admin::LocationSupportedCountriesController < LocationInfo::
             begin
               location_supported_country.save!
               @location_supported_country = location_supported_country
-              add_log(user: current_user, action: "Associated #{location_supported_country.location.name} with #{location_supported_country.country.name}")
+              add_log(user: current_user, action: "Associated #{location_supported_country.location.name} with #{location_supported_country.country.harman_name}")
               format.js
             rescue => e
-              @error = "Error: #{e.message} : #{location_supported_country.country.name}"
+              @error = "Error: #{e.message} : #{location_supported_country.country.harman_name}"
               format.js { render template: "/location_info/admin/location_supported_countries/create_error" }
             end
           end  #  @location_supported_countries.each do |location_supported_country|
@@ -73,7 +73,7 @@ class LocationInfo::Admin::LocationSupportedCountriesController < LocationInfo::
       format.xml  { head :ok }
       format.js 
     end
-    add_log(user: current_user, action: "Removed #{@location_supported_country.country.name} from #{@location_supported_country.location.name}")
+    add_log(user: current_user, action: "Removed #{@location_supported_country.country.harman_name} from #{@location_supported_country.location.name}")
   end   
   
   private

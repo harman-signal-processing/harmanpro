@@ -14,7 +14,7 @@
   </div>    
   <div class="small-12 medium-6 large-3 columns">
       <%= select_tag "country-select", 
-      options_from_collection_for_select(LocationInfo::Country.all.sort_by(&:name), 'id', 'name', @country_id), 
+      options_from_collection_for_select(LocationInfo::Country.all.sort_by(&:harman_name), 'id', 'harman_name', @country_id), 
       prompt: "Filter by Country",
       class: 'chosen-select'
       %>  
@@ -74,7 +74,7 @@
     <td>
       <ul>
       <% location.supported_countries.each do |supported_country| %>
-        <li><%= link_to supported_country.name, edit_location_info_admin_country_path(supported_country) %></li>
+        <li><%= link_to supported_country.harman_name, edit_location_info_admin_country_path(supported_country) %></li>
       <% end %>
       </ul>
     </td>   
@@ -88,7 +88,7 @@
     <td>
       <ul>
       <% location.location_brand_country_exclusion_association.each do |exclusion| %>
-        <li><%= exclusion.brand.name %> - <%= exclusion.country.name %></li>
+        <li><%= exclusion.brand.name %> - <%= exclusion.country.harman_name %></li>
       <% end %>
       </ul>
     </td>     

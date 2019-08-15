@@ -3,7 +3,7 @@
 	<% if (called_from == 'supported_country') %><span class="handle"><%= image_tag("icons/drag_handle.gif") %></span><% end %>
 
 	<% if (called_from == 'location') %> 
-		<%= link_to("#{association.country.name}", edit_location_info_admin_country_path(association.country)) %>
+		<%= link_to("#{association.country.harman_name}", edit_location_info_admin_country_path(association.country)) %>
 	<%else%>
 		<%=link_to("#{association.location.name}", edit_location_info_admin_location_path(association.location))%> <span style="font-size: x-small"> - <%="#{association.location.city}" %></span> 
 	<%end%>
