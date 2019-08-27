@@ -4,7 +4,7 @@ class ContactInfo::RsosController < ApplicationController
   end    
   
   def show
-    country_code = params[:country_code].nil? ? "us" : params[:country_code]
+    country_code = params[:country_code].nil? ? "us" : clean_country_code(params[:country_code])
     territories = ContactInfo::Territory.joins(:supported_countries).where("location_info_countries.alpha2 = ?", country_code)
     rso_contacts = ContactInfo::Contact.joins(:territories).where("contact_info_contact_territories.contact_info_territory_id in(?)", territories.pluck(:id)).order("contact_info_contact_territories.position")
     rso_contacts_json = get_contacts_json(rso_contacts)

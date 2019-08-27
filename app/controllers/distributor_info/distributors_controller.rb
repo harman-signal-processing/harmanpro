@@ -1,11 +1,12 @@
 class DistributorInfo::DistributorsController < ApplicationController
-  respond_to :json
+  respond_to :html, :json
+
   def index
   end
   
   def show
     brand = params[:brand].blank? ? "bss" : params[:brand]
-    country_code = params[:country_code].blank? ? "us" : params[:country_code]
+    country_code = params[:country_code].blank? ? "us" : clean_country_code(params[:country_code])
     
     distributors = DistributorInfo::Distributor.joins(:countries, :brands).where("location_info_countries.alpha2 = ? and brands.name = ?", country_code, brand).order("distributor_info_distributor_countries.position")
     
@@ -26,9 +27,9 @@ class DistributorInfo::DistributorsController < ApplicationController
     # Remove distributors that have no locations, no emails, no phones, no websites. 
     # This is an edge case, where the distributor is associated with the country and brand but none of it's location are and no contact data provided.
     # Example, Harman Professional Solutions and BSS, Mexico
-    distributors_json = remove_distributor_with_no_info(distributors_contacts_with_correct_data_client_json)
+    @distributors_json = remove_distributor_with_no_info(distributors_contacts_with_correct_data_client_json)
     
-    respond_with distributors_json
+    respond_with @distributors_json
 
   end  #  def show
   
