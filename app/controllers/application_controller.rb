@@ -159,4 +159,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def clean_country_code(country_code)
+    country_code.gsub(/[^a-zA-Z]/, '').slice(0..1).downcase
+  end
+  helper_method :clean_country_code
+
 end  #  class ApplicationController < ActionController::Base
