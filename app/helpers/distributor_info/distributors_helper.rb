@@ -56,8 +56,10 @@ module DistributorInfo::DistributorsHelper
     def country_name(country_code)
         cache_for = Rails.env.production? ? 8.hours : 1.minute
         Rails.cache.fetch(country_code, expires_in: cache_for, race_condition_ttl: 10) do
-            LocationInfo::Country.where("alpha2 = ?",country_code).first[:harman_name]
-        end
+            country_info = LocationInfo::Country.where("alpha2 = ?",country_code)
+            country_name = country_info.present? ? country_info.first[:harman_name] : ""
+            country_name
+        end  #  Rails.cache.fetch(country_code, expires_in: cache_for, race_condition_ttl: 10) do
     end  #  def country_name(country_code)   
     
 end  #  module DistributorInfo::DistributorsHelper

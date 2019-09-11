@@ -1,6 +1,7 @@
 class DistributorInfo::DistributorsController < ApplicationController
   respond_to :html, :json
 
+  ##### Actions #####
   def index
   end
   
@@ -8,30 +9,129 @@ class DistributorInfo::DistributorsController < ApplicationController
     brand = params[:brand].blank? ? "bss" : params[:brand]
     country_code = params[:country_code].blank? ? "us" : clean_country_code(params[:country_code])
     
+    @distributors_json = get_distributors_json(brand, country_code)
+
+    respond_with @distributors_json
+  end  #  show
+  
+  def region
+    brand = params[:brand].blank? ? "bss" : params[:brand]
+    region = params[:region]
+    country_code_list = country_codes_in_region(region) if region.present?
+    distributors_json = []
+    country_code_list.each do |country_code|
+      distributors = get_distributors_json(brand, country_code)
+      distributors_json += distributors if distributors.present?
+    end
+    @brand = brand
+    @region = region
+    @distributors_json = distributors_json
+    respond_with @distributors_json
+  end  #  region
+  
+  def country_and_region
+    brand = params[:brand].blank? ? "bss" : params[:brand]
+    country_code = params[:country_code].blank? ? "us" : clean_country_code(params[:country_code])    
+    region = params[:region]
+    country_code_list = country_codes_in_region(region) if region.present?
+    
+    # Make sure the country specified is first in the country_code_list
+    if country_code_list.include? country_code
+      country_code_list.unshift(country_code_list.delete(country_code))
+    else
+      country_code_list.unshift(country_code)
+    end
+    
+    distributors_json = []
+    country_code_list.each do |country_code|
+      distributors = get_distributors_json(brand, country_code)
+      distributors_json += distributors if distributors.present?
+    end
+    @brand = brand
+    @region = region
+    @country_code = country_code
+    @distributors_json = distributors_json
+    respond_with @distributors_json    
+    
+  end  #  country_and_region
+  
+  def country_and_regions
+    brand = params[:brand].blank? ? "bss" : params[:brand]
+    country_code = params[:country_code].blank? ? "us" : clean_country_code(params[:country_code])    
+    regions = params[:regions].split(',').map(&:squish).map{|region| region.gsub(/[^a-zA-Z ]/, '').downcase}
+    country_code_list = []
+    regions.each do |region|
+      country_code_list += country_codes_in_region(region) if region.present?
+    end 
+    
+    # Make sure the country specified is first in the country_code_list
+    if country_code_list.include? country_code
+      country_code_list.unshift(country_code_list.delete(country_code))
+    else
+      country_code_list.unshift(country_code)
+    end
+    
+    distributors_json = []
+    country_code_list.each do |country_code|
+      distributors = get_distributors_json(brand, country_code)
+      distributors_json += distributors if distributors.present?
+    end
+    @brand = brand
+    @regions = regions
+    @country_code = country_code
+    @distributors_json = distributors_json
+    respond_with @distributors_json    
+    
+  end  #  country_and_regions
+  
+  ##### Methods #####
+  
+  def get_distributors_json(brand, country_code)
     distributors = DistributorInfo::Distributor.joins(:countries, :brands).where("location_info_countries.alpha2 = ? and brands.name = ?", country_code, brand).order("distributor_info_distributor_countries.position")
     
-    distributor_tree_unfiltered_json = get_complete_distributor_tree_json(distributors)
+    if distributors.empty?
+      distributors_json = []
+    else
+      distributor_tree_unfiltered_json = get_complete_distributor_tree_json(distributors)
+      
+      distributor_tree_locations_with_country = remove_distributor_locations_not_matching_country(distributor_tree_unfiltered_json, country_code)
+      
+      distributor_tree_locations_with_brand = remove_distributor_locations_not_matching_brand(distributor_tree_locations_with_country, brand)
+      
+      
+      brand_id = Brand.find_by_name(brand).id
+      country_id = LocationInfo::Country.find_by_alpha2(country_code).id
+      distributor_tree_excluded_distributors_removed = remove_excluded_distributors(distributor_tree_locations_with_brand, brand_id, country_id)
+      distributor_tree_excluded_locations_removed = remove_excluded_locations(distributor_tree_excluded_distributors_removed, brand_id, country_id)
+      
+      distributors_contacts_with_correct_data_client_json = remove_contacts_not_matching_brandsites_distributor_data_client(distributor_tree_excluded_locations_removed)
+      # distributors_contacts_with_correct_data_client_json = remove_contacts_not_matching_brandsites_distributor_data_client(distributor_tree_locations_with_brand)
+      
+      # Remove distributors that have no locations, no emails, no phones, no websites. 
+      # This is an edge case, where the distributor is associated with the country and brand but none of it's location are and no contact data provided.
+      # Example, Harman Professional Solutions and BSS, Mexico
+      distributors_json = remove_distributor_with_no_info(distributors_contacts_with_correct_data_client_json)
+      
+      distributors_json
+    end
     
-    distributor_tree_locations_with_country = remove_distributor_locations_not_matching_country(distributor_tree_unfiltered_json, country_code)
-    
-    distributor_tree_locations_with_brand = remove_distributor_locations_not_matching_brand(distributor_tree_locations_with_country, brand)
-    
-    brand_id = Brand.find_by_name(brand).id
-    country_id = LocationInfo::Country.find_by_alpha2(country_code).id
-    distributor_tree_excluded_distributors_removed = remove_excluded_distributors(distributor_tree_locations_with_brand, brand_id, country_id)
-    distributor_tree_excluded_locations_removed = remove_excluded_locations(distributor_tree_excluded_distributors_removed, brand_id, country_id)
-    
-    distributors_contacts_with_correct_data_client_json = remove_contacts_not_matching_brandsites_distributor_data_client(distributor_tree_excluded_locations_removed)
-    # distributors_contacts_with_correct_data_client_json = remove_contacts_not_matching_brandsites_distributor_data_client(distributor_tree_locations_with_brand)
-    
-    # Remove distributors that have no locations, no emails, no phones, no websites. 
-    # This is an edge case, where the distributor is associated with the country and brand but none of it's location are and no contact data provided.
-    # Example, Harman Professional Solutions and BSS, Mexico
-    @distributors_json = remove_distributor_with_no_info(distributors_contacts_with_correct_data_client_json)
-    
-    respond_with @distributors_json
+    distributors_json
+  end  #  def get_distributors_json(brand, country_code)
+  
 
-  end  #  def show
+  
+  def country_codes_in_region(region)
+    country_code_list = []
+    region_country_code_list = ISO3166::Country.find_all_countries_by_region(region).collect(&:alpha2)
+    sub_region_country_code_list = ISO3166::Country.find_all_countries_by_subregion(region).collect(&:alpha2)
+    world_region_country_code_list = ISO3166::Country.find_all_countries_by_world_region(region).collect(&:alpha2)
+    
+    country_code_list = region_country_code_list.map(&:downcase) if !region_country_code_list.empty?
+    country_code_list = sub_region_country_code_list.map(&:downcase) if !sub_region_country_code_list.empty?
+    country_code_list = world_region_country_code_list.map(&:downcase) if !world_region_country_code_list.empty?
+    
+    country_code_list
+  end  #  country_codes_in_region(region)
   
   private
   
