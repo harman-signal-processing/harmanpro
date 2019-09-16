@@ -43,8 +43,8 @@ class DistributorInfo::DistributorsController < ApplicationController
     end
     
     distributors_json = []
-    country_code_list.each do |country_code|
-      distributors = get_distributors_json(brand, country_code)
+    country_code_list.each do |alpha2|
+      distributors = get_distributors_json(brand, alpha2)
       distributors_json += distributors if distributors.present?
     end
     @brand = brand
@@ -72,14 +72,14 @@ class DistributorInfo::DistributorsController < ApplicationController
     end
     
     distributors_json = []
-    country_code_list.each do |country_code|
-      distributors = get_distributors_json(brand, country_code)
+    country_code_list.each do |alpha2|
+      distributors = get_distributors_json(brand, alpha2)
       distributors_json += distributors if distributors.present?
     end
     @brand = brand
     @regions = regions
     @country_code = country_code
-    @distributors_json = distributors_json
+    @distributors_json = distributors_json.uniq
     respond_with @distributors_json    
     
   end  #  country_and_regions

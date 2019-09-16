@@ -8,9 +8,10 @@
 <ul class="large-block-grid-3 medium-block-grid-1 small-block-grid-1">
 <%@distributors_json.each do |d|
     distributor = d.deep_symbolize_keys%>
+		<% if !distributor[:locations].empty? %>
             <li>
 				<h3><%= distributor[:name] %></h3>
-				<%=image_tag "https://www.countryflags.io/#{distributor[:locations].first[:country].downcase}/flat/32.png" %>
+					<%=image_tag "https://www.countryflags.io/#{distributor[:locations].first[:country].downcase}/flat/32.png" %>
 				<div style="margin-top:10px;">
 					<%=raw get_list_html(distributor, "emails", "email") %>
 					<%=raw get_list_html(distributor, "phones", "phone") %>
@@ -54,6 +55,7 @@
 				<% end %> <%# distributor[:locations].each do |location| %>
 
         </li>
+	<% end %> <%# if !distributor[:locations].empty? %>
 <%end%> <%# @distributors_json.each do |d| %>
 </ul>
 </div>
