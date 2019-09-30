@@ -1,5 +1,6 @@
 class CaseStudiesController < ApplicationController
   before_action :redirect_old_links, only: :show
+  respond_to :html, :json
 
   def index
     if params[:vertical_market_id].present?
@@ -9,10 +10,12 @@ class CaseStudiesController < ApplicationController
       @case_studies = CaseStudy.with_translations(I18n.locale).order(Arel.sql("created_at DESC")).limit(60)
     end
     @banner_image = Resource.find_by(name:"Banner: Case Studies")
+    respond_with @case_studies
   end
 
   def show
     @case_study = CaseStudy.find(params[:id])
+    respond_with @case_study
   end
 
   private
