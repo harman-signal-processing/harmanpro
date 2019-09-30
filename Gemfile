@@ -21,7 +21,7 @@ gem 'bower-rails'
 gem "active_model_serializers", "0.9.5" # 0.10+ is not backwards compatible
 gem 'dalli'
 gem 'figaro'
-gem 'simple_form'
+gem 'simple_form', ">= 5.0.0"
 gem 'chosen-rails'
 gem 'RedCloth'
 gem 'tinymce-rails', github: 'spohlenz/tinymce-rails.git'

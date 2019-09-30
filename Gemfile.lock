@@ -495,7 +495,7 @@ GEM
       faraday_middleware (~> 0.9.1)
       hashie (~> 3.4)
       multi_xml (~> 0.5)
-    simple_form (4.1.0)
+    simple_form (5.0.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     simplecov (0.17.1)
@@ -629,7 +629,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   selenium-webdriver
   silverpop
-  simple_form
+  simple_form (>= 5.0.0)
   simplecov
   spring
   sprockets
