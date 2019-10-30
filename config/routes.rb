@@ -270,6 +270,8 @@ Rails.application.routes.draw do
   get "/contacts_old/:search/:chosen_contacts_path", to: "contacts#show"
   get "/contacts/:search", to: "contacts#show_new"
   get "/contacts/:search/:chosen_contacts_path", to: "contacts#show_new"
+  
+  get "/dealers-ru", to: "landing_pages#show", :id => 'dealers-ru'
 
   get '/thankyou' => 'landing_pages#thankyou', as: :thankyou # Thank you page after leadgen form
   get '/thanks' => 'landing_pages#thanks', as: :thanks # Generic thanks page
