@@ -65,7 +65,9 @@ $(function () {
     width: '100%'
   });
 
-
+  $(document).on('opened.fndtn.reveal', '[data-reveal]', function() {
+    $(this).find('[autofocus]').focus();
+  });
 
 }); // $(function() {
 

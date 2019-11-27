@@ -84,11 +84,28 @@
               &nbsp;
             <% end %>
 
+            <% if AvailableLocale.live.include?(I18n.locale) %>
+
+              <br/>
+              <%= link_to '#', class: "large searchbutton", :'data-reveal-id' => "searchform" do %>
+                <i class="fa fa-search" title="<%= t :search %>"></i>
+              <% end %>
+
+            <% end %>
+
           </div>
 
         </div>
         <hr/>
 
+      </div>
+    </div>
+
+    <div id="searchform" class="reveal-modal" data-reveal aria-labelledby="Search Form" aria-hidden="true" role="dialog">
+      <div id="search_form">
+        <%= form_tag search_path, method: :get, class: "custom-form popup-search-form" do %>
+          <%= text_field_tag :query, @query, placeholder: t(:search).titleize, autofocus: true %>
+        <% end %>
       </div>
     </div>
 
@@ -161,29 +178,6 @@
             <% end %>
           </ul>
         </section>
-
-        <% if AvailableLocale.live.include?(I18n.locale) %>
-          <section class="top-bar-section">
-            <ul class="right">
-              <li class="has-form show-for-large-up" id="search_form">
-                <%= form_tag search_path, method: :get, class: "custom-form", id: "search-form" do %>
-                  <div class="row collapse">
-                    <div class="medium-8 medium-offset-1 columns">
-                      <%= text_field_tag :query, @query, placeholder: t(:search) %>
-                    </div>
-                    <div class="medium-3 columns">
-                      <%= link_to search_path,
-                        onclick: "document.getElementById('search-form').submit(); return false;",
-                        class: "secondary radius button postfix" do %>
-                        <i class="fa fa-search" title="<%= t :search %>"></i>
-                      <% end %>
-                    </div>
-                  </div>
-                <% end %>
-              </li>
-            </ul>
-          </section>
-        <% end %>
 
       </nav>
     </div>

@@ -2198,6 +2198,38 @@ div.field_with_errors {
 /*  display: table;*/
 }
 
+.searchbutton {
+  @include button(rem-calc(16), $gainsboro);
+  color: $steel;
+  font-size: rem-calc(18);
+}
+div#searchform {
+  padding: 16px 6px;
+}
+.popup-search-form {
+  input {
+    border: none;
+    font-size: rem-calc(32);
+    font-weight: 300;
+    box-shadow: none;
+    background: none;
+    margin: 0;
+    &:focus {
+      outline: none;
+      background: none;
+      box-shadow: none;
+    }
+  }
+  ::-webkit-input-placehoder {
+    color: $monsoon !important;
+  }
+  ::-ms-input-placeholder {
+    color: $monsoon !important;
+  }
+  ::placeholder {
+    color: $monsoon !important;
+  }
+}
 ul#search_results {
 	margin: 8px;
 	margin-left: 0px;
