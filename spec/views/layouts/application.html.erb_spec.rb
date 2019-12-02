@@ -70,16 +70,6 @@ RSpec.describe "layouts/application.html.erb", as: :view do
 
   end
 
-  describe "footer" do
-    before :each do
-      render
-    end
-
-    it "links to brands" do
-      expect(rendered).to have_link(@brand.name, href: brand_path(@brand))
-    end
-  end
-
   def header
     @header ||= Capybara.string(rendered).find("nav.top-bar")
   end

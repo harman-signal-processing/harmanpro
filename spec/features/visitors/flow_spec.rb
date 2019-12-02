@@ -16,12 +16,6 @@ feature "Basic visitor flow" do
     visit root_path
   end
 
-  scenario "Visit brand information page" do
-    click_on @brand.name
-
-    expect(current_path).to eq brand_path(@brand)
-  end
-
   scenario "Service-only brand does not appear" do
     expect(page).not_to have_link(@service_brand.name)
   end
