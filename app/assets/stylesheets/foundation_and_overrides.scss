@@ -2114,58 +2114,32 @@ ul.title-area {
 }
 
 #footer {
-  padding-top: 40px;
-  padding-left: 20px;
-  @media only screen and (min-width: 1000px) {
-    padding-bottom: 20px;
-  }
-  @media only screen and (min-width: 500px) and (max-width: 999px) {
-    padding-bottom: 16px;
-  }
-  @media only screen and (max-width: 499px) {
-    padding-bottom: 10px;
-  }
+  padding: 40px 20px;
   background: $footer-background-color;
-  .subheader {
-    color: $primary-color;
-    font-weight: 200;
-    letter-spacing: rem-calc(.8);
-  }
-  ul {
-    list-style-type: none;
-    margin-left: 0;
-    padding-right: 0;
-    li {
-      font-size: rem-calc(10);
-      a {
-        color: $snow;
-        &:hover {
-          color: $primary-color;
-        }
-      }
-    }
-  }
+  font-size: rem-calc(17px);
+  font-weight: 400;
+  color: white;
   .social-links {
-    padding-top: 10px;
-    a {
-      margin: 6px;
-      color: $snow;
-    }
+    padding-top: 20px;
   }
-  label {
-    color: $primary-color;
+  a {
+    color: $snow;
+    padding: 0 3px;
+    &:hover {
+      color: $base;
+    }
   }
 }
 .sub-footer {
   padding-top: 20px;
   p {
-    font-size: rem-calc(12);
-    color: $base;
-  }
-  a {
-    color: $silver;
-    &:hover {
-      color: $harman-blue;
+    font-size: rem-calc(17px);
+    font-weight: 400 !important;
+    color: white;
+    .small {
+      font-size: rem-calc(12px);
+      font-weight: 400;
+      color: $base;
     }
   }
 }

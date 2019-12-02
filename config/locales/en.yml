@@ -12,6 +12,7 @@ en:
   all_rights_reserved: All rights reserved
   privacy_policy: Privacy Policy
   terms_of_use: Terms of Use
+  cookies: Cookies
   submit: submit
   more: more
   more_information: more info
@@ -64,6 +65,7 @@ en:
     plan: Plan
     buy: Buy
     browse_all_solutions: browse all solutions
+    newsletter: Newsletter
 
   home_page:
     shop_now: Shop Now

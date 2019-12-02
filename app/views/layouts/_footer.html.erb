@@ -2,51 +2,13 @@
   <div class="small-12 columns">
     <div id="footer">
       <div class="row">
-        <div class="large-5 medium-5 small-12 columns">
-          <h6 class="subheader"><%= t('nav.solutions') %></h6>
-          <ul class="medium-block-grid-<%= active_child_verticals.in_groups(3).length %>">
-            <% active_child_verticals.in_groups(3) do |group| %>
-              <li>
-                <ul><% group.each do |item| %>
-                  <%= menu_link_for(item) if item.respond_to?(:name) %>
-                <% end %></ul>
-              </li>
-            <% end %>
-          </ul>
-        </div>
+        <div class="small-12 columns text-right">
+          <%= link_to t('nav.new_products'), new_products_path %>
+          <%= link_to t('nav.service'), service_path %>
+          <%= link_to t('nav.contact_us'), contacts_path %>
+          <%= link_to t('nav.training'), "/training" %>
+          <%= link_to t('nav.newsletter'), "/lp/sign-up" %>
 
-        <div class="large-2 medium-6 small-12 columns">
-          <%= cache ["footer-col-3", Date.today, current_locale] do %>
-            <h6 class="subheader"><%= t('harman_brands') %></h6>
-            <ul class="medium-block-grid-2 small-block-grid-2">
-              <% all_brands.in_groups(2) do |group| %>
-                <li>
-                  <ul><% group.each do |brand| %>
-                    <% if brand.respond_to?(:name) %>
-                      <li><%= link_to brand.name, brand %></li>
-                    <% end %>
-                  <% end %></ul>
-                </li>
-              <% end %>
-            </ul>
-          <% end %>
-        </div>
-
-        <div class="large-2 medium-2 small-12 columns">
-          <% if I18n.locale == I18n.default_locale %>
-            <h6 class="subheader"><%= t('more').titleize %> <%= t('nav.resources').titleize %></h6>
-            <ul>
-              <li><%= link_to t('nav.contact_us'), contacts_path %></li>
-              <li><%= link_to t('nav.harman_finance'), finance_path %></li>
-              <li><%= link_to t('nav.new_products'), new_products_path %></li>
-              <li><%= link_to "Experience Centers", "/lp/harman-experience-centers" %></li>
-              <li><%= link_to t('nav.training'), "/training" %></li>
-            </ul>
-          <% end %>
-        </div>
-
-        <div class="large-3 medium-6 small-12 columns">
-          <%= render "layouts/newsletter_signup_form" %>
           <div class="social-links">
             <%= link_to "/facebook" do %>
               <%= fa_icon 'facebook 2x' %>
@@ -65,14 +27,23 @@
             <% end %>
           </div>
         </div>
+      </div>
 
+      <div class="row">
         <div class="small-12 columns sub-footer">
           <p>
             &copy; <%= Date.today.year %> HARMAN International.
             <%= t('all_rights_reserved') %>.
-            <%= link_to t('privacy_policy'), "http://www.harman.com/privacy-policy" %>
+            <%= link_to t('privacy_policy'), "https://www.harman.com/privacy-policy" %>
             |
-            <%= link_to t('terms_of_use'), "http://www.harman.com/terms-use" %>
+            <%= link_to t('cookies'), "https://www.harman.com/cookies-statement" %>
+            |
+            <%= link_to t('terms_of_use'), "https://www.harman.com/terms-use" %>
+            <br/>
+            <span class="small">
+              If you are using a screen reader and are having problems using this website,
+              please call (800) 645-7484 for assistance.
+            </span>
           </p>
         </div>
       </div>
