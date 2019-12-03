@@ -81,7 +81,7 @@ $light-gray: #e6e7e8;
  $base        : #AAAAAA;
  $aluminum    : #999999;
  $jumbo       : #888888;
- $monsoon     : #787878;
+ $monsoon     : #777777;
  $steel       : #666666;
  $charcoal    : #555555;
  $tuatara     : #444444;
@@ -1403,7 +1403,7 @@ $topbar-divider-border-bottom: solid 1px  scale-color($topbar-bg-color, $lightne
 
 // Sticky Class
 // $topbar-sticky-class: ".sticky";
-// $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
+$topbar-arrows: false; //Set false to remove the triangle icon from the menu item
 
 // 36. Visibility Classes
 // - - - - - - - - - - - - - - - - - - - - - - - - -

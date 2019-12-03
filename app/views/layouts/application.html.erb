@@ -125,11 +125,14 @@
         <section class="top-bar-section">
           <ul>
             <%= cache ["top-nav", Date.today, current_locale] do %>
-              <li class="has-dropdown show-for-medium-up">
-                <a href="<%= vertical_markets_path %>" class="disabled" data-dropdown="megaMenu" data-options="is_hover:true;" id="megaTrigger"><%= t('nav.solutions') %></a>
+              <li class="show-for-medium-up">
+                <a href="<%= vertical_markets_path %>" class="disabled" data-dropdown="megaMenu" data-options="is_hover:true;" id="megaTrigger"><%= t('nav.solutions') %> <%= fa_icon "angle-down" %></a>
               </li>
               <li class="has-dropdown show-for-small-only">
-                <%= link_to t('nav.solutions'), vertical_markets_path, class: "disabled" %>
+                <%= link_to vertical_markets_path, class: "disabled" do %>
+                  <%= t('nav.solutions') %>
+                  <%= fa_icon "angle-down" %>
+                <% end %>
                 <ul class="dropdown">
                   <%= top_vertical_market_navigation(dropdowns: false) %>
                   <li><%= link_to t('nav.browse_all_solutions'), vertical_markets_path %></li>
@@ -137,7 +140,7 @@
               </li>
               <li><%= link_to t("nav.case_studies"), case_studies_path %></li>
               <li class="has-dropdown">
-                <a href="#" class="disabled"><%= t('nav.resources') %></a>
+                <a href="#" class="disabled"><%= t('nav.resources') %> <%= fa_icon "angle-down" %></a>
                 <ul class="dropdown">
                   <% if current_locale.menu_items.length > 0 %>
                     <% current_locale.menu_items.order(Arel.sql('position')).each do |mi| %>
@@ -150,7 +153,6 @@
                   <% else %>
                     <li><%= link_to t('nav.media_library'), SiteSetting.value("media-library-menu-link-location") %></li>
                     <li><%= link_to t('nav.training'), training_path %></li>
-                    <li><%= link_to t('nav.events'), events_path %></li>
                     <li><%= link_to t('nav.consultants'), consultant_portal_path %></li>
                     <li><%= link_to t('nav.contacts'), contacts_path %></li>
                     <li><%= link_to t('nav.news'), news_articles_path %></li>
@@ -159,6 +161,7 @@
                 </ul>
               </li>
               <li><%= link_to t('nav.new_products'), "/new-products" %></li>
+              <li><%= link_to t('nav.events'), events_path %></li>
               <li><%= link_to t('nav.contact_us'), contacts_path %></li>
               <% if SiteSetting.set_for_locale?("blog_link_name") && SiteSetting.set_for_locale?("blog_link") %>
                 <li>
