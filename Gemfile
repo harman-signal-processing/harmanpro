@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.2'
+gem 'bootsnap'
 gem 'responders', '~> 2.0'
 gem 'mysql2'
 gem 'sass-rails', '~> 5.0'
@@ -65,6 +66,7 @@ gem 'email_validator'
 gem 'country_select'
 
 group :development do
+  gem 'bumbler'
   gem 'letter_opener'
 #  gem 'web-console', '~> 3.0'
   gem 'spring'
