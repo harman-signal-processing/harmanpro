@@ -47,7 +47,6 @@ class ServiceCentersController < ApplicationController
     brand_id = Brand.find_by_name(brand).id
     state = params[:state].nil? ? "any" : params[:state]
     service_groups = ServiceGroup.where("brand_id = ?", brand_id).uniq
-    binding.pry
     if state == "any"
       service_centers = ServiceCenter.joins(:service_groups).where("service_group_id in (?) and active = true",service_groups.pluck(:id)).uniq
     else
