@@ -24,21 +24,6 @@
     </div>
   <% end %>
 
-  <% if SiteSetting.set_for_locale?("consultant-portal-loan-program-paragraph") %>
-    <div class="row">
-      <div class="large-12 medium-12 columns">
-        <hr/>
-        <h3><%= SiteSetting.value("consultant-portal-loan-program-headline") %></h3>
-        <br/>
-        <div>
-          <%= raw SiteSetting.value("consultant-portal-loan-program-paragraph") %>
-        </div>
-        <%= link_to t('consultant_page.consignment_form'), asset_path("consignment-template.xlsx"), class: "tiny radius button" %>
-      </div>
-    </div>
-    <p>&nbsp;</p>
-  <% end %>
-
   <a name="technical-resources"></a>
   <hr/>
   <p>&nbsp;</p>
