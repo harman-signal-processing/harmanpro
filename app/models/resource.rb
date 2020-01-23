@@ -12,7 +12,8 @@ class Resource < ApplicationRecord
       thumb: "80x60",
       thumb_square: "64x64#",
       tiny: "32x32#"
-  }, default_url: "missing/logos/:style.jpg"
+  }, processors: [:thumbnail, :compression],
+  default_url: "missing/logos/:style.jpg"
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 

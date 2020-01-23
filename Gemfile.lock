@@ -365,12 +365,16 @@ GEM
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
     orm_adapter (0.5.0)
+    os (1.0.1)
     paperclip (6.1.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
+    paperclip-compression (1.1.0)
+      os (~> 1.0.0)
+      paperclip (>= 5.2.1)
     phantomjs (2.1.1.0)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
@@ -621,6 +625,7 @@ DEPENDENCIES
   nokogiri
   oauth2
   paperclip
+  paperclip-compression
   pry-byebug
   pundit
   rails (~> 5.2)

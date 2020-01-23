@@ -15,7 +15,8 @@ class Feature < ApplicationRecord
       thumb: "100x100>",
       tiny: "64x64>",
       tiny_square: "64x64#"
-    }, default_url: "missing/banners/:style.jpg"
+    }, processors: [:thumbnail, :compression],
+    default_url: "missing/banners/:style.jpg"
   validates_attachment :image, content_type: { content_type: /\Aimage/i }
 
   attr_accessor :delete_image

@@ -18,7 +18,8 @@ class Product < ApplicationRecord
       thumb: "83x52",
       thumb_square: "64x64#",
       tiny: "32x32#"
-  }, default_url: "missing/banners/:style.jpg"
+  }, processors: [:thumbnail, :compression],
+  default_url: "missing/banners/:style.jpg"
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
   validates :name, presence: true, uniqueness: true

@@ -29,6 +29,7 @@ gem 'tinymce-rails', github: 'spohlenz/tinymce-rails.git'
 gem 'foundation-rails', '~> 5.5' # After this, getting incompatible units errors
 gem 'friendly_id', '>= 5.2'
 gem 'paperclip'
+gem 'paperclip-compression'
 gem 'fog-rackspace'
 gem 'fog-core', '= 2.1.0' # fog-rackspace 0.1.6 needs to catch-up with namespace updates
 gem 'acts_as_list'

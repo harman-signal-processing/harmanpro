@@ -22,7 +22,8 @@ class LandingPage < ApplicationRecord
       small: "250x100",
       thumb: "83x50",
       thumb_square: "64x64#"
-  }, default_url: "missing/banners/:style.jpg"
+  }, processors: [:thumbnail, :compression],
+  default_url: "missing/banners/:style.jpg"
   attr_accessor :delete_banner
 
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\Z/

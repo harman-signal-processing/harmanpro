@@ -20,7 +20,8 @@ class VerticalMarket < ApplicationRecord
     styles: {
       standard: "93x93#",
       thumb: "48x48#"
-  }, default_url: "missing/icon.png"
+  }, processors: [:thumbnail, :compression],
+  default_url: "missing/icon.png"
 
   validates_attachment_content_type :icon, content_type: /\Aimage\/.*\Z/
 
@@ -32,7 +33,8 @@ class VerticalMarket < ApplicationRecord
       small: "250x100#",
       thumb: "83x50#",
       thumb_square: "64x64#"
-  }, default_url: "missing/banners/:style.jpg"
+  }, processors: [:thumbnail, :compression],
+  default_url: "missing/banners/:style.jpg"
 
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\Z/
 
@@ -43,7 +45,8 @@ class VerticalMarket < ApplicationRecord
       small: "250x375#",
       thumb: "80x120#",
       thumb_square: "64x64#"
-  }, default_url: "missing/background/:style.jpg"
+  }, processors: [:thumbnail, :compression],
+  default_url: "missing/background/:style.jpg"
 
   validates_attachment_content_type :background, content_type: /\Aimage\/.*\Z/
 
@@ -54,7 +57,8 @@ class VerticalMarket < ApplicationRecord
       small: "250x375#",
       thumb: "80x120#",
       thumb_square: "64x64#"
-  }, default_url: "missing/hef_banner/:style.jpg"
+  }, processors: [:thumbnail, :compression],
+  default_url: "missing/hef_banner/:style.jpg"
 
   validates_attachment_content_type :hef_banner, content_type: /\Aimage\/.*\Z/
 

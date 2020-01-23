@@ -11,7 +11,8 @@ class Artist < ApplicationRecord
       small: "250x156#",
       thumb: "83x52#",
       thumb_square: "64x64#"
-  }, default_url: "missing/banners/:style.jpg"
+  }, processors: [:thumbnail, :compression],
+  default_url: "missing/banners/:style.jpg"
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
   validates :locale, presence: true

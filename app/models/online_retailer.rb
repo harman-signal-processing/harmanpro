@@ -17,7 +17,8 @@ class OnlineRetailer < ApplicationRecord
       thumb_square: "64x64#",
       circle: "72x72",
       tiny: "32x32#"
-  }, default_url: "missing/logos/:style.jpg"
+  }, processors: [:thumbnail, :compression],
+  default_url: "missing/logos/:style.jpg"
 
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 

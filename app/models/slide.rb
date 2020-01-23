@@ -9,7 +9,8 @@ class Slide < ApplicationRecord
       small: "250x156#",
       thumb: "83x52#",
       thumb_square: "64x64#"
-  }, default_url: "missing/banners/:style.jpg"
+  }, processors: [:thumbnail, :compression],
+  default_url: "missing/banners/:style.jpg"
 
   has_attached_file :bubble,
     styles: {
@@ -18,7 +19,8 @@ class Slide < ApplicationRecord
       small: "250x156#",
       thumb: "83x52#",
       thumb_square: "64x64#"
-  }, default_url: "missing/banners/:style.jpg"
+  }, processors: [:thumbnail, :compression],
+  default_url: "missing/banners/:style.jpg"
 
   validates_attachment_content_type :background, content_type: /\Aimage\/.*\Z/
   validates_attachment_content_type :bubble, content_type: /\Aimage\/.*\Z/
