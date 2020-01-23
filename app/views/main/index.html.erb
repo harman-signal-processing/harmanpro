@@ -33,7 +33,7 @@
             <div class="slick-slide case-study-slide">
               <%= link_to(case_study) do %>
                 <div class="case-study-hero-panel">
-                  <h2> <%= link_to case_study.headline, case_study  %> </h2>
+                  <h2><%= case_study.headline  %></h2>
                   <%= raw case_study.description %>
                   <div>
                     <%= t('learn_more').upcase %>

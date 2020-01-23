@@ -1638,17 +1638,25 @@ ul.dropdown {
     background-color: rgba(20, 170, 225, 0.75);
     position: absolute;
     z-index: 5;
-    margin-top: 120px;
+    top: 125px;
+    @media only screen and (max-width: 999px) {
+      top: 20px;
+    }
+
     padding: 30px 40px;
     width: 50%;
+    @media only screen and (max-width: 699px) {
+      width: 65%;
+    }
     h2 {
-      font-size: rem-calc(30px) !important;
+      font-size: rem-calc(30px);
+      color: white;
+      @media only screen and (max-width: 999px) {
+        font-size: rem-calc(20px);
+      }
     }
     a {
       color: white;
-      h2 {
-        color: white;
-      }
     }
   }
 }
