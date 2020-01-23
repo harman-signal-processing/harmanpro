@@ -22,7 +22,7 @@ $harman-blue: #006498;
 // Since the typical default browser font-size is 16px, that makes the calculation for grid size.
 // If you want your base font-size to be different and not have it affect the grid breakpoints,
 // set $rem-base to $base-font-size and make sure $base-font-size is a px value.
-$base-font-size: 14px;
+$base-font-size: 16px;
 
 // This is the default html and body font-size for the base rem value.
 $rem-base: $base-font-size;
@@ -56,7 +56,7 @@ $font-family-sans-serif: 'Roboto', 'Open Sans', "Helvetica Neue", Helvetica, Ari
 // We use these to define default font weights
 // $font-weight-normal: normal !default;
 $font-weight-light: 200;
-$font-weight-medium: 300;
+$font-weight-medium: 400;
 // $font-weight-bold: bold !default;
 
 // We use these as default colors throughout
@@ -66,7 +66,7 @@ $alert-color: #ff1133;
 $success-color: #43AC6A;
 $warning-color: #f08a24;
 $info-color: #a0d3e8;
-$dark-gray: #676767;
+$dark-gray: rgb(74,74,74);
 $light-gray: #e6e7e8;
 
  $white       : #FFFFFF;
@@ -169,9 +169,9 @@ $xlarge-up: "#{$screen} and (min-width:#{lower-bound($xlarge-range)})";
 
 // We use these to control header font styles
 // $header-font-family: $body-font-family;
-$header-font-weight: $font-weight-medium;
+$header-font-weight: 300;
 // $header-font-style: normal;
-$header-font-color: $harman-blue;
+$header-font-color: $black;
 $header-line-height: 1.2;
 $header-top-margin: .3rem;
 // $header-bottom-margin: .5rem;
@@ -1349,7 +1349,7 @@ $topbar-margin-bottom: 0;
 $topbar-dropdown-bg: $vapor;
 $topbar-dropdown-link-color: $harman-blue;
 $topbar-dropdown-link-bg: $vapor;
-// $topbar-dropdown-link-weight: $font-weight-normal;
+$topbar-dropdown-link-weight: $font-weight-medium;
 // $topbar-dropdown-toggle-size: 5px;
 $topbar-dropdown-toggle-color: $monsoon;
 // $topbar-dropdown-toggle-alpha: 0.4;
@@ -1433,7 +1433,8 @@ body {
   }
 }
 p {
-  font-weight: 300 !important;
+  font-weight: 400 !important;
+  line-height: rem-calc(28px);
 }
 .top-bar .button {
   line-height: 1;
@@ -1533,8 +1534,6 @@ ul.dropdown {
   li {
     height: rem-calc(36);
     a {
-      font-weight: 300 !important;
-      font-size: rem-calc(14px);
       color: $harman-blue !important;
       text-transform: none;
       height: rem-calc(36);
@@ -1631,6 +1630,27 @@ ul.dropdown {
 }
 .space-after {
   margin-bottom: 20px;
+}
+.case-study-slide {
+  position: relative;
+  .case-study-hero-panel {
+    color: white;
+    background-color: rgba(20, 170, 225, 0.75);
+    position: absolute;
+    z-index: 5;
+    margin-top: 120px;
+    padding: 30px 40px;
+    width: 50%;
+    h2 {
+      font-size: rem-calc(30px) !important;
+    }
+    a {
+      color: white;
+      h2 {
+        color: white;
+      }
+    }
+  }
 }
 .case-study-panel {
   font-size: rem-calc(13);

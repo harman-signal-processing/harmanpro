@@ -32,6 +32,7 @@
 //= require REM-unit-polyfill
 //= require jquery-sticky/jquery.sticky
 //= require chosen-jquery
+//= require will_paginate_infinite
 //= require admin
 // require_tree .
 

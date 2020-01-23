@@ -64,6 +64,10 @@ gem 'maxminddb' # for geocoding ip addresses
 gem 'geolite2_city' # db for maxminddb
 gem 'email_validator'
 gem 'country_select'
+gem 'will_paginate'
+gem 'will_paginate_infinite',
+  git: 'https://github.com/adamtao/will_paginate_infinite.git',
+  ref: 'acd94832693989e03e239095e6071668c34a7ff4'
 
 group :development do
   gem 'bumbler'

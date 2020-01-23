@@ -8,17 +8,12 @@
 
 <div class="row">
   <div class="medium-9 columns">
-    <ul class="medium-block-grid-3 small-block-grid-1">
+    <div class="case-studies">
       <% @case_studies.each do |case_study| %>
-        <li><%= link_to case_study do %>
-          <%= image_tag case_study.banner.url(:small_panel) %>
-        <% end %>
-        <h5><%= link_to case_study.headline, case_study %></h5>
-        <div><small><%=l case_study.created_at.to_date, format: :long %></small></div>
-        <%= raw case_study.description %>
-        </li>
+        <%= render case_study %>
       <% end %>
-    </ul>
+    </div>
+    <%= will_paginate @case_studies, renderer: WillPaginateInfinite::InfinitePagination %>
   </div>
 
   <div class="medium-3 columns">

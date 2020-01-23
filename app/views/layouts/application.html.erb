@@ -61,7 +61,7 @@
               <div class="row collapse prefix" style="border: none">
 
                 <div class="small-2 columns">
-                  <span class="prefix"><%= fa_icon :flag %></span>
+                  <span class="prefix"><%= fa_icon :flag, "aria-hidden": true %></span>
                 </div>
 
                 <div class="small-10 columns">
@@ -71,7 +71,7 @@
                   <% if SiteSetting.set_for_locale?("store_link", current_locale.key) %>
                     <div class="text-right">
                       <%= link_to SiteSetting.value("store_link"), target: "_blank", class: "small radius button" do %>
-                        <%= fa_icon "shopping-cart" %>
+                        <%= fa_icon "shopping-cart", "aria-hidden": true %>
                         <%= t('nav.shop') %>
                       <% end %>
                     </div>
@@ -126,12 +126,12 @@
           <ul>
             <%= cache ["top-nav", Date.today, current_locale] do %>
               <li class="show-for-medium-up">
-                <a href="<%= vertical_markets_path %>" class="disabled" data-dropdown="megaMenu" data-options="is_hover:true;" id="megaTrigger"><%= t('nav.solutions') %> <%= fa_icon "angle-down" %></a>
+                <a href="<%= vertical_markets_path %>" class="disabled" data-dropdown="megaMenu" data-options="is_hover:true;" id="megaTrigger"><%= t('nav.solutions') %> <%= fa_icon "angle-down", "aria-hidden": true %></a>
               </li>
               <li class="has-dropdown show-for-small-only">
                 <%= link_to vertical_markets_path, class: "disabled" do %>
                   <%= t('nav.solutions') %>
-                  <%= fa_icon "angle-down" %>
+                  <%= fa_icon "angle-down", "aria-hidden": true %>
                 <% end %>
                 <ul class="dropdown">
                   <%= top_vertical_market_navigation(dropdowns: false) %>
@@ -140,7 +140,7 @@
               </li>
               <li><%= link_to t("nav.case_studies"), case_studies_path %></li>
               <li class="has-dropdown">
-                <a href="#" class="disabled"><%= t('nav.resources') %> <%= fa_icon "angle-down" %></a>
+                <a href="#" class="disabled"><%= t('nav.resources') %> <%= fa_icon "angle-down", "aria-hidden": true %></a>
                 <ul class="dropdown">
                   <% if current_locale.menu_items.length > 0 %>
                     <% current_locale.menu_items.order(Arel.sql('position')).each do |mi| %>
@@ -170,7 +170,7 @@
               <% end %>
               <% if active_locales.count > 1 %>
                 <li class="has-dropdown show-for-small-only">
-                  <a href="#" class="disabled"><%= fa_icon :flag %></a>
+                  <a href="#" class="disabled"><%= fa_icon :flag, "aria-hidden": true %></a>
                   <ul class="dropdown">
                     <% active_locales.each do |loc| %>
                       <li><%= link_to loc.name, root_path(locale: loc.key) %></li>
