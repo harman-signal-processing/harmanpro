@@ -8,7 +8,7 @@
 <% if @artist.photo.present? || ENV['show_placeholders'] == "true" %>
 <div class="bumped-up">
   <div class="banner-container">
-    <h1><%= image_tag @artist.photo.url(:large) %></h1>
+    <h1><%= image_tag @artist.photo.url(:large), alt: @artist.name %></h1>
   </div>
 </div>
 <% end %>

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="small-12 medium-3 columns">
     <%= link_to case_study do %>
-      <%= image_tag case_study.banner.url(:small_panel) %>
+      <%= image_tag case_study.banner.url(:small_panel), alt: "#{case_study.title} thumbnail image" %>
     <% end %>
   </div>
   <div class="small-12 medium-9 columns">

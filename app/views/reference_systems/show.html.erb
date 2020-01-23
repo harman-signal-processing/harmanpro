@@ -7,7 +7,7 @@
 
 <div class="bumped-up">
   <div class="banner-container reference-system">
-    <%= image_tag(@reference_system.banner.url(:large)) %>
+    <%= image_tag(@reference_system.banner.url(:large), alt: @reference_system.name) %>
   </div>
   <div class="row">
     <div class="large-5 large-offset-2 small-8 columns">
@@ -51,7 +51,7 @@
           <div class="system-diagram-container">
             <%= render "system_diagram_popups" %>
 
-            <%= image_tag(@reference_system.system_diagram.url(:original)) %>
+            <%= image_tag(@reference_system.system_diagram.url(:original), alt: "System Diagram") %>
 
             <noscript>
               <h5 class="subheader"><%= t('reference_system_page.explore_products') %>:</h5>

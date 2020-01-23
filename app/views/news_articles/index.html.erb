@@ -30,7 +30,7 @@
           <div class="article">
             <% if news.news_photo.present? || ENV['show_placeholders'] == "true" %>
               <%= link_to news do %>
-                <%= image_tag news.news_photo.url(:medium) %>
+                <%= image_tag news.news_photo.url(:medium), alt: news.title %>
               <% end %>
             <% end %>
             <h4><%= link_to news.title, news %></h4>
@@ -47,7 +47,7 @@
             <div class="medium-2 columns">
               <% if news.news_photo.present? || ENV['show_placeholders'] == "true" %>
                 <%= link_to news do %>
-                  <%= image_tag news.news_photo.url(:small) %>
+                  <%= image_tag news.news_photo.url(:small), alt: news.title %>
                 <% end %>
               <% end %>
               <br/>

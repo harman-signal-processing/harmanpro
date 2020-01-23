@@ -11,7 +11,8 @@
 		<% if !distributor[:locations].empty? %>
             <li>
 				<h3><%= distributor[:name] %></h3>
-					<%=image_tag "https://www.countryflags.io/#{distributor[:locations].first[:country].downcase}/flat/32.png" %>
+					<%=image_tag "https://www.countryflags.io/#{distributor[:locations].first[:country].downcase}/flat/32.png",
+          alt: "#{distributor[:locations].first[:country]} flag" %>
 				<div style="margin-top:10px;">
 					<%=raw get_list_html(distributor, "emails", "email") %>
 					<%=raw get_list_html(distributor, "phones", "phone") %>

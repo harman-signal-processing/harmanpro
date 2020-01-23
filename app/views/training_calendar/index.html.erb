@@ -10,7 +10,7 @@
 
 <div class="container main-container">
     <% if @training_content_page.banner.present? %>
-    <%= image_tag @training_content_page.banner.url %>
+    <%= image_tag @training_content_page.banner.url, alt: "Training" %>
     <% end %>
 
     <!-- begin main content row  -->

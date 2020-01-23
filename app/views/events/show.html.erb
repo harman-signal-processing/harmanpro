@@ -3,7 +3,7 @@
 
 <% if (@event.image.present? && !@event.hide_image?) || ENV['show_placeholders'] == "true" %>
   <div class="bumped-up space-after">
-    <%= image_tag @event.image.url, name: @event.name %>
+    <%= image_tag @event.image.url, alt: @event.name %>
   </div>
 <% end %>
 

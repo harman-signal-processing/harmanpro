@@ -11,7 +11,7 @@
 
 <div class="container main-container">
   <% if @landing_page.banner.present? %>
-    <%= image_tag @landing_page.banner.url %>
+    <%= image_tag @landing_page.banner.url, alt: @landing_page.title %>
   <% end %>
 
   <% unless @landing_page.hide_title? %>

@@ -1,6 +1,6 @@
 <% if @contacts_banner_image_url.present? %>
-<%= link_to((image_tag @contacts_banner_image_url), contacts_path) %>
-<% end %>    
+<%= link_to((image_tag @contacts_banner_image_url, alt: "Contacts Page Banner"), contacts_path) %>
+<% end %>
 
 <div class="row" style="margin-top:10px;">
     <div class="large-2 medium-3 small-5 columns">
