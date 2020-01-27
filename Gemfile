@@ -18,6 +18,7 @@ gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 5.0'
 gem 'jbuilder', '~> 2.0'
+gem 'lazyload-rails'
 gem 'bower-rails'
 gem "active_model_serializers", "0.9.5" # 0.10+ is not backwards compatible
 gem 'dalli'

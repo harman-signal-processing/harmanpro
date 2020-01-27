@@ -31,6 +31,7 @@
 //= require slick.min
 //= require REM-unit-polyfill
 //= require jquery-sticky/jquery.sticky
+//= require jquery.lazyload
 //= require chosen-jquery
 //= require will_paginate_infinite
 //= require admin
@@ -69,6 +70,8 @@ $(function () {
   $(document).on('opened.fndtn.reveal', '[data-reveal]', function() {
     $(this).find('[autofocus]').focus();
   });
+
+  $("img").lazyload();
 
 }); // $(function() {
 
