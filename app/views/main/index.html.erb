@@ -8,10 +8,10 @@
           <% end %>
           <% if slide.link_url.present? %>
             <%= link_to slide.link_url, target: (slide.link_new_window?) ? "_blank" : "" do %>
-              <%= image_tag slide.background.url, alt: slide.name %>
+              <%= image_tag slide.background.url, alt: slide.name, lazy: false %>
             <% end %>
           <% else %>
-            <%= image_tag slide.background.url, alt: slide.name %>
+            <%= image_tag slide.background.url, alt: slide.name, lazy: false %>
           <% end %>
         </div>
       <% end %>
@@ -40,7 +40,7 @@
                     <%= fa_icon 'long-arrow-right', "aria-hidden": true %>
                   </div>
                 </div>
-                <%= image_tag(case_study.banner.url(:large), alt: case_study.headline) %>
+                <%= image_tag(case_study.banner.url(:large), alt: case_study.headline, lazy: false) %>
               <% end %>
             </div>
           <% end %>
