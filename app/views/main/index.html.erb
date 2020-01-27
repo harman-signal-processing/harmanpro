@@ -1,17 +1,17 @@
 <div class="bumped-up">
   <div class="banner-container text-center" style="background: white">
     <div class="slick-show">
-      <% @slides.each do |slide| %>
+      <% @slides.each_with_index do |slide, i| %>
         <div class="slick-slide homepage-banner">
           <% if slide.headline.present? %>
             <h1 class="homepage-banner"><%=raw format_headline slide.headline %></h1>
           <% end %>
           <% if slide.link_url.present? %>
             <%= link_to slide.link_url, target: (slide.link_new_window?) ? "_blank" : "" do %>
-              <%= image_tag slide.background.url, alt: slide.name, lazy: false %>
+              <img <% if i>0 %>data-lazy<% else %>src<% end %>="<%= slide.background.url %>" alt="<%= slide.name %>"/>
             <% end %>
           <% else %>
-            <%= image_tag slide.background.url, alt: slide.name, lazy: false %>
+            <img data-lazy="<%= slide.background.url %>" alt="<%= slide.name %>"/>
           <% end %>
         </div>
       <% end %>
@@ -29,7 +29,7 @@
           <%= SiteSetting.value("homepage-case-studies-headline") %>
         </h2>
         <div class="slick-show case_studies">
-          <% @featured_case_studies[0,4].each do |case_study| %>
+          <% @featured_case_studies[0,4].each_with_index do |case_study, i| %>
             <div class="slick-slide case-study-slide">
               <%= link_to(case_study) do %>
                 <div class="case-study-hero-panel">
@@ -40,7 +40,7 @@
                     <%= fa_icon 'long-arrow-right', "aria-hidden": true %>
                   </div>
                 </div>
-                <%= image_tag(case_study.banner.url(:large), alt: case_study.headline, lazy: false) %>
+                <img <% if i>0 %>data-lazy<% else %>src<% end %>="<%= case_study.banner.url(:large) %>" alt="<%= case_study.headline %>"/>
               <% end %>
             </div>
           <% end %>
