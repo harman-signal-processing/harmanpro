@@ -46,6 +46,10 @@ class CaseStudy < ApplicationRecord
     headline
   end
 
+  def title
+    headline
+  end
+
   # Link name for search results
   def link_name
     "#{I18n.t :case_study}: " + headline
