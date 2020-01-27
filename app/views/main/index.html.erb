@@ -59,11 +59,11 @@
               <div class="img_container">
                 <% if SiteSetting.set_for_locale?("blog_link_name") && SiteSetting.set_for_locale?("blog_link") %>
                   <%= link_to SiteSetting.value("blog_link"), target: "_blank" do %>
-                    <%= image_tag('insights_thumbnail.jpg', alt: SiteSetting.value("blog_link_name")) %>
+                    <%= image_tag('insights_thumbnail.jpg', alt: SiteSetting.value("blog_link_name"), lazy: false) %>
                   <% end %>
                 <% else %>
                   <%= link_to news_articles_path do %>
-                    <%= image_tag('default_news_thumbnail.jpg', alt: "News") %>
+                    <%= image_tag('default_news_thumbnail.jpg', alt: "News", lazy: false) %>
                   <% end %>
                 <% end %>
               </div>
@@ -96,11 +96,11 @@
               <div class="img_container">
                 <% if @event %>
                   <%= link_to @event do %>
-                    <%= image_tag(@event.image.url(:small_panel), alt: "Events") %>
+                    <%= image_tag(@event.image.url(:small_panel), alt: "Events", lazy: false) %>
                   <% end %>
                 <% else %>
                   <%= link_to events_path do %>
-                    <%= image_tag('default_events_thumbnail.jpg', alt: "Events") %>
+                    <%= image_tag('default_events_thumbnail.jpg', alt: "Events", lazy: false) %>
                   <% end %>
                 <% end %>
               </div>
