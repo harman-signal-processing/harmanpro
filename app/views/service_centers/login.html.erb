@@ -16,7 +16,7 @@
           <div class="panel brand-panel" data-equalizer-watch="panels">
             <div class="brand-logo">
               <% if brand.logo.present? || ENV['show_placeholders'] == "true" %>
-                <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
+                <p><%= image_tag brand.logo.url(:medium), alt: brand.name, lazy: false %></p>
               <% end %>
             </div>
             <p><%= link_to t('service_login_page.brand_website', brand: brand.first_name), brand.url, target: "_blank" %></p>
