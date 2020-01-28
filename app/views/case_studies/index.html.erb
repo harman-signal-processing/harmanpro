@@ -10,7 +10,24 @@
   <div class="medium-9 columns">
     <div class="case-studies">
       <% @case_studies.each do |case_study| %>
-        <%= render case_study %>
+        <div class="row">
+          <div class="small-12 medium-3 columns">
+            <%= link_to case_study do %>
+              <%= image_tag case_study.banner.url(:small_panel), alt: "#{case_study.headline} thumbnail image" %>
+            <% end %>
+          </div>
+          <div class="small-12 medium-9 columns">
+            <h5><%= link_to case_study.headline, case_study %></h5>
+            <div><strong><%=l case_study.created_at.to_date, format: :long %></strong></div>
+            <div class="show-for-small">
+              <%= raw case_study.description %>
+            </div>
+            <div class="show-for-medium-up">
+              <p><%= truncate(strip_html(textilize(case_study.content)), length: 250).gsub(/The Opportunity\s?/, "The Opportunity: ") %></p>
+            </div>
+          </div>
+        </div>
+        <hr/>
       <% end %>
     </div>
     <%= will_paginate @case_studies, renderer: WillPaginateInfinite::InfinitePagination %>
