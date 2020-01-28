@@ -37,7 +37,7 @@
         <div class="row">
           <div class="medium-8 medium-offset-2 columns text-center">
             <%= link_to @case_study.pdf.url do %>
-              <%= image_tag "pdf-icon.png", alt: "PDF" %>
+              <%= image_tag "pdf-icon.png", alt: "PDF", lazy: false %>
             <% end %>
             <p>&nbsp;</p>
           </div>
