@@ -23,7 +23,6 @@ ActiveAdmin.register SiteSetting do
         raw(textilize(site_setting.content))
       end
     end
-    active_admin_comments
   end
 
   form do |f|

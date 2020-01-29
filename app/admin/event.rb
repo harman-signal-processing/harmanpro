@@ -64,7 +64,6 @@ ActiveAdmin.register Event do
       row :featured
       row :active
     end
-    active_admin_comments
   end
 
   form html: {multipart: true} do |f|

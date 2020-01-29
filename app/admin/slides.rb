@@ -63,7 +63,6 @@ ActiveAdmin.register Slide do
       row :link_new_window
       row :position
     end
-    active_admin_comments
   end
 
   form  html: { multipart: true } do |f|

@@ -40,7 +40,6 @@ ActiveAdmin.register NewProduct do
         new_product.product_types.map{|pt| pt.name}.join(", ")
       end
     end
-    active_admin_comments
   end
 
   form html: { multipart: true} do |f|

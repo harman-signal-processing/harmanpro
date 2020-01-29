@@ -66,7 +66,6 @@ ActiveAdmin.register Resource do
       end
       row :description
     end
-    active_admin_comments
   end
 
   form html: { multipart: true} do |f|

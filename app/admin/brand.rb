@@ -85,7 +85,6 @@ ActiveAdmin.register Brand do
       row :parts_email
       row :repair_email
     end
-    active_admin_comments
   end
 
   form html: {multipaart: true} do |f|

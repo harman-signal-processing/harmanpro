@@ -100,7 +100,6 @@ ActiveAdmin.register TrainingContentPage do
       row :header_code
       row :footer_code
     end
-    active_admin_comments
   end  #  show do
   
 

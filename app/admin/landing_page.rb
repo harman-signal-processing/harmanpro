@@ -110,7 +110,6 @@ ActiveAdmin.register LandingPage do
       row :header_code
       row :footer_code
     end
-    active_admin_comments
   end
 
   form html: { multipart: true} do |f|

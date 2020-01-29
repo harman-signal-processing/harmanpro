@@ -45,7 +45,6 @@ ActiveAdmin.register Product do
       end
       row :ecommerce_id
     end
-    active_admin_comments
   end
 
   form html: { multipart: true} do |f|
