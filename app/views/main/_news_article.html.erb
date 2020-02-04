@@ -1,0 +1,11 @@
+<%= link_to(news_article) do %>
+  <%= image_tag news_article.news_photo.url(image_size), alt: news_article.title %>
+  <div class="case-study-hero-panel">
+    <h4>
+      <%= truncate news_article.title, length: headline_length, separator: ' ' %>
+      <%= fa_icon 'long-arrow-right', "aria-hidden": true %>
+    </h4>
+  </div>
+<% end %>
+
+

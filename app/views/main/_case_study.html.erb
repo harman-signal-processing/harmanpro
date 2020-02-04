@@ -1,0 +1,10 @@
+<%= link_to(case_study) do %>
+  <%= image_tag case_study.banner.url(image_size), alt: case_study.headline %>
+  <div class="case-study-hero-panel">
+    <h4>
+      <%= case_study.headline %>
+      <%= fa_icon 'long-arrow-right', "aria-hidden": true %>
+    </h4>
+  </div>
+<% end %>
+

@@ -7,6 +7,7 @@ class MainController < ApplicationController
       @slides = @slides.where("geo_target_country IS NULL or geo_target_country = ?", @geo_ip.country.iso_code)
     end
     @featured_case_studies = CaseStudy.featured
+    @featured_news_articles = NewsArticle.featured
     @event = Event.current_and_upcoming.
       where(featured: true).
       where("start_on < ?", 6.months.from_now).

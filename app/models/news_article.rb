@@ -42,6 +42,10 @@ class NewsArticle < ApplicationRecord
   end
   # :nocov:
 
+  def self.featured
+    where("post_on <= ?", Date.today).order("post_on DESC").limit(4)
+  end
+
   def delete_photo_if_needed
     unless self.news_photo.dirty?
       if self.delete_photo.present? && self.delete_photo.to_s == "1"

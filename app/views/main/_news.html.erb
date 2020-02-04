@@ -1,0 +1,45 @@
+<% if @featured_news_articles.length >= 4 %>
+  <p>&nbsp;</p>
+  <h3>News</h3>
+  <div class="row collapse">
+    <div class="large-6 hide-for-medium-down columns">
+      <div class="news-article-slide full-height cover">
+        <%= render 'news_article', news_article: @featured_news_articles[0], image_size: :small_panel, headline_length: 200 %>
+      </div>
+    </div>
+    <div class="large-6 small-12 columns">
+      <div class="news-article-slide hide-for-medium-down top-corner">
+        <%= render 'news_article', news_article: @featured_news_articles[1], image_size: :medium, headline_length: 150 %>
+      </div>
+      <div class="row collapse">
+        <div class="small-12 columns hide-for-large-up">
+          <div class="all-button">
+            <%= link_to news_articles_path do %>
+              All News
+              <%= fa_icon 'long-arrow-right', "aria-hidden": true %>
+            <% end %>
+          </div>
+        </div>
+        <div class="small-12 medium-6 large-6 columns">
+          <div class="news-article-slide full-height-middle cover">
+            <%= render 'news_article', news_article: @featured_news_articles[3], image_size: :small_panel, headline_length: 60 %>
+          </div>
+        </div>
+        <div class="small-12 medium-6 large-6 columns">
+          <div class="all-button hide-for-medium-down">
+            <%= link_to news_articles_path do %>
+              All News
+              <%= fa_icon 'long-arrow-right', "aria-hidden": true %>
+            <% end %>
+          </div>
+          <div class="news-article-slide squashed">
+            <%= render 'news_article', news_article: @featured_news_articles[2], image_size: :small_panel, headline_length: 60 %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+

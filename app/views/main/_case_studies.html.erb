@@ -1,0 +1,44 @@
+<% if @featured_case_studies.length >= 4 %>
+  <p>&nbsp;</p>
+  <h3>Case Studies</h3>
+  <div class="row collapse">
+    <div class="large-6 small-12 columns">
+      <div class="case-study-slide hide-for-medium-down top-corner">
+        <%= render 'case_study', case_study: @featured_case_studies[1], image_size: :medium %>
+      </div>
+      <div class="row collapse">
+        <div class="small-12 columns hide-for-large-up">
+          <div class="all-button">
+            <%= link_to case_studies_path do %>
+              All Case Studies
+              <%= fa_icon 'long-arrow-right', "aria-hidden": true %>
+            <% end %>
+          </div>
+        </div>
+        <div class="small-12 medium-6 large-6 columns">
+          <div class="all-button hide-for-medium-down">
+            <%= link_to case_studies_path do %>
+              All Case Studies
+              <%= fa_icon 'long-arrow-right', "aria-hidden": true %>
+            <% end %>
+          </div>
+          <div class="case-study-slide squashed">
+            <%= render 'case_study', case_study: @featured_case_studies[2], image_size: :small_panel %>
+          </div>
+        </div>
+        <div class="small-12 medium-6 large-6 columns">
+          <div class="case-study-slide full-height-middle cover">
+            <%= render 'case_study', case_study: @featured_case_studies[3], image_size: :small_panel %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="large-6 hide-for-medium-down columns">
+      <div class="case-study-slide full-height cover">
+        <%= render 'case_study', case_study: @featured_case_studies[0], image_size: :small_panel %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
