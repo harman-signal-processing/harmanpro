@@ -1,0 +1,17 @@
+<p>&nbsp;</p>
+<h3><%= t('nav.service') %></h3>
+
+<div class="service-slide">
+  <%= link_to service_path do %>
+    <%= image_tag "service_banner.jpg", alt: "Service Staff" %>
+
+    <div class="title-panel">
+      <h4>
+        <%= SiteSetting.value("service-page-harman-pro-dealer-portal-subheader") %>
+        <%= fa_icon 'long-arrow-right', "aria-hidden": true %>
+      </h4>
+    </div>
+  <% end %>
+</div>
+
+

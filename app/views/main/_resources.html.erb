@@ -1,0 +1,49 @@
+<p>&nbsp;</p>
+<h3><%= t('nav.resources') %></h3>
+
+<div class="row collapse">
+
+  <div class="small-12 columns">
+    <div class="resources-slide">
+      <%= link_to '/training' do %>
+        <%= image_tag "training.jpg", alt: "Training Class" %>
+        <div class="title-panel">
+          <h4>
+            <%= "#{t('site_name')} #{t('nav.training')}" %>
+            <%= fa_icon 'long-arrow-right', "aria-hidden": true %>
+          </h4>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="small-12 medium-6 columns">
+    <div class="resources-slide">
+      <%= link_to media_library_path do %>
+        <%= image_tag "media-library-sm.jpg", alt: "Media Library" %>
+        <div class="title-panel">
+          <h4>
+            <%= t('nav.media_library') %>
+            <%= fa_icon 'long-arrow-right', "aria-hidden": true %>
+          </h4>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="small-12 medium-6 columns">
+    <div class="resources-slide">
+      <%= link_to "/lp/harman-experience-centers" do %>
+        <%= image_tag "experience-center.jpg", alt: "Experience Center" %>
+        <div class="title-panel">
+          <h4>
+            Experience Centers
+            <%= fa_icon 'long-arrow-right', "aria-hidden": true %>
+          </h4>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+

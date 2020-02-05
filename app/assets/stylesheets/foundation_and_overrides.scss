@@ -1441,7 +1441,7 @@ $topbar-arrows: false; //Set false to remove the triangle icon from the menu ite
    "foundation/components/reveal",
 //   "foundation/components/side-nav",
 //   "foundation/components/split-buttons",
-//   "foundation/components/sub-nav",
+   "foundation/components/sub-nav",
 //   "foundation/components/switches",
    "foundation/components/tables",
 //   "foundation/components/tabs",
@@ -1667,13 +1667,13 @@ ul.dropdown {
 .space-after {
   margin-bottom: 20px;
 }
-.case-study-slide, .news-article-slide {
+.case-study-slide, .news-article-slide, .service-slide, .resources-slide {
   position: relative;
   margin: 2px;
   img {
     height: 100%;
   }
-  .case-study-hero-panel {
+  .title-panel {
     color: white;
     background-color: rgba(0, 164, 227, 0.9);
     position: absolute;
@@ -1748,8 +1748,18 @@ ul.dropdown {
   margin: 30px 0px;
 }
 .news-article-slide {
-  .case-study-hero-panel {
+  .title-panel {
     background-color: rgba(0, 63, 96, 0.9);
+  }
+}
+.resources-slide, .service-slide {
+  .title-panel {
+    background-color: rgba(0, 57, 71, 0.89);
+  }
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 }
 
@@ -1833,68 +1843,6 @@ ul.dropdown {
           color: $white;
         }
       }
-  }
-}
-.site-resources-container {
-  .panel {
-    div.img_container {
-      margin: -20px -20px 20px;
-      overflow: hidden;
-      height: 165px;
-      img {
-        width: 100%;
-      }
-      .service-banner {
-        overflow: hidden;
-        height: 165px;
-        background-image: asset-url("service_cropped.jpg");
-        background-position: top center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-      .media-library-banner {
-        overflow: hidden;
-        height: 165px;
-        background-image: asset-url("media-library.png");
-        background-position: bottom center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-      .linkedin-banner {
-        overflow: hidden;
-        height: 165px;
-        background-image: asset-url("linkedin_hpro_thumbnail.jpg");
-        background-position: bottom center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-      .training-banner {
-        overflow: hidden;
-        height: 165px;
-        background-image: asset-url("training_hpro_thumbnail.jpg");
-        background-position: bottom center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-    }
-    &.blue {
-      background: scale-color($primary-color, $lightness: -30%);
-      color: $white;
-      a {
-        color: $white;
-      }
-      h6 {
-        color: scale-color($primary-color, $lightness: 75%);
-        text-transform: uppercase;
-      }
-      h4 {
-        font-size: rem-calc(21px);
-        line-height: 1.1;
-      }
-      &:hover {
-        background: scale-color($primary-color, $lightness: -35%);
-      }
-    }
   }
 }
 
