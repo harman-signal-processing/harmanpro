@@ -71,14 +71,16 @@ $(function () {
     $(this).find('[autofocus]').focus();
   });
 
+  $("img").lazyload({
+    threshold: 200,
+    effect: "fadeIn"
+  });
+
 }); // $(function() {
 
 $(document).ready(function (e) {
   $('img[usemap]').rwdImageMaps();
 });
 
-$("img").lazyload({
-  threshold: 200,
-  effect: "fadeIn"
-});
+
 
