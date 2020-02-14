@@ -12,6 +12,6 @@
     
     <!-- item description without translation -->
     <% if result.content_preview && !result.content_preview.blank? %>
-      <%= truncate(strip_html(result.content_preview).lstrip, length: 200) %><br />
+      <%= truncate(strip_html(result.content_preview).lstrip, length: 200).gsub(/h3\./,'') %><br />
     <% end %>
 </li>
