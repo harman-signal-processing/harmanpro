@@ -1355,7 +1355,7 @@ $topbar-dropdown-toggle-color: $monsoon;
 // $topbar-dropdown-toggle-alpha: 0.4;
 
 // Set the link colors and styles for top-level nav
-$topbar-link-color: $monsoon;
+$topbar-link-color: $tuatara;
 $topbar-link-color-hover: $black;
 $topbar-link-color-active: $monsoon;
 $topbar-link-color-active-hover: $harman-blue;
@@ -1377,9 +1377,9 @@ $topbar-link-text-transform: uppercase;
 // $topbar-button-top: 7px;
 
 $topbar-dropdown-label-color: $harman-blue;
-// $topbar-dropdown-label-text-transform: uppercase;
+$topbar-dropdown-label-text-transform: uppercase;
 // $topbar-dropdown-label-font-weight: $font-weight-bold;
-// $topbar-dropdown-label-font-size: rem-calc(10);
+$topbar-dropdown-label-font-size: rem-calc(20);
 // $topbar-dropdown-label-bg: $oil;
 
 // Top menu icon styles
@@ -1481,27 +1481,30 @@ p {
   margin-left: ($column-gutter / 2);
   .mega-menu-content {
     @media only screen and (min-width: 1001px) {
-      @include grid-column(8);
-    }
-    @media only screen and (min-width: 640px) and (max-width: 1000px) {
       @include grid-column(10);
     }
+    @media only screen and (min-width: 640px) and (max-width: 1000px) {
+      @include grid-column(12);
+    }
     background: $vapor;
-    padding: 20px 10px 10px;
+    padding: 10px 10px;
     //width: 800px;
     //@media only screen and (min-width: 640px) and (max-width: 800px) {
     //  width: 600px;
     //}
     ul {
       list-style-type: none;
-      padding: 0;
+      padding: 20px;
       margin: 0;
       li {
+        font-size: rem-calc(18px);
         line-height: 1.5;
-        margin-bottom: rem-calc(6px);
+        text-transform: uppercase;
+        margin-bottom: rem-calc(14px);
       }
     }
     a {
+      display: block;
       color: $harman-blue;
       &:hover {
         color: $primary-color;
@@ -1567,13 +1570,17 @@ div.hint {
   }
 }
 ul.dropdown {
+  background: $vapor !important;
+  padding: 20px !important;
   li {
-    height: rem-calc(36);
+    height: rem-calc(40);
+    text-transform: uppercase;
+    font-size: rem-calc(18px);
+
     a {
       color: $harman-blue !important;
-      text-transform: none;
-      height: rem-calc(36);
-      line-height: rem-calc(36) !important;
+      height: rem-calc(40);
+      line-height: rem-calc(40) !important;
       &:hover {
         color: $primary-color !important;
         background: $vapor !important;
