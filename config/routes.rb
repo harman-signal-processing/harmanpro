@@ -290,12 +290,13 @@ Rails.application.routes.draw do
   get 'system/:model/:attachment/:id1/:id2/:id3/:style/:basename.:extension' => 'paperclips#redirects'
 
   # Social media
-  get '/facebook', to: redirect('https://www.facebook.com/HarmanInt?_rdr=p')
-  get '/twitter', to: redirect('https://twitter.com/Harman')
-  get '/linkedin', to: redirect('https://www.linkedin.com/company/harman-international')
-  get '/youtube', to: redirect('https://www.youtube.com/user/HarmanIntl')
-  get '/pinterest', to: redirect('https://www.pinterest.com/harmanint/')
-  get '/google', to: redirect('https://plus.google.com/+HarmanIntl/videos')
+  get '/facebook' => "social_media#facebook"
+  get '/twitter' => "social_media#twitter"
+  get '/linkedin' => "social_media#linkedin"
+  get '/youtube' => "social_media#youtube"
+  get '/pinterest' => "social_media#pinterest"
+  get '/google' => "social_media#google"
+  get '/instagram' => "social_media#instagram"
 
   root to: 'main#index'
   get "*shorturl" => "shorturls#show", as: :shorturl
