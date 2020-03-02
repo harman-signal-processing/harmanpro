@@ -298,6 +298,11 @@ Rails.application.routes.draw do
   get '/google' => "social_media#google"
   get '/instagram' => "social_media#instagram"
 
+  # Influencers
+  resources :influencers, only: [:new, :create]
+  get "/influencer" => "influencers#new"
+  get "/influencer/thanks" => "influencers#thanks", as: :thanks_influencer
+
   root to: 'main#index'
   get "*shorturl" => "shorturls#show", as: :shorturl
 

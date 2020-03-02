@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_21_162530) do
+ActiveRecord::Schema.define(version: 2020_03_02_200606) do
 
   create_table "active_admin_comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -668,6 +668,35 @@ ActiveRecord::Schema.define(version: 2019_11_21_162530) do
     t.index ["slug", "sluggable_type", "scope", "locale"], name: "index_friendly_id_slugs_uniqueness", unique: true, length: { slug: 70, scope: 70, locale: 2 }
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "influencers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "gender"
+    t.string "location"
+    t.string "language"
+    t.string "active_networks"
+    t.string "instagram_link"
+    t.string "instagram_followers"
+    t.string "facebook_link"
+    t.string "facebook_followers"
+    t.string "twitter_link"
+    t.string "twitter_followers"
+    t.string "blog_link"
+    t.string "blog_unique_monthly_visitors"
+    t.boolean "audience_is_purchased"
+    t.string "type_of_content"
+    t.string "define_your_content"
+    t.string "harman_brands_for_collaborating"
+    t.text "collaboration_idea"
+    t.string "social_media_deck_file_name"
+    t.string "social_media_deck_content_type"
+    t.integer "social_media_deck_file_size"
+    t.datetime "social_media_deck_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "landing_page_translations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
