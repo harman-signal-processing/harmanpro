@@ -1,0 +1,105 @@
+<div class="text-center">
+  <h1>Hi, Influencer. Fill out this form:</h1>
+</div>
+
+<%= simple_form_for @influencer do |f| %>
+
+  <%= field_set_tag "About You" do %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :email %>
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <%= f.input :location, label: "Location (city, state/province, country)" %>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <%= f.input :language %>
+      </div>
+    </div>
+    <%= f.input :gender, as: :radio_buttons, collection: ["Male", "Female", "Unspecified"] %>
+  <% end %>
+
+  <%= field_set_tag "Social Networks" do %>
+    <%= f.input :active_networks, label: "Specify which social channels you actively use:",
+      as: :check_boxes, collection: ["Instagram", "Facebook", "Twitter", "YouTube"] %>
+    <br/>
+    <div class="row">
+      <div class="small-8 columns">
+        <%= f.input :instagram_link, placeholder: "https://" %>
+      </div>
+      <div class="small-4 columns">
+        <%= f.input :instagram_followers, placeholder: "0" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-8 columns">
+        <%= f.input :facebook_link, placeholder: "https://" %>
+      </div>
+      <div class="small-4 columns">
+        <%= f.input :facebook_followers, placeholder: "0" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-8 columns">
+        <%= f.input :twitter_link, placeholder: "https://" %>
+      </div>
+      <div class="small-4 columns">
+        <%= f.input :twitter_followers, placeholder: "0" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-8 columns">
+        <%= f.input :blog_link, label: "Blog/website link", placeholder: "https://" %>
+      </div>
+      <div class="small-4 columns">
+        <%= f.input :blog_unique_monthly_visitors, label: "Blog/website unique monthly visitors", placeholder: "0" %>
+      </div>
+    </div>
+    <br/>
+    <%= f.input :audience_is_purchased,
+      label: "Have you paid for your audience?",
+      as: :radio_buttons %>
+    <br/>
+    <%= f.input :social_media_deck,
+      label: "Upload Social Media Deck",
+      hint: "Please include: social media influence by platform, monthly site trafic, previous content." %>
+  <% end %>
+
+  <%= field_set_tag "Content and Collaboration" do %>
+    <div class="row">
+      <div class="small-12 medium-4 columns">
+        <%= f.input :type_of_content,
+          label: "What type of content do you create?",
+          as: :check_boxes,
+          collection: ["Podcast", "Video Podcast/Vlogging", "Blog", "Musical Performance", "Video"]
+        %>
+      </div>
+      <div class="small-12 medium-4 columns">
+        <%= f.input :define_your_content,
+          label: "How would you define your content?",
+          as: :check_boxes,
+          collection: ["Music", "Lifestyle", "Fashion", "Technology", "Family", "Wellness", "Food"]
+        %>
+      </div>
+      <div class="small-12 medium-4 columns">
+        <%= f.input :harman_brands_for_collaborating,
+          label: "With which HARMAN Professional brands are you interested in collaborating?",
+          as: :check_boxes,
+          collection: [
+            "JBL Pro - Studio Monitors",
+            "JBL Pro - PA Systems",
+            "AKG - Microphones",
+            "AKG - Professional Headphones",
+            "Soundcraft - Personal Mixers",
+            "DigiTech/DOD - Guitar Pedals and Effects"
+          ]
+        %>
+      </div>
+    </div>
+    <br/>
+    <%= f.input :collaboration_idea, label: "Please describe your collaboration ideas:", input_html: {rows: 10} %>
+  <% end %>
+
+  <%= recaptcha_tags %><br/>
+  <%= f.submit "Submit", class: "button" %>
+<% end %>
