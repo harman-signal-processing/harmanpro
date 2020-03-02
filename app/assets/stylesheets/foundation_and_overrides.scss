@@ -1718,6 +1718,10 @@ ul.dropdown {
   }
   &.top-corner {
     height: rem-calc(195px);
+    img {
+      width: 100%;
+      height: auto;
+    }    
   }
 }
 .case-study-panel {
