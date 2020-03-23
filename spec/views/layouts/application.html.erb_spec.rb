@@ -22,7 +22,7 @@ RSpec.describe "layouts/application.html.erb", as: :view do
     end
 
     it "links to consultant portal" do
-      expect(header).to have_link "Consultants", href: consultant_portal_path
+      expect(header).to have_link "Consultant Portal", href: consultant_portal_path
     end
 
     it "links to training page" do
