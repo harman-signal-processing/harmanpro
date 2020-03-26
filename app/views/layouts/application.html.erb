@@ -157,12 +157,15 @@
                     <li><%= link_to t('nav.consultants'), consultant_portal_path %></li>
                     <li><%= link_to t('nav.contacts'), contacts_path %></li>
                     <li><%= link_to t('nav.news'), news_articles_path %></li>
+                    <li><%= link_to t('nav.events'), events_path %></li>
                     <li><%= link_to t('nav.service'), service_path %></li>
                   <% end %>
                 </ul>
               </li>
               <li><%= link_to t('nav.new_products'), "/new-products" %></li>
-              <li><%= link_to t('nav.events'), events_path %></li>
+              <% unless I18n.locale == :"zh-CN" %>
+                <li><%= link_to t('nav.learning_sessions'), "/lp/learning-sessions" %></li>
+              <% end %>
               <li><%= link_to t('nav.contact_us'), contacts_path %></li>
               <% if SiteSetting.set_for_locale?("blog_link_name") && SiteSetting.set_for_locale?("blog_link") %>
                 <li>
