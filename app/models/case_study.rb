@@ -10,6 +10,10 @@ class CaseStudy < ApplicationRecord
 
   has_many :case_study_vertical_markets, dependent: :restrict_with_error, inverse_of: :case_study
   has_many :vertical_markets, through: :case_study_vertical_markets
+
+  has_many :case_study_brands, dependent: :restrict_with_error, inverse_of: :case_study
+  has_many :brands, through: :case_study_brands
+
   has_attached_file :banner,
     styles: {
       large: "1170x400",
@@ -26,7 +30,20 @@ class CaseStudy < ApplicationRecord
   validates_attachment_content_type :pdf, content_type: /pdf/
   validates :headline, presence: true, uniqueness: true
 
+  attr_accessor :delete_pdf
+
+  before_update :delete_pdf_if_needed
+
+  def delete_pdf_if_needed
+    unless self.pdf.dirty?
+      if self.delete_pdf.present? && self.delete_pdf.to_s == "1"
+        self.pdf = nil
+      end
+    end
+  end
+
   accepts_nested_attributes_for :case_study_vertical_markets, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :case_study_brands, reject_if: :all_blank, allow_destroy: true
 
   def self.featured
     CaseStudyVerticalMarket.featured.map{|c| c.case_study}
@@ -60,4 +77,26 @@ class CaseStudy < ApplicationRecord
     self.description.present? ? self.description : self.content
   end
 
-end
+  def banner_urls
+    hash = {}
+    hash[:original] = banner.url(:original)
+    hash[:large] = banner.url(:large)
+    hash[:medium] = banner.url(:medium)
+    hash[:small] = banner.url(:small)
+    hash[:thumb] = banner.url(:thumb)
+    hash[:thumb_square] = banner.url(:thumb_square)
+    hash
+  end  #  def banner_urls
+
+  def pdf_url
+    pdf.url if pdf_file_name.present?
+  end
+
+  def youtube_info
+    hash = {}
+    hash[:url] = youtube_id.present? ? "https://www.youtube.com/embed/#{youtube_id}" : ""
+    hash[:thumbnail_url] = youtube_id.present? ? "https://i.ytimg.com/vi/#{youtube_id}/mqdefault.jpg" : ""
+    hash
+  end
+
+end  #  class CaseStudy < ApplicationRecord

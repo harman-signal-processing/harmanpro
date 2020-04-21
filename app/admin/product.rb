@@ -24,7 +24,7 @@ ActiveAdmin.register Product do
         if product.photo_file_name.present?
           columns do
             column do
-              image_tag(product.photo.url(:small))
+              image_tag(product.photo.url(:small), lazy: false)
             end
             column do
               ul do

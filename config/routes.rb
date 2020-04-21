@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
       resources :pdfs, only: [:index]
+      get "case_studies/:brand" => "case_studies#show", as: "brand_case_studies"
     end  #  namespace :v1 do
   end  #  namespace :api, defaults: {format: 'json'} do
 

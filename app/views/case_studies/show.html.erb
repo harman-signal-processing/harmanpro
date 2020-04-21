@@ -22,6 +22,19 @@
       <%=raw textilize @case_study.content %>
     </div>
     <div class="large-3 medium-12 small-12 end columns">
+      <% if @case_study.youtube_id.present? %>
+        <div class="row">
+          <div class="medium-8 medium-offset-2 columns text-center">
+            <a data-videoid="<%=@case_study.youtube_id%>" class="start-video" href="https://www.youtube.com/embed/<%=@case_study.youtube_id%>">
+                    <img src="https://i.ytimg.com/vi/<%=@case_study.youtube_id%>/mqdefault.jpg" class="radius">
+                    <br>
+                    <small>Case Study Video</small>
+            </a>
+            <p>&nbsp;</p>
+          </div>
+        </div>
+      <% end %>
+
       <% if @case_study.pdf_external_url.present? %>
         <div class="row">
           <div class="medium-8 medium-offset-2 columns text-center">
@@ -55,4 +68,12 @@
 
     </div>
   </div>
-</div>
+
+
+<!--<div class="flex-video widescreen">-->
+<!--     <iframe width="560" height="315" src="https://www.youtube.com/embed/lOQuMFXzohg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>-->
+<!--</div>  -->
+
+<%= render 'shared/video_modal' %>
+
+</div><!-- <div class="container main-container">  -->
