@@ -16,6 +16,7 @@ ActiveAdmin.register VerticalMarket do
     :show_hef,
     :hide_buy_section,
     :preview_code,
+    :hide_image,
     case_study_vertical_markets_attributes: [:id, :case_study_id, :_destroy]
 
 
@@ -86,6 +87,7 @@ ActiveAdmin.register VerticalMarket do
       f.input :banner, hint: f.object.banner.present? ?
         image_tag(f.object.banner.url(:thumb)) + content_tag(:br) + "Appears on solutions pages on brand sites. Preferred size: 1170x400 px with a strongly horizontal orientation." :
         "Appears on solutions pages on brand sites. Preferred size: 1170x400 px with a strongly horizontal orientation."
+      f.input :hide_image, hint: "Check this box if you don't want the header image to appear on the page."
       f.input :background, hint: f.object.background.present? ?
         image_tag(f.object.background.url(:thumb)) + content_tag(:br) + "Used for top-level verticals on the homepage and on the category page." :
         "Used for top-level verticals on the homepage and on the category page."

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_192226) do
+ActiveRecord::Schema.define(version: 2020_04_21_170116) do
 
   create_table "active_admin_comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -1424,6 +1424,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_192226) do
     t.integer "icon_file_size"
     t.string "icon_content_type"
     t.datetime "icon_updated_at"
+    t.boolean "hide_image"
     t.index ["parent_id"], name: "index_vertical_markets_on_parent_id"
   end
 
