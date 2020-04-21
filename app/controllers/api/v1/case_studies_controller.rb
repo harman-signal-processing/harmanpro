@@ -11,8 +11,10 @@ module Api
             respond_with brand.case_studies.order(created_at: :desc).as_json(
               include: { 
                 translations: {},
-                vertical_markets: {}
-              },
+                vertical_markets: {only: [:id, :name, :slug, :live],
+                  include: { translations: { only:[:vertical_market_id, :locale, :name, :slug]}}
+                }  #  vertical_markets
+              },  #  case_studies include
               methods: [:banner_urls,:pdf_url,:youtube_info])  #  respond_with brand.case_studies.as_json(
               
         end  #  def show
