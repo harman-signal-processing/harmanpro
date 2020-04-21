@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_200606) do
+ActiveRecord::Schema.define(version: 2020_04_13_192226) do
 
   create_table "active_admin_comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -142,6 +142,17 @@ ActiveRecord::Schema.define(version: 2020_03_02_200606) do
     t.integer "pdf_file_size"
     t.datetime "pdf_updated_at"
     t.string "pdf_external_url"
+    t.string "youtube_id"
+  end
+
+  create_table "case_study_brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "case_study_id"
+    t.integer "brand_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_case_study_brands_on_brand_id"
+    t.index ["case_study_id", "brand_id"], name: "by_case_study_brand", unique: true
+    t.index ["case_study_id"], name: "index_case_study_brands_on_case_study_id"
   end
 
   create_table "case_study_translations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -1416,6 +1427,8 @@ ActiveRecord::Schema.define(version: 2020_03_02_200606) do
     t.index ["parent_id"], name: "index_vertical_markets_on_parent_id"
   end
 
+  add_foreign_key "case_study_brands", "brands"
+  add_foreign_key "case_study_brands", "case_studies"
   add_foreign_key "contact_info_contact_data_clients", "contact_info_contacts"
   add_foreign_key "contact_info_contact_data_clients", "contact_info_data_clients"
   add_foreign_key "contact_info_contact_emails", "contact_info_contacts"

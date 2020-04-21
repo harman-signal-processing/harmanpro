@@ -71,6 +71,30 @@ $(function () {
     $(this).find('[autofocus]').focus();
   });
 
+    $('a.update-and-play-inline-video').click(function(e) {
+      var video_url;
+      e.preventDefault();
+      video_url = "https://www.youtube.com/embed/" + ($(this).data('videoid')) + "?autostart=1&autoplay=1&rel=0";
+      return $("#" + ($(this).data('containerid')) + " iframe").attr('src', video_url);
+    });
+
+    $('a.start-video').click(function(e) {
+      var video_url;
+      e.preventDefault();
+      if ($(this).data('videoid').startsWith('PL')) {
+        video_url = "https://www.youtube.com/embed/videoseries?list=" + ($(this).data('videoid'));
+      } else {
+        video_url = "https://www.youtube.com/embed/" + ($(this).data('videoid')) + "?autostart=1&autoplay=1&rel=0";
+      }
+      $('#videoIFrame').attr('data-src', video_url);
+      return $('#videoModal').foundation('reveal', 'open');
+    });
+
+    $('a.close-video').click(function(e) {
+      $('#videoModal').foundation('reveal', 'close');
+      return $('#videoIFrame').attr('src', '');
+    });
+
 }); // $(function() {
 
 $(document).ready(function (e) {

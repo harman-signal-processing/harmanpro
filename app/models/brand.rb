@@ -21,6 +21,9 @@ class Brand < ApplicationRecord
   has_many :new_product_brands, dependent: :destroy, inverse_of: :brand
   has_many :new_products, through: :new_product_brands
 
+  has_many :case_study_brands, dependent: :destroy, inverse_of: :brand
+  has_many :case_studies, through: :case_study_brands
+
   # New Brand/Distributor associations
   has_many :brand_to_distributor_association, dependent: :destroy, foreign_key: "brand_id", class_name: 'DistributorInfo::DistributorBrand'
     # naming this :distributor_s to distinguish from :distributors
@@ -54,6 +57,11 @@ class Brand < ApplicationRecord
     brands_not_associated_with_this_contact
   } 
   # End New Brand/Contact associations
+
+  scope :for_case_studies, -> {
+    excluded_brands = SiteSetting.value("case_study_brand_exclusion_list").split(/[\r\n]+/)
+    Brand.where("name not in (?)", excluded_brands).order(:name)
+  }
 
   has_attached_file :logo,
     styles: {
