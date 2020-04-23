@@ -1,5 +1,5 @@
 <%= link_to(case_study) do %>
-  <%= image_tag case_study.banner.url(image_size), alt: case_study.headline %>
+  <%= image_tag case_study.banner.url(image_size), alt: case_study.headline, lazy: false %>
   <div class="title-panel">
     <h4>
       <%= case_study.headline %>

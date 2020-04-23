@@ -6,7 +6,7 @@
   <div class="small-12 columns">
     <div class="resources-slide">
       <%= link_to '/training' do %>
-        <%= image_tag "training.jpg", alt: "Training Class" %>
+        <%= image_tag "training.jpg", alt: "Training Class", lazy: false %>
         <div class="title-panel">
           <h4>
             <%= "#{t('site_name')} #{t('nav.training')}" %>
