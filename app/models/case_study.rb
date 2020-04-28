@@ -82,6 +82,7 @@ class CaseStudy < ApplicationRecord
     hash[:original] = banner.url(:original)
     hash[:large] = banner.url(:large)
     hash[:medium] = banner.url(:medium)
+    hash[:small_panel] = banner.url(:small_panel)
     hash[:small] = banner.url(:small)
     hash[:thumb] = banner.url(:thumb)
     hash[:thumb_square] = banner.url(:thumb_square)
