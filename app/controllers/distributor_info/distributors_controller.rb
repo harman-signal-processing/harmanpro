@@ -107,10 +107,13 @@ class DistributorInfo::DistributorsController < ApplicationController
       distributors_contacts_with_correct_data_client_json = remove_contacts_not_matching_brandsites_distributor_data_client(distributor_tree_excluded_locations_removed)
       # distributors_contacts_with_correct_data_client_json = remove_contacts_not_matching_brandsites_distributor_data_client(distributor_tree_locations_with_brand)
       
+      distributors_contacts_with_correct_brand_support_json = remove_contacts_that_dont_support_brand(distributors_contacts_with_correct_data_client_json, brand)
+      distributors_contacts_with_correct_country_support_json = remove_contacts_that_dont_support_country(distributors_contacts_with_correct_brand_support_json, country_code)
+
       # Remove distributors that have no locations, no emails, no phones, no websites. 
       # This is an edge case, where the distributor is associated with the country and brand but none of it's location are and no contact data provided.
       # Example, Harman Professional Solutions and BSS, Mexico
-      distributors_json = remove_distributor_with_no_info(distributors_contacts_with_correct_data_client_json)
+      distributors_json = remove_distributor_with_no_info(distributors_contacts_with_correct_country_support_json)
       
       distributors_json
     end
@@ -147,7 +150,9 @@ class DistributorInfo::DistributorsController < ApplicationController
                           emails: { only: [:id, :email, :label], methods: [:email_sort_order_for_contact]}, # contact emails
                           phones: { only: [:id, :phone, :label], methods: [:phone_sort_order_for_contact]}, # contact phones
                           websites: { only: [:id, :url, :label], methods: [:website_sort_order_for_contact]}, # contact websites
-                          data_clients: { only: [:id, :name]}     # contact data_clients
+                          data_clients: { only: [:id, :name]},    # contact data_clients
+                          supported_brands: { only: [:id, :name]}, # contact supported brands
+                          supported_countries: { only: [:id, :name, :harman_name, :alpha2]} # contact supported countries
                       }  # contacts include 
                   },  # contacts
                   emails: { only: [:id, :email, :label], methods: [:email_sort_order_for_location]}, # location emails
@@ -211,6 +216,40 @@ class DistributorInfo::DistributorsController < ApplicationController
         
     distributors_with_filtered_contacts
   end  #  def remove_contacts_not_matching_brandsites_distributor_data_client(distributors)
+
+  # This situation is rare. Meaning the contact only supports some brands but not others.
+  # Here we will only remove contacts that indicate that they only support certain brands and they don't match the current brand.
+  def remove_contacts_that_dont_support_brand(distributors, brand)
+      distributors_with_filtered_contacts = distributors.each do |distributor|
+        distributor["locations"].each do |location|
+          location["contacts"].delete_if {|contact|
+            contact["supported_brands"].present? &&
+            !contact["supported_brands"].select {|supported_brand|
+              supported_brand["name"].downcase == brand
+            }.any?  #  !contact["supported_brands"].select {|supported_brand|
+          }  #  location["contacts"].delete_if {|contact|
+        end  #  distributor["locations"].each do |location|
+      end  #  distributors_with_filtered_contacts = distributors.each do |distributor|
+
+    distributors_with_filtered_contacts
+  end  #  def remove_contacts_that_dont_support_brand(distributor, brand)
+
+  # This situation is rare. Meaning the contact only supports some countries but not others.
+  # Here we will only remove contacts that indicate that they only support certain countries and they don't match the current country.
+  def remove_contacts_that_dont_support_country(distributors, country_code)
+      distributors_with_filtered_contacts = distributors.each do |distributor|
+        distributor["locations"].each do |location|
+          location["contacts"].delete_if {|contact|
+            contact["supported_countries"].present? &&
+            !contact["supported_countries"].select {|supported_country|
+              supported_country["alpha2"].downcase == country_code
+            }.any?  #  !contact["supported_countries"].select {|supported_country|
+          }  #  location["contacts"].delete_if {|contact|
+        end  #  distributor["locations"].each do |location|
+      end  #  distributors_with_filtered_contacts = distributors.each do |distributor|
+
+    distributors_with_filtered_contacts
+  end  #  def remove_contacts_that_dont_support_brand(distributor, country)
 
   def remove_excluded_distributors(distributors, brand_id, country_id)
     distributors.delete_if{|distributor|
