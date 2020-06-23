@@ -234,12 +234,12 @@ Rails.application.routes.draw do
   resources :service_centers, only: [:index, :new, :create]
   post '/service' => 'service#create_contact_message', as: :service_create_contact_message
 
-  # Training site
-  get '/training' => 'training_content_pages#show'
-  get '/training/sso' => 'training_courses#sso'
-  # get '/training/courses' => 'training_courses#index'
-  get '/training/calendar' => 'training_calendar#index'
-  resources :training_content_pages, path: 'training', only: :show
+  # # Training site
+  # get '/training' => 'training_content_pages#show'
+  # get '/training/sso' => 'training_courses#sso'
+  # # get '/training/courses' => 'training_courses#index'
+  # get '/training/calendar' => 'training_calendar#index'
+  # resources :training_content_pages, path: 'training', only: :show
 
   # Resource library (local resources on our site)
   get '/resource-library/:id' => 'resources#show', as: :resource_permalink
