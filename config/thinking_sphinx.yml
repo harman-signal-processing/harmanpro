@@ -4,6 +4,7 @@ development:
   searchd_binary_name: searchd
   client_timeout: 200
   # morphology: stem_en, soundex, metaphone
+  morphology: stem_en
   min_infix_len: 4
   charset_table: 0..9, A..Z->a..z, _, a..z, U+410..U+42F->U+430..U+44F, U+430..U+44F
   ngram_len: 1
@@ -13,7 +14,7 @@ production:
   bin_path: "/usr/bin"
   searchd_binary_name: "searchd"
   client_timeout: 200
-  morphology: stem_en, soundex, metaphone
+  morphology: stem_en
   min_infix_len: 4
   charset_table: 0..9, A..Z->a..z, _, a..z, U+410..U+42F->U+430..U+44F, U+430..U+44F
   ngram_len: 1
