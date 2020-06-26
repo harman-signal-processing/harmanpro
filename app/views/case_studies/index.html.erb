@@ -13,7 +13,11 @@
         <div class="row">
           <div class="small-12 medium-3 columns">
             <%= link_to case_study do %>
-              <%= image_tag case_study.banner.url(:small_panel), alt: "#{case_study.headline} thumbnail image" %>
+              <% if case_study.banner.present? %>
+                <%= image_tag case_study.banner.url(:small_panel), alt: "#{case_study.headline} thumbnail image" %>
+              <% elsif case_study.youtube_id.present?%>
+                <%= image_tag "https://i.ytimg.com/vi/#{case_study.youtube_id}/mqdefault.jpg", alt: "#{case_study.headline} thumbnail image" %>
+              <% end %>
             <% end %>
           </div>
           <div class="small-12 medium-9 columns">
