@@ -201,6 +201,8 @@ Rails.application.routes.draw do
     resources :case_studies, only: [:index, :show ] # "show" = old route which now forwards to the non-scoped variety
   end
   resources :case_studies, only: [:index, :show]
+  get '/case_studies/filter/:asset_type/:vertical_market_id' => 'case_studies#index', as: :case_studies_by_asset_type
+
   resources :events, only: [:index, :show] do
     collection do
       get :recent

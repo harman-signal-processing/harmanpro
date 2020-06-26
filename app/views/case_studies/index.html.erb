@@ -17,7 +17,10 @@
             <% end %>
           </div>
           <div class="small-12 medium-9 columns">
-            <h5><%= link_to case_study.headline, case_study %></h5>
+            <h5><%= link_to case_study.headline, case_study %>
+                <% if case_study.pdf_url.present? %><i class="fa fa-file-pdf-o"></i> <% end %>
+                <% if case_study.youtube_id.present? %><i class="fa fa-video-camera"></i> <% end %>
+            </h5>
             <div><strong><%=l case_study.created_at.to_date, format: :long %></strong></div>
             <div class="show-for-small">
               <%= raw case_study.description %>
@@ -30,10 +33,44 @@
         <hr/>
       <% end %>
     </div>
-    <%= will_paginate @case_studies, renderer: WillPaginateInfinite::InfinitePagination %>
+    <%#= will_paginate @case_studies, renderer: WillPaginateInfinite::InfinitePagination %>
   </div>
 
   <div class="medium-3 columns">
+    <% if @asset_type_case_study_counts[:pdf] > 0 || @asset_type_case_study_counts[:video] > 0 %>
+      <div class="callout panel">
+      <h5>Case Studies with Assets</h5>
+      <ul>
+        <% if @asset_type_case_study_counts[:pdf] > 0 %>
+          <li>
+            <% if @asset_type && @asset_type == "pdf" %>
+              <i class="fa fa-file-pdf-o"></i> <em style="color: #888">PDF (<%=@asset_type_case_study_counts[:pdf]%>)</em>
+            <% else %>
+              <i class="fa fa-file-pdf-o"></i> <%= link_to "PDF (#{@asset_type_case_study_counts[:pdf]})", case_studies_by_asset_type_path("pdf",@vertical_market.nil? ? "all" : @vertical_market)%>
+            <% end  %>
+          </li>
+        <% end %>
+
+        <% if @asset_type_case_study_counts[:video] > 0 %>
+          <li>
+            <% if @asset_type && @asset_type == "video" %>
+              <i class="fa fa-video-camera"></i> <em style="color: #888">Video (<%=@asset_type_case_study_counts[:video]%>)</em>
+            <% else %>
+              <i class="fa fa-video-camera"></i> <%= link_to "Video (#{@asset_type_case_study_counts[:video]})", case_studies_by_asset_type_path("video",@vertical_market.nil? ? "all" : @vertical_market)%>
+            <% end %>
+          </li>
+        <% end %>
+
+        <% if @asset_type %>
+          <li><%= link_to case_studies_path do %>
+            <%= t('all').titleize %> <%= t('case_study').pluralize.titleize %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
     <div class="callout panel">
       <h5>Case Studies by Application</h5>
 

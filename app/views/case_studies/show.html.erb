@@ -1,7 +1,11 @@
 <%= content_for :title do %><%= truncate @case_study.headline, length: 40 %><% end %>
 <%= content_for :description do %><%= t('case_study') %>: <%= @case_study.headline %><% end %>
 
-<% if @case_study.banner.present? || ENV['show_placeholders'] == "true" %>
+<% if @case_study.youtube_id.present?%>
+	<div class="flex-video widescreen">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/<%=@case_study.youtube_id%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+	</div>
+<% elsif @case_study.banner.present? || ENV['show_placeholders'] == "true" %>
   <div class="bumped-up space-after">
     <div class="banner-container vertical-market">
       <%= image_tag @case_study.banner.url(:large), alt: "#{@case_study.headline} Banner" %>
@@ -19,22 +23,16 @@
 
   <div class="row">
     <div class="large-7 large-offset-1 columns">
+
       <%=raw textilize @case_study.content %>
-    </div>
-    <div class="large-3 medium-12 small-12 end columns">
-      <% if @case_study.youtube_id.present? %>
-        <div class="row">
-          <div class="medium-8 medium-offset-2 columns text-center">
-            <a data-videoid="<%=@case_study.youtube_id%>" class="start-video" href="https://www.youtube.com/embed/<%=@case_study.youtube_id%>">
-                    <img src="https://i.ytimg.com/vi/<%=@case_study.youtube_id%>/mqdefault.jpg" class="radius">
-                    <br>
-                    <small>Case Study Video</small>
-            </a>
-            <p>&nbsp;</p>
-          </div>
-        </div>
+
+      <% video_only = @case_study.youtube_id.present? && (!@case_study.content.present? && !@case_study.pdf_external_url.present? && !@case_study.pdf.present?) %>
+      <%if video_only %>
+         <%= render 'similar_project_callout_panel' %>
       <% end %>
 
+    </div><!-- <div class="large-7 large-offset-1 columns">  -->
+    <div class="large-3 medium-12 small-12 end columns">
       <% if @case_study.pdf_external_url.present? %>
         <div class="row">
           <div class="medium-8 medium-offset-2 columns text-center">
@@ -57,23 +55,11 @@
         </div>
       <% end %>
 
-      <div class="callout panel">
-        <h5><%=t "case_study_page.is_your_project_similar" %></h5>
+      <% if @case_study.pdf_external_url.present? || @case_study.pdf.present? %>
+        <%= render 'similar_project_callout_panel' %>
+      <% end %>
 
-        <br/>
-        <%= link_to new_lead_path, class: "medium radius button" do %>
-          <%=t "case_study_page.connect_with_harman" %>
-        <% end %>
-      </div>
-
-    </div>
-  </div>
-
-
-<!--<div class="flex-video widescreen">-->
-<!--     <iframe width="560" height="315" src="https://www.youtube.com/embed/lOQuMFXzohg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>-->
-<!--</div>  -->
-
-<%= render 'shared/video_modal' %>
+    </div><!-- <div class="large-3 medium-12 small-12 end columns">  -->
+  </div><!-- <div class="row">  -->
 
 </div><!-- <div class="container main-container">  -->
