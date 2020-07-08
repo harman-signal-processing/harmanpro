@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-class SilverPopStub
+class AcousticStub
   def add_recipient(user, db, list)
     true
   end
@@ -21,10 +21,10 @@ RSpec.describe Lead, :type => :model do
   it { should respond_to(:location) }
 
   describe "marketing automation" do
-    it "sends to silverpop list" do
+    it "sends to acoustic list" do
       lead = FactoryBot.build(:lead)
-      expect(lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
-      expect_any_instance_of(SilverPopStub).to receive(:add_recipient).and_return(true)
+      expect(lead).to receive(:acoustic_client).and_return(AcousticStub.new)
+      expect_any_instance_of(AcousticStub).to receive(:add_recipient).and_return(true)
 
       lead.save
     end
@@ -34,8 +34,8 @@ RSpec.describe Lead, :type => :model do
     it "sends contact info to several configured recipients" do
       lead = FactoryBot.build(:lead)
       expect(lead).to receive(:notify_leadgen_recipients)
-      expect(lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
-      expect_any_instance_of(SilverPopStub).to receive(:add_recipient).and_return(true)
+      expect(lead).to receive(:acoustic_client).and_return(AcousticStub.new)
+      expect_any_instance_of(AcousticStub).to receive(:add_recipient).and_return(true)
 
       lead.save
     end

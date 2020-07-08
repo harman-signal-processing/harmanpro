@@ -1,6 +1,6 @@
 require "rails_helper"
 
-class SilverPopStub
+class AcousticStub
   def add_recipient(user, db, list)
     true
   end
@@ -26,8 +26,8 @@ feature "Lead generation" do
     lead = FactoryBot.build(:lead, name: "Vertical Market Installer Lead")
     visit vertical_market_path(@vertical_market)
 
-    expect_any_instance_of(Lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
-    expect_any_instance_of(SilverPopStub).to receive(:add_recipient).and_return(true)
+    expect_any_instance_of(Lead).to receive(:acoustic_client).and_return(AcousticStub.new)
+    expect_any_instance_of(AcousticStub).to receive(:add_recipient).and_return(true)
     complete_leadgen_form(lead)
 
     new_lead = Lead.last
@@ -43,8 +43,8 @@ feature "Lead generation" do
     lead = FactoryBot.build(:lead, name: "Reference System Installer Lead")
     visit vertical_market_reference_system_path(@vertical_market, @reference_system)
 
-    expect_any_instance_of(Lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
-    expect_any_instance_of(SilverPopStub).to receive(:add_recipient).and_return(true)
+    expect_any_instance_of(Lead).to receive(:acoustic_client).and_return(AcousticStub.new)
+    expect_any_instance_of(AcousticStub).to receive(:add_recipient).and_return(true)
     complete_leadgen_form(lead)
 
     new_lead = Lead.last
@@ -59,8 +59,8 @@ feature "Lead generation" do
       lead = FactoryBot.build(:lead, name: "Reference System Installer Lead")
       visit vertical_market_reference_system_path(@vertical_market, @reference_system)
 
-      expect_any_instance_of(Lead).to receive(:silverpop_client).and_return(SilverPopStub.new)
-      expect_any_instance_of(SilverPopStub).to receive(:add_recipient).and_return(true)
+      expect_any_instance_of(Lead).to receive(:acoustic_client).and_return(AcousticStub.new)
+      expect_any_instance_of(AcousticStub).to receive(:add_recipient).and_return(true)
       complete_leadgen_form(lead)
 
       new_lead = Lead.last
@@ -82,8 +82,8 @@ feature "Lead generation" do
     lead = FactoryBot.build(:lead, name: nil, email: nil)
     visit vertical_market_path(@vertical_market)
 
-    expect_any_instance_of(Lead).not_to receive(:silverpop_client).and_return(SilverPopStub.new)
-    expect_any_instance_of(SilverPopStub).not_to receive(:add_recipient).and_return(true)
+    expect_any_instance_of(Lead).not_to receive(:acoustic_client).and_return(AcousticStub.new)
+    expect_any_instance_of(AcousticStub).not_to receive(:add_recipient).and_return(true)
     complete_leadgen_form(lead)
 
     expect(page).to have_content("can't be blank")

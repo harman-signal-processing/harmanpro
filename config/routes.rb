@@ -242,6 +242,9 @@ Rails.application.routes.draw do
   # # get '/training/courses' => 'training_courses#index'
   # get '/training/calendar' => 'training_calendar#index'
   # resources :training_content_pages, path: 'training', only: :show
+  #
+  # Default top-menu and specs rely on "training_path" method. This route defines it:
+  get '/training', to: redirect('https://harman.remote-learner.net')
 
   # Resource library (local resources on our site)
   get '/resource-library/:id' => 'resources#show', as: :resource_permalink

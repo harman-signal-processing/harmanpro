@@ -45,8 +45,7 @@ gem 'delayed_job_active_record', '>= 4.1.1'
 gem 'daemons'
 gem 'httparty'
 gem 'rails_autolink'
-gem 'silverpop'
-gem 'hashie', '~> 3.4.6' # 3.5.1 was causing errors with some silverpop transactions
+gem 'goacoustic'
 gem 'oauth2'
 gem 'ransack' # using for service center search
 gem 'exception_notification'

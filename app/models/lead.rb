@@ -18,9 +18,9 @@ class Lead < ApplicationRecord
         :company => company,
         :phone => phone
       }
-      silverpop_client.add_recipient(user_params, ENV['SILVERPOP_DB_ID'], [ENV['SILVERPOP_LIST_ID']])
+      acoustic_client.add_recipient(user_params, ENV['ACOUSTIC_DB_ID'], [ENV['ACOUSTIC_LIST_ID']])
     rescue
-      logger.debug("There was some silverpop exception")
+      logger.debug("There was some acoustic exception")
     end
   end
   handle_asynchronously :subscribe!
@@ -31,15 +31,15 @@ class Lead < ApplicationRecord
 
   private
 
-  def silverpop_client
-    @silverpop_client ||= SilverPop.new(access_token: silverpop_access_token.token, url: ENV['SILVERPOP_API_URL'])
+  def acoustic_client
+    @acoustic_client ||= Acoustic.new(access_token: acoustic_access_token.token, url: ENV['ACOUSTIC_API_URL'])
   end
 
-  def silverpop_access_token
-    client = OAuth2::Client.new(ENV['SILVERPOP_CLIENT_ID'],
-                                ENV['SILVERPOP_CLIENT_SECRET'],
-                                site: "#{ENV['SILVERPOP_API_URL']}/oauth/token")
-    @silverpop_access_token ||= OAuth2::AccessToken.from_hash(client, refresh_token: ENV['SILVERPOP_REFRESH_TOKEN']).refresh!
+  def acoustic_access_token
+    client = OAuth2::Client.new(ENV['ACOUSTIC_CLIENT_ID'],
+                                ENV['ACOUSTIC_CLIENT_SECRET'],
+                                site: "#{ENV['ACOUSTIC_API_URL']}/oauth/token")
+    @acoustic_access_token ||= OAuth2::AccessToken.from_hash(client, refresh_token: ENV['ACOUSTIC_REFRESH_TOKEN']).refresh!
   end
 
 end
