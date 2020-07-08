@@ -244,7 +244,7 @@ GEM
       activemodel (>= 4.2, < 5.3)
       activerecord (>= 4.2, < 5.3)
       request_store (~> 1.0)
-    goacoustic (0.1.0)
+    goacoustic (0.1.1)
       addressable (~> 2.7)
       builder (~> 3.2)
       faraday (~> 1.0)

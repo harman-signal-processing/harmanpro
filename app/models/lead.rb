@@ -18,7 +18,7 @@ class Lead < ApplicationRecord
         :company => company,
         :phone => phone
       }
-      acoustic_client.add_recipient(user_params, ENV['ACOUSTIC_DB_ID'], [ENV['ACOUSTIC_LIST_ID']])
+      goacoustic_client.add_recipient(user_params, ENV['ACOUSTIC_DB_ID'], [ENV['ACOUSTIC_LIST_ID']])
     rescue
       logger.debug("There was some acoustic exception")
     end
@@ -31,15 +31,15 @@ class Lead < ApplicationRecord
 
   private
 
-  def acoustic_client
-    @acoustic_client ||= Acoustic.new(access_token: acoustic_access_token.token, url: ENV['ACOUSTIC_API_URL'])
+  def goacoustic_client
+    @goacoustic_client ||= GoAcoustic.new(access_token: acoustic_access_token.token, url: ENV['ACOUSTIC_API_URL'])
   end
 
-  def acoustic_access_token
+  def goacoustic_access_token
     client = OAuth2::Client.new(ENV['ACOUSTIC_CLIENT_ID'],
                                 ENV['ACOUSTIC_CLIENT_SECRET'],
                                 site: "#{ENV['ACOUSTIC_API_URL']}/oauth/token")
-    @acoustic_access_token ||= OAuth2::AccessToken.from_hash(client, refresh_token: ENV['ACOUSTIC_REFRESH_TOKEN']).refresh!
+    @goacoustic_access_token ||= OAuth2::AccessToken.from_hash(client, refresh_token: ENV['ACOUSTIC_REFRESH_TOKEN']).refresh!
   end
 
 end
