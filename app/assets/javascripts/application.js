@@ -35,6 +35,7 @@
 //= require chosen-jquery
 //= require will_paginate_infinite
 //= require admin
+//= require font_awesome5
 // require_tree .
 
 $(function () {
