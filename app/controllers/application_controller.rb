@@ -39,10 +39,10 @@ class ApplicationController < ActionController::Base
     else
       @landing_page = LandingPage.new
     end
-    @landing_page.main_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
-    @landing_page.left_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
-    @landing_page.right_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
-    @landing_page.sub_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
+    @landing_page.main_content = @landing_page.main_content.to_s.gsub(/\~+(\w*)\~+/) { eval($1) }
+    @landing_page.left_content = @landing_page.left_content.to_s.gsub(/\~+(\w*)\~+/) { eval($1) }
+    @landing_page.right_content = @landing_page.right_content.to_s.gsub(/\~+(\w*)\~+/) { eval($1) }
+    @landing_page.sub_content = @landing_page.sub_content.to_s.gsub(/\~+(\w*)\~+/) { eval($1) }
     if @landing_page.live? || special_access_granted?(@landing_page)
       render "landing_pages/show"
     else

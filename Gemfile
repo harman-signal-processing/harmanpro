@@ -49,7 +49,6 @@ gem 'goacoustic'
 gem 'oauth2'
 gem 'ransack' # using for service center search
 gem 'exception_notification'
-gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'mailgun_rails' # mailer service from Rackspace
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'nokogiri' # for parsing HTML to generate subnavs on EMEA portal
