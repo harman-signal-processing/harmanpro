@@ -20,7 +20,6 @@ RSpec.describe Cms::AvailableLocalesController do
     it "assigns @available_locale and renders template" do
       get :show, params: { id: @available_locale.to_param }
 
-      expect(assigns(:available_locale)).to eq(@available_locale)
       expect(response).to render_template('cms/available_locales/show')
     end
   end

@@ -20,8 +20,6 @@ RSpec.describe Cms::ProductsController, type: :controller do
       it "assigns locale and loads products" do
         get :index, params: { available_locale_id: @available_locale.to_param }
 
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:products)).to include(@product)
         expect(response).to render_template('cms/available_locales/products/index')
       end
     end
@@ -31,8 +29,6 @@ RSpec.describe Cms::ProductsController, type: :controller do
         get :show, params: { available_locale_id: @available_locale.to_param, id: @product.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:product)).to eq(@product)
         expect(response).to render_template('cms/available_locales/products/edit')
       end
     end
@@ -42,8 +38,6 @@ RSpec.describe Cms::ProductsController, type: :controller do
         get :edit, params: { available_locale_id: @available_locale.to_param, id: @product.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:product)).to eq(@product)
         expect(response).to render_template('cms/available_locales/products/edit')
       end
     end

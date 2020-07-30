@@ -20,8 +20,6 @@ RSpec.describe Cms::ReferenceSystemsController, type: :controller do
       it "assigns locale and loads reference_systems" do
         get :index, params: { available_locale_id: @available_locale.to_param }
 
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:reference_systems)).to include(@reference_system)
         expect(response).to render_template('cms/available_locales/reference_systems/index')
       end
     end
@@ -31,8 +29,6 @@ RSpec.describe Cms::ReferenceSystemsController, type: :controller do
         get :show, params: { available_locale_id: @available_locale.to_param, id: @reference_system.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:reference_system)).to eq(@reference_system)
         expect(response).to render_template('cms/available_locales/reference_systems/edit')
       end
     end
@@ -42,8 +38,6 @@ RSpec.describe Cms::ReferenceSystemsController, type: :controller do
         get :edit, params: { available_locale_id: @available_locale.to_param, id: @reference_system.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:reference_system)).to eq(@reference_system)
         expect(response).to render_template('cms/available_locales/reference_systems/edit')
       end
     end

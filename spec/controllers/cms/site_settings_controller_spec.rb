@@ -20,8 +20,6 @@ RSpec.describe Cms::SiteSettingsController, type: :controller do
       it "assigns locale and loads site_settings" do
         get :index, params: { available_locale_id: @available_locale.to_param }
 
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:site_settings)).to include(@site_setting)
         expect(response).to render_template('cms/available_locales/site_settings/index')
       end
     end
@@ -31,8 +29,6 @@ RSpec.describe Cms::SiteSettingsController, type: :controller do
         get :show, params: { available_locale_id: @available_locale.to_param, id: @site_setting.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:site_setting)).to eq(@site_setting)
         expect(response).to render_template('cms/available_locales/site_settings/edit')
       end
     end
@@ -42,8 +38,6 @@ RSpec.describe Cms::SiteSettingsController, type: :controller do
         get :edit, params: { available_locale_id: @available_locale.to_param, id: @site_setting.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:site_setting)).to eq(@site_setting)
         expect(response).to render_template('cms/available_locales/site_settings/edit')
       end
     end

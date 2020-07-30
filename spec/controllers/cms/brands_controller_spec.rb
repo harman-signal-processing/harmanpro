@@ -21,8 +21,6 @@ RSpec.describe Cms::BrandsController do
       it "assigns locale and loads brands" do
         get :index, params: { available_locale_id: @available_locale.to_param }
 
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:brands)).to include(@brand)
         expect(response).to render_template('cms/available_locales/brands/index')
       end
     end
@@ -32,8 +30,6 @@ RSpec.describe Cms::BrandsController do
         get :show, params: { available_locale_id: @available_locale.to_param, id: @brand.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:brand)).to eq(@brand)
         expect(response).to render_template('cms/available_locales/brands/edit')
       end
     end
@@ -43,8 +39,6 @@ RSpec.describe Cms::BrandsController do
         get :edit, params: { available_locale_id: @available_locale.to_param, id: @brand.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:brand)).to eq(@brand)
         expect(response).to render_template('cms/available_locales/brands/edit')
       end
     end

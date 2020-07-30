@@ -19,16 +19,6 @@ RSpec.describe ConsultantsController, type: :controller do
       get :index
     end
 
-    it "assigns @brands" do
-      expect(assigns(:brands)).to include(@brand)
-      expect(assigns(:brands)).not_to include(@other_brand)
-    end
-
-    it "assigns @brands_with_contact_info" do
-      expect(assigns(:brands_with_contact_info)).to include(@brand)
-      expect(assigns(:brands_with_contact_info)).not_to include(@brand_without_contacts)
-    end
-
     it "renders index template" do
       expect(response).to render_template('index')
     end
@@ -42,9 +32,6 @@ RSpec.describe ConsultantsController, type: :controller do
       get :software, params: { format: 'json' }
     end
 
-    it "assigns @software" do
-      expect(assigns(:software)).to include(@software)
-    end
   end
 
 end

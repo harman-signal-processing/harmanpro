@@ -21,8 +21,6 @@ RSpec.describe Cms::TrainingContentPagesController, type: :controller do
       it "assigns locale and loads training content pages" do
         get :index, params: { available_locale_id: @available_locale.to_param }
 
-        #expect(assigns(:available_locale)).to eq(@available_locale)
-        #expect(assigns(:training_content_page)).to include(@training_content_page)
         #expect(response).to render_template('cms/available_locales/training_content_pages/index')
       end
     end  #  describe "GET :index" do
@@ -32,8 +30,6 @@ RSpec.describe Cms::TrainingContentPagesController, type: :controller do
     #    get :show, available_locale_id: @available_locale.to_param, id: @training_content_page.to_param
 
     #    expect(I18n.locale).to eq(@available_locale.key.to_sym)
-    #    expect(assigns(:available_locale)).to eq(@available_locale)
-    #    expect(assigns(:training_content_page)).to eq(@training_content_page)
     #    expect(response).to render_template('cms/available_locales/training_content_pages/edit')
     #  end
     #end  #  describe "GET :show" do
@@ -43,8 +39,6 @@ RSpec.describe Cms::TrainingContentPagesController, type: :controller do
     #    get :edit, available_locale_id: @available_locale.to_param, id: @training_content_page.to_param
 
     #    expect(I18n.locale).to eq(@available_locale.key.to_sym)
-    #    expect(assigns(:available_locale)).to eq(@available_locale)
-    #    expect(assigns(:training_content_page)).to eq(@training_content_page)
     #    expect(response).to render_template('cms/available_locales/training_content_pages/edit')
     #  end
     #end  #  describe "GET :edit" do

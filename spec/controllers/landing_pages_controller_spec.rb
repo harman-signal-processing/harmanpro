@@ -8,7 +8,6 @@ RSpec.describe LandingPagesController, type: :controller do
 
       get :show, params: { id: landing_page.to_param }
 
-      expect(assigns(:landing_page)).to eq landing_page
       expect(response).to render_template(:show)
       expect(response).to have_http_status(:success)
     end

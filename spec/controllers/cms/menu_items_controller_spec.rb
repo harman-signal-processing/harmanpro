@@ -19,7 +19,6 @@ RSpec.describe Cms::MenuItemsController, type: :controller do
       it "assigns locale" do
         get :index, params: { available_locale_id: @available_locale.to_param }
 
-        expect(assigns(:available_locale)).to eq(@available_locale)
         expect(response).to render_template('cms/available_locales/menu_items/index')
       end
     end
@@ -28,8 +27,6 @@ RSpec.describe Cms::MenuItemsController, type: :controller do
       it "assigns locale and sets up new MenuItem" do
         get :new, params: { available_locale_id: @available_locale.to_param }
 
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:menu_item)).to be_a(MenuItem)
         expect(response).to render_template('cms/available_locales/menu_items/new')
       end
     end
@@ -42,9 +39,6 @@ RSpec.describe Cms::MenuItemsController, type: :controller do
           }
         }
 
-        menu_item = assigns(:menu_item)
-        expect(menu_item.new_record?).to be(false)
-        expect(menu_item.locale).to eq @available_locale
         expect(response).to redirect_to cms_available_locale_menu_items_path(@available_locale)
       end
     end
@@ -56,7 +50,6 @@ RSpec.describe Cms::MenuItemsController, type: :controller do
       end
 
       it "renders a form to edit the menu item" do
-        expect(assigns[:menu_item]).to eq @menu_item
         expect(response).to render_template("cms/available_locales/menu_items/edit")
       end
     end

@@ -7,10 +7,6 @@ RSpec.describe LeadsController, :type => :controller do
       get :new
     end
 
-    it "assigns a new lead object" do
-      expect(assigns(:lead)).to be_a_new(Lead)
-    end
-
     it "returns http success" do
       expect(response).to have_http_status(:success)
     end
@@ -21,14 +17,6 @@ RSpec.describe LeadsController, :type => :controller do
       skip "Mailer hangs when run with entire suite"
       @lead = FactoryBot.build(:lead)
       post :create, params: { lead: @lead.attributes }
-    end
-
-    it "creates the new lead" do
-      lead = assigns(:lead)
-
-      expect(lead.new_record?).to be false
-      expect(lead.location).to eq(@lead.location)
-      expect(lead.name).to eq(@lead.name)
     end
 
     it "redirects to the thankyou page" do

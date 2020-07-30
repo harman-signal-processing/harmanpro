@@ -13,10 +13,6 @@ RSpec.describe CaseStudiesController, :type => :controller do
       get :show, params: { id: @case_study.id }
     end
 
-    it "assigns @case_study" do
-      expect(assigns(:case_study)).to eq(@case_study)
-    end
-
     it "renders show template" do
       expect(response).to render_template("show")
       expect(response).to have_http_status(:success)

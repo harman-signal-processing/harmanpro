@@ -15,7 +15,6 @@ RSpec.describe ResourcesController do
     end
 
     it "returns the resource" do
-      expect(assigns(:resource)).to eq(@resource)
       expect(response).to redirect_to(@resource.attachment.url)
     end
   end

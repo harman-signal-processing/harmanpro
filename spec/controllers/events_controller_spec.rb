@@ -14,11 +14,6 @@ RSpec.describe EventsController, type: :controller do
       get :index
     end
 
-    it "should assign @events" do
-      expect(assigns(:events)).to include(@future_event)
-      expect(assigns(:events)).to include(@current_event)
-    end
-
     it "should render the template" do
       expect(response).to render_template('index')
       expect(response).to have_http_status(:success)
@@ -26,14 +21,6 @@ RSpec.describe EventsController, type: :controller do
   end
 
   describe "GET show" do
-
-    it "should show the event details page" do
-      get :show, params: { id: @past_event.to_param }
-
-      expect(assigns(:event)).to eq(@past_event)
-      expect(response).to render_template('show')
-    end
-
 
     it "should redirect to index for hidden event" do
       get :show, params: { id: @hidden_event.to_param }
@@ -46,10 +33,6 @@ RSpec.describe EventsController, type: :controller do
 
     before do
       get :recent
-    end
-
-    it "should assign @events to past events" do
-      expect(assigns(:events)).to include(@past_event)
     end
 
     it "should render the template" do

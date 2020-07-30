@@ -8,12 +8,6 @@ RSpec.describe BrandsController do
 
   describe "GET :show" do
 
-    it "assigns @brand" do
-      get :show, params: { id: @brand.id }
-
-      expect(assigns(:brand)).to eq(@brand)
-    end
-
     it "(html) renders the brand page" do
       get :show, params: { id: @brand.id }
 

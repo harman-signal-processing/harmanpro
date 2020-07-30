@@ -20,8 +20,6 @@ RSpec.describe Cms::VerticalMarketsController, type: :controller do
       it "assigns locale and loads vertical_markets" do
         get :index, params: { available_locale_id: @available_locale.to_param }
 
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:vertical_markets)).to include(@vertical_market)
         expect(response).to render_template('cms/available_locales/vertical_markets/index')
       end
     end
@@ -31,8 +29,6 @@ RSpec.describe Cms::VerticalMarketsController, type: :controller do
         get :show, params: { available_locale_id: @available_locale.to_param, id: @vertical_market.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:vertical_market)).to eq(@vertical_market)
         expect(response).to render_template('cms/available_locales/vertical_markets/edit')
       end
     end
@@ -42,8 +38,6 @@ RSpec.describe Cms::VerticalMarketsController, type: :controller do
         get :edit, params: { available_locale_id: @available_locale.to_param, id: @vertical_market.to_param }
 
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
-        expect(assigns(:available_locale)).to eq(@available_locale)
-        expect(assigns(:vertical_market)).to eq(@vertical_market)
         expect(response).to render_template('cms/available_locales/vertical_markets/edit')
       end
     end
