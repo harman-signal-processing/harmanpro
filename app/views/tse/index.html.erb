@@ -15,7 +15,7 @@
                   ng-options="parent.name for parent in parent_categories">
           </select>
           <div ng-show="selectedParentCategory && selectedParentCategory.notes.length">
-            <p><i class="fa fa-info-circle"></i>
+            <p><i class="fas fa-info-circle"></i>
             {{ selectedParentCategory.notes }}
             </p>
           </div>
@@ -61,10 +61,10 @@
                 <div class="show-for-medium-down">
                   <p><strong>Contact Info:</strong><br/>
                     <span ng-show="contact.phone">
-                      <a href="tel:{{ contact.phone }}"><i class="fa fa-phone"></i> {{ contact.phone }}</a><br/>
+                      <a href="tel:{{ contact.phone }}"><i class="fas fa-phone"></i> {{ contact.phone }}</a><br/>
                     </span>
                     <span ng-show="contact.email">
-                      <a href="mailto:{{ contact.email }}"><i class="fa fa-envelope"></i> {{ contact.email }}</a><br/>
+                      <a href="mailto:{{ contact.email }}"><i class="far fa-envelope"></i> {{ contact.email }}</a><br/>
                     </span>
                     <span ng-show="contact.address">{{ contact.address }}<br/></span>
                   </p>
@@ -93,10 +93,10 @@
               </td>
               <td valign="top" class="hide-for-medium-down">
                 <div ng-show="contact.phone">
-                  <a href="tel:{{ contact.phone }}"><i class="fa fa-phone"></i> {{ contact.phone }}</a>
+                  <a href="tel:{{ contact.phone }}"><i class="fas fa-phone"></i> {{ contact.phone }}</a>
                 </div>
                 <div ng-show="contact.email">
-                  <a href="mailto:{{ contact.email }}"><i class="fa fa-envelope"></i> {{ contact.email }}</a>
+                  <a href="mailto:{{ contact.email }}"><i class="far fa-envelope"></i> {{ contact.email }}</a>
                 </div>
                 <div ng-show="contact.address">{{ contact.address }}</div>
               </td>

@@ -32,9 +32,9 @@
                     <div class="panel" data-equalizer-watch="contactbox">
                         <em><%=contact.name%></em></br>
                         <%=contact.title%></br>
-                        <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp; <a href="mailto:<%=contact.emails.first.email%>"><%=contact.emails.first.email%></a></br>
+                        <i class="far fa-envelope" aria-hidden="true"></i>&nbsp; <a href="mailto:<%=contact.emails.first.email%>"><%=contact.emails.first.email%></a></br>
                         <% if contact.phones.present? %>
-                        <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;<%=contact.phones.first.phone%>
+                        <i class="fas fa-phone" aria-hidden="true"></i>&nbsp;<%=contact.phones.first.phone%>
                         <% end %>
                     </div>
                 </li>

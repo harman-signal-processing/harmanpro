@@ -22,8 +22,8 @@
           </div>
           <div class="small-12 medium-9 columns">
             <h5><%= link_to case_study.headline, case_study %>
-                <% if case_study.pdf_url.present? %><i class="fa fa-file-pdf-o"></i> <% end %>
-                <% if case_study.youtube_id.present? %><i class="fa fa-video-camera"></i> <% end %>
+                <% if case_study.pdf_url.present? %><i class="far fa-file-pdf"></i> <% end %>
+                <% if case_study.youtube_id.present? %><i class="fas fa-video"></i> <% end %>
             </h5>
             <div><strong><%=l case_study.created_at.to_date, format: :long %></strong></div>
             <div class="show-for-small">
@@ -48,9 +48,9 @@
         <% if @asset_type_case_study_counts[:pdf] > 0 %>
           <li>
             <% if @asset_type && @asset_type == "pdf" %>
-              <i class="fa fa-file-pdf-o"></i> <em style="color: #888">PDF (<%=@asset_type_case_study_counts[:pdf]%>)</em>
+              <i class="far fa-file-pdf"></i> <em style="color: #888">PDF (<%=@asset_type_case_study_counts[:pdf]%>)</em>
             <% else %>
-              <i class="fa fa-file-pdf-o"></i> <%= link_to "PDF (#{@asset_type_case_study_counts[:pdf]})", case_studies_by_asset_type_path("pdf",@vertical_market.nil? ? "all" : @vertical_market)%>
+              <i class="far fa-file-pdf"></i> <%= link_to "PDF (#{@asset_type_case_study_counts[:pdf]})", case_studies_by_asset_type_path("pdf",@vertical_market.nil? ? "all" : @vertical_market)%>
             <% end  %>
           </li>
         <% end %>
@@ -58,9 +58,9 @@
         <% if @asset_type_case_study_counts[:video] > 0 %>
           <li>
             <% if @asset_type && @asset_type == "video" %>
-              <i class="fa fa-video-camera"></i> <em style="color: #888">Video (<%=@asset_type_case_study_counts[:video]%>)</em>
+              <i class="fas fa-video"></i> <em style="color: #888">Video (<%=@asset_type_case_study_counts[:video]%>)</em>
             <% else %>
-              <i class="fa fa-video-camera"></i> <%= link_to "Video (#{@asset_type_case_study_counts[:video]})", case_studies_by_asset_type_path("video",@vertical_market.nil? ? "all" : @vertical_market)%>
+              <i class="fas fa-video"></i> <%= link_to "Video (#{@asset_type_case_study_counts[:video]})", case_studies_by_asset_type_path("video",@vertical_market.nil? ? "all" : @vertical_market)%>
             <% end %>
           </li>
         <% end %>
