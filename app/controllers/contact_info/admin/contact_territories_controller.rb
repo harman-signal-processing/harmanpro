@@ -47,7 +47,7 @@ class ContactInfo::Admin::ContactTerritoriesController < ContactInfo::AdminContr
   # PUT /contact_info/admin/contact_territories/1.xml
   def update
     respond_to do |format|
-      if @contact_territory.update_attributes(contact_territory_params)
+      if @contact_territory.update(contact_territory_params)
         format.html { redirect_to(admin_contact_territories_url, notice: 'Contact territory was successfully updated.') }
         format.xml  { head :ok }
       else

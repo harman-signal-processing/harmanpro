@@ -24,7 +24,7 @@ class Cms::ProductTypesController < CmsController
 
   def update
     @product_type = ProductType.find(params[:id])
-    if @product_type.update_attributes(product_type_params)
+    if @product_type.update(product_type_params)
       if @available_locale
         redirect_to [:cms, @available_locale, @product_type.class], notice: 'Update successful'
       end

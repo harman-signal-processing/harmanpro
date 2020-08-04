@@ -4,7 +4,7 @@ class AvailableLocale < ApplicationRecord
   extend FriendlyId
   friendly_id :key
 
-  validates :key, presence: true, uniqueness: true
+  validates :key, presence: true, uniqueness: { case_sensitive: false }
   validates :name, presence: true
 
   has_many :locale_translators, dependent: :destroy

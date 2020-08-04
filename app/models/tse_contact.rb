@@ -12,7 +12,7 @@ class TseContact < ApplicationRecord
   has_many :tse_regions, through: :tse_contact_regions
 
   validates :name, presence: true
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
 
   accepts_nested_attributes_for :tse_category_contacts
   accepts_nested_attributes_for :tse_contact_technologies

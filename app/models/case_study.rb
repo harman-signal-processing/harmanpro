@@ -28,7 +28,7 @@ class CaseStudy < ApplicationRecord
 
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\Z/
   validates_attachment_content_type :pdf, content_type: /pdf/
-  validates :headline, presence: true, uniqueness: true
+  validates :headline, presence: true, uniqueness: { case_sensitive: false }
 
   attr_accessor :delete_pdf
 

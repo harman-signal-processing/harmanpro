@@ -28,7 +28,7 @@ class Emea::Admin::EmeaEmployeeContactsController < Emea::AdminController
 
   def update
     @employee_contact = EmeaEmployeeContact.find(params[:id])
-    if @employee_contact.update_attributes(emea_employee_contact_params)
+    if @employee_contact.update(emea_employee_contact_params)
       redirect_to emea_admin_emea_employee_contacts_path, notice: "#{@employee_contact.name} updated successfully."
     else
       render action: :edit

@@ -5,7 +5,7 @@ class EmeaPage < ApplicationRecord
   attr_accessor :linked_anchors
   has_many :resources, class_name: "EmeaPageResource", foreign_key: "emea_page_id", dependent: :destroy
 
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true, uniqueness: { case_sensitive: false }
 
   after_initialize :set_defaults
 

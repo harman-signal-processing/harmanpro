@@ -22,7 +22,7 @@ class Product < ApplicationRecord
   default_url: "missing/banners/:style.jpg"
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :brand, presence: true
 
   # :nocov:

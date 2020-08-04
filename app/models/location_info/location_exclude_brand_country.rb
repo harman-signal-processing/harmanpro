@@ -6,6 +6,6 @@ class LocationInfo::LocationExcludeBrandCountry < ApplicationRecord
   attr_accessor :brand_country
   
   validates :location_info_location_id, presence: true
-  validates :location_info_country_id, presence: true, uniqueness: {scope: [:location_info_location_id, :brand_id]}  
-  validates :brand_id, presence: true, uniqueness: {scope: [:location_info_location_id, :location_info_country_id]}  
+  validates :location_info_country_id, presence: true, uniqueness: {scope: [:location_info_location_id, :brand_id], case_sensitive: false}  
+  validates :brand_id, presence: true, uniqueness: {scope: [:location_info_location_id, :location_info_country_id], case_sensitive: false}  
 end

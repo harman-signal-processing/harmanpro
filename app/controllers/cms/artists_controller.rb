@@ -36,7 +36,7 @@ class Cms::ArtistsController < CmsController
 
   def update
     @artist = Artist.find(params[:id])
-    if @artist.update_attributes(artist_params)
+    if @artist.update(artist_params)
       redirect_to [:cms, @available_locale, @artist.class], notice: 'Update successful'
     else
       render template: 'cms/available_locales/artists/edit'

@@ -47,7 +47,7 @@ class LocationInfo::Admin::LocationSupportedCountriesController < LocationInfo::
   # PUT /location_info/admin/location_supported_countries/1.xml
   def update
     respond_to do |format|
-      if @location_supported_country.update_attributes(location_supported_country_params)
+      if @location_supported_country.update(location_supported_country_params)
         format.html { redirect_to(admin_location_supported_countries_url, notice: 'Location supported_country was successfully updated.') }
         format.xml  { head :ok }
       else

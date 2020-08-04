@@ -36,7 +36,7 @@ class ContactInfo::Admin::WebsitesController < ContactInfo::AdminController
   
   def update
     respond_to do |format|
-      if @website.update_attributes({url: website_params[:url], label: website_params[:label]})
+      if @website.update({url: website_params[:url], label: website_params[:label]})
         format.html { redirect_to(contact_info_admin_websites_path, notice: "Website #{@website.url} was successfully updated.") }
         format.xml  { head :ok }
         add_log(user: current_user, action: "Updated website: #{@website.url}")

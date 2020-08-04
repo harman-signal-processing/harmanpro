@@ -47,7 +47,7 @@ class ContactInfo::Admin::ContactSupportedBrandsController < ContactInfo::AdminC
   # PUT /contact_info/admin/contact_supported_brands/1.xml
   def update
     respond_to do |format|
-      if @contact_supported_brand.update_attributes(contact_supported_brand_params)
+      if @contact_supported_brand.update(contact_supported_brand_params)
         format.html { redirect_to(admin_contact_supported_brands_url, notice: 'Contact supported_brand was successfully updated.') }
         format.xml  { head :ok }
       else

@@ -22,7 +22,7 @@ class ContactInfo::Admin::ProSiteOptionsController < ContactInfo::AdminControlle
   
   def update
     respond_to do |format|
-      if @pro_site_option.update_attributes(pro_site_option_params)
+      if @pro_site_option.update(pro_site_option_params)
         format.html { redirect_to(contact_info_admin_pro_site_options_path, notice: "Pro Site Options update for #{@pro_site_option.contact.name} was successfully updated.") }
         format.xml  { head :ok }
         add_log(user: current_user, action: "Updated pro_site_option: #{@pro_site_option.name}")

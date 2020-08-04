@@ -47,7 +47,7 @@ class ContactInfo::Admin::ContactWebsitesController < ContactInfo::AdminControll
   # PUT /contact_info/admin/contact_websites/1.xml
   def update
     respond_to do |format|
-      if @contact_website.update_attributes(contact_website_params)
+      if @contact_website.update(contact_website_params)
         format.html { redirect_to(admin_contact_websites_url, notice: 'Contact website was successfully updated.') }
         format.xml  { head :ok }
       else

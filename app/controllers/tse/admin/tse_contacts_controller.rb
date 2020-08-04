@@ -25,7 +25,7 @@ class Tse::Admin::TseContactsController < Tse::AdminController
   end
 
   def update
-    if @tse_contact.update_attributes(tse_contact_params)
+    if @tse_contact.update(tse_contact_params)
       redirect_to tse_admin_tse_contacts_path
     else
       render action: :edit

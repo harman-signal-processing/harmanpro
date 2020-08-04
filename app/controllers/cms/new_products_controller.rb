@@ -24,7 +24,7 @@ class Cms::NewProductsController < CmsController
 
   def update
     @new_product = NewProduct.find(params[:id])
-    if @new_product.update_attributes(new_product_params)
+    if @new_product.update(new_product_params)
       if @available_locale
         redirect_to [:cms, @available_locale, @new_product.class], notice: 'Update successful'
       end

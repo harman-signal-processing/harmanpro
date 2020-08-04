@@ -32,7 +32,7 @@ class Emea::Admin::ChannelManagersController < Emea::AdminController
 
   def update
     @channel_manager = ChannelManager.find(params[:id])
-    if @channel_manager.update_attributes(channel_manager_params)
+    if @channel_manager.update(channel_manager_params)
       redirect_to [:emea, :admin, @channel_manager]
     else
       render action: :edit

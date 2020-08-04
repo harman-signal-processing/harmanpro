@@ -3,7 +3,7 @@ class ServiceCenter < ApplicationRecord
   has_many :service_groups, through: :service_center_service_groups
 
   validates :willingness, acceptance: true, on: :create
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :contact_name, presence: true
   validates :email, presence: true
   validates :zip, presence: true

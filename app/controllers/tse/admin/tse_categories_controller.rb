@@ -25,7 +25,7 @@ class Tse::Admin::TseCategoriesController < Tse::AdminController
   end
 
   def update
-    if @tse_category.update_attributes(tse_category_params)
+    if @tse_category.update(tse_category_params)
       redirect_to tse_admin_tse_categories_path
     else
       render action: :edit

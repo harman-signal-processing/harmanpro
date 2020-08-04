@@ -47,7 +47,7 @@ class DistributorInfo::Admin::DistributorPhonesController < DistributorInfo::Adm
   # PUT /distributor_info/admin/distributor_phones/1.xml
   def update
     respond_to do |format|
-      if @distributor_phone.update_attributes(distributor_phone_params)
+      if @distributor_phone.update(distributor_phone_params)
         format.html { redirect_to(admin_distributor_phones_url, notice: 'distributor phone was successfully updated.') }
         format.xml  { head :ok }
       else

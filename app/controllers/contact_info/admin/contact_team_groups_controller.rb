@@ -47,7 +47,7 @@ class ContactInfo::Admin::ContactTeamGroupsController < ContactInfo::AdminContro
   # PUT /contact_info/admin/contact_team_groups/1.xml
   def update
     respond_to do |format|
-      if @contact_team_group.update_attributes(contact_team_group_params)
+      if @contact_team_group.update(contact_team_group_params)
         format.html { redirect_to(admin_contact_team_groups_url, notice: 'Contact team_group was successfully updated.') }
         format.xml  { head :ok }
       else

@@ -47,7 +47,7 @@ class LocationInfo::Admin::LocationExcludeBrandCountriesController < Application
   # PUT /location_info/admin/location_exclude_brand_countries/1.xml
   def update
     respond_to do |format|
-      if @excluded_brands_countries.update_attributes(location_exclude_brand_country_params)
+      if @excluded_brands_countries.update(location_exclude_brand_country_params)
         format.html { redirect_to(admin_location_exclude_brand_countries_url, notice: 'location brand/country exclusion was successfully updated.') }
         format.xml  { head :ok }
       else

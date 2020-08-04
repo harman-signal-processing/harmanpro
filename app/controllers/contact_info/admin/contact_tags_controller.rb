@@ -47,7 +47,7 @@ class ContactInfo::Admin::ContactTagsController < ContactInfo::AdminController
   # PUT /contact_info/admin/contact_tags/1.xml
   def update
     respond_to do |format|
-      if @contact_tag.update_attributes(contact_tag_params)
+      if @contact_tag.update(contact_tag_params)
         format.html { redirect_to(admin_contact_tags_url, notice: 'Contact tag was successfully updated.') }
         format.xml  { head :ok }
       else

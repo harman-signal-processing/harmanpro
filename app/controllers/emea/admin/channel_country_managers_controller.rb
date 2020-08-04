@@ -31,7 +31,7 @@ class Emea::Admin::ChannelCountryManagersController < Emea::AdminController
 
   def update
     @channel_country_manager = ChannelCountryManager.find(params[:id])
-    if @channel_country_manager.update_attributes(channel_country_manager_params)
+    if @channel_country_manager.update(channel_country_manager_params)
       if @channel_country_manager.created_from.present?
         redirect_to [:emea, :admin, @channel_country_manager.send(@channel_country_manager.created_from)]
       else

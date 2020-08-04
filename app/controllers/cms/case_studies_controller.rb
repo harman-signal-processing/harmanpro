@@ -24,7 +24,7 @@ class Cms::CaseStudiesController < CmsController
 
   def update
     @case_study = CaseStudy.find(params[:id])
-    if @case_study.update_attributes(case_study_params)
+    if @case_study.update(case_study_params)
       if @available_locale
         redirect_to [:cms, @available_locale, @case_study.class], notice: 'Update successful'
       end

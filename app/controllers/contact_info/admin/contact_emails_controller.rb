@@ -49,7 +49,7 @@ class ContactInfo::Admin::ContactEmailsController < ContactInfo::AdminController
   # PUT /contact_info/admin/contact_emails/1.xml
   def update
     respond_to do |format|
-      if @contact_email.update_attributes(contact_email_params)
+      if @contact_email.update(contact_email_params)
         format.html { redirect_to(contact_info_admin_contact_emails_path, notice: 'Contact email was successfully updated.') }
         format.xml  { head :ok }
       else

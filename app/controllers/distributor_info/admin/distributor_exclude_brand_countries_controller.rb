@@ -47,7 +47,7 @@ class DistributorInfo::Admin::DistributorExcludeBrandCountriesController < Appli
   # PUT /distributor_info/admin/distributor_exclude_brand_countries/1.xml
   def update
     respond_to do |format|
-      if @excluded_brands_countries.update_attributes(distributor_exclude_brand_country_params)
+      if @excluded_brands_countries.update(distributor_exclude_brand_country_params)
         format.html { redirect_to(admin_distributor_exclude_brand_countries_url, notice: 'distributor brand/country exclusion was successfully updated.') }
         format.xml  { head :ok }
       else

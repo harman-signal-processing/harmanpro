@@ -62,7 +62,7 @@ class VerticalMarket < ApplicationRecord
 
   validates_attachment_content_type :hef_banner, content_type: /\Aimage\/.*\Z/
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :headline, presence: true
 
   accepts_nested_attributes_for :case_study_vertical_markets, reject_if: :all_blank, allow_destroy: true

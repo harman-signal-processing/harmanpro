@@ -23,7 +23,7 @@ class ContactInfo::Admin::TagsController < ContactInfo::AdminController
   
   def update
     respond_to do |format|
-      if @tag.update_attributes({tag: tag_params[:tag]})
+      if @tag.update({tag: tag_params[:tag]})
         format.html { redirect_to(contact_info_admin_tags_path, notice: "Tag #{@tag.name} was successfully updated.") }
         format.xml  { head :ok }
         add_log(user: current_user, action: "Updated tag: #{@tag.name}")

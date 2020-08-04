@@ -24,7 +24,7 @@ class ContactInfo::Admin::DataClientsController < ContactInfo::AdminController
   
   def update
     respond_to do |format|
-      if @data_client.update_attributes({name: data_client_params[:name]})
+      if @data_client.update({name: data_client_params[:name]})
         format.html { redirect_to(contact_info_admin_data_clients_path, notice: "DataClient #{@data_client.name} was successfully updated.") }
         format.xml  { head :ok }
         add_log(user: current_user, action: "Updated data_client: #{@data_client.name}")

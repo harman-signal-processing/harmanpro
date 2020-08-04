@@ -107,7 +107,7 @@ class DistributorInfo::Admin::DistributorsController < DistributorInfo::AdminCon
   end
   
   def update
-    if @distributor.update_attributes(distributor_params)
+    if @distributor.update(distributor_params)
       add_log(user: current_user, action: "Updated distributor #{@distributor.name}")
       redirect_to distributor_info_admin_distributors_path
     else

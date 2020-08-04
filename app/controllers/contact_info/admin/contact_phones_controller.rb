@@ -50,7 +50,7 @@ class ContactInfo::Admin::ContactPhonesController < ContactInfo::AdminController
   # PUT /contact_info/admin/contact_phones/1.xml
   def update
     respond_to do |format|
-      if @contact_phone.update_attributes(contact_phone_params)
+      if @contact_phone.update(contact_phone_params)
         format.html { redirect_to(admin_contact_phones_url, notice: 'Contact phone was successfully updated.') }
         format.xml  { head :ok }
       else

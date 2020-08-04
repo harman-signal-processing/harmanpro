@@ -47,7 +47,7 @@ class LocationInfo::Admin::LocationSupportedBrandsController < LocationInfo::Adm
   # PUT /location_info/admin/location_supported_brands/1.xml
   def update
     respond_to do |format|
-      if @location_supported_brand.update_attributes(location_supported_brand_params)
+      if @location_supported_brand.update(location_supported_brand_params)
         format.html { redirect_to(admin_location_supported_brands_url, notice: 'Location supported_brand was successfully updated.') }
         format.xml  { head :ok }
       else
