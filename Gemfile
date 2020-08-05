@@ -71,7 +71,6 @@ gem 'will_paginate_infinite',
 group :development do
   gem 'bumbler'
   gem 'letter_opener'
-#  gem 'web-console', '~> 3.0'
   gem 'spring'
   gem 'guard-bundler'
   gem 'guard-rails'
@@ -108,8 +107,4 @@ group :test do
   gem 'selenium-webdriver'
   #gem 'chromedriver-helper' # nice for testing in a browser window
   gem 'launchy'
-  # This brings back the 'assigns' method I used a lot in testing which DHH
-  # now discourages. But, requiring it here breaks other tests. So I do the
-  # require in spec/rails_helper.rb
-  ###gem 'rails-controller-testing', require: false
 end
