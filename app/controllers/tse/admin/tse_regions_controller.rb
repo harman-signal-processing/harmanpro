@@ -25,7 +25,7 @@ class Tse::Admin::TseRegionsController < Tse::AdminController
   end
 
   def update
-    if @tse_region.update_attributes(tse_region_params)
+    if @tse_region.update(tse_region_params)
       redirect_to tse_admin_tse_regions_path
     else
       render action: :edit

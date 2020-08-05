@@ -141,7 +141,7 @@ class ContactInfo::Admin::ContactsController < ContactInfo::AdminController
   end
   
   def update
-    if @contact.update_attributes(contact_params)
+    if @contact.update(contact_params)
       add_log(user: current_user, action: "Updated contact #{@contact.name}")
       redirect_to contact_info_admin_contacts_path
     else

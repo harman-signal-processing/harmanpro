@@ -36,7 +36,7 @@ class Cms::SlidesController < CmsController
 
   def update
     @slide = Slide.find(params[:id])
-    if @slide.update_attributes(slide_params)
+    if @slide.update(slide_params)
       redirect_to [:cms, @available_locale, @slide.class], notice: 'Update successful'
     else
       render template: 'cms/available_locales/slides/edit'

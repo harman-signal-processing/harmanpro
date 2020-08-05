@@ -47,7 +47,7 @@ class LocationInfo::Admin::LocationRegionsController < LocationInfo::AdminContro
   # PUT /location_info/admin/location_regions/1.xml
   def update
     respond_to do |format|
-      if @location_region.update_attributes(location_region_params)
+      if @location_region.update(location_region_params)
         format.html { redirect_to(admin_location_regions_url, notice: 'Location region was successfully updated.') }
         format.xml  { head :ok }
       else

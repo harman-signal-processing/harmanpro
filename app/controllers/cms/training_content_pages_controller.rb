@@ -56,7 +56,7 @@ class Cms::TrainingContentPagesController < CmsController
 
   def update
     @training_content_page = TrainingContentPage.find(params[:id])
-    if @training_content_page.update_attributes(training_content_page_params)
+    if @training_content_page.update(training_content_page_params)
       if @available_locale
         if @training_content_page.original_locale && @training_content_page.original_locale == @available_locale
           redirect_to [:originated, :cms, @available_locale, @training_content_page.class], notice: 'Update successful'

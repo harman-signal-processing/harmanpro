@@ -28,7 +28,7 @@ class Emea::Admin::EmeaPageResourcesController < Emea::AdminController
 
   def update
     @emea_page_resource = @emea_page.resources.find(params[:id])
-    if @emea_page_resource.update_attributes(emea_page_resource_params)
+    if @emea_page_resource.update(emea_page_resource_params)
       redirect_to edit_emea_admin_emea_page_path(@emea_page), notice: "Resource was updated successfully."
     else
       render action: :edit

@@ -47,7 +47,7 @@ class DistributorInfo::Admin::DistributorWebsitesController < DistributorInfo::A
   # PUT /distributor_info/admin/distributor_websites/1.xml
   def update
     respond_to do |format|
-      if @distributor_website.update_attributes(distributor_website_params)
+      if @distributor_website.update(distributor_website_params)
         format.html { redirect_to(admin_distributor_websites_url, notice: 'distributor website was successfully updated.') }
         format.xml  { head :ok }
       else

@@ -49,7 +49,7 @@ RSpec.describe SiteSetting, :type => :model do
       setting = FactoryBot.create(:site_setting, content: "Original Value")
 
       SiteSetting.value(setting.name)
-      setting.update_attributes(content: "New Value")
+      setting.update(content: "New Value")
       setting.reload
 
       expect(SiteSetting.value(setting.name)).to eq(setting.content)

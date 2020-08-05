@@ -36,7 +36,7 @@ class ContactInfo::Admin::PhonesController < ContactInfo::AdminController
   
   def update
     respond_to do |format|
-      if @phone.update_attributes({phone: phone_params[:phone], label: phone_params[:label]})
+      if @phone.update({phone: phone_params[:phone], label: phone_params[:label]})
         format.html { redirect_to(contact_info_admin_phones_path, notice: "Phone #{@phone.phone} was successfully updated.") }
         format.xml  { head :ok }
         add_log(user: current_user, action: "Updated phone: #{@phone.phone}")

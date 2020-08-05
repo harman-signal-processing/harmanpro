@@ -4,7 +4,7 @@ class OnlineRetailer < ApplicationRecord
 
   belongs_to :locale, class_name: "AvailableLocale", foreign_key: :locale_id
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :url, presence: true, format: { with: URI.regexp }
   validates :locale, presence: true
 

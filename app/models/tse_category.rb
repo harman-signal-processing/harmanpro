@@ -1,7 +1,7 @@
 class TseCategory < ApplicationRecord
   has_many :tse_category_contacts, dependent: :destroy
   has_many :tse_contacts, through: :tse_category_contacts
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
   acts_as_list
   acts_as_tree
 

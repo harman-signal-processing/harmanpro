@@ -26,7 +26,7 @@ class ContactInfo::Admin::TerritoriesController < ContactInfo::AdminController
   
   def update
     respond_to do |format|
-      if @territory.update_attributes({territory: territory_params[:territory], label: territory_params[:label]})
+      if @territory.update({territory: territory_params[:territory], label: territory_params[:label]})
         format.html { redirect_to(contact_info_admin_territories_path, notice: "Territory #{@territory.name} was successfully updated.") }
         format.xml  { head :ok }
         add_log(user: current_user, action: "Updated territory: #{@territory.name}")

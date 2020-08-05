@@ -36,7 +36,7 @@ class ContactInfo::Admin::EmailsController < ContactInfo::AdminController
 
   def update
     respond_to do |format|
-      if @email.update_attributes({email: email_params[:email], label: email_params[:label]})
+      if @email.update({email: email_params[:email], label: email_params[:label]})
         format.html { redirect_to(contact_info_admin_emails_path, notice: "Email #{@email.email} was successfully updated.") }
         format.xml  { head :ok }
         add_log(user: current_user, action: "Updated email: #{@email.email}")

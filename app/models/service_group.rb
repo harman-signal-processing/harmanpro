@@ -4,7 +4,7 @@ class ServiceGroup < ApplicationRecord
   has_many :service_centers, through: :service_center_service_groups
 
   validates :brand, presence: true
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
 
   def self.names
     order(Arel.sql("UPPER(name)")).pluck(:name).uniq

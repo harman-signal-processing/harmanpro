@@ -25,7 +25,7 @@ class Tse::Admin::TseTechnologiesController < Tse::AdminController
   end
 
   def update
-    if @tse_technology.update_attributes(tse_technology_params)
+    if @tse_technology.update(tse_technology_params)
       redirect_to tse_admin_tse_technologies_path
     else
       render action: :edit

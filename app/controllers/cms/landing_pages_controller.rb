@@ -56,7 +56,7 @@ class Cms::LandingPagesController < CmsController
 
   def update
     @landing_page = LandingPage.find(params[:id])
-    if @landing_page.update_attributes(landing_page_params)
+    if @landing_page.update(landing_page_params)
       if @available_locale
         if @landing_page.original_locale && @landing_page.original_locale == @available_locale
           redirect_to [:originated, :cms, @available_locale, @landing_page.class], notice: 'Update successful'

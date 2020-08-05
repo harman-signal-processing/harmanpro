@@ -47,7 +47,7 @@ class DistributorInfo::Admin::DistributorLocationsController < DistributorInfo::
   # PUT /distributor_info/admin/distributor_locations/1.xml
   def update
     respond_to do |format|
-      if @distributor_location.update_attributes(distributor_location_params)
+      if @distributor_location.update(distributor_location_params)
         format.html { redirect_to(admin_distributor_locations_url, notice: 'distributor location was successfully updated.') }
         format.xml  { head :ok }
       else

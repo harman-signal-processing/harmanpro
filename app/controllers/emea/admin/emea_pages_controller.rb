@@ -27,7 +27,7 @@ class Emea::Admin::EmeaPagesController < Emea::AdminController
 
   def update
     @emea_page = EmeaPage.find(params[:id])
-    if @emea_page.update_attributes(emea_page_params)
+    if @emea_page.update(emea_page_params)
       redirect_to emea_admin_emea_pages_path, notice: "Page updated successfully." and return false
     else
       render action: :edit

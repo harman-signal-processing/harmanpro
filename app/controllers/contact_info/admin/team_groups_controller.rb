@@ -23,7 +23,7 @@ class ContactInfo::Admin::TeamGroupsController < ContactInfo::AdminController
   
   def update
     respond_to do |format|
-      if @team_group.update_attributes({team_group: team_group_params[:name]})
+      if @team_group.update({team_group: team_group_params[:name]})
         format.html { redirect_to(contact_info_admin_team_groups_path, notice: "TeamGroup #{@team_group.team_group} was successfully updated.") }
         format.xml  { head :ok }
         add_log(user: current_user, action: "Updated team_group: #{@team_group.name}")

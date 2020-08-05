@@ -57,7 +57,7 @@ class Cms::MenuItemsController < CmsController
     @menu_item = MenuItem.find(params[:id])
     if @available_locale
       @menu_item.locale = @available_locale
-      if @menu_item.update_attributes(menu_item_params)
+      if @menu_item.update(menu_item_params)
         redirect_to [:cms, @available_locale, :menu_items], notice: "Success!"
       else
         render action: :edit

@@ -47,7 +47,7 @@ class ContactInfo::Admin::TerritorySupportedCountriesController < ApplicationCon
   # PUT /contact_info/admin/territory_supported_countries/1.xml
   def update
     respond_to do |format|
-      if @territory_supported_country.update_attributes(territory_supported_country_params)
+      if @territory_supported_country.update(territory_supported_country_params)
         format.html { redirect_to(admin_territory_supported_countries_url, notice: 'Territory supported_country was successfully updated.') }
         format.xml  { head :ok }
       else

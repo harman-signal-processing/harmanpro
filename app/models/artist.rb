@@ -16,7 +16,7 @@ class Artist < ApplicationRecord
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
   validates :locale, presence: true
-  validates :name, presence: true, uniqueness: { scope: :locale_id }
+  validates :name, presence: true, uniqueness: { scope: :locale_id, case_sensitive: false }
 
   attr_accessor :delete_photo
 

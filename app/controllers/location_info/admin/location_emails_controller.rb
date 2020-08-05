@@ -47,7 +47,7 @@ class LocationInfo::Admin::LocationEmailsController < LocationInfo::AdminControl
   # PUT /location_info/admin/location_emails/1.xml
   def update
     respond_to do |format|
-      if @location_email.update_attributes(location_email_params)
+      if @location_email.update(location_email_params)
         format.html { redirect_to(admin_location_emails_url, notice: 'Location email was successfully updated.') }
         format.xml  { head :ok }
       else

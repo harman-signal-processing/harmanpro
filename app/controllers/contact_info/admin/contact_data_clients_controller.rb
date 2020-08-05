@@ -47,7 +47,7 @@ class ContactInfo::Admin::ContactDataClientsController < ContactInfo::AdminContr
   # PUT /contact_info/admin/contact_data_clients/1.xml
   def update
     respond_to do |format|
-      if @contact_data_client.update_attributes(contact_data_client_params)
+      if @contact_data_client.update(contact_data_client_params)
         format.html { redirect_to(admin_contact_data_clients_url, notice: 'Contact data_client was successfully updated.') }
         format.xml  { head :ok }
       else

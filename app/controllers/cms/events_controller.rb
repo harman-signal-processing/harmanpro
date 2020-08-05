@@ -56,7 +56,7 @@ class Cms::EventsController < CmsController
 
   def update
     @event = Event.find(params[:id])
-    if @event.update_attributes(event_params)
+    if @event.update(event_params)
       if @available_locale
         if @event.original_locale && @event.original_locale == @available_locale
           redirect_to [:local, :cms, @available_locale, @event.class], notice: 'Update successful'

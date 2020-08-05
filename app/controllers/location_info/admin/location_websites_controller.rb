@@ -47,7 +47,7 @@ class LocationInfo::Admin::LocationWebsitesController < LocationInfo::AdminContr
   # PUT /location_info/admin/location_websites/1.xml
   def update
     respond_to do |format|
-      if @location_website.update_attributes(location_website_params)
+      if @location_website.update(location_website_params)
         format.html { redirect_to(admin_location_websites_url, notice: 'Location website was successfully updated.') }
         format.xml  { head :ok }
       else

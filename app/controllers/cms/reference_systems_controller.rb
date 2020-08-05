@@ -24,7 +24,7 @@ class Cms::ReferenceSystemsController < CmsController
 
   def update
     @reference_system = ReferenceSystem.find(params[:id])
-    if @reference_system.update_attributes(reference_system_params)
+    if @reference_system.update(reference_system_params)
       if @available_locale
         redirect_to [:cms, @available_locale, @reference_system.class], notice: 'Update successful'
       end

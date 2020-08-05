@@ -21,7 +21,7 @@ class CreateCaseStudyVerticalMarkets < ActiveRecord::Migration
   def down
     add_column :case_studies, :vertical_market_id, :integer
     CaseStudyVerticalMarket.all.each do |csvm|
-      csvm.case_study.update_attributes(vertical_market_id: csvm.vertical_market_id)
+      csvm.case_study.update(vertical_market_id: csvm.vertical_market_id)
     end
     drop_table :case_study_vertical_markets
   end

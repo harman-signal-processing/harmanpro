@@ -4,17 +4,16 @@ git_source(:github) do |repo_name|
   "git://github.com/#{repo_name}"
 end
 
-gem 'rails', '~> 5.2.4'
-gem 'bootsnap'
-gem 'responders', '~> 2.0'
-gem 'mysql2', "= 0.5.2" # rackspace1 server can't handle 0.5.3
-gem 'sass-rails', '~> 5.0'
+gem 'rails', '~> 6.0'
+gem 'bootsnap', require: false
+gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails' #, '~> 4.1.0'
-gem 'sprockets'
+gem 'coffee-rails'
+gem 'sprockets', '~> 4.0'
 gem 'font_awesome5_rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
+gem 'mysql2'
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 5.0'
 gem 'jbuilder', '~> 2.0'
@@ -31,17 +30,17 @@ gem 'foundation-rails', '~> 5.5' # After this, getting incompatible units errors
 gem 'friendly_id', '>= 5.2'
 gem 'paperclip'
 gem 'paperclip-compression'
+gem 'fog-core', '< 2.1.1' # fog-rackspace isn't working with fog-core after 2.1.0
 gem 'fog-rackspace'
-gem 'fog-core', '= 2.1.0' # fog-rackspace 0.1.6 needs to catch-up with namespace updates
 gem 'acts_as_list'
 gem 'acts_as_tree'
 gem 'acts-as-taggable-on' #, '~> 3.4'
 gem 'devise'
-gem 'activeadmin', github: 'activeadmin'
-gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'activeadmin'
+gem 'inherited_resources'
 gem 'activeadmin-sortable'
 gem 'pundit'
-gem 'delayed_job_active_record', '>= 4.1.1'
+gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'httparty'
 gem 'rails_autolink'
@@ -55,7 +54,7 @@ gem 'nokogiri' # for parsing HTML to generate subnavs on EMEA portal
 gem 'thinking-sphinx', '~> 4.0.0'
 gem 'kaminari'
 
-gem 'globalize', '~> 5.2.0' #'5.1.0.beta2' #github: 'globalize', branch: '999b5dfa656ff0f706dbcd07ce7552d5b783d5a1' # 3/2017 master branch had errors #'~> 5.0.0'
+gem 'globalize' ###, '~> 5.2.0' #'5.1.0.beta2' #github: 'globalize', branch: '999b5dfa656ff0f706dbcd07ce7552d5b783d5a1' # 3/2017 master branch had errors #'~> 5.0.0'
 # 12/2018 main repo isn't compatible with rails 5.2, using unmerged PR from kaspernj for now:
 gem 'friendly_id-globalize', github: "kaspernj/friendly_id-globalize", branch: "fixed-rails-5-2-plain-sql-order-warning" #"norman/friendly_id-globalize"
 gem 'http_accept_language'
@@ -72,7 +71,6 @@ gem 'will_paginate_infinite',
 group :development do
   gem 'bumbler'
   gem 'letter_opener'
-#  gem 'web-console', '~> 3.0'
   gem 'spring'
   gem 'guard-bundler'
   gem 'guard-rails'
@@ -109,8 +107,4 @@ group :test do
   gem 'selenium-webdriver'
   #gem 'chromedriver-helper' # nice for testing in a browser window
   gem 'launchy'
-  # This brings back the 'assigns' method I used a lot in testing which DHH
-  # now discourages. But, requiring it here breaks other tests. So I do the
-  # require in spec/rails_helper.rb
-  gem 'rails-controller-testing', require: false
 end

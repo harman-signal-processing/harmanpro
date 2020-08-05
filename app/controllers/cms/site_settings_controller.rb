@@ -24,7 +24,7 @@ class Cms::SiteSettingsController < CmsController
 
   def update
     @site_setting = SiteSetting.find(params[:id])
-    if @site_setting.update_attributes(site_setting_params)
+    if @site_setting.update(site_setting_params)
       if @available_locale
         redirect_to [:cms, @available_locale, @site_setting.class], notice: 'Update successful'
       end

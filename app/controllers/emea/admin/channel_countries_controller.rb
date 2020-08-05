@@ -32,7 +32,7 @@ class Emea::Admin::ChannelCountriesController < Emea::AdminController
 
   def update
     @channel_country = ChannelCountry.find(params[:id])
-    if @channel_country.update_attributes(channel_country_params)
+    if @channel_country.update(channel_country_params)
       redirect_to [:emea, :admin, @channel_country]
     else
       render action: :edit

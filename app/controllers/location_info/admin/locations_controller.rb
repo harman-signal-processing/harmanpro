@@ -142,7 +142,7 @@ class LocationInfo::Admin::LocationsController < LocationInfo::AdminController
   end
   
   def update
-    if @location.update_attributes(location_params)
+    if @location.update(location_params)
       add_log(user: current_user, action: "Updated location #{@location.name}")
       redirect_to location_info_admin_locations_path
     else

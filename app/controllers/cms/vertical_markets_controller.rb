@@ -24,7 +24,7 @@ class Cms::VerticalMarketsController < CmsController
 
   def update
     @vertical_market = VerticalMarket.find(params[:id])
-    if @vertical_market.update_attributes(vertical_market_params)
+    if @vertical_market.update(vertical_market_params)
       if @available_locale
         redirect_to [:cms, @available_locale, @vertical_market.class], notice: 'Update successful'
       end

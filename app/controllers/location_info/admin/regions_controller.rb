@@ -36,7 +36,7 @@ class LocationInfo::Admin::RegionsController < LocationInfo::AdminController
   end
   
   def update
-    if @region.update_attributes(region_params)
+    if @region.update(region_params)
       redirect_to location_info_admin_regions_path
     else
       render action: :edit

@@ -24,7 +24,7 @@ class Cms::BrandsController < CmsController
 
   def update
     @brand = Brand.find(params[:id])
-    if @brand.update_attributes(brand_params)
+    if @brand.update(brand_params)
       if @available_locale
         redirect_to [:cms, @available_locale, @brand.class], notice: 'Update successful'
       end

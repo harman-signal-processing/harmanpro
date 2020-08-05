@@ -7,6 +7,8 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : t('default_meta_description', brand_names: all_brands.map{|b| b.name}.join(', ') ) %>">
     <link rel="shortcut icon" type="image/x-icon" href="/harman.ico" />
     <link rel="icon" type="image/x-icon" href="/harman.ico" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,200' rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500' rel="stylesheet"/>
 
     <%# Acoustic tracking %>
     <% if Rails.env.production? %>

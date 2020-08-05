@@ -34,7 +34,7 @@ class Emea::Admin::DistributorsController < Emea::AdminController
 
   def update
     @distributor = Distributor.find(params[:id])
-    if @distributor.update_attributes(distributor_params)
+    if @distributor.update(distributor_params)
       redirect_to [:emea, :admin, @distributor], notice: "Update complete."
     else
       render action: :edit

@@ -3,5 +3,5 @@ class LocaleTranslator < ApplicationRecord
   belongs_to :translator, class_name: 'User', foreign_key: :user_id
 
   validates :locale, presence: true
-  validates :translator, presence: true, uniqueness: { scope: :locale }
+  validates :translator, presence: true, uniqueness: { scope: :locale, case_sensitive: false }
 end

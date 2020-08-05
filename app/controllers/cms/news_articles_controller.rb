@@ -36,7 +36,7 @@ class Cms::NewsArticlesController < CmsController
 
   def update
     @news_article = NewsArticle.find(params[:id])
-    if @news_article.update_attributes(news_article_params)
+    if @news_article.update(news_article_params)
       redirect_to [:cms, @available_locale, @news_article.class], notice: 'Update successful'
     else
       render template: 'cms/available_locales/news_articles/edit'

@@ -6,6 +6,6 @@ class DistributorInfo::DistributorExcludeBrandCountry < ApplicationRecord
   attr_accessor :brand_country
   
   validates :distributor_info_distributor_id, presence: true
-  validates :location_info_country_id, presence: true, uniqueness: {scope: [:distributor_info_distributor_id, :brand_id]}   
-  validates :brand_id, presence: true, uniqueness: {scope: [:distributor_info_distributor_id, :location_info_country_id]}
+  validates :location_info_country_id, presence: true, uniqueness: {scope: [:distributor_info_distributor_id, :brand_id], case_sensitive: false}   
+  validates :brand_id, presence: true, uniqueness: {scope: [:distributor_info_distributor_id, :location_info_country_id], case_sensitive: false}
 end

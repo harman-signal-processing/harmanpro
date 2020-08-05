@@ -47,7 +47,7 @@ class LocationInfo::Admin::LocationPhonesController < LocationInfo::AdminControl
   # PUT /location_info/admin/location_phones/1.xml
   def update
     respond_to do |format|
-      if @location_phone.update_attributes(location_phone_params)
+      if @location_phone.update(location_phone_params)
         format.html { redirect_to(admin_location_phones_url, notice: 'Location phone was successfully updated.') }
         format.xml  { head :ok }
       else

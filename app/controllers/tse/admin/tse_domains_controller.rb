@@ -25,7 +25,7 @@ class Tse::Admin::TseDomainsController < Tse::AdminController
   end
 
   def update
-    if @tse_domain.update_attributes(tse_domain_params)
+    if @tse_domain.update(tse_domain_params)
       redirect_to tse_admin_tse_domains_path
     else
       render action: :edit
