@@ -48,8 +48,12 @@
         "pageTitle": "EMEA, Central"
     },
     {
-        "slug": "emeanorthwest",
-        "pageTitle": "EMEA, Northwest"
+        "slug": "emeanorth",
+        "pageTitle": "EMEA, North"
+    },
+    {
+        "slug": "emeawest",
+        "pageTitle": "EMEA, West"
     },
     {
         "slug": "emeasouth",
