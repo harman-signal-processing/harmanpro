@@ -150,8 +150,13 @@
         "type": "channel"
     },
     {
-        "path": "/contacts/emeanorthwest/channel",
-        "name": "EMEA, Northwest",
+        "path": "/contacts/emeanorth/channel",
+        "name": "EMEA, North",
+        "type": "channel"
+    },
+    {
+        "path": "/contacts/emeawest/channel",
+        "name": "EMEA, West",
         "type": "channel"
     },
     {
