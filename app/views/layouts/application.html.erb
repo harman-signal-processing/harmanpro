@@ -102,6 +102,8 @@
       <div id="search_form">
         <%= form_tag search_path, method: :get, class: "custom-form popup-search-form" do %>
           <%= text_field_tag :query, @query, placeholder: t(:search).titleize, autofocus: true %>
+          <br/>
+          <%= submit_tag 'search', class: "small button" %>
         <% end %>
       </div>
       <div class="show-for-small">

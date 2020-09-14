@@ -2260,6 +2260,9 @@ div#searchform {
   padding: 16px 6px;
 }
 .popup-search-form {
+  @media only screen and (max-width: 640px) {
+    padding-top: rem-calc(40px);
+  }
   input {
     border: none;
     font-size: rem-calc(32);
@@ -2271,6 +2274,13 @@ div#searchform {
       outline: none;
       background: none;
       box-shadow: none;
+    }
+    &.button {
+      background-color: $gainsboro;
+      color: black;
+      @media only screen and (min-width: 640px) {
+        display: none;
+      }
     }
   }
   ::-webkit-input-placehoder {
