@@ -41,12 +41,6 @@
   </head>
 
   <body>
-    <% unless Rails.env.production? %>
-      <div class="text-center" style="background: yellow; padding: 3px">
-        Hi. Welcome to the pro.harman.com <%= Rails.env.to_s %> environment.
-      </div>
-    <% end %>
-
     <div class="row logo-container hide-for-small">
       <div class="medium-12 columns">
         <div class="row">
@@ -91,7 +85,7 @@
 
               <br/>
               <%= link_to '#', class: "large searchbutton", :'data-reveal-id' => "searchform" do %>
-                <i class="fas fa-search" title="<%= t :search %>"></i>
+                <%= image_tag "search-icon.png", alt: "search", lazy: false %>
               <% end %>
 
             <% end %>
@@ -110,6 +104,9 @@
           <%= text_field_tag :query, @query, placeholder: t(:search).titleize, autofocus: true %>
         <% end %>
       </div>
+      <div class="show-for-small">
+        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+      </div>
     </div>
 
     <div class="contain-to-grid sticky">
@@ -122,7 +119,18 @@
               <small><a href="/"><%= t("professional_solutions").upcase %></a></small>
             </h1>
           </li>
-          <li class="toggle-topbar menu-icon"><a href="#"><span>&nbsp;</span></a></li>
+          <li class="toggle-topbar icon">
+            <a href="#"><span><i class="fas fa-bars fa-2x" title="menu"></i></span></a>
+          </li>
+          <li class="show-for-small-only search-button-container">
+            <% if AvailableLocale.live.include?(I18n.locale) %>
+
+              <%= link_to '#', class: "medium searchbutton", :'data-reveal-id' => "searchform" do %>
+                <%= image_tag "search-icon.png", alt: "search", lazy: false %>
+              <% end %>
+
+            <% end %>
+          </li>
         </ul>
 
         <section class="top-bar-section">

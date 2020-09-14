@@ -1335,7 +1335,7 @@ $topbar-bg-color: $white;
 $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-$topbar-height: rem-calc(60);
+$topbar-height: rem-calc(80);
 $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
@@ -1551,9 +1551,9 @@ div.hint {
       }
       @media only screen and (max-width: 732px) {
         position: absolute;
-        top: 33px;
+        top: 43px;
         left: 100px;
-        width: 300px;
+        width: 250px;
         line-height: 1;
         font-size: 9px;
       }
@@ -2124,6 +2124,31 @@ ul.title-area {
   li.name {
     h1 {
       margin-top: -3px;
+    }
+  }
+  li.search-button-container {
+    position: absolute;
+    right: 80px;
+    top: 0px;
+    a.searchbutton {
+      @include button(rem-calc(26), $gainsboro);
+      height: rem-calc(80px);
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+  li.toggle-topbar.icon {
+    a {
+      @include button(rem-calc(26), $harman-blue);
+      position: absolute !important;
+      color: white !important;
+      top: 0px;
+      right: 0px;
+      height: rem-calc(80px);
+      width: rem-calc(80px);
+      padding-right: 26px;
+      padding-left: 26px;
+      height: rem-calc(80px) !important;
     }
   }
 }
