@@ -53,10 +53,8 @@ gem 'recaptcha', require: "recaptcha/rails"
 gem 'nokogiri' # for parsing HTML to generate subnavs on EMEA portal
 gem 'thinking-sphinx', '~> 4.0.0'
 gem 'kaminari'
-
-gem 'globalize' ###, '~> 5.2.0' #'5.1.0.beta2' #github: 'globalize', branch: '999b5dfa656ff0f706dbcd07ce7552d5b783d5a1' # 3/2017 master branch had errors #'~> 5.0.0'
-# 12/2018 main repo isn't compatible with rails 5.2, using unmerged PR from kaspernj for now:
-gem 'friendly_id-globalize', github: "kaspernj/friendly_id-globalize", branch: "fixed-rails-5-2-plain-sql-order-warning" #"norman/friendly_id-globalize"
+gem 'globalize'
+gem 'friendly_id-globalize'
 gem 'http_accept_language'
 gem 'rails-i18n'
 gem 'maxminddb' # for geocoding ip addresses
@@ -104,7 +102,6 @@ group :test do
   gem 'simplecov', require: false
   gem 'json-schema'
   gem 'faker'
-  gem 'selenium-webdriver'
-  #gem 'chromedriver-helper' # nice for testing in a browser window
+  gem 'webdrivers'
   gem 'launchy'
 end

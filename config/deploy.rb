@@ -5,6 +5,7 @@ set :application, 'harmanpro'
 #set :repo_url, 'https://github.com/harman-signal-processing/harmanpro'
 set :repo_url, 'ssh://git@github.com/harman-signal-processing/harmanpro.git'
 
+set :ssh_options, compression: false, keepalive: true
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
@@ -21,15 +22,15 @@ set :repo_url, 'ssh://git@github.com/harman-signal-processing/harmanpro.git'
 # set :log_level, :debug
 
 # Default value for :pty is false
-set :pty, true
-set :passenger_restart_with_sudo, true
+#set :pty, true
+#set :passenger_restart_with_sudo, true
 
 # Default value for :linked_files is []
 set :linked_files, %w{config/database.yml config/application.yml config/secrets.yml}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets}
-set :bundle_binstubs, nil
+#set :bundle_binstubs, nil
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }

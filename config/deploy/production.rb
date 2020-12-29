@@ -16,7 +16,7 @@
 # used to set extended properties on the server.
 
 #server 'rackspace1', user: 'hpro', roles: %w{admin web app}
-server 'rackspace2019', user: 'hpro', roles: %w{admin web app}
+#server 'rackspace2019', user: 'hpro', roles: %w{admin web app}
 server 'rackspace2020', user: 'hpro', roles: %w{admin web app db}, primary: true
 #server '10.10.23.15', user: 'hmg', roles: %w{node2 web app}
 
@@ -28,7 +28,9 @@ namespace :deploy do
 
 end
 
+set :thinking_sphinx_roles, :app
 before "deploy:restart", "thinking_sphinx:configure"
+
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a
