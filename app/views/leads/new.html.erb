@@ -8,7 +8,11 @@
       <p>
         <%= SiteSetting.value("leadgen-intro") %>
       </p>
-      <%= render 'form' %>
+      <% if SiteSetting.set?("leadgen-form-code") %>
+        <%= raw SiteSetting.value("leadgen-form-code") %>
+      <% else %>
+        <%= render 'form' %>
+      <% end %>
     </div>
   </div>
 </div>

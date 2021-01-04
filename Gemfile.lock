@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/kaspernj/friendly_id-globalize
-  revision: f73d5503c42791438ec6a087e065b316d6cddf1d
-  branch: fixed-rails-5-2-plain-sql-order-warning
-  specs:
-    friendly_id-globalize (1.0.0.alpha4)
-      friendly_id (>= 5.1.0, < 6.0)
-
-GIT
   remote: git://github.com/spohlenz/tinymce-rails.git
   revision: f8f286f153a3c357356ad38a59274ff397a78b23
   specs:
@@ -232,6 +224,8 @@ GEM
       sass (>= 3.3.0, < 3.5)
     friendly_id (5.4.1)
       activerecord (>= 4.0.0)
+    friendly_id-globalize (1.0.0.alpha3)
+      friendly_id (>= 5.2.0, < 6.0)
     geolite2_city (2019.08.07)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -544,6 +538,10 @@ GEM
     unicode_utils (1.4.0)
     warden (1.2.9)
       rack (>= 2.0.9)
+    webdrivers (4.4.2)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (>= 3.0, < 4.0)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -592,7 +590,7 @@ DEPENDENCIES
   font_awesome5_rails
   foundation-rails (~> 5.5)
   friendly_id (>= 5.2)
-  friendly_id-globalize!
+  friendly_id-globalize
   geolite2_city
   globalize
   goacoustic
@@ -631,7 +629,6 @@ DEPENDENCIES
   recaptcha
   rspec-rails
   sass-rails
-  selenium-webdriver
   simple_form (>= 5.0.0)
   simplecov
   spring
@@ -640,6 +637,7 @@ DEPENDENCIES
   thinking-sphinx (~> 4.0.0)
   tinymce-rails!
   uglifier (>= 1.3.0)
+  webdrivers
   will_paginate
   will_paginate_infinite!
 
