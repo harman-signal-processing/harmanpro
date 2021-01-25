@@ -1,11 +1,18 @@
 <div class="row">
   <div class="small-12 medium-3 columns">
     <%= link_to case_study do %>
-      <%= image_tag case_study.banner.url(:small_panel), alt: "#{case_study.headline} thumbnail image", lazy: false %>
+      <% if case_study.banner.present? %>
+        <%= image_tag case_study.banner.url(:small_panel), alt: "#{case_study.headline} thumbnail image", lazy: false %>
+      <% elsif case_study.youtube_id.present?%>
+        <%= image_tag "https://i.ytimg.com/vi/#{case_study.youtube_id}/mqdefault.jpg", alt: "#{case_study.headline} thumbnail image" %>
+      <% end %>
     <% end %>
   </div>
   <div class="small-12 medium-9 columns">
-    <h5><%= link_to case_study.headline, case_study %></h5>
+    <h5><%= link_to case_study.headline, case_study %>
+        <% if case_study.pdf_url.present? %><i class="far fa-file-pdf"></i> <% end %>
+        <% if case_study.youtube_id.present? %><i class="fas fa-video"></i> <% end %>
+    </h5>
     <div><strong><%=l case_study.created_at.to_date, format: :long %></strong></div>
     <div class="show-for-small">
       <%= raw case_study.description %>
@@ -16,4 +23,3 @@
   </div>
 </div>
 <hr/>
-
