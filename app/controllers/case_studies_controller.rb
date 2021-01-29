@@ -8,24 +8,29 @@ class CaseStudiesController < ApplicationController
     vertical_market_param = vertical_market_param == "all" ? nil : vertical_market_param
     if vertical_market_param.present?
       @vertical_market = VerticalMarket.find(vertical_market_param)
-      @case_studies = @vertical_market.case_studies.with_translations(I18n.locale).order(Arel.sql("created_at DESC"))
+      @case_studies = @vertical_market.case_studies.with_translations(I18n.locale)
     else
-      @case_studies = CaseStudy.with_translations(I18n.locale).order(Arel.sql("created_at DESC"))
+      @case_studies = CaseStudy.with_translations(I18n.locale)
     end
 
     # filter by asset type if requested
+    pdf_case_studies = @case_studies.where("pdf_file_name != ''")
+    video_case_studies = @case_studies.where("youtube_id != ''")
+    @asset_type_case_study_counts = {
+      pdf: pdf_case_studies.length,
+      video: video_case_studies.length
+    }
     @asset_type = params[:asset_type]
-    @asset_type_case_study_counts = {}
-    @asset_type_case_study_counts[:pdf] = @case_studies.select{|cs| cs.pdf_url.present?}.count
-    @asset_type_case_study_counts[:video] = @case_studies.select{|cs| cs.youtube_id.present?}.count
     if @asset_type.present? && ["pdf","video"].include?(@asset_type)
       case @asset_type
       when "pdf"
-        @case_studies = @case_studies.select{|cs| cs.pdf_url.present?}
+        @case_studies = pdf_case_studies
       when "video"
-        @case_studies = @case_studies.select{|cs| cs.youtube_id.present?}
+        @case_studies = video_case_studies
       end
     end  #  if @asset_type.present? && ["pdf","video"].include? @asset_type
+
+    @case_studies = @case_studies.order(Arel.sql("created_at DESC")).paginate(page: params[:page], per_page: 20)
 
     @banner_image = Resource.find_by(name:"Banner: Case Studies")
     respond_with @case_studies

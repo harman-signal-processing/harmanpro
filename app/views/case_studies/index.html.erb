@@ -10,34 +10,10 @@
   <div class="medium-9 columns">
     <div class="case-studies">
       <% @case_studies.each do |case_study| %>
-        <div class="row">
-          <div class="small-12 medium-3 columns">
-            <%= link_to case_study do %>
-              <% if case_study.banner.present? %>
-                <%= image_tag case_study.banner.url(:small_panel), alt: "#{case_study.headline} thumbnail image" %>
-              <% elsif case_study.youtube_id.present?%>
-                <%= image_tag "https://i.ytimg.com/vi/#{case_study.youtube_id}/mqdefault.jpg", alt: "#{case_study.headline} thumbnail image" %>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="small-12 medium-9 columns">
-            <h5><%= link_to case_study.headline, case_study %>
-                <% if case_study.pdf_url.present? %><i class="far fa-file-pdf"></i> <% end %>
-                <% if case_study.youtube_id.present? %><i class="fas fa-video"></i> <% end %>
-            </h5>
-            <div><strong><%=l case_study.created_at.to_date, format: :long %></strong></div>
-            <div class="show-for-small">
-              <%= raw case_study.description %>
-            </div>
-            <div class="show-for-medium-up">
-              <p><%= truncate(strip_html(textilize(case_study.content)), length: 250).gsub(/The Opportunity\s?/, "The Opportunity: ") %></p>
-            </div>
-          </div>
-        </div>
-        <hr/>
+        <%= render case_study %>
       <% end %>
     </div>
-    <%#= will_paginate @case_studies, renderer: WillPaginateInfinite::InfinitePagination %>
+    <%= will_paginate @case_studies, renderer: WillPaginateInfinite::InfinitePagination %>
   </div>
 
   <div class="medium-3 columns">

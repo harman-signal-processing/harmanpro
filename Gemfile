@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   "git://github.com/#{repo_name}"
 end
 
-gem 'rails', '~> 6.0'
+gem 'rails', '~> 6.1'
 gem 'bootsnap', require: false
 gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
@@ -34,7 +34,7 @@ gem 'fog-core', '< 2.1.1' # fog-rackspace isn't working with fog-core after 2.1.
 gem 'fog-rackspace'
 gem 'acts_as_list'
 gem 'acts_as_tree'
-gem 'acts-as-taggable-on' #, '~> 3.4'
+gem 'acts-as-taggable-on'
 gem 'devise'
 gem 'activeadmin'
 gem 'inherited_resources'
@@ -64,7 +64,7 @@ gem 'country_select'
 gem 'will_paginate'
 gem 'will_paginate_infinite',
   git: 'https://github.com/adamtao/will_paginate_infinite.git',
-  ref: 'acd94832693989e03e239095e6071668c34a7ff4'
+  branch: "master"
 
 group :development do
   gem 'bumbler'
