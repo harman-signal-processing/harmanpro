@@ -9,11 +9,17 @@ class Tse::TseContactsController < TseController
         @contacts += sub_category.tse_contacts
       end
     end
-    respond_with @contacts
+
+    respond_to do |format|
+      format.json { render json: { "tse_contacts" => @contacts } }
+    end
   end
 
   def show
-    respond_with TseContact.find(params[:id])
+    @contact = TseContact.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @contact.to_json }
+    end
   end
 
 end

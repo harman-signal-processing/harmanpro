@@ -4,7 +4,9 @@ class ProductsController < ApplicationController
   def index
     set_brand
     @products = BrandApi.products @brand.products_api
-    respond_with @products
+    respond_to do |format|
+      format.json { render json: { "products" => @products } }
+    end
   end
 
   def show

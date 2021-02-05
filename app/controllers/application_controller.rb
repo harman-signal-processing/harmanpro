@@ -164,9 +164,4 @@ class ApplicationController < ActionController::Base
   end
   helper_method :clean_country_code
 
-  # Removed from rails 6.1. Older active_model_serializer still needs this:
-  def self.parent
-    module_parent
-  end
-
 end  #  class ApplicationController < ActionController::Base

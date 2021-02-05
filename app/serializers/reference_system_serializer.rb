@@ -12,6 +12,6 @@ class ReferenceSystemSerializer < ActiveModel::Serializer
   end
 
   def api_url
-    vertical_market_reference_system_path(object.vertical_market, object, format: :json)
+    Rails.application.routes.url_helpers.vertical_market_reference_system_path(object.vertical_market, object, format: :json)
   end
 end

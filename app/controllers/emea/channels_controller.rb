@@ -1,8 +1,9 @@
 class Emea::ChannelsController < EmeaController
-  respond_to :json
 
   def index
-    respond_with Channel.all
+    respond_to do |format|
+      format.json { render json: {"channels" => Channel.all} }
+    end
   end
 
 end

@@ -6,7 +6,7 @@ class ContactInfo::Admin::PhonesController < ContactInfo::AdminController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render xml: @phones }
-      format.json  { render json: @phones }
+      format.json  { render json: {"phones" => @phones }}
     end    
   end
   

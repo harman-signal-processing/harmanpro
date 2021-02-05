@@ -2,8 +2,9 @@ class Tse::TseTechnologiesController < TseController
   respond_to :json
 
   def index
-    @technologies = TseTechnology.order(:name)
-    respond_with @technologies
+    respond_to do |format|
+      format.json { render json: { "tse_technologies" => TseTechnology.order(:name) } }
+    end
   end
 
   def show

@@ -1,10 +1,30 @@
 class CaseStudySerializer < ActiveModel::Serializer
   attributes :id,
+    :created_at,
+    :updated_at,
+    :banner_file_name,
+    :banner_content_type,
+    :banner_file_size,
+    :banner_updated_at,
+    :pdf_file_name,
+    :pdf_content_type,
+    :pdf_file_size,
+    :pdf_updated_at,
+    :pdf_external_url,
+    :youtube_id,
     :headline,
     :slug,
     :banner_url,
     :small_panel_banner_url,
-    :published_on
+    :description,
+    :content,
+    :published_on,
+    :banner_urls,
+    :pdf_url,
+    :youtube_info
+
+  has_many :vertical_markets, serializer: VerticalMarketShortSerializer
+  has_many :translations
 
   def banner_url
     object.banner.present? ? expanded_banner_url(:medium) : nil

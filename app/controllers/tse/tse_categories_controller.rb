@@ -1,5 +1,4 @@
 class Tse::TseCategoriesController < TseController
-  respond_to :json
 
   def index
     @cats = TseCategory.all
@@ -8,11 +7,15 @@ class Tse::TseCategoriesController < TseController
     else
       @cats = TseCategory.ordered_parents
     end
-    respond_with @cats
+    respond_to do |format|
+      format.json { render json: { "tse_categories" => @cats } }
+    end
   end
 
   def show
-    respond_with TseCategory.find(params[:id])
+    respond_to do |format|
+      format.json { render json: TseCategory.find(params[:id]) }
+    end
   end
 
 end
