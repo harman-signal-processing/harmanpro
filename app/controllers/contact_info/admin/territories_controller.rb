@@ -6,7 +6,7 @@ class ContactInfo::Admin::TerritoriesController < ContactInfo::AdminController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render xml: @territories }
-      format.json  { render json: @territories }
+      format.json  { render json: { "territories" => @territories } }
     end    
   end
   

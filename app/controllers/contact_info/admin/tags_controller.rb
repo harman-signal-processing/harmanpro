@@ -6,7 +6,7 @@ class ContactInfo::Admin::TagsController < ContactInfo::AdminController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render xml: @tags }
-      format.json  { render json: @tags }
+      format.json  { render json: { "tags" => @tags } }
     end    
   end
   

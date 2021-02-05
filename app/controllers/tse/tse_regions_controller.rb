@@ -6,7 +6,10 @@ class Tse::TseRegionsController < TseController
     if params[:parent] == "true"
       @regions = @regions.where(parent_id: nil).order(:name)
     end
-    respond_with @regions
+
+    respond_to do |format|
+      format.json { render json: { "tse_regions" => @regions } }
+    end
   end
 
   def show

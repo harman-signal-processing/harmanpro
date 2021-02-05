@@ -1,5 +1,4 @@
 class ConsultantsController < ApplicationController
-  respond_to :html, :json
 
   def index
     @brands = Brand.for_consultant_portal
@@ -20,7 +19,10 @@ class ConsultantsController < ApplicationController
     end
 
     @software = collected_software.values.sort_by{|s| s['formatted_name']}
-    respond_with @software, root: 'softwares'
+    respond_to do |format|
+      format.html
+      format.json { render json: {"softwares" => @software } }
+    end
   end
 
 end

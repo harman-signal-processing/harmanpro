@@ -52,13 +52,13 @@ class ServiceCentersController < ApplicationController
     else
       service_centers = ServiceCenter.joins(:service_groups).where("service_group_id in (?) and state = ? and active = true",service_groups.pluck(:id), state).uniq
     end
-    
+
     result = service_centers.as_json(
        except: [:created_at, :updated_at],  # exclude these service center attributes
-       include: { 
-         service_groups: { 
+       include: {
+         service_groups: {
            only:[:id, :name, ],
-           include: { 
+           include: {
              brand: {
                only:[:id, :name]
              }  #  brand
@@ -66,13 +66,15 @@ class ServiceCentersController < ApplicationController
          }  # service groups
        },  # service centers include
       )  #  result = service_groups.as_json(
-      
+
     # Will need to filter out service groups that don't match brand
     filtered_result = remove_service_groups_not_matching_brand(result, brand_id)
-      
-    respond_with filtered_result
-    
-  end  #  def service_centers_for_brand    
+
+    respond_to do |format|
+      format.json { render json: { "service_centers" => filtered_result } }
+    end
+
+  end  #  def service_centers_for_brand
 
   private
 

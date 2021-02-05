@@ -6,7 +6,7 @@ class ContactInfo::Admin::WebsitesController < ContactInfo::AdminController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render xml: @websites }
-      format.json  { render json: @websites }
+      format.json  { render json: { "website" => @websites } }
     end    
   end
   

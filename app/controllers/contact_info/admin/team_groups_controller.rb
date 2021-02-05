@@ -6,7 +6,7 @@ class ContactInfo::Admin::TeamGroupsController < ContactInfo::AdminController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render xml: @team_groups }
-      format.json  { render json: @team_groups }
+      format.json  { render json: { "team_groups" => @team_groups } }
     end    
   end
   

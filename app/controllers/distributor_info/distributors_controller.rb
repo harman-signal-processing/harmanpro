@@ -1,5 +1,4 @@
 class DistributorInfo::DistributorsController < ApplicationController
-  respond_to :html, :json
 
   ##### Actions #####
   def index
@@ -10,8 +9,7 @@ class DistributorInfo::DistributorsController < ApplicationController
     country_code = params[:country_code].blank? ? "us" : clean_country_code(params[:country_code])
     
     @distributors_json = get_distributors_json(brand, country_code)
-
-    respond_with @distributors_json
+    render_distributors_json
   end  #  show
   
   def region
@@ -26,7 +24,7 @@ class DistributorInfo::DistributorsController < ApplicationController
     @brand = brand
     @region = region
     @distributors_json = distributors_json
-    respond_with @distributors_json
+    render_distributors_json
   end  #  region
   
   def country_and_region
@@ -51,7 +49,7 @@ class DistributorInfo::DistributorsController < ApplicationController
     @region = region
     @country_code = country_code
     @distributors_json = distributors_json
-    respond_with @distributors_json    
+    render_distributors_json
     
   end  #  country_and_region
   
@@ -80,7 +78,7 @@ class DistributorInfo::DistributorsController < ApplicationController
     @regions = regions
     @country_code = country_code
     @distributors_json = distributors_json.uniq
-    respond_with @distributors_json    
+    render_distributors_json
     
   end  #  country_and_regions
   
@@ -279,4 +277,10 @@ class DistributorInfo::DistributorsController < ApplicationController
     end  #  distributors.each do |distributor|
   end  #  def remove_excluded_locations(distributors)
 
+  def render_distributors_json
+    respond_to do |format|
+      format.html
+      format.json { render json: { "distributors" => @distributors_json } }
+    end
+  end
 end  #  class DistributorInfo::DistributorsController < ApplicationController

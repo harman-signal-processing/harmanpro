@@ -6,7 +6,7 @@ class ContactInfo::Admin::ProSiteOptionsController < ContactInfo::AdminControlle
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render xml: @pro_site_options }
-      format.json  { render json: @pro_site_options }
+      format.json  { render json: { "pro_site_options" => @pro_site_options } }
     end    
   end
   

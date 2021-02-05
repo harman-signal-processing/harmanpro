@@ -1,26 +1,27 @@
 module Api
   module V1
     class CaseStudiesController < ApplicationController
-        respond_to :xml, :json, :html
-        layout "minimal"
-        
-        def show
-            brand_param = params[:brand]
-            brand = Brand.find_by_name(brand_param)
-            
-            if brand.present?
-              respond_with brand.case_studies.order(created_at: :desc).as_json(
-                include: { 
-                  translations: {},
-                  vertical_markets: {only: [:id, :name, :slug, :live],
-                    include: { translations: { only:[:vertical_market_id, :locale, :name, :slug]}}
-                  }  #  vertical_markets
-                },  #  case_studies include
-                methods: [:banner_urls,:pdf_url,:youtube_info])  #  respond_with brand.case_studies.as_json(
-            else
-              render :json => {"case_studies":[]}
-            end
-        end  #  def show
-    end  #  class CaseStudiesController < ApplicationController
-  end  #  module V1
-end  #  module Api
+      respond_to :xml, :json, :html
+      layout "minimal"
+
+      def show
+        brand_param = params[:brand]
+        brand = Brand.find_by_name(brand_param)
+
+        respond_to do |format|
+          if brand.present?
+            @case_studies = brand.case_studies.order(created_at: :desc)
+            format.html
+            format.xml { render xml: @case_studies }
+            format.json { respond_with @case_studies }
+          else
+            format.html { render plain: "Not found" }
+            format.xml { render xml: [] }
+            format.json { render :json => {"case_studies":[]} }
+          end
+        end
+      end
+
+    end
+  end
+end

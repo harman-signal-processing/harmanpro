@@ -1,5 +1,4 @@
 class NewsArticlesController < ApplicationController
-  respond_to :html, :json
 
   def index
     news_articles = NewsArticle.where("post_on <= ?", Date.today)

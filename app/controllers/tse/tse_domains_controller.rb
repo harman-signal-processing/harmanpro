@@ -2,8 +2,9 @@ class Tse::TseDomainsController < TseController
   respond_to :json
 
   def index
-    @domains = TseDomain.all
-    respond_with @domains
+    respond_to do |format|
+      format.json { render json: { "tse_domains" => TseDomain.all } }
+    end
   end
 
   def show
