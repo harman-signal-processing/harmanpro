@@ -20,6 +20,8 @@ module Harmanpro
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.action_mailer.delivery_job = "ActionMailer::MailDeliveryJob"
+
     config.active_job.queue_adapter = :delayed_job
 
     # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

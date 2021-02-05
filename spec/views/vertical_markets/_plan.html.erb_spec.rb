@@ -9,7 +9,7 @@ RSpec.describe "vertical_markets/_plan.html.erb", :type => :view do
 
   context "non-retail" do
     before do
-      @parent_vertical_market = FactoryBot.create(:vertical_market)
+      @parent_vertical_market = FactoryBot.create(:vertical_market, description: "Once upon a time")
       @vertical_market.update_column(:parent_id, @parent_vertical_market.id)
       @vertical_market.update_column(:retail, false)
       FactoryBot.create(:site_setting, name: "hef-sidebar-title", content: "HEF Headline")
