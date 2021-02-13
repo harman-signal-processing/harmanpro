@@ -18,7 +18,7 @@ class Lead < ApplicationRecord
         :company => company,
         :phone => phone
       }
-      goacoustic_client.add_recipient(user_params, ENV['ACOUSTIC_DB_ID'], [ENV['ACOUSTIC_LIST_ID']])
+      Lead.goacoustic_client.add_recipient(user_params, ENV['ACOUSTIC_DB_ID'], [ENV['ACOUSTIC_LIST_ID']])
     rescue
       logger.debug("There was some acoustic exception")
     end
@@ -29,13 +29,25 @@ class Lead < ApplicationRecord
     LeadMailer.new_lead(self, self.locale.to_s).deliver_later
   end
 
-  private
+  # Gets subscriber data from goacoustic
+  def self.retrieve(recipient_id)
+    lead = goacoustic_client.get_recipient(ENV['ACOUSTIC_DB_ID'], recipient_id)
+    if lead.SUCCESS == "TRUE"
+      lead.columns = Hash[lead.COLUMNS.COLUMN.collect{|c| [c.NAME.to_sym, c.VALUE] }]
 
-  def goacoustic_client
-    @goacoustic_client ||= GoAcoustic.new(access_token: acoustic_access_token.token, url: ENV['ACOUSTIC_API_URL'])
+      lead
+    else
+      raise ActiveRecord::RecordNotFound
+    end
   end
 
-  def goacoustic_access_token
+  private
+
+  def self.goacoustic_client
+    @goacoustic_client ||= GoAcoustic.new(access_token: goacoustic_access_token.token, url: ENV['ACOUSTIC_API_URL'])
+  end
+
+  def self.goacoustic_access_token
     client = OAuth2::Client.new(ENV['ACOUSTIC_CLIENT_ID'],
                                 ENV['ACOUSTIC_CLIENT_SECRET'],
                                 site: "#{ENV['ACOUSTIC_API_URL']}/oauth/token")

@@ -1,4 +1,5 @@
 class LeadsController < ApplicationController
+  http_basic_authenticate_with name: ENV['LEAD_VIEWER_NAME'], password: ENV['LEAD_VIEWER_PASSWORD'], only: :show
 
   def new
     @lead = Lead.new
@@ -17,6 +18,12 @@ class LeadsController < ApplicationController
         f.json { head :error }
       end
     end
+  end
+
+  # The show method here doesn't actually use the local lead database.
+  # Instead, it uses the goacoustic gem to pull contact info.
+  def show
+    @lead = Lead.retrieve(params[:id])
   end
 
   private
