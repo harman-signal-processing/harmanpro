@@ -1,0 +1,13 @@
+<div class="panel" id="lead_followup_<%= lead_followup.id %>">
+  <div class="row">
+    <div class="small-11 columns">
+      <p><strong><%=l lead_followup.created_at %></strong></p>
+    </div>
+    <div class="small-1 columns">
+      <%= link_to lead_followup, method: :delete, remote: true do %>
+        <%= fa_icon 'trash' %>
+      <% end %>
+    </div>
+  </div>
+  <%= lead_followup.note %>
+</div>

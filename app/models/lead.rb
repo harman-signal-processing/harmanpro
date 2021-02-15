@@ -5,6 +5,8 @@ class Lead < ApplicationRecord
 
   after_create :notify_leadgen_recipients, :subscribe!
   attr_accessor :locale
+  attr_accessor :recipient_id
+  attr_accessor :columns
 
   def subscribe!
     begin
@@ -30,14 +32,24 @@ class Lead < ApplicationRecord
   end
 
   # Gets subscriber data from goacoustic
-  def self.retrieve(recipient_id)
-    lead = goacoustic_client.get_recipient(ENV['ACOUSTIC_DB_ID'], recipient_id)
-    if lead.SUCCESS == "TRUE"
-      lead.columns = Hash[lead.COLUMNS.COLUMN.collect{|c| [c.NAME.to_sym, c.VALUE] }]
-
-      lead
+  def self.retrieve_remote(recipient_id)
+    lead_data = goacoustic_client.get_recipient(ENV['ACOUSTIC_DB_ID'], recipient_id)
+    if lead_data.SUCCESS == "TRUE"
+      Lead.new(
+        recipient_id: recipient_id,
+        email: lead_data.Email,
+        columns: Hash[lead_data.COLUMNS.COLUMN.collect{|c| [c.NAME.to_sym, c.VALUE] }]
+      )
     else
       raise ActiveRecord::RecordNotFound
+    end
+  end
+
+  def lead_followups
+    if self.recipient_id.present?
+      LeadFollowup.where(recipient_id: self.recipient_id)
+    else
+      []
     end
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_170115) do
+ActiveRecord::Schema.define(version: 2021_02_15_181500) do
 
   create_table "active_admin_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "namespace"
@@ -742,6 +742,14 @@ ActiveRecord::Schema.define(version: 2020_04_21_170115) do
     t.boolean "live", default: true
     t.string "preview_code"
     t.index ["original_locale_id"], name: "index_landing_pages_on_original_locale_id"
+  end
+
+  create_table "lead_followups", charset: "utf8", force: :cascade do |t|
+    t.string "recipient_id"
+    t.text "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipient_id"], name: "index_lead_followups_on_recipient_id"
   end
 
   create_table "leads", id: :integer, charset: "latin1", force: :cascade do |t|

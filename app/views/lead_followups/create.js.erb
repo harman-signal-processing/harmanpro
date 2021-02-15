@@ -1,0 +1,5 @@
+$('#lead_followups').prepend('<%= escape_javascript(render 'lead_followup', lead_followup: @lead_followup) %>');
+$('#lead_followup_note').val('');
+$('#form_error').remove();
+<% flash.discard %>
+
