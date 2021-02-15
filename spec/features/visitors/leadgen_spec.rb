@@ -26,7 +26,7 @@ feature "Lead generation" do
     lead = FactoryBot.build(:lead, name: "Vertical Market Installer Lead")
     visit vertical_market_path(@vertical_market)
 
-    expect_any_instance_of(Lead).to receive(:goacoustic_client).and_return(GoAcousticStub.new)
+    expect(Lead).to receive(:goacoustic_client).and_return(GoAcousticStub.new)
     expect_any_instance_of(GoAcousticStub).to receive(:add_recipient).and_return(true)
     complete_leadgen_form(lead)
 
@@ -43,7 +43,7 @@ feature "Lead generation" do
     lead = FactoryBot.build(:lead, name: "Reference System Installer Lead")
     visit vertical_market_reference_system_path(@vertical_market, @reference_system)
 
-    expect_any_instance_of(Lead).to receive(:goacoustic_client).and_return(GoAcousticStub.new)
+    expect(Lead).to receive(:goacoustic_client).and_return(GoAcousticStub.new)
     expect_any_instance_of(GoAcousticStub).to receive(:add_recipient).and_return(true)
     complete_leadgen_form(lead)
 
@@ -59,7 +59,7 @@ feature "Lead generation" do
       lead = FactoryBot.build(:lead, name: "Reference System Installer Lead")
       visit vertical_market_reference_system_path(@vertical_market, @reference_system)
 
-      expect_any_instance_of(Lead).to receive(:goacoustic_client).and_return(GoAcousticStub.new)
+      expect(Lead).to receive(:goacoustic_client).and_return(GoAcousticStub.new)
       expect_any_instance_of(GoAcousticStub).to receive(:add_recipient).and_return(true)
       complete_leadgen_form(lead)
 
@@ -82,7 +82,7 @@ feature "Lead generation" do
     lead = FactoryBot.build(:lead, name: nil, email: nil)
     visit vertical_market_path(@vertical_market)
 
-    expect_any_instance_of(Lead).not_to receive(:goacoustic_client).and_return(GoAcousticStub.new)
+    expect(Lead).not_to receive(:goacoustic_client)
     expect_any_instance_of(GoAcousticStub).not_to receive(:add_recipient).and_return(true)
     complete_leadgen_form(lead)
 

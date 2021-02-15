@@ -1,9 +1,10 @@
 <h3 class="text-center">Lead Information</h3>
 
 <div class="row">
-  <div class="small-12 medium-6 medium-offset-3 columns">
+
+  <div class="small-12 medium-6 columns">
     <p class="text-center">
-      <strong><%= mail_to(@lead.Email, @lead.Email) %></strong>
+      Email: <strong><%= mail_to(@lead.email, @lead.email) %></strong>
     </p>
     <table style="width: 100%">
       <% @lead.columns.each do |key,val| %>
@@ -16,4 +17,24 @@
       <% end %>
     </table>
   </div>
+
+  <div class="small-12 medium-6 columns">
+    <p class="text-center">Followup Notes</p>
+
+    <%= simple_form_for @lead_followup, remote: true do |f| %>
+      <%= f.input :recipient_id, as: :hidden %>
+      <%= f.input :note, hint: "Timestamp will be recorded, but you may want to include your name in the note." %>
+      <div class="text-right">
+        <%= f.submit "Save note", class: "small button" %>
+      </div>
+    <% end %>
+
+
+    <% @lead.lead_followups.order("created_at DESC").each do |lead_followup| %>
+      <div id="lead_followups">
+        <%= render lead_followup %>
+      </div>
+    <% end %>
+  </div>
+
 </div>
