@@ -3,6 +3,9 @@ class LeadFollowupsController < ApplicationController
 
   def create
     @lead_followup = LeadFollowup.new(lead_followup_params)
+    if @lead_followup.initials.present?
+      cookies[:initials] = @lead_followup.initials
+    end
     respond_to do |f|
       if @lead_followup.save
         f.html { redirect_to lead_path(@lead_followup.recipient_id), notice: "Note was saved." }
@@ -26,6 +29,6 @@ class LeadFollowupsController < ApplicationController
   private
 
   def lead_followup_params
-    params.require(:lead_followup).permit(:recipient_id, :note)
+    params.require(:lead_followup).permit(:recipient_id, :note, :initials)
   end
 end

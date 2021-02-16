@@ -35,10 +35,16 @@ class Lead < ApplicationRecord
   def self.retrieve_remote(recipient_id)
     lead_data = goacoustic_client.get_recipient(ENV['ACOUSTIC_DB_ID'], recipient_id)
     if lead_data.SUCCESS == "TRUE"
+      columns = Hash[lead_data.COLUMNS.COLUMN.collect{|c| [c.NAME.to_sym, c.VALUE] }]
       Lead.new(
         recipient_id: recipient_id,
         email: lead_data.Email,
-        columns: Hash[lead_data.COLUMNS.COLUMN.collect{|c| [c.NAME.to_sym, c.VALUE] }]
+        name: "#{columns[:'0001_First_Name']} #{columns[:'0002_Last_Name']}",
+        phone: columns[:'0003_Phone_Number'],
+        company: columns[:'0004_Company'],
+        project_description: columns[:"0012a_Project_Details"],
+        location: columns[:"00a11_Country_Custom"],
+        columns: columns
       )
     else
       raise ActiveRecord::RecordNotFound

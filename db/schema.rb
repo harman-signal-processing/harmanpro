@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_15_181500) do
+ActiveRecord::Schema.define(version: 2021_02_16_201050) do
 
   create_table "active_admin_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "namespace"
@@ -749,6 +749,7 @@ ActiveRecord::Schema.define(version: 2021_02_15_181500) do
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "initials"
     t.index ["recipient_id"], name: "index_lead_followups_on_recipient_id"
   end
 

@@ -1,21 +1,54 @@
-<h3 class="text-center">Lead Information</h3>
+<%= content_for :title do %>Lead Info: <%= @lead.name %><% end %>
+<h4 class="text-center">Lead Information</h4>
+<p>&nbsp;</p>
 
 <div class="row">
 
   <div class="small-12 medium-6 columns">
-    <p class="text-center">
-      Email: <strong><%= mail_to(@lead.email, @lead.email) %></strong>
-    </p>
+    <h2><%= @lead.name %></h2>
+
     <table style="width: 100%">
-      <% @lead.columns.each do |key,val| %>
-        <% if val.present? %>
-          <tr>
-            <td><strong><%= key.to_s.gsub(/^\d*/, '').titleize %></strong></td>
-            <td><%= val %></td>
-          </tr>
-        <% end %>
-      <% end %>
+      <tr>
+        <th>Company:</th>
+        <td><%= @lead.company %> &nbsp;</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= mail_to(@lead.email, @lead.email) %> &nbsp;</td>
+      </tr>
+      <tr>
+        <th>Phone:</th>
+        <td><%= @lead.phone %> &nbsp;</td>
+      </tr>
+      <tr>
+        <th>City:</th>
+        <td><%= @lead.columns[:"0008_City"] %> &nbsp;</td>
+      </tr>
+      <tr>
+        <th>State:</th>
+        <td><%= @lead.columns[:"0009_State_Province"] %> &nbsp;</td>
+      </tr>
+      <tr>
+        <th>Country:</th>
+        <td><%= @lead.location %> &nbsp;</td>
+      </tr>
     </table>
+
+    <h5>Project Details:</h5>
+    <div>
+      <% if @lead.project_description.present? %>
+        <%= @lead.project_description %>
+      <% else %>
+        <em>Not provided</em>
+      <% end %>
+    </div>
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <!--
+      <%= @lead.columns.to_yaml %>
+    -->
   </div>
 
   <div class="small-12 medium-6 columns">
@@ -23,18 +56,23 @@
 
     <%= simple_form_for @lead_followup, remote: true do |f| %>
       <%= f.input :recipient_id, as: :hidden %>
-      <%= f.input :note, hint: "Timestamp will be recorded, but you may want to include your name in the note." %>
-      <div class="text-right">
-        <%= f.submit "Save note", class: "small button" %>
+      <%= f.input :note, label: "Make a note", input_html: { rows: 5 } %>
+      <div class="row">
+        <div class="small-3 medium-2 columns">
+          <%= f.input :initials, label: false, placeholder: "Initials" %>
+        </div>
+        <div class="small-6 medium-6 columns text-right">
+          <%= f.submit "Save note", class: "small button" %>
+        </div>
       </div>
     <% end %>
 
 
-    <% @lead.lead_followups.order("created_at DESC").each do |lead_followup| %>
-      <div id="lead_followups">
+    <div id="lead_followups">
+      <% @lead.lead_followups.order("created_at DESC").each do |lead_followup| %>
         <%= render lead_followup %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 
 </div>
