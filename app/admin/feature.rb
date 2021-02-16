@@ -38,8 +38,8 @@ ActiveAdmin.register Feature do
       f.input :image, label: "Background or side image", hint: f.object.image.present? ?
         image_tag(f.object.image.url(:thumb)) :
         "No image uploaded yet."
-      f.input :pre_content, label: "Content appearing before the feature", hint: "HTML permitted", input_html: { class: "mceEditor" }
-      f.input :content, hint: "HTML permitted", input_html: { class: "mceEditor" }
+      f.input :pre_content, as: :text, label: "Content appearing before the feature", hint: "HTML permitted", input_html: { class: "mceEditor" }
+      f.input :content, as: :text, hint: "HTML permitted", input_html: { class: "mceEditor" }
       f.input :_destroy, as: :boolean, label: "Delete This Feature"
     end
     f.actions

@@ -78,7 +78,7 @@ ActiveAdmin.register Event do
       f.input :delete_image, as: :boolean, label: "Delete the image if present.", hint: "This will remove the previously saved image when you submit this form."
       f.input :more_info_link, hint: "'Featured' events will show this link on the event details page if page content is provided. Do not use a link back to itself here. This is meant for a link to a 3rd party page or another landing page on the site."
       f.input :new_window, hint: "Check if the more info link directs users away from the site."
-      f.input :page_content, input_html: { class: "mceEditor"}
+      f.input :page_content, as: :text, input_html: { class: "mceEditor"}
       f.input :featured
       f.input :active
     end

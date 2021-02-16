@@ -113,9 +113,9 @@ ActiveAdmin.register TrainingContentPage do
       f.input :description, hint: "appears as meta description in HTML for page"
       f.input :banner, :as => :file, :hint => image_tag(f.object.banner.url(:small), title:"Current banner")
       f.input :delete_banner, label: "Delete banner", as: :boolean
-      f.input :main_content, input_html: { class: "mceEditor"}
-      f.input :right_content, hint: "(optional)", input_html: { class: "mceEditor"}
-      f.input :sub_content, hint: "(optional)", input_html: { class: "mceEditor"}
+      f.input :main_content, as: :text, input_html: { class: "mceEditor"}
+      f.input :right_content, as: :text, hint: "(optional)", input_html: { class: "mceEditor"}
+      f.input :sub_content, as: :text, hint: "(optional)", input_html: { class: "mceEditor"}
       f.input :header_code, hint: "Javascript, etc. here will load in the page's HTML header"
       f.input :footer_code, hint: "Javascript, etc. here will load just before the page's closing body tag"
     end  #  f.inputs do

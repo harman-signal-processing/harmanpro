@@ -48,7 +48,7 @@ ActiveAdmin.register NewProduct do
       f.input :released_on, as: :datepicker, hint: "Dates in the future will not show on the new products page."
       f.input :image, hint: f.object.image.present? ?
         image_tag(f.object.image.url(:thumb)) + content_tag(:br) : "Preferred size is 500x407 px."
-      f.input :content, hint: "The blurb that appears under the photo", input_html: { class: "mceEditor"}
+      f.input :content, as: :text, hint: "The blurb that appears under the photo", input_html: { class: "mceEditor"}
       f.input :more_info, label: "More Info Link", hint: "You could leave this blank and include the link in the HTML above."
       f.input :press_release, label: "Press Release Link", hint: "Same here. Leave it blank if you included it in the HTML above."
     end

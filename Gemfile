@@ -23,7 +23,6 @@ gem "active_model_serializers"
 gem 'dalli'
 gem 'figaro'
 gem 'simple_form', ">= 5.0.0"
-gem 'formtastic', '3.1.5'
 gem 'chosen-rails'
 gem 'RedCloth'
 gem 'tinymce-rails', github: 'spohlenz/tinymce-rails.git'
