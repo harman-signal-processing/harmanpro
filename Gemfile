@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "git://github.com/#{repo_name}"
+  "https://github.com/#{repo_name}"
 end
 
 gem 'rails', '~> 6.1'
@@ -51,7 +51,7 @@ gem 'exception_notification'
 gem 'mailgun_rails' # mailer service from Rackspace
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'nokogiri' # for parsing HTML to generate subnavs on EMEA portal
-gem 'thinking-sphinx', '~> 4.0.0'
+gem 'thinking-sphinx'
 gem 'kaminari'
 gem 'globalize'
 gem 'friendly_id-globalize'
