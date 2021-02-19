@@ -11,7 +11,6 @@ RSpec.describe ServiceCenterMailer, type: :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Service Center Registration")
       expect(mail.to).to eq([ENV['service_center_registration_recipient']])
-      expect(mail.from).to eq([@service_center.email])
     end
 
     it "renders the body" do

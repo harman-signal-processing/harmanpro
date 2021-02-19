@@ -1,4 +1,5 @@
 class ServiceMailer < ActionMailer::Base
+  default from: ENV['DEFAULT_SENDER']
 
   def contact_form(contact_message, options={})
     @contact_message = contact_message
@@ -17,8 +18,7 @@ class ServiceMailer < ActionMailer::Base
 
     mail(
       to: @contact_message.recipient,
-      subject: "#{@contact_message.subject} (via pro.harman.com)",
-      from: @contact_message.email
+      subject: "#{@contact_message.subject} (via pro.harman.com)"
     )
   end
 

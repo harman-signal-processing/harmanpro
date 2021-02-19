@@ -5,7 +5,6 @@ RSpec.describe LeadMailer, type: :mailer do
   before :all do
     skip "Mailer hangs when run with entire suite"
     FactoryBot.create(:site_setting, name: "leadgen-recipients", content: "foo@foo.com, bar@bar.com")
-    FactoryBot.create(:site_setting, name: "leadgen-sender", content: "leadgen@domain.com")
     @lead = FactoryBot.create(:lead)
   end
 
@@ -16,7 +15,7 @@ RSpec.describe LeadMailer, type: :mailer do
       expect(mail.subject).to include("New lead")
       expect(mail.to).to include("foo@foo.com")
       expect(mail.to).to include("bar@bar.com")
-      expect(mail.from).to eq(["leadgen@domain.com"])
+      expect(mail.from).to eq([ENV['DEFAULT_SENDER']])
     end
 
     it "renders the body" do
