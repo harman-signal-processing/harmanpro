@@ -28,7 +28,7 @@ ActiveAdmin.register SiteSetting do
   form do |f|
     f.inputs do
       f.input :name
-      f.input :content
+      f.input :content, as: :text
     end
     f.actions
   end

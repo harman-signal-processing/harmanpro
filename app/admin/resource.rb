@@ -75,7 +75,7 @@ ActiveAdmin.register Resource do
       f.input :attachment,  hint: "#{f.object.attachment_file_name} (#{number_to_human_size(f.object.attachment_file_size)})"
       f.input :include_in_pdf_search, hint: "Note: In order to have this PDF file be included in the pro site PDF search page, this box must be checked and Resource type must not be blank." if f.object.attachment_content_type == "application/pdf"
       f.input :image, label: "Preview image", hint: "will be available in several sizes"
-      f.input :description
+      f.input :description, as: :text
       f.input :tag_list, label: "Tags", hint: "separated by a comma."
     end
     f.actions

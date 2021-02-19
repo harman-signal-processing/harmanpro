@@ -138,8 +138,8 @@ ActiveAdmin.register LandingPage do
       f.input :left_content, as: :text, hint: "(optional)", input_html: { class: "mceEditor"}
       f.input :right_content, as: :text, hint: "(optional)", input_html: { class: "mceEditor"}
       f.input :sub_content, as: :text, hint: "(optional)", input_html: { class: "mceEditor"}
-      f.input :header_code, hint: "Javascript, etc. here will load in the page's HTML header"
-      f.input :footer_code, hint: "Javascript, etc. here will load just before the page's closing body tag"
+      f.input :header_code, as: :text, hint: "Javascript, etc. here will load in the page's HTML header"
+      f.input :footer_code, as: :text, hint: "Javascript, etc. here will load just before the page's closing body tag"
       f.input :custom_slug, label: "Custom Friendly ID", hint: "Almost always leave this blank--unless the person requesting the page is smarter than you are and he/she needs a specific URL that doesn't match the page title. Don't include the page format (html, xml, js, etc.)"
       f.input :live
       f.input :preview_code, hint: "Put something here if you want to allow someone to preview the page before it goes live. Then, give them the link with ?preview_code=(whatever) at the end."

@@ -55,7 +55,7 @@ ActiveAdmin.register Product do
         image_tag(f.object.photo.url(:thumb)) : ""
       f.input :url, hint: "Start with http://"
       f.input :ecommerce_id, hint: "Just the ID from shop.harmanpro.com like \"eon206p\"", label: "Ecomm ID"
-      f.input :description, hint: "Maximum characters: 90", input_html: { maxlength: 90, rows: 3}
+      f.input :description, as: :text, hint: "Maximum characters: 90", input_html: { maxlength: 90, rows: 3}
     end
     f.actions
   end

@@ -71,7 +71,7 @@ ActiveAdmin.register Event do
       f.input :name
       f.input :start_on, as: :datepicker
       f.input :end_on, as: :datepicker
-      f.input :description
+      f.input :description, as: :text
       f.input :image, hint: f.object.image.present? ?
         image_tag(f.object.image.url(:thumb)) : "Only for 'featured' events."
       f.input :hide_image, hint: "Check this box if you want to make this a featured event, but don't want the header image to appear on the page. Instead, the thumbnail of the image is used only on the events index page."

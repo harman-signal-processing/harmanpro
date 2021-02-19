@@ -130,7 +130,7 @@ ActiveAdmin.register CaseStudy do
           end,
         placeholder: "Youtube ID"
 
-      f.input :content, input_html: { rows: 15 }
+      f.input :content, as: :textarea, input_html: { rows: 15 }
     end  #  f.inputs do
 
     f.has_many :case_study_vertical_markets, heading: "Vertical Markets", new_record: "Add a vertical market" do |s|

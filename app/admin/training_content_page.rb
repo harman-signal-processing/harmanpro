@@ -116,8 +116,8 @@ ActiveAdmin.register TrainingContentPage do
       f.input :main_content, as: :text, input_html: { class: "mceEditor"}
       f.input :right_content, as: :text, hint: "(optional)", input_html: { class: "mceEditor"}
       f.input :sub_content, as: :text, hint: "(optional)", input_html: { class: "mceEditor"}
-      f.input :header_code, hint: "Javascript, etc. here will load in the page's HTML header"
-      f.input :footer_code, hint: "Javascript, etc. here will load just before the page's closing body tag"
+      f.input :header_code, as: :text, hint: "Javascript, etc. here will load in the page's HTML header"
+      f.input :footer_code, as: :text, hint: "Javascript, etc. here will load just before the page's closing body tag"
     end  #  f.inputs do
     f.actions
   end  #  form html: { multipart: true} do |f|

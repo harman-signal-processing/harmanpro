@@ -16,7 +16,7 @@ ActiveAdmin.register ProductType do
   form do |f|
     f.inputs do
       f.input :name
-      f.input :description, hint: "Maximum characters: 90", input_html: { maxlength: 90, rows: 3}
+      f.input :description, as: :text, hint: "Maximum characters: 90", input_html: { maxlength: 90, rows: 3}
     end
     f.actions
   end

@@ -94,7 +94,7 @@ ActiveAdmin.register VerticalMarket do
       f.input :hef_banner, hint: f.object.hef_banner.present? ?
         image_tag(f.object.hef_banner.url(:thumb)) + content_tag(:br) + "Appears on solutions pages as Harman Finance background. Preferred size: 1170x400 px with a strongly horizontal orientation." :
         "Appears on solutions pages as Harman Finance background. Preferred size: 750x70 px with a strongly horizontal orientation."
-      f.input :description, hint: "Maximum recommended characters: 650", input_html: { rows: 10 }
+      f.input :description, hint: "Maximum recommended characters: 650", as: :text, input_html: { rows: 10 }
       f.input :extra_content, as: :text, hint: "Appears after the case studies", input_html: { rows: 10, class: "mceEditor"}
       f.input :retail, label: "Offer retailer/ecommerce links with this vertical market."
       f.input :lead_form_content, as: :text, hint: "Replaces the retailer links if present and the default lead form.", input_html: { class: "mceEditor"}

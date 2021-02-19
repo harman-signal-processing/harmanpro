@@ -43,7 +43,7 @@ ActiveAdmin.register ReferenceSystem do
       f.input :delete_banner, label: "Delete the existing banner (if present).", as: :boolean
       f.input :venue_size_descriptor, hint: "Maximum characters: 16", input_html: { maxlength: 16 }
       f.input :headline, hint: "Maximum characters: 90", input_html: { maxlength: 90 }
-      f.input :description, hint: "Maximum recommended characters: 650", input_html: { rows: 6 }
+      f.input :description, as: :text, hint: "Maximum recommended characters: 650", input_html: { rows: 6 }
       f.input :system_diagram, hint: f.object.system_diagram.present? ?
         image_tag(f.object.system_diagram.url(:thumb_square)) + content_tag(:br) + "Becomes the backdrop for the interactive learning diagram." :
         "Becomes the backdrop for the interactive learning diagram."

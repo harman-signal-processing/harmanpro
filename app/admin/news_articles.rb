@@ -28,8 +28,8 @@ ActiveAdmin.register NewsArticle do
   form html: { multipart: true} do |f|
     f.inputs do
       f.input :title
-      f.input :keywords
-      f.input :quote
+      f.input :keywords, as: :text
+      f.input :quote, as: :text
       f.input :news_photo, hint: f.object.news_photo.present? ?
         image_tag(f.object.news_photo.url(:thumb)) : ""
       f.input :body, as: :text, input_html: { class: "mceEditor"}
