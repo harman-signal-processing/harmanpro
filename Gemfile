@@ -28,8 +28,8 @@ gem 'RedCloth'
 gem 'tinymce-rails', github: 'spohlenz/tinymce-rails.git'
 gem 'foundation-rails', '~> 5.5' # After this, getting incompatible units errors
 gem 'friendly_id', '>= 5.2'
-gem 'paperclip'
-gem 'paperclip-compression'
+gem 'kt-paperclip'
+gem 'kt-paperclip-compression' #, github: "adamtao/kt-paperclip-compression", branch: "master"
 gem 'fog-core', '< 2.1.1' # fog-rackspace isn't working with fog-core after 2.1.0
 gem 'fog-rackspace'
 gem 'acts_as_list'
@@ -44,7 +44,7 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'httparty'
 gem 'rails_autolink'
-gem 'goacoustic'
+gem 'goacoustic' #, github: 'harman-signal-processing/goacoustic', branch: 'master'
 gem 'oauth2'
 gem 'ransack' # using for service center search
 gem 'exception_notification'
