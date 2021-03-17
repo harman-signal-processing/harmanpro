@@ -26,6 +26,7 @@ class User < ApplicationRecord
     contact_admin
     super_admin
     service_department
+    lead_recipient
   ]
 
   def invitation_code_is_valid

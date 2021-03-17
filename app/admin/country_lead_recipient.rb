@@ -18,7 +18,7 @@ ActiveAdmin.register CountryLeadRecipient do
   form do |f|
     f.inputs do
       f.input :country
-      f.input :user
+      f.input :user, collection: User.where(lead_recipient: true).order("email")
     end
     f.actions
   end
