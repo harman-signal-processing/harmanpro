@@ -4,10 +4,29 @@
 <%= simple_form_for @lead do |f| %>
   <%= f.input :name %>
   <%= f.input :company %>
-  <%= f.input :email %>
-  <%= f.input :phone %>
-  <%= f.input :location %>
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.input :email %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.input :phone %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.input :city %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.input :state, label: "State/Province" %>
+    </div>
+  </div>
+  <%= f.input :country %>
   <%= f.input :project_description, label: body_label, input_html: { rows: 10 } %>
+  <%= f.input :subscribe, label: "I want to receive Product Updates, News and Events from HARMAN Professional Solutions" %>
   <%= recaptcha_tags %><br/>
+
   <%= f.button :submit, t('submit').titleize, class: "medium radius button" %>
+
+  <p>Your information will be used in accordance with our
+  <a href="https://www.harman.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
 <% end %>

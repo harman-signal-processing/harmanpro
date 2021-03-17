@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_201050) do
+ActiveRecord::Schema.define(version: 2021_03_12_195639) do
 
   create_table "active_admin_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "namespace"
@@ -442,6 +442,13 @@ ActiveRecord::Schema.define(version: 2021_02_16_201050) do
     t.index ["brand_id"], name: "index_contact_messages_on_brand_id"
   end
 
+  create_table "country_lead_recipients", charset: "utf8", force: :cascade do |t|
+    t.string "country"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "delayed_jobs", id: :integer, charset: "latin1", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
     t.integer "attempts", default: 0, null: false
@@ -764,6 +771,11 @@ ActiveRecord::Schema.define(version: 2021_02_16_201050) do
     t.datetime "updated_at"
     t.string "location"
     t.integer "vertical_market_id"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "recipient_id"
+    t.boolean "subscribe"
   end
 
   create_table "locale_translators", id: :integer, charset: "utf8", force: :cascade do |t|

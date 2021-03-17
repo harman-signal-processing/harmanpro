@@ -6,10 +6,11 @@ class User < ApplicationRecord
 
   has_many :locale_translators, dependent: :destroy, inverse_of: :translator
   has_many :locales, through: :locale_translators
-
+  has_many :country_lead_recipients, inverse_of: :user
   has_many :admin_logs
-  
+
   accepts_nested_attributes_for :locale_translators, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :country_lead_recipients, reject_if: :all_blank, allow_destroy: true
 
   validate :invitation_code_is_valid, on: :create, if: :needs_invitation_code?
   attr_accessor :invitation_code
@@ -95,4 +96,7 @@ class User < ApplicationRecord
     ROLES.reject{|r| !(eval "self.#{r}")}
   end
 
+  def name
+    email
+  end
 end

@@ -1,12 +1,9 @@
 class LeadMailer < ApplicationMailer
   default from: ENV['DEFAULT_SENDER']
 
-  def new_lead(lead, locale=I18n.default_locale)
+  def new_lead(lead)
     @lead = lead
 
-    Globalize.with_locale(locale) do
-      tos = SiteSetting.value('leadgen-recipients').split(',')
-      mail to: tos, subject: "New lead from pro.harman.com"
-    end
+    mail to: lead.recipients, subject: "New lead from pro.harman.com"
   end
 end

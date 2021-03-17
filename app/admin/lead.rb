@@ -1,5 +1,5 @@
 ActiveAdmin.register Lead do
-  menu label: "Leads"
+  menu parent: "LeadGen", label: "Leads", priority: 2
   actions :all, except: [:new, :create]
   permit_params :name, :company, :email, :phone, :project_description, :source, :location
 

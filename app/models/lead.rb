@@ -1,34 +1,86 @@
 class Lead < ApplicationRecord
-  validates :name, presence: true
-  validates :email, presence: true
+  validates :name, presence: true, on: :create
+  validates :email, presence: true, on: :create
+  validates :country, presence: true
   belongs_to :vertical_market # (maybe)
 
-  after_create :notify_leadgen_recipients, :subscribe!
+  after_create :send_to_acoustic!
+  before_update :notify_leadgen_recipients, :erase_personal_data
   attr_accessor :locale
-  attr_accessor :recipient_id
   attr_accessor :columns
 
-  def subscribe!
+  def send_to_acoustic!
     begin
       name_fields = name.split(/\s/)
       user_params = {
         email: email,
-        :"BR_HPro" => true,
-        :"First Name" => name_fields.first,
-        :"Last Name" => name_fields.last,
-        :country => location,
-        :company => company,
-        :phone => phone
+        :"0000_Source" => "pro.harman.com Leadgen form",
+        :"0001_First_Name" => name_fields.first,
+        :"0002_Last_Name" => name_fields.last,
+        :"0003_Phone_Number" => phone,
+        :"0004_Company" => company,
+        :"0008_City" => city,
+        :"0009_State_Province" => state,
+        :"00a11_Country_Custom" => country_name,
+        :"0012a_Project_Details" => project_description,
+        :"0525_SUB_Product Updates News and Events from HARMAN Professional Solutions and Brands _Open to Public" => !!subscribe?
       }
-      Lead.goacoustic_client.add_recipient(user_params, ENV['ACOUSTIC_DB_ID'], [ENV['ACOUSTIC_LIST_ID']])
+      res = Lead.goacoustic_client.add_recipient(user_params, ENV['ACOUSTIC_DB_ID'], [ENV['ACOUSTIC_LIST_ID']])
+      res = res.Envelope.Body
+      if res.RESULT.SUCCESS == "TRUE"
+        # set the recipient_id and erase personal data (keep country and project description)
+        if res.RESULT.RecipientId.present?
+          self.recipient_id = res.RESULT.RecipientId
+          save
+        else
+          logger.debug("Acoustic did not return recipient ID")
+        end
+      elsif res.Envelope.Body.Fault.FaultString.to_s.match?(/Already Exists/i)
+        # Lookup existing user by email?
+      end
     rescue
       logger.debug("There was some acoustic exception")
     end
   end
-  handle_asynchronously :subscribe!
+  handle_asynchronously :send_to_acoustic!
+
+  def country_name
+    if c = ISO3166::Country.new(country)
+      c.name
+    else
+      country
+    end
+  end
 
   def notify_leadgen_recipients
-    LeadMailer.new_lead(self, self.locale.to_s).deliver_later
+    if recipient_id_was.blank? && recipient_id.present?
+      LeadMailer.new_lead(self).deliver_later
+    end
+  end
+
+  def erase_personal_data
+    if recipient_id.present?
+      self.name = nil
+      self.email = nil
+      self.phone = nil
+      self.city = nil
+      self.state = nil
+      self.company = nil
+    end
+  end
+
+  def country_lead_recipients
+    CountryLeadRecipient.where(country: country).includes(:user)
+  end
+
+  def recipients
+    if country_lead_recipients.length > 0
+      country_lead_recipients.map{|clr| clr.user.email }
+    else
+      Globalize.with_locale(locale.to_s) do
+        SiteSetting.value('leadgen-recipients').split(',')
+      end
+    end
   end
 
   # Gets subscriber data from goacoustic
@@ -43,7 +95,7 @@ class Lead < ApplicationRecord
         phone: columns[:'0003_Phone_Number'],
         company: columns[:'0004_Company'],
         project_description: columns[:"0012a_Project_Details"],
-        location: columns[:"00a11_Country_Custom"],
+        country: columns[:"00a11_Country_Custom"],
         columns: columns
       )
     else

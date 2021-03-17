@@ -11,7 +11,7 @@ RSpec.describe "leads/new.html.erb", :type => :view do
     expect(rendered).to have_field("Company")
     expect(rendered).to have_field("Email")
     expect(rendered).to have_field("Phone")
-    expect(rendered).to have_field("Location")
+    expect(rendered).to have_field("Country")
     expect(rendered).to have_field("Project Description")
     expect(rendered).to have_button("Submit")
   end

@@ -1,12 +1,8 @@
 FactoryBot.define do
   factory :lead do
-    name { "LeadName" }
-    company { "LeadCompany" }
+    name { "LeadName LastName" }
     email { "my@email.com" }
-    phone { "555-5555" }
-    location { "The Outer Rim" }
-    project_description { "Project Description" }
-    source { "MyString" }
+    country { "US" }
   end
 
 end

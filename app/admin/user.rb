@@ -3,7 +3,8 @@ ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation,
     :service_department, :super_admin, :translator, :admin,
     :emea_admin, :emea_distributor, :tse_admin, :contact_admin,
-    locale_translators_attributes: [:id, :available_locale_id, :_destroy]
+    locale_translators_attributes: [:id, :available_locale_id, :_destroy],
+    country_lead_recipients_attributes: [:id, :country, :_destroy]
 
   #menu if: proc { current_user.can?(:manage, AdminUser) }
 
@@ -54,6 +55,11 @@ ActiveAdmin.register User do
     f.has_many :locale_translators, heading: "Authorized Locales", new_record: "Add an authorized locale" do |s|
       s.input :id, as: :hidden
       s.input :locale, collection: AvailableLocale.order(:name)
+      s.input :_destroy, as: :boolean, label: "Delete"
+    end
+    f.has_many :country_lead_recipients, heading: "LeadGen Countries", new_record: "Add a country" do |s|
+      s.input :id, as: :hidden
+      s.input :country
       s.input :_destroy, as: :boolean, label: "Delete"
     end
     f.actions

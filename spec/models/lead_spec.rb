@@ -18,7 +18,7 @@ RSpec.describe Lead, :type => :model do
   it { should respond_to(:phone) }
   it { should respond_to(:project_description) }
   it { should respond_to(:source) }
-  it { should respond_to(:location) }
+  it { should respond_to(:country) }
 
   describe "marketing automation" do
     it "sends to acoustic list" do
@@ -32,12 +32,13 @@ RSpec.describe Lead, :type => :model do
 
   describe "emailing" do
     it "sends contact info to several configured recipients" do
-      lead = FactoryBot.build(:lead)
-      expect(lead).to receive(:notify_leadgen_recipients)
       expect(Lead).to receive(:goacoustic_client).and_return(GoAcousticStub.new)
       expect_any_instance_of(GoAcousticStub).to receive(:add_recipient).and_return(true)
 
-      lead.save
+      lead = FactoryBot.create(:lead)
+      expect(lead).to receive(:notify_leadgen_recipients)
+
+      lead.update(recipient_id: "12345")
     end
   end
 end

@@ -4,15 +4,11 @@
 <div class="container main-container">
   <h1 class="text-center"><%= SiteSetting.value("leadgen-title") %></h1>
   <div class="row">
-    <div class="large-8 large-offset-2 columns">
-      <p>
+    <div class="small-12 medium-12 large-8 large-offset-2 columns">
+      <p class="text-center">
         <%= SiteSetting.value("leadgen-intro") %>
       </p>
-      <% if SiteSetting.set?("leadgen-form-code") %>
-        <%= raw SiteSetting.value("leadgen-form-code") %>
-      <% else %>
-        <%= render 'form' %>
-      <% end %>
+      <%= render 'form' %>
     </div>
   </div>
 </div>

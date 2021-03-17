@@ -57,36 +57,7 @@
             <%= SiteSetting.value("leadgen-intro") %>
           </p>
           <div class="panel">
-            <%
-              body_label ||= Lead.human_attribute_name("project_description")
-            %>
-            <%= simple_form_for @lead do |f| %>
-              <%= f.input :vertical_market_id, as: :hidden %>
-              <div class="row">
-                <div class="medium-6 small-12 columns">
-                  <%= f.input :name %>
-                </div>
-                <div class="medium-6 small-12 columns">
-                  <%= f.input :company %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="medium-6 small-12 columns">
-                  <%= f.input :email %>
-                </div>
-                <div class="medium-6 small-12 columns">
-                  <%= f.input :location %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="medium-6 small-12 columns">
-                  <%= f.input :phone %>
-                </div>
-              </div>
-              <%= f.input :project_description, label: body_label, input_html: { rows: 6 } %>
-              <%= recaptcha_tags %><br/>
-              <%= f.button :submit, t('submit').titleize, class: "medium radius button" %>
-            <% end %>
+            <%= render 'leads/form' %>
           </div>
         </div>
       </div>
