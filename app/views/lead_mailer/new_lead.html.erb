@@ -1,12 +1,17 @@
-<p>The following lead was received through the pro.harman.com website:</p>
+<p>A lead was received through the pro.harman.com website.
+Please follow up accordingly.</p>
 
-<p>
-name: <%= @lead.name %><br/>
-email: <%= @lead.email %><br/>
-company: <%= @lead.company %><br/>
-phone: <%= @lead.phone %><br/>
-location: <%= @lead.location %>
-</p>
+<% if @lead.project_description.present? %>
+  <h5>Project Description</h5>
+  <%= @lead.project_description %>
+<% end %>
 
-<h5>Project Description</h5>
-<%= @lead.project_description %>
+<p>Country: <%= @lead.country_name %></p>
+
+<p>Due to regulations, the lead data is not sent via email.
+Click the link below to view the lead:</p>
+
+<p><a href="https://pro.harman.com/leads/<%= @lead.recipient_id %>">View lead details</a></p>
+
+<p>You'll need a password to view the link above. If you have not received the
+password, then please contact <%= SiteSetting.value('leadgen-recipients') %>.</p>

@@ -33,6 +33,16 @@ class LeadsController < ApplicationController
   private
 
   def lead_params
-    params.require(:lead).permit(:name, :company, :email, :phone, :project_description, :location, :vertical_market_id)
+    params.require(:lead).permit(
+      :name,
+      :company,
+      :email,
+      :phone,
+      :city,
+      :state,
+      :country,
+      :project_description,
+      :subscribe,
+      :vertical_market_id)
   end
 end
