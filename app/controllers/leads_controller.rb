@@ -7,16 +7,23 @@ class LeadsController < ApplicationController
 
   def create
     @lead = Lead.new(lead_params)
-    @lead.source = session["last_page"]
-    @lead.locale = I18n.locale
+    @lead.source ||= session["last_page"]
+    @lead.locale ||= I18n.locale
     respond_to do |f|
-      if verify_recaptcha(model: @lead) && @lead.save
-        f.html { redirect_to thankyou_path }
-        f.json { head :ok }
-      else
-        f.html { render action: 'new'}
-        f.json { head :error }
-      end
+      f.html { # Verify recaptcha for HTML requests
+        if verify_recaptcha(model: @lead) && @lead.save
+          redirect_to thankyou_path
+        else
+          render action: 'new'
+        end
+      }
+      f.json {
+        if @lead.save
+          head :ok
+        else
+          head :error
+        end
+      }
     end
   end
 
@@ -43,6 +50,8 @@ class LeadsController < ApplicationController
       :country,
       :project_description,
       :subscribe,
+      :source,
+      :locale,
       :vertical_market_id)
   end
 end

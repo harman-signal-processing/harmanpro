@@ -14,7 +14,7 @@ class Lead < ApplicationRecord
       name_fields = name.split(/\s/)
       user_params = {
         email: email,
-        :"0000_Source" => "pro.harman.com Leadgen form",
+        :"0000_Source" => "pro.harman.com Leadgen form #{source}",
         :"0001_First_Name" => name_fields.first,
         :"0002_Last_Name" => name_fields.last,
         :"0003_Phone_Number" => phone,
@@ -23,7 +23,7 @@ class Lead < ApplicationRecord
         :"0009_State_Province" => state,
         :"00a11_Country_Custom" => country_name,
         :"0012a_Project_Details" => project_description,
-        :"0525_SUB_Product Updates News and Events from HARMAN Professional Solutions and Brands _Open to Public" => !!subscribe?
+        :"#{acoustic_subscription_field}" => !!subscribe?
       }
       res = Lead.goacoustic_client.add_recipient(user_params, ENV['ACOUSTIC_DB_ID'], [ENV['ACOUSTIC_LIST_ID']])
       res = res.Envelope.Body
@@ -43,6 +43,15 @@ class Lead < ApplicationRecord
     end
   end
   handle_asynchronously :send_to_acoustic!
+
+  def acoustic_subscription_field
+    case self.source
+    when /jbl/i
+      "0523_SUB_Product Updates News and Events from JBL Professional_HARMAN Professional Solutions"
+    else
+      "0525_SUB_Product Updates News and Events from HARMAN Professional Solutions and Brands _Open to Public"
+    end
+  end
 
   def country_name
     if c = ISO3166::Country.new(country)
