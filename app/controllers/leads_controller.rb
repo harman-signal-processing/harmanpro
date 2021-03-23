@@ -17,13 +17,6 @@ class LeadsController < ApplicationController
           render action: 'new'
         end
       }
-      f.json {
-        if @lead.save
-          head :ok
-        else
-          head :error
-        end
-      }
     end
   end
 
