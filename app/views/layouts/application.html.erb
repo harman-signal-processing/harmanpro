@@ -164,7 +164,6 @@
                       <li><%= link_to t(mi.title), mi.link, target: (mi.new_tab?) ? "_blank" : "" %></li>
                     <% end %>
                   <% else %>
-                    <li><%= link_to t('nav.media_library'), SiteSetting.value("media-library-menu-link-location") %></li>
                     <li><%= link_to t('nav.training'), training_path %></li>
                     <li><%= link_to t('nav.consultants'), consultant_portal_path %></li>
                     <li><%= link_to t('nav.contacts'), contacts_path %></li>
