@@ -28,6 +28,22 @@ ActiveAdmin.register CaseStudy do
     actions
   end  #  index do
 
+  # custom methods
+  controller do
+    alias_method :create_model, :create
+    alias_method :update_model, :update
+
+    def create
+      add_log(user: current_user, action: "Created Case Study: #{params[:case_study][:headline]}")
+      create_model
+    end
+
+    def update
+      add_log(user: current_user, action: "Updated Case Study: #{resource.title}")
+      update_model
+    end
+  end  #  controller do
+
   show do
     attributes_table do
       row :created_at do
