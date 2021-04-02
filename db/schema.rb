@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_17_152232) do
+ActiveRecord::Schema.define(version: 2021_04_01_200759) do
 
   create_table "active_admin_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "namespace"
@@ -1165,6 +1165,7 @@ ActiveRecord::Schema.define(version: 2021_03_17_152232) do
     t.string "contact_name"
     t.boolean "active", default: true
     t.boolean "uses_rma_form", default: false
+    t.decimal "customer_rating", precision: 10, scale: 2
     t.index ["active"], name: "index_service_centers_on_active"
   end
 
