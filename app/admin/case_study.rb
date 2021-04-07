@@ -34,12 +34,12 @@ ActiveAdmin.register CaseStudy do
     alias_method :update_model, :update
 
     def create
-      add_log(user: current_user, action: "Created Case Study: #{params[:case_study][:headline]}")
+      add_log(user: current_user, action: "Created case study: #{params[:case_study][:headline]}")
       create_model
     end
 
     def update
-      add_log(user: current_user, action: "Updated Case Study: #{resource.title}")
+      add_log(user: current_user, action: "Updated case study: #{resource.title}")
       update_model
     end
   end  #  controller do
