@@ -40,10 +40,12 @@
             </thead>
 
             <tbody>
-              <% @service_centers.sort{|a,b| b.service_center_service_groups.count <=> a.service_center_service_groups.count}.each do |service_center| %>
+              <% custom_sorted_service_centers.each do |service_center| %>
+                <%customer_rating = service_center.customer_rating.present? ? service_center.customer_rating : "&#8212;"%>
                 <tr>
                   <td valign="top">
                     <h5><%= service_center.name %></h5>
+                    <!--<p style="margin-top: -15px;margin-bottom: 4px;"><span style="font-size:.7rem;font-weight:600;">Customer Rating: <%= raw customer_rating%></span></p>-->
                     <p>
                       <%= service_center.address %><br/>
                       <%= service_center.city %>,

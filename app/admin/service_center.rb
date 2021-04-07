@@ -14,6 +14,7 @@ ActiveAdmin.register ServiceCenter do
     :account_number,
     :active,
     :uses_rma_form,
+    :customer_rating,
     service_center_service_groups_attributes: [:id, :service_group_id, :_destroy]
 
 
@@ -32,6 +33,22 @@ ActiveAdmin.register ServiceCenter do
   filter :name, as: :string
   filter :active
 
+  # custom methods
+  controller do
+    alias_method :create_model, :create
+    alias_method :update_model, :update
+
+    def create
+      add_log(user: current_user, action: "Created service center: #{params[:service_center][:name]}")
+      create_model
+    end
+
+    def update
+      add_log(user: current_user, action: "Updated service center: #{resource.name}")
+      update_model
+    end
+  end  #  controller do
+
   form do |f|
     f.inputs do
       f.input :name
@@ -45,6 +62,7 @@ ActiveAdmin.register ServiceCenter do
       f.input :email
       f.input :website
       f.input :account_number
+      f.input :customer_rating
       f.input :active
       f.input :uses_rma_form, hint: "RMA button will appear on brand sites /repairs listing for this service center"
     end
