@@ -25,6 +25,7 @@ ActiveAdmin.register ServiceCenter do
     column :city
     column :state
     column :account_number
+    column :customer_rating
     column :active
     column :uses_rma_form
     actions
