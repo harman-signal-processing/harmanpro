@@ -1,14 +1,16 @@
 module ServiceCentersHelper
 
   def custom_sorted_service_centers
-    @service_centers.sort{|a,b|
-      # customer rating desc, make nils zeros
-      4 * (b.customer_rating||0 <=> a.customer_rating||0) + 
-      # group count desc
-      2 * (b.service_center_service_groups.count <=> a.service_center_service_groups.count) + 
-      # name asc
-      (a.name <=> b.name)
-    }
+    @service_centers.sort_by{|a|
+      [
+        # customer rating desc, make nils zeros
+        -(a.customer_rating||0),
+        # group count desc
+        -(a.service_center_service_groups.count),
+        # name asc
+        a.name
+      ]
+    }  #  @service_centers.sort_by{|a|
   end  #  def custom_sorted_service_centers
 
 end  #  module ServiceCentersHelper
