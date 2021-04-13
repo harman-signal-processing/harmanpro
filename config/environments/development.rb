@@ -27,7 +27,9 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  config.action_controller.asset_host = ENV["C9_PID"].blank? ? 'http://localhost:3111' : 'https://' + ENV["C9_PID"] + '.vfs.cloud9.us-east-1.amazonaws.com'
+  unless ENV["C9_PID"].blank?
+    config.action_controller.asset_host = 'https://' + ENV["C9_PID"] + '.vfs.cloud9.us-east-1.amazonaws.com'
+  end
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -44,12 +46,12 @@ Rails.application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  
+
   config.assets.debug = true
   # Set to false to speed up development
   # Note: Setting config.assets.debug to false causes google fonts to not be downloaded which affects the appearance of the site in development
   # config.assets.debug = false
-  
+
   # Uncomment to speed up development
   config.assets.digest = true
 
