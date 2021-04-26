@@ -37,11 +37,21 @@ ActiveAdmin.register VerticalMarket do
   end
   # :nocov:
 
+  controller do
+    # Overriding ActiveAdmin apply_filtering method to provide distinct results
+    # The need arose when searching by name. Translated records were causing duplicate rows to be shown.
+    # https://github.com/activeadmin/activeadmin/issues/4171
+    def apply_filtering(chain)
+       @search = chain.ransack(params[:q] || {})
+       @search.result(distinct: true)
+    end
+  end
+
+  filter :translations_name_contains, as: :string, label: "Search Names"
   filter :parent, as: :select
   filter :live
   filter :retail
   filter :show_hef
-  #filter :name, as: :string
   filter :updated_at
 
   # :nocov:

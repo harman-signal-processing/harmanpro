@@ -8,11 +8,23 @@ ActiveAdmin.register NewProduct do
     selectable_column
     id_column
     column :name
+    column :brands
     column :released_on
     actions
   end
 
-  filter :name
+  controller do
+    # Overriding ActiveAdmin apply_filtering method to provide distinct results
+    # The need arose when searching by name. Translated records were causing duplicate rows to be shown.
+    # https://github.com/activeadmin/activeadmin/issues/4171
+    def apply_filtering(chain)
+       @search = chain.ransack(params[:q] || {})
+       @search.result(distinct: true)
+    end
+  end
+  
+  filter :translations_name_contains, as: :string, label: "Search Names"
+  filter :brands, as: :select
   filter :released_on
 
   #sidebar "See the future", only: [:index, :show] do
