@@ -64,8 +64,8 @@ ActiveAdmin.register LandingPage do
     actions
   end
 
-# Can't filter by title since it is Globalized now
-#  filter :title, as: :string
+  filter :translations_title_contains, as: :string, label: "Search Titles"
+  filter :live
   filter :original_locale
   filter :updated_at
 

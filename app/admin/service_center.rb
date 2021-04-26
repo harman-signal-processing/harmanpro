@@ -32,7 +32,12 @@ ActiveAdmin.register ServiceCenter do
   end
 
   filter :name, as: :string
+  filter :state, as: :select
+  filter :city, as: :select
+  filter :account_number, as: :select
+  filter :customer_rating, as: :select
   filter :active
+  filter :uses_rma_form
 
   # custom methods
   controller do

@@ -9,6 +9,7 @@ ActiveAdmin.register CaseStudy do
   config.paginate = false
   #config.sort_order = 'name_asc'
 
+  filter :translations_headline_contains, as: :string, label: "Search Headlines"
   filter :vertical_markets, collection: -> { VerticalMarket.all.order(:name) }
   filter :brands, collection: -> { Brand.for_case_studies }
 

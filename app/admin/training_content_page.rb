@@ -1,6 +1,6 @@
 ActiveAdmin.register TrainingContentPage do
 
-  menu label: "Training Content Pages"
+  menu false
 
   permit_params :title,
     :subtitle,
