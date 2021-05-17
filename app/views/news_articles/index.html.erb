@@ -9,7 +9,7 @@
     <div class="banner-container">
       <% if @banner_image.present? %>
         <h1><%= image_tag @banner_image.attachment.url, alt: "News" %></h1>
-      <% end %>        
+      <% end %>
     </div>
   </div>
 
@@ -24,7 +24,7 @@
       <% end %>
 
       <%# The 10 other most recent %>
-      <% if @news_articles.count > 0 %>
+      <% if @news_articles.size > 0 %>
         <% @news_articles[0,10].each do |news| %>
           <hr/>
           <div class="article">
@@ -41,7 +41,7 @@
       <% end %>
 
       <%# The rest of the original 99 selected articles %>
-      <% if @news_articles.count > 10 %>
+      <% if @news_articles.size > 10 %>
         <% @news_articles[11,99].each do |news| %>
           <div class="row">
             <div class="medium-2 columns">

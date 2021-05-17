@@ -49,7 +49,7 @@ class EmeaPage < ApplicationRecord
   end
 
   def has_anchors?
-    anchors.length > 0
+    anchors.size > 0
   end
 
   def anchors

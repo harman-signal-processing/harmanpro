@@ -58,10 +58,10 @@
         <% vertical_markets_with_case_studies.each do |v| %>
           <li>
             <% if @vertical_market && @vertical_market == v %>
-              <em style="color: #888"><%= v.name %> (<%= v.case_studies.count %>)</em>
+              <em style="color: #888"><%= v.name %> (<%= v.case_studies.size %>)</em>
             <% else %>
               <%= link_to vertical_market_case_studies_path(v) do %>
-                <%= v.name %> (<%= v.case_studies.count %>)
+                <%= v.name %> (<%= v.case_studies.size %>)
               <% end %>
             <% end %>
           </li>

@@ -83,7 +83,7 @@ class Lead < ApplicationRecord
   end
 
   def recipients
-    if country_lead_recipients.length > 0
+    if country_lead_recipients.size > 0
       country_lead_recipients.map{|clr| clr.user.email }
     else
       Globalize.with_locale(locale.to_s) do

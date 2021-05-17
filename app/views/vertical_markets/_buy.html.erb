@@ -14,7 +14,7 @@
   <% elsif vertical_market.retail? %>
 
     <% retailers = current_locale.online_retailers %>
-    <% if SiteSetting.set_for_locale?("store_link", current_locale.key) || retailers.count > 0 %>
+    <% if SiteSetting.set_for_locale?("store_link", current_locale.key) || retailers.size > 0 %>
 
       <div class="container buy-container" data-magellan-destination="buy">
         <div class="row">
@@ -27,7 +27,7 @@
               <br/>
             <% end %>
 
-            <% if retailers.count > 0 %>
+            <% if retailers.size > 0 %>
               <h4><%= SiteSetting.value("buy_from_online_retailer_headline") %></h4>
               <br/>
               <% retailers.order(Arel.sql("RAND()")).each do |online_retailer| %>

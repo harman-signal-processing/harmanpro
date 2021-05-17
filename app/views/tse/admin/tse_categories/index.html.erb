@@ -12,7 +12,7 @@
   <% @tse_categories.where(parent_id: nil).each do |category| %>
     <li>
       <%= link_to category.name, edit_tse_admin_tse_category_path(category) %>
-      <% if category.children.length > 0 %>
+      <% if category.children.size > 0 %>
         <ul>
           <% category.children.order(:position).each do |child| %>
             <li><%= link_to child.name, edit_tse_admin_tse_category_path(child) %></li>

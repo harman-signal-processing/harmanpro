@@ -39,7 +39,7 @@ module ApplicationHelper
     c = vm.children_or_reference_systems.map do |cvm|
       menu_link_for(cvm, options)
     end
-    if c.length > 0
+    if c.size > 0
       content_tag(:ul, c.join.html_safe, class: options[:dropdowns] == true ? "dropdown" : "")
     end
   end
@@ -47,7 +47,7 @@ module ApplicationHelper
   def dropdown_class_for(vm, options={})
     css_class = "#{options[:class].to_s} "
     if options[:dropdowns]
-      css_class += vm.children_or_reference_systems.length > 0 ? "has-dropdown" : ""
+      css_class += vm.children_or_reference_systems.size > 0 ? "has-dropdown" : ""
     end
     css_class
   end

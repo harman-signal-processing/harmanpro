@@ -19,7 +19,7 @@ class ArtistsController < ApplicationController
     if AvailableLocale.exists?(key: I18n.locale)
       included_locales << AvailableLocale.find_by(key: I18n.locale).id
     end
-    if included_locales.length == 0
+    if included_locales.size == 0
       included_locales = [nil, '', AvailableLocale.default_id]
     end
     artists.where(locale_id: included_locales)

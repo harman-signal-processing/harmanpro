@@ -28,7 +28,7 @@ ActiveAdmin.register VerticalMarket do
     column :name
     column :parent
     column "Reference Systems" do |v|
-      v.reference_systems.length
+      v.reference_systems.size
     end
     column :retail
     column :show_hef
@@ -66,7 +66,7 @@ ActiveAdmin.register VerticalMarket do
 
   sidebar "Reference Systems", only: [:show, :edit] do
     ul do
-      unless vertical_market.children.length > 0
+      unless vertical_market.children.size > 0
         li link_to("+ New Reference System", new_admin_vertical_market_reference_system_path(vertical_market))
       end
       vertical_market.reference_systems.each do |e|
@@ -77,7 +77,7 @@ ActiveAdmin.register VerticalMarket do
 
   sidebar "Case Studies", only: [:show, :edit] do
     ul do
-      unless vertical_market.children.length > 0
+      unless vertical_market.children.size > 0
         li link_to("+ New Case Study", new_admin_case_study_path)
       end
       vertical_market.case_studies.each do |c|

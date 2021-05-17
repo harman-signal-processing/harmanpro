@@ -42,7 +42,7 @@ class User < ApplicationRecord
   # then it was created using the Admin tool and doesn't need to
   # rely on an invitation code.
   def needs_invitation_code?
-    !(roles.length > 0)
+    !(roles.size > 0)
   end
 
   def set_initial_role

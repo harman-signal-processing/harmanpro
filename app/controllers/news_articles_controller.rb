@@ -4,7 +4,7 @@ class NewsArticlesController < ApplicationController
     news_articles = NewsArticle.where("post_on <= ?", Date.today)
     @news_articles = filter_by_locale(news_articles).limit(999).order(Arel.sql("post_on DESC"))
     @featured_article = nil
-    if @news_articles.count > 0
+    if @news_articles.size > 0
       @featured_article = @news_articles.first
       @news_articles = @news_articles.where.not(id: @featured_article.id)
     end
@@ -25,7 +25,7 @@ class NewsArticlesController < ApplicationController
     if AvailableLocale.exists?(key: I18n.locale)
       included_locales << AvailableLocale.find_by(key: I18n.locale).id
     end
-    if included_locales.length == 0
+    if included_locales.size == 0
       included_locales = [nil, '', AvailableLocale.default_id]
     end
     news_articles.where(locale_id: included_locales)

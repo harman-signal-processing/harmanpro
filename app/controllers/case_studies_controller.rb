@@ -17,8 +17,8 @@ class CaseStudiesController < ApplicationController
     pdf_case_studies = @case_studies.where("pdf_file_name != ''")
     video_case_studies = @case_studies.where("youtube_id != ''")
     @asset_type_case_study_counts = {
-      pdf: pdf_case_studies.length,
-      video: video_case_studies.length
+      pdf: pdf_case_studies.size,
+      video: video_case_studies.size
     }
     @asset_type = params[:asset_type]
     if @asset_type.present? && ["pdf","video"].include?(@asset_type)

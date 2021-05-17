@@ -34,13 +34,13 @@ module SearchHelper
 	def results_item_count_range_for_page(results)
 		if results.current_page == 1
 			first_number = 1
-			second_number = results.count < results.limit_value ? results.count : results.limit_value
+			second_number = results.size < results.limit_value ? results.count : results.limit_value
 		else
 			first_number = results.offset_value + 1
-			if results.count == results.limit_value
+			if results.size == results.limit_value
 				second_number = first_number + results.limit_value - 1
 			else
-				second_number = results.count + results.offset_value
+				second_number = results.size + results.offset_value
 			end
 		end
 		first_number.to_s + " - " + second_number.to_s

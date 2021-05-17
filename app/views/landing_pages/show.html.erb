@@ -30,7 +30,7 @@
     </div>
   <% end %>
 
-  <% if @landing_page.features.count > 0 %>
+  <% if @landing_page.features.size > 0 %>
     <% @landing_page.features.each do |feature| %>
       <%= render_feature feature %>
     <% end %>

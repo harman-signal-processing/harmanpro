@@ -13,14 +13,14 @@ ActiveAdmin.register ReferenceSystemProductType do
     column :reference_system
     column :product_type
     column "Products" do |v|
-      v.products.length
+      v.products.size
     end
     actions
   end
 
   sidebar "Products", only: [:show, :edit] do
     ul do
-      if reference_system_product_type.products.length < 3
+      if reference_system_product_type.products.size < 3
         li link_to("+ Add A Product", new_admin_reference_system_product_type_reference_system_product_type_product_path(reference_system_product_type))
       end
       reference_system_product_type.reference_system_product_type_products.each do |rsptp|

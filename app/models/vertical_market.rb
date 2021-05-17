@@ -76,7 +76,7 @@ class VerticalMarket < ApplicationRecord
   end
 
   def self.active_child_verticals
-    active.where(parent_id: parent_verticals.pluck(:id)).with_translations(I18n.locale).order(Arel.sql("name"))
+    active.where(parent_id: parent_verticals.select(:id)).with_translations(I18n.locale).order(Arel.sql("name"))
   end
 
   def slug_candidates
@@ -109,7 +109,7 @@ class VerticalMarket < ApplicationRecord
 
   # Only for top-level verticals, helps determine menu structure
   def children_or_reference_systems
-    (self.children.where(live: true).count > 0) ? self.children.where(live: true).with_translations(I18n.locale).order(Arel.sql('name')) : self.reference_systems
+    (self.children.where(live: true).size > 0) ? self.children.where(live: true).with_translations(I18n.locale).order(Arel.sql('name')) : self.reference_systems
   end
 
   # Link name for search results

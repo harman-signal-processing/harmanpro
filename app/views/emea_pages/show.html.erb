@@ -1,6 +1,6 @@
 <%= content_for :title do %><%= @page.title %><% end %>
 
-<% if @page.features.count > 0 %>
+<% if @page.features.size > 0 %>
   <div class="slick-show">
     <% @page.features.each do |feature| %>
       <div class="slick-slide">

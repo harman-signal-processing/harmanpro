@@ -7,7 +7,7 @@
       <%=raw vertical_market.description %>
     </div>
 
-    <% if vertical_market.featured_case_studies.length > 0 %>
+    <% if vertical_market.featured_case_studies.size > 0 %>
       <div class="case_studies">
         <ul class="small-block-grid-1 large-block-grid-3 medium-block-grid-3">
           <% vertical_market.featured_case_studies.each do |case_study| %>

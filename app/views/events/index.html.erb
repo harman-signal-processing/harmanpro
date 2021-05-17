@@ -13,7 +13,7 @@
   <div class="row">
     <div class="medium-12 columns">
 
-      <% unless @events.length > 0 %>
+      <% unless @events.size > 0 %>
         <div class="alert-box radius info" data-alert>
           There don't seem to be any current events. Check back soon.
         </div>
@@ -23,7 +23,7 @@
             <h3>Current/Upcoming Events:</h3>
           </div>
           <div class="medium-4 small-12 columns text-right">
-            <% if Event.recent.count > 0 %>
+            <% if Event.recent.size > 0 %>
               <%= link_to "recent events", recent_events_path %>
             <% end %>
           </div>
@@ -65,7 +65,7 @@
     </div>
 
   </div>
-  <% if Event.recent.count > 0 %>
+  <% if Event.recent.size > 0 %>
     <div class="row">
       <div class="medium-12 columns">
         <%= link_to "recent events", recent_events_path, class: "tiny radius button" %>

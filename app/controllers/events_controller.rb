@@ -4,7 +4,7 @@ class EventsController < ApplicationController
     all_events = Event.current_and_upcoming.
       where("start_on < ?", 6.months.from_now)
     @events = filter_by_locale(all_events)
-    if @events.length == 0
+    if @events.size == 0
       redirect_to learning_sessions_calendar_path and return false
     end
     @banner_image = Resource.find_by(name:"Banner: Events")

@@ -5,7 +5,7 @@ RSpec.describe LocationInfo::Country, type: :model do
     @country = FactoryBot.create(:location_info_country)
     @distributor = FactoryBot.create(:distributor_info_distributor)
   end
-  
+
   context 'Validate Country attributes' do
   	it 'Location should have expected attributes' do
   		expect(@country.name).to eq('United States of America')
@@ -20,19 +20,19 @@ RSpec.describe LocationInfo::Country, type: :model do
   		expect(@country.calling_code).to eq(1)
   		expect(@country.numeric_code).to eq(840)
   	end  #  it 'Country should have expected attributes' do
-  end  #  context 'Validate Country attributes' do   
-  
+  end  #  context 'Validate Country attributes' do
+
   context 'Validate Country associations' do
   	it 'Country should allow Distributor associations' do
   		@country.distributors << @distributor
-  		expect(@country.distributors.count).to eq(1)
+  		expect(@country.distributors.size).to eq(1)
   	end
   	it 'Country should allow removal of Distributor associations' do
 			@country.distributors << @distributor
-  		expect(@country.distributors.count).to eq(1)  		
+  		expect(@country.distributors.size).to eq(1)
   		@country.distributors.destroy(@distributor)
-  		expect(@country.distributors.count).to eq(0)
+  		expect(@country.distributors.size).to eq(0)
   	end
 	end  #  context 'Validate Country associations' do
-  
+
 end  #  RSpec.describe LocationInfo::Country, type: :model do

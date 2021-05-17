@@ -69,7 +69,7 @@ RSpec.describe VerticalMarket, :type => :model do
       FactoryBot.create_list(:reference_system, 7, vertical_market: @child_vertical)
       @child_vertical.reload
 
-      expect(@child_vertical.featured_reference_systems.length).to eq(6)
+      expect(@child_vertical.featured_reference_systems.size).to eq(6)
     end
 
     it "#featured_case_studies is limited to 3" do
@@ -77,7 +77,7 @@ RSpec.describe VerticalMarket, :type => :model do
       @child_vertical.case_studies += case_studies
       @child_vertical.reload
 
-      expect(@child_vertical.featured_case_studies.length).to eq(3)
+      expect(@child_vertical.featured_case_studies.size).to eq(3)
     end
 
     describe "#all_diagrams_present?" do

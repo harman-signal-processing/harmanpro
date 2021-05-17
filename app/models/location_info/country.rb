@@ -37,7 +37,7 @@ class LocationInfo::Country < ApplicationRecord
   }   
   
   scope :not_associated_with_this_territory, ->(territory) { 
-    countries_not_associated_with_this_territory = LocationInfo::Country.where.not(id: territory.supported_countries.pluck(:id)).order(:name)    
+    countries_not_associated_with_this_territory = LocationInfo::Country.where.not(id: territory.supported_countries.select(:id)).order(:name)    
     countries_not_associated_with_this_territory
   }  
   

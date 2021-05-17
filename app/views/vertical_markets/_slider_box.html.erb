@@ -4,7 +4,7 @@
             <a name="learn"></a>
             <h1 data-magellan-destination="learn"><%= @vertical_market.name %></h1>
 
-            <% if @vertical_market.reference_systems.count > 1 %>
+            <% if @vertical_market.reference_systems.size > 1 %>
               <div ng-show="systems.length > 1">
                 <input slider
                   ng-model="slider_pos"

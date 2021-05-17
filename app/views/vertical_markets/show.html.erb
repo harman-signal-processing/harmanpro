@@ -2,7 +2,7 @@
 <%= content_for :description do %>
   <%= t('vertical_market_page.meta_description', vertical_market: @vertical_market.name) %>
 <% end %>
-<% if @vertical_market.children.where(live: true).length > 0 %>
+<% if @vertical_market.children.where(live: true).size > 0 %>
   <% # This will be the view for Enterprise or Entertainment top level %>
   <%= render "parent_category_container", vertical_market: @vertical_market %>
 

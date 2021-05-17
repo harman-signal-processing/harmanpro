@@ -1,11 +1,11 @@
 <div id="country-list">
-    <a href='#' class='country-link'>All</a> <%=@calendar.length%> | 
+    <a href='#' class='country-link'>All</a> <%=@calendar.size%> | 
     <% count = 1 %>
     <% @countryList.each do |country| %>
-        <% if count != @countryList.length %> 
-            <a href='#' class='country-link'><%=country%></a> <%=@scheduleByCountry[country].length %> | 
+        <% if count != @countryList.size %> 
+            <a href='#' class='country-link'><%=country%></a> <%=@scheduleByCountry[country].size %> | 
         <% else %>
-             <a href='#' class='country-link'><%=country%></a> <%=@scheduleByCountry[country].length %>
+             <a href='#' class='country-link'><%=country%></a> <%=@scheduleByCountry[country].size %>
         <% end %>
         <%count += 1%>
     <% end %><%#  @countryList.each do |country| %>
