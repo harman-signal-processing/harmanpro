@@ -9,40 +9,44 @@ class Lead < ApplicationRecord
   attr_accessor :locale
   attr_accessor :columns
 
+  def send_to_acoustic
+    res = Lead.goacoustic_client.add_recipient(acoustic_user_params, ENV['ACOUSTIC_DB_ID'], [ENV['ACOUSTIC_LIST_ID']])
+    res = res.Envelope.Body
+    if res.RESULT.SUCCESS == "TRUE"
+      # set the recipient_id and erase personal data (keep country and project description)
+      if res.RESULT.RecipientId.present?
+        self.recipient_id = res.RESULT.RecipientId
+        save
+      else
+        logger.debug("Acoustic did not return recipient ID")
+      end
+    elsif res.Fault.FaultString.to_s.match?(/Already Exists/i)
+      logger.debug("Acoustic recipient already exists.")
+      get_acoustic_recipient
+    end
+  end
+
   def send_to_acoustic!
     begin
-      name_fields = name.split(/\s/)
-      user_params = {
-        email: email,
-        :"0000_Source" => "pro.harman.com Leadgen form #{source}",
-        :"0001_First_Name" => name_fields.first,
-        :"0002_Last_Name" => name_fields.last,
-        :"0003_Phone_Number" => phone,
-        :"0004_Company" => company,
-        :"0008_City" => city,
-        :"0009_State_Province" => state,
-        :"00a11_Country_Custom" => country_name,
-        :"0012a_Project_Details" => project_description,
-        :"#{acoustic_subscription_field}" => !!subscribe?
-      }
-      res = Lead.goacoustic_client.add_recipient(user_params, ENV['ACOUSTIC_DB_ID'], [ENV['ACOUSTIC_LIST_ID']])
-      res = res.Envelope.Body
-      if res.RESULT.SUCCESS == "TRUE"
-        # set the recipient_id and erase personal data (keep country and project description)
-        if res.RESULT.RecipientId.present?
-          self.recipient_id = res.RESULT.RecipientId
-          save
-        else
-          logger.debug("Acoustic did not return recipient ID")
-        end
-      elsif res.Envelope.Body.Fault.FaultString.to_s.match?(/Already Exists/i)
-        # Lookup existing user by email?
-      end
+      send_to_acoustic
     rescue
       logger.debug("There was some acoustic exception")
     end
   end
   handle_asynchronously :send_to_acoustic!
+
+  def get_acoustic_recipient
+    res = Lead.goacoustic_client.get_recipient({email: email}, ENV['ACOUSTIC_DB_ID'])
+    if res.SUCCESS?
+      # set the recipient_id and erase personal data (keep country and project description)
+      if res.RecipientId.present?
+        self.recipient_id = res.RecipientId
+        save
+      else
+        logger.debug("Acoustic did not return recipient ID")
+      end
+    end
+  end
 
   def acoustic_subscription_field
     case self.source
@@ -51,6 +55,23 @@ class Lead < ApplicationRecord
     else
       "0525_SUB_Product Updates News and Events from HARMAN Professional Solutions and Brands _Open to Public"
     end
+  end
+
+  def acoustic_user_params
+    name_fields = name.split(/\s/)
+    {
+      email: email,
+      :"0000_Source" => "pro.harman.com Leadgen form #{source}",
+      :"0001_First_Name" => name_fields.first,
+      :"0002_Last_Name" => name_fields.last,
+      :"0003_Phone_Number" => phone,
+      :"0004_Company" => company,
+      :"0008_City" => city,
+      :"0009_State_Province" => state,
+      :"00a11_Country_Custom" => country_name,
+      :"0012a_Project_Details" => project_description,
+      :"#{acoustic_subscription_field}" => !!subscribe?
+    }
   end
 
   def country_name
@@ -83,7 +104,9 @@ class Lead < ApplicationRecord
   end
 
   def recipients
-    if country_lead_recipients.size > 0
+    if source.to_s.match?(/axys/)
+      ["tunnel@harman.com"]
+    elsif country_lead_recipients.size > 0
       country_lead_recipients.map{|clr| clr.user.email }
     else
       Globalize.with_locale(locale.to_s) do
@@ -94,7 +117,7 @@ class Lead < ApplicationRecord
 
   # Gets subscriber data from goacoustic
   def self.retrieve_remote(recipient_id)
-    lead_data = goacoustic_client.get_recipient(ENV['ACOUSTIC_DB_ID'], recipient_id)
+    lead_data = goacoustic_client.get_recipient({}, ENV['ACOUSTIC_DB_ID'], recipient_id)
     if lead_data.SUCCESS == "TRUE"
       columns = Hash[lead_data.COLUMNS.COLUMN.collect{|c| [c.NAME.to_sym, c.VALUE] }]
       Lead.new(
