@@ -44,7 +44,7 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'httparty'
 gem 'rails_autolink'
-gem 'goacoustic' #, github: 'harman-signal-processing/goacoustic', branch: 'master'
+gem 'goacoustic', ">= 0.1.3" #, github: 'harman-signal-processing/goacoustic', branch: 'master'
 gem 'oauth2'
 gem 'ransack' # using for service center search
 gem 'exception_notification'
