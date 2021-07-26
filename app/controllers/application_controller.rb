@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
       sanitized_locale = params[:locale].gsub(/[^[:print:]]/, '').gsub(/[[:punct:]]/) { |item| (allowed_punctuation.include? item) ? item : "" }
       properly_cased_sanitized_locale = sanitized_locale.gsub(/-.*/, &:upcase).strip
       valid_locale = AvailableLocale.where("live=1").pluck(:key).include? properly_cased_sanitized_locale
-      session[:locale] = camel_cased_sanitized_locale if valid_locale
+      session[:locale] = properly_cased_sanitized_locale if valid_locale
     end
     if session[:locale].present?
       I18n.locale = session[:locale]
