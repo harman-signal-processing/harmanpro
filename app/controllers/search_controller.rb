@@ -2,6 +2,9 @@ class SearchController < ApplicationController
 
   def search
     @query = params[:query]
+    allowed_punctuation = ["/","-"]
+    # strip non printable characters and unallowed punctuation characters from query
+    @query = @query.gsub(/[^[:print:]]/, '').gsub(/[[:punct:]]/) { |item| (allowed_punctuation.include? item) ? item : "" }
     if pdf_only_search_results?
       fetch_thunderstone_pdf_results
     else
