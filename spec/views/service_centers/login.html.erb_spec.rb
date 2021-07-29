@@ -12,7 +12,7 @@ RSpec.describe "service_centers/login.html.erb", as: :view do
     allow(SiteSetting).to receive(:value).with('service-page-service-center-login-blurb').and_return("blurb...")
     allow(SiteSetting).to receive(:value).with('service-page-become-a-service-center-blurb').and_return("blurb...")
     allow(SiteSetting).to receive(:value).with('service-center-requirements').and_return("Service requirements...")
-    allow(SiteSetting).to receive(:value).with('service-page-become-a-service-center-subheader').and_return("Become a Service Center")
+    # allow(SiteSetting).to receive(:value).with('service-page-become-a-service-center-subheader').and_return("Become a Service Center")
     allow(SiteSetting).to receive(:value).with('service-login-visit-brand-portals-subheader').and_return("Visit brands...")
     allow(SiteSetting).to receive(:value).with('service-page-service-center-get-started-blurb').and_return("Get started by...")
     allow(SiteSetting).to receive(:value).with('service-login-harman-pro-dealer-portal-subheader').and_return("Dealer Portal")
@@ -29,8 +29,8 @@ RSpec.describe "service_centers/login.html.erb", as: :view do
     expect(rendered).to have_link "Multiple Website", href: @brand.url
   end
 
-  it "links to becoming a service center" do
-    expect(rendered).to have_css "h3", text: "Become a Service Center"
-    expect(rendered).to have_link "Apply Now", href: new_service_center_path
-  end
+  # it "links to becoming a service center" do
+  #   expect(rendered).to have_css "h3", text: "Become a Service Center"
+  #   expect(rendered).to have_link "Apply Now", href: new_service_center_path
+  # end
 end
