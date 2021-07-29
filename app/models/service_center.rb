@@ -15,7 +15,7 @@ class ServiceCenter < ApplicationRecord
   end
 
   def self.states
-    pluck(:state).uniq.sort
+    where("active=1 and state <>''").pluck(:state).uniq.sort
   end
 
 end
