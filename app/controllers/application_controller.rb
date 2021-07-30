@@ -69,8 +69,7 @@ class ApplicationController < ActionController::Base
   def set_locale
     if params[:locale].present?
       allowed_punctuation = ["-"]
-      # strip non printable characters and unallowed punctuation characters from locale param
-      sanitized_locale = params[:locale].gsub(/[^[:print:]]/, '').gsub(/[[:punct:]]/) { |item| (allowed_punctuation.include? item) ? item : "" }
+      sanitized_locale = sanitize_param_value(params[:locale],allowed_punctuation)
       properly_cased_sanitized_locale = sanitized_locale.gsub(/-.*/, &:upcase).strip
       valid_locale = AvailableLocale.where("live=1").pluck(:key).include? properly_cased_sanitized_locale
       session[:locale] = properly_cased_sanitized_locale if valid_locale
@@ -168,5 +167,11 @@ class ApplicationController < ActionController::Base
     country_code.gsub(/[^a-zA-Z]/, '').slice(0..1).downcase
   end
   helper_method :clean_country_code
+
+  def sanitize_param_value(unsanitized_param_value, allowed_punctuation=[])
+    # strip non printable characters and unallowed punctuation characters from unsanitized_param_value
+    sanitized_item = unsanitized_param_value.gsub(/[^[:print:]]/, '').gsub(/[[:punct:]]/) { |item| (allowed_punctuation.include? item) ? item : "" } if unsanitized_param_value.present?
+    sanitized_item
+  end
 
 end  #  class ApplicationController < ActionController::Base

@@ -4,7 +4,7 @@ class CaseStudiesController < ApplicationController
   respond_to :html, :json, :js
 
   def index
-    vertical_market_param = params[:vertical_market_id]
+    vertical_market_param = sanitize_param_value(params[:vertical_market_id],["-"]) if params[:vertical_market_id].present?
     vertical_market_param = vertical_market_param == "all" ? nil : vertical_market_param
     if vertical_market_param.present?
       @vertical_market = VerticalMarket.find(vertical_market_param)
@@ -20,7 +20,7 @@ class CaseStudiesController < ApplicationController
       pdf: pdf_case_studies.size,
       video: video_case_studies.size
     }
-    @asset_type = params[:asset_type]
+    @asset_type = sanitize_param_value(params[:asset_type]) if params[:asset_type].present?
     if @asset_type.present? && ["pdf","video"].include?(@asset_type)
       case @asset_type
       when "pdf"
@@ -30,7 +30,8 @@ class CaseStudiesController < ApplicationController
       end
     end  #  if @asset_type.present? && ["pdf","video"].include? @asset_type
 
-    @case_studies = @case_studies.order(Arel.sql("created_at DESC")).paginate(page: params[:page], per_page: 20)
+    page_num = sanitize_param_value(params[:page]).to_i if params[:page].present?
+    @case_studies = @case_studies.order(Arel.sql("created_at DESC")).paginate(page: page_num, per_page: 20)
 
     @banner_image = Resource.find_by(name:"Banner: Case Studies")
     respond_with @case_studies
