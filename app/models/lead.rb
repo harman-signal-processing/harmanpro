@@ -2,6 +2,8 @@ class Lead < ApplicationRecord
   validates :name, presence: true, on: :create
   validates :email, presence: true, on: :create
   validates :country, presence: true
+  validates :company, exclusion: { in: ["Example"] }
+  validates :phone, exclusion: { in: ["123-456-7890"] }
   belongs_to :vertical_market # (maybe)
 
   after_create :send_to_acoustic!

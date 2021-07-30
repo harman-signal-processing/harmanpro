@@ -1,4 +1,4 @@
-class DistributorPolicy
+class DistributorPolicy < ApplicationPolicy
   attr_reader :user, :distributor
 
   def initialize(user, distributor)
@@ -37,7 +37,7 @@ class DistributorPolicy
   private
 
   def admin?
-    @user.emea_admin_access?
+    user.emea_admin_access? || user.admin? || user.super_admin?
   end
 
 end

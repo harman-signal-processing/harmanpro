@@ -1,0 +1,13 @@
+<% brands_with_media_coverage.each do |brand| %>
+  <li>
+    <%= link_to_unless_current brand_link_name_for_media_coverage_sidebar(brand), brand_media_coverages_path(brand) do %>
+      <em style="color: #888"><%= brand_link_name_for_media_coverage_sidebar(brand) %></em>
+    <% end %>
+  </li>
+<% end %>
+<li>
+  <%= link_to_unless_current all_link_name_for_media_coverage_sidebar, media_coverages_path do %>
+    <em style="color: #888"><%= all_link_name_for_media_coverage_sidebar %></em>
+  <% end %>
+</li>
+

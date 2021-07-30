@@ -27,6 +27,7 @@ class User < ApplicationRecord
     super_admin
     service_department
     lead_recipient
+    pr_admin
   ]
 
   def invitation_code_is_valid
@@ -68,7 +69,7 @@ class User < ApplicationRecord
 
   # Access to ActiveAdmin for several roles
   def admin_access?
-    super_admin? || admin? || service_department?
+    super_admin? || admin? || service_department? || pr_admin?
   end
 
   # EMEA access
@@ -87,6 +88,10 @@ class User < ApplicationRecord
 
   def contact_admin_access?
     contact_admin? || admin?
+  end
+
+  def pr_admin_access?
+    pr_admin? || admin?
   end
 
   def is_employee?

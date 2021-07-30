@@ -1,9 +1,9 @@
-class VerticalMarketPolicy < ApplicationPolicy
-  attr_reader :user, :vertical_market
+class EventPolicy < ApplicationPolicy
+  attr_reader :user, :object
 
-  def initialize(user, vertical_market)
+  def initialize(user, object)
     @user = user
-    @vertical_market = vertical_market
+    @object = object
   end
 
   def index?
@@ -37,6 +37,7 @@ class VerticalMarketPolicy < ApplicationPolicy
   private
 
   def admin?
-    user.admin? || user.super_admin?
+    user.admin? || user.super_admin? || user.pr_admin_access?
   end
+
 end

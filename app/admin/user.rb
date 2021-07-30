@@ -2,7 +2,7 @@ ActiveAdmin.register User do
   menu parent: "Settings", priority: 2
   permit_params :email, :password, :password_confirmation,
     :service_department, :super_admin, :translator, :admin, :lead_recipient,
-    :emea_admin, :emea_distributor, :tse_admin, :contact_admin,
+    :emea_admin, :emea_distributor, :tse_admin, :contact_admin, :pr_admin,
     locale_translators_attributes: [:id, :available_locale_id, :_destroy],
     country_lead_recipients_attributes: [:id, :country, :_destroy]
 
@@ -51,6 +51,7 @@ ActiveAdmin.register User do
       f.input :contact_admin
       f.input :tse_admin
       f.input :lead_recipient
+      f.input :pr_admin, label: "News/PR Admin"
       f.input :super_admin
     end
     f.has_many :locale_translators, heading: "Authorized Locales", new_record: "Add an authorized locale" do |s|

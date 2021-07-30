@@ -24,6 +24,9 @@ class Brand < ApplicationRecord
   has_many :case_study_brands, dependent: :destroy, inverse_of: :brand
   has_many :case_studies, through: :case_study_brands
 
+  has_many :brand_media_coverages, dependent: :destroy
+  has_many :media_coverages, through: :brand_media_coverages
+
   # New Brand/Distributor associations
   has_many :brand_to_distributor_association, dependent: :destroy, foreign_key: "brand_id", class_name: 'DistributorInfo::DistributorBrand'
     # naming this :distributor_s to distinguish from :distributors

@@ -89,7 +89,7 @@ $light-gray: #e6e7e8;
 $body-background-color: $white;
 $plan-background-color: $light-gray;
 $buy-background-color: #4c4d4f;
-$banner-background-color: #404042;
+$banner-background-color: $harman-blue;
 //$footer-background-color: #002f3a;
 $footer-background-color: $jet;
 
@@ -497,7 +497,7 @@ $button-lrg: rem-calc(17);
 // $f-dropdown-margin-bottom: $f-dropdown-margin-top;
 
 // We use this to control the background color
-$f-dropdown-bg: $gainsboro;
+$f-dropdown-bg: $white-smoke;
 
 // We use this to set the border styles for dropdowns.
 // $f-dropdown-border-style: solid;
@@ -513,8 +513,8 @@ $f-dropdown-bg: $gainsboro;
 // $f-dropdown-list-style: none;
 // $f-dropdown-font-color: $charcoal;
 // $f-dropdown-font-size: rem-calc(14);
-// $f-dropdown-list-padding: rem-calc(5, 10);
-// $f-dropdown-line-height: rem-calc(18);
+$f-dropdown-list-padding: rem-calc(6, 10);
+$f-dropdown-line-height: rem-calc(22);
 // $f-dropdown-list-hover-bg: $smoke  ;
 // $dropdown-mobile-default-float: 0;
 
@@ -523,7 +523,13 @@ $f-dropdown-bg: $gainsboro;
 
 // Default radius for dropdown.
 // $f-dropdown-radius: $global-radius;
-
+.f-dropdown {
+  padding: rem-calc(10) 0;
+  em {
+    display: block;
+    padding: 0.6rem;
+  }
+}
 
 // 09. Dropdown Buttons
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -2309,4 +2315,34 @@ ul#search_results {
 
 div.check_boxes span.checkbox {
   display: block;
+}
+
+.media-coverages li a {
+  position: relative;
+  top: 0;
+  transition: top ease 0.25s;
+  .panel {
+    color: $iron !important;
+    background: white;
+    border: 1px solid $gainsboro;
+    padding-top: rem-calc(40px) !important;
+    padding-bottom: rem-calc(20px) !important;
+    strong {
+      color: $primary-color;
+    }
+    div.external-link-icon {
+      text-align: right;
+      margin: rem-calc(-40px) rem-calc(-18px) rem-calc(15px);
+    }
+  }
+  &:hover {
+    top: -10px;
+    .panel {
+      color: $base !important;
+      border: 1px solid $base;
+      strong {
+        color: scale-color($primary-color, $lightness: -15%);
+      }
+    }
+  }
 }

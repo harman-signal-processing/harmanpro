@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_01_200759) do
+ActiveRecord::Schema.define(version: 2021_07_30_144621) do
 
   create_table "active_admin_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "namespace"
@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(version: 2021_04_01_200759) do
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_brand_distributors_on_brand_id"
     t.index ["distributor_id"], name: "index_brand_distributors_on_distributor_id"
+  end
+
+  create_table "brand_media_coverages", charset: "utf8", force: :cascade do |t|
+    t.integer "media_coverage_id"
+    t.integer "brand_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_brand_media_coverages_on_brand_id"
+    t.index ["media_coverage_id"], name: "index_brand_media_coverages_on_media_coverage_id"
   end
 
   create_table "brand_news_articles", id: :integer, charset: "utf8", force: :cascade do |t|
@@ -931,6 +940,24 @@ ActiveRecord::Schema.define(version: 2021_04_01_200759) do
     t.index ["slug"], name: "index_location_info_regions_on_slug", unique: true
   end
 
+  create_table "media_coverages", charset: "utf8", force: :cascade do |t|
+    t.date "news_date"
+    t.integer "media_outlet_id"
+    t.text "headline"
+    t.string "media_type"
+    t.boolean "syndicated"
+    t.string "media_length"
+    t.boolean "case_study"
+    t.string "initiative"
+    t.string "region"
+    t.text "link"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["media_outlet_id"], name: "index_media_coverages_on_media_outlet_id"
+    t.index ["slug"], name: "index_media_coverages_on_slug"
+  end
+
   create_table "media_library_access_requests", id: :integer, charset: "utf8", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -946,6 +973,18 @@ ActiveRecord::Schema.define(version: 2021_04_01_200759) do
     t.string "company"
     t.text "reason_for_request"
     t.text "what_assets"
+  end
+
+  create_table "media_outlets", charset: "utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "logo_file_name"
+    t.string "logo_content_type"
+    t.integer "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_media_outlets_on_slug"
   end
 
   create_table "menu_items", id: :integer, charset: "utf8", force: :cascade do |t|
@@ -1384,6 +1423,7 @@ ActiveRecord::Schema.define(version: 2021_04_01_200759) do
     t.boolean "tse_admin"
     t.boolean "contact_admin"
     t.boolean "lead_recipient"
+    t.boolean "pr_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

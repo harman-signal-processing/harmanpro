@@ -1,0 +1,18 @@
+<li>
+  <%= link_to media_coverage.link, target: "_blank" do %>
+    <div class="panel" data-equalizer-watch="mc">
+      <div class="external-link-icon">
+        <%= fa_icon "external-link-square-alt", class: "fa-2x" %>
+      </div>
+      <div class="text-center">
+          <% if media_coverage.media_outlet.logo.present? %>
+            <%= image_tag media_coverage.media_outlet.logo(:small), alt: media_coverage.media_outlet.name, lazy: false %>
+          <% else %>
+            <h4><%= media_coverage.media_outlet.name %></h4>
+          <% end %>
+          <p><strong><%= media_coverage.headline %></strong></p>
+        <p style="color: #888"><%=l media_coverage.news_date.to_date, format: :long %></p>
+      </div>
+    </div>
+  <% end %>
+</li>

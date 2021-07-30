@@ -54,7 +54,7 @@ gem 'nokogiri' # for parsing HTML to generate subnavs on EMEA portal
 gem 'thinking-sphinx'
 gem 'kaminari'
 gem 'globalize'
-gem 'friendly_id-globalize'
+gem 'friendly_id-globalize', github: 'norman/friendly_id-globalize'
 gem 'http_accept_language'
 gem 'rails-i18n'
 gem 'maxminddb' # for geocoding ip addresses
