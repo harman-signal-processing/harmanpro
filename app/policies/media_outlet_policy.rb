@@ -1,17 +1,17 @@
-class VerticalMarketPolicy < ApplicationPolicy
-  attr_reader :user, :vertical_market
+class MediaOutletPolicy < ApplicationPolicy
+  attr_reader :user, :media_outlet
 
-  def initialize(user, vertical_market)
+  def initialize(user, media_outlet)
     @user = user
-    @vertical_market = vertical_market
+    @media_outlet = media_outlet
   end
 
   def index?
-    admin?
+    true
   end
 
   def show?
-    admin?
+    true
   end
 
   def new?
@@ -37,6 +37,7 @@ class VerticalMarketPolicy < ApplicationPolicy
   private
 
   def admin?
-    user.admin? || user.super_admin?
+    user.admin? || user.super_admin? || user.pr_admin_access?
   end
+
 end

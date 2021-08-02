@@ -1,0 +1,45 @@
+<%= content_for :title do %>
+  <% if @brand %><%= @brand.name %><% end %>
+  Media Coverage
+<% end %>
+
+<div class="bumped-up" style="margin-bottom:2em;">
+  <div class="banner-container" style="padding: 4em;">
+    <% if @brand %>
+      <% if @brand.white_logo.present? %>
+        <p><%= image_tag @brand.white_logo.url(:large), alt: @brand.name, lazy: false %></p>
+      <% else %>
+        <p><%= @brand.name %></p>
+      <% end %>
+    <% end %>
+    <h1>Media Coverage</h1>
+    <div class="show-for-medium-down">
+      <a data-dropdown="brand-filters" aria-controls="brand-filters" aria-expanded="false">Select Brand</a>
+      <ul id="brand-filters" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+        <%= render 'brand_filters' %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 medium-12 large-9 columns">
+    <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3 media-coverages" data-equalizer="mc">
+      <% @media_coverages.each do |media_coverage| %>
+        <%= render media_coverage %>
+      <% end %>
+    </ul>
+
+    <%= will_paginate @media_coverages, renderer: WillPaginateInfinite::InfinitePagination %>
+  </div>
+
+  <div class="show-for-large-up large-3 columns">
+    <div class="callout panel">
+      <h5>Media Coverage by Brand</h5>
+
+      <ul>
+        <%= render 'brand_filters' %>
+      </ul>
+    </div>
+  </div>
+</div>

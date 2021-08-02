@@ -66,13 +66,12 @@
             <% end %>
           </li>
         <% end %>
-        <% if @vertical_market %>
-          <li><%= link_to case_studies_path do %>
-            <%= t('all').titleize %> <%= t('case_study').pluralize.titleize %>
-            <% end %>
-          </li>
-        <% end %>
       </ul>
+      <% if @vertical_market %>
+        <%= link_to case_studies_path do %>
+          <%= t('all').titleize %> <%= t('case_study').pluralize.titleize %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 

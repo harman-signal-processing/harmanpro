@@ -223,6 +223,10 @@ Rails.application.routes.draw do
   resources :artists, only: [:index, :show]
   resources :products, only: [:index, :show]
 
+  # Media Coverage
+  resources :media_coverages, path: "media-coverage", only: :index
+  get "/media-coverage/:brand_id" => "media_coverages#index", as: :brand_media_coverages
+
   # Cinema Calculator
   get '/cinema/calculator' => 'calculators#cinema'
 
