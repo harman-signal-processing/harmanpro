@@ -10,6 +10,14 @@ class UserPolicy < ApplicationPolicy
     @user.admin? || @user.super_admin?
   end
 
+  def new?
+    @user.admin? || @user.super_admin?
+  end
+
+  def create?
+    @user.admin? || @user.super_admin?
+  end
+
   def show?
     can_access_user?
   end
