@@ -2,6 +2,8 @@ class SearchController < ApplicationController
 
   def search
     @query = params[:query]
+    allowed_punctuation = ["/","-"]
+    @query = sanitize_param_value(@query, allowed_punctuation) if @query.present?
     if pdf_only_search_results?
       fetch_thunderstone_pdf_results
     else
