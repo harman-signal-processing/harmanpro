@@ -5,12 +5,14 @@
         <%= fa_icon "external-link-square-alt", class: "fa-2x" %>
       </div>
       <div class="text-center">
+        <h4>
           <% if media_coverage.media_outlet.logo.present? %>
             <%= image_tag media_coverage.media_outlet.logo(:small), alt: media_coverage.media_outlet.name, lazy: false %>
           <% else %>
-            <h4><%= media_coverage.media_outlet.name %></h4>
+            <%= media_coverage.media_outlet.name %>
           <% end %>
-          <p><strong><%= media_coverage.headline %></strong></p>
+        </h4>
+        <p><strong><%= media_coverage.headline %></strong></p>
         <p style="color: #888"><%=l media_coverage.news_date.to_date, format: :long %></p>
       </div>
     </div>
