@@ -13,7 +13,10 @@
           <% end %>
         </h4>
         <p><strong><%= media_coverage.headline %></strong></p>
-        <p style="color: #888"><%=l media_coverage.news_date.to_date, format: :long %></p>
+        <% if media_coverage.description.present? %>
+          <p class="mc_description"><%= media_coverage.description %></p>
+        <% end %>
+        <p class="mc_date"><%=l media_coverage.news_date.to_date, format: :long %></p>
       </div>
     </div>
   <% end %>

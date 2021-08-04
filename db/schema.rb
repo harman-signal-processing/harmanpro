@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_30_144621) do
+ActiveRecord::Schema.define(version: 2021_08_04_205702) do
 
   create_table "active_admin_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "namespace"
@@ -954,6 +954,7 @@ ActiveRecord::Schema.define(version: 2021_07_30_144621) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.text "description"
     t.index ["media_outlet_id"], name: "index_media_coverages_on_media_outlet_id"
     t.index ["slug"], name: "index_media_coverages_on_slug"
   end

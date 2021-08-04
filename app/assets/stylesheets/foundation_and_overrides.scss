@@ -2335,6 +2335,13 @@ div.check_boxes span.checkbox {
       margin: rem-calc(-40px) rem-calc(-18px) rem-calc(15px);
     }
   }
+  .mc_description {
+    color: $monsoon;
+  }
+  .mc_date {
+    font-size: 80%;
+    color: $base;
+  }
   &:hover {
     top: -10px;
     .panel {

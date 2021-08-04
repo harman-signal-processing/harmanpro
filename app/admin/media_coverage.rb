@@ -5,6 +5,7 @@ ActiveAdmin.register MediaCoverage do
   permit_params :news_date,
     :media_outlet_id,
     :headline,
+    :description,
     :media_type,
     :syndicated,
     :media_length,
@@ -43,6 +44,7 @@ ActiveAdmin.register MediaCoverage do
   show do
     attributes_table do
       row :headline
+      row :description
       row :news_date
       row :media_outlet
       row :link do |mc|
@@ -62,6 +64,7 @@ ActiveAdmin.register MediaCoverage do
     f.inputs do
       f.input :headline
       f.input :link
+      f.input :description, hint: "Appears below the headline."
       f.input :media_outlet, collection: MediaOutlet.order("name")
       f.input :news_date, as: :datepicker
       f.input :media_type
