@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ServiceCenter, type: :model do
 
   before :all do
-    @service_center = FactoryBot.create(:service_center, active: true)
+    @service_center = FactoryBot.create(:service_center, active: true, state: "FO")
   end
 
   subject { @service_center }

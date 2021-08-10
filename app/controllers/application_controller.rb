@@ -71,7 +71,7 @@ class ApplicationController < ActionController::Base
       allowed_punctuation = ["-"]
       sanitized_locale = sanitize_param_value(params[:locale],allowed_punctuation)
       properly_cased_sanitized_locale = sanitized_locale.gsub(/-.*/, &:upcase).strip
-      valid_locale = AvailableLocale.where("live=1").pluck(:key).include? properly_cased_sanitized_locale
+      valid_locale = AvailableLocale.pluck(:key).include? properly_cased_sanitized_locale
       session[:locale] = properly_cased_sanitized_locale if valid_locale
     end
     if session[:locale].present?

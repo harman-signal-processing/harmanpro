@@ -22,9 +22,4 @@ feature "Service centers log in to brand tech sites" do
     expect(current_url).to match(@brand.url)
   end
 
-  it "links to becoming a service center" do
-    click_on "Apply Now"
-
-    expect(current_path).to eq new_service_center_path
-  end
 end

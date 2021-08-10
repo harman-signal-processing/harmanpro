@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Brand, :type => :model do
-  before :each do
+  before :all do
     @brand = FactoryBot.build(:brand)
   end
 
@@ -128,9 +128,10 @@ RSpec.describe Brand, :type => :model do
   end
 
   it "should allow a blank tech_url" do
-    @brand.tech_url = nil
+    brand = FactoryBot.build(:brand)
+    brand.tech_url = nil
 
-    expect(@brand.valid?).to be true
+    expect(brand.valid?).to be true
   end
 
   it "should not allow an invalid tech_url" do
@@ -141,15 +142,15 @@ RSpec.describe Brand, :type => :model do
 
   describe "friendly id" do
     it "generates a new slug when name changes" do
-      @brand.save
-      old_slug = @brand.slug
+      brand = FactoryBot.create(:brand)
+      old_slug = brand.slug
 
-      @brand.name = "Yo Mama #{@brand.name}"
-      @brand.save!
-      @brand.reload
+      brand.name = "Yo Mama #{brand.name}"
+      brand.save!
+      brand.reload
 
-      expect(@brand.slug).not_to eq old_slug
-      expect(@brand.slug.present?).to be(true)
+      expect(brand.slug).not_to eq old_slug
+      expect(brand.slug.present?).to be(true)
     end
   end
 
