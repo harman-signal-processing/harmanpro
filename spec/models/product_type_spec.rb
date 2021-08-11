@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ProductType, :type => :model do
 
   before :all do
-    @product_type = FactoryBot.create(:product_type)
+    @product_type = FactoryBot.build(:product_type)
   end
 
   subject { @product_type }

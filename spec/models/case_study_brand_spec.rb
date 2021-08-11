@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe CaseStudyBrand, type: :model do
 
   before :all do
-    @case_study_brand = FactoryBot.create(:case_study_brand)
+    @case_study_brand = FactoryBot.build(:case_study_brand)
   end
 
   subject { @case_study_brand }

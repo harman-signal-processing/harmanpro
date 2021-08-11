@@ -1,18 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe ContactInfo::Tag, type: :model do
-  before do
+  before :all do
     @tag = FactoryBot.create(:contact_info_tag)
     @contact = FactoryBot.create(:contact_info_contact)
   end  #  before do
 
   context 'Validate Tag attributes' do
   	it 'Tag should have expected attributes' do
-  		expect(@tag.name).to eq('Tag 1')
+  		expect(@tag.name).to match(/Tag \d/)
   	end  #  it 'Tag should have expected attributes' do
 
   	it 'Tag should be unique' do
-  	  tag = ContactInfo::Tag.new(name:'tag 1')
+      tag = ContactInfo::Tag.new(name: @tag.name)
   	  expect(tag).not_to be_valid
   	  expect(tag.errors[:name]).to include("has already been taken")
   	end  # it 'Tag name should be unique' do

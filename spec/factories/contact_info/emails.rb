@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :contact_info_email, class: 'ContactInfo::Email' do
-    email { "Email 1" }
+    sequence(:email) {|n| "email#{n}@email.com"}
   end
 end

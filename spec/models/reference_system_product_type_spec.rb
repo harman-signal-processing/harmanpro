@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ReferenceSystemProductType, :type => :model do
 
   before :all do
-    @reference_system_product_type = FactoryBot.create(:reference_system_product_type)
+    @reference_system_product_type = FactoryBot.build(:reference_system_product_type)
   end
 
   subject { @reference_system_product_type }

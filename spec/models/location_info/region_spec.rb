@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe LocationInfo::Region, type: :model do
-  before do
+  before :all do
     @region = FactoryBot.create(:location_info_region)
     @location = FactoryBot.create(:location_info_location)
   end
   context 'Validate Region attributes' do
     it 'Region should have name' do
-      expect(@region.name).to eq('North America')
+      expect(@region.name).to match('North America')
     end
     it 'Region name should be unique' do
-  	  region = LocationInfo::Region.new(name:'North America')
+      region = LocationInfo::Region.new(name: @region.name)
   	  expect(region).not_to be_valid
   	  expect(region.errors[:name]).to include("has already been taken")
     end

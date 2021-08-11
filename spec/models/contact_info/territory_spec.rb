@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ContactInfo::Territory, type: :model do
-  before do
+  before :all do
     @territory = FactoryBot.create(:contact_info_territory)
     @contact = FactoryBot.create(:contact_info_contact)
   end  #  before do

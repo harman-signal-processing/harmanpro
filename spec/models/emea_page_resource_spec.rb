@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe EmeaPageResource, type: :model do
 
   before :all do
-    @resource = FactoryBot.create(:emea_page_resource)
+    @resource = FactoryBot.build(:emea_page_resource)
   end
 
   subject { @resource }

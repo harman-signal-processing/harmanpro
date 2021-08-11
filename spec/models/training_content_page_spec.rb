@@ -4,7 +4,7 @@ RSpec.describe TrainingContentPage, type: :model do
   #pending "add some examples to (or delete) #{__FILE__}"
 
   before :all do
-    @training_content_page = FactoryBot.create(:training_content_page)
+    @training_content_page = FactoryBot.build(:training_content_page)
   end  #  before :all do
 
   subject { @training_content_page }

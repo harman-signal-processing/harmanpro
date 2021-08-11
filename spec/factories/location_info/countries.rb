@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :location_info_country, class: 'LocationInfo::Country' do
-    name { "United States of America" }
-    harman_name { "United States of America" }
+    sequence(:name) {|n| "United States of America #{n}"}
+    sequence(:harman_name) {|n| "United States of America #{n}"}
     alpha2 { "US" }
     alpha3 { "USA" }
     continent { "North America" }

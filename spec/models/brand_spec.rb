@@ -33,55 +33,56 @@ RSpec.describe Brand, :type => :model do
     end
   end
 
-  it "#all_for_site loads all brands in alphabetical order except service-only brands" do
-    brand1 = FactoryBot.create(:brand, name: "ZZZZ")
-    brand2 = FactoryBot.create(:brand, name: "AAAAA")
-    brand3 = FactoryBot.create(:brand, show_on_main_site: false)
+  describe "retrieval" do
+    before :all do
+      @brand1 = FactoryBot.create(:brand,
+                                  name: "ZZZZ",
+                                  show_on_consultant_page: false
+                                 )
+      @brand2 = FactoryBot.create(:brand,
+                                  name: "AAAAA",
+                                  show_on_consultant_page: true,
+                                  contact_info_for_consultants: "FOO"
+                                 )
+      @brand3 = FactoryBot.create(:brand,
+                                  show_on_main_site: false,
+                                  show_on_consultant_page: true,
+                                  show_on_services_site: false,
+                                  contact_info_for_consultants: ''
+                                 )
+    end
 
-    all = Brand.all_for_site
+    it "#all_for_site loads all brands in alphabetical order except service-only brands" do
+      all = Brand.all_for_site
 
-    expect(all.first).to eq(brand2)
-    expect(all.last).to eq(brand1)
-    expect(all).not_to include(brand3)
-  end
+      expect(all.first).to eq(@brand2)
+      expect(all.last).to eq(@brand1)
+      expect(all).not_to include(@brand3)
+    end
 
-  it "#for_consultant_portal loads brands which are flagged with show_on_consultant_page" do
-    Brand.delete_all
-    brand1 = FactoryBot.create(:brand, name: "ZZZZ", show_on_consultant_page: false)
-    brand2 = FactoryBot.create(:brand, name: "AAAAA", show_on_consultant_page: true)
-    brand3 = FactoryBot.create(:brand, show_on_main_site: false, show_on_consultant_page: true)
+    it "#for_consultant_portal loads brands which are flagged with show_on_consultant_page" do
+      brands = Brand.for_consultant_portal
 
-    brands = Brand.for_consultant_portal
+      expect(brands).to include(@brand2)
+      expect(brands).not_to include(@brand1)
+      expect(brands).to include(@brand3)
+    end
 
-    expect(brands).to include(brand2)
-    expect(brands).not_to include(brand1)
-    expect(brands).to include(brand3)
-  end
+    it "#for_consultant_portal_with_contacts loads only brands with contact info and flagged for consultant page" do
+      brands = Brand.for_consultant_portal_with_contacts
 
-  it "#for_consultant_portal_with_contacts loads only brands with contact info and flagged for consultant page" do
-    Brand.delete_all
-    brand1 = FactoryBot.create(:brand, name: "ZZZZ", show_on_consultant_page: false)
-    brand2 = FactoryBot.create(:brand, name: "AAAAA", show_on_consultant_page: true, contact_info_for_consultants: "FOO")
-    brand3 = FactoryBot.create(:brand, show_on_main_site: false, show_on_consultant_page: true, contact_info_for_consultants: '')
+      expect(brands).to include(@brand2)
+      expect(brands).not_to include(@brand1)
+      expect(brands).not_to include(@brand3)
+    end
 
-    brands = Brand.for_consultant_portal_with_contacts
+    it "#for_service_site loads only brands relevant for service site" do
+      brands = Brand.for_service_site
 
-    expect(brands).to include(brand2)
-    expect(brands).not_to include(brand1)
-    expect(brands).not_to include(brand3)
-  end
-
-  it "#for_service_site loads only brands relevant for service site" do
-    Brand.delete_all
-    brand1 = FactoryBot.create(:brand, name: "ZZZZ")
-    brand2 = FactoryBot.create(:brand, name: "AAAAA")
-    brand3 = FactoryBot.create(:brand, show_on_services_site: false)
-
-    brands = Brand.for_service_site
-
-    expect(brands.first).to eq(brand2)
-    expect(brands.last).to eq(brand1)
-    expect(brands).not_to include(brand3)
+      expect(brands.first).to eq(@brand2)
+      expect(brands.last).to eq(@brand1)
+      expect(brands).not_to include(@brand3)
+    end
   end
 
   it "should require the name" do

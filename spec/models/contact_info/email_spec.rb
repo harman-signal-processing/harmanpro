@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ContactInfo::Email, type: :model do
-  before do
+  before :all do
     @email = FactoryBot.create(:contact_info_email)
     @contact = FactoryBot.create(:contact_info_contact)
     @distributor = FactoryBot.create(:distributor_info_distributor)
@@ -10,11 +10,11 @@ RSpec.describe ContactInfo::Email, type: :model do
 
   context 'Validate Email attributes' do
   	it 'Email should have expected attributes' do
-  		expect(@email.email).to eq('Email 1')
+  		expect(@email.email).to match(/email\d*/)
   	end  #  it 'Contact should have expected attributes' do
 
   	it 'Email should be unique' do
-  	  email = ContactInfo::Email.new(email:'Email 1')
+      email = ContactInfo::Email.new(email: @email.email)
   	  expect(email).not_to be_valid
   	  expect(email.errors[:email]).to include("has already been taken")
   	end  # it 'Email name should be unique' do

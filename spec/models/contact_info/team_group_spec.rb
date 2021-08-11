@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ContactInfo::TeamGroup, type: :model do
-  before do
+  before :all do
     @team_group = FactoryBot.create(:contact_info_team_group)
     @contact = FactoryBot.create(:contact_info_contact)
   end  #  before do

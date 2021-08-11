@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe BrandApi do
 
   before :all do
-    @brand = FactoryBot.create(:brand, api_url: "http://localhost/foo")
+    @brand = FactoryBot.build(:brand, api_url: "http://localhost/foo")
   end
 
   before :each do

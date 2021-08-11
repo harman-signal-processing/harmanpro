@@ -1,18 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe ContactInfo::DataClient, type: :model do
-  before do
+  before :all do
     @data_client = FactoryBot.create(:contact_info_data_client)
     @contact = FactoryBot.create(:contact_info_contact)
   end  #  before do
 
   context 'Validate DataClient attributes' do
   	it 'DataClient should have expected attributes' do
-  		expect(@data_client.name).to eq('Data client 1')
+  		expect(@data_client.name).to match(/Data client \d*/)
   	end  #  it 'DataClient should have expected attributes' do
 
   	it 'DataClient should be unique' do
-  	  data_client = ContactInfo::DataClient.new(name:'data client 1')
+      data_client = ContactInfo::DataClient.new(name: @data_client.name.downcase)
   	  expect(data_client).not_to be_valid
   	  expect(data_client.errors[:name]).to include("has already been taken")
   	end  # it 'DataClient name should be unique' do

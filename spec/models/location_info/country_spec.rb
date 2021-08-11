@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe LocationInfo::Country, type: :model do
-  before do
+  before :all do
     @country = FactoryBot.create(:location_info_country)
     @distributor = FactoryBot.create(:distributor_info_distributor)
   end
 
   context 'Validate Country attributes' do
   	it 'Location should have expected attributes' do
-  		expect(@country.name).to eq('United States of America')
-  		expect(@country.harman_name).to eq('United States of America')
+  		expect(@country.name).to match('United States of America')
+  		expect(@country.harman_name).to match('United States of America')
   		expect(@country.alpha2).to eq('US')
   		expect(@country.alpha3).to eq('USA')
   		expect(@country.continent).to eq('North America')

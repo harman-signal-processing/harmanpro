@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe DistributorInfo::Distributor, type: :model do
-  before do
+  before :all do
     @distributor = FactoryBot.create(:distributor_info_distributor)
     @brand = FactoryBot.create(:brand)
     @location = FactoryBot.create(:location_info_location)
@@ -13,8 +13,8 @@ RSpec.describe DistributorInfo::Distributor, type: :model do
 
   context 'Validate Distributor attributes' do
   	it 'Distributor should have expected attributes' do
-  		expect(@distributor.name).to eq('Distributor 1')
-  		expect(@distributor.account_number).to eq('12345')
+  		expect(@distributor.name).to match(/Distributor \d*/)
+  		expect(@distributor.account_number).to match('1234')
   	end  #  it 'Distributor should have expected attributes' do
   end  #  context 'Validate Distributor attributes' do
 

@@ -3,6 +3,6 @@ FactoryBot.define do
     showonweb { false }
     showforsolutions { false }
     showforchannels { false }
-    contact { ContactInfo::Contact.create(name: 'Contact 1') }
+    association :contact, factory: :contact_info_contact
   end
 end

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ChannelCountry, type: :model do
 
   before :all do
-    @channel_country = FactoryBot.create(:channel_country)
+    @channel_country = FactoryBot.build(:channel_country)
   end
 
   subject { @channel_country }

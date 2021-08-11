@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :distributor_info_distributor, class: 'DistributorInfo::Distributor' do
-    name { "Distributor 1" }
-    account_number { "12345" }
+    sequence(:name) {|n| "Distributor #{n}"}
+    sequence(:account_number) {|n| "1234#{n}"}
   end
 end

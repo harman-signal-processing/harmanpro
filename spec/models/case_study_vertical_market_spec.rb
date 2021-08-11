@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe CaseStudyVerticalMarket, type: :model do
 
   before :all do
-    @case_study_vertical_market = FactoryBot.create(:case_study_vertical_market)
+    @case_study_vertical_market = FactoryBot.build(:case_study_vertical_market)
   end
 
   subject { @case_study_vertical_market }

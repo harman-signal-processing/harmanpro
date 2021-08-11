@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ContactInfo::Contact, type: :model do
-  before do
+  before :all do
     @contact = FactoryBot.create(:contact_info_contact)
     @location = FactoryBot.create(:location_info_location)
     @team_group = FactoryBot.create(:contact_info_team_group)
@@ -17,11 +17,11 @@ RSpec.describe ContactInfo::Contact, type: :model do
   context 'Validate Contact attributes' do
 
   	it 'Contact should have expected attributes' do
-  		expect(@contact.name).to eq('Contact 1')
+  		expect(@contact.name).to match(/Contact \d*/)
   	end  #  it 'Contact should have expected attributes' do
 
   	it 'Contact name should be unique' do
-  	  contact = ContactInfo::Contact.new(name:'Contact 1')
+      contact = ContactInfo::Contact.new(name: @contact.name)
   	  expect(contact).not_to be_valid
   	  expect(contact.errors[:name]).to include("has already been taken")
   	end  # it 'Contact name should be unique' do

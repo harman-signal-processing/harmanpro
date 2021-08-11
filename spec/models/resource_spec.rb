@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Resource, type: :model do
 
   before :all do
-    @resource = FactoryBot.create(:resource)
+    @resource = FactoryBot.build(:resource)
   end
 
   subject { @resource }

@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :contact_info_territory, class: 'ContactInfo::Territory' do
-    name { "Territory 1" }
+    sequence(:name) {|n| "Territory #{n}"}
   end
 end

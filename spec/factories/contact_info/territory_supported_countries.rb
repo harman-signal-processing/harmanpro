@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :contact_info_territory_supported_country, class: 'ContactInfo::TerritorySupportedCountry' do
-    territory { ContactInfo::Territory.create(name: 'Territory 1') }
-    country { LocationInfo::Country.create(name: 'Country 1', harman_name: 'Country 1') }    
+    association :territory, factory: :contact_info_territory
+    association :country, factory: :location_info_country
   end
 end

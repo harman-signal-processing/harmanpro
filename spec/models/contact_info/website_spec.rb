@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ContactInfo::Website, type: :model do
-  before do
+  before :all do
     @website = FactoryBot.create(:contact_info_website)
     @contact = FactoryBot.create(:contact_info_contact)
     @distributor = FactoryBot.create(:distributor_info_distributor)
@@ -11,11 +11,11 @@ RSpec.describe ContactInfo::Website, type: :model do
   context 'Validate Website attributes' do
 
   	it 'Website should have expected attributes' do
-  		expect(@website.url).to eq('https://urltest.com')
+  		expect(@website.url).to match(/urltest/)
   	end  #  it 'Website should have expected attributes' do
 
   	it 'Website should be unique' do
-  	  website = ContactInfo::Website.new(url:'https://urltest.com')
+      website = ContactInfo::Website.new(url: @website.url)
   	  expect(website).not_to be_valid
   	  expect(website.errors[:url]).to include("has already been taken")
   	end  # it 'Website name should be unique' do

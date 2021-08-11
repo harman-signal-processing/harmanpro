@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ContactInfo::Phone, type: :model do
-  before do
+  before :all do
     @phone = FactoryBot.create(:contact_info_phone)
     @contact = FactoryBot.create(:contact_info_contact)
     @distributor = FactoryBot.create(:distributor_info_distributor)
@@ -11,11 +11,11 @@ RSpec.describe ContactInfo::Phone, type: :model do
   context 'Validate Phone attributes' do
 
   	it 'Phone should have expected attributes' do
-  		expect(@phone.phone).to eq('123-456-7890')
+  		expect(@phone.phone).to match(/\d*/)
   	end  #  it 'Phone should have expected attributes' do
 
   	it 'Phone should be unique' do
-  	  phone = ContactInfo::Phone.new(phone:'123-456-7890')
+      phone = ContactInfo::Phone.new(phone: @phone.phone)
   	  expect(phone).not_to be_valid
   	  expect(phone.errors[:phone]).to include("has already been taken")
   	end  # it 'Phone name should be unique' do

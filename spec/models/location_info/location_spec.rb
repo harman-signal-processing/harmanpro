@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe LocationInfo::Location, type: :model do
-  before do
+  before :all do
     @location = FactoryBot.create(:location_info_location)
     @contact = FactoryBot.create(:contact_info_contact)
     @email = FactoryBot.create(:contact_info_email)

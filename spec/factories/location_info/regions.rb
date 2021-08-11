@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :location_info_region, class: 'LocationInfo::Region' do
-    name { "North America" }
+    sequence(:name) {|n| "North America #{n}"}
   end
 end
