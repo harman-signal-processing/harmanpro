@@ -8,6 +8,7 @@ class MediaCoverage < ApplicationRecord
 
   validates :link, presence: true
   validates :headline, presence: true
+  validates :media_outlet, presence: true
 
   accepts_nested_attributes_for :brand_media_coverages, reject_if: :all_blank, allow_destroy: true
 

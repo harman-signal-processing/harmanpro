@@ -5,13 +5,15 @@
         <%= fa_icon "external-link-square-alt", class: "fa-2x" %>
       </div>
       <div class="text-center">
-        <h4>
-          <% if media_coverage.media_outlet.logo.present? %>
-            <%= image_tag media_coverage.media_outlet.logo(:small), alt: media_coverage.media_outlet.name, lazy: false %>
-          <% else %>
-            <%= media_coverage.media_outlet.name %>
-          <% end %>
-        </h4>
+        <% if media_coverage.media_outlet %>
+          <h4>
+            <% if media_coverage.media_outlet.logo.present? %>
+              <%= image_tag media_coverage.media_outlet.logo(:small), alt: media_coverage.media_outlet.name, lazy: false %>
+            <% else %>
+              <%= media_coverage.media_outlet.name %>
+            <% end %>
+          </h4>
+        <% end %>
         <p><strong><%= media_coverage.headline %></strong></p>
         <% if media_coverage.description.present? %>
           <p class="mc_description"><%= media_coverage.description %></p>
