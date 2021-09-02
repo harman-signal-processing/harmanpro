@@ -88,6 +88,7 @@ group :development do
   gem 'pry-byebug'
   gem 'rails-erd'
   gem 'awesome_print'
+  gem 'marginalia'
 end
 
 group :development, :test do

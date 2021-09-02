@@ -377,6 +377,9 @@ GEM
       json (>= 1.7.7)
       rest-client (>= 1.6.7)
     marcel (1.0.1)
+    marginalia (1.11.1)
+      actionpack (>= 5.2)
+      activerecord (>= 5.2)
     maxminddb (0.1.22)
     method_source (1.0.0)
     middleware (0.1.0)
@@ -647,6 +650,7 @@ DEPENDENCIES
   lazyload-rails
   letter_opener
   mailgun_rails
+  marginalia
   maxminddb
   mysql2
   nokogiri
