@@ -43,9 +43,11 @@ class ServiceCentersController < ApplicationController
   end
 
   def service_centers_for_brand
-    brand = params[:brand].nil? ? "bss" : params[:brand]
-    brand_id = Brand.find_by_name(brand).id
-    state = params[:state].nil? ? "any" : params[:state]
+    allowed_punctuation = ["-"]
+    brand = params[:brand].nil? ? "bss" : sanitize_param_value(params[:brand], allowed_punctuation)
+    # we'll return an empty array for service centers if we can't find the brand by name
+    brand_id = Brand.find_by_name(brand).present? ? Brand.find_by_name(brand).id : '0'
+    state = params[:state].nil? ? "any" : sanitize_param_value(params[:state], allowed_punctuation)
     service_groups = ServiceGroup.where("brand_id = ?", brand_id).uniq
     if state == "any"
       service_centers = ServiceCenter.joins(:service_groups).where("service_group_id in (?) and active = true",service_groups.pluck(:id)).uniq
