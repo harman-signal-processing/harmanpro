@@ -17,8 +17,9 @@
 
 #server 'rackspace1', user: 'hpro', roles: %w{admin web app}
 #server 'rackspace2019', user: 'hpro', roles: %w{admin web app}
-server 'rackspace2020', user: 'hpro', roles: %w{admin web app db}, primary: true
+#server 'rackspace2020', user: 'hpro', roles: %w{admin web app db}, primary: true
 server 'rackspace2021', user: 'hpro', roles: %w{admin web app db}, primary: true
+set :branch, "252caccec0744c4d03ca6815d59401181d643e96"
 
 namespace :deploy do
 

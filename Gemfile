@@ -25,7 +25,9 @@ gem 'figaro'
 gem 'simple_form', ">= 5.0.0"
 gem 'chosen-rails'
 gem 'RedCloth'
-gem 'tinymce-rails', git: 'https://github.com/spohlenz/tinymce-rails.git'
+gem 'tinymce-rails',
+  git: 'https://github.com/spohlenz/tinymce-rails.git',
+  ref: '4ce32c11bc3af42b4b4f733befa14b1d3c8d0c1d'
 gem 'foundation-rails', '~> 5.5' # After this, getting incompatible units errors
 gem 'friendly_id', '>= 5.2'
 gem 'kt-paperclip', '>= 7.0'
