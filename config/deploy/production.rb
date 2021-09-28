@@ -17,9 +17,9 @@
 
 #server 'rackspace1', user: 'hpro', roles: %w{admin web app}
 #server 'rackspace2019', user: 'hpro', roles: %w{admin web app}
-#server 'rackspace2020', user: 'hpro', roles: %w{admin web app db}, primary: true
+server 'rackspace2020', user: 'hpro', roles: %w{admin web app db}, primary: true
 server 'rackspace2021', user: 'hpro', roles: %w{admin web app db}, primary: true
-set :branch, "bb31efef0a46096f4a51b5d48ca02ff97dfcf88d"
+
 namespace :deploy do
 
 #  before :restart, :refresh_node2_uploads do
