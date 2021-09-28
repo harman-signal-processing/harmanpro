@@ -7,7 +7,7 @@ end
 gem 'rails', '~> 6.1'
 gem 'bootsnap', require: false
 gem 'sass-rails'
-gem 'terser', "= 1.1.6"
+gem 'terser'
 gem 'coffee-rails'
 gem 'sprockets', '~> 4.0'
 gem 'font_awesome5_rails'
@@ -25,7 +25,7 @@ gem 'figaro'
 gem 'simple_form', ">= 5.0.0"
 gem 'chosen-rails'
 gem 'RedCloth'
-gem 'tinymce-rails'
+gem 'tinymce-rails', '< 5.9'
 gem 'foundation-rails', '~> 5.5' # After this, getting incompatible units errors
 gem 'friendly_id', '>= 5.2'
 gem 'kt-paperclip', '>= 7.0'
