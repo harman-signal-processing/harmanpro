@@ -7,7 +7,7 @@ end
 gem 'rails', '~> 6.1'
 gem 'bootsnap', require: false
 gem 'sass-rails'
-gem 'terser'
+gem 'uglifier'
 gem 'coffee-rails'
 gem 'sprockets', '~> 4.0'
 gem 'font_awesome5_rails'
