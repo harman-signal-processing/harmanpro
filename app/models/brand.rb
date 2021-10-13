@@ -66,6 +66,12 @@ class Brand < ApplicationRecord
     Brand.where("name not in (?)", excluded_brands).order(:name)
   }
 
+  has_many :learning_session_event_brands, dependent: :destroy, foreign_key: "brand_id", class_name: 'LearningSessionEventBrand'
+  has_many :learning_sessions, -> { order 'learning_session_event_brands.id desc' }, through: :learning_session_event_brands, source: :learning_session_event, class_name: 'LearningSessionEvent'
+  scope :with_learning_session_events, -> {
+    Brand.joins(:learning_session_event_brands).order(:name)
+  }
+
   has_attached_file :logo,
     styles: {
       large: "250x156",

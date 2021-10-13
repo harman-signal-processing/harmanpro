@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_04_205702) do
+ActiveRecord::Schema.define(version: 2021_10_12_185605) do
 
   create_table "active_admin_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "namespace"
@@ -787,6 +787,54 @@ ActiveRecord::Schema.define(version: 2021_08_04_205702) do
     t.boolean "subscribe"
   end
 
+  create_table "learning_session_event_brands", charset: "utf8", force: :cascade do |t|
+    t.bigint "learning_session_event_id", null: false
+    t.integer "brand_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_learning_session_event_brands_on_brand_id"
+    t.index ["learning_session_event_id", "brand_id"], name: "by_learning_session_event_brand", unique: true
+    t.index ["learning_session_event_id"], name: "index_learning_session_event_brands_on_learning_session_event_id"
+  end
+
+  create_table "learning_session_event_sessions", charset: "utf8", force: :cascade do |t|
+    t.string "title"
+    t.date "session_date"
+    t.string "session_times"
+    t.string "register_link"
+    t.bigint "learning_session_event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["learning_session_event_id"], name: "idx_ls_session_on_event_id"
+  end
+
+  create_table "learning_session_events", charset: "utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "subtitle"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "learning_session_featured_videos", charset: "utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "youtube_id"
+    t.integer "brand_id", null: false
+    t.integer "position"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_learning_session_featured_videos_on_brand_id"
+  end
+
+  create_table "learning_session_pages", charset: "utf8", force: :cascade do |t|
+    t.text "body"
+    t.text "custom_css"
+    t.integer "brand_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_learning_session_pages_on_brand_id"
+  end
+
   create_table "locale_translators", id: :integer, charset: "utf8", force: :cascade do |t|
     t.integer "available_locale_id"
     t.integer "user_id"
@@ -1532,6 +1580,11 @@ ActiveRecord::Schema.define(version: 2021_08_04_205702) do
   add_foreign_key "distributor_info_distributor_phones", "distributor_info_distributors"
   add_foreign_key "distributor_info_distributor_websites", "contact_info_websites"
   add_foreign_key "distributor_info_distributor_websites", "distributor_info_distributors"
+  add_foreign_key "learning_session_event_brands", "brands"
+  add_foreign_key "learning_session_event_brands", "learning_session_events"
+  add_foreign_key "learning_session_event_sessions", "learning_session_events"
+  add_foreign_key "learning_session_featured_videos", "brands"
+  add_foreign_key "learning_session_pages", "brands"
   add_foreign_key "location_info_location_contacts", "contact_info_contacts"
   add_foreign_key "location_info_location_contacts", "location_info_locations"
   add_foreign_key "location_info_location_emails", "contact_info_emails"

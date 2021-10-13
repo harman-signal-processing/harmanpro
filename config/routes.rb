@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   # New Contacts paths
   namespace :contact_info do
-    
+
     get 'admin' => 'admin#index'
     namespace :admin do
       resources :contacts, path: :contacts
@@ -40,11 +40,11 @@ Rails.application.routes.draw do
       resources :tags, path: :tags
       resources :data_clients, path: :dataclients
       resources :pro_site_options, path: :prositeoptions
-      
+
       resources :contact_supported_countries
-      resources :contact_supported_brands      
+      resources :contact_supported_brands
       resources :territory_supported_countries
-      
+
       resources :contact_emails,
         :contact_phones,
         :contact_websites,
@@ -54,11 +54,11 @@ Rails.application.routes.draw do
         :contact_data_clients do
           collection { post :update_order }
       end
-      
+
     end  #  namespace :admin do
-    
+
     get "rso/:country_code" => "rsos#show", as: "rso_country"
-    
+
   end  #  namespace :contact_info do
 
   # New Locations paths
@@ -98,7 +98,7 @@ Rails.application.routes.draw do
         collection { post :update_order }
       end
     end  # namespace :admin do
-    
+
     # resources :distributors, only: [:index, :show]
     get "distributors/:brand/:country_code" => "distributors#show", as: "brand_country"
     get "distributors/:brand/region/:region" => "distributors#region", as: "brandy_region"
@@ -256,6 +256,7 @@ Rails.application.routes.draw do
   get '/training', to: redirect('https://harman.remote-learner.net')
   get 'learning-sessions', to: redirect('/lp/learning-sessions'), as: :learning_sessions
   get 'learning-sessions-calendar', to: redirect('/lp/events-calendar'), as: :learning_sessions_calendar
+  get 'learning-sessions-new' => 'learning_sessions#index', as: :learning_sessions_new
 
   # Resource library (local resources on our site)
   get '/resource-library/:id' => 'resources#show', as: :resource_permalink
@@ -287,7 +288,7 @@ Rails.application.routes.draw do
   get "/contacts_old/:search/:chosen_contacts_path", to: "contacts#show"
   get "/contacts/:search", to: "contacts#show_new"
   get "/contacts/:search/:chosen_contacts_path", to: "contacts#show_new"
-  
+
   get "/dealers-ru", to: "landing_pages#show", :id => 'dealers-ru'
 
   get '/thankyou' => 'landing_pages#thankyou', as: :thankyou # Thank you page after leadgen form
