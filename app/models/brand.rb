@@ -68,6 +68,10 @@ class Brand < ApplicationRecord
 
   has_many :learning_session_event_brands, dependent: :destroy, foreign_key: "brand_id", class_name: 'LearningSessionEventBrand'
   has_many :learning_sessions, -> { order 'learning_session_event_brands.id desc' }, through: :learning_session_event_brands, source: :learning_session_event, class_name: 'LearningSessionEvent'
+
+  has_many :learning_session_pages, dependent: :destroy, foreign_key: "brand_id", class_name: 'LearningSessionPage'
+  has_many :learning_session_featured_videos, dependent: :destroy, foreign_key: "brand_id", class_name: 'LearningSessionFeaturedVideo'
+
   scope :with_learning_session_events, -> {
     Brand.joins(:learning_session_event_brands).order(:name)
   }
