@@ -1,4 +1,6 @@
 class LearningSessionEvent < ApplicationRecord
+  attribute :sessions
+
   has_many :learning_session_event_sessions, dependent: :destroy, inverse_of: :learning_session_event
   has_many :learning_session_event_brands, dependent: :destroy, inverse_of: :learning_session_event
   has_many :brands, through: :learning_session_event_brands
