@@ -255,9 +255,9 @@ Rails.application.routes.draw do
   #
   # Default top-menu and specs rely on "training_path" method. This route defines it:
   get '/training', to: redirect('https://harman.remote-learner.net')
-  get 'learning-sessions', to: redirect('/lp/learning-sessions'), as: :learning_sessions
+#   get 'learning-sessions', to: redirect('/lp/learning-sessions'), as: :learning_sessions
   get 'learning-sessions-calendar', to: redirect('/lp/events-calendar'), as: :learning_sessions_calendar
-  get 'learning-sessions-new' => 'learning_sessions#index', as: :learning_sessions_new
+  get 'learning-sessions' => 'learning_sessions#index', as: :learning_sessions
 
   # Resource library (local resources on our site)
   get '/resource-library/:id' => 'resources#show', as: :resource_permalink

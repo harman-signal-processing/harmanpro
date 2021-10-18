@@ -24,20 +24,22 @@
       </div> <!-- <div class="medium-12 small-12 columns"> -->
     </div>  <!-- <div class="row" data-equalizer="blurbs" data-equalizer-mq="medium-up"> -->
   <% end %>  <%# @events.each do |event| %>
-<% else %>
+<% end %>  <%# if @events.count > 0 %>
+
+<% if @webinars_link.present? %>
   <div class="row" data-equalizer="blurbs" data-equalizer-mq="medium-up">
       <div class="medium-12 small-12 columns">
           <div class="panel" data-equalizer-watch="blurbs">
               <div align="center">
                   <h1 style="margin: 0;"><a class="button large "
                           style="text-align: center; margin: 0; font-weight: bold;"
-                          href="https://pro.harman.com/lp/learning-sessions-playlists" target="_blank" rel="noopener">VIEW
+                          href="<%=@webinars_link%>" target="_blank" rel="noopener">VIEW
                           RECORDED LEARNING SESSIONS</a></h1>
               </div>
           </div>
       </div>
   </div>
-<% end %>
+<% end %>  <%# if @webinars_link.present? %>
 
 <h3>FEATURED WEBINARS</h3>
 <p>Explore some of our most popular recorded product launch and training webinars.</p>
