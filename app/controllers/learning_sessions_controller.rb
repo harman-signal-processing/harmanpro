@@ -8,6 +8,7 @@ class LearningSessionsController < ApplicationController
       .order("learning_session_event_sessions.session_date")
       .uniq
 
+    @webinars_link = LearningSessionPage.where("brand_id = ?", prosite_id).first.webinars_link
     @featured_videos = LearningSessionFeaturedVideo.where("brand_id = ?", prosite_id)
 
   end  #  def index

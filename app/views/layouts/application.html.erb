@@ -175,7 +175,7 @@
               </li>
               <li><%= link_to t('nav.new_products'), "/new-products" %></li>
               <% unless I18n.locale == :"zh-CN" %>
-                <li><%= link_to t('nav.learning_sessions'), "/lp/learning-sessions" %></li>
+                <li><%= link_to t('nav.learning_sessions'), "/learning-sessions/" %></li>
               <% end %>
               <li><%= link_to t('nav.contact_us'), contacts_path %></li>
               <% if SiteSetting.set_for_locale?("blog_link_name") && SiteSetting.set_for_locale?("blog_link") %>
