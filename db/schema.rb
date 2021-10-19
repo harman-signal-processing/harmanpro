@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_12_185605) do
+ActiveRecord::Schema.define(version: 2021_10_19_180638) do
 
   create_table "active_admin_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "namespace"
@@ -832,6 +832,7 @@ ActiveRecord::Schema.define(version: 2021_10_12_185605) do
     t.integer "brand_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "webinars_link"
     t.index ["brand_id"], name: "index_learning_session_pages_on_brand_id"
   end
 
