@@ -10,7 +10,9 @@ module Api
 
         respond_to do |format|
           if brand.present?
-            @learning_session_events = brand.learning_sessions.order(created_at: :desc)
+            @learning_session_events = brand.learning_sessions.joins(:learning_session_event_sessions)
+            .where("learning_session_event_sessions.session_date >= ?", Date.today)
+            .order("learning_session_event_sessions.session_date").uniq
             @learning_session_page_overview = brand.learning_session_pages.first
             @learning_session_featured_videos = brand.learning_session_featured_videos.order(position: :asc)
             @learning_sessions = {
