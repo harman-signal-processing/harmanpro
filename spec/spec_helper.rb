@@ -1,3 +1,5 @@
+ENV['SUPPRESS_JASMINE_DEPRECATION'] = "1"
+
 require 'simplecov'
 SimpleCov.start 'rails'
 
