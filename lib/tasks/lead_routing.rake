@@ -26,4 +26,18 @@ namespace :lead_routing do
       end
     end
   end
+
+  desc "Export anonymized lead data for reporting"
+  task export_for_reporting: :environment do
+
+    file = Rails.root.join("jblpro-lead-form-timestamp.csv")
+
+    CSV.open(file, "wb") do |csv|
+      csv << ["id", "created_at"]
+      Lead.where("source LIKE ?", "%jblpro%").pluck(:id, :created_at).each do |lead|
+        csv << lead
+      end
+    end
+
+  end
 end
