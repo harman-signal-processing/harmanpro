@@ -32,7 +32,6 @@ class Cms::AvailableLocalesController < CmsController
     @intro = SiteSetting.find_by(name: "consultant-portal-welcome-paragraph")
     @contacts = SiteSetting.find_by(name: "consultant-portal-contacts")
     @contacts.content = RedCloth.new(@contacts.content).to_html
-    @consignment = SiteSetting.find_by(name: "consultant-portal-loan-program-paragraph")
   end
 
   def update_consultants

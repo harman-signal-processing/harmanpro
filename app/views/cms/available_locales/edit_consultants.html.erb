@@ -20,13 +20,6 @@
       <% end %>
 
       <br/>
-      <%= simple_fields_for "site_setting[#{@consignment.id}]", @consignment do |co| %>
-        <%= co.input :content, as: :text,
-          label: "Consignment program paragraph",
-          hint: "Leave blank to hide the consignment section on the public site.",
-          input_html: { rows: 10, class: "mceEditor" }  %>
-      <% end %>
-
       <%= f.submit "Save Changes", class: "medium button" %>
     <% end %>
   </div>
