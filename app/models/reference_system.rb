@@ -12,7 +12,7 @@ class ReferenceSystem < ApplicationRecord
   belongs_to :vertical_market
   has_many :reference_system_product_types, dependent: :destroy
 
-  has_attached_file :banner,
+  has_attached_file :banner, {
     styles: {
       large: "1170x400#",
       medium: "500x200#",
@@ -20,15 +20,15 @@ class ReferenceSystem < ApplicationRecord
       thumb: "83x50#",
       thumb_square: "64x64#"
   }, processors: [:thumbnail, :compression],
-  default_url: "missing/banners/:style.jpg"
+  default_url: "missing/banners/:style.jpg"}.merge(RACKSPACE_STORAGE)
   attr_accessor :delete_banner
 
-  has_attached_file :system_diagram,
+  has_attached_file :system_diagram, {
     styles: {
       large: "635x419",
       thumb_square: "64x64#"
   }, processors: [:thumbnail, :compression],
-  default_url: "missing/system_diagrams/:style.jpg"
+  default_url: "missing/system_diagrams/:style.jpg"}.merge(RACKSPACE_STORAGE)
   attr_accessor :delete_diagram
 
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\Z/

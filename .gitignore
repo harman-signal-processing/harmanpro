@@ -23,13 +23,14 @@ db/sphinx/
 /tmp
 /coverage
 /notes
-/config/database.yml
 /.capistrano/
 /public/system/
 /spec/test_files
 
 # Ignore application configuration
 /config/application.yml
+/config/database.yml
+/config/s3.yml
 
 # Compiled source #
 ###################

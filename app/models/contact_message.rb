@@ -16,7 +16,7 @@ class ContactMessage < ApplicationRecord
     :shipping_zip, presence: true, if: :require_shipping_address?
   validates :warranty, inclusion: {in: [true, false]}, if: :repair_request?
 
-  has_attached_file :attachment
+  has_attached_file :attachment, RACKSPACE_STORAGE
   do_not_validate_attachment_file_type :attachment
 
   after_create :create_message

@@ -19,6 +19,9 @@ module Paperclip
   end
 end
 
+Paperclip::UriAdapter.register
+Paperclip::HttpUrlProxyAdapter.register
+
 Paperclip::Attachment.default_options[:compression] = {
   png: "-o 5 -quiet",
   jpeg: "-copy none -optimize -progressive"
@@ -32,28 +35,56 @@ Paperclip.interpolates(:timestamp) do |attachment, style|
   attachment.instance_read(:updated_at).to_i
 end
 
+# Amazon account 'hspwww' access keys:
+c = YAML.load_file(File.join(Rails.root, 'config/s3.yml')).symbolize_keys
+if Rails.env.production? || !!(ENV['USE_PRODUCTION_ASSETS'].to_i > 0)
+  paperclip_env = :production
+else
+  paperclip_env = Rails.env.to_sym
+end
+Rails.configuration.aws = c[paperclip_env].symbolize_keys!
+
+#Aws.config(logger: Rails.logger)
+#Aws.config(Rails.configuration.aws)
+
+# Cloudfront only seems to work with an S3 bucket OR some other source (not both).
+# So, since cdn.harmanpro.com is setup as an alias of assets.harmanpro.com, we need
+# a separate CDN for stuff in the S3 buckets...
+S3_CLOUDFRONT = "d3nw26meo6dlp6.cloudfront.net" #"#{Rails.configuration.aws[:bucket]}.s3.amazonaws.com"
+
 if Rails.env.production? || !!(ENV['USE_PRODUCTION_ASSETS'].to_i > 0)
 
-	Paperclip::Attachment.default_options.merge!({
+  S3_STORAGE = {
+    storage: :s3,
+    bucket: Rails.configuration.aws[:bucket],
+    s3_credentials: Rails.configuration.aws,
+    s3_host_alias: S3_CLOUDFRONT,
+    s3_protocol: 'https',
+    s3_region: ENV['AWS_REGION'],
+    url: ':s3_alias_url',
+    path: ":class/:attachment/:id_:timestamp/:basename_:style.:extension"
+  }
+
+  RACKSPACE_STORAGE = {
     url: ':fog_public_url',
     path: ":class/:attachment/:id_:timestamp/:basename_:style.:extension",
     storage: :fog,
-    fog_credentials: {
-      provider:           'Rackspace',
-      rackspace_username: ENV['RACKSPACE_USERNAME'],
-      rackspace_api_key:  ENV['RACKSPACE_API_KEY'],
-      rackspace_region:   :ord
-    },
+    fog_credentials: FOG_CREDENTIALS,
     fog_directory: ENV['FOG_PAPERCLIP_CONTAINER'],
     fog_public: true,
+    fog_file: {
+       cache_control: 'max-age=7776000'
+    },
     fog_host: ENV['FOG_HOST_ALIAS']
-	})
-
-  RESOURCES_STORAGE = {
+  }
+  
+	Paperclip::Attachment.default_options.merge!(S3_STORAGE)
+	
+	RESOURCES_STORAGE = RACKSPACE_STORAGE.merge({
     url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
     path: ":rails_root/public/system/:class/:attachment/:id_:timestamp/:basename.:extension"
-  }
-
+  })
+  
 elsif Rails.env.test?
 
   Paperclip::Attachment.default_options.merge!({
@@ -62,11 +93,17 @@ elsif Rails.env.test?
     path: ":rails_root/spec/test_files/:class/:attachment/:id_:timestamp/:basename.:extension"
   })
 
-  RESOURCES_STORAGE = {
+  S3_STORAGE = {
     url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
     path: ":rails_root/spec/test_files/:class/:attachment/:id_:timestamp/:basename.:extension"
   }
 
+  RACKSPACE_STORAGE = S3_STORAGE
+  
+	RESOURCES_STORAGE = {
+    url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
+    path: ":rails_root/public/system/:class/:attachment/:id_:timestamp/:basename.:extension"
+  }
 else
 
 	Paperclip::Attachment.default_options.merge!({
@@ -75,10 +112,15 @@ else
     path: ":rails_root/public/system/:class/:attachment/:id_:timestamp/:basename_:style.:extension"
 	})
 
-  RESOURCES_STORAGE = {
+  S3_STORAGE = {
     url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
-    storage: :filesystem,
-    path: ":rails_root/public/system/:class/:attachment/:id_:timestamp/:basename.:extension"
+    path: ":rails_root/spec/test_files/:class/:attachment/:id_:timestamp/:basename.:extension"
   }
 
+  RACKSPACE_STORAGE = S3_STORAGE
+  
+	RESOURCES_STORAGE = {
+    url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
+    path: ":rails_root/public/system/:class/:attachment/:id_:timestamp/:basename.:extension"
+  }
 end

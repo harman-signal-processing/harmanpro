@@ -30,6 +30,7 @@ gem 'foundation-rails', '~> 5.5' # After this, getting incompatible units errors
 gem 'friendly_id', '>= 5.2'
 gem 'kt-paperclip', '>= 7.0'
 gem 'kt-paperclip-compression'
+gem 'aws-sdk-s3'
 gem 'fog-core', '< 2.1.1' # fog-rackspace isn't working with fog-core after 2.1.0
 gem 'fog-rackspace'
 gem 'acts_as_list'

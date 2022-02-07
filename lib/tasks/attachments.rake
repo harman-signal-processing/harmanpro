@@ -46,5 +46,35 @@ namespace :attachments do
       end
     end
   end
+  
+	task migrate_assets_to_s3: :environment do
+	  setup_api_connectors
+    s3_bucket_name = 'hpro-web-assets'
+    
+    directory = @rackspace.directories.get('hpro')
+    directory.files.all(prefix: "case_studies/banners/4").each do |rackspace_obj|
+      puts "Copying #{ rackspace_obj.key }"
+			@s3_client.put_object(
+			    body: rackspace_obj.body,
+			    bucket: s3_bucket_name,
+			    key: rackspace_obj.key,
+			    acl: 'public-read',
+		      content_type: rackspace_obj.content_type
+			  )
+    end
+	end
+	
+	def setup_api_connectors
+    # Establish S3 connection
+    @s3_client = Aws::S3::Client.new(region: 'us-east-1')
 
+    # Rackspace cloud files connection
+    @rackspace = Fog::Storage.new({
+      provider:           'Rackspace',
+      rackspace_username: ENV['RACKSPACE_USERNAME'],
+      rackspace_api_key:  ENV['RACKSPACE_API_KEY'],
+      rackspace_region:   :ord
+    })
+	end
+	
 end
