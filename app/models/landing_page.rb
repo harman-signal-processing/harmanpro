@@ -15,7 +15,7 @@ class LandingPage < ApplicationRecord
   belongs_to :original_locale, class_name: "AvailableLocale"
   has_many :features, -> { order(Arel.sql('position')) }, as: :featurable, dependent: :destroy
 
-  has_attached_file :banner,
+  has_attached_file :banner, {
     styles: {
       large: "1170x400",
       medium: "500x200",
@@ -23,7 +23,7 @@ class LandingPage < ApplicationRecord
       thumb: "83x50",
       thumb_square: "64x64#"
   }, processors: [:thumbnail, :compression],
-  default_url: "missing/banners/:style.jpg"
+  default_url: "missing/banners/:style.jpg"}.merge(RACKSPACE_STORAGE)
   attr_accessor :delete_banner
 
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\Z/

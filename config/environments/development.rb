@@ -27,9 +27,9 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  unless ENV["C9_PID"].blank?
-    config.action_controller.asset_host = 'https://' + ENV["C9_PID"] + '.vfs.cloud9.us-east-1.amazonaws.com'
-  end
+#  unless ENV["C9_PID"].blank?
+#    config.action_controller.asset_host = 'https://' + ENV["C9_PID"] + '.vfs.cloud9.us-east-1.amazonaws.com'
+#  end
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

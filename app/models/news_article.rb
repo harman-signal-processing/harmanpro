@@ -6,7 +6,7 @@ class NewsArticle < ApplicationRecord
   has_many :brands, through: :brand_news_articles
   belongs_to :locale, class_name: "AvailableLocale", foreign_key: :locale_id
 
-  has_attached_file :news_photo,
+  has_attached_file :news_photo,{
     styles: {
       large: "1170x400#",
       medium: "500x200#",
@@ -15,7 +15,7 @@ class NewsArticle < ApplicationRecord
       thumb: "83x50#",
       thumb_square: "64x64#"
   }, processors: [:thumbnail, :compression],
-  default_url: "missing/banners/:style.jpg"
+  default_url: "missing/banners/:style.jpg"}.merge(RACKSPACE_STORAGE)
 
   validates_attachment_content_type :news_photo, content_type: /\Aimage\/.*\Z/
   validates :locale, presence: true

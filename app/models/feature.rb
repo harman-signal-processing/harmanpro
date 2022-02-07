@@ -7,7 +7,7 @@ class Feature < ApplicationRecord
 
   acts_as_list scope: :featurable_id
 
-  has_attached_file :image,
+  has_attached_file :image, {
     styles: {
       extra_large: "1100>x600",
       large: "600>x370",
@@ -16,7 +16,7 @@ class Feature < ApplicationRecord
       tiny: "64x64>",
       tiny_square: "64x64#"
     }, processors: [:thumbnail, :compression],
-    default_url: "missing/banners/:style.jpg"
+    default_url: "missing/banners/:style.jpg"}.merge(RACKSPACE_STORAGE)
   validates_attachment :image, content_type: { content_type: /\Aimage/i }
 
   attr_accessor :delete_image

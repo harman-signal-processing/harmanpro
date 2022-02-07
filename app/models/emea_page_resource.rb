@@ -1,6 +1,6 @@
 class EmeaPageResource < ApplicationRecord
   belongs_to :emea_page
-  has_attached_file :attachment
+  has_attached_file :attachment, RACKSPACE_STORAGE
 
   validates :name, presence: true
   validates :emea_page, presence: true

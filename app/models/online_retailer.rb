@@ -8,7 +8,7 @@ class OnlineRetailer < ApplicationRecord
   validates :url, presence: true, format: { with: URI.regexp }
   validates :locale, presence: true
 
-  has_attached_file :logo,
+  has_attached_file :logo, {
     styles: {
       large: "250x156",
       medium: "125x78",
@@ -18,7 +18,7 @@ class OnlineRetailer < ApplicationRecord
       circle: "72x72",
       tiny: "32x32#"
   }, processors: [:thumbnail, :compression],
-  default_url: "missing/logos/:style.jpg"
+  default_url: "missing/logos/:style.jpg"}.merge(RACKSPACE_STORAGE)
 
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 
