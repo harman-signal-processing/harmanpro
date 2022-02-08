@@ -52,7 +52,7 @@ namespace :attachments do
     s3_bucket_name = 'hpro-web-assets'
     
     directory = @rackspace.directories.get('hpro')
-    directory.files.all(prefix: "case_studies/banners/4").each do |rackspace_obj|
+    directory.files.all(prefix: "landing").each do |rackspace_obj|
       puts "Copying #{ rackspace_obj.key }"
 			@s3_client.put_object(
 			    body: rackspace_obj.body,
@@ -66,7 +66,9 @@ namespace :attachments do
 	
 	def setup_api_connectors
     # Establish S3 connection
-    @s3_client = Aws::S3::Client.new(region: 'us-east-1')
+    @s3_client = Aws::S3::Client.new(
+      region: ENV['AWS_REGION']
+    )
 
     # Rackspace cloud files connection
     @rackspace = Fog::Storage.new({
