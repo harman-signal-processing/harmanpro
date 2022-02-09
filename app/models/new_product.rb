@@ -13,7 +13,7 @@ class NewProduct < ApplicationRecord
   validates :name, presence: true
   validates :released_on, presence: true
 
-  has_attached_file :image, {
+  has_attached_file :image,
     styles: {
       large: "1170x952#",
       medium: "500x407#",
@@ -21,7 +21,7 @@ class NewProduct < ApplicationRecord
       thumb: "83x50#",
       thumb_square: "64x64#"
   }, processors: [:thumbnail, :compression],
-  default_url: "missing/banners/:style.jpg"}.merge(RACKSPACE_STORAGE)
+  default_url: "missing/banners/:style.jpg"
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
