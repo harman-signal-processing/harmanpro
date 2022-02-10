@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   belongs_to :brand
   has_many :reference_system_product_type_products, dependent: :destroy
 
-  has_attached_file :photo, {
+  has_attached_file :photo,
     styles: {
       large: "1170x624",
       medium: "500x312",
@@ -19,7 +19,7 @@ class Product < ApplicationRecord
       thumb_square: "64x64#",
       tiny: "32x32#"
   }, processors: [:thumbnail, :compression],
-  default_url: "missing/banners/:style.jpg"}.merge(RACKSPACE_STORAGE)
+  default_url: "missing/banners/:style.jpg"
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
   validates :name, presence: true, uniqueness: { case_sensitive: false }
