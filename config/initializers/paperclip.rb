@@ -80,9 +80,8 @@ if Rails.env.production? || !!(ENV['USE_PRODUCTION_ASSETS'].to_i > 0)
   
 	Paperclip::Attachment.default_options.merge!(S3_STORAGE)
 	
-	RESOURCES_STORAGE = RACKSPACE_STORAGE.merge({
-    url: '/system/:class/:attachment/:id_:timestamp/:basename.:extension',
-    path: ":rails_root/public/system/:class/:attachment/:id_:timestamp/:basename.:extension"
+	RESOURCES_STORAGE = S3_STORAGE.merge({
+    path: ":class/:attachment/:id_:timestamp/:basename.:extension"
   })
   
 elsif Rails.env.test?

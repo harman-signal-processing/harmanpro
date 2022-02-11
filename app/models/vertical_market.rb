@@ -16,16 +16,16 @@ class VerticalMarket < ApplicationRecord
   has_many :leads
   acts_as_tree #order: "name"
 
-  has_attached_file :icon, {
+  has_attached_file :icon,
     styles: {
       standard: "93x93#",
       thumb: "48x48#"
   }, processors: [:thumbnail, :compression],
-  default_url: "missing/icon.png"}.merge(RACKSPACE_STORAGE)
+  default_url: "missing/icon.png"
 
   validates_attachment_content_type :icon, content_type: /\Aimage\/.*\Z/
 
-  has_attached_file :banner, {
+  has_attached_file :banner,
     styles: {
       large: "1170x400#",
       medium: "500x200#",
@@ -34,11 +34,11 @@ class VerticalMarket < ApplicationRecord
       thumb: "83x50#",
       thumb_square: "64x64#"
   }, processors: [:thumbnail, :compression],
-  default_url: "missing/banners/:style.jpg"}.merge(RACKSPACE_STORAGE)
+  default_url: "missing/banners/:style.jpg"
 
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\Z/
 
-  has_attached_file :background, {
+  has_attached_file :background,
     styles: {
       large: "1170x1755#",
       medium: "585x877#",
@@ -46,11 +46,11 @@ class VerticalMarket < ApplicationRecord
       thumb: "80x120#",
       thumb_square: "64x64#"
   }, processors: [:thumbnail, :compression],
-  default_url: "missing/background/:style.jpg"}.merge(RACKSPACE_STORAGE)
+  default_url: "missing/background/:style.jpg"
 
   validates_attachment_content_type :background, content_type: /\Aimage\/.*\Z/
 
-  has_attached_file :hef_banner, {
+  has_attached_file :hef_banner,
     styles: {
       large: "1170x1755#",
       medium: "585x877#",
@@ -58,7 +58,7 @@ class VerticalMarket < ApplicationRecord
       thumb: "80x120#",
       thumb_square: "64x64#"
   }, processors: [:thumbnail, :compression],
-  default_url: "missing/hef_banner/:style.jpg"}.merge(RACKSPACE_STORAGE)
+  default_url: "missing/hef_banner/:style.jpg"
 
   validates_attachment_content_type :hef_banner, content_type: /\Aimage\/.*\Z/
 
