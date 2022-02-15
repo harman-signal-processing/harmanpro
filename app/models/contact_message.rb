@@ -16,10 +16,11 @@ class ContactMessage < ApplicationRecord
     :shipping_zip, presence: true, if: :require_shipping_address?
   validates :warranty, inclusion: {in: [true, false]}, if: :repair_request?
 
-  has_attached_file :attachment, RACKSPACE_STORAGE
+  has_attached_file :attachment
   do_not_validate_attachment_file_type :attachment
 
   after_create :create_message
+  before_update :delete_attachment_if_sent
 
   def self.message_types
     [
@@ -38,6 +39,12 @@ class ContactMessage < ApplicationRecord
 
   def create_message
     ServiceMailer.contact_form(self).deliver_later(wait: 5.minutes)
+  end
+  
+  def delete_attachment_if_sent
+    if sent_at.present? && sent_at_was == nil
+      self.attachment = nil
+    end
   end
 
   def require_product?

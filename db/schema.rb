@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_19_180638) do
+ActiveRecord::Schema.define(version: 2022_02_14_174509) do
 
   create_table "active_admin_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "namespace"
@@ -448,6 +448,7 @@ ActiveRecord::Schema.define(version: 2021_10_19_180638) do
     t.string "attachment_content_type"
     t.integer "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.datetime "sent_at"
     t.index ["brand_id"], name: "index_contact_messages_on_brand_id"
   end
 
