@@ -41,6 +41,8 @@ class ContactMessage < ApplicationRecord
     ServiceMailer.contact_form(self).deliver_later(wait: 5.minutes)
   end
   
+  # Attachments may have personal info on receipts, so delete the attachment
+  # after the mail has been sent to support department.
   def delete_attachment_if_sent
     if sent_at.present? && sent_at_was == nil
       self.attachment = nil

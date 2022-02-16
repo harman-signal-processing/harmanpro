@@ -52,13 +52,13 @@ namespace :attachments do
     s3_bucket_name = 'hpro-web-assets'
     
     directory = @rackspace.directories.get('hpro')
-    directory.files.all(prefix: "vertical").each do |rackspace_obj|
+    directory.files.all(prefix: "contact_messages/attachments/2148").each do |rackspace_obj|
       puts "Copying #{ rackspace_obj.key }"
 			@s3_client.put_object(
 			    body: rackspace_obj.body,
 			    bucket: s3_bucket_name,
 			    key: rackspace_obj.key,
-			    acl: 'public-read',
+			    #acl: 'public-read',
 		      content_type: rackspace_obj.content_type
 			  )
     end

@@ -4,11 +4,7 @@ class ServiceMailer < ActionMailer::Base
   def contact_form(contact_message, options={})
     @contact_message = contact_message
 
-    bcc = nil
     if contact_message.attachment.present?
-      if ENV['DEV_RECIPIENTS'].present?
-        bcc = ENV['DEV_RECIPIENTS']
-      end
       begin
         attachments[contact_message.attachment_file_name] = {
           mime_type: contact_message.attachment_content_type,
@@ -22,7 +18,6 @@ class ServiceMailer < ActionMailer::Base
 
     mail(
       to: @contact_message.recipient,
-      bcc: bcc,
       subject: "#{@contact_message.subject} (via pro.harman.com)"
     )
     
