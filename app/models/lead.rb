@@ -78,7 +78,7 @@ class Lead < ApplicationRecord
 
   def country_name
     if c = ISO3166::Country.new(country)
-      c.name
+      c.iso_short_name
     else
       country
     end

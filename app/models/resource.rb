@@ -13,7 +13,7 @@ class Resource < ApplicationRecord
       thumb_square: "64x64#",
       tiny: "32x32#"
   }, processors: [:thumbnail, :compression],
-  default_url: "missing/logos/:style.jpg"}.merge(RACKSPACE_STORAGE)
+  default_url: "missing/logos/:style.jpg"}
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
