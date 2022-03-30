@@ -217,6 +217,7 @@ Rails.application.routes.draw do
 
   get 'lp/:id(/:random)' => 'landing_pages#show', as: :landing_page
   get 'ep/:id(/:embed)' => 'landing_pages#show', defaults: { embed: 'true' }
+  get 'leads/local/:id' => 'leads#local_lookup' # For when Acoustic fails
   resources :leads, path: 'plan/help', only: [:new, :create]
   resources :leads, only: [:show]
   resources :lead_followups, only: [:create, :destroy]

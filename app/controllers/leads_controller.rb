@@ -30,6 +30,15 @@ class LeadsController < ApplicationController
     end
   end
 
+  # Sometimes Acoustic API fails. In that case, the link in the leadgen
+  # email directs the viewer here where we lookup the lead by the
+  # id in the local database
+  def local_lookup
+    @lead = Lead.find(params[:id])
+    @lead_followup = false
+    render action: 'show'
+  end
+  
   private
 
   def lead_params

@@ -32,6 +32,8 @@ class Lead < ApplicationRecord
     begin
       send_to_acoustic
     rescue
+      # Sending notifications despite Acoustic failure
+      LeadMailer.new_lead(self).deliver_later
       logger.debug("There was some acoustic exception")
     end
   end

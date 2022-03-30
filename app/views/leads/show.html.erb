@@ -20,18 +20,33 @@
         <th>Phone:</th>
         <td><%= @lead.phone %> &nbsp;</td>
       </tr>
-      <tr>
-        <th>City:</th>
-        <td><%= @lead.columns[:"0008_City"] %> &nbsp;</td>
-      </tr>
-      <tr>
-        <th>State:</th>
-        <td><%= @lead.columns[:"0009_State_Province"] %> &nbsp;</td>
-      </tr>
-      <tr>
-        <th>Country:</th>
-        <td><%= @lead.columns[:"00a11_Country_Custom"] %> &nbsp;</td>
-      </tr>
+      <% if @lead.columns.present? %>
+        <tr>
+          <th>City:</th>
+          <td><%= @lead.columns[:"0008_City"] %> &nbsp;</td>
+        </tr>
+        <tr>
+          <th>State:</th>
+          <td><%= @lead.columns[:"0009_State_Province"] %> &nbsp;</td>
+        </tr>
+        <tr>
+          <th>Country:</th>
+          <td><%= @lead.columns[:"00a11_Country_Custom"] %> &nbsp;</td>
+        </tr>
+      <% else %>
+        <tr>
+          <th>City:</th>
+          <td><%= @lead.city %> &nbsp;</td>
+        </tr>
+        <tr>
+          <th>State:</th>
+          <td><%= @lead.state %> &nbsp;</td>
+        </tr>
+        <tr>
+          <th>Country:</th>
+          <td><%= @lead.country %> &nbsp;</td>
+        </tr>
+      <% end %>
     </table>
 
     <h5>Project Details:</h5>
@@ -46,11 +61,9 @@
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
-    <!--
-      <%= @lead.columns.to_yaml %>
-    -->
   </div>
 
+<% if @lead_followup %>
   <div class="small-12 medium-6 columns">
     <p class="text-center">Followup Notes</p>
 
@@ -67,12 +80,12 @@
       </div>
     <% end %>
 
-
     <div id="lead_followups">
       <% @lead.lead_followups.order("created_at DESC").each do |lead_followup| %>
         <%= render lead_followup %>
       <% end %>
     </div>
   </div>
+<% end %>
 
 </div>

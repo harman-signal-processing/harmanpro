@@ -11,7 +11,11 @@ Please follow up accordingly.</p>
 <p>Due to regulations, the lead data is not sent via email.
 Click the link below to view the lead:</p>
 
+<% if @lead.recipient_id.present? %>
 <p><a href="https://pro.harman.com/leads/<%= @lead.recipient_id %>">View lead details</a></p>
+<% else %>
+<p><a href="https://pro.harman.com/leads/<%= @lead.id %>/local">View lead details</a></p>
+<% end %>
 
 <p>You'll need a password to view the link above. If you have not received the
 password, then please contact <%= SiteSetting.value('leadgen-recipients') %>.</p>
