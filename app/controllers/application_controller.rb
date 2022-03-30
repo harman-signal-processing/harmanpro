@@ -170,7 +170,7 @@ class ApplicationController < ActionController::Base
 
   def sanitize_param_value(unsanitized_param_value, allowed_punctuation=[])
     # strip non printable characters and unallowed punctuation characters from unsanitized_param_value
-    sanitized_item = unsanitized_param_value.gsub(/[^[:print:]]/, '').gsub(/[[:punct:]]/) { |item| (allowed_punctuation.include? item) ? item : "" } if unsanitized_param_value.present?
+    sanitized_item = unsanitized_param_value.to_s.gsub(/[^[:print:]]/, '').gsub(/[[:punct:]]/) { |item| (allowed_punctuation.include? item) ? item : "" } if unsanitized_param_value.present?
     sanitized_item
   end
 
