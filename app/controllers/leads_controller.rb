@@ -1,5 +1,5 @@
 class LeadsController < ApplicationController
-  http_basic_authenticate_with name: ENV['LEAD_VIEWER_NAME'], password: ENV['LEAD_VIEWER_PASSWORD'], only: :show
+  http_basic_authenticate_with name: ENV['LEAD_VIEWER_NAME'], password: ENV['LEAD_VIEWER_PASSWORD'], only: [:show, :local_lookup]
 
   def new
     @lead = Lead.new
