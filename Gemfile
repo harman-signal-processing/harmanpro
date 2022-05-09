@@ -50,7 +50,7 @@ gem 'ransack' # using for service center search
 gem 'exception_notification'
 gem 'mailgun_rails' # mailer service from Rackspace
 gem 'recaptcha', require: "recaptcha/rails"
-gem 'nokogiri' # for parsing HTML to generate subnavs on EMEA portal
+gem 'nokogiri', '>= 1.13.4' # for parsing HTML to generate subnavs on EMEA portal
 gem 'thinking-sphinx'
 gem 'kaminari'
 gem 'globalize'
