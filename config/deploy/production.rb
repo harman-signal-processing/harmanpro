@@ -15,10 +15,9 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-#server 'rackspace1', user: 'hpro', roles: %w{admin web app}
-#server 'rackspace2019', user: 'hpro', roles: %w{admin web app}
-server 'rackspace2020', user: 'hpro', roles: %w{admin web app db}, primary: true
-server 'rackspace2021', user: 'hpro', roles: %w{admin web app db}, primary: true
+server 'aws-production1', user: 'hpro', roles: %w{admin web app db}, primary: true
+server 'aws-production2', user: 'hpro', roles: %w{admin web app db}, primary: true
+server 'aws-production3', user: 'hpro', roles: %w{admin web app db}, primary: true
 
 namespace :deploy do
 
