@@ -7,7 +7,7 @@ set :repo_url, 'https://github.com/harman-signal-processing/harmanpro.git'
 
 set :ssh_options, compression: false, keepalive: true
 # Default branch is :master
-ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
+#ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
 # set :deploy_to, '/var/www/my_app'
