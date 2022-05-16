@@ -6,7 +6,7 @@
 
 <div style="margin-top:20px;">
 <ul class="large-block-grid-3 medium-block-grid-1 small-block-grid-1">
-<%@distributors_json.sort_by{|d| d["name"]}.each do |d|
+<%@distributors_json.sort_by{|d| d["name"].downcase}.each do |d|
     distributor = d.deep_symbolize_keys%>
     <% if !distributor[:locations].empty? %>
             <li>
