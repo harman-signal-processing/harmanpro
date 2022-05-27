@@ -15,9 +15,11 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
+# The "db" role is used to determine which server runs the database refresh
+# task for our development machines. So, only one server should have it.
 server 'aws-production1', user: 'hpro', roles: %w{admin web app db}, primary: true
-server 'aws-production2', user: 'hpro', roles: %w{admin web app db}, primary: true
-server 'aws-production3', user: 'hpro', roles: %w{admin web app db}, primary: true
+server 'aws-production2', user: 'hpro', roles: %w{admin web app}, primary: true
+server 'aws-production3', user: 'hpro', roles: %w{admin web app}, primary: true
 
 namespace :deploy do
 
