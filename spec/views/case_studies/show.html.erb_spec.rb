@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "case_studies/show.html.erb", :type => :view do
+RSpec.describe "case_studies/show", :type => :view do
 
   before :all do
     csvm = FactoryBot.create(:case_study_vertical_market)

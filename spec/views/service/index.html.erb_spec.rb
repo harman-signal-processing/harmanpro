@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "service/index.html.erb", as: :view do
+RSpec.describe "service/index", as: :view do
 
   before do
     assign(:contact_message, ContactMessage.new)

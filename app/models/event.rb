@@ -8,7 +8,7 @@ class Event < ApplicationRecord
   extend FriendlyId
   friendly_id :slug_candidates, use: [:globalize, :history, :finders]
 
-  belongs_to :original_locale, class_name: "AvailableLocale"
+  belongs_to :original_locale, class_name: "AvailableLocale", optional: true
   validates :name, presence: true
   validates :start_on, presence: true
   validates :end_on, presence: true

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "main/sitemap.xml.builder", as: :view do
+RSpec.describe "main/sitemap.xml.builder" do
 
   before :all do
     pages = []
@@ -14,9 +14,9 @@ RSpec.describe "main/sitemap.xml.builder", as: :view do
   end
 
   before :each do
-    render
+    render template: "main/sitemap", formats: :xml, handlers: :builder
   end
-
+  
   it "links to the homepage" do
     expect(rendered).to have_selector("loc", text: "http://foo.com")
   end

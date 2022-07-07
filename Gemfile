@@ -3,13 +3,14 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}"
 end
-
-gem 'rails', '~> 6.1'
+gem "digest", "3.1.0"
+gem 'rails', '~> 7.0'
 gem 'bootsnap', require: false
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'sprockets', '~> 4.0'
+gem 'sprockets-rails'
 gem 'font_awesome5_rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby

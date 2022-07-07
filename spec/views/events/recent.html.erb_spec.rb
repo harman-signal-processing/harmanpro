@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "events/recent.html.erb", as: :view do
+RSpec.describe "events/recent", as: :view do
 
   before :all do
     @past_event = FactoryBot.create(:event,

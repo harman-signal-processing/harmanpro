@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "cms/available_locales/landing_pages/index.html.erb" do
+RSpec.describe "cms/available_locales/landing_pages/index" do
 
   before :all do
     @landing_page = FactoryBot.create(:landing_page)

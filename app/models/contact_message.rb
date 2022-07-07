@@ -2,7 +2,6 @@ class ContactMessage < ApplicationRecord
   before_validation :set_defaults
   belongs_to :brand
 
-  validates :brand, presence: true
   validates :name, :subject, :message_type, presence: true
   validates :email, presence: true, email: true
   validates :message, presence: true, if: :support?

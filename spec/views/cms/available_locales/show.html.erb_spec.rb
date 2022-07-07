@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "cms/available_locales/show.html.erb" do
+RSpec.describe "cms/available_locales/show" do
 
   before :all do
     @locale = FactoryBot.create(:available_locale)

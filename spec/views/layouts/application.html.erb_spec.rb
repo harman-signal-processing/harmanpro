@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "layouts/application.html.erb", as: :view do
+RSpec.describe "layouts/application", as: :view do
 
   before :all do
     @brand = FactoryBot.create(:brand)

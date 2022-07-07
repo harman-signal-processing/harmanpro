@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "vertical_markets/_buy.html.erb", :type => :view do
+RSpec.describe "vertical_markets/_buy", :type => :view do
 
   before :all do
     current_locale = FactoryBot.create(:available_locale, key: I18n.default_locale)

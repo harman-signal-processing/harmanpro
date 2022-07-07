@@ -3,7 +3,6 @@ class EmeaPageResource < ApplicationRecord
   has_attached_file :attachment
 
   validates :name, presence: true
-  validates :emea_page, presence: true
   validates :attachment, attachment_presence: true
   do_not_validate_attachment_file_type :attachment
 

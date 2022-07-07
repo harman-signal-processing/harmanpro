@@ -8,9 +8,6 @@ class ReferenceSystemProductType < ApplicationRecord
   has_many :reference_system_product_type_products, dependent: :destroy
   has_many :products, through: :reference_system_product_type_products
 
-  validates :reference_system, presence: true
-  validates :product_type, presence: true
-
   def name
     "#{reference_system.name}: #{product_type.name}"
   end

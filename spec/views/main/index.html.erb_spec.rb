@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "main/index.html.erb", as: :view do
+RSpec.describe "main/index", as: :view do
   before(:all) do
     @brands = FactoryBot.create_list(:brand, 3)
     @vertical_markets = FactoryBot.create_list(:vertical_market, 3, parent_id: nil)

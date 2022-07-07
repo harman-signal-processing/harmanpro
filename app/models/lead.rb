@@ -4,7 +4,7 @@ class Lead < ApplicationRecord
   validates :country, presence: true
   validates :company, exclusion: { in: ["Example"] }
   validates :phone, exclusion: { in: ["123-456-7890"] }
-  belongs_to :vertical_market # (maybe)
+  belongs_to :vertical_market, optional: true
 
   after_create :send_to_acoustic!
   before_update :notify_leadgen_recipients, :erase_personal_data

@@ -23,7 +23,6 @@ class Product < ApplicationRecord
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
   validates :name, presence: true, uniqueness: { case_sensitive: false }
-  validates :brand, presence: true
 
   # :nocov:
   def slug_candidates

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "reference_systems/show.html.erb", :type => :view do
+RSpec.describe "reference_systems/show", :type => :view do
 
   before :all do
     @vertical_market = FactoryBot.create(:vertical_market)

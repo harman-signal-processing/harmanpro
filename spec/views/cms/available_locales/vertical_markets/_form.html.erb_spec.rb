@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "cms/available_locales/vertical_markets/_form.html.erb" do
+RSpec.describe "cms/available_locales/vertical_markets/_form" do
 
   before :all do
     @locale = FactoryBot.create(:available_locale)

@@ -12,7 +12,7 @@ class LandingPage < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:globalize, :history, :finders]
 
-  belongs_to :original_locale, class_name: "AvailableLocale"
+  belongs_to :original_locale, class_name: "AvailableLocale", optional: true
   has_many :features, -> { order(Arel.sql('position')) }, as: :featurable, dependent: :destroy
 
   has_attached_file :banner,

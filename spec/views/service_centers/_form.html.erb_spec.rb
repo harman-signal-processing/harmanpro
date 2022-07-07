@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "service_centers/_form.html.erb", as: :view do
+RSpec.describe "service_centers/_form", as: :view do
 
   before :each do
     assign(:service_center, ServiceCenter.new)
