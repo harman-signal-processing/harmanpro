@@ -3,9 +3,11 @@ class MainController < ApplicationController
   def index
     @vertical_markets = VerticalMarket.parent_verticals
     @slides = @current_locale.homepage_slides
+    # binding.pry
     if @geo_ip.found?
-      @slides = @slides.where("geo_target_country IS NULL or geo_target_country = ?", @geo_ip.country.iso_code)
+      @slides = @slides.where("geo_target_country IS NULL or geo_target_country = '' or geo_target_country = ?", @geo_ip.country.iso_code)
     end
+    # binding.pry
     @featured_case_studies = CaseStudy.featured
     @featured_news_articles = NewsArticle.featured
     @event = Event.current_and_upcoming.
