@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "service_centers/login.html.erb", as: :view do
+RSpec.describe "service_centers/login", as: :view do
 
   before :all do
     @brand = FactoryBot.create(:brand, name: "Multiple Word Brand", tech_url: "http://tech.foo.com")

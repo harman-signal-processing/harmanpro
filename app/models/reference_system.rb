@@ -34,7 +34,6 @@ class ReferenceSystem < ApplicationRecord
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\Z/
   validates_attachment_content_type :system_diagram, content_type: /\Aimage\/.*\Z/
   validates :name, presence: true
-  validates :vertical_market, presence: true
   validates :headline, presence: true
 
   acts_as_list scope: :vertical_market

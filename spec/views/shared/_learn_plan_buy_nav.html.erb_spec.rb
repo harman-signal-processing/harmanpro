@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "shared/_learn_plan_buy_nav.html.erb", :type => :view do
+RSpec.describe "shared/_learn_plan_buy_nav", :type => :view do
 # 2016-02-23 AA removed the learn/plan/buy subnav
 # (commented out the HTML code in the partial)
 #  before do

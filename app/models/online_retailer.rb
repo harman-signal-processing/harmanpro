@@ -6,7 +6,6 @@ class OnlineRetailer < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :url, presence: true, format: { with: URI.regexp }
-  validates :locale, presence: true
 
   has_attached_file :logo,
     styles: {

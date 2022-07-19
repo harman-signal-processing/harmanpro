@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "events/index.html.erb", as: :view do
+RSpec.describe "events/index", as: :view do
 
   before :all do
     @future_event = FactoryBot.create(:event, start_on: 4.weeks.from_now, end_on: 5.weeks.from_now, active: true)

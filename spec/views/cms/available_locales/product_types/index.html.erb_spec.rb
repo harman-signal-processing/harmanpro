@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "cms/available_locales/product_types/index.html.erb" do
+RSpec.describe "cms/available_locales/product_types/index" do
 
   before :all do
     @product_type = FactoryBot.create(:product_type)

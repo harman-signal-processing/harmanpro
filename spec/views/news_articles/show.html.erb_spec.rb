@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "news_articles/show.html.erb", type: :view do
+RSpec.describe "news_articles/show", type: :view do
 
   before :all do
     @news_article = FactoryBot.create(:news_article)

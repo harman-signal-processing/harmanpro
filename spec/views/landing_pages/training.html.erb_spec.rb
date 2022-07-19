@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "landing_pages/training.html.erb", as: :view do
+RSpec.describe "landing_pages/training", as: :view do
 
   before :all do
     @brand1 = FactoryBot.create(:brand, training_url: "http://training.lvh.me")

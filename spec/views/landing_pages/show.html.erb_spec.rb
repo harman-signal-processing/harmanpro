@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "landing_pages/show.html.erb", type: :view do
+RSpec.describe "landing_pages/show", type: :view do
 
   before :all do
     @landing_page = FactoryBot.create(:landing_page)

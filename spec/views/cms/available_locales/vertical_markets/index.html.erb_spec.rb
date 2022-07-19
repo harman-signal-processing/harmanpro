@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "cms/available_locales/vertical_markets/index.html.erb" do
+RSpec.describe "cms/available_locales/vertical_markets/index" do
 
   before :all do
     @vertical_market = FactoryBot.create(:vertical_market)

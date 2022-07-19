@@ -3,7 +3,6 @@ class ServiceGroup < ApplicationRecord
   has_many :service_center_service_groups, dependent: :destroy
   has_many :service_centers, through: :service_center_service_groups
 
-  validates :brand, presence: true
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 
   def self.names

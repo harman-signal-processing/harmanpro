@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "leads/new.html.erb", :type => :view do
+RSpec.describe "leads/new", :type => :view do
   before do
     assign(:lead, Lead.new)
     render

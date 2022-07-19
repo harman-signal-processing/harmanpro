@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "main/sitemap.html.erb", as: :view do
+RSpec.describe "main/sitemap", as: :view do
 
   before :all do
     @brand = FactoryBot.create(:brand)

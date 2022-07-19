@@ -1,5 +1,5 @@
 class MenuItem < ApplicationRecord
-  belongs_to :locale, class_name: "AvailableLocale", touch: true
+  belongs_to :locale, class_name: "AvailableLocale", touch: true, optional: true
 
   validates :title, presence: true
   validates :link, presence: true

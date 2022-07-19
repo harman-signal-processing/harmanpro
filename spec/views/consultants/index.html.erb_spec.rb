@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "consultants/index.html.erb", as: :view do
+RSpec.describe "consultants/index", as: :view do
 
   before :all do
     @brand1 = FactoryBot.create(:brand, api_url: "http://foo.com/", contact_info_for_consultants: "Joe Johnson @ 555-5555")

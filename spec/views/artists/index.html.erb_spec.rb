@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "artists/index.html.erb", type: :view do
+RSpec.describe "artists/index", type: :view do
 
   before :all do
     @artist = FactoryBot.build_stubbed(:artist)

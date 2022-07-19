@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "cms/available_locales/events/index.html.erb" do
+RSpec.describe "cms/available_locales/events/index" do
 
   before :all do
     @event = FactoryBot.create(:event)

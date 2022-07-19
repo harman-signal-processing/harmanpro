@@ -24,7 +24,6 @@ class Slide < ApplicationRecord
 
   validates_attachment_content_type :background, content_type: /\Aimage\/.*\Z/
   validates_attachment_content_type :bubble, content_type: /\Aimage\/.*\Z/
-  validates :locale, presence: true
   validates :name, presence: true
 
   acts_as_list scope: :locale

@@ -1,6 +1,6 @@
  require "rails_helper"
 
- RSpec.describe "service_centers/index.html.erb", as: :view do
+ RSpec.describe "service_centers/index", as: :view do
 
    before :all do
      @service_center = FactoryBot.create(:service_center)

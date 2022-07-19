@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "cms/index.html.erb" do
+RSpec.describe "cms/index" do
 
   before :all do
     @translator = FactoryBot.create(:user, translator: true)

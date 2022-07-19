@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "events/show.html.erb", as: :view do
+RSpec.describe "events/show", as: :view do
 
   before :all do
     @current_event = FactoryBot.create(:event,
