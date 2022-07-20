@@ -26,6 +26,7 @@ db/sphinx/
 /.capistrano/
 /public/system/
 /spec/test_files
+*.swp
 
 # Ignore application configuration
 /config/application.yml

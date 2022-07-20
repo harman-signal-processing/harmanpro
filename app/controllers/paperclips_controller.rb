@@ -28,7 +28,7 @@ class PaperclipsController < ApplicationController
       new_url << ENV['FOG_HOST_ALIAS']
       new_url << Paperclip::Interpolations.interpolate(new_path_interpolation, attachment, params[:style])
 
-      redirect_to new_url.join("/"), status: :moved_permanently, allow_other_host: true, and return false
+      redirect_to new_url.join("/"), status: :moved_permanently, allow_other_host: true and return false
     rescue TypeError
       raise ActiveRecord::RecordNotFound
     end

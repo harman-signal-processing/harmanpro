@@ -47,7 +47,7 @@ class LandingPagesController < ApplicationController
       @landing_page = LandingPage.find("privacy-policy")
       render action: :show and return false
     else
-      redirect_to "http://www.harman.com/privacy-policy" and return false
+      redirect_to "http://www.harman.com/privacy-policy", allow_other_host: true and return false
     end
   end
 
@@ -56,7 +56,7 @@ class LandingPagesController < ApplicationController
       @landing_page = LandingPage.find("terms-of-use")
       render action: :show and return false
     else
-      redirect_to "http://www.harman.com/terms-use" and return false
+      redirect_to "http://www.harman.com/terms-use", allow_other_host: true and return false
     end
   end
 

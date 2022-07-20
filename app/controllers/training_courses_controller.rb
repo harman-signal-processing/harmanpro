@@ -18,9 +18,9 @@ class TrainingCoursesController < ApplicationController
   def sso
     encodedUserData = session[:training_user_encoded]
     if encodedUserData.present?
-      redirect_to "https://traininglogin.harmanpro.com/sso/step1HarmanCallAbsorb/?ud=" + encodedUserData and return false
+      redirect_to("https://traininglogin.harmanpro.com/sso/step1HarmanCallAbsorb/?ud=" + encodedUserData, allow_other_host: true) and return false
     else
-      redirect_to "https://training.harmanpro.com/" and return false
+      redirect_to "https://training.harmanpro.com/", allow_other_host: true and return false
     end
   end  #  def sso
 
