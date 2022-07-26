@@ -18,6 +18,7 @@ class CaseStudy < ApplicationRecord
     styles: {
       large: "1170x400",
       medium: "500x200",
+      medium_panel: "565x445#",
       small_panel: "500x312#",
       small: "250x100",
       thumb: "83x50",
