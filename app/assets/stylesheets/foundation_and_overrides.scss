@@ -1702,7 +1702,7 @@ ul.dropdown {
   &.cover {
     img {
       height: 100%;
-      object-fit: cover;
+      width: 100%;
     }
   }
   &.full-height {
@@ -1723,7 +1723,7 @@ ul.dropdown {
     height: rem-calc(195px);
     img {
       width: 100%;
-      height: auto;
+      object-fit: cover;
     }    
   }
 }
