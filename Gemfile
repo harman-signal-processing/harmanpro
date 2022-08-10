@@ -3,7 +3,11 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}"
 end
+
+# Passenger is picky that the server's root versions of these match
+gem 'strscan', '3.0.4'
 gem "digest", "3.1.0"
+
 gem 'rails', '~> 7.0'
 gem 'bootsnap', require: false
 gem 'sass-rails'
