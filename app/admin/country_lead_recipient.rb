@@ -9,7 +9,7 @@ ActiveAdmin.register CountryLeadRecipient do
     selectable_column
     id_column
     column :country do |clr|
-      ISO3166::Country.new(clr.country).name
+      ISO3166::Country.new(clr.country).common_name
     end
     column :user
     actions
