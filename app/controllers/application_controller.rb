@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :catch_criminals
   include Pundit::Authorization
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -172,6 +173,39 @@ class ApplicationController < ActionController::Base
     # strip non printable characters and unallowed punctuation characters from unsanitized_param_value
     sanitized_item = unsanitized_param_value.to_s.gsub(/[^[:print:]]/, '').gsub(/[[:punct:]]/) { |item| (allowed_punctuation.include? item) ? item : "" } if unsanitized_param_value.present?
     sanitized_item
+  end
+
+  def catch_criminals
+    # 2022-08 Getting lots of geniuses trying to POST JSON. Let's just give them an error without much info:
+    # This globally blocks POSTing JSON. Bypass this filter in your controller if POSTing JSON is required.
+    if request.content_type.to_s.match?(/json/i) && request.post?
+      raise ActionController::UnpermittedParameters.new ["not allowed"]
+    end
+
+    # SQL injection attacks where a paginated resource has the page number loaded with SQL.
+    # It wouldn't give hackers anything, but this should avoid the dumb error reports.
+    if params[:page].present? && params[:page].to_s.match(/\D/)
+      # We could raise an exception anytime there's something non-numeric in the page parameter
+      #raise ActionController::UnpermittedParameters.new ["not allowed"]
+
+      # But I think it's more fun to just strip out non-numeric characters and pretend
+      # nothing happened so the hackers don't get any kind of indication of what's going on.
+      params[:page].gsub!(/\D/, '')
+      params[:page] = params[:page][0,6] # then use only the first 6 digits.
+    end
+  end
+
+  def authorize_query!(query)
+    if query.to_s.match(/union\s{1,}select/i) ||
+       query.to_s.match(/(and|\&*)\s{1,}sleep/i) ||
+       query.to_s.match(/order\s{1,}by/i) ||
+       query.to_s.match(/query-1|1\=1/)
+      raise ActionController::UnpermittedParameters.new ["query not allowed"]
+    end
+  end
+
+  rescue_from ActionController::UnpermittedParameters do |error|
+    render plain: error, status: 401
   end
 
 end  #  class ApplicationController < ActionController::Base

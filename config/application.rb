@@ -19,8 +19,7 @@ Bundler.require(*Rails.groups)
 module Harmanpro
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0 #6.1
-    config.active_support.cache_format_version = 6.1 # remove AFTER first deployment with rails 7
+    config.load_defaults 7.0
 
     # Configuration for the application, engines, and railties goes here.
     #
