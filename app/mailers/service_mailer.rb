@@ -18,9 +18,10 @@ class ServiceMailer < ActionMailer::Base
 
     mail(
       to: @contact_message.recipient,
+      reply_to: @contact_message.email,
       subject: "#{@contact_message.subject} (via pro.harman.com)"
     )
-    
+
     @contact_message.update(sent_at: Time.now)
   end
 

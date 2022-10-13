@@ -10,6 +10,7 @@ RSpec.describe ServiceMailer, type: :mailer do
 
     it "sends to the brand tech support email" do
       expect(mail.to).to eq([@contact_message.brand.tech_support_email])
+      expect(mail.reply_to).to eq([@contact_message.email])
     end
 
     it "has the tech support subject" do
@@ -26,6 +27,7 @@ RSpec.describe ServiceMailer, type: :mailer do
 
     it "sends to the brand parts email" do
       expect(mail.to).to eq([@contact_message.brand.parts_email])
+      expect(mail.reply_to).to eq([@contact_message.email])
     end
 
     it "has the parts subject" do
@@ -42,6 +44,7 @@ RSpec.describe ServiceMailer, type: :mailer do
 
     it "sends to the brand repair email" do
       expect(mail.to).to eq([@contact_message.brand.repair_email])
+      expect(mail.reply_to).to eq([@contact_message.email])
     end
 
     it "has the repair subject" do
