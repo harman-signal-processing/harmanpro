@@ -23,6 +23,14 @@ ExceptionNotification.configure do |config|
     exception_recipients: ENV['EXCEPTION_RECIPIENTS'].split("|")
   }
 
+  config.add_notifier :log_exceptions, -> (exception, options) {
+    logger = ActiveSupport::Logger.new("log/prosite_500_exception.log")
+    time = Time.now
+    formatted_datetime = time.strftime('%Y-%m-%d %I:%M:%S %p')
+    logger.error "#{ options[:env]["HTTP_X_FORWARDED_FOR"] } - - [#{formatted_datetime}] \"#{ options[:env]["REQUEST_METHOD"] } #{ options[:env]["REQUEST_URI"] }\" \"REFERER #{ options[:env]["HTTP_REFERER"] }\" \"ERROR #{ exception }\" "
+    }
+
+
 #  config.add_notifier :slack, {
 #    webhook_url: ENV['SLACK_WEBHOOK'],
 #    channel: '#site-exceptions'
