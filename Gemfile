@@ -8,7 +8,7 @@ end
 gem 'strscan', '3.0.4'
 gem "digest", "3.1.0"
 
-gem 'rails', '~> 7.0'
+gem 'rails', '~> 7.0', '>= 7.0.4'
 gem 'bootsnap', require: false
 gem 'sass-rails'
 gem 'uglifier'
