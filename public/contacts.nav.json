@@ -173,5 +173,10 @@
         "path": "/contacts/apac/channel",
         "name": "APAC",
         "type": "channel"
+    },
+    {
+        "path": "/contacts/india/channel",
+        "name": "India",
+        "type": "channel"
     }
 ]
