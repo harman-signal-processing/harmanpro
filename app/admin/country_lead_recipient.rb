@@ -22,4 +22,10 @@ ActiveAdmin.register CountryLeadRecipient do
     end
     f.actions
   end
+
+  csv do
+    column(:country_code) { |clr| clr.country }
+    column(:country_name) { |clr| ISO3166::Country.new(clr.country).common_name }
+    column(:recipient) { |clr| clr.user.email }
+  end
 end
