@@ -32,7 +32,7 @@
                     <div class="panel" data-equalizer-watch="contactbox">
                         <em><%=contact.name%></em></br>
                         <%=contact.title%></br>
-                        <i class="far fa-envelope" aria-hidden="true"></i>&nbsp; <a href="mailto:<%=contact.emails.first.email%>"><%=contact.emails.first.email%></a></br>
+                        <i class="far fa-envelope" aria-hidden="true"></i>&nbsp; <a href="mailto:<%=contact.emails.first.email%>?subject=<%=@contact_sales_type%> for <%=@contact_grouping_type%> in <%=@geo_ip.country.name%>"><%=contact.emails.first.email%></a></br>
                         <% if contact.phones.present? %>
                         <i class="fas fa-phone" aria-hidden="true"></i>&nbsp;<%=contact.phones.first.phone%>
                         <% end %>
