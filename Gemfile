@@ -53,7 +53,6 @@ gem 'goacoustic', ">= 0.1.3" #, github: 'harman-signal-processing/goacoustic', b
 gem 'oauth2'
 gem 'ransack' # using for service center search
 gem 'exception_notification'
-gem 'mailgun_rails' # mailer service from Rackspace
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'nokogiri', '>= 1.13.4' # for parsing HTML to generate subnavs on EMEA portal
 gem 'thinking-sphinx'
@@ -70,6 +69,10 @@ gem 'will_paginate'
 gem 'will_paginate_infinite',
   git: 'https://github.com/adamtao/will_paginate_infinite.git',
   branch: "master"
+
+# rack middleware security gems:
+gem 'rack-attack'
+gem 'rack-utf8_sanitizer'
 
 group :development do
   gem 'bumbler'
