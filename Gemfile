@@ -51,7 +51,7 @@ gem 'httparty'
 gem 'rails_autolink'
 gem 'goacoustic', ">= 0.1.3" #, github: 'harman-signal-processing/goacoustic', branch: 'master'
 gem 'oauth2'
-gem 'ransack' # using for service center search
+gem 'ransack', "< 4.0.0" # v4 requires whitelisting params
 gem 'exception_notification'
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'nokogiri', '>= 1.13.4' # for parsing HTML to generate subnavs on EMEA portal
