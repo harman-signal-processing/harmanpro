@@ -28,7 +28,7 @@ gem "active_model_serializers"
 gem 'dalli'
 gem 'figaro'
 gem 'simple_form', ">= 5.0.0"
-gem 'chosen-rails'
+gem 'chosen-rails', github: "adamtao/chosen-rails" # non-coffeescript version
 gem 'RedCloth'
 gem 'tinymce-rails', '< 5.9'
 gem 'foundation-rails', '~> 5.5' # After this, getting incompatible units errors
