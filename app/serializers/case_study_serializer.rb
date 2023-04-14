@@ -25,6 +25,7 @@ class CaseStudySerializer < ActiveModel::Serializer
 
   has_many :vertical_markets, serializer: VerticalMarketShortSerializer
   has_many :translations
+  has_many :case_study_images
 
   def banner_url
     object.banner.present? ? expanded_banner_url(:medium) : nil

@@ -4,7 +4,8 @@ ActiveAdmin.register CaseStudy do
   # :nocov:
   permit_params :headline, :description, :content, :banner, :pdf, :pdf_external_url, :youtube_id, :delete_pdf,
     case_study_vertical_markets_attributes: [:id, :vertical_market_id, :show_on_vertical_market_page, :_destroy],
-    case_study_brands_attributes: [:id, :brand_id, :_destroy]
+    case_study_brands_attributes: [:id, :brand_id, :_destroy],
+    case_study_images_attributes: [:id, :image, :position, :_destroy]
 
   config.paginate = false
   #config.sort_order = 'name_asc'
@@ -91,6 +92,9 @@ ActiveAdmin.register CaseStudy do
         end
       end  #  row :youtube_id do |case_study|
 
+      row :detail_images do |case_study|
+        case_study.case_study_images.map{|csi| csi.image.url}.join("<br/>").html_safe
+      end
     end  #  attributes_table do
   end  #  show do
 
@@ -117,7 +121,7 @@ ActiveAdmin.register CaseStudy do
         "Preferred size: 1170x400 px with a strongly horizontal orientation."
 
       f.input :headline, hint: "Maximum characters: 50", input_html: { maxlength: 50 }
-      
+
       # Most have been created without the description. So now it looks funny when one of them shows up...
       # f.input :description, hint: "Maximum characters: 60", input_html: { maxlength: 60, rows: 5 }
 
@@ -150,17 +154,30 @@ ActiveAdmin.register CaseStudy do
       f.input :content, as: :text, input_html: { rows: 15 }
     end  #  f.inputs do
 
+    f.has_many :case_study_images, heading: "Detail Images", new_record: "Add an image" do |csi|
+      csi.input :id, as: :hidden
+      csi.input :image, hint: csi.object.image.present? ? image_tag(csi.object.image.url(:thumb), lazy: false) : ""
+      csi.input :position
+      unless csi.object.new_record?
+        csi.input :_destroy, as: :boolean, label: "Delete"
+      end
+    end
+
     f.has_many :case_study_vertical_markets, heading: "Vertical Markets", new_record: "Add a vertical market" do |s|
       s.input :id, as: :hidden
       s.input :vertical_market, collection: VerticalMarket.with_translations(I18n.locale).order(:name)
       s.input :show_on_vertical_market_page
-      s.input :_destroy, as: :boolean, label: "Delete"
+      unless s.object.new_record?
+        s.input :_destroy, as: :boolean, label: "Delete"
+      end
     end  #  f.has_many :case_study_vertical_markets, heading: "Vertical Markets", new_record: "Add a vertical market" do |s|
 
     f.has_many :case_study_brands, heading: "Brands", new_record: "Associate with brand" do |b|
       b.input :id, as: :hidden
       b.input :brand, collection: Brand.for_case_studies
-      b.input :_destroy, as: :boolean, label: "Delete"
+      unless b.object.new_record?
+        b.input :_destroy, as: :boolean, label: "Delete"
+      end
     end  #  f.has_many :case_study_brands, heading: "Brands", new_record: "Associate with brand" do |b|
 
     f.actions
