@@ -163,7 +163,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_12_162429) do
     t.index ["case_study_id"], name: "index_case_study_brands_on_case_study_id"
   end
 
-  create_table "case_study_images", charset: "utf8mb4", force: :cascade do |t|
+  create_table "case_study_images", charset: "utf8", force: :cascade do |t|
     t.integer "case_study_id"
     t.integer "position"
     t.string "image_file_name"
