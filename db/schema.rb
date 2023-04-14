@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_14_174509) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_12_162429) do
   create_table "active_admin_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -161,6 +161,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_14_174509) do
     t.index ["brand_id"], name: "index_case_study_brands_on_brand_id"
     t.index ["case_study_id", "brand_id"], name: "by_case_study_brand", unique: true
     t.index ["case_study_id"], name: "index_case_study_brands_on_case_study_id"
+  end
+
+  create_table "case_study_images", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "case_study_id"
+    t.integer "position"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.datetime "image_updated_at"
+    t.integer "image_file_size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_study_id"], name: "index_case_study_images_on_case_study_id"
   end
 
   create_table "case_study_translations", id: :integer, charset: "utf8", force: :cascade do |t|
