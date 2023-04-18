@@ -1,7 +1,7 @@
 module MediaCoverageHelper
 
   def brands_with_media_coverage
-    Brand.where(id: BrandMediaCoverage.pluck(:brand_id)).order("UPPER(name)")
+    Brand.where(id: BrandMediaCoverage.unique_brand_ids).order("UPPER(name)")
   end
 
   def brand_link_name_for_media_coverage_sidebar(brand)
