@@ -30,7 +30,7 @@ class CaseStudy < ApplicationRecord
       medium_860: "860x585#",
       medium_860_2x: "1720x1170#",
       small_200: "200x180#",
-      small_200_2x: "400x360",
+      small_200_2x: "400x360#",
       thumb: "83x50#",
       thumb_square: "64x64#"
   }, processors: [:thumbnail, :compression],
