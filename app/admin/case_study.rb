@@ -154,7 +154,7 @@ ActiveAdmin.register CaseStudy do
       f.input :content, as: :text, input_html: { rows: 15 }
     end  #  f.inputs do
 
-    f.has_many :case_study_images, heading: "Detail Images", new_record: "Add an image" do |csi|
+    f.has_many :case_study_images, heading: "Detail Images. Provide 3 to trigger the new layout for Martin. (or just 2 if this case study has a youtube ID above)", new_record: "Add an image" do |csi|
       csi.input :id, as: :hidden
       csi.input :image, hint: csi.object.image.present? ? image_tag(csi.object.image.url(:thumb), lazy: false) : ""
       csi.input :position
