@@ -116,7 +116,7 @@ ActiveAdmin.register CaseStudy do
 
   form html: { multipart: true} do |f|
     f.inputs do
-      f.input :banner, hint: f.object.banner.present? ?
+      f.input :banner, required: true, hint: f.object.banner.present? ?
         image_tag(f.object.banner.url(:thumb), lazy: false) + content_tag(:br) + "Preferred size: 1170x400 px with a strongly horizontal orientation." :
         "Preferred size: 1170x400 px with a strongly horizontal orientation."
 
