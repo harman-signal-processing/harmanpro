@@ -8,10 +8,10 @@ class CaseStudy < ApplicationRecord
   extend FriendlyId
   friendly_id :slug_candidates, use: [:globalize, :history, :finders]
 
-  has_many :case_study_vertical_markets, dependent: :restrict_with_error, inverse_of: :case_study
+  has_many :case_study_vertical_markets, dependent: :destroy, inverse_of: :case_study
   has_many :vertical_markets, through: :case_study_vertical_markets
 
-  has_many :case_study_brands, dependent: :restrict_with_error, inverse_of: :case_study
+  has_many :case_study_brands, dependent: :destroy, inverse_of: :case_study
   has_many :brands, through: :case_study_brands
 
   # Additional images:

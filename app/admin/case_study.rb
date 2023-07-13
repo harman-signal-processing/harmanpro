@@ -27,6 +27,9 @@ ActiveAdmin.register CaseStudy do
         v.name
       end.join(', ')
     end
+    column :updated_at do |c|
+      c.updated_at.strftime("%b %d, %Y %I:%M %p")
+    end
     actions
   end  #  index do
 
