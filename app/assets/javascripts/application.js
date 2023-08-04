@@ -75,7 +75,7 @@ $(function () {
     $('a.update-and-play-inline-video').click(function(e) {
       var video_url;
       e.preventDefault();
-      video_url = "https://www.youtube.com/embed/" + ($(this).data('videoid')) + "?autostart=1&autoplay=1&rel=0";
+      video_url = "https://www.youtube.com/embed/" + ($(this).data('videoid')) + "?autostart=1&autoplay=1&rel=0&enablejsapi=1";
       return $("#" + ($(this).data('containerid')) + " iframe").attr('src', video_url);
     });
 
@@ -85,7 +85,7 @@ $(function () {
       if ($(this).data('videoid').startsWith('PL')) {
         video_url = "https://www.youtube.com/embed/videoseries?list=" + ($(this).data('videoid'));
       } else {
-        video_url = "https://www.youtube.com/embed/" + ($(this).data('videoid')) + "?autostart=1&autoplay=1&rel=0";
+        video_url = "https://www.youtube.com/embed/" + ($(this).data('videoid')) + "?autostart=1&autoplay=1&rel=0&enablejsapi=1";
       }
       $('#videoIFrame').attr('data-src', video_url);
       return $('#videoModal').foundation('reveal', 'open');
