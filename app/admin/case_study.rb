@@ -90,8 +90,8 @@ ActiveAdmin.register CaseStudy do
 
       row :youtube_id do |case_study|
         if case_study.youtube_id.present?
-          raw("#{link_to "https://www.youtube.com/embed/#{case_study.youtube_id}", "https://www.youtube.com/embed/#{case_study.youtube_id}", target: "_blank"}<br>" +
-          "#{link_to(image_tag("https://i.ytimg.com/vi/#{case_study.youtube_id}/default.jpg", alt: "Case Study Video", lazy: false), "https://www.youtube.com/embed/#{case_study.youtube_id}", target: "_blank")} ")
+          raw("#{link_to "https://www.youtube.com/embed/#{case_study.youtube_id}", "https://www.youtube.com/embed/#{case_study.youtube_id}?enablejsapi=1", target: "_blank"}<br>" +
+          "#{link_to(image_tag("https://i.ytimg.com/vi/#{case_study.youtube_id}/default.jpg", alt: "Case Study Video", lazy: false), "https://www.youtube.com/embed/#{case_study.youtube_id}?enablejsapi=1", target: "_blank")} ")
         end
       end  #  row :youtube_id do |case_study|
 
@@ -146,9 +146,9 @@ ActiveAdmin.register CaseStudy do
           if f.object.youtube_id.present?
             raw("If the case study has a Youtube video, enter the Youtube ID (not the full url).<br />" +
             "The current Youtube link is below.<br />" +
-            "#{link_to("https://www.youtube.com/embed/#{case_study.youtube_id}", "https://www.youtube.com/embed/#{case_study.youtube_id}", target: "_blank")}" +
+            "#{link_to("https://www.youtube.com/embed/#{case_study.youtube_id}", "https://www.youtube.com/embed/#{case_study.youtube_id}?enablejsapi=1", target: "_blank")}" +
             "<br />" +
-            "#{link_to(image_tag("https://i.ytimg.com/vi/#{case_study.youtube_id}/default.jpg", alt: "Case Study Video", lazy: false), "https://www.youtube.com/embed/#{case_study.youtube_id}", target: "_blank")} ")
+            "#{link_to(image_tag("https://i.ytimg.com/vi/#{case_study.youtube_id}/default.jpg", alt: "Case Study Video", lazy: false), "https://www.youtube.com/embed/#{case_study.youtube_id}?enablejsapi=1", target: "_blank")} ")
           else
             "If the case study has a Youtube video, enter the Youtube ID (not the full url)."
           end,
