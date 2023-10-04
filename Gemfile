@@ -49,7 +49,6 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'httparty'
 gem 'rails_autolink'
-gem 'goacoustic', ">= 0.1.3" #, github: 'harman-signal-processing/goacoustic', branch: 'master'
 gem 'oauth2'
 gem 'ransack', "< 4.0.0" # v4 requires whitelisting params
 gem 'exception_notification'

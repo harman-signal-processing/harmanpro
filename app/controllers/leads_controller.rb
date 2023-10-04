@@ -20,14 +20,8 @@ class LeadsController < ApplicationController
     end
   end
 
-  # The show method here doesn't actually use the local lead database.
-  # Instead, it uses the goacoustic gem to pull contact info.
   def show
-    @lead = Lead.retrieve_remote(params[:id])
-    @lead_followup = LeadFollowup.new(recipient_id: @lead.recipient_id)
-    if cookies[:initials].present?
-      @lead_followup.initials = cookies[:initials]
-    end
+    local_lookup
   end
 
   # Sometimes Acoustic API fails. In that case, the link in the leadgen
