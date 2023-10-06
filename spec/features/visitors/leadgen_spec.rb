@@ -1,7 +1,7 @@
 require "rails_helper"
 
-class GoAcousticStub
-  def add_recipient(user, db, list)
+class CrmClientStub
+  def add_lead(lead)
     true
   end
 end
@@ -26,8 +26,8 @@ feature "Lead generation" do
     lead = FactoryBot.build(:lead, name: "Vertical Market Installer Lead")
     visit vertical_market_path(@vertical_market)
 
-    expect(Lead).to receive(:goacoustic_client).and_return(GoAcousticStub.new)
-    expect_any_instance_of(GoAcousticStub).to receive(:add_recipient).and_return(true)
+    expect(Lead).to receive(:crm_client).and_return(CrmClientStub.new)
+    expect_any_instance_of(CrmClientStub).to receive(:add_lead).and_return(true)
     complete_leadgen_form(lead)
 
     new_lead = Lead.last
@@ -40,8 +40,8 @@ feature "Lead generation" do
     lead = FactoryBot.build(:lead)
     visit new_lead_path
 
-    expect(Lead).to receive(:goacoustic_client).and_return(GoAcousticStub.new)
-    expect_any_instance_of(GoAcousticStub).to receive(:add_recipient).and_return(true)
+    expect(Lead).to receive(:crm_client).and_return(CrmClientStub.new)
+    expect_any_instance_of(CrmClientStub).to receive(:add_lead).and_return(true)
     complete_leadgen_form(lead)
 
     new_lead = Lead.last
@@ -56,8 +56,8 @@ feature "Lead generation" do
       lead = build(:lead, name: "Reference System Installer Lead")
       visit vertical_market_reference_system_path(@vertical_market, @reference_system)
 
-      expect(Lead).to receive(:goacoustic_client).and_return(GoAcousticStub.new)
-      expect_any_instance_of(GoAcousticStub).to receive(:add_recipient).and_return(true)
+      expect(Lead).to receive(:crm_client).and_return(CrmClientStub.new)
+      expect_any_instance_of(CrmClientStub).to receive(:add_lead).and_return(true)
       complete_leadgen_form(lead)
 
       new_lead = Lead.last
@@ -80,8 +80,8 @@ feature "Lead generation" do
     lead = FactoryBot.build(:lead, name: nil, email: nil)
     visit vertical_market_path(@vertical_market)
 
-    expect(Lead).not_to receive(:goacoustic_client)
-    expect_any_instance_of(GoAcousticStub).not_to receive(:add_recipient).and_return(true)
+    expect(Lead).not_to receive(:crm_client)
+    expect_any_instance_of(CrmClientStub).not_to receive(:add_lead)
     complete_leadgen_form(lead)
 
     expect(page).to have_content("can't be blank")

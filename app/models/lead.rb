@@ -6,10 +6,40 @@ class Lead < ApplicationRecord
   validates :phone, exclusion: { in: ["123-456-7890"] }
   belongs_to :vertical_market, optional: true
 
+  after_create :send_to_crm!
   before_update :notify_leadgen_recipients, :erase_personal_data
   attr_accessor :locale
   attr_accessor :columns
 
+  def send_to_crm!
+    Lead.crm_client.add_lead(self)
+  end
+  handle_asynchronously :send_to_crm!
+  
+  def to_crm_json
+    {
+      name: name,
+      company: company,
+      email: email,
+      phone: phone,
+      city: city,
+      state: state,
+      country: country,
+      project_description: project_description,
+      source: source_for_crm,
+      created_at: created_at.to_date.to_s
+    }.to_json
+  end
+  
+  def source_for_crm
+    this_source = source.to_s.gsub(/\.json$/, '')
+    if this_source.to_s.match?(/^\//)
+      "https://pro.harman.com#{this_source}"
+    else
+      this_source
+    end
+  end
+  
   def country_name
     if c = ISO3166::Country.new(country)
       c.iso_short_name
@@ -60,4 +90,9 @@ class Lead < ApplicationRecord
     end
   end
 
+  private
+  
+  def self.crm_client
+    @crm_client ||= CrmClient.new
+  end
 end

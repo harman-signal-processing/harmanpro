@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-class GoAcousticStub
-  def add_recipient(user, db, list)
+class CrmClientStub
+  def add_lead(lead)
     true
   end
 end
@@ -23,8 +23,8 @@ RSpec.describe Lead, :type => :model do
   describe "marketing automation" do
     it "sends to acoustic list" do
       lead = FactoryBot.build(:lead)
-      expect(Lead).to receive(:goacoustic_client).and_return(GoAcousticStub.new)
-      expect_any_instance_of(GoAcousticStub).to receive(:add_recipient).and_return(true)
+      expect(Lead).to receive(:crm_client).and_return(CrmClientStub.new)
+      expect_any_instance_of(CrmClientStub).to receive(:add_lead).and_return(true)
 
       lead.save
     end
@@ -32,8 +32,8 @@ RSpec.describe Lead, :type => :model do
 
   describe "emailing" do
     it "sends contact info to several configured recipients" do
-      expect(Lead).to receive(:goacoustic_client).and_return(GoAcousticStub.new)
-      expect_any_instance_of(GoAcousticStub).to receive(:add_recipient).and_return(true)
+      expect(Lead).to receive(:crm_client).and_return(CrmClientStub.new)
+      expect_any_instance_of(CrmClientStub).to receive(:add_lead).and_return(true)
 
       lead = FactoryBot.create(:lead)
       expect(lead).to receive(:notify_leadgen_recipients)
@@ -41,4 +41,27 @@ RSpec.describe Lead, :type => :model do
       lead.update(recipient_id: "12345")
     end
   end
+  
+  describe "#to_crm_json" do
+    it "formats the lead as expected by the CRM api" do
+      @lead.created_at = Time.now
+      json = @lead.to_crm_json
+      
+      expect(json).to eq(
+        {
+          name: @lead.name,
+          company: @lead.company,
+          email: @lead.email,
+          phone: @lead.phone,
+          city: @lead.city,
+          state: @lead.state,
+          country: @lead.country,
+          project_description: @lead.project_description,
+          source: @lead.source_for_crm,
+          created_at: @lead.created_at.to_date.to_s
+        }.to_json
+      )
+    end
+  end
+  
 end
