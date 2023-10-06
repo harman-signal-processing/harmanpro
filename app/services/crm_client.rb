@@ -18,8 +18,8 @@ class CrmClient
         ImmutableKey.new('mw-sending-host') => sending_host,
         ImmutableKey.new('mw-sending-host-thumbprint') => api_secret
       },
-      body: lead.to_crm_json,
-      debug_output: Rails.logger
+      #debug_output: Rails.logger,
+      body: lead.to_crm_json
     )
   end
     
