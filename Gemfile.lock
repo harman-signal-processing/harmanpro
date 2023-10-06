@@ -590,6 +590,7 @@ DEPENDENCIES
   acts-as-taggable-on
   acts_as_list
   acts_as_tree
+  addressable
   awesome_print
   aws-sdk-s3
   bootsnap
