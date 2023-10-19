@@ -17,8 +17,21 @@ class NewsArticle < ApplicationRecord
       thumb_square: "64x64#"
   }, processors: [:thumbnail, :compression],
   default_url: "missing/banners/:style.jpg"
-
   validates_attachment_content_type :news_photo, content_type: /\Aimage\/.*\Z/
+  
+  has_attached_file :narrow_banner,
+    styles: {
+      large: "1170x400#",
+      medium: "500x200#",
+      medium_panel: "565x445#",
+      small_panel: "500x312#",
+      small: "250x100#",
+      thumb: "83x50#",
+      thumb_square: "64x64#"
+  }, processors: [:thumbnail, :compression],
+  default_url: "missing/banners/:style.jpg"
+  validates_attachment_content_type :narrow_banner, content_type: /\Aimage\/.*\Z/
+  
   validates :title, presence: true
   validates :post_on, presence: true
 

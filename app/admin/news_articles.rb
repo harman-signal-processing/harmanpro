@@ -7,6 +7,7 @@ ActiveAdmin.register NewsArticle do
     :body,
     :post_on,
     :news_photo,
+    :narrow_banner,
     :quote,
     :locale_id,
     brand_news_articles_attributes: [:id, :brand_id, :_destroy]
@@ -30,8 +31,12 @@ ActiveAdmin.register NewsArticle do
       f.input :title
       f.input :keywords, as: :text
       f.input :quote, as: :text
+      li "News photo is the main, wide banner that appears at the top of the article page."
       f.input :news_photo, hint: f.object.news_photo.present? ?
         image_tag(f.object.news_photo.url(:thumb)) : ""
+      li "Narrow banner is an optional variant, typically with a 4x6 aspect ratio with any text in the center square. If missing, the system will use similar sizes from the main banner."
+      f.input :narrow_banner, hint: f.object.narrow_banner.present? ?
+        image_tag(f.object.narrow_banner.url(:thumb)) : ""
       f.input :body, as: :text, input_html: { class: "mceEditor"}
       f.input :post_on, label: "Publish On", as: :datepicker
       f.input :locale

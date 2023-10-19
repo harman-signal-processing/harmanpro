@@ -1,5 +1,11 @@
+<% if image_size.to_s.match?(/panel/i) && news_article.narrow_banner.present? %>
+  <% image = news_article.narrow_banner %>
+<% else %>
+  <% image = news_article.news_photo %>
+<% end %>
+
 <%= link_to(news_article) do %>
-  <%= image_tag news_article.news_photo.url(image_size), alt: news_article.title, lazy: false %>
+  <%= image_tag image.url(image_size), alt: news_article.title, lazy: false %>
   <div class="title-panel">
     <h4>
       <%= truncate news_article.title, length: headline_length, separator: ' ' %>
