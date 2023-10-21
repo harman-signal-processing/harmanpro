@@ -1,5 +1,10 @@
 [
     {
+        "path": "/contacts/architecturallighting",
+        "name": "Architectural Lighting",
+        "type": "solution"
+    },
+    {
         "path": "/contacts/barsrestaurants",
         "name": "Bars & Restaurants",
         "type": "solution"
