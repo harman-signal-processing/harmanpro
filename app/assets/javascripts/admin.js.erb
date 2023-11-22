@@ -47,7 +47,7 @@ $(function()
   {
     $("#distributors_admin_heading").closest(".row").css({"maxWidth":"none"});
   }
-  
+
   if (location.pathname.contains('location_info/admin/locations'))
   {
     $("#locations_admin_heading").closest(".row").css({"maxWidth":"none"});
@@ -59,6 +59,15 @@ $(function()
     if (distributor_id.length > 0)
     {
       location.search = 'distributor_id=' + distributor_id;
+    }
+  });
+
+  $('#region-select').change(function(e){
+    var $this = $(this),
+        region_id = $this.val();
+    if (region_id.length > 0)
+    {
+      location.search = 'region_id=' + region_id;
     }
   });
 
@@ -88,7 +97,7 @@ $(function()
       location.search = 'location_id=' + location_id;
     }
   });
-  
+
   $('#contact-select').change(function(e){
     var $this = $(this),
         contact_id = $this.val();
@@ -97,7 +106,7 @@ $(function()
       location.search = 'contact_id=' + contact_id;
     }
   });
-  
+
   $('#email-select').change(function(e){
     var $this = $(this),
         email_id = $this.val();
@@ -105,6 +114,6 @@ $(function()
     {
       location.search = 'email_id=' + email_id;
     }
-  });  
+  });
 
 }); // $(function()

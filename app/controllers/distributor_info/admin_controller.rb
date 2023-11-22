@@ -8,6 +8,6 @@ class DistributorInfo::AdminController < ApplicationController
 
   def authenticate_admin_user!
     redirect_to new_user_session_path unless authenticate_user!
-    raise Pundit::NotAuthorizedError unless current_user.contact_admin_access?
-  end   
+    raise Pundit::NotAuthorizedError unless current_user.contact_admin_access? || current_user.is_employee?
+  end
 end  #  class DistributorInfo::AdminController < ApplicationController
