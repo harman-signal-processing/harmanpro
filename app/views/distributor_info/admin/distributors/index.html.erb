@@ -1,36 +1,53 @@
 <h1 id="distributors_admin_heading">Distributors</h1>
+<!--<h2><%#=current_user.email%> <br />is_employee? <%#=current_user.is_employee?%> <br /> is admin? <%#=current_user.contact_admin_access?%> </h2>-->
 
+<% if current_user.contact_admin_access? %>
 <ul class="button-group round">
 	<li><%= link_to 'New Distributor', new_distributor_info_admin_distributor_path, class: "small success button" %></li>
 </ul>
+<% end %>
 
-<div class="row" style="margin-bottom: 30px;">
+<ul class="button-group round">
+	<li><%= link_to 'Show All Distributors (no filters)', distributor_info_admin_distributors_path(show_all:1), class: "small button" %></li>
+</ul>
+
+<div class="row" style="margin-bottom: 30px; width: 80%;border: solid 0px red;">
   <div class="small-12 medium-6 large-3 columns">
-      <%= select_tag "distributor-select", 
-      options_from_collection_for_select(DistributorInfo::Distributor.all.sort_by(&:name), 'id', 'name', @distributor_id), 
+      <%= select_tag "distributor-select",
+      options_from_collection_for_select(DistributorInfo::Distributor.all.sort_by(&:name), 'id', 'name', @distributor_id),
       prompt: "Filter by Distributor Name",
       class: 'chosen-select'
-      %>  
-  </div>    
+      %>
+  </div>
   <div class="small-12 medium-6 large-3 columns">
-      <%= select_tag "country-select", 
-      options_from_collection_for_select(LocationInfo::Country.all.sort_by(&:harman_name), 'id', 'harman_name', @country_id), 
+      <%= select_tag "region-select",
+      options_from_collection_for_select(LocationInfo::Region.all.sort_by(&:name), 'id', 'name', @region_id),
+      prompt: "Filter by Region",
+      class: 'chosen-select'
+      %>
+  </div>
+  <div class="small-12 medium-6 large-3 columns">
+      <%= select_tag "country-select",
+      options_from_collection_for_select(LocationInfo::Country.all.sort_by(&:harman_name), 'id', 'harman_name', @country_id),
       prompt: "Filter by Country",
       class: 'chosen-select'
-      %>  
-  </div>   
+      %>
+  </div>
   <div class="small-12 medium-6 large-3 columns">
-      <%= select_tag "brand-select", 
-      options_from_collection_for_select(Brand.all.sort_by(&:name), 'id', 'name', @brand_id), 
-      prompt: "Filter by Brand",
-      class: 'chosen-select'
-      %>  
-  </div>   
-  
-  <div class="small-12 medium-6 large-3 columns">
-    <strong><%=link_to "Show All", distributor_info_admin_distributors_path(show_all:1) %></strong>
-  </div>   
-  
+      <% if current_user.contact_admin_access? %>
+          <%= select_tag "brand-select",
+          options_from_collection_for_select(Brand.all.sort_by(&:name), 'id', 'name', @brand_id),
+          prompt: "Filter by Brand",
+          class: 'chosen-select'
+          %>
+      <% else %>
+          <%= select_tag "brand-select",
+          options_from_collection_for_select(Brand.where(slug: ['amx', 'axys-tunnel', 'bss', 'crown', 'dbx', 'jbl-professional', 'lexicon', 'martin', 'soundcraft']).sort_by {|brand| brand.name.downcase}, :id, :name, @brand_id),
+          prompt: "Filter by Brand",
+          class: 'chosen-select'
+          %>
+      <% end %>
+  </div>
 </div>
 
 <% if @distributors %>
@@ -39,27 +56,36 @@
   <div style="margin-bottom:30px;"><strong>Use one of the filters above to see the Distributors list.</strong></div>
 <% end %>
 
+<% if @distributors %>
 <table class="data">
   <tr>
   	<th></th>
     <th>Name</th>
-    <th>Account Number</th>
+    <!--<th>Account Number</th>-->
     <th>Supported Countries</th>
     <th>Supported Brands</th>
     <th>Exclusions</th>
     <th>Locations</th>
   </tr>
 
-<% if @distributors %>
+
 <% @distributors.each do |distributor| %>
   <tr style="vertical-align:text-bottom;">
-    <td><%= link_to 'Edit', edit_distributor_info_admin_distributor_path(distributor), class: "small round button" %></td>
+    <td>
+      <% if current_user.contact_admin_access? %>
+      <%= link_to 'Edit', edit_distributor_info_admin_distributor_path(distributor), class: "small round button" %>
+      <% end %>
+    </td>
     <td><%= distributor.name %></td>
-    <td><%= distributor.account_number %></td>
+    <!--<td><%#= distributor.account_number %></td>-->
     <td>
       <ul>
         <% distributor.countries.order(:name).each do |country|%>
-          <li><%= link_to country.harman_name, edit_location_info_admin_country_path(country) %></li>
+          <%if current_user.contact_admin_access? %>
+            <li><%= link_to country.harman_name, edit_location_info_admin_country_path(country) %></li>
+          <% else %>
+            <li><%= country.harman_name %></li>
+          <% end %>
         <% end %>
       </ul>
     </td>
@@ -69,19 +95,44 @@
           <li><%= brand.name %></li>
         <% end %>
       </ul>
-    </td>    
+    </td>
     <td>
       <ul>
         <% distributor.distributor_brand_country_exclusion_association.each do |exclusion|%>
           <li><%= exclusion.brand.name %> - <%= exclusion.country.harman_name %></li>
         <% end %>
       </ul>
-    </td>     
-    
+    </td>
+
     <td>
       <ul>
       <% distributor.locations.each do |location| %>
-        <li><%=link_to location.name, edit_location_info_admin_location_path(location) %> - <span style="font-size:x-small"><%= location.city %></span></li>
+        <% if current_user.contact_admin_access? %>
+          <li><%=link_to location.name, edit_location_info_admin_location_path(location) %> - <span style="font-size:x-small"><%= location.city %></span><br />
+              <span style="font-size:x-small; display:block;">
+                  <% if location.address1.present? %><%= location.address1 %><br /> <% end %>
+                  <% if location.address2.present? %><%= location.address2 %><br /> <% end %>
+                  <% if location.address3.present? %><%= location.address3 %><br /> <% end %>
+                  <% if location.city.present? %><%= location.city %><br /> <% end %>
+                  <% if location.state.present? %><%= location.state %><br /> <% end %>
+                  <% if location.postal.present? %><%= location.postal %><br /> <% end %>
+                  <% if location.country.present? %><%= country_name(location.country) %><% end %>
+              </span>
+
+          </li>
+        <% else %>
+          <li><%= location.name %> - <span style="font-size:x-small"><%= location.city %></span><br />
+            <span style="font-size:x-small; display:block;">
+              <% if location.address1.present? %><%= location.address1 %><br /> <% end %>
+              <% if location.address2.present? %><%= location.address2 %><br /> <% end %>
+              <% if location.address3.present? %><%= location.address3 %><br /> <% end %>
+              <% if location.city.present? %><%= location.city %><br /> <% end %>
+              <% if location.state.present? %><%= location.state %><br /> <% end %>
+              <% if location.postal.present? %><%= location.postal %><br /> <% end %>
+              <% if location.country.present? %><%= country_name(location.country) %><% end %>
+              </span>
+          </li>
+        <% end %>
         <table>
           <tr>
             <th>Supported Countries</th>
@@ -98,10 +149,14 @@
                 <% if location.supported_countries.present? %>
                   <ul>
                     <% location.supported_countries.order(:name).each do |country| %>
-                      <li><%= link_to country.harman_name, edit_location_info_admin_country_path(country) %></li>
+                      <% if current_user.contact_admin_access? %>
+                        <li><%= link_to country.harman_name, edit_location_info_admin_country_path(country) %></li>
+                      <% else %>
+                        <li><%=country.harman_name%></li>
+                      <% end %>
                     <% end %>
                   </ul>
-                <% end  # if location.supported_countries.present?%>              
+                <% end  # if location.supported_countries.present?%>
             </td>
             <!-- supported brands  -->
             <td style="vertical-align: top;">
@@ -111,8 +166,8 @@
                     <li><%=brand.name%></li>
                   <% end %>
                 </ul>
-              <% end  # if location.supported_countries.present?%>              
-            </td>   
+              <% end  # if location.supported_countries.present?%>
+            </td>
             <!-- exclusions  -->
             <td style="vertical-align: top;">
               <% if location.location_brand_country_exclusion_association.present? %>
@@ -121,54 +176,71 @@
                     <li><%=exclusion.brand.name%> - <%=exclusion.country.harman_name%></li>
                   <% end %>
                 </ul>
-              <% end  # if location.location_brand_country_exclusion_association.present?%>              
-            </td>            
+              <% end  # if location.location_brand_country_exclusion_association.present?%>
+            </td>
             <!-- contacts  -->
             <td style="vertical-align: top;">
               <% if location.contacts.present? %>
                 <ul>
                   <% location.contacts.order(:name).each do |contact| %>
-                    <li><%= link_to contact.name, edit_contact_info_admin_contact_path(contact) %> <span style="font-size:x-small"> - <%= contact.title %></span></li>
+                    <% if current_user.contact_admin_access? %>
+                      <li><%= link_to contact.name, edit_contact_info_admin_contact_path(contact) %> <span style="font-size:x-small"> - <%= contact.title %></span></li>
+                    <% else %>
+                      <li><%= contact.name %> <span style="font-size:x-small"> - <%= contact.title %></span></li>
+                    <% end %>
                   <% end %>
                 </ul>
-              <% end  # if location.contacts.present?%>              
+              <% end  # if location.contacts.present?%>
             </td>
             <!-- emails  -->
             <td style="vertical-align: top;">
               <% if location.emails.present? %>
                 <ul>
                   <% location.emails.each do |email| %>
-                    <li><%= link_to email.email, edit_contact_info_admin_email_path(email) %></li>
+                    <% if current_user.contact_admin_access? %>
+                      <li><%= link_to email.email, edit_contact_info_admin_email_path(email) %></li>
+                    <% else %>
+                      <li><%= email.email %></li>
+                    <% end %>
                   <% end %>
                 </ul>
-              <% end  # if location.email.present?%>              
+              <% end  # if location.email.present?%>
             </td>
             <!-- phones  -->
             <td style="vertical-align: top;">
               <% if location.phones.present? %>
                 <ul>
                   <% location.phones.each do |phone| %>
-                    <li><%= link_to phone.phone, edit_contact_info_admin_phone_path(phone) %></li>
+                    <% if current_user.contact_admin_access? %>
+                      <li><%= link_to phone.phone, edit_contact_info_admin_phone_path(phone) %></li>
+                    <% else %>
+                      <li><%=phone.phone%></li>
+                    <% end %>
                   <% end %>
                 </ul>
-              <% end  # if location.phone.present?%>              
+              <% end  # if location.phone.present?%>
             </td>
             <!-- websites  -->
             <td style="vertical-align: top;">
               <% if location.websites.present? %>
                 <ul>
                   <% location.websites.each do |website| %>
-                    <li><%= link_to website.url, edit_contact_info_admin_website_path(website) %></li>
+                    <% if current_user.contact_admin_access? %>
+                      <li><%= link_to website.url, edit_contact_info_admin_website_path(website) %></li>
+                    <% else %>
+                      <li><%= website.url%></li>
+                    <% end %>
                   <% end %>
                 </ul>
-              <% end  # if location.website.present?%>              
+              <% end  # if location.website.present?%>
             </td>
           </tr>
         </table>
       <% end  # distributor.locations.each do |location| %>
       </ul>
-    </td>    
+    </td>
   </tr>
 <% end %>  <%# @distributors.each do |distributor| %>
-<% end %>  <%# if @distributors %>
 </table>
+
+<% end %>  <%# if @distributors %>
