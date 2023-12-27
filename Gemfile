@@ -51,7 +51,7 @@ gem 'daemons'
 gem 'httparty'
 gem 'rails_autolink'
 gem 'oauth2'
-gem 'ransack', "< 4.0.0" # v4 requires whitelisting params
+gem 'ransack', "< 5.0.0" # v4 requires whitelisting params
 gem 'exception_notification'
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'nokogiri', '>= 1.13.4' # for parsing HTML to generate subnavs on EMEA portal
