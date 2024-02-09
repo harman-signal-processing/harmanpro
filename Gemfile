@@ -5,8 +5,8 @@ git_source(:github) do |repo_name|
 end
 
 # Passenger is picky that the server's root versions of these match
-gem 'strscan', '3.0.4'
-gem "digest", "3.1.0"
+gem 'strscan', '3.1.0'
+gem "digest", "3.1.1"
 
 gem 'rails', '~> 7.0', '>= 7.0.4'
 gem 'bootsnap', require: false
@@ -30,7 +30,7 @@ gem 'figaro'
 gem 'simple_form', ">= 5.0.0"
 gem 'chosen-rails', github: "adamtao/chosen-rails" # non-coffeescript version
 gem 'RedCloth'
-gem 'tinymce-rails', '< 5.9'
+gem 'tinymce-rails' #, '< 5.9'
 gem 'foundation-rails', '~> 5.5' # After this, getting incompatible units errors
 gem 'friendly_id', '>= 5.2'
 gem 'kt-paperclip', '>= 7.0'
@@ -75,6 +75,7 @@ gem 'rack-attack'
 gem 'rack-utf8_sanitizer'
 
 group :development do
+  gem 'webrick'
   gem 'bumbler'
   gem 'letter_opener'
   gem 'spring'
