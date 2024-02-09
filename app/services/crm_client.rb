@@ -11,7 +11,7 @@ class CrmClient
   
   def add_lead(lead)
     HTTParty.post(
-      URI.encode(service_url),
+      URI::Parser.new.escape(service_url),
       headers: {
         'Content-Type' => 'application/json',
         'User-Agent' => 'HARMAN Professional Website',
