@@ -16,7 +16,7 @@
 //= require nsPopover
 //= require_tree ./app
 //= require foundation
-//= require tinymce-jquery
+//= require tinymce
 //= require jquery.rwdImageMaps.min
 //= require consultants
 //= require mega_menu
