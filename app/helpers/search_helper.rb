@@ -99,7 +99,7 @@ module SearchHelper
 	end  #  def get_pdf_item_title(result)
 
 	def find_pdf_item_in_db(result)
-		filename = URI.decode(File.basename(result[:Url]).split('#')[0].gsub("_original.pdf",".pdf"))
+		filename = URI.decode_uri_component(File.basename(result[:Url]).split('#')[0].gsub("_original.pdf",".pdf"))
 		pdf_item = Resource.where("resource_type is not null and include_in_pdf_search=1 and attachment_file_name = ?","#{filename}")
 		pdf_item
 	end  #  def find_pdf_item_in_db(result)
