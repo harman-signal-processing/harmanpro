@@ -37,8 +37,8 @@ namespace :refresh do
       @timestamp = fetch(:timestamp)
 
       within shared_path do
-        @db = YAML::load(ERB.new(IO.read(File.join("config", "database.yml"))).result)['production']
-        @env = YAML::load(ERB.new(IO.read(File.join("config", 'application.yml'))).result)['production']
+        @db = YAML::safe_load(ERB.new(IO.read(File.join("config", "database.yml"))).result, aliases: true)['production']
+        @env = YAML::safe_load(ERB.new(IO.read(File.join("config", 'application.yml'))).result, aliases: true)['production']
       end
 
       @filename = "#{@db['database']}_#{@timestamp}.sql"
@@ -57,7 +57,7 @@ namespace :refresh do
       with rails_env: :development do
         @timestamp = fetch(:timestamp)
 
-        db = YAML::load(ERB.new(IO.read(File.join(File.dirname(__FILE__), "../../../config", "database.yml"))).result)
+        db = YAML::safe_load(ERB.new(IO.read(File.join(File.dirname(__FILE__), "../../../config", "database.yml"))).result, aliases: true)
         prd_db = db['production']
         dev_db = db['development']
         filename = "#{prd_db['database']}_#{@timestamp}.sql"
