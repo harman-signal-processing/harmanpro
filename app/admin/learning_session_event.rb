@@ -16,7 +16,9 @@ ActiveAdmin.register LearningSessionEvent do
     column :sessions do |item|
       ul do
         item.learning_session_event_sessions.each do |v|
-          s = "<p>#{v.title}<br \>#{v.session_date.strftime "%A, %b %d, %Y"}<br \>#{v.session_times}<br \><br \></p>"
+          s = "<p>#{v.title}"
+          s += "<br \>#{v.session_date.strftime "%A, %b %d, %Y"}<br \>#{v.session_times}<br \><br \>" if v.session_date.present?
+          s += "</p>"
           li div raw(s)
         end  #  item.learning_session_event_sessions.each do |v|
       end  #  ul do
