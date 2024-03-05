@@ -15,8 +15,10 @@
             <% event.learning_session_event_sessions.each do |session| %>
               <p><strong><%=session.title%></strong>
               <br /><%=session.session_date.strftime "%A, %B %d, %Y"%> — <%=session.session_times%></p>
-              <a class="button large " style="text-align: center; display: inline-block;"
-                      href="<%=session.register_link%>">Register Now</a>
+              <% if !session.register_link.empty?%>
+                <a class="button large " style="text-align: center; display: inline-block;" href="<%=session.register_link%>">Register Now</a>
+              <% end %>
+
             <% end %> <%# event.learning_session_event_sessions.each do |session| %>
 
           </div> <!-- <div align="center"> -->
