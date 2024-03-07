@@ -47,7 +47,7 @@ ActiveAdmin.register VerticalMarket do
     end
   end
 
-  filter :translations_name_contains, as: :string, label: "Search Names"
+  #filter :translations_name_contains, as: :string, label: "Search Names"
   filter :parent, as: :select
   filter :live
   filter :retail

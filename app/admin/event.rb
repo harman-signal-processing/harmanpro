@@ -38,7 +38,7 @@ ActiveAdmin.register Event do
     actions
   end
 
-  filter :translations_name_contains, as: :string, label: "Search Names"
+  #filter :translations_name_contains, as: :string, label: "Search Names"
   filter :featured
   filter :active
   filter :start_on

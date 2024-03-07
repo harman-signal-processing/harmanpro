@@ -23,7 +23,7 @@ ActiveAdmin.register NewProduct do
     end
   end
   
-  filter :translations_name_contains, as: :string, label: "Search Names"
+  #filter :translations_name_contains, as: :string, label: "Search Names"
   filter :brands, as: :select
   filter :released_on
 

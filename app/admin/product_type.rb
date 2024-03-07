@@ -4,7 +4,7 @@ ActiveAdmin.register ProductType do
   permit_params :name, :description
 
   # :nocov:
-  filter :translations_name_contains, as: :string, label: "Search Names"
+  #filter :translations_name_contains, as: :string, label: "Search Names"
   filter :updated_at
 
   controller do

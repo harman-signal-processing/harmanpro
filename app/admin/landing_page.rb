@@ -64,7 +64,7 @@ ActiveAdmin.register LandingPage do
     actions
   end
 
-  filter :translations_title_contains, as: :string, label: "Search Titles"
+  #filter :translations_title_contains, as: :string, label: "Search Titles"
   filter :live
   filter :original_locale
   filter :updated_at
