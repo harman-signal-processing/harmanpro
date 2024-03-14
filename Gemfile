@@ -64,7 +64,7 @@ gem 'rails-i18n'
 gem 'maxminddb' # for geocoding ip addresses
 gem 'geolite2_city' # db for maxminddb
 gem 'email_validator'
-gem 'country_select'
+gem 'country_select', '~> 8.0' # 9.0 broke country dropdowns in activeadmin
 gem 'will_paginate'
 gem 'will_paginate_infinite',
   git: 'https://github.com/adamtao/will_paginate_infinite.git',
