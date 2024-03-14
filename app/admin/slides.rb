@@ -69,10 +69,11 @@ ActiveAdmin.register Slide do
     f.inputs do
       f.input :name, hint: "Becomes the 'alt text' on the image"
       f.input :locale
-      f.input :geo_target_country,
-        as: :country,
-        hint: "If present, only show this slide if the visitor's IP address appears to be in the selected country.",
-        include_blank: true
+      # this field causes an error after ruby 3 and rails 7.1 upgrade:
+      #f.input :geo_target_country,
+      #  as: :country,
+      #  hint: "If present, only show this slide if the visitor's IP address appears to be in the selected country.",
+      #  include_blank: true
       f.input :position, hint: "the sort order"
       f.input :start_on, as: :datepicker, hint: "optional"
       f.input :end_on, as: :datepicker, hint: "optional"
