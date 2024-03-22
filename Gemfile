@@ -20,7 +20,7 @@ gem 'font_awesome5_rails'
 # gem 'therubyracer',  platforms: :ruby
 gem 'mysql2'
 gem 'jquery-rails'
-gem 'jquery-ui-rails', '>= 6.0'
+gem 'jquery-ui-rails', '~> 6.0'
 gem 'jbuilder', '~> 2.0'
 gem 'lazyload-rails'
 gem 'bower-rails'
