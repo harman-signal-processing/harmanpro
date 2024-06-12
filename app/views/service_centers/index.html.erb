@@ -1,3 +1,6 @@
+<%country_code = @geo_ip.country.iso_code.downcase || "us" %>
+<%state_code = @geo_ip.subdivisions.most_specific.iso_code.present? ? @geo_ip.subdivisions.most_specific.iso_code.downcase : "" %>
+
 <%= content_for :title do %><%= t('find_service_page.title') %><% end %>
 <%= content_for :description do %><%= t('find_service_page.meta_description') %><% end %>
 
@@ -7,21 +10,38 @@
   <div class="row">
     <div class="large-12 medium-12 columns">
       <div class="callout panel">
+
         <%= search_form_for @search, class: "custom" do |f| %>
-          <div class="row">
-            <div class="large-3 medium-3 small-12 columns">
-              <%= f.label :state_eq, t('find_service_page.select_state') %>
-              <%= f.select :state_eq, options_for_select([["(#{t :any})", nil]] + ServiceCenter.states, @selected) %>
-            </div>
-            <div class="large-7 medium-7 small-12 columns">
-              <%= f.label :service_groups_name_eq, t('find_service_page.service_type_needed') %>
-              <%= f.select :service_groups_name_eq, options_for_select([["(#{t :any})", nil]] + ServiceGroup.names, @selected_group) %>
-            </div>
-            <div class="large-2 medium-2 small-12 columns">
-              <br/>
-              <%= f.submit t(:search).titleize, class: "small button" %>
-            </div>
-          </div>
+
+            <div class="row">
+                <div class="large-10 large-offset-1 medium-10 medium-offset-1 columns" data-equalizer="brands">
+                  <!--<p class="text-center"><i><%= t('contacts_page.click_to_contact') %>:</i></p>-->
+                  <ul class="large-block-grid-4 medium-block-grid-3 small-block-grid-2">
+                    <% all_brands.each do |brand| %>
+                      <% if brand.support_url.present? %>
+                        <% if brand.name.downcase == "akg" %>
+                          <% repairs_url = "#{brand.support_url}" %>
+                        <% else %>
+                          <% repairs_url = country_code == "us" ? "#{brand.url}/support/repairs?geo=#{country_code}&state=#{state_code}" : "#{brand.url}/support/repairs?geo=#{country_code}"%>
+                        <% end %>
+                        <li>
+                          <%= link_to "#{repairs_url}", target: "_blank" do %>
+                            <div class="panel text-center" data-equalizer-watch="brands">
+                              <div class="brand-logo">
+                                <% if brand.logo.present? || ENV['show_placeholders'] == "true" %>
+                                  <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
+                                <% end %>
+                              </div>
+                              <p><%= t('service_page.subnave.find_service', brand: brand.name) %></p>
+                            </div>
+                          <% end %>
+                        </li>
+                      <% end %>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+
         <% end %>
       </div>
     </div>
