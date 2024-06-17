@@ -18,6 +18,11 @@ module Api
       end
 
       private
+      
+      # Override filter from application controller because we DO expect
+      # JSON to get POSTed here.
+      def catch_criminals
+      end
 
       def lead_params
         params.require(:lead).permit(
