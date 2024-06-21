@@ -179,6 +179,8 @@ class ApplicationController < ActionController::Base
     # 2022-08 Getting lots of geniuses trying to POST JSON. Let's just give them an error without much info:
     # This globally blocks POSTing JSON. Bypass this filter in your controller if POSTing JSON is required.
     if request.content_type.to_s.match?(/json/i) && request.post?
+      BadActorLog.create(ip_address: request.remote_ip, reason: "POSTing JSON", details: "#{request.inspect}\n\n#{request.env["RAW_POST_DATA"]}")
+      log_bad_actors(request.remote_ip, "POSTing JSON")
       raise ActionController::UnpermittedParameters.new ["not allowed"]
     end
 
@@ -187,12 +189,35 @@ class ApplicationController < ActionController::Base
     if params[:page].present? && params[:page].to_s.match(/\D/)
       # We could raise an exception anytime there's something non-numeric in the page parameter
       #raise ActionController::UnpermittedParameters.new ["not allowed"]
+      BadActorLog.create(ip_address: request.remote_ip, reason: "Page param overload", details: "#{request.inspect}\n\n#{params.inspect}")
+      log_bad_actors(request.remote_ip, "Page param overload")
 
       # But I think it's more fun to just strip out non-numeric characters and pretend
       # nothing happened so the hackers don't get any kind of indication of what's going on.
       params[:page].gsub!(/\D/, '')
       params[:page] = params[:page][0,6] # then use only the first 6 digits.
       params[:page] = 1 if params[:page].to_i < 1
+    end
+    
+    # Alright, we're just going to look at all params for SQLi. This is probably going
+    # to slow us down a bit. Thanks a lot hacker fools.
+    if params.present?
+      # checking all params as a string to avoid extra looping
+      if has_sqli?(params.to_unsafe_h.flatten.to_s)
+        BadActorLog.create(ip_address: request.remote_ip, reason: "SQLi attempt", details: "#{request.inspect}\n\n#{params.inspect}")
+        log_bad_actors(request.remote_ip, "SQLi attempt")
+        raise ActionController::UnpermittedParameters.new(["pESop jup"])
+      end
+
+      # Check if the user is trying to pass something sinister in with the locale param
+      if params[:locale].present?
+        params[:locale].gsub!(/(\\|\/|\")$/, "") # removing trailing slash and double quote some have bookmarked
+        if params[:locale].to_s.match?(/[^a-zA-Z\-]/)
+          BadActorLog.create(ip_address: request.remote_ip, reason: "Overloading locale param", details: "#{request.inspect}\n\n#{params.inspect}")
+          log_bad_actors(request.remote_ip, "Overloading locale param")
+          raise ActionController::UnpermittedParameters.new(["Dema chigicha pai"])
+        end
+      end
     end
   end
 
@@ -205,6 +230,31 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def log_bad_actors(ip_address, reason)
+    logger = ActiveSupport::Logger.new("log/hpro_bad_actor.log")
+    time = Time.now
+    formatted_datetime = time.strftime('%Y-%m-%d %I:%M:%S %p')
+    logger.error "#{ ip_address } - - [#{formatted_datetime}] \"#{ reason }\" ~~ #{request.inspect}"
+  end
+  
+  def has_sqli?(input)
+    sqli = Regexp.union(
+      /THEN.*ELSE.*END/i,
+      /CONCAT.*SELECT/i,
+      /UNION.*SELECT/i,
+      /CHAR\(/i,
+      /RESULT\:/i,
+      /\=.*SLEEP/i,
+      /SLEEP.*\=/i,
+      /\+{7,}/,
+    )
+    if input.respond_to?(:any?)
+      input.any?(sqli)
+    else
+      input.to_s.match?(sqli)
+    end
+  end
+  
   def us_states
     states = {
     "AL": "Alabama",

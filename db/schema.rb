@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_19_194953) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_21_161435) do
   create_table "active_admin_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -58,6 +58,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_19_194953) do
     t.boolean "show_hef", default: true
     t.index ["key"], name: "index_available_locales_on_key"
     t.index ["slug"], name: "index_available_locales_on_slug"
+  end
+
+  create_table "bad_actor_logs", charset: "utf8", force: :cascade do |t|
+    t.string "ip_address"
+    t.string "reason"
+    t.text "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ip_address"], name: "index_bad_actor_logs_on_ip_address"
   end
 
   create_table "brand_distributors", charset: "utf8", force: :cascade do |t|
