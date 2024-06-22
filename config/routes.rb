@@ -102,7 +102,7 @@ Rails.application.routes.draw do
 
     # resources :distributors, only: [:index, :show]
     get "distributors/:brand/:country_code" => "distributors#show", as: "brand_country"
-    get "distributors/:brand/region/:region" => "distributors#region", as: "brandy_region"
+    get "distributors/:brand/region/:region" => "distributors#region", as: "brand_region"
     get "distributors/:brand/:country_code/region/:region" => "distributors#country_and_region", as: "brand_country_and_region"
     get "distributors/:brand/:country_code/regions/:regions" => "distributors#country_and_regions", as: "brand_country_and_regions"
   end  #  namespace :distributor_info do

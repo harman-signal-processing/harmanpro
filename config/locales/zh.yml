@@ -9,6 +9,7 @@ zh:
   software: 软件
   loading: 上载中
   harman_brands: 哈曼旗下品牌
+  our_pro_brands: 我们的专业品牌
   all_rights_reserved: 产权所有
   privacy_policy: 隐私政策
   terms_of_use: 使用条款
@@ -50,11 +51,14 @@ zh:
     case_studies: 项目案例
     resources: 资源中心
     training: 网络培训
+    training_resources: 培训资源
     events: 市场活动
-    learning_sessions: Learning Sessions
+    learning_sessions: YouTube 学习课程
     media_library: 媒体库
+    media_coverage: 媒体报道
     consultants: 产品资料库
     news: 新闻中心
+    latest_news: 最新消息
     contacts: 联系我们
     contact_us: 联系我们
     service: 售后服务
@@ -62,6 +66,11 @@ zh:
     learn: 了解产品
     plan: 项目规划
     buy: 设备购置
+    new_products: 新产品
+    stay_connected: 与我们保持联系
+    insights_blog: Insights Blog
+    experience_centers: 体验中心
+    distributors: Distributors
     new_products: 新产品
 
   home_page:

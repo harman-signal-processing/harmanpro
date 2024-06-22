@@ -41,7 +41,7 @@
 
           <div class="medium-9 small-7 columns">
             <h1 class="logo">
-              <a href="http://www.harman.com"><%= image_tag "logo.png", alt: t('logo_alt_text'), id: "logo", lazy: false %></a>
+              <a href="/"><%= image_tag "logo.png", alt: t('logo_alt_text'), id: "logo", lazy: false %></a>
               <small><a href="/"><%= t("professional_solutions").upcase %></a></small>
             </h1>
           </div>
@@ -111,7 +111,7 @@
         <ul class="title-area">
           <li class="name logo-container">
             <h1 class="logo show-for-small">
-              <a href="http://www.harman.com"><%= image_tag "logo_sm.png", alt: t('logo_alt_text'), lazy: false %></a>
+              <a href="/"><%= image_tag "logo_sm.png", alt: t('logo_alt_text'), lazy: false %></a>
               <small><a href="/"><%= t("professional_solutions").upcase %></a></small>
             </h1>
           </li>
@@ -132,9 +132,28 @@
         <section class="top-bar-section">
           <ul>
             <%= cache ["top-nav", Date.today, current_locale] do %>
+              <% # Our Pro Brands %>
+              <li class="has-dropdown">
+                <a href="#" class="disabled"><%= t('our_pro_brands') %> <%= fa_icon "angle-down", "aria-hidden": true %></a>
+                <ul class="dropdown">
+                  <li><%=link_to "JBL Pro", "https://jblpro.com", target: "_blank"%></li>
+                  <li><%=link_to "AKG", "https://www.akg.com", target: "_blank"%></li>
+                  <li><%=link_to "Martin", "https://www.martin.com", target: "_blank"%></li>
+                  <li><%=link_to "AMX", "https://www.amx.com", target: "_blank"%></li>
+                  <li><%=link_to "BSS", "https://bssaudio.com", target: "_blank"%></li>
+                  <li><%=link_to "Crown", "https://crownaudio.com", target: "_blank"%></li>
+                  <li><%=link_to "Soundcraft", "https://www.soundcraft.com", target: "_blank"%></li>
+                  <li><%=link_to "dbx", "https://dbxpro.com", target: "_blank"%></li>
+                  <li><%=link_to "Lexicon", "https://lexiconpro.com", target: "_blank"%></li>
+                </ul>
+              </li>
+
+              <% # Solutions (mega menu for large screens) %>
               <li class="show-for-medium-up">
                 <a href="<%= vertical_markets_path %>" class="disabled" data-dropdown="megaMenu" data-options="is_hover:true;" id="megaTrigger"><%= t('nav.solutions') %> <%= fa_icon "angle-down", "aria-hidden": true %></a>
               </li>
+
+              <% # Solutions (dropdown menu for small screens) %>
               <li class="has-dropdown show-for-small-only">
                 <%= link_to vertical_markets_path, class: "disabled" do %>
                   <%= t('nav.solutions') %>
@@ -145,38 +164,91 @@
                   <li><%= link_to t('nav.browse_all_solutions'), vertical_markets_path %></li>
                 </ul>
               </li>
-              <li><%= link_to t("nav.case_studies"), case_studies_path %></li>
+
+              <% # Resources %>
               <li class="has-dropdown">
                 <a href="#" class="disabled"><%= t('nav.resources') %> <%= fa_icon "angle-down", "aria-hidden": true %></a>
                 <ul class="dropdown">
-                  <% if current_locale.menu_items.size > 0 %>
-                    <% current_locale.menu_items.order(Arel.sql('position')).each do |mi| %>
-                      <li><%= link_to mi.title, mi.link, target: (mi.new_tab?) ? "_blank" : "" %></li>
-                    <% end %>
-                  <% elsif MenuItem.where(locale_id: nil).size > 0 %>
-                    <% MenuItem.where(locale_id: nil).order(Arel.sql('position')).each do |mi| %>
+                    <%
+                      combined_resources_menu_items = current_locale.menu_items.where(top_nav_name: 'Resources') + MenuItem.where(locale_id: nil, top_nav_name: 'Resources')
+
+                      # filter out the global item when there is a current locale specific version, matching on title, for example nav.service
+                      filtered_resources_menu_items = combined_resources_menu_items.reject do |item|
+                        item[:locale_id].nil? && combined_resources_menu_items.any? { |i| i[:title] == item[:title] && i[:locale_id].present? }
+                      end
+                    %>
+                    <% filtered_resources_menu_items.sort_by(&:position).each do |mi| %>
                       <li><%= link_to t(mi.title), mi.link, target: (mi.new_tab?) ? "_blank" : "" %></li>
                     <% end %>
-                  <% else %>
-                    <li><%= link_to t('nav.training'), training_path %></li>
-                    <li><%= link_to t('nav.consultants'), consultant_portal_path %></li>
-                    <li><%= link_to t('nav.contacts'), contacts_path %></li>
-                    <li><%= link_to t('nav.news'), news_articles_path %></li>
-                    <li><%= link_to t('nav.events'), events_path %></li>
-                    <li><%= link_to t('nav.service'), service_path %></li>
-                  <% end %>
                 </ul>
               </li>
-              <li><%= link_to t('nav.new_products'), "/new-products" %></li>
-              <% unless I18n.locale == :"zh-CN" %>
-                <li><%= link_to t('nav.learning_sessions'), "/learning-sessions/" %></li>
-              <% end %>
-              <li><%= link_to t('nav.contact_us'), contacts_path %></li>
-              <% if SiteSetting.set_for_locale?("blog_link_name") && SiteSetting.set_for_locale?("blog_link") %>
-                <li>
-                  <%= link_to SiteSetting.value("blog_link_name"), SiteSetting.value("blog_link"), target: "_blank" %>
-                </li>
-              <% end %>
+
+              <% # News %>
+              <li class="has-dropdown">
+                <a href="/news" class="disabled"><%= t('nav.news') %> <%= fa_icon "angle-down", "aria-hidden": true %></a>
+                <ul class="dropdown">
+                    <%
+                      combined_news_menu_items = current_locale.menu_items.where(top_nav_name: 'News') + MenuItem.where(locale_id: nil, top_nav_name: 'News')
+
+                      # filter out the global item when there is a current locale specific version, matching on title, for example nav.service
+                      filtered_news_menu_items = combined_news_menu_items.reject do |item|
+                        item[:locale_id].nil? && combined_news_menu_items.any? { |i| i[:title] == item[:title] && i[:locale_id].present? }
+                      end
+                    %>
+                    <% filtered_news_menu_items.sort_by(&:position).each do |mi| %>
+                      <li><%= link_to t(mi.title), mi.link, target: (mi.new_tab?) ? "_blank" : "" %></li>
+                    <% end %>
+                </ul>
+              </li>
+
+              <% # Training Resources %>
+              <li class="has-dropdown">
+                <a href="/training" class="disabled" target="_blank"><%= t('nav.training_resources') %> <%= fa_icon "angle-down", "aria-hidden": true %></a>
+                <ul class="dropdown">
+                  <%
+                    combined_training_menu_items = current_locale.menu_items.where(top_nav_name: 'Training Resources') + MenuItem.where(locale_id: nil, top_nav_name: 'Training Resources')
+
+                    # filter out the global item when there is a current locale specific version, matching on title, for example nav.service
+                    filtered_training_menu_items = combined_training_menu_items.reject do |item|
+                      item[:locale_id].nil? && combined_training_menu_items.any? { |i| i[:title] == item[:title] && i[:locale_id].present? }
+                    end
+                  %>
+                  <% filtered_training_menu_items.sort_by(&:position).each do |mi| %>
+                    <li><%= link_to t(mi.title), mi.link, target: (mi.new_tab?) ? "_blank" : "" %></li>
+                  <% end %>
+                  <li class="has-dropdown">
+                    <a href="#" class="disabled"><%=t('nav.learning_sessions') %></a>
+                    <ul class="dropdown">
+                      <li><%= link_to 'JBL Pro', "https://www.youtube.com/playlist?list=PL-CsHcheo61mLw5A8IHwDLtZAe8gQbg0l", target: "_blank" %></li>
+                      <li><%= link_to 'Martin', "https://www.youtube.com/playlist?list=PLX8PNXe5hN6OGaU9GoRQHUUpS_j-5oHwV", target: "_blank" %></li>
+                      <li><%= link_to 'AMX', "https://www.youtube.com/playlist?list=PLKVjXfCF3p8-nCbTLAGjoYa5qCFMFpZlk", target: "_blank" %></li>
+                      <li><%= link_to 'AKG', "https://www.youtube.com/playlist?list=PLKwYhk9fsHAL8KEke3qy9HKxhfEg4MLpM", target: "_blank" %></li>
+                      <li><%= link_to 'Soundcraft', "https://www.youtube.com/playlist?list=PLvVfpRl80EqIb9y7roXLUiw4Ovy5MWe86", target: "_blank" %></li>
+                    </ul>
+                  </li>
+                </ul>
+
+              </li>
+
+              <% # Contact Us %>
+              <li class="has-dropdown">
+                <a href="#" class="disabled"><%= t('nav.contact_us') %> <%= fa_icon "angle-down", "aria-hidden": true %></a>
+                <ul class="dropdown">
+                    <% combined_contact_menu_items = current_locale.menu_items.where(top_nav_name: 'Contact Us') + MenuItem.where(locale_id: nil, top_nav_name: 'Contact Us')
+
+                      # filter out the global item when there is a current locale specific version, matching on title, for example nav.service
+                      filtered_contact_menu_items = combined_contact_menu_items.reject do |item|
+                        item[:locale_id].nil? && combined_contact_menu_items.any? { |i| i[:title] == item[:title] && i[:locale_id].present? }
+                      end
+                    %>
+                    <% filtered_contact_menu_items.sort_by(&:position).each do |mi| %>
+                      <li><%= link_to t(mi.title), mi.link, target: (mi.new_tab?) ? "_blank" : "" %></li>
+                    <% end %>
+                </ul>
+              </li>
+
+
+
               <% if active_locales.size > 1 %>
                 <li class="has-dropdown show-for-small-only">
                   <a href="#" class="disabled"><%= fa_icon :flag, "aria-hidden": true %></a>
@@ -187,7 +259,7 @@
                   </ul>
                 </li>
               <% end %>
-            <% end %>
+            <% end %><%#= cache ["top-nav", Date.today, current_locale] do %>
           </ul>
         </section>
 

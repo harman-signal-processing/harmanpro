@@ -9,6 +9,7 @@ es:
   software: Software
   loading: Cargando
   harman_brands: Marcas HARMAN
+  our_pro_brands: Nuestras marcas pro
   all_rights_reserved: Todos los derechos reservados
   privacy_policy: Política de Privacidad
   terms_of_use: Términos de uso
@@ -31,17 +32,27 @@ es:
     solutions: Soluciones
     case_studies: Casos de Estudio
     resources: Recursos
-    training: Entrenamiento
+    training: Formación profesional HARMAN
+    training_resources: Recursos de capacitación
+    learning_sessions: Sesiones de aprendizaje de YouTube
     media_library: Media
+    media_coverage: Cobertura mediática
     consultants: Referencias
     contacts: Contactos
     contact_us: Contactos
     news: Noticias
+    latest_news: Últimas noticias
     service: Servicio
     shop: Compra
     learn: Conoce
     plan: Plan
     buy: Compra
+    stay_connected: Mantente conectado con nosotras
+    insights_blog: Insights Blog
+    experience_centers: Centros de experiencia
+    distributors: Distribuidores
+    new_products: nuevos productos
+    anytime_help_center: Anytime Help Center
 
   home_page:
     shop_now: Compra Ahora
@@ -172,4 +183,3 @@ es:
     landingpage: Página de Destino
     verticalmarket: Mercado Vertical
     consultantcontacts: Contactos de Referencia
-    
