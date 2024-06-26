@@ -1,7 +1,7 @@
 ActiveAdmin.register MenuItem do
   menu parent: "Settings", name: "Resources Menu", priority: 5
 
-  permit_params :title, :link, :position, :locale_id
+  permit_params :title, :link, :position, :locale_id, :top_nav_name, :new_tab
 
   index do
     selectable_column
@@ -10,6 +10,7 @@ ActiveAdmin.register MenuItem do
     column :link
     column :position
     column :locale
+    column :top_nav_name
     actions
   end
 
@@ -19,6 +20,7 @@ ActiveAdmin.register MenuItem do
 
   filter :locale
   filter :title
+  filter :top_nav_name
 
   form do |f|
     f.inputs do
@@ -27,6 +29,7 @@ ActiveAdmin.register MenuItem do
       f.input :new_tab
       f.input :position, hint: "Sorting order among other menu items of the same locale."
       f.input :locale, hint: "Leave blank when editing the default menu"
+      f.input :top_nav_name, hint: "This is the top nav parent name"
     end
     f.actions
   end

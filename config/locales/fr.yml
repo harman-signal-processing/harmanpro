@@ -9,6 +9,7 @@ fr:
   software: Logiciels
   loading: Chargement
   harman_brands: Marques HARMAN
+  our_pro_brands: Nos marques pro
   all_rights_reserved: Tous droits réservés
   privacy_policy: Charte de confidentialité
   terms_of_use: Conditions d'utilisation
@@ -48,13 +49,16 @@ fr:
     menu: Menu
     solutions: Solutions
     case_studies: Études de cas
-    resources: Resources
+    resources: Ressources
     training: Entraînement
+    training_resources: Ressources de formation
     event: Événements
-    learning_sessions: Learning Sessions
+    learning_sessions: Séances d'apprentissage YouTube
     media_library: Bibliothèque de médias
-    consultants: Consultant Portal
+    media_coverage: Couverture médiatique
+    consultants: Portail des consultants
     news: Actualités
+    latest_news: Dernières nouvelles
     contacts: Contacts
     contact_us: Contacts
     service: Service
@@ -62,6 +66,12 @@ fr:
     learn: Apprendre
     plan : Plan
     buy: Acheter
+    stay_connected: Restez connecté avec nous
+    insights_blog: Insights Blog
+    experience_centers: Centres d'expérience
+    distributors: Distributors
+    new_products: Nouveaux produits
+    anytime_help_center: Anytime Help Center
 
   home_page:
     shop_now: Achats
@@ -199,4 +209,4 @@ fr:
 
   new_products_page:
     filters: filtres
-    
+

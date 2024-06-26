@@ -9,6 +9,7 @@ en:
   software: Software
   loading: Loading
   harman_brands: HARMAN Brands
+  our_pro_brands: Our Pro Brands
   all_rights_reserved: All rights reserved
   privacy_policy: Privacy Policy
   terms_of_use: Terms of Use
@@ -50,16 +51,20 @@ en:
     solutions: Solutions
     case_studies: Case Studies
     resources: Resources
-    training: Training
+    training: HARMAN Professional Training
+    training_resources: Training Resources
+    training_link: HARMAN Professional Training
     events: Events
-    learning_sessions: Learning Sessions
+    learning_sessions: YouTube Learning Sessions
     media_library: Media Library
+    media_coverage: Media Coverage
     consultants: Consultant Portal
     news: News
+    latest_news: Latest News
     contacts: Contacts
     contact_us: Contact Us
     new_products: New Products
-    service: Service
+    service: Service Support
     shop: Shop
     harman_finance: HARMAN Finance
     learn: Learn
@@ -67,6 +72,12 @@ en:
     buy: Buy
     browse_all_solutions: browse all solutions
     newsletter: Newsletter
+    stay_connected: Stay Connected with US
+    insights_blog: Insights Blog
+    experience_centers: Experience Centers
+    distributors: Distributors
+    new_products: New Products
+    anytime_help_center: Anytime Help Center
 
   home_page:
     shop_now: Shop Now

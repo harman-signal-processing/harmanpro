@@ -11,7 +11,7 @@
     <% if !distributor[:locations].empty? %>
             <li>
     <h3><%= distributor[:name] %></h3>
-      <%=image_tag "https://flagcdn.com/24x18/#{distributor[:locations].first[:country].downcase}.png", alt: "#{distributor[:locations].first[:country]} flag" %>
+      <%=image_tag "https://flagcdn.com/24x18/#{distributor[:locations].first[:country].downcase}.png", alt: "#{country_name(distributor[:locations].first[:country])} flag", title: "#{country_name(distributor[:locations].first[:country])} flag" %>
       <div style="margin-top:10px;">
         <%=raw get_list_html(distributor, "emails", "email") %>
         <%=raw get_list_html(distributor, "phones", "phone") %>
@@ -22,10 +22,14 @@
             <div><strong><%= location[:name]%></strong></div>
             <div><%=raw address_html(location)%></div>
             <div><%=raw get_list_html(location, "phones", "phone") %></div>
-
             <div><%=raw get_list_html(location, "emails", "email") %></div>
-
-          <div><%=raw get_list_html(location, "websites", "url") %></div>
+            <div><%=raw get_list_html(location, "websites", "url") %></div>
+            <div style="margin-top:10px;"><strong>Supported Countries:</strong>
+              <% location[:supported_countries].each do |supported_country| %>
+                <%=image_tag "https://flagcdn.com/24x18/#{supported_country[:alpha2].downcase}.png", alt: "#{country_name(supported_country[:alpha2])} flag", title: "#{country_name(supported_country[:alpha2])} flag" %>
+              <% end %>
+            </div>
+            <div style="margin-top:10px;"><strong>Supported Brands:</strong> <%= (location[:supported_brands].pluck(:name)-["HARMAN Professional Solutions"]).sort_by(&:downcase).join(", ")%></div>
 
             <% if location[:contacts].present?%>
               <div style="margin-top:10px;margin-bottom:30px;">

@@ -9,6 +9,7 @@ pt-BR:
   software: Software
   loading: Carregando
   harman_brands: Marcas HARMAN
+  our_pro_brands: Nossas marcas profissionais
   all_rights_reserved: Todos os direitos reservados
   privacy_policy: Política de Privacidade
   terms_of_use: Termos de Uso
@@ -50,11 +51,14 @@ pt-BR:
     case_studies: Estudos de Caso
     resources: Recursos
     training: Treinamento
+    training_resources: Treinamento
     events: Eventos
-    learning_sessions: Learning Sessions
+    learning_sessions: Sessões de aprendizagem do YouTube
     media_library: Biblioteca de Mídia
+    media_coverage: Cobertura da mídia
     consultants: Consultores
-    news: News
+    news: Notícias
+    latest_news: Últimas notícias
     contacts: Contatos
     contact_us: Contatos
     service: Serviço
@@ -62,6 +66,12 @@ pt-BR:
     learn: Aprenda
     plan: Planeje
     buy: Compre
+    stay_connected: Fique conectado conosco
+    insights_blog: Insights Blog
+    experience_centers: Centros de Experiência
+    distributors: Distributors
+    new_products: Novos Produtos
+    anytime_help_center: Anytime Help Center
 
   home_page:
     shop_now: Compre Agora

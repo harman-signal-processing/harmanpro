@@ -1480,7 +1480,7 @@ p {
 }
 .mega-menu-container {
   z-index: 9999;
-  @include grid-row($behavior: collapse);
+  // @include grid-row($behavior: collapse);
   margin-left: ($column-gutter / 2);
   .mega-menu-content {
     @media only screen and (min-width: 1001px) {
@@ -1724,7 +1724,7 @@ ul.dropdown {
     img {
       width: 100%;
       object-fit: cover;
-    }    
+    }
   }
 }
 .case-study-panel {
