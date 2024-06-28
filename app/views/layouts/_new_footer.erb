@@ -1,0 +1,52 @@
+<footer>
+  <div id="harmanpro_bar">
+    <div class="row">
+      <div class="large-3 columns hide-for-medium-down text-center">
+        <%=image_tag("harman.svg", alt: "Harman Professional", class:"hlogo", lazy: false)%>
+      </div><!-- <div class="large-3 columns hide-for-medium-down text-center">  -->
+      <div class="large-9 small-12 columns">
+        <ul class="large-block-grid-10 small-block-grid-5">
+          <li><%=link_to image_tag("pro_brands/akg.svg", alt:"AKG", id:"footer_logo_akg", class:"footer_brand_logos", lazy: false), "https://www.akg.com", target: "_blank"%></li>
+          <li><%=link_to image_tag("pro_brands/amx.svg", alt:"AMX", id:"footer_logo_amx", class:"footer_brand_logos", lazy: false), "https://www.amx.com", target: "_blank"%></li>
+          <li><%=link_to image_tag("pro_brands/bss.svg", alt:"BSS", id:"footer_logo_bss", class:"footer_brand_logos", lazy: false), "https://bssaudio.com", target: "_blank"%></li>
+          <li><%=link_to image_tag("pro_brands/crown.svg", alt:"Crown", id:"footer_logo_crown", class:"footer_brand_logos", lazy: false), "https://www.crownaudio.com", target: "_blank"%></li>
+          <li><%=link_to image_tag("pro_brands/dbx.svg", alt:"dbx", id:"footer_logo_dbx", class:"footer_brand_logos", lazy: false), "https://dbxpro.com", target: "_blank"%></li>
+          <li><%=link_to image_tag("pro_brands/jbl.svg", alt:"JBL Professional", id:"footer_logo_jbl", class:"footer_brand_logos", lazy: false), "https://jblpro.com", target: "_blank"%></li>
+          <li><%=link_to image_tag("pro_brands/lexicon.svg", alt:"Lexicon", id:"footer_logo_lexicon", class:"footer_brand_logos", lazy: false), "https://lexiconpro.com", target: "_blank"%></li>
+          <li><%=link_to image_tag("pro_brands/martin.svg", alt:"Martin", id:"footer_logo_martin", class:"footer_brand_logos", lazy: false), "https://www.martin.com", target: "_blank"%></li>
+          <li><%=link_to image_tag("pro_brands/soundcraft.svg", alt:"Soundcraft", id:"footer_logo_soundcraft", class:"footer_brand_logos", lazy: false), "https://www.soundcraft.com", target: "_blank"%></li>
+        </ul><!-- <ul class="large-block-grid-8 small-block-grid-5"> -->
+      </div><!-- <div class="large-9 small-12 columns">  -->
+    </div><!-- <div class="row"> -->
+  </div><!-- <div id="harmanpro_bar"> -->
+  <div class="container">
+    <div class="medium-3 small-12 columns" id="footer_left">
+      <span class="footer_text">&copy; <%= Date.today.year %> HARMAN International. <%= t('all_rights_reserved') %>.</span>
+    </div><!-- <div class="medium-4 small-12 columns" id="footer_left">  -->
+      <div class="medium-3 small-12 columns social-links-new" aria-hidden="true" style="text-align: right;">
+            <span class="footer_text" style="margin-right:10px;">Follow us on</span>
+            <%= link_to "/facebook", target: "_blank" do %>
+              <%= fa_icon :facebook_f, size: '1x', type: :brand %>
+            <% end %>
+            <%= link_to "/linkedin", target: "_blank" do %>
+              <%= fa_icon :linkedin_in, size: '1x', type: :brand %>
+            <% end %>
+            <%= link_to "/youtube", target: "_blank" do %>
+              <%= fa_icon :youtube, size: '1x', type: :brand %>
+            <% end %>
+      </div>
+    <div class="medium-6 columns hide-for-small" id="footer_info">
+      <span class="footer_text">
+        <%= link_to t('nav.newsletter'), "/lp/sign-up", target: "_blank" %> &bull;
+        <%= link_to t('privacy_policy'), "https://www.harman.com/privacy-policy", target: "_blank" %> &bull;
+        <%= link_to t('cookies'), "https://www.harman.com/cookies-statement", target: "_blank" %> &bull;
+        <%= link_to t('terms_of_use'), "https://www.harman.com/terms-use", target: "_blank" %> &bull;
+        <%= link_to 'HARMAN Merchandise', "https://harman.axomo.com", target: "_blank" %> &bull;
+        <%= link_to 'careers'.titleize, "https://jobs.harman.com", target: "_blank" %> &bull;
+        <%= link_to 'Sitemap', sitemap_path, target: "_blank" %>
+      </span>
+    </div><!-- <div class="medium-8 columns hide-for-small" id="footer_info"> -->
+  </div><!-- <div class="container"> -->
+</footer>
+<%= render 'shared/video_modal' %>
+<%= yield :footer_code %>
