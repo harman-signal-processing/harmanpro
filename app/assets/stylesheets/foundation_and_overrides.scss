@@ -46,7 +46,7 @@ $row-width: rem-calc(1170);
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // We use these to define default font stacks
-$font-family-sans-serif: 'Roboto', 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif: -apple-system, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
 // $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 // $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
@@ -2062,6 +2062,39 @@ a.retailer {
       -moz-animation-duration: 2.4s;
       -webkit-animation-duration: 2.4s;
       -animation-duration: 2.4s;
+    }
+  }
+  .page_header_banner {
+    position: relative;
+    img {
+      width: 100%;
+    }
+    div.headline_container {
+      position: absolute;
+      top: 18%;
+      left: 5%;
+      text-align: left;
+      h1 {
+        color: white;
+        font-size: clamp(16px, 5.25vw, 4.25rem);
+        font-family: $body-font-family;
+        font-weight: 500;
+        line-height: .92;
+        margin-top: .1rem;
+        letter-spacing: .2rem;
+        text-transform: uppercase;
+        .part2 {
+          color: $primary-color;
+        }
+      }
+      h3 {
+        color: white;
+        font-size: clamp(11px, 3.0vw, 1.45rem);
+        font-family: $body-font-family;
+        font-weight: 300;
+        margin-top: .2rem;
+        text-transform: uppercase;
+      }
     }
   }
 }

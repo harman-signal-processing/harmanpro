@@ -33,7 +33,7 @@ class CaseStudiesController < ApplicationController
     page_num = sanitize_param_value(params[:page]).to_i if params[:page].present?
     @case_studies = @case_studies.order(Arel.sql("created_at DESC")).paginate(page: page_num, per_page: 20)
 
-    @banner_image = Resource.find_by(name:"Banner: Case Studies")
+    @banner = Resource.find_by(name:"Banner: Case Studies")
     respond_with @case_studies
   end
 

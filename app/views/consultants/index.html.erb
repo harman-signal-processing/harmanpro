@@ -3,8 +3,12 @@
 
 <div class="bumped-up">
   <div class="banner-container">
-    <% if @banner_image.present? %>
-      <h1><%= image_tag @banner_image.attachment.url, alt: t('consultant_page.title') %></h1>
+    <% if @banner.present? %>
+      <% if @banner.html.present? %>
+        <%=raw @banner.html.gsub!(/~this_resource~/, @banner.attachment.url) %>
+      <% else %>
+        <h1><%= image_tag @banner_image.attachment.url, alt: t('consultant_page.title') %></h1>
+      <% end %>
     <% end %>
   </div>
 </div>

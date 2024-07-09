@@ -7,7 +7,7 @@ class EventsController < ApplicationController
     if @events.size == 0
       redirect_to learning_sessions_path and return false
     end
-    @banner_image = Resource.find_by(name:"Banner: Events")
+    @banner = Resource.find_by(name:"Banner: Events")
   end
 
   def show

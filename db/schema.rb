@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_26_214658) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_08_163746) do
   create_table "active_admin_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -1253,6 +1253,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_26_214658) do
     t.datetime "image_updated_at", precision: nil
     t.integer "image_file_size"
     t.boolean "include_in_pdf_search"
+    t.text "html"
   end
 
   create_table "service_center_service_groups", id: :integer, charset: "latin1", force: :cascade do |t|

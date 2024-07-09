@@ -2,7 +2,7 @@ ActiveAdmin.register Resource do
   # :nocov:
   menu label: "Resource Library"
 
-  permit_params :name, :attachment, :image, :resource_type, :tag_list, :description, :include_in_pdf_search
+  permit_params :name, :attachment, :image, :resource_type, :tag_list, :description, :include_in_pdf_search, :html
 
   filter :name
   filter :resource_type
@@ -76,6 +76,7 @@ ActiveAdmin.register Resource do
       f.input :include_in_pdf_search, hint: "Note: In order to have this PDF file be included in the pro site PDF search page, this box must be checked and Resource type must not be blank." if f.object.attachment_content_type == "application/pdf"
       f.input :image, label: "Preview image", hint: "will be available in several sizes"
       f.input :description, as: :text
+      f.input :html, as: :text, hint: "For banners. If present, this HTML will be rendered instead of any attached image."
       f.input :tag_list, label: "Tags", hint: "separated by a comma."
     end
     f.actions
