@@ -10,6 +10,7 @@ ActiveAdmin.register LandingPage do
     :sub_content,
     :hide_title,
     :banner,
+    :banner_html,
     :delete_banner,
     :custom_slug,
     :header_code,
@@ -121,7 +122,8 @@ ActiveAdmin.register LandingPage do
       f.input :banner, hint: f.object.banner.present? ?
         image_tag(f.object.banner.url(:thumb)) :
         "No banner uploaded."
-      f.input :delete_banner, label: "Delete the banner (if present).", as: :boolean
+      f.input :delete_banner, label: "Delete the banner image (if present).", as: :boolean
+      f.input :banner_html, hint: "Use to overlay text on top of banner image", as: :text
       f.has_many :features, heading: "Fancy Features", new_record: "Add a feature" do |s|
         s.input :id, as: :hidden
         s.input :position, label: "Order of appearance"

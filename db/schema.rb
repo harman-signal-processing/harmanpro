@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_08_163746) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_10_145412) do
   create_table "active_admin_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -778,6 +778,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_08_163746) do
     t.string "custom_slug"
     t.boolean "live", default: true
     t.string "preview_code"
+    t.text "banner_html"
     t.index ["original_locale_id"], name: "index_landing_pages_on_original_locale_id"
   end
 

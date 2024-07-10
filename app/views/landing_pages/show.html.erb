@@ -19,7 +19,13 @@
 
 <div class="container main-container">
   <% if @landing_page.banner.present? %>
-    <%= image_tag @landing_page.banner.url, alt: "#{ @landing_page.title } Banner" %>
+    <% if @landing_page.banner_html.present? %>
+      <div class="banner-container">
+        <%=raw @landing_page.banner_html.gsub!(/~banner_image~/, @landing_page.banner.url) %>
+      </div>
+    <% else %>
+      <%= image_tag @landing_page.banner.url, alt: "#{ @landing_page.title } Banner" %>
+    <% end %>
   <% end %>
 
   <% unless @landing_page.hide_title? %>
