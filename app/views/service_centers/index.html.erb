@@ -1,4 +1,4 @@
-<%country_code = @geo_ip.country.iso_code.downcase || "us" %>
+<%country_code = @geo_ip.country.iso_code.present? ? @geo_ip.country.iso_code.downcase : "us" %>
 <%state_code = @geo_ip.subdivisions.most_specific.iso_code.present? ? @geo_ip.subdivisions.most_specific.iso_code.downcase : "" %>
 
 <%= content_for :title do %><%= t('find_service_page.title') %><% end %>
