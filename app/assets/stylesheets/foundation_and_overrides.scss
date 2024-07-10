@@ -1543,19 +1543,25 @@ div.hint {
 }
 .logo-container {
   h1.logo {
-    margin-top: 13px;
+    margin-top: 11px;
     img {
-      padding-top: 2px;
+      padding-top: 0px;
+      width: 200px;
+    }
+    &.show-for-small {
+     img {
+       width: 90px;
+     }
     }
     small {
       font-size: 12px;
       font-weight: 300;
-      @media only screen and (min-width: 733px) {
+      @media only screen and (min-width: 633px) {
         position: absolute;
         top: 84px;
         left: 225px;
       }
-      @media only screen and (max-width: 732px) {
+      @media only screen and (max-width: 632px) {
         position: absolute;
         top: 43px;
         left: 100px;
