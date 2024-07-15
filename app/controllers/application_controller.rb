@@ -180,7 +180,7 @@ class ApplicationController < ActionController::Base
     # This globally blocks POSTing JSON. Bypass this filter in your controller if POSTing JSON is required.
     handle_posting_json
 
-    handle_posting_empty_body
+    # handle_posting_empty_bodyS
 
     handle_posting_empty_content_type
 
@@ -206,10 +206,12 @@ class ApplicationController < ActionController::Base
     end
   end
   def handle_posting_empty_body
-    if request.post? && request.raw_post.gsub("-","").empty?
-      BadActorLog.create(ip_address: request.remote_ip, reason: "Empty POST", details: "#{request.inspect}\n\n#{request.raw_post}")
-      log_bad_actors(request.remote_ip, "Empty POST")
-      render plain: '-', status: 400
+    if request.raw_post.present?
+      if request.post? && request.raw_post.gsub("-","").empty?
+        BadActorLog.create(ip_address: request.remote_ip, reason: "Empty POST", details: "#{request.inspect}\n\n#{request.raw_post}")
+        log_bad_actors(request.remote_ip, "Empty POST")
+        head :bad_request
+      end
     end
   end
   def handle_posting_empty_content_type
@@ -217,23 +219,22 @@ class ApplicationController < ActionController::Base
     if request.post? && content_type.empty?
       BadActorLog.create(ip_address: request.remote_ip, reason: "Empty Content Type", details: "#{request.inspect}\n\n#{request.raw_post}")
       log_bad_actors(request.remote_ip, "Empty Content Type")
-      render plain: '-', status: 400
+      head :bad_request
     end
   end
   def handle_bad_posts(post_param_not_allowed_value)
-    if post_param_not_allowed_value.present?
+    if post_param_not_allowed_value.present? && request.raw_post.present?
       bad_post_word_array = post_param_not_allowed_value.downcase.gsub(/\s/,"").split(",")
       bad_post_param_pattern = /\b(?:#{bad_post_word_array.join('|')})\b/i
       bad_post_found = request.raw_post.match?(bad_post_param_pattern)
       if bad_post_found
         BadActorLog.create(ip_address: request.remote_ip, reason: "Bad Post", details: "#{request.inspect}\n\n#{request.raw_post}")
         log_bad_actors(request.remote_ip, "Bad Post")
-        render plain: '-', status: 400
+        head :bad_request
       end
     end
   end
   def handle_bad_path(path_not_allowed_value)
-    #   binding.pry
     if path_not_allowed_value.present?
       bad_path_word_array = path_not_allowed_value.downcase.gsub(/\s/,"").split(",")
       bad_path_pattern = /(?:#{bad_path_word_array.map { |word| Regexp.escape(word) }.join('|')})/i
@@ -241,7 +242,7 @@ class ApplicationController < ActionController::Base
       if bad_path_found
         BadActorLog.create(ip_address: request.remote_ip, reason: "Bad Path", details: "#{request.inspect}\n\n#{request.raw_post}")
         log_bad_actors(request.remote_ip, "Bad Path")
-        render plain: '-', status: 400
+        head :bad_request
       end
     end
   end
