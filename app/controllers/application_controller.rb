@@ -272,20 +272,15 @@ class ApplicationController < ActionController::Base
   end
 
   def has_sqli?(input)
-    sqli = Regexp.union(
-      /THEN.*ELSE.*END/i,
-      /CONCAT.*SELECT/i,
-      /UNION.*SELECT/i,
-      /CHAR\(/i,
-      /RESULT\:/i,
-      /\=.*SLEEP/i,
-      /SLEEP.*\=/i,
-      /\+{7,}/,
-    )
-    if input.respond_to?(:any?)
-      input.any?(sqli)
+    if request.get?
+      sqli_pattern = /\b(?:SELECT|INSERT INTO|UPDATE|DELETE FROM)\b.*?\b(?:FROM|INTO|WHERE|VALUES)\b/i
     else
-      input.to_s.match?(sqli)
+      sqli_pattern = /\b(?:SELECT|INSERT INTO|UPDATE|DELETE FROM)\b.*?\b(?:FROM|INTO|WHERE|VALUES)\b/
+    end
+    if input.respond_to?(:any?)
+      input.any?(sqli_pattern)
+    else
+      input.to_s.match?(sqli_pattern)
     end
   end
 
