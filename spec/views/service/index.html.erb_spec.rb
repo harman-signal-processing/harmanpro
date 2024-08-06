@@ -33,6 +33,7 @@ RSpec.describe "service/index", as: :view do
 
   it "has dealer portal section" do
     expect(rendered).to have_css "h3", text: "Dealer Portal"
-    expect(rendered).to have_link "Order Now", href: ENV['dealer_portal_url']
+    # 2024-07 link temporarily removed
+    #expect(rendered).to have_link "Order Now", href: ENV['dealer_portal_url']
   end
 end

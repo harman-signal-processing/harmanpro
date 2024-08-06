@@ -3,9 +3,12 @@ require "rails_helper"
 RSpec.describe "layouts/application", as: :view do
 
   before :all do
-    @brand = FactoryBot.create(:brand)
-    @vertical_market = FactoryBot.create(:vertical_market, parent_id: nil)
-    @child_vertical = FactoryBot.create(:vertical_market, parent_id: @vertical_market.id)
+    @brand = create(:brand)
+    @vertical_market = create(:vertical_market, parent_id: nil)
+    @child_vertical = create(:vertical_market, parent_id: @vertical_market.id)
+    create(:menu_item, top_nav_name: "Resources", title: "nav.consultants", link: "/consultant", locale: nil) 
+    create(:menu_item, top_nav_name: "Contact Us", title: "nav.contact_us", link: "/contacts", locale: nil)
+    create(:menu_item, top_nav_name: "Contact Us", title: "nav.service", link: "/service", locale: nil)
   end
 
   before :each do
@@ -21,6 +24,10 @@ RSpec.describe "layouts/application", as: :view do
       expect(rendered).to have_css("img#logo")
     end
 
+    it "has a resources submenu" do
+      expect(header).to have_link "Resources"
+    end
+
     it "links to consultant portal" do
       expect(header).to have_link "Consultant Portal", href: consultant_portal_path
     end
@@ -30,7 +37,7 @@ RSpec.describe "layouts/application", as: :view do
     end
 
     it "links to the contacts page" do
-      expect(header).to have_link "Contacts", href: contacts_path
+      expect(header).to have_link "Contact Us", href: "/contacts"
     end
 
     it "doesn't link to top-level vertical markets (used to)" do
@@ -42,7 +49,7 @@ RSpec.describe "layouts/application", as: :view do
     end
 
     it "links to service page" do
-      expect(header).to have_link "Service", href: service_path
+      expect(header).to have_link "Service Support", href: service_path
     end
   end
 
@@ -52,6 +59,7 @@ RSpec.describe "layouts/application", as: :view do
       @menu_item = FactoryBot.create(:menu_item,
                                      locale: @locale,
                                      title: "Tienda",
+                                     top_nav_name: "Resources",
                                      link: "http://shop.harmanpro.com",
                                      enabled: true,
                                      new_tab: true)
