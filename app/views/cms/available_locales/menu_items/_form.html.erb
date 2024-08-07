@@ -1,5 +1,6 @@
 <%= simple_form_for [:cms, @available_locale, @menu_item] do |f| %>
 
+  <%= f.input :top_nav_name, label: "Parent menu" %>
   <%= f.input :title %>
   <%= f.input :link %>
   <%= f.input :position, label: "Order" %>

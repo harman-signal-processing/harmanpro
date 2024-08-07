@@ -74,6 +74,6 @@ class Cms::MenuItemsController < CmsController
   private
 
   def menu_item_params
-    params.require(:menu_item).permit(:title, :link, :position, :new_tab)
+    params.require(:menu_item).permit(:title, :link, :position, :new_tab, :top_nav_name)
   end
 end

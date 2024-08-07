@@ -3,6 +3,7 @@ require "rails_helper"
 feature "Find a service center" do
 
   before :all do
+    skip "It seems this functionality was removed 2024-07"
     @service_group = FactoryBot.create(:service_group)
     @service_center = FactoryBot.create(:service_center)
     @service_center.service_groups << @service_group

@@ -29,6 +29,7 @@ feature "Translators and admins can customize menus for their locale" do
   scenario "adds menu item successfully" do
     click_on "Add menu item"
 
+    fill_in "Parent menu", with: "Resources"
     fill_in "menu_item_title", with: "Cosa Maravillosa"
     fill_in "menu_item_link", with: "http://cosamaravillosa.com"
     click_on "Save Changes"
@@ -40,6 +41,7 @@ feature "Translators and admins can customize menus for their locale" do
   scenario "edits existing menu item successfully" do
     click_on @menu_item.title
 
+    fill_in "Parent menu", with: "Resources"
     fill_in "menu_item_title", with: "Nuevo Link"
     fill_in "menu_item_link", with: "http://nuevo/"
     click_on "Save Changes"

@@ -9,6 +9,7 @@ feature 'Service landing page' do
   end
 
   scenario 'click through to dealer portal' do
+    skip "Link removed 2024-07"
     click_on 'Order Now'
 
     expect(current_url).to match(ENV['dealer_portal_url'])

@@ -13,12 +13,11 @@ feature "Browse events" do
   end
 
   before :each do
-    visit root_path
+    # 2024-07 Events no longer appears in nav. Test by accessing events index directly
+    visit events_path
   end
 
   scenario "browsing events, lists current and upcoming events" do
-    click_on "Events"
-
     expect(page).to have_content @current_event.name
     expect(page).to have_content @future_event.name
     expect(page).to have_content @future_event.description
@@ -27,14 +26,10 @@ feature "Browse events" do
   end
 
   scenario "featured events have picture, link to detail page" do
-    click_on "Events"
-
     expect(page).to have_link @current_event.name, href: event_path(@current_event)
   end
 
   scenario "hidden events do not appear" do
-    click_on "Events"
-
     expect(page).not_to have_content(@hidden_event.name)
   end
 
@@ -47,7 +42,6 @@ feature "Browse events" do
   end
 
   scenario "recent events page lists past events" do
-    click_on "Events"
     click_on "recent events"
 
     expect(page).to have_content @past_event.name
