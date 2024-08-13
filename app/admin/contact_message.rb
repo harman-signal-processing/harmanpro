@@ -58,7 +58,7 @@ ActiveAdmin.register ContactMessage do
         row :product_serial_number
         row :operating_system
         row :country do
-          ISO3166::Country[contact_message.shipping_country].name
+          ISO3166::Country[contact_message.shipping_country].iso_short_name
         end
       end
 
