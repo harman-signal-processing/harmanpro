@@ -1,6 +1,7 @@
 class ServiceController < ApplicationController
   def index
     @contact_message = ContactMessage.new
+    @banner = Resource.find_by(name:"Banner: Service")
   end
 
   def create_contact_message

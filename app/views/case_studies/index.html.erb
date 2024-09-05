@@ -1,14 +1,4 @@
-<div class="bumped-up" style="margin-bottom:1em;">
-  <div class="banner-container">
-    <% if @banner.present? %>
-      <% if @banner.html.present? %>
-        <%=raw @banner.html.gsub!(/~this_resource~/, @banner.attachment.url) %>
-      <% else %>
-        <h1><%= image_tag @banner.attachment.url, alt: t('nav.case_studies').titleize %></h1>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+<%= render 'shared/page_banner', alt_text: t('nav.case_studies').titleize %>
 
 <div class="row">
   <div class="medium-9 columns">
