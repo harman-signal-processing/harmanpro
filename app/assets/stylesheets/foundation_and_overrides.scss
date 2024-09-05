@@ -1646,6 +1646,21 @@ ul.dropdown {
     }
   }
 }
+.brands_strip {
+  padding: 30px 200px;
+  background: linear-gradient(45deg, #1e3b6e, #0083ff, #4747c8);
+  color: white;
+  h2 {
+    color: white;
+    font-weight: 500;
+    font-size: rem-calc(38px);
+    letter-spacing: 2.5;
+    line-height: 2;
+  }
+  .brand-logo-slide {
+    height: 150px;
+  }
+} 
 .plan-container {
   background: $plan-background-color;
   padding: 60px 0;
@@ -2087,8 +2102,7 @@ a.retailer {
         font-weight: 500;
         line-height: .92;
         margin-top: .1rem;
-        letter-spacing: .2rem;
-        text-transform: uppercase;
+        letter-spacing: .15rem;
         .part2 {
           color: $primary-color;
         }
@@ -2099,7 +2113,6 @@ a.retailer {
         font-family: $body-font-family;
         font-weight: 300;
         margin-top: .2rem;
-        text-transform: uppercase;
       }
     }
   }
