@@ -5,6 +5,8 @@
 
 <%= render 'shared/page_banner', alt_text: "Media Coverage" %>
 
+<div style="margin-top:1em; margin-bottom:1em;"><%=SiteSetting.value("hero-copy-media-coverage")%></div>
+
 <div class="show-for-medium-down">
   <a data-dropdown="brand-filters" aria-controls="brand-filters" aria-expanded="false">Select Brand</a>
   <ul id="brand-filters" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
