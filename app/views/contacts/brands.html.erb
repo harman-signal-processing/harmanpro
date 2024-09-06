@@ -3,11 +3,7 @@
   <%= t('contacts_page.meta_description', brand_names: all_brands.map{|b| b.name}.join(', ') ) %>
 <% end %>
 
-<div class="bumped-up">
-  <div class="banner-container">
-    <h1><%= link_to(image_tag(Resource.find_by(name:"Contacts Banner - Brands").attachment.url, alt: t('contacts_page.title')),"/contacts") %></h1>
-  </div>
-</div>
+<%= render 'shared/page_banner', alt_text: "Brand Contacts" %>
 
 <div class="row" style="margin-top:10px;">
     <div class="large-2 columns">

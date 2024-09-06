@@ -1,13 +1,5 @@
 <div id="top"></div>
-<div class="banner-container">
-  <% if @banner.present? %>
-    <% if @banner.html.present? %>
-      <%=raw @banner.html.gsub!(/~this_resource~/, @banner.attachment.url) %>
-    <% else %>
-      <h1><%= image_tag @banner.attachment.url, alt: "New HARMAN Products" %></h1>
-    <% end %>
-  <% end %>
-</div>
+<%= render 'shared/page_banner', alt_text: "New HARMAN Products" %>
 
 <div style="margin-top:1em; margin-bottom:1em;"><%=SiteSetting.value("hero-copy-new-products")%></div>
 

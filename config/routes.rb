@@ -286,7 +286,7 @@ Rails.application.routes.draw do
 #   get "/contacts", to: "landing_pages#contacts_home"
   get "/contacts", to: "contacts#index"
   get "/contacts/solutions", to: "landing_pages#contacts_solutions"
-  get "/contacts/brands", to: "landing_pages#brand_contacts"
+  get "/contacts/brands", to: "contacts#brands"
   get "/contacts/channel", to: "landing_pages#contacts_channel_map"
   get "/contacts_old/:search", to: "contacts#show"
   get "/contacts_old/:search/:chosen_contacts_path", to: "contacts#show"

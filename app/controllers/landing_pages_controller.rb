@@ -36,9 +36,6 @@ class LandingPagesController < ApplicationController
     end
   end
 
-  def brand_contacts
-  end
-
   def training
   end
 

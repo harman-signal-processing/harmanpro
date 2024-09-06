@@ -1,5 +1,10 @@
 class ContactsController < ApplicationController
     def index
+      @banner = Resource.find_by(name: "Banner: Contact Us")
+    end
+    
+    def brand_contacts
+      @banner = Resource.find_by(name: "Banner: Brand Support")
     end
 
     def show
