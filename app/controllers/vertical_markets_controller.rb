@@ -6,10 +6,7 @@ class VerticalMarketsController < ApplicationController
     @vertical_markets = VerticalMarket.active
     respond_with @vertical_markets do |format|
       format.html {
-        template = LandingPage.where(slug: "solutions")
-        if template.exists?
-          render_landing_page("solutions") and return false
-        end
+        @banner = Resource.find_by(name:"Banner: Applications")
       }
       format.json
     end
