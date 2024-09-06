@@ -10,6 +10,7 @@ class MediaCoveragesController < ApplicationController
       @media_coverages = MediaCoverage.live
     end
 
+    @banner = Resource.find_by(name:"Banner: Media Coverage")
     @media_coverages = @media_coverages.paginate(page: params[:page], per_page: 24)
   end
 
