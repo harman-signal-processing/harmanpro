@@ -1,11 +1,19 @@
 class ContactsController < ApplicationController
-    def index
-      @banner = Resource.find_by(name: "Banner: Contact Us")
-    end
+  def index
+    @banner = Resource.find_by(name: "Banner: Contact Us")
+  end
     
-    def brand_contacts
-      @banner = Resource.find_by(name: "Banner: Brand Support")
-    end
+  def brands
+    @banner = Resource.find_by(name: "Banner: Brand Support")
+  end
+
+  def solutions
+    render_landing_page('solutions-contacts')
+  end
+
+  def channel_map
+    render_landing_page('channel-contacts')
+  end
 
     def show
         search_term = params[:search].downcase
