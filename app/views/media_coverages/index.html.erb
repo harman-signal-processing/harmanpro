@@ -3,24 +3,13 @@
   Media Coverage
 <% end %>
 
-<div class="bumped-up" style="margin-bottom:2em;">
-  <div class="banner-container" style="padding: 4em;">
-    <% if @brand %>
-      <% if @brand.white_logo.present? %>
-        <p><%= image_tag @brand.white_logo.url(:large), alt: @brand.name, lazy: false %></p>
-      <% else %>
-        <p><%= @brand.name %></p>
-      <% end %>
-    <% end %>
-    <h1>Media Coverage</h1>
-    <p>A Curated Roundup</p>
-    <div class="show-for-medium-down">
-      <a data-dropdown="brand-filters" aria-controls="brand-filters" aria-expanded="false">Select Brand</a>
-      <ul id="brand-filters" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-        <%= render 'brand_filters' %>
-      </ul>
-    </div>
-  </div>
+<%= render 'shared/page_banner', alt_text: "Media Coverage" %>
+
+<div class="show-for-medium-down">
+  <a data-dropdown="brand-filters" aria-controls="brand-filters" aria-expanded="false">Select Brand</a>
+  <ul id="brand-filters" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+    <%= render 'brand_filters' %>
+  </ul>
 </div>
 
 <div class="row">
