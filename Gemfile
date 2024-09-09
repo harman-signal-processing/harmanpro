@@ -19,6 +19,7 @@ gem 'font_awesome5_rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem 'mysql2'
+gem 'rexml', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '>= 6.0'
 gem 'jbuilder', '~> 2.0'

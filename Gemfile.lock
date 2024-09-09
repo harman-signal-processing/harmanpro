@@ -712,6 +712,7 @@ DEPENDENCIES
   rb-fsevent
   rb-inotify
   recaptcha
+  rexml (~> 3.3.6)
   rspec-rails
   sass-rails
   simple_form (>= 5.0.0)
