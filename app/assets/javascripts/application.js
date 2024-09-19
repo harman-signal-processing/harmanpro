@@ -31,7 +31,6 @@
 //= require slick.min
 //= require REM-unit-polyfill
 //= require jquery-sticky/jquery.sticky
-//= require jquery.lazyload
 //= require chosen-jquery
 //= require will_paginate_infinite
 //= require admin
