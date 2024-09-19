@@ -27,4 +27,13 @@ class NewProduct < ApplicationRecord
 
   accepts_nested_attributes_for :new_product_brands, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :new_product_product_types, reject_if: :all_blank, allow_destroy: true
+  
+  scope :for_index, -> do
+    where("released_on <= ?", Date.today).order(Arel.sql("released_on DESC"))
+  end
+  
+  scope :featured, -> do
+    for_index.limit(8)
+  end
+    
 end

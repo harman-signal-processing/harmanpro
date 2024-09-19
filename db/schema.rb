@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_10_145412) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_17_171934) do
   create_table "active_admin_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -142,6 +142,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_10_145412) do
     t.string "repair_email"
     t.string "parts_email"
     t.boolean "show_on_training_page"
+    t.integer "priority"
     t.index ["show_on_main_site"], name: "index_brands_on_show_on_main_site"
     t.index ["show_on_services_site"], name: "index_brands_on_show_on_services_site"
     t.index ["slug"], name: "index_brands_on_slug"

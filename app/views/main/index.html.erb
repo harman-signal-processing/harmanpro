@@ -21,11 +21,7 @@
 
 <div class="container main-container">
 
-  <%= render "case_studies" %>
-  <%= render "news" %>
-  <%#= render "events" %>
-  <%= render "resources" %>
-  <%= render "service" %>
+  <%= render "intro" %>
 
 </div>
 
@@ -59,3 +55,17 @@
 <% end %>
 
 
+<%# rending these strips outside of the main container so they can be full-width %>
+<%= content_for :more_content do %>
+
+  <%= render "brands" %>
+  <%= render "new_products" %>
+  <%= render "case_studies" %>
+  <%= render "channel_contacts" %>
+  <%= render "news" %>
+  <%#= render "events" %>
+  <%#= render "resources" %>
+  <%#= render "service" %>
+  <%= render "bu-bu-buttons" %>
+  
+<% end %>

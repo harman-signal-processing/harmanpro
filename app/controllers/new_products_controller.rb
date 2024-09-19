@@ -5,7 +5,7 @@ class NewProductsController < ApplicationController
     if params[:show_future].present? && admin_logged_in?
       @new_products = NewProduct.order(Arel.sql("released_on DESC"))
     else
-      @new_products = NewProduct.where("released_on <= ?", Date.today).order(Arel.sql("released_on DESC"))
+      @new_products = NewProduct.for_index
     end
     @banner = Resource.find_by(name:"Banner: New Products")
     respond_with @new_products

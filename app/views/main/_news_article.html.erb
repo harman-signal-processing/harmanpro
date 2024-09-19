@@ -1,16 +1,20 @@
-<% if image_size.to_s.match?(/panel/i) && news_article.narrow_banner.present? %>
-  <% image = news_article.narrow_banner %>
+<% if news_article.narrow_banner.present? %>
+  <% image = news_article.narrow_banner.url %>
 <% else %>
-  <% image = news_article.news_photo %>
+  <% image = news_article.news_photo.url(:medium_panel) %>
 <% end %>
 
 <%= link_to(news_article) do %>
-  <%= image_tag image.url(image_size), alt: news_article.title, lazy: false %>
+  <div data-equalizer-watch="news_image">
+    <%= image_tag image, alt: news_article.title, lazy: false %>
+  </div>
   <div class="title-panel">
-    <h4>
+    <h4 data-equalizer-watch="news_headline">
       <%= truncate news_article.title, length: headline_length, separator: ' ' %>
-      <%= fa_icon 'long-arrow-alt-right', "aria-hidden": true %>
     </h4>
+    <br/>
+    Continue Reading
+    <%= fa_icon 'long-arrow-alt-right', "aria-hidden": true %>
   </div>
 <% end %>
 

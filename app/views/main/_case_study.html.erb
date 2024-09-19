@@ -1,10 +1,12 @@
 <%= link_to(case_study) do %>
-  <%= image_tag case_study.banner.url(image_size), alt: case_study.headline, lazy: false %>
+  <div class="image">
+    <%= image_tag case_study.banner.url(image_size), alt: case_study.headline, lazy: false %>
+  </div>
   <div class="title-panel">
-    <h4>
-      <%= case_study.headline %>
-      <%= fa_icon 'long-arrow-alt-right', "aria-hidden": true %>
-    </h4>
+    <h4><%= case_study.headline %></h4>
+    <% if case_study.vertical_markets.size > 0 %>
+    <p><%= case_study.vertical_markets.first.name %></p>
+    <% end %>
+    <div class="small radius button">Read More</div>
   </div>
 <% end %>
-
