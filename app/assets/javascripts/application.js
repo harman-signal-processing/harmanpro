@@ -101,10 +101,3 @@ $(document).ready(function (e) {
   $('img[usemap]').rwdImageMaps();
 });
 
-$(function() {
-  $("img").lazyload({
-    threshold: 200,
-    effect: "fadeIn"
-  });
-});
-
