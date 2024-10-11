@@ -5,6 +5,8 @@ class CaseStudyVerticalMarket < ApplicationRecord
   def self.featured
     active_vertical_markets = VerticalMarket.active.pluck(:id)
     where(vertical_market_id: active_vertical_markets).
-      order("created_at DESC").limit(10)
+      group(:case_study_id).
+      order("created_at DESC").
+      limit(10)
   end
 end
