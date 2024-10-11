@@ -8,11 +8,7 @@ class MainController < ApplicationController
     end
     @featured_case_studies = CaseStudy.featured
     @featured_news_articles = NewsArticle.featured
-    @event = Event.current_and_upcoming.
-      where(featured: true).
-      where("start_on < ?", 6.months.from_now).
-      where("start_on > ?", 1.day.ago).
-      order(Arel.sql("start_on ASC")).first
+    @featured_new_products = NewProduct.featured
   end
 
   def sitemap

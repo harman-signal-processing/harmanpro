@@ -56,7 +56,7 @@ class NewsArticle < ApplicationRecord
   # :nocov:
 
   def self.featured
-    where("post_on <= ?", Date.today).order("post_on DESC").limit(4)
+    where("post_on <= ?", Date.today).order("post_on DESC").limit(8)
   end
 
   def delete_photo_if_needed

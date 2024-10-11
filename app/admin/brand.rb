@@ -22,7 +22,8 @@ ActiveAdmin.register Brand do
     :tech_support_email,
     :parts_email,
     :repair_email,
-    :contact_info_for_consultants
+    :contact_info_for_consultants,
+    :priority
 
   # :nocov:
   index do
@@ -32,6 +33,7 @@ ActiveAdmin.register Brand do
       end
     end
     column :name
+    column :priority
     column :url
     column :show_on_main_site
     column :show_on_services_site
@@ -67,6 +69,7 @@ ActiveAdmin.register Brand do
           link_to("Logo collection", brand.logo_collection.url)
         end
       end
+      row :priority
       row :show_on_main_site
       row :show_on_services_site
       row :show_on_consultant_page
@@ -103,6 +106,7 @@ ActiveAdmin.register Brand do
         image_tag(f.object.by_harman_logo.url(:tiny)) : "By Harman logo not uploaded yet"
       f.input :logo_collection, hint: "Zipped collection of all pertinent brand logo variants"
       f.input :description, as: :text
+      f.input :priority
       f.input :show_on_main_site
       f.input :show_on_services_site
       f.input :show_on_consultant_page

@@ -1,5 +1,6 @@
 //$harman-blue: #00395a;
 $harman-blue: #006498;
+$harman-dark-blue: #1e3b6e;
 
 // Foundation by ZURB
 // foundation.zurb.com
@@ -46,7 +47,7 @@ $row-width: rem-calc(1170);
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // We use these to define default font stacks
-$font-family-sans-serif: -apple-system, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+$font-family-sans-serif: Roboto, -apple-system, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
 // $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 // $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
@@ -110,7 +111,7 @@ $body-font-weight: $font-weight-medium;
 // $last-child-float: $opposite-direction;
 
 // We use these to make sure border radius matches unless we want it different.
-// $global-radius: 3px;
+ $global-radius: 6px;
 // $global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
@@ -1359,10 +1360,10 @@ $topbar-dropdown-toggle-color: $monsoon;
 
 // Set the link colors and styles for top-level nav
 $topbar-link-color: $tuatara;
-$topbar-link-color-hover: $black;
+$topbar-link-color-hover: scale-color($harman-blue, $lightness: 30%);
 $topbar-link-color-active: $monsoon;
 $topbar-link-color-active-hover: $harman-blue;
-$topbar-link-weight: 400;
+$topbar-link-weight: 500;
 $topbar-link-font-size: rem-calc(16);
 $topbar-link-hover-lightness: 0%; // Darken by 10%
 $topbar-link-bg: $topbar-bg;
@@ -1371,7 +1372,7 @@ $topbar-link-bg-hover: $topbar-link-bg-color-hover;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
 // $topbar-link-font-family: $body-font-family;
-$topbar-link-text-transform: uppercase;
+//$topbar-link-text-transform: uppercase;
 // $topbar-link-padding: $topbar-height / 3;
 // $topbar-back-link-size: $h5-font-size;
 // $topbar-link-dropdown-padding: 20px;
@@ -1447,7 +1448,7 @@ $topbar-arrows: false; //Set false to remove the triangle icon from the menu ite
    "foundation/components/sub-nav",
 //   "foundation/components/switches",
    "foundation/components/tables",
-//   "foundation/components/tabs",
+   "foundation/components/tabs",
 //   "foundation/components/thumbs",
 //   "foundation/components/tooltips",
    "foundation/components/top-bar",
@@ -1472,7 +1473,7 @@ body {
   }
 }
 p {
-  font-weight: 400 !important;
+  font-weight: 500 !important;
   line-height: rem-calc(28px);
 }
 .top-bar .button {
@@ -1490,20 +1491,20 @@ p {
       @include grid-column(12);
     }
     background: $vapor;
-    padding: 10px 10px;
+    padding: 5px 10px 10px;
     //width: 800px;
     //@media only screen and (min-width: 640px) and (max-width: 800px) {
     //  width: 600px;
     //}
     ul {
       list-style-type: none;
-      padding: 20px;
+      padding: 10px;
       margin: 0;
       li {
-        font-size: rem-calc(18px);
-        line-height: 1.5;
-        text-transform: uppercase;
-        margin-bottom: rem-calc(14px);
+        font-size: rem-calc(16px);
+        line-height: 1.25;
+        //text-transform: uppercase;
+        margin-bottom: rem-calc(16px);
       }
     }
     a {
@@ -1541,6 +1542,73 @@ span.hint {
 div.hint {
   margin-top: 1px;
 }
+
+.pencil-nav {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  padding: 7px 20px;
+  background-color: $harman-dark-blue;
+  color: white;
+  button.button {
+    margin: 0;
+    padding-top: 4px;
+    padding-left: 4px;
+    background: transparent;
+    &:hover {
+      color: $primary-color;
+    }
+    &.dropdown::after {
+      margin-top: -7px;
+      right: 28px;
+    }
+  }
+  ul.f-dropdown {
+    padding: 0;
+    background-color: white;
+    border: 1px solid $harman-dark-blue;
+    li {
+        border-bottom: 1px solid #CCC;
+      a {
+        &:hover {
+          background-color: $harman-dark-blue;
+          color: white;
+        }
+      }
+      &.active {
+        a {
+          background-color: $harman-dark-blue;
+          color: white;
+        }
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    &.open {
+      max-width: 300px;
+      &.f-open-dropdown {
+        &::before {
+          display: none;
+        }
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+  .right {
+    a {
+      padding: 1px 8px;
+      color: white;
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}
+
 .logo-container {
   h1.logo {
     margin-top: 11px;
@@ -1555,7 +1623,7 @@ div.hint {
     }
     small {
       font-size: 12px;
-      font-weight: 300;
+      font-weight: 400;
       @media only screen and (min-width: 633px) {
         position: absolute;
         top: 84px;
@@ -1618,49 +1686,299 @@ ul.dropdown {
       text-shadow: 1px 2px 4px $black;
       font-weight: 100;
     }
-    .bubble {
-      border-radius: 50%;
-      opacity: 50%;
-      position: absolute;
+  }
+}
+.main-intro {
+  margin-top: 50px;
+  h1 {
+    color: $harman-dark-blue;
+    font-weight: 500;
+    line-height: 2;
+  }
+  .tabs {
+    .tab-title {
+      a {
+        margin-right: 10px;
+        margin-bottom: 20px;
+        border: 2px solid $harman-dark-blue;
+        border-radius: 8px;
+        color: $harman-dark-blue;
+        background-color: white;
+        padding: 10px 20px;
+        text-align: center;
+        width: 370px;
+        font-weight: 500;
+      }
+      &.active {
+        a {
+          background-color: $harman-dark-blue;
+          color: white;
+        }
+      }
     }
-    #bubble-1 {
-      border: 2px solid rgba(255,255,255,0.5);
-      width: 225px;
-      height: 225px;
-      left: -40px;
-      top: 230px;
-    }
-    #bubble-2 {
-      width: 275px;
-      height: 275px;
-      background-color: rgba(255,255,255,0.75);
-      top: 450px;
-      right: 20px;
-    }
-    #bubble-3 {
-      width: 125px;
-      height: 125px;
-      border: 20px solid rgba(255,255,255,.5);
-      top: 900px;
-      right: 300px;
+    
+  }
+  .tabs-content {
+    .content {
+      text-align: center;
+      padding: 40px 10vw 30px;
+      p {
+        font-size: rem-calc(18px);
+        line-height: 2;
+      }
+      &.active {
+        background-color: $harman-dark-blue;
+        color: white;
+      }
     }
   }
 }
-.brands_strip {
-  padding: 30px 200px;
-  background: linear-gradient(45deg, #1e3b6e, #0083ff, #4747c8);
+.homepage-strip {
+  padding: 60px 0;
+  h2 {
+    font-weight: 500;
+    font-size: rem-calc(50px);
+    letter-spacing: 1px ;
+    line-height: 2;
+    margin-bottom: 20px;
+  }
+}
+.brands-strip {
+  margin-top: 40px;
+  background: linear-gradient(45deg, $harman-dark-blue, #0083ff, #4747c8);
   color: white;
   h2 {
     color: white;
-    font-weight: 500;
-    font-size: rem-calc(38px);
-    letter-spacing: 2.5;
-    line-height: 2;
   }
-  .brand-logo-slide {
-    height: 150px;
+  .brands-slideshow {
+    margin-bottom: 80px;
+  }
+  .slick-slide {
+    .brand-slide {
+      height: 150px;
+      width: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .slick-dots {
+    bottom: -50px;
+    li {
+      button::before {
+        font-size: 16px;
+      }
+    }
   }
 } 
+.new-products-strip {
+  background-color: #EEE;
+  h2 {
+    color: #00416A;
+  }
+  .new-products-slideshow {
+    margin-bottom: 80px;
+  }
+  .slick-slide {
+    background-color: white;
+    margin: 6px;
+    padding: 25px;
+    color: $harman-blue;
+    .title-panel {
+      margin: 10px 0;
+      h5 {
+        font-size: 1.2rem;
+        line-height: 1.15;
+        font-weight: 600;
+      }
+      p {
+        font-size: 0.9rem;
+        font-weight: 300;
+        line-height: 1.25;
+        color: black;
+      }
+    }
+  }
+  .slick-dots {
+    bottom: -50px;
+    li {
+      button::before {
+        font-size: 16px;
+        color: #ccc;
+        opacity: 1;
+      }
+
+      &.slick-active button::before {
+        color: #ddd;
+        opacity: 1;
+      }
+    }
+  }
+}
+.case-studies-strip {
+  h2 {
+    color: $harman-dark-blue;
+  }
+  .case-studies-slideshow {
+    margin-bottom: 80px;
+  }
+  .slick-slide {
+    background-color: white;
+    margin: 6px;
+    position: relative;
+    &:hover {
+      .image:after {
+        background:rgba(0,0,0,0.5);
+      }
+    }
+    .image {
+      position: relative; 
+      &:after {
+        content: '\A';
+        position: absolute;
+        width: 100%; height:100%;
+        top:0; left:0;
+        background:rgba(0,0,0,0.65);
+        transition: all 0.25s;
+        -webkit-transition: all 0.25s;
+      }
+      img {
+        width: 100%;
+        vertical-align: top;
+      }
+    }
+    .title-panel {
+      position: absolute;
+      bottom: 18%;
+      left: 10%;
+      width: 80%;
+      text-align: center;
+      color: white;
+      h4 {
+        font-size: 1.4rem;
+        line-height: 1.15;
+        font-weight: 600;
+        color: white;
+      }
+      p {
+        font-size: 1.4rem;
+        line-height: 1;
+      }
+      .button {
+        background-color: white;
+        color: black;
+        font-weight: 500;
+        &:hover {
+          background-color: $harman-blue;
+          color: white;
+        }
+      }
+    }
+  }
+  .slick-dots {
+    bottom: -50px;
+    li {
+      button::before {
+        font-size: 16px;
+        color: #eee;
+        opacity: 1;
+      }
+
+      &.slick-active button::before {
+        color: #ccc;
+        opacity: 1;
+      }
+    }
+  }
+}
+.channel-contacts-strip {
+  background-color: #EEE;
+  .channel-contacts-banner {
+    position: relative;
+    .channel-contacts-banner-content {
+      position: absolute;
+      bottom: 28%;
+      left: 0px;
+      width: 600px;
+      @media only screen and (min-width: 651px) and (max-width: 850px) {
+        bottom: 15%;
+      }
+      @media only screen and (max-width: 650px) {
+        width: 100%;
+        bottom: 3%;
+      }
+      .button {
+        border: 2px solid white;
+        background: transparent;
+        width: 65%;
+        font-weight: 500;
+        letter-spacing: 1px;
+        font-size: clamp(17px, 1.7vw, 1.5rem);
+        margin-bottom: 14px;
+        @media only screen and (max-width: 650px) {
+          padding: 2%;
+          margin-bottom: 6px;
+        }
+        &:hover {
+          background-color: $harman-dark-blue;
+        }
+      }
+      h6 {
+        color: white;
+        margin-top: 0px;
+        font-size: clamp(16px, 1.4vw, 1.2rem);
+        font-weight: 400;
+        letter-spacing: 1px;
+        line-height: 1.25;
+      }
+    }
+  }
+}
+.news-strip {
+  background-color: #001824;
+  color: white;
+  h2 {
+    color: white;
+  }
+  .news-slideshow {
+    margin-bottom: 80px;
+  }
+  .slick-slide {
+    background-color: white;
+    border-radius: 6px;
+    margin: 10px;
+    padding: 10px;
+    .title-panel {
+      padding-top: 8px;
+      color: $harman-blue;
+      h4 {
+        font-size: 16px;
+        line-height: 1.5;
+        font-weight: 400;
+      }
+    }
+  }
+  .slick-dots {
+    bottom: -50px;
+    li {
+      button::before {
+        font-size: 16px;
+      }
+    }
+  }
+}
+.button {
+  &.inverse {
+    background-color: white;
+    border: 2px solid $harman-dark-blue;
+    color: $harman-dark-blue;
+    font-weight: bold;
+    &:hover {
+      color: white;
+      background-color: $harman-dark-blue;
+    }
+  }
+}
 .plan-container {
   background: $plan-background-color;
   padding: 60px 0;

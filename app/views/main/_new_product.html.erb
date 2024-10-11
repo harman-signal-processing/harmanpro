@@ -1,0 +1,12 @@
+<%= link_to(new_products_path) do %>
+  <div>
+    <%= image_tag new_product.image.url(:medium), alt: new_product.name, lazy: false %>
+  </div>
+  <div class="title-panel" data-equalizer-watch="new-product-text">
+    <%=raw new_product.content %>
+  </div>
+  
+  Learn More
+  <%= fa_icon 'long-arrow-alt-right', "aria-hidden": true %>
+<% end %>
+

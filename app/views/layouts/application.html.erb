@@ -35,6 +35,23 @@
   </head>
 
   <body>
+    <div class="pencil-nav show-for-medium-up">
+      <div class="left">
+        <button href="#" data-dropdown="h-divisions" aria-controls="drop1" aria-expanded="false" class="button dropdown">Professional Solutions</button>
+        <ul id="h-divisions" data-dropdown-content class="f-dropdown" aria-hidden="true">
+          <li><a href="https://www.harman.com/" target="_blank">Harman Corporate</a></li>
+          <li><a href="https://www.harman.com/automotive" target="_blank">Harman Automotive</a></li>
+          <li><a href="https://services.harman.com/" target="_blank">Digital Transformation Solutions</a></li>
+          <li class="active"><a href="https://pro.harman.com/" target="_blank">Professional Solutions</a></li>
+          <li><a href="https://www.harman.com/lifestyle" target="_blank">Lifestyle Solutions</a></li>
+        </ul>
+      </div>
+      <div class="right">
+        <a href="https://news.harman.com" target="_blank">Harman Newsroom</a>
+        <a href="https://jobs.harman.com" target="_blank">Careers</a>
+        <a href="https://www.harman.com/contact-us" target="_blank">Contact</a>
+      </div>
+    </div>
     <div class="row logo-container hide-for-small">
       <div class="medium-12 columns">
         <div class="row">
@@ -297,6 +314,8 @@
         <%= yield %>
       </div>
     </div>
+    
+    <%= yield :more_content %>
 
     <%#= render 'layouts/footer' %>
     <%= render 'layouts/new_footer' %>

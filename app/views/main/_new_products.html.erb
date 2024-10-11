@@ -1,0 +1,12 @@
+<div class="homepage-strip new-products-strip">
+  <div class="row"><div class="small-12 columns">
+      <h2 class="text-center">New Products</h2>
+        <div class="new-products-slideshow" data-equalizer="new-product-text">
+          <% @featured_new_products.each do |new_product| %>
+            <div class="slick-slide">
+              <%= render 'new_product', new_product: new_product %>
+            </div>
+          <% end %>
+      </div>
+  </div></div>
+</div>
