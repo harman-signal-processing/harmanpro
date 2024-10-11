@@ -6,9 +6,9 @@ class MainController < ApplicationController
     if @geo_ip.found?
       @slides = @slides.where("geo_target_country IS NULL or geo_target_country = '' or geo_target_country = ?", @geo_ip.country.iso_code)
     end
-    @featured_case_studies = CaseStudy.featured
+    @featured_case_studies = CaseStudy.featured(limit: 12)
     @featured_news_articles = NewsArticle.featured
-    @featured_new_products = NewProduct.featured
+    @featured_new_products = NewProduct.featured.limit(12)
   end
 
   def sitemap

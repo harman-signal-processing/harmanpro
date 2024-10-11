@@ -1744,6 +1744,7 @@ ul.dropdown {
   }
 }
 .brands-strip {
+  padding-top: 40px;
   margin-top: 40px;
   background: linear-gradient(45deg, $harman-dark-blue, #0083ff, #4747c8);
   color: white;
@@ -1751,7 +1752,7 @@ ul.dropdown {
     color: white;
   }
   .brands-slideshow {
-    margin-bottom: 80px;
+    margin-bottom: 40px;
   }
   .slick-slide {
     .brand-slide {
@@ -1775,6 +1776,12 @@ ul.dropdown {
   background-color: #EEE;
   h2 {
     color: #00416A;
+    a {
+      color: #00416A;
+      &:hover {
+        color: scale-color(#00416A, $lightness: 15%);
+      }
+    }
   }
   .new-products-slideshow {
     margin-bottom: 80px;
@@ -1818,6 +1825,12 @@ ul.dropdown {
 .case-studies-strip {
   h2 {
     color: $harman-dark-blue;
+    a {
+      color: $harman-dark-blue;
+      &:hover {
+        color: scale-color($harman-dark-blue, $lightness: 15%);
+      }
+    }
   }
   .case-studies-slideshow {
     margin-bottom: 80px;
@@ -1939,6 +1952,12 @@ ul.dropdown {
   color: white;
   h2 {
     color: white;
+    a {
+      color: white;
+      &:hover {
+        color: scale-color(white, $lightness: -15%);
+      }
+    }
   }
   .news-slideshow {
     margin-bottom: 80px;

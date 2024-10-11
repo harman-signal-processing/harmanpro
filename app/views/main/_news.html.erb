@@ -1,7 +1,7 @@
 <div class="homepage-strip news-strip">
   <div class="row"><div class="small-12 columns">
     <% if @featured_news_articles.size >= 4 %>
-      <h2 class="text-center">News</h2>
+      <h2 class="text-center"><%= link_to "News", news_articles_path %></h2>
       <div data-equalizer="news_headline">
         <div class="news-slideshow" data-equalizer="news_image">
           <% @featured_news_articles.each do |news_article| %>

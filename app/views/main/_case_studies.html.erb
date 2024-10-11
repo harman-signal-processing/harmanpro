@@ -1,7 +1,7 @@
 <div class="homepage-strip case-studies-strip">
   <div class="row"><div class="small-12 columns">
     <% if @featured_case_studies.size >= 4 %>
-      <h2 class="text-center">Case Studies</h2>
+      <h2 class="text-center"><%= link_to "Case Studies", case_studies_path %></h2>
       <div class="case-studies-slideshow">
         <% @featured_case_studies.each do |case_study| %>
           <div class="slick-slide">

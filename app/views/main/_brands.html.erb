@@ -1,6 +1,6 @@
 <div class="homepage-strip brands-strip text-center">
   <h2>Explore our Brands</h2>
-  <div class="row"><div class="small-12 medium-8 medium-offset-2 columns last">
+  <div class="row"><div class="small-12 medium-10 medium-offset-1 columns last">
   <div class="brands-slideshow">
     <% Brand.where(show_on_main_site: true).order(:priority).each do |brand| %>
       <div class="slick-slide">
@@ -8,7 +8,7 @@
           <% if brand.url.present? %>
             <%= link_to brand.url, target: "_blank" do %>
               <% if brand.white_logo.present? %>
-                <%= image_tag brand.white_logo.url(:medium), alt: brand.name, lazy: false %>
+                <%= image_tag brand.white_logo.url(:large), alt: brand.name, lazy: false %>
               <% else %>
                 <%= brand.name %>
               <% end %>

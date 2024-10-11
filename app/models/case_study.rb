@@ -58,8 +58,8 @@ class CaseStudy < ApplicationRecord
   accepts_nested_attributes_for :case_study_vertical_markets, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :case_study_brands, reject_if: :all_blank, allow_destroy: true
 
-  def self.featured
-    CaseStudyVerticalMarket.featured.map{|c| c.case_study}
+  def self.featured(opts={})
+    CaseStudyVerticalMarket.featured(opts).map{|c| c.case_study}
   end
 
   def slug_candidates

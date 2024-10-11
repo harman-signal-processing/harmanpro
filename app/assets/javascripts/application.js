@@ -62,7 +62,7 @@ $(function () {
     arrows: false,
     dots: true,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
     responsive: [
       {
         breakpoint: 1000,
@@ -88,13 +88,13 @@ $(function () {
     dots: true,
     //speed: 300,
     slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     responsive: [
       {
         breakpoint: 1000,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1
+          slidesToScroll: 2
         }
       },
       {
@@ -114,13 +114,13 @@ $(function () {
     dots: true,
     //speed: 300,
     slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     responsive: [
       {
         breakpoint: 1000,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1
+          slidesToScroll: 2
         }
       },
       {

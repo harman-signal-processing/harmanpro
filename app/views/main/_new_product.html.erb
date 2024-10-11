@@ -1,4 +1,4 @@
-<%= link_to(new_products_path) do %>
+<%= link_to(new_product.more_info || new_product.press_release || new_products_path, target: "_blank") do %>
   <div>
     <%= image_tag new_product.image.url(:medium), alt: new_product.name, lazy: false %>
   </div>
