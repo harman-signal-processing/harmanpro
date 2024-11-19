@@ -34,4 +34,14 @@ ActiveAdmin.register SiteSetting do
   end
   # :nocov:
 
+  # Weird place for this, I know
+  collection_action :flush_cache, method: :get do
+    if Rails.env.production? && RAILS_ENV['REDIS_URL'].present?
+      res = Redis.new(url: RAILS_ENV['REDIS_URL']).flushall
+      notice = "Redis cache is being flushed now. Response: #{res}"
+    else
+      notice = "Flushing cache only works in production."
+    end
+    redirect_to admin_dashboard_path, notice: notice
+  end
 end

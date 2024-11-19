@@ -33,6 +33,10 @@ ActiveAdmin.register_page "Dashboard" do
     div do
       para "Select from menu options above to continue."
     end
+    
+    div do
+      para link_to("Flush the site cache", flush_cache_admin_site_settings_path)
+    end
 #    columns do
 #      column do
 #        panel "Top-level Verticals" do
@@ -61,4 +65,15 @@ ActiveAdmin.register_page "Dashboard" do
 #    end
 
   end # content
+  
+  controller do
+    def flush_cache
+      if Rails.env.production?
+        Redis.new(ENV['REDIS_URL']).flushall
+        render plain: "Cache is being flushed"
+      else
+        render plain: "If this were production, cache would be flushing now."
+      end
+    end
+  end
 end

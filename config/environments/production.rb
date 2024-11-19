@@ -58,10 +58,13 @@ Rails.application.configure do
   config.log_tags = [ :request_id ]
 
   # Use a different cache store in production.
-  config.cache_store = :mem_cache_store, "127.0.0.1", {
-    namespace: "harmanpro",
-    expires_in: 1.day,
-    compress: true
+  config.cache_store = :redis_cache_store, {
+    url: ENV['REDIS_URL'],
+    connect_timeout: 30,
+    read_timeout: 0.2,
+    write_timeout: 0.2,
+    reconnect_attempts: 1,
+    expires_in: 1.week,
   }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).

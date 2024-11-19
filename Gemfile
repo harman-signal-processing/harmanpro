@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'bower-rails'
 gem "active_model_serializers"
 gem 'dalli'
+gem 'redis'
+gem 'hiredis'
 gem 'figaro'
 gem 'simple_form', ">= 5.0.0"
 gem 'chosen-rails', github: "adamtao/chosen-rails" # non-coffeescript version
