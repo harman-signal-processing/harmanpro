@@ -8,7 +8,7 @@ end
 gem 'strscan', '3.1.0'
 gem "digest", "3.1.1"
 
-gem 'rails', '~> 7.1', '< 7.2'
+gem 'rails', '~> 7.2'
 gem 'bootsnap', require: false
 gem 'sass-rails'
 gem 'uglifier'
@@ -59,7 +59,8 @@ gem 'recaptcha', require: "recaptcha/rails"
 gem 'nokogiri', '>= 1.13.4' # for parsing HTML to generate subnavs on EMEA portal
 gem 'thinking-sphinx'
 gem 'kaminari'
-gem 'globalize'
+# Temporary fix until globalize supports rails 7.2+
+gem 'globalize', github: 'globalize/globalize', ref: 'refs/pull/820/head'
 gem 'friendly_id-globalize', github: 'norman/friendly_id-globalize'
 gem 'http_accept_language'
 gem 'rails-i18n'
