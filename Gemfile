@@ -8,7 +8,7 @@ end
 gem 'strscan', '3.1.0'
 gem "digest", "3.1.1"
 
-gem 'rails', '~> 7.2'
+gem 'rails', '~> 8.0'
 gem 'bootsnap', require: false
 gem 'sass-rails'
 gem 'uglifier'
@@ -24,8 +24,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails', '>= 6.0'
 gem 'jbuilder', '~> 2.0'
 gem 'bower-rails'
-gem "active_model_serializers"
-gem 'dalli'
+gem "active_model_serializers", '>= 0.10.15'
 gem 'redis'
 gem 'hiredis'
 gem 'figaro'
@@ -53,8 +52,9 @@ gem 'daemons'
 gem 'httparty'
 gem 'rails_autolink'
 gem 'oauth2'
-gem 'ransack' #, "< 4.0.0" # v4 requires whitelisting params
-gem 'exception_notification'
+gem 'ransack'
+# 2024-11-26 ref below supports rails 8.0
+gem 'exception_notification', github: 'smartinez87/exception_notification', ref: 'refs/pull/544/head'
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'nokogiri', '>= 1.13.4' # for parsing HTML to generate subnavs on EMEA portal
 gem 'thinking-sphinx'
