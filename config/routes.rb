@@ -240,13 +240,13 @@ Rails.application.routes.draw do
   get '/consultants', to: redirect('/consultant')
 
   # Service Site
-  get '/service' => 'service#index', as: :service
+  get '/service' => redirect('https://service.harmanpro.com'), as: :service
   get '/service_centers/:brand/:state' => 'service_centers#service_centers_for_brand', as: 'brand_service_centers'
   get '/service_centers/login' => 'service_centers#login', as: :service_center_login
   # resources :service_centers, only: [:index, :new, :create]
   resources :service_centers, only: [:index, :create]
   get '/service_centers/new' => 'service#index'
-  post '/service' => 'service#create_contact_message', as: :service_create_contact_message
+  #post '/service' => 'service#create_contact_message', as: :service_create_contact_message
 
   # # Training site
   # get '/training' => 'training_content_pages#show'
