@@ -59,8 +59,7 @@ gem 'recaptcha', require: "recaptcha/rails"
 gem 'nokogiri', '>= 1.13.4' # for parsing HTML to generate subnavs on EMEA portal
 gem 'thinking-sphinx'
 gem 'kaminari'
-# Temporary fix until globalize supports rails 7.2+
-gem 'globalize', github: 'globalize/globalize', ref: 'refs/pull/820/head'
+gem 'globalize'
 gem 'friendly_id-globalize', github: 'norman/friendly_id-globalize'
 gem 'http_accept_language'
 gem 'rails-i18n'
