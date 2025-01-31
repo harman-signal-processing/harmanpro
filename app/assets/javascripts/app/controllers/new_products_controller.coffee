@@ -1,13 +1,13 @@
 angular.module("harmanpro")
   .controller 'NewProductsCtrl',
-    ['$attrs', '$scope', '$sce', 'NewProduct', ($attrs, $scope, $sce, NewProduct) ->
+    ['$attrs', '$scope', '$filter', '$sce', 'NewProduct', ($attrs, $scope, $filter, $sce, NewProduct) ->
 
       $scope.no_results = ""
 
       NewProduct.get {
         locale: $attrs.locale
       }, (data) ->
-        $scope.new_products = data.new_products
+        $scope.new_products = $filter('orderBy')(data.new_products, 'sortkey', true)
 
       $scope.includeProduct = (product) ->
         brand_filter = true

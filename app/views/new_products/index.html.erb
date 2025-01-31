@@ -48,7 +48,7 @@
 
               <br/>
               <h6>YEAR</h6>
-              <% @new_products.map{|np| np.released_on.year}.uniq.sort.reverse.each do |year| %>
+              <% @new_products.map{|np| np.released_at.year}.uniq.sort.reverse.each do |year| %>
                 <div class="side-filter">
                   <label>
                     <input type="checkbox" ng-model="selectedYears.y<%= year %>">
@@ -70,7 +70,7 @@
           <div ng-repeat="(key, value) in nps = (filtered_new_products | groupBy: 'month_year')">
             <h3>{{ key }}</h3>
             <ul class="small-block-grid-2 medium-block-grid-4">
-              <li ng-repeat="new_product in (value | reverse)">
+              <li ng-repeat="new_product in (value)">
                 <div ng-show="new_product.image_url">
                   <img ng-src="{{ new_product.image_url }}" img-preload />
                 </div>
@@ -129,7 +129,7 @@
 
           <br/>
           <h6><%= t('date.year').titleize %></h6>
-          <% @new_products.map{|np| np.released_on.year}.uniq.sort.reverse.each do |year| %>
+          <% @new_products.map{|np| np.released_at.year}.uniq.sort.reverse.each do |year| %>
             <div class="side-filter">
               <label>
                 <input type="checkbox" ng-model="selectedYears.y<%= year %>">

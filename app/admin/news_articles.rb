@@ -1,11 +1,11 @@
 ActiveAdmin.register NewsArticle do
   menu parent: "Events & News", priority: 3
-  config.sort_order = 'post_on_desc'
+  config.sort_order = 'post_at_desc'
 
   permit_params :title,
     :keywords,
     :body,
-    :post_on,
+    :post_at,
     :news_photo,
     :narrow_banner,
     :quote,
@@ -15,7 +15,7 @@ ActiveAdmin.register NewsArticle do
   index do
     selectable_column
     id_column
-    column :post_on
+    column :post_at
     column :locale
     column :title
     actions
@@ -24,7 +24,7 @@ ActiveAdmin.register NewsArticle do
   filter :keywords
   filter :title
   filter :locale
-  filter :post_on
+  filter :post_at
 
   form html: { multipart: true} do |f|
     f.inputs do
@@ -38,7 +38,7 @@ ActiveAdmin.register NewsArticle do
       f.input :narrow_banner, hint: f.object.narrow_banner.present? ?
         image_tag(f.object.narrow_banner.url(:thumb)) : ""
       f.input :body, as: :text, input_html: { class: "mceEditor"}
-      f.input :post_on, label: "Publish On", as: :datepicker
+      f.input :post_at, label: "Publish Date/Time", as: :date_time_picker, hint: "According to #{Rails.application.config.time_zone}."
       f.input :locale
     end
     f.has_many :brand_news_articles, heading: "Related Brands", new_record: "Add a related brand" do |s|

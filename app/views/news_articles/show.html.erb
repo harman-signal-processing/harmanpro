@@ -22,7 +22,7 @@
       <%= link_to "<< Back", news_articles_path %>
 
       <h1><%= @news_article.title %></h1>
-      <p><%= l @news_article.post_on, format: :long %></p>
+      <p><%= l @news_article.post_at.to_date, format: :long %></p>
 
       <div>
         <% if @news_article.quote.present? %>

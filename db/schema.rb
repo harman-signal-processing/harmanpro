@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_09_17_171934) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_30_194410) do
   create_table "active_admin_comments", id: :integer, charset: "latin1", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -1109,9 +1109,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_17_171934) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at", precision: nil
-    t.date "released_on"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.datetime "released_at"
   end
 
   create_table "news_articles", id: :integer, charset: "utf8", force: :cascade do |t|
@@ -1119,7 +1119,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_17_171934) do
     t.string "title"
     t.text "body"
     t.text "keywords"
-    t.date "post_on"
     t.string "news_photo_file_name"
     t.string "news_photo_content_type"
     t.integer "news_photo_file_size"
@@ -1132,6 +1131,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_17_171934) do
     t.string "narrow_banner_content_type"
     t.integer "narrow_banner_file_size"
     t.datetime "narrow_banner_updated_at"
+    t.datetime "post_at"
     t.index ["locale_id"], name: "index_news_articles_on_locale_id"
   end
 

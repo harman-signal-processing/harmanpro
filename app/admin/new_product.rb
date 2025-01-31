@@ -1,6 +1,7 @@
 ActiveAdmin.register NewProduct do
   menu parent: "Brands & Products", priority: 4, label: "New Products"
-  permit_params :name, :image, :content, :released_on, :more_info, :press_release,
+  config.sort_order = 'released_at_desc'
+  permit_params :name, :image, :content, :released_at, :more_info, :press_release,
     new_product_product_types_attributes: [:id, :product_type_id, :_destroy],
     new_product_brands_attributes: [:id, :brand_id, :_destroy]
 
@@ -9,7 +10,7 @@ ActiveAdmin.register NewProduct do
     id_column
     column :name
     column :brands
-    column :released_on
+    column :released_at
     actions
   end
 
@@ -34,7 +35,7 @@ ActiveAdmin.register NewProduct do
   show do
     attributes_table do
       row :name
-      row :released_on
+      row :released_at
       row :image do
         if new_product.image.present?
           image_tag(new_product.image.url(:small))
@@ -57,7 +58,7 @@ ActiveAdmin.register NewProduct do
   form html: { multipart: true} do |f|
     f.inputs do
       f.input :name
-      f.input :released_on, as: :datepicker, hint: "Dates in the future will not show on the new products page."
+      f.input :released_at, as: :date_time_picker, hint: "Dates in the future will not show on the new products page. Time is set according to #{ Rails.application.config.time_zone}."
       f.input :image, hint: f.object.image.present? ?
         image_tag(f.object.image.url(:thumb)) + content_tag(:br) : "Preferred size is 500x407 px."
       f.input :content, as: :text, hint: "The blurb that appears under the photo", input_html: { class: "mceEditor"}

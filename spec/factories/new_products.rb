@@ -6,6 +6,6 @@ FactoryBot.define do
     image_content_type { "MyString" }
     image_file_size { 1 }
     image_updated_at { "2018-08-09 10:22:28" }
-    released_on { "2018-08-09" }
+    released_at { 1.week.ago }
   end
 end

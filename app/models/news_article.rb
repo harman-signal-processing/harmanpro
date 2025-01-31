@@ -33,7 +33,7 @@ class NewsArticle < ApplicationRecord
   validates_attachment_content_type :narrow_banner, content_type: /\Aimage\/.*\Z/
   
   validates :title, presence: true
-  validates :post_on, presence: true
+  validates :post_at, presence: true
 
   accepts_nested_attributes_for :brand_news_articles, reject_if: :all_blank, allow_destroy: true
 
@@ -46,7 +46,7 @@ class NewsArticle < ApplicationRecord
     [
       :title,
       [:title, :locale],
-      [:post_on, :title, :locale]
+      [:post_at, :title, :locale]
     ]
   end
 
@@ -56,7 +56,7 @@ class NewsArticle < ApplicationRecord
   # :nocov:
 
   def self.featured
-    where("post_on <= ?", Date.today).order("post_on DESC").limit(8)
+    where("post_at <= ?", Time.now).order("post_at DESC").limit(8)
   end
 
   def delete_photo_if_needed
@@ -66,5 +66,8 @@ class NewsArticle < ApplicationRecord
       end
     end
   end
-
+  
+  def post_on
+    self.post_at.to_date
+  end
 end

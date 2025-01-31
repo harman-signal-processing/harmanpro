@@ -3,7 +3,7 @@ FactoryBot.define do
     title { "MyString" }
     body { "MyText" }
     keywords { "MyText" }
-    post_on { 1.week.ago }
+    post_at { 1.week.ago }
     quote { "MyString" }
     news_photo { File.new(Rails.root.join('spec', 'fixtures', 'test.jpg')) }
     association :locale, factory: :available_locale

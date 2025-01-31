@@ -56,7 +56,7 @@ class Cms::NewsArticlesController < CmsController
       :title,
       :body,
       :keywords,
-      :post_on,
+      :post_at,
       :news_photo,
       :quote,
       :delete_photo

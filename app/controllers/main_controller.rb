@@ -89,10 +89,10 @@ class MainController < ApplicationController
 
   def add_news_to_sitemap
     @pages << { url: news_articles_url, updated_at: 1.day.ago, changefreq: 'daily', priority: 0.7 }
-    NewsArticle.where("post_on <= ?", Date.today).each do |news|
+    NewsArticle.where("post_at <= ?", Time.now).each do |news|
       @pages << {
         url: news_article_url(news),
-        updated_at: news.post_on.to_time,
+        updated_at: news.post_at,
         changefreq: 'monthly',
         priority: 0.5
       }

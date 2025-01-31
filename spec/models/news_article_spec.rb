@@ -10,7 +10,7 @@ RSpec.describe NewsArticle, type: :model do
   it { should respond_to :title }
   it { should respond_to :body }
   it { should respond_to :keywords }
-  it { should respond_to :post_on }
+  it { should respond_to :post_at }
   it { should respond_to :locale }
   it { should respond_to :brands }
 end

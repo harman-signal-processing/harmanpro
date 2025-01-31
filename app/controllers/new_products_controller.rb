@@ -3,7 +3,7 @@ class NewProductsController < ApplicationController
 
   def index
     if params[:show_future].present? && admin_logged_in?
-      @new_products = NewProduct.order(Arel.sql("released_on DESC"))
+      @new_products = NewProduct.order(Arel.sql("released_at DESC"))
     else
       @new_products = NewProduct.for_index
     end

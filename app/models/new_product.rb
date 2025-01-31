@@ -11,7 +11,7 @@ class NewProduct < ApplicationRecord
   has_many :product_types, through: :new_product_product_types
 
   validates :name, presence: true
-  validates :released_on, presence: true
+  validates :released_at, presence: true
 
   has_attached_file :image,
     styles: {
@@ -29,7 +29,7 @@ class NewProduct < ApplicationRecord
   accepts_nested_attributes_for :new_product_product_types, reject_if: :all_blank, allow_destroy: true
   
   scope :for_index, -> do
-    where("released_on <= ?", Date.today).order(Arel.sql("released_on DESC"))
+    where("released_at <= ?", Time.now).order(Arel.sql("released_at DESC"))
   end
   
   scope :featured, -> do

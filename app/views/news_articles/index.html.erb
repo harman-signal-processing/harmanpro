@@ -15,7 +15,7 @@
       <%# The single most recent article %>
       <% if @featured_article %>
         <h2><%= link_to @featured_article.title, @featured_article %></h2>
-        <p><%= l @featured_article.post_on, format: :long %></p>
+        <p><%= l @featured_article.post_at.to_date, format: :long %></p>
         <div><%= raw @featured_article.body %></div>
       <% end %>
 
@@ -30,7 +30,7 @@
               <% end %>
             <% end %>
             <h4><%= link_to news.title, news %></h4>
-            <p><%= l news.post_on, format: :long %></p>
+            <p><%= l news.post_at.to_date, format: :long %></p>
             <div><%= raw news.body %></div>
           </div>
         <% end %>
@@ -50,7 +50,7 @@
             </div>
             <div class="medium-10 columns">
               <h3><%= link_to news.title, news %></h3>
-              <p><%= l news.post_on, format: :long %></p>
+              <p><%= l news.post_at.to_date, format: :long %></p>
             </div>
           </div>
         <% end %>
@@ -62,7 +62,7 @@
       <ul class="no-bullet">
         <% @news_articles[0,10].each do |news| %>
           <li>
-            <%= l news.post_on, format: :short %>:
+            <%= l news.post_at.to_date, format: :short %>:
             <h6><%= link_to news.title, news %></h6>
             <br/>
           </li>
