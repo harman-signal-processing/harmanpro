@@ -11,12 +11,36 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <p>Yeah, there's not a lot here. The best way to change your password is to make sure your
-    email address above is correct, then log out and follow the "Forgot My Password" process.</p>
+    <p>The best way to change your password is to make sure your email address
+    above is correct, then log out and follow the "Forgot My Password" process.</p>
   </div>
 
   <div class="form-actions">
     <%= f.button :submit, "Update" %>
   </div>
+<% end %>
+
+<hr/>
+<% if resource.otp_required_for_login? %>
+  <p>Use the QR code below to setup Multi-factor authentication (MFA) with an authenticator app:</p>
+  <%= RQRCode::QRCode.new(current_user.otp_provisioning_uri(current_user.email, issuer: "HARMAN Pro"), level: :l).as_svg(
+            offset: 40,
+            fill: "ffffff",
+            color: :black,
+            module_size: 11,
+            standalone: true,
+            use_path: true
+          ).html_safe %>
+  <p>You <strong>MUST</strong> set up an authenticator app like Authy, Google Authenticator, Cisco Duo, etc. or you will not be able to login next time.
+    We currently do not support backup codes, so you'll need to contact an administrator if you lose access to your authenticator.</p>
+  <p>If necessary, you can also disable MFA on your account:</p>
+  <%= button_to "Disable MFA", users_disable_otp_path(method: :post), class: "secondary tiny radius button" %>
+<% else %>
+  <p>Please enable Multi-factor authentication (MFA) for enhanced security of your account:</p>
+  <div class="text-center">
+    <%= button_to "Enable Multi-factor Authentication (MFA)", users_enable_otp_path(method: :post), class: "secondary radius button" %>
+  </div>
+  <p>After clicking the button above, you will be required to setup an authenticator app of your choosing.
+  Recommended apps include Authy, Google Authenticator, Cisco Duo, etc.</p>
 <% end %>
 

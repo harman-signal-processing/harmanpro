@@ -1,10 +1,12 @@
 ActiveAdmin.register User do
   menu parent: "Settings", priority: 2
+  config.sort_order = "current_sign_in_at_desc"
   permit_params do
     params = [:email, :password, :password_confirmation]
     if current_user.admin? || current_user.super_admin?
       params += [:service_department, :super_admin, :translator, :admin, :lead_recipient,
         :emea_admin, :emea_distributor, :tse_admin, :contact_admin, :pr_admin,
+        :otp_required_for_login,
         locale_translators_attributes: [:id, :available_locale_id, :_destroy],
         country_lead_recipients_attributes: [:id, :country, :_destroy]
       ]
@@ -13,6 +15,14 @@ ActiveAdmin.register User do
   end
 
   #menu if: proc { current_user.can?(:manage, AdminUser) }
+  
+  action_item :edit_two_factor, only: :show, if: proc{ current_user == user } do
+    if current_user.otp_required_for_login
+      link_to("Disable MFA", disable_otp_admin_user_path, method: :put)
+    else
+      link_to("Enable MFA", enable_otp_admin_user_path, method: :put)
+    end
+  end
 
   # :nocov:
   index do
@@ -42,8 +52,36 @@ ActiveAdmin.register User do
   filter :created_at
 
   show do
+    if current_user == user && user.otp_required_for_login?
+      panel "Multi-factor Authentication" do
+        h3 do
+          "Scan the QR code below to setup MFA with an authenticator app:"
+        end
+        div do
+          RQRCode::QRCode.new(current_user.otp_provisioning_uri(current_user.email, issuer: "HARMAN Pro"), level: :l).as_svg(
+            offset: 40,
+            fill: "ffffff",
+            color: :black,
+            module_size: 11,
+            standalone: true,
+            use_path: true
+          ).html_safe
+        end
+        h5 do
+          "You MUST set up an authenticator app like Authy, Google Authenticator, Cisco Duo, etc. or you will not be able to login next time. " +
+          "We currently do not support backup codes, so you'll need to contact an administrator if you lose access to your authenticator."
+        end
+      end
+    end
+
     attributes_table do
       row :email
+      row :otp_required_for_login
+      # Not sure we should or need to show this...
+      #row :otp_registration_url do
+      #  user.otp_provisioning_uri(user.email, issuer: "HARMAN Pro")
+      #end
+      row :last_sign_in_at
       row :admin
       row :super_admin
       row :service_department
@@ -65,6 +103,7 @@ ActiveAdmin.register User do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.input :otp_required_for_login, label: "OTP required for login (MFA)"
     end
     if current_user.admin? || current_user.super_admin?
       f.inputs "Roles" do
@@ -94,4 +133,16 @@ ActiveAdmin.register User do
   end
   # :nocov:
 
+  member_action :disable_otp, method: :put do
+    current_user.update!( otp_required_for_login: false )
+    redirect_to admin_user_path(current_user.to_param)
+  end
+
+  member_action :enable_otp, method: :put do
+    current_user.update!(
+      otp_secret: User.generate_otp_secret,
+      otp_required_for_login: true
+    )
+    redirect_to admin_user_path(current_user.to_param)
+  end
 end

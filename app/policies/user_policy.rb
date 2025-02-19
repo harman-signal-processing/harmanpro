@@ -33,6 +33,18 @@ class UserPolicy < ApplicationPolicy
   def destroy?
     can_access_user?
   end
+  
+  def manage_otp?
+    @user.admin? || @user.super_admin? || @user == @user_in_question
+  end
+  
+  def enable_otp?
+    manage_otp?
+  end
+  
+  def disable_otp?
+    manage_otp?
+  end
 
   private
 

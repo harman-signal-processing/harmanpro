@@ -112,6 +112,8 @@ Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
   # Logins for admins, etc.
+  post 'users/enable_otp'
+  post 'users/disable_otp'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
