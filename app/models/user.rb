@@ -1,9 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-
+  # :two_factor_backupable
+  
+  devise :two_factor_authenticatable, :registerable, :recoverable,
+    :validatable, :trackable, :rememberable
+  
   has_many :locale_translators, dependent: :destroy, inverse_of: :translator
   has_many :locales, through: :locale_translators
   has_many :country_lead_recipients, inverse_of: :user
@@ -105,4 +107,5 @@ class User < ApplicationRecord
   def name
     email
   end
+  
 end
