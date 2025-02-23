@@ -17,6 +17,7 @@
 
       var linkUrl = $(this).attr("href") || "";
       var linkText = $(this).text().trim() || "";
+      if (linkText.length == 0) { linkText = $(this).find('img').attr('src') || ""; }
       var linkClasses = $(this).attr("class") || "";
       var pageLocation = window.location.href || "";
       var pageReferrer = document.referrer || "";
