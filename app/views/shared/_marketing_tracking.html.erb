@@ -19,7 +19,8 @@
       var linkUrl = $this.attr("href") || "";
       var linkText = $this.text().trim() || "";
       var linkImgSrc = $this.find('img').attr('src') || "";
-      if (linkImgSrc.length) { linkImgSrc = linkImgSrc.replace("https://adn.harmanpro.com/", "").replace("https://d3nw26meo6dlp6.cloudfront.net/", ""); }
+      // we have to get the linkImgSrc value under 100 characters because of limitations GA4 has on custom dimension value character counts, we can rehydrate on the reporting side
+      if (linkImgSrc.length) { linkImgSrc = linkImgSrc.replace("https://pro.harman.com/", "").replace("//pro.harman.com/", "").replace("https://d3nw26meo6dlp6.cloudfront.net/", ""); }
       var linkImgAlt = $this.find('img').attr('alt') || "";
       var linkClasses = $this.attr("class") || "";
       var pageLocation = window.location.href || "";
